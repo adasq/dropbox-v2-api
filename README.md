@@ -1,6 +1,10 @@
 # dropbox-api
 Dropbox API v2 wrapper for nodejs.
 
+The `dropbox-api` module is generated dynamically - it's based on  [Dropbox API description JSON file][api.json] which is an representation of Dropbox API v2 HTTP methods description, retrived from [official documentaion webpage][docs].
+
+[api.json]: <https://github.com/adasq/dropbox-api/blob/master/dist/api.json>
+
 ## Get started
 
 ```js
