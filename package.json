@@ -1,0 +1,20 @@
+{
+  "name": "dropbox-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "generate": "node generate-api-description.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "adasq",
+  "license": "ISC",
+  "dependencies": {
+    "async": "1.5.0",
+    "cheerio": "0.19.0",
+    "hapi": "11.1.4",
+    "opn": "3.0.3",
+    "request": "2.67.0",
+    "underscore": "1.8.3"
+  }
+}
