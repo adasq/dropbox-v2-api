@@ -73,20 +73,27 @@ function prepareAPIMethods(parsedApiDescription){
 				}
 				//-------------------------------------------
 				function callback(err, response, body){
-						if(err){ return cb(err); }
-						if(response.statusCode){
-							if(response.statusCode !== 200){
-								return cb(body);
-							}
-							return cb(false, body);		
-						}else{
-							if(response.headers[DB_HEADER_API_RESULT]){
-								return cb(false, JSON.parse(response.headers[DB_HEADER_API_RESULT]));
-							}else{
-								return cb(JSON.parse(body));
-							}							
+						if(err){ 
+							return cb({
+								network: err
+							});
 						}
-						return cb(false, body);						
+						var contentType = {
+							'application/octet-stream': function(){
+								if(response.headers[DB_HEADER_API_RESULT]){
+									return cb(false, JSON.parse(response.headers[DB_HEADER_API_RESULT]));
+								}
+							},
+							'application/json': function(){
+								if(response.statusCode === 200){
+									return cb(false, body);
+								}else{
+									body.statusCode = response.statusCode;
+									return cb(body, null);
+								}								
+							}
+						};
+						contentType[response.headers['content-type']]();					
 				}
 			};
 	});

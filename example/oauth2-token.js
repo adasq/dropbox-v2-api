@@ -10,18 +10,42 @@ dropbox.authenticate({
 });
 
 //api call:
-dropbox({
-	resource: 'users/get_current_account'
-}, function callback(err, response){
-	if(err){ return console.log('err:', err); }
-	console.log(response);
-});
+// dropbox({
+// 	resource: 'users/get_current_account'
+// }, function callback(err, response){
+// 	if(err){ return console.log('err:', err); }
+// 	console.log(response);
+// });
 
 
 // dropbox({
 // 	resource: 'files/upload',
 // 	parameters: {
-// 		'path': '/dropbox-api.js'
+// 		path: '/'+(+ new Date())+'.jpg'
 // 	},
-// 	readStream: fs.createReadStream('./dropbox-api.js')
-// }, cb);
+// 	readStream: fs.createReadStream(__dirname+'/oauth2-token.js')
+// }, function(err, result){
+// 	if(err){ return console.log('err:', err); }
+// 	console.log(result);
+// });
+
+// dropbox({
+// 	resource: 'files/get_metadata',
+// 	parameters: {
+// 		path: '/aaaa.jpg'
+// 	}
+// }, function(err, result){
+// 	if(err){ return console.log('err:', err); }
+// 	console.log(result);
+// });
+
+
+// dropbox({
+// 	resource: 'files/download',
+// 	parameters: {
+// 		path: '/aaaa.jpg'
+// 	}
+// }, function(err, result){
+// 	if(err){ return console.log('err:', err); }
+// 	console.log(result);
+// }).pipe( fs.createWriteStream('./image.jpg') );
