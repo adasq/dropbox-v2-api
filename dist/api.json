@@ -10,25 +10,28 @@
 				"type": "String",
 				"desc": "A user's account identifier."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"users/get_current_account": {
 		"uri": "https://api.dropboxapi.com/2/users/get_current_account",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"endpointType": "RPC",
-		"parameters": []
+		"parameters": [],
+		"returnParameters": []
 	},
 	"users/get_space_usage": {
 		"uri": "https://api.dropboxapi.com/2/users/get_space_usage",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"endpointType": "RPC",
-		"parameters": []
+		"parameters": [],
+		"returnParameters": []
 	},
 	"users/get_account_batch": {
 		"uri": "https://api.dropboxapi.com/2/users/get_account_batch",
-		"requiresAuthHeader": false,
+		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"endpointType": "RPC",
 		"parameters": [
@@ -37,7 +40,8 @@
 				"type": "List of (String)",
 				"desc": "List of user account identifiers.  Should not contain any duplicate account IDs."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/get_metadata": {
 		"uri": "https://api.dropboxapi.com/2/files/get_metadata",
@@ -55,7 +59,8 @@
 				"type": "Boolean",
 				"desc": "If true, :field:'FileMetadata.media_info' is set for photo and video. The default for this field is False."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/list_folder/longpoll": {
 		"uri": "https://notify.dropboxapi.com/2/files/list_folder/longpoll",
@@ -72,7 +77,8 @@
 				"type": "UInt64",
 				"desc": "A timeout in seconds. The request will block for at most this length of time, plus up to 90 seconds of random jitter added to avoid the thundering herd problem. Care should be taken when using this parameter, as some network infrastructure does not support long timeouts. The default for this field is 30."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/list_folder": {
 		"uri": "https://api.dropboxapi.com/2/files/list_folder",
@@ -100,7 +106,8 @@
 				"type": "Boolean",
 				"desc": "If true, the results will include entries for files and folders that used to exist but were deleted. The default for this field is False."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/list_folder/continue": {
 		"uri": "https://api.dropboxapi.com/2/files/list_folder/continue",
@@ -113,7 +120,8 @@
 				"type": "String",
 				"desc": "The cursor returned by your last call to   or  ."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/list_folder/get_latest_cursor": {
 		"uri": "https://api.dropboxapi.com/2/files/list_folder/get_latest_cursor",
@@ -141,7 +149,8 @@
 				"type": "Boolean",
 				"desc": "If true, the results will include entries for files and folders that used to exist but were deleted. The default for this field is False."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/download": {
 		"uri": "https://content.dropboxapi.com/2/files/download",
@@ -159,14 +168,16 @@
 				"type": "String?",
 				"desc": "Deprecated. Please specify revision in :field:'path' instead This field is optional."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/upload_session/start": {
 		"uri": "https://content.dropboxapi.com/2/files/upload_session/start",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"endpointType": "CONTENT",
-		"parameters": []
+		"parameters": [],
+		"returnParameters": []
 	},
 	"files/upload_session/append": {
 		"uri": "https://content.dropboxapi.com/2/files/upload_session/append",
@@ -184,7 +195,8 @@
 				"type": "UInt64",
 				"desc": "The amount of data that has been uploaded so far. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/upload_session/finish": {
 		"uri": "https://content.dropboxapi.com/2/files/upload_session/finish",
@@ -355,7 +367,8 @@
 				"type": "Boolean",
 				"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If True, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/upload": {
 		"uri": "https://content.dropboxapi.com/2/files/upload",
@@ -420,7 +433,8 @@
 				"type": "Boolean",
 				"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If True, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/search": {
 		"uri": "https://api.dropboxapi.com/2/files/search",
@@ -485,7 +499,8 @@
 				"type": "Void",
 				"desc": "Search for deleted file and folder names."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/create_folder": {
 		"uri": "https://api.dropboxapi.com/2/files/create_folder",
@@ -498,7 +513,8 @@
 				"type": "String",
 				"desc": "Path in the user's Dropbox to create."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/delete": {
 		"uri": "https://api.dropboxapi.com/2/files/delete",
@@ -511,7 +527,8 @@
 				"type": "String",
 				"desc": "Path in the user's Dropbox to delete."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/permanently_delete": {
 		"uri": "https://api.dropboxapi.com/2/files/permanently_delete",
@@ -524,7 +541,8 @@
 				"type": "String",
 				"desc": "Path in the user's Dropbox to delete."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/copy": {
 		"uri": "https://api.dropboxapi.com/2/files/copy",
@@ -542,7 +560,8 @@
 				"type": "String",
 				"desc": "Path in the user's Dropbox that is the destination."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/move": {
 		"uri": "https://api.dropboxapi.com/2/files/move",
@@ -560,7 +579,8 @@
 				"type": "String",
 				"desc": "Path in the user's Dropbox that is the destination."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/get_thumbnail": {
 		"uri": "https://content.dropboxapi.com/2/files/get_thumbnail",
@@ -657,7 +677,8 @@
 				"type": "Void",
 				"desc": "1024 by 768"
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/get_preview": {
 		"uri": "https://content.dropboxapi.com/2/files/get_preview",
@@ -675,7 +696,8 @@
 				"type": "String?",
 				"desc": "Deprecated. Please specify revision in :field:'path' instead This field is optional."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/list_revisions": {
 		"uri": "https://api.dropboxapi.com/2/files/list_revisions",
@@ -693,7 +715,8 @@
 				"type": "UInt64",
 				"desc": "The maximum number of revision entries returned. The default for this field is 10."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"files/restore": {
 		"uri": "https://api.dropboxapi.com/2/files/restore",
@@ -711,7 +734,8 @@
 				"type": "String",
 				"desc": "The revision to restore for the file."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/get_shared_link_metadata": {
 		"uri": "https://api.dropboxapi.com/2/sharing/get_shared_link_metadata",
@@ -734,7 +758,8 @@
 				"type": "String?",
 				"desc": "If the shared link has a password, this parameter can be used. This field is optional."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/list_shared_links": {
 		"uri": "https://api.dropboxapi.com/2/sharing/list_shared_links",
@@ -752,11 +777,12 @@
 				"type": "String?",
 				"desc": "The cursor returned by your last call to  . This field is optional."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/modify_shared_link_settings": {
 		"uri": "https://api.dropboxapi.com/2/sharing/modify_shared_link_settings",
-		"requiresAuthHeader": false,
+		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"endpointType": "RPC",
 		"parameters": [
@@ -881,11 +907,12 @@
 				"type": "Timestamp?",
 				"desc": "Expiration time of the shared link. By default the link won't expire. This field is optional."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/create_shared_link_with_settings": {
 		"uri": "https://api.dropboxapi.com/2/sharing/create_shared_link_with_settings",
-		"requiresAuthHeader": false,
+		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"endpointType": "RPC",
 		"parameters": [
@@ -1010,7 +1037,8 @@
 				"type": "Timestamp?",
 				"desc": "Expiration time of the shared link. By default the link won't expire. This field is optional."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/revoke_shared_link": {
 		"uri": "https://api.dropboxapi.com/2/sharing/revoke_shared_link",
@@ -1023,7 +1051,8 @@
 				"type": "String",
 				"desc": "URL of the shared link."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/get_shared_link_file": {
 		"uri": "https://content.dropboxapi.com/2/sharing/get_shared_link_file",
@@ -1046,7 +1075,8 @@
 				"type": "String?",
 				"desc": "If the shared link has a password, this parameter can be used. This field is optional."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/get_shared_links": {
 		"uri": "https://api.dropboxapi.com/2/sharing/get_shared_links",
@@ -1059,7 +1089,8 @@
 				"type": "String?",
 				"desc": "See   description. This field is optional."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/create_shared_link": {
 		"uri": "https://api.dropboxapi.com/2/sharing/create_shared_link",
@@ -1104,14 +1135,16 @@
 				"type": "Void",
 				"desc": "Assume pending uploads are folders."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/list_folders": {
 		"uri": "https://api.dropboxapi.com/2/sharing/list_folders",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"endpointType": "RPC",
-		"parameters": []
+		"parameters": [],
+		"returnParameters": []
 	},
 	"sharing/list_folders/continue": {
 		"uri": "https://api.dropboxapi.com/2/sharing/list_folders/continue",
@@ -1124,7 +1157,8 @@
 				"type": "String",
 				"desc": "The cursor returned by your last call to   or  ."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/get_folder_metadata": {
 		"uri": "https://api.dropboxapi.com/2/sharing/get_folder_metadata",
@@ -1137,7 +1171,8 @@
 				"type": "String",
 				"desc": "The ID for the shared folder."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/list_folder_members": {
 		"uri": "https://api.dropboxapi.com/2/sharing/list_folder_members",
@@ -1150,7 +1185,8 @@
 				"type": "String",
 				"desc": "The ID for the shared folder."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/list_folder_members/continue": {
 		"uri": "https://api.dropboxapi.com/2/sharing/list_folder_members/continue",
@@ -1163,7 +1199,8 @@
 				"type": "String",
 				"desc": "The cursor returned by your last call to   or  ."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/share_folder": {
 		"uri": "https://api.dropboxapi.com/2/sharing/share_folder",
@@ -1262,7 +1299,8 @@
 				"type": "Boolean",
 				"desc": "Whether to force the share to happen asynchronously. The default for this field is False."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/check_share_job_status": {
 		"uri": "https://api.dropboxapi.com/2/sharing/check_share_job_status",
@@ -1275,7 +1313,8 @@
 				"type": "String",
 				"desc": "Id of the asynchronous job. This is the value of a response returned from the method that launched the job."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/check_job_status": {
 		"uri": "https://api.dropboxapi.com/2/sharing/check_job_status",
@@ -1288,7 +1327,8 @@
 				"type": "String",
 				"desc": "Id of the asynchronous job. This is the value of a response returned from the method that launched the job."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/unshare_folder": {
 		"uri": "https://api.dropboxapi.com/2/sharing/unshare_folder",
@@ -1306,7 +1346,8 @@
 				"type": "Boolean",
 				"desc": "If true, members of this shared folder will get a copy of this folder after it's unshared. Otherwise, it will be removed from their Dropbox. The current user, who is an owner, will always retain their copy."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/transfer_folder": {
 		"uri": "https://api.dropboxapi.com/2/sharing/transfer_folder",
@@ -1324,7 +1365,8 @@
 				"type": "String",
 				"desc": "A account or team member ID to transfer ownership to."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/update_folder_policy": {
 		"uri": "https://api.dropboxapi.com/2/sharing/update_folder_policy",
@@ -1418,7 +1460,8 @@
 				"type": "Void",
 				"desc": "Links can only be shared among members of the shared folder."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/add_folder_member": {
 		"uri": "https://api.dropboxapi.com/2/sharing/add_folder_member",
@@ -1601,7 +1644,8 @@
 				"type": "String?",
 				"desc": "Optional message to display to added members in their invitation. This field is optional."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/remove_folder_member": {
 		"uri": "https://api.dropboxapi.com/2/sharing/remove_folder_member",
@@ -1646,7 +1690,8 @@
 				"type": "Boolean",
 				"desc": "If true, the removed user will keep their copy of the folder after it's unshared, assuming it was mounted. Otherwise, it will be removed from their Dropbox. Also, this must be set to false when kicking a group."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/update_folder_member": {
 		"uri": "https://api.dropboxapi.com/2/sharing/update_folder_member",
@@ -1723,7 +1768,8 @@
 				"type": "Void",
 				"desc": "The collaborator can only view the shared folder."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/mount_folder": {
 		"uri": "https://api.dropboxapi.com/2/sharing/mount_folder",
@@ -1736,7 +1782,8 @@
 				"type": "String",
 				"desc": "The ID of the shared folder to mount."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/unmount_folder": {
 		"uri": "https://api.dropboxapi.com/2/sharing/unmount_folder",
@@ -1749,7 +1796,8 @@
 				"type": "String",
 				"desc": "The ID for the shared folder."
 			}
-		]
+		],
+		"returnParameters": []
 	},
 	"sharing/relinquish_folder_membership": {
 		"uri": "https://api.dropboxapi.com/2/sharing/relinquish_folder_membership",
@@ -1762,6 +1810,7 @@
 				"type": "String",
 				"desc": "The ID for the shared folder."
 			}
-		]
+		],
+		"returnParameters": []
 	}
 }

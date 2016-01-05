@@ -92,7 +92,7 @@ function prepareAPIMethods(parsedApiDescription){
 									return cb(body, null);
 								}								
 							}
-						};
+						};						
 						contentType[response.headers['content-type']]();					
 				}
 			};

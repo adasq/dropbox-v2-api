@@ -143,12 +143,12 @@ function parseApiDescription(apiDescription){
 			var resourceName = [namespaceName, methodName].join('/');
 
 			var methodUri = method['URL Structure'];
-			var methodExample = method['Example'] || '';
+			var methodExample = method['Example'] || null;
 			var methodParameters = method['Parameters'] || [];
 			var returnParameters = method['Returns'] || [];
 
-			var requiresAuthHeader = utils.contains(methodExample, HEADER_AUTH);
-			var requiresReadableStream =  utils.contains(methodExample, HEADER_CT_OCTET_STREAM);
+			var requiresAuthHeader = methodExample === null ? true : utils.contains(methodExample, HEADER_AUTH);
+			var requiresReadableStream = methodExample === null ? false : utils.contains(methodExample, HEADER_CT_OCTET_STREAM);
 			
 			//recognize endpoint
 			var endpointType;
