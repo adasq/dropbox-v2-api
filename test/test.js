@@ -3,13 +3,13 @@ var should = require('should');
 var dropbox = require('../dropbox-api.js');
 var fs = require('fs');
 var path = require('path');
+var spec = require('stream-spec');
+var tester = require('stream-tester');
 
 var credentials = JSON.parse(fs.readFileSync(path.join('example/credentials.json')));
 
-
-
-
 describe('Namespace', function() {
+	this.timeout(6000);
 	before(function() {
 		dropbox.authenticate({
 			token: credentials.TOKEN
@@ -60,8 +60,62 @@ describe('Namespace', function() {
 	    });
 	});
 	describe('files', function(){
-		it('x', function(){
-			[].should.be.an.Array();
-		})
+
+		// after(function(done) {
+		// 	dropbox({
+		// 		resource: 'files/delete',
+		// 		parameters: {
+		// 			path: '/test-dir'
+		// 		}
+		// 	}, function callback(err, response){
+		// 		if(err){ throw err; }
+		// 		response.should.have.property('name', 'test-dir');
+		// 		done();
+		// 	});				
+		// });
+		xit('create_folder', function(done){
+			dropbox({
+				resource: 'files/create_folder',
+				parameters: {
+					path: '/test-dir'
+				}
+			}, function callback(err, response){
+				if(err){ throw err; }
+				response.should.have.property('name', 'test-dir');
+				done();
+			});			
+		});
+		xit('upload', function(done){			
+			function getReadStream(){
+				var line = 0;
+				return tester.createRandomStream(function () {
+					return 'line ' + (++line) + '\r\n'
+				}, 20);
+			}
+			dropbox({
+				resource: 'files/upload',
+				parameters: {
+					path: '/test-dir/test.txt'
+				},
+				readStream: getReadStream()
+			}, function callback(err, response){
+				if(err){ throw err; }
+				response.should.have.property('path_lower', '/test-dir/test.txt');
+				done();
+			});			
+		});
+		it('download', function(done){
+			var dropboxStream = dropbox({
+				resource: 'files/download',
+				parameters: {
+					path: '/test-dir/test.txt'
+				}				
+			}, function callback(err, response){
+				if(err){ throw err; }
+				console.log('dl',response);
+				done();
+			});
+			dropboxStream.pipe(fs.createWriteStream('sssss'));	
+		});		
 	});
 });
