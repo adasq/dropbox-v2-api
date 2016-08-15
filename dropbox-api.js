@@ -92,8 +92,12 @@ function prepareAPIMethods(parsedApiDescription){
 									return cb(body, null);
 								}								
 							}
-						};						
-						contentType[response.headers['content-type']]();					
+						};
+						if(contentType[response.headers['content-type']]){
+							contentType[response.headers['content-type']]();
+						}else{
+							cb(body, null);
+						}
 				}
 			};
 	});
