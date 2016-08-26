@@ -1,14 +1,14 @@
-# dropbox-api
+# dropbox-v2-api
 Dropbox API v2 wrapper for nodejs.
 
-The `dropbox-api` module is generated dynamically - it's based on  [Dropbox API description JSON file][api.json] which is an representation of Dropbox API v2 HTTP methods description, retrived from [official documentaion webpage][docs].
+The `dropbox-v2-api` module is generated dynamically - it's based on  [Dropbox API description JSON file][api.json] which is an representation of Dropbox API v2 HTTP methods description, retrived from [official documentaion webpage][docs].
 
-[api.json]: <https://github.com/adasq/dropbox-api/blob/master/dist/api.json>
+[api.json]: <https://github.com/adasq/dropbox-v2-api/blob/master/dist/api.json>
 
 ## Get started
 
 ```js
-var dropbox = require('dropbox-api');
+var dropbox = require('dropbox-v2-api');
 ```
 
 ## Auth
@@ -122,4 +122,4 @@ dropbox({
 [get_metadata]:
 <https://www.dropbox.com/developers/documentation/http/documentation#files-get_metadata>
 [docs]:<https://www.dropbox.com/developers/documentation/http/documentation>
-[example-auth-flow]:<https://github.com/adasq/dropbox-api/blob/master/example/oauth2-flow.js>
+[example-auth-flow]:<https://github.com/adasq/dropbox-v2-api/blob/master/example/oauth2-flow.js>
