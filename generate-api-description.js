@@ -83,6 +83,9 @@ function parseMethodElement(wrap){
 		'URL Structure': getTextByElem,
 		'Parameters': getParameterList,
 		//'Returns': getParameterList,
+		'Endpoint format': function(elem){
+			return elem.text().trim().toLowerCase();
+		},
 		'Example': getExampleData
 	};
 
@@ -102,7 +105,7 @@ function parseMethodElement(wrap){
 			var value = parsers[name](valueEl);		
 			apiMethod[name] = value
 		}else{
-			console.log('no parser for', name);
+			// console.log('no parser for', name);
 		}
 	});
 	return apiMethod;
@@ -123,7 +126,6 @@ function generateApiDescription(){
 					name: section.name,
 					methods: _.map(section.el, function(el){
 						var methodDescription = parseMethodElement($(el));
-						console.log(methodDescription.name);
 						return methodDescription;
 					})
 				};
@@ -146,6 +148,7 @@ function parseApiDescription(apiDescription){
 			var methodExample = method['Example'] || null;
 			var methodParameters = method['Parameters'] || [];
 			var returnParameters = method['Returns'] || [];
+			var endpointFormat = method['Endpoint format'] || null;
 
 			var requiresAuthHeader = methodExample === null ? true : utils.contains(methodExample, HEADER_AUTH);
 			var requiresReadableStream = methodExample === null ? false : utils.contains(methodExample, HEADER_CT_OCTET_STREAM);
@@ -163,6 +166,7 @@ function parseApiDescription(apiDescription){
 				requiresAuthHeader: requiresAuthHeader,
 				requiresReadableStream: requiresReadableStream,
 				endpointType: endpointType,
+				endpointFormat: endpointFormat,
 				parameters: methodParameters,
 				returnParameters: returnParameters				
 			};

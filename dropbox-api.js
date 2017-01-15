@@ -1,6 +1,7 @@
-var request = require('request');
-var fs = require('fs');
-var _ = require('underscore');
+const request = require('request');
+const fs = require('fs');
+const stream = require('stream');
+const _ = require('underscore');
 
 //-------------------------------------------------------------------
 
@@ -32,7 +33,7 @@ var cusomizeRequestObjectMiddleware = [
 	function requiresReadableStream(requestOpts, resourceDescription, userOpts){						
 				if(resourceDescription.requiresReadableStream){
 					if(!userOpts.readStream){
-						throwError('No readable stream specified!');
+						// throwError('No readable stream specified!');
 					}
 					requestOpts.headers['Content-Type']= 'application/octet-stream';
 				}
@@ -45,6 +46,15 @@ var cusomizeRequestObjectMiddleware = [
 				}
 	}	
 ];
+
+function createTransformStream() {
+	const streamInstance = new stream.Transform();
+	streamInstance._transform = function (chunk,encoding,done) {
+		this.push(chunk);
+		done();
+	};
+	return streamInstance;
+}
 
 function prepareAPIMethods(parsedApiDescription){
 	var resources = {};
@@ -64,9 +74,19 @@ function prepareAPIMethods(parsedApiDescription){
 				});
 				//-------------------------------------------------------
 				//send request
-				if(resourceDescription.requiresReadableStream){
+				
+				
+				if(resourceDescription.endpointFormat === "content-upload"){
 					//it's upload type request, so pipe
-					return opt.readStream.pipe(request(requestOpts, callback));
+					if(opt.readStream){
+						// read stream specified, so pipe it
+						return opt.readStream.pipe(request(requestOpts, callback));
+					}else {
+						// readStream not specified, so return writable stream
+						return request(requestOpts, callback);
+					}
+				}else if(resourceDescription.endpointFormat === "content-download"){
+					return request(requestOpts, callback).pipe(createTransformStream());
 				}else{
 					//ordinary api call/download request 
 					return request(requestOpts, callback);

@@ -1,6 +1,6 @@
 const assert = require('assert');
 const should = require('should');
-const dropbox = require('../dropbox-api.js');
+const dropbox = require('../dropbox-api.js'); // or dropbox-v2-api
 const fs = require('fs');
 const path = require('path');
 const spec = require('stream-spec');
@@ -87,7 +87,7 @@ describe('Namespace', function() {
 				if(err){ throw err; }
 				response.should.have.property('name', dirName);
 				done();
-			});			
+			});
 		});
 		it('alpha/get_metadata', (done) => {
 			dropbox({
@@ -134,12 +134,49 @@ describe('Namespace', function() {
 				done();
 			});			
 		});
+		it('download', (done) => {
+			var filePath = `${dirPath}/upload.txt`;
+			var dropboxStream = dropbox({
+				resource: 'files/download',
+				parameters: {
+					path: filePath
+				}				
+			}, (err, response) => {
+				if(err){ throw err; }
+				response.should.have.property('path_lower', filePath);
+				done();
+			});
+		});
+		it('download -> upload combination', (done) => {
+			var downloadFilePath = `${dirPath}/upload.txt`;
+			var uploadFilePath = `${dirPath}/upload-2.txt`;
+
+			const dlStream = dropbox({
+				resource: 'files/download',
+				parameters: {
+					path: downloadFilePath
+				}				
+			});
+
+			const uploadSteram = dropbox({
+				resource: 'files/upload',
+				parameters: {
+					path: uploadFilePath
+				}
+			}, (err, response) => {
+				response.should.have.property('size', 131);
+				done();
+			});
+
+			dlStream.pipe(uploadSteram);
+		});
 		it('copy', (done) => {
-			var targetFileName = `${dirPath}/upload-copied.txt`;
+			const sourceFileName = `${dirPath}/upload-2.txt`;
+			const targetFileName = `${dirPath}/upload-2-copied.txt`;
 			dropbox({
 				resource: 'files/copy',
 				parameters: {
-				    'from_path': dirPath+'/upload.txt',
+				    'from_path': sourceFileName,
 				    'to_path': targetFileName
 				}				
 			}, (err, response) => {
@@ -149,7 +186,7 @@ describe('Namespace', function() {
 			});
 		});
 		it('delete', (done) => {
-			var fileToDeleteName = `${dirPath}/upload-copied.txt`;
+			var fileToDeleteName = `${dirPath}/upload-2-copied.txt`;
 			dropbox({
 				resource: 'files/delete',
 				parameters: {
@@ -175,19 +212,5 @@ describe('Namespace', function() {
 				done();
 			});
 		});	
-		it('download', (done) => {
-			var filePath = `${dirPath}/upload.txt`;
-			var dropboxStream = dropbox({
-				resource: 'files/download',
-				parameters: {
-					path: filePath
-				}				
-			}, (err, response) => {
-				if(err){ throw err; }
-				response.should.have.property('path_lower', filePath);
-				done();
-			});
-			dropboxStream.pipe(fs.createWriteStream('sssss'));	
-		});		
 	});
 });

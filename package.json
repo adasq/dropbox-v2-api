@@ -13,16 +13,17 @@
   },
   "author": "adasq",
   "license": "ISC",
-  "dependencies": {
-    "async": "1.5.0",
-    "cheerio": "0.19.0",
-    "hapi": "11.1.4",
-    "mocha": "^2.3.4",
-    "opn": "3.0.3",
+  "dependencies": {    
     "request": "2.67.0",
     "underscore": "1.8.3"
   },
   "devDependencies": {
+    "async": "1.5.0",
+    "opn": "3.0.3",
+    "cheerio": "0.19.0",
+    "hapi": "11.1.4",
+    "mocha": "^2.3.4",
+    "dropbox-v2-api": "1.0.3",
     "should": "^8.0.2",
     "stream-spec": "^0.3.6",
     "stream-tester": "0.0.5"
