@@ -8,7 +8,7 @@ The `dropbox-v2-api` module is generated dynamically - it's based on  [Dropbox A
 ## Get started
 
 ```js
-var dropbox = require('dropbox-v2-api');
+const dropbox = require('dropbox-v2-api');
 ```
 
 ## Auth
@@ -23,15 +23,15 @@ dropbox.authenticate({
 - using oauth2 flow (see [example app][example-auth-flow])
 ```js
 //set credentials
-var oauth = dropbox.authenticate({
+cont oauth = dropbox.authenticate({
 	client_id: 'APP_KEY',
 	client_secret: 'APP_SECRET',
 	redirect_uri: 'REDIRECT_URI'
 });
 //generate and visit authorization sevice 
-var authUrl = oauth.generateAuthUrl();
+const authUrl = oauth.generateAuthUrl();
 //after redirection, you should receive code
-oauth.getToken(code, function(err, response){
+oauth.getToken(code, (err, response) => {
   //you are authorized now!
 });
 ```
@@ -43,7 +43,7 @@ dropbox({
     resource: (string),
     parameters: (object?),
     readStream: (readable stream object?)
-}, function(err, result){
+}, (err, result) => {
     if(err){ return console.log('err:', err); }
     console.log(result);
 });
@@ -60,7 +60,7 @@ dropbox({
 ```js
 dropbox({
 	resource: 'users/get_current_account'
-}, function callback(err, response){
+}, (err, response) => {
 	if(err){ return console.log('err:', err); }
 	console.log(response);
 });
@@ -76,7 +76,7 @@ dropbox({
 		path: '/dropbox/path/to/file.js'
 	},
 	readStream: fs.createReadStream('path/to/file.js')
-}, function(err, result){
+}, (err, result) => {
 	if(err){ return console.log('err:', err); }
 	console.log(result);
 });
@@ -91,11 +91,33 @@ dropbox({
 	parameters: {
 		path: '/dropbox/image.jpg'
 	}
-}, function(err, result){
+}, (err, result) => {
 	if(err){ return console.log('err:', err); }
 	console.log(result);
 }).pipe( fs.createWriteStream('./image.jpg') );
 ```
+
+#### download & upload
+
+You can easely use streams: 
+```js
+const downloadStream = dropbox({
+	resource: 'files/download',
+	parameters: { path: '/source/file/path' }				
+});
+
+const uploadStream = dropbox({
+	resource: 'files/upload',
+	parameters: { path: '/target/file/path' }				
+}, (err, response) => {
+	!err && console.log('file succesfully uploaded!');
+});
+
+downloadStream.pipe(uploadStream);
+// fs.createReadStream('/file/path').pipe(uploadStream);
+// downloadStream.pipe(fs.createWriteStream('/file/path'));
+```
+
 
 
 
@@ -108,12 +130,15 @@ dropbox({
 		path: '/dropbox/path/to/file.js',
 		include_media_info: false
 	}
-}, function(err, result){
+}, function(err, result) => {
 	if(err){ return console.log('err:', err); }
 	console.log(result);
 });
 ```
 
+#### check [test cases][tests] for more examples...
+
+[tests]: <https://github.com/adasq/dropbox-v2-api/blob/master/test/test.js>
 [files-upload]: 
 <https://www.dropbox.com/developers/documentation/http/documentation#files-upload>
 [files-download]: 
