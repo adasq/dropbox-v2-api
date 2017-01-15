@@ -1,6 +1,6 @@
 {
   "name": "dropbox-v2-api",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "NodeJS Dropbox v2 API wrapper",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   },
   "author": "adasq",
   "license": "ISC",
-  "dependencies": {    
+  "dependencies": {
     "request": "2.67.0",
     "underscore": "1.8.3"
   },
