@@ -1,4 +1,23 @@
 {
+	"auth/token/from_oauth1": {
+		"uri": "https://api.dropboxapi.com/2/auth/token/from_oauth1",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "oauth1_token",
+				"type": "String(min_length=1)",
+				"desc": "The supplied OAuth 1.0 access token."
+			},
+			{
+				"name": "oauth1_token_secret",
+				"type": "String(min_length=1)",
+				"desc": "The token secret associated with the supplied access token."
+			}
+		],
+		"returnParameters": []
+	},
 	"auth/token/revoke": {
 		"uri": "https://api.dropboxapi.com/2/auth/token/revoke",
 		"requiresAuthHeader": true,
@@ -35,8 +54,8 @@
 			},
 			{
 				"name": "include_property_templates",
-				"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"), )?",
-				"desc": "If true, FileMetadata.property_groups is set for files with custom properties. This field is optional."
+				"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"))?",
+				"desc": "If set to a valid list of template IDs, FileMetadata.property_groups is set for files with custom properties. This field is optional."
 			}
 		],
 		"returnParameters": []
@@ -60,7 +79,7 @@
 					{
 						"name": "add",
 						"type": "Void",
-						"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+						"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 					},
 					{
 						"name": "overwrite",
@@ -77,7 +96,7 @@
 			{
 				"name": "add",
 				"type": "Void",
-				"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+				"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 			},
 			{
 				"name": "overwrite",
@@ -106,7 +125,7 @@
 			},
 			{
 				"name": "property_groups",
-				"type": "List of (PropertyGroup, )?",
+				"type": "List of (PropertyGroup)?",
 				"desc": "List of custom properties to add to file. This field is optional.",
 				"parameters": [
 					{
@@ -116,7 +135,7 @@
 					},
 					{
 						"name": "fields",
-						"type": "List of (PropertyField, )",
+						"type": "List of (PropertyField)",
 						"desc": "This is a list of custom properties associated with a file. There can be up to 32 properties for a template.",
 						"parameters": [
 							{
@@ -160,7 +179,7 @@
 			},
 			{
 				"name": "fields",
-				"type": "List of (PropertyField, )",
+				"type": "List of (PropertyField)",
 				"desc": "This is a list of custom properties associated with a file. There can be up to 32 properties for a template.",
 				"parameters": [
 					{
@@ -203,6 +222,76 @@
 				"name": "to_path",
 				"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
 				"desc": "Path in the user's Dropbox that is the destination."
+			},
+			{
+				"name": "allow_shared_folder",
+				"type": "Boolean",
+				"desc": "If true,   will copy contents in shared folder, otherwise RelocationError.cant_copy_shared_folder will be returned if from_path contains shared folder. This field is always true for  . The default for this field is False."
+			},
+			{
+				"name": "autorename",
+				"type": "Boolean",
+				"desc": "If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict. The default for this field is False."
+			}
+		],
+		"returnParameters": []
+	},
+	"files/copy_batch": {
+		"uri": "https://api.dropboxapi.com/2/files/copy_batch",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "entries",
+				"type": "List of (RelocationPath)",
+				"desc": "List of entries to be moved or copied. Each entry is  .",
+				"parameters": [
+					{
+						"name": "from_path",
+						"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+						"desc": "Path in the user's Dropbox to be copied or moved."
+					},
+					{
+						"name": "to_path",
+						"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+						"desc": "Path in the user's Dropbox that is the destination."
+					}
+				]
+			},
+			{
+				"name": "from_path",
+				"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+				"desc": "Path in the user's Dropbox to be copied or moved."
+			},
+			{
+				"name": "to_path",
+				"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+				"desc": "Path in the user's Dropbox that is the destination."
+			},
+			{
+				"name": "allow_shared_folder",
+				"type": "Boolean",
+				"desc": "If true,   will copy contents in shared folder, otherwise RelocationError.cant_copy_shared_folder will be returned if RelocationPath.from_path contains shared folder.  This field is always true for  . The default for this field is False."
+			},
+			{
+				"name": "autorename",
+				"type": "Boolean",
+				"desc": "If there's a conflict with any file, have the Dropbox server try to autorename that file to avoid the conflict. The default for this field is False."
+			}
+		],
+		"returnParameters": []
+	},
+	"files/copy_batch/check": {
+		"uri": "https://api.dropboxapi.com/2/files/copy_batch/check",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "async_job_id",
+				"type": "String(min_length=1)",
+				"desc": "Id of the asynchronous job. This is the value of a response returned from the method that launched the job."
 			}
 		],
 		"returnParameters": []
@@ -250,6 +339,11 @@
 				"name": "path",
 				"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
 				"desc": "Path in the user's Dropbox to create."
+			},
+			{
+				"name": "autorename",
+				"type": "Boolean",
+				"desc": "If there's a conflict, have the Dropbox server try to autorename the folder to avoid the conflict. The default for this field is False."
 			}
 		],
 		"returnParameters": []
@@ -268,6 +362,46 @@
 		],
 		"returnParameters": []
 	},
+	"files/delete_batch": {
+		"uri": "https://api.dropboxapi.com/2/files/delete_batch",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "entries",
+				"type": "List of (DeleteArg)",
+				"desc": "",
+				"parameters": [
+					{
+						"name": "path",
+						"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+						"desc": "Path in the user's Dropbox to delete."
+					}
+				]
+			},
+			{
+				"name": "path",
+				"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+				"desc": "Path in the user's Dropbox to delete."
+			}
+		],
+		"returnParameters": []
+	},
+	"files/delete_batch/check": {
+		"uri": "https://api.dropboxapi.com/2/files/delete_batch/check",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "async_job_id",
+				"type": "String(min_length=1)",
+				"desc": "Id of the asynchronous job. This is the value of a response returned from the method that launched the job."
+			}
+		],
+		"returnParameters": []
+	},
 	"files/download": {
 		"uri": "https://content.dropboxapi.com/2/files/download",
 		"requiresAuthHeader": true,
@@ -282,7 +416,7 @@
 			{
 				"name": "rev",
 				"type": "String(min_length=9, pattern=\"[0-9a-f]+\")?",
-				"desc": "Deprecated. Please specify revision in path instead This field is optional."
+				"desc": "Deprecated. Please specify revision in path instead. This field is optional."
 			}
 		],
 		"returnParameters": []
@@ -330,7 +464,7 @@
 			{
 				"name": "rev",
 				"type": "String(min_length=9, pattern=\"[0-9a-f]+\")?",
-				"desc": "Deprecated. Please specify revision in path instead This field is optional."
+				"desc": "Deprecated. Please specify revision in path instead. This field is optional."
 			}
 		],
 		"returnParameters": []
@@ -415,7 +549,7 @@
 					{
 						"name": "w1024h768",
 						"type": "Void",
-						"desc": "1024 by 768"
+						"desc": "1024 by 768."
 					}
 				]
 			},
@@ -442,7 +576,7 @@
 			{
 				"name": "w1024h768",
 				"type": "Void",
-				"desc": "1024 by 768"
+				"desc": "1024 by 768."
 			}
 		],
 		"returnParameters": []
@@ -581,6 +715,76 @@
 				"name": "to_path",
 				"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
 				"desc": "Path in the user's Dropbox that is the destination."
+			},
+			{
+				"name": "allow_shared_folder",
+				"type": "Boolean",
+				"desc": "If true,   will copy contents in shared folder, otherwise RelocationError.cant_copy_shared_folder will be returned if from_path contains shared folder. This field is always true for  . The default for this field is False."
+			},
+			{
+				"name": "autorename",
+				"type": "Boolean",
+				"desc": "If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict. The default for this field is False."
+			}
+		],
+		"returnParameters": []
+	},
+	"files/move_batch": {
+		"uri": "https://api.dropboxapi.com/2/files/move_batch",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "entries",
+				"type": "List of (RelocationPath)",
+				"desc": "List of entries to be moved or copied. Each entry is  .",
+				"parameters": [
+					{
+						"name": "from_path",
+						"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+						"desc": "Path in the user's Dropbox to be copied or moved."
+					},
+					{
+						"name": "to_path",
+						"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+						"desc": "Path in the user's Dropbox that is the destination."
+					}
+				]
+			},
+			{
+				"name": "from_path",
+				"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+				"desc": "Path in the user's Dropbox to be copied or moved."
+			},
+			{
+				"name": "to_path",
+				"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+				"desc": "Path in the user's Dropbox that is the destination."
+			},
+			{
+				"name": "allow_shared_folder",
+				"type": "Boolean",
+				"desc": "If true,   will copy contents in shared folder, otherwise RelocationError.cant_copy_shared_folder will be returned if RelocationPath.from_path contains shared folder.  This field is always true for  . The default for this field is False."
+			},
+			{
+				"name": "autorename",
+				"type": "Boolean",
+				"desc": "If there's a conflict with any file, have the Dropbox server try to autorename that file to avoid the conflict. The default for this field is False."
+			}
+		],
+		"returnParameters": []
+	},
+	"files/move_batch/check": {
+		"uri": "https://api.dropboxapi.com/2/files/move_batch/check",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "async_job_id",
+				"type": "String(min_length=1)",
+				"desc": "Id of the asynchronous job. This is the value of a response returned from the method that launched the job."
 			}
 		],
 		"returnParameters": []
@@ -612,7 +816,7 @@
 			},
 			{
 				"name": "property_groups",
-				"type": "List of (PropertyGroup, )",
+				"type": "List of (PropertyGroup)",
 				"desc": "Filled custom property templates associated with a file.",
 				"parameters": [
 					{
@@ -622,7 +826,7 @@
 					},
 					{
 						"name": "fields",
-						"type": "List of (PropertyField, )",
+						"type": "List of (PropertyField)",
 						"desc": "This is a list of custom properties associated with a file. There can be up to 32 properties for a template.",
 						"parameters": [
 							{
@@ -666,7 +870,7 @@
 			},
 			{
 				"name": "fields",
-				"type": "List of (PropertyField, )",
+				"type": "List of (PropertyField)",
 				"desc": "This is a list of custom properties associated with a file. There can be up to 32 properties for a template.",
 				"parameters": [
 					{
@@ -707,7 +911,7 @@
 			},
 			{
 				"name": "property_groups",
-				"type": "List of (PropertyGroup, )",
+				"type": "List of (PropertyGroup)",
 				"desc": "Filled custom property templates associated with a file.",
 				"parameters": [
 					{
@@ -717,7 +921,7 @@
 					},
 					{
 						"name": "fields",
-						"type": "List of (PropertyField, )",
+						"type": "List of (PropertyField)",
 						"desc": "This is a list of custom properties associated with a file. There can be up to 32 properties for a template.",
 						"parameters": [
 							{
@@ -761,7 +965,7 @@
 			},
 			{
 				"name": "fields",
-				"type": "List of (PropertyField, )",
+				"type": "List of (PropertyField)",
 				"desc": "This is a list of custom properties associated with a file. There can be up to 32 properties for a template.",
 				"parameters": [
 					{
@@ -802,7 +1006,7 @@
 			},
 			{
 				"name": "property_template_ids",
-				"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"), )",
+				"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"))",
 				"desc": "A list of identifiers for a property template created by route properties/template/add."
 			}
 		],
@@ -843,7 +1047,7 @@
 			},
 			{
 				"name": "update_property_groups",
-				"type": "List of (PropertyGroupUpdate, )",
+				"type": "List of (PropertyGroupUpdate)",
 				"desc": "Filled custom property templates associated with a file.",
 				"parameters": [
 					{
@@ -853,7 +1057,7 @@
 					},
 					{
 						"name": "add_or_update_fields",
-						"type": "List of (PropertyField, )?",
+						"type": "List of (PropertyField)?",
 						"desc": "List of property fields to update if the field already exists. If the field doesn't exist, add the field to the property group. This field is optional.",
 						"parameters": [
 							{
@@ -880,7 +1084,7 @@
 					},
 					{
 						"name": "remove_fields",
-						"type": "List of (String, )?",
+						"type": "List of (String)?",
 						"desc": "List of property field names to remove from property group if the field exists. This field is optional."
 					},
 					{
@@ -902,7 +1106,7 @@
 			},
 			{
 				"name": "add_or_update_fields",
-				"type": "List of (PropertyField, )?",
+				"type": "List of (PropertyField)?",
 				"desc": "List of property fields to update if the field already exists. If the field doesn't exist, add the field to the property group. This field is optional.",
 				"parameters": [
 					{
@@ -929,7 +1133,7 @@
 			},
 			{
 				"name": "remove_fields",
-				"type": "List of (String, )?",
+				"type": "List of (String)?",
 				"desc": "List of property field names to remove from property group if the field exists. This field is optional."
 			}
 		],
@@ -1072,7 +1276,7 @@
 					{
 						"name": "add",
 						"type": "Void",
-						"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+						"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 					},
 					{
 						"name": "overwrite",
@@ -1089,7 +1293,7 @@
 			{
 				"name": "add",
 				"type": "Void",
-				"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+				"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 			},
 			{
 				"name": "overwrite",
@@ -1230,7 +1434,7 @@
 							{
 								"name": "add",
 								"type": "Void",
-								"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+								"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 							},
 							{
 								"name": "overwrite",
@@ -1247,7 +1451,7 @@
 					{
 						"name": "add",
 						"type": "Void",
-						"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+						"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 					},
 					{
 						"name": "overwrite",
@@ -1277,7 +1481,7 @@
 					{
 						"name": "add",
 						"type": "Void",
-						"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+						"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 					},
 					{
 						"name": "overwrite",
@@ -1304,7 +1508,7 @@
 					{
 						"name": "add",
 						"type": "Void",
-						"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+						"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 					},
 					{
 						"name": "overwrite",
@@ -1321,7 +1525,7 @@
 			{
 				"name": "add",
 				"type": "Void",
-				"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+				"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 			},
 			{
 				"name": "overwrite",
@@ -1407,7 +1611,7 @@
 									{
 										"name": "add",
 										"type": "Void",
-										"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+										"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 									},
 									{
 										"name": "overwrite",
@@ -1424,7 +1628,7 @@
 							{
 								"name": "add",
 								"type": "Void",
-								"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+								"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 							},
 							{
 								"name": "overwrite",
@@ -1454,7 +1658,7 @@
 							{
 								"name": "add",
 								"type": "Void",
-								"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+								"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 							},
 							{
 								"name": "overwrite",
@@ -1481,7 +1685,7 @@
 							{
 								"name": "add",
 								"type": "Void",
-								"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+								"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 							},
 							{
 								"name": "overwrite",
@@ -1498,7 +1702,7 @@
 					{
 						"name": "add",
 						"type": "Void",
-						"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+						"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 					},
 					{
 						"name": "overwrite",
@@ -1548,7 +1752,7 @@
 							{
 								"name": "add",
 								"type": "Void",
-								"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+								"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 							},
 							{
 								"name": "overwrite",
@@ -1565,7 +1769,7 @@
 					{
 						"name": "add",
 						"type": "Void",
-						"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+						"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 					},
 					{
 						"name": "overwrite",
@@ -1595,7 +1799,7 @@
 					{
 						"name": "add",
 						"type": "Void",
-						"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+						"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 					},
 					{
 						"name": "overwrite",
@@ -1654,7 +1858,7 @@
 							{
 								"name": "add",
 								"type": "Void",
-								"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+								"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 							},
 							{
 								"name": "overwrite",
@@ -1671,7 +1875,7 @@
 					{
 						"name": "add",
 						"type": "Void",
-						"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+						"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 					},
 					{
 						"name": "overwrite",
@@ -1701,7 +1905,7 @@
 					{
 						"name": "add",
 						"type": "Void",
-						"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+						"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 					},
 					{
 						"name": "overwrite",
@@ -1728,7 +1932,7 @@
 					{
 						"name": "add",
 						"type": "Void",
-						"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+						"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 					},
 					{
 						"name": "overwrite",
@@ -1745,7 +1949,7 @@
 			{
 				"name": "add",
 				"type": "Void",
-				"desc": "Never overwrite the existing file. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+				"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
 			},
 			{
 				"name": "overwrite",
@@ -1803,6 +2007,749 @@
 		],
 		"returnParameters": []
 	},
+	"paper/docs/archive": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/archive",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "doc_id",
+				"type": "String",
+				"desc": ""
+			}
+		],
+		"returnParameters": []
+	},
+	"paper/docs/download": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/download",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "doc_id",
+				"type": "String",
+				"desc": ""
+			},
+			{
+				"name": "export_format",
+				"type": "ExportFormat",
+				"desc": "",
+				"parameters": [
+					{
+						"name": "html",
+						"type": "Void",
+						"desc": "The HTML export format."
+					},
+					{
+						"name": "markdown",
+						"type": "Void",
+						"desc": "The markdown export format."
+					}
+				]
+			},
+			{
+				"name": "html",
+				"type": "Void",
+				"desc": "The HTML export format."
+			},
+			{
+				"name": "markdown",
+				"type": "Void",
+				"desc": "The markdown export format."
+			}
+		],
+		"returnParameters": []
+	},
+	"paper/docs/folder_users/list": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/folder_users/list",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "doc_id",
+				"type": "String",
+				"desc": ""
+			},
+			{
+				"name": "limit",
+				"type": "Int32",
+				"desc": "Size limit per batch. The maximum number of users that can be retrieved per batch is 1000. Higher value results in invalid arguments error. The default for this field is 1000."
+			}
+		],
+		"returnParameters": []
+	},
+	"paper/docs/folder_users/list/continue": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/folder_users/list/continue",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "doc_id",
+				"type": "String",
+				"desc": ""
+			},
+			{
+				"name": "cursor",
+				"type": "String",
+				"desc": "The cursor obtained from   or  . Allows for pagination."
+			}
+		],
+		"returnParameters": []
+	},
+	"paper/docs/get_folder_info": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/get_folder_info",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "doc_id",
+				"type": "String",
+				"desc": ""
+			}
+		],
+		"returnParameters": []
+	},
+	"paper/docs/list": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/list",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "filter_by",
+				"type": "ListPaperDocsFilterBy",
+				"desc": "Allows user to specify how the Paper docs should be filtered. The default for this union is docs_accessed.",
+				"parameters": [
+					{
+						"name": "docs_accessed",
+						"type": "Void",
+						"desc": "Fetches all Paper doc ids that the user has ever accessed."
+					},
+					{
+						"name": "docs_created",
+						"type": "Void",
+						"desc": "Fetches only the Paper doc ids that the user has created."
+					}
+				]
+			},
+			{
+				"name": "docs_accessed",
+				"type": "Void",
+				"desc": "Fetches all Paper doc ids that the user has ever accessed."
+			},
+			{
+				"name": "docs_created",
+				"type": "Void",
+				"desc": "Fetches only the Paper doc ids that the user has created."
+			},
+			{
+				"name": "sort_by",
+				"type": "ListPaperDocsSortBy",
+				"desc": "Allows user to specify how the Paper docs should be sorted. The default for this union is accessed.",
+				"parameters": [
+					{
+						"name": "accessed",
+						"type": "Void",
+						"desc": "Sorts the Paper docs by the time they were last accessed."
+					},
+					{
+						"name": "modified",
+						"type": "Void",
+						"desc": "Sorts the Paper docs by the time they were last modified."
+					},
+					{
+						"name": "created",
+						"type": "Void",
+						"desc": "Sorts the Paper docs by the creation time."
+					}
+				]
+			},
+			{
+				"name": "accessed",
+				"type": "Void",
+				"desc": "Sorts the Paper docs by the time they were last accessed."
+			},
+			{
+				"name": "modified",
+				"type": "Void",
+				"desc": "Sorts the Paper docs by the time they were last modified."
+			},
+			{
+				"name": "created",
+				"type": "Void",
+				"desc": "Sorts the Paper docs by the creation time."
+			},
+			{
+				"name": "sort_order",
+				"type": "ListPaperDocsSortOrder",
+				"desc": "Allows user to specify the sort order of the result. The default for this union is ascending.",
+				"parameters": [
+					{
+						"name": "ascending",
+						"type": "Void",
+						"desc": "Sorts the search result in ascending order."
+					},
+					{
+						"name": "descending",
+						"type": "Void",
+						"desc": "Sorts the search result in descending order."
+					}
+				]
+			},
+			{
+				"name": "ascending",
+				"type": "Void",
+				"desc": "Sorts the search result in ascending order."
+			},
+			{
+				"name": "descending",
+				"type": "Void",
+				"desc": "Sorts the search result in descending order."
+			},
+			{
+				"name": "limit",
+				"type": "Int32",
+				"desc": "Size limit per batch. The maximum number of docs that can be retrieved per batch is 1000. Higher value results in invalid arguments error. The default for this field is 1000."
+			}
+		],
+		"returnParameters": []
+	},
+	"paper/docs/list/continue": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/list/continue",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "cursor",
+				"type": "String",
+				"desc": "The cursor obtained from   or  . Allows for pagination."
+			}
+		],
+		"returnParameters": []
+	},
+	"paper/docs/permanently_delete": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/permanently_delete",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "doc_id",
+				"type": "String",
+				"desc": ""
+			}
+		],
+		"returnParameters": []
+	},
+	"paper/docs/sharing_policy/get": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/sharing_policy/get",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "doc_id",
+				"type": "String",
+				"desc": ""
+			}
+		],
+		"returnParameters": []
+	},
+	"paper/docs/sharing_policy/set": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/sharing_policy/set",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "doc_id",
+				"type": "String",
+				"desc": ""
+			},
+			{
+				"name": "sharing_policy",
+				"type": "SharingPolicy",
+				"desc": "The default sharing policy to be set for the Paper doc.",
+				"parameters": [
+					{
+						"name": "public_sharing_policy",
+						"type": "SharingPublicPolicyType?",
+						"desc": "This value applies to the non-team members. This field is optional.",
+						"parameters": [
+							{
+								"name": "people_with_link_can_edit",
+								"type": "Void",
+								"desc": "Users who have a link to this doc can edit it."
+							},
+							{
+								"name": "people_with_link_can_view_and_comment",
+								"type": "Void",
+								"desc": "Users who have a link to this doc can view and comment on it."
+							},
+							{
+								"name": "invite_only",
+								"type": "Void",
+								"desc": "Users must be explicitly invited to this doc."
+							},
+							{
+								"name": "disabled",
+								"type": "Void",
+								"desc": "Value used to indicate that doc sharing is enabled only within team."
+							}
+						]
+					},
+					{
+						"name": "people_with_link_can_edit",
+						"type": "Void",
+						"desc": "Users who have a link to this doc can edit it."
+					},
+					{
+						"name": "people_with_link_can_view_and_comment",
+						"type": "Void",
+						"desc": "Users who have a link to this doc can view and comment on it."
+					},
+					{
+						"name": "invite_only",
+						"type": "Void",
+						"desc": "Users must be explicitly invited to this doc."
+					},
+					{
+						"name": "disabled",
+						"type": "Void",
+						"desc": "Value used to indicate that doc sharing is enabled only within team."
+					},
+					{
+						"name": "team_sharing_policy",
+						"type": "SharingTeamPolicyType?",
+						"desc": "This value applies to the team members only. The value is null for all personal accounts. This field is optional.",
+						"parameters": [
+							{
+								"name": "people_with_link_can_edit",
+								"type": "Void",
+								"desc": "Users who have a link to this doc can edit it."
+							},
+							{
+								"name": "people_with_link_can_view_and_comment",
+								"type": "Void",
+								"desc": "Users who have a link to this doc can view and comment on it."
+							},
+							{
+								"name": "invite_only",
+								"type": "Void",
+								"desc": "Users must be explicitly invited to this doc."
+							}
+						]
+					},
+					{
+						"name": "people_with_link_can_edit",
+						"type": "Void",
+						"desc": "Users who have a link to this doc can edit it."
+					},
+					{
+						"name": "people_with_link_can_view_and_comment",
+						"type": "Void",
+						"desc": "Users who have a link to this doc can view and comment on it."
+					},
+					{
+						"name": "invite_only",
+						"type": "Void",
+						"desc": "Users must be explicitly invited to this doc."
+					},
+					{
+						"name": "people_with_link_can_edit",
+						"type": "Void",
+						"desc": "Users who have a link to this doc can edit it."
+					},
+					{
+						"name": "people_with_link_can_view_and_comment",
+						"type": "Void",
+						"desc": "Users who have a link to this doc can view and comment on it."
+					},
+					{
+						"name": "invite_only",
+						"type": "Void",
+						"desc": "Users must be explicitly invited to this doc."
+					},
+					{
+						"name": "disabled",
+						"type": "Void",
+						"desc": "Value used to indicate that doc sharing is enabled only within team."
+					},
+					{
+						"name": "people_with_link_can_edit",
+						"type": "Void",
+						"desc": "Users who have a link to this doc can edit it."
+					},
+					{
+						"name": "people_with_link_can_view_and_comment",
+						"type": "Void",
+						"desc": "Users who have a link to this doc can view and comment on it."
+					},
+					{
+						"name": "invite_only",
+						"type": "Void",
+						"desc": "Users must be explicitly invited to this doc."
+					}
+				]
+			},
+			{
+				"name": "public_sharing_policy",
+				"type": "SharingPublicPolicyType?",
+				"desc": "This value applies to the non-team members. This field is optional.",
+				"parameters": [
+					{
+						"name": "people_with_link_can_edit",
+						"type": "Void",
+						"desc": "Users who have a link to this doc can edit it."
+					},
+					{
+						"name": "people_with_link_can_view_and_comment",
+						"type": "Void",
+						"desc": "Users who have a link to this doc can view and comment on it."
+					},
+					{
+						"name": "invite_only",
+						"type": "Void",
+						"desc": "Users must be explicitly invited to this doc."
+					},
+					{
+						"name": "disabled",
+						"type": "Void",
+						"desc": "Value used to indicate that doc sharing is enabled only within team."
+					}
+				]
+			},
+			{
+				"name": "people_with_link_can_edit",
+				"type": "Void",
+				"desc": "Users who have a link to this doc can edit it."
+			},
+			{
+				"name": "people_with_link_can_view_and_comment",
+				"type": "Void",
+				"desc": "Users who have a link to this doc can view and comment on it."
+			},
+			{
+				"name": "invite_only",
+				"type": "Void",
+				"desc": "Users must be explicitly invited to this doc."
+			},
+			{
+				"name": "disabled",
+				"type": "Void",
+				"desc": "Value used to indicate that doc sharing is enabled only within team."
+			},
+			{
+				"name": "team_sharing_policy",
+				"type": "SharingTeamPolicyType?",
+				"desc": "This value applies to the team members only. The value is null for all personal accounts. This field is optional.",
+				"parameters": [
+					{
+						"name": "people_with_link_can_edit",
+						"type": "Void",
+						"desc": "Users who have a link to this doc can edit it."
+					},
+					{
+						"name": "people_with_link_can_view_and_comment",
+						"type": "Void",
+						"desc": "Users who have a link to this doc can view and comment on it."
+					},
+					{
+						"name": "invite_only",
+						"type": "Void",
+						"desc": "Users must be explicitly invited to this doc."
+					}
+				]
+			},
+			{
+				"name": "people_with_link_can_edit",
+				"type": "Void",
+				"desc": "Users who have a link to this doc can edit it."
+			},
+			{
+				"name": "people_with_link_can_view_and_comment",
+				"type": "Void",
+				"desc": "Users who have a link to this doc can view and comment on it."
+			},
+			{
+				"name": "invite_only",
+				"type": "Void",
+				"desc": "Users must be explicitly invited to this doc."
+			}
+		],
+		"returnParameters": []
+	},
+	"paper/docs/users/add": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/users/add",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "doc_id",
+				"type": "String",
+				"desc": ""
+			},
+			{
+				"name": "members",
+				"type": "List of (AddMember, max_items=20)",
+				"desc": "User which should be added to the Paper doc. Specify only email or Dropbox account id.",
+				"parameters": [
+					{
+						"name": "member",
+						"type": "MemberSelector",
+						"desc": "User which should be added to the Paper doc. Specify only email or Dropbox account id.",
+						"parameters": [
+							{
+								"name": "dropbox_id",
+								"type": "String(min_length=1)",
+								"desc": "Dropbox account, team member, or group ID of member."
+							},
+							{
+								"name": "email",
+								"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
+								"desc": "E-mail address of member."
+							}
+						]
+					},
+					{
+						"name": "dropbox_id",
+						"type": "String(min_length=1)",
+						"desc": "Dropbox account, team member, or group ID of member."
+					},
+					{
+						"name": "email",
+						"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
+						"desc": "E-mail address of member."
+					},
+					{
+						"name": "permission_level",
+						"type": "PaperDocPermissionLevel",
+						"desc": "Permission for the user. The default for this union is edit.",
+						"parameters": [
+							{
+								"name": "edit",
+								"type": "Void",
+								"desc": "User will be granted edit permissions."
+							},
+							{
+								"name": "view_and_comment",
+								"type": "Void",
+								"desc": "User will be granted view and comment permissions."
+							}
+						]
+					},
+					{
+						"name": "edit",
+						"type": "Void",
+						"desc": "User will be granted edit permissions."
+					},
+					{
+						"name": "view_and_comment",
+						"type": "Void",
+						"desc": "User will be granted view and comment permissions."
+					},
+					{
+						"name": "dropbox_id",
+						"type": "String(min_length=1)",
+						"desc": "Dropbox account, team member, or group ID of member."
+					},
+					{
+						"name": "email",
+						"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
+						"desc": "E-mail address of member."
+					},
+					{
+						"name": "edit",
+						"type": "Void",
+						"desc": "User will be granted edit permissions."
+					},
+					{
+						"name": "view_and_comment",
+						"type": "Void",
+						"desc": "User will be granted view and comment permissions."
+					}
+				]
+			},
+			{
+				"name": "member",
+				"type": "MemberSelector",
+				"desc": "User which should be added to the Paper doc. Specify only email or Dropbox account id.",
+				"parameters": [
+					{
+						"name": "dropbox_id",
+						"type": "String(min_length=1)",
+						"desc": "Dropbox account, team member, or group ID of member."
+					},
+					{
+						"name": "email",
+						"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
+						"desc": "E-mail address of member."
+					}
+				]
+			},
+			{
+				"name": "dropbox_id",
+				"type": "String(min_length=1)",
+				"desc": "Dropbox account, team member, or group ID of member."
+			},
+			{
+				"name": "email",
+				"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
+				"desc": "E-mail address of member."
+			},
+			{
+				"name": "permission_level",
+				"type": "PaperDocPermissionLevel",
+				"desc": "Permission for the user. The default for this union is edit.",
+				"parameters": [
+					{
+						"name": "edit",
+						"type": "Void",
+						"desc": "User will be granted edit permissions."
+					},
+					{
+						"name": "view_and_comment",
+						"type": "Void",
+						"desc": "User will be granted view and comment permissions."
+					}
+				]
+			},
+			{
+				"name": "edit",
+				"type": "Void",
+				"desc": "User will be granted edit permissions."
+			},
+			{
+				"name": "view_and_comment",
+				"type": "Void",
+				"desc": "User will be granted view and comment permissions."
+			},
+			{
+				"name": "custom_message",
+				"type": "String?",
+				"desc": "A personal message that will be emailed to each successfully added member. This field is optional."
+			},
+			{
+				"name": "quiet",
+				"type": "Boolean",
+				"desc": "Clients should set this to true if no email shall be sent to added users. The default for this field is False."
+			}
+		],
+		"returnParameters": []
+	},
+	"paper/docs/users/list": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/users/list",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "doc_id",
+				"type": "String",
+				"desc": ""
+			},
+			{
+				"name": "limit",
+				"type": "Int32",
+				"desc": "Size limit per batch. The maximum number of users that can be retrieved per batch is 1000. Higher value results in invalid arguments error. The default for this field is 1000."
+			},
+			{
+				"name": "filter_by",
+				"type": "UserOnPaperDocFilter",
+				"desc": "Specify this attribute if you want to obtain users that have already accessed the Paper doc. The default for this union is shared.",
+				"parameters": [
+					{
+						"name": "visited",
+						"type": "Void",
+						"desc": "all users who have visited the Paper doc."
+					},
+					{
+						"name": "shared",
+						"type": "Void",
+						"desc": "All uses who are shared on the Paper doc. This includes all users who have visited the Paper doc as well as those who have not."
+					}
+				]
+			},
+			{
+				"name": "visited",
+				"type": "Void",
+				"desc": "all users who have visited the Paper doc."
+			},
+			{
+				"name": "shared",
+				"type": "Void",
+				"desc": "All uses who are shared on the Paper doc. This includes all users who have visited the Paper doc as well as those who have not."
+			}
+		],
+		"returnParameters": []
+	},
+	"paper/docs/users/list/continue": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/users/list/continue",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "doc_id",
+				"type": "String",
+				"desc": ""
+			},
+			{
+				"name": "cursor",
+				"type": "String",
+				"desc": "The cursor obtained from   or  . Allows for pagination."
+			}
+		],
+		"returnParameters": []
+	},
+	"paper/docs/users/remove": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/users/remove",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "doc_id",
+				"type": "String",
+				"desc": ""
+			},
+			{
+				"name": "member",
+				"type": "MemberSelector",
+				"desc": "User which should be removed from the Paper doc. Specify only email or Dropbox account id.",
+				"parameters": [
+					{
+						"name": "dropbox_id",
+						"type": "String(min_length=1)",
+						"desc": "Dropbox account, team member, or group ID of member."
+					},
+					{
+						"name": "email",
+						"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
+						"desc": "E-mail address of member."
+					}
+				]
+			},
+			{
+				"name": "dropbox_id",
+				"type": "String(min_length=1)",
+				"desc": "Dropbox account, team member, or group ID of member."
+			},
+			{
+				"name": "email",
+				"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
+				"desc": "E-mail address of member."
+			}
+		],
+		"returnParameters": []
+	},
 	"sharing/add_file_member": {
 		"uri": "https://api.dropboxapi.com/2/sharing/add_file_member",
 		"requiresAuthHeader": true,
@@ -1811,12 +2758,12 @@
 		"parameters": [
 			{
 				"name": "file",
-				"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[^:]*:[^:]*)\")",
+				"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?\")",
 				"desc": "File to which to add members."
 			},
 			{
 				"name": "members",
-				"type": "List of (MemberSelector, )",
+				"type": "List of (MemberSelector)",
 				"desc": "Members to add. Note that even an email address is given, this may result in a user being directy added to the membership if that email is the user's main account email.",
 				"parameters": [
 					{
@@ -1919,7 +2866,7 @@
 			},
 			{
 				"name": "members",
-				"type": "List of (AddMember, )",
+				"type": "List of (AddMember)",
 				"desc": "The intended list of members to add.  Added members will receive invites to join the shared folder.",
 				"parameters": [
 					{
@@ -2123,7 +3070,7 @@
 		"parameters": [
 			{
 				"name": "file",
-				"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[^:]*:[^:]*)\")",
+				"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?\")",
 				"desc": "File for which we are changing a member's access."
 			},
 			{
@@ -2429,12 +3376,12 @@
 		"parameters": [
 			{
 				"name": "file",
-				"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[^:]*:[^:]*)\")",
+				"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?\")",
 				"desc": "The file to query."
 			},
 			{
 				"name": "actions",
-				"type": "List of (FileAction, )?",
+				"type": "List of (FileAction)?",
 				"desc": "File actions to query. This field is optional.",
 				"parameters": [
 					{
@@ -2464,6 +3411,11 @@
 					},
 					{
 						"name": "share_link",
+						"type": "Void",
+						"desc": "This action is deprecated. Use create_link instead."
+					},
+					{
+						"name": "create_link",
 						"type": "Void",
 						"desc": "Create a shared link to the file."
 					}
@@ -2496,6 +3448,11 @@
 			},
 			{
 				"name": "share_link",
+				"type": "Void",
+				"desc": "This action is deprecated. Use create_link instead."
+			},
+			{
+				"name": "create_link",
 				"type": "Void",
 				"desc": "Create a shared link to the file."
 			}
@@ -2510,12 +3467,12 @@
 		"parameters": [
 			{
 				"name": "files",
-				"type": "List of (String(min_length=1, pattern=\"((/|id:).*|nspath:[^:]*:[^:]*)\"), max_items=100)",
+				"type": "List of (String(min_length=1, pattern=\"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?\"), max_items=100)",
 				"desc": "The files to query."
 			},
 			{
 				"name": "actions",
-				"type": "List of (FileAction, )?",
+				"type": "List of (FileAction)?",
 				"desc": "File actions to query. This field is optional.",
 				"parameters": [
 					{
@@ -2545,6 +3502,11 @@
 					},
 					{
 						"name": "share_link",
+						"type": "Void",
+						"desc": "This action is deprecated. Use create_link instead."
+					},
+					{
+						"name": "create_link",
 						"type": "Void",
 						"desc": "Create a shared link to the file."
 					}
@@ -2577,6 +3539,11 @@
 			},
 			{
 				"name": "share_link",
+				"type": "Void",
+				"desc": "This action is deprecated. Use create_link instead."
+			},
+			{
+				"name": "create_link",
 				"type": "Void",
 				"desc": "Create a shared link to the file."
 			}
@@ -2596,7 +3563,7 @@
 			},
 			{
 				"name": "actions",
-				"type": "List of (FolderAction, )?",
+				"type": "List of (FolderAction)?",
 				"desc": "This is a list indicating whether the returned folder data will include a boolean value  FolderPermission.allow that describes whether the current user can perform the  FolderAction on the folder. This field is optional.",
 				"parameters": [
 					{
@@ -2646,6 +3613,11 @@
 					},
 					{
 						"name": "share_link",
+						"type": "Void",
+						"desc": "This action is deprecated. Use create_link instead."
+					},
+					{
+						"name": "create_link",
 						"type": "Void",
 						"desc": "Create a shared link for folder."
 					}
@@ -2698,6 +3670,11 @@
 			},
 			{
 				"name": "share_link",
+				"type": "Void",
+				"desc": "This action is deprecated. Use create_link instead."
+			},
+			{
+				"name": "create_link",
 				"type": "Void",
 				"desc": "Create a shared link for folder."
 			}
@@ -2774,13 +3751,13 @@
 		"parameters": [
 			{
 				"name": "file",
-				"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[^:]*:[^:]*)\")",
+				"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?\")",
 				"desc": "The file for which you want to see members."
 			},
 			{
 				"name": "actions",
-				"type": "List of (MemberAction, )?",
-				"desc": "The actions for which to return permissions on a member This field is optional.",
+				"type": "List of (MemberAction)?",
+				"desc": "The actions for which to return permissions on a member. This field is optional.",
 				"parameters": [
 					{
 						"name": "leave_a_copy",
@@ -2865,7 +3842,7 @@
 		"parameters": [
 			{
 				"name": "files",
-				"type": "List of (String(min_length=1, pattern=\"((/|id:).*|nspath:[^:]*:[^:]*)\"), max_items=100)",
+				"type": "List of (String(min_length=1, pattern=\"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?\"), max_items=100)",
 				"desc": "Files for which to return members."
 			},
 			{
@@ -2903,7 +3880,7 @@
 			},
 			{
 				"name": "actions",
-				"type": "List of (MemberAction, )?",
+				"type": "List of (MemberAction)?",
 				"desc": "This is a list indicating whether each returned member will include a boolean value MemberPermission.allow that describes whether the current user can perform the MemberAction on the member. This field is optional.",
 				"parameters": [
 					{
@@ -3003,7 +3980,7 @@
 			},
 			{
 				"name": "actions",
-				"type": "List of (FolderAction, )?",
+				"type": "List of (FolderAction)?",
 				"desc": "This is a list indicating whether each returned folder data entry will include a boolean field FolderPermission.allow that describes whether the current user can perform the `FolderAction` on the folder. This field is optional.",
 				"parameters": [
 					{
@@ -3053,6 +4030,11 @@
 					},
 					{
 						"name": "share_link",
+						"type": "Void",
+						"desc": "This action is deprecated. Use create_link instead."
+					},
+					{
+						"name": "create_link",
 						"type": "Void",
 						"desc": "Create a shared link for folder."
 					}
@@ -3105,6 +4087,11 @@
 			},
 			{
 				"name": "share_link",
+				"type": "Void",
+				"desc": "This action is deprecated. Use create_link instead."
+			},
+			{
+				"name": "create_link",
 				"type": "Void",
 				"desc": "Create a shared link for folder."
 			}
@@ -3138,7 +4125,7 @@
 			},
 			{
 				"name": "actions",
-				"type": "List of (FolderAction, )?",
+				"type": "List of (FolderAction)?",
 				"desc": "This is a list indicating whether each returned folder data entry will include a boolean field FolderPermission.allow that describes whether the current user can perform the `FolderAction` on the folder. This field is optional.",
 				"parameters": [
 					{
@@ -3188,6 +4175,11 @@
 					},
 					{
 						"name": "share_link",
+						"type": "Void",
+						"desc": "This action is deprecated. Use create_link instead."
+					},
+					{
+						"name": "create_link",
 						"type": "Void",
 						"desc": "Create a shared link for folder."
 					}
@@ -3241,6 +4233,11 @@
 			{
 				"name": "share_link",
 				"type": "Void",
+				"desc": "This action is deprecated. Use create_link instead."
+			},
+			{
+				"name": "create_link",
+				"type": "Void",
 				"desc": "Create a shared link for folder."
 			}
 		],
@@ -3273,7 +4270,7 @@
 			},
 			{
 				"name": "actions",
-				"type": "List of (FileAction, )?",
+				"type": "List of (FileAction)?",
 				"desc": "File actions to query. This field is optional.",
 				"parameters": [
 					{
@@ -3303,6 +4300,11 @@
 					},
 					{
 						"name": "share_link",
+						"type": "Void",
+						"desc": "This action is deprecated. Use create_link instead."
+					},
+					{
+						"name": "create_link",
 						"type": "Void",
 						"desc": "Create a shared link to the file."
 					}
@@ -3336,6 +4338,11 @@
 			{
 				"name": "share_link",
 				"type": "Void",
+				"desc": "This action is deprecated. Use create_link instead."
+			},
+			{
+				"name": "create_link",
+				"type": "Void",
 				"desc": "Create a shared link to the file."
 			}
 		],
@@ -3350,7 +4357,7 @@
 			{
 				"name": "cursor",
 				"type": "String",
-				"desc": "Cursor in ListFilesResult.cursor"
+				"desc": "Cursor in ListFilesResult.cursor."
 			}
 		],
 		"returnParameters": []
@@ -3536,7 +4543,7 @@
 		"parameters": [
 			{
 				"name": "file",
-				"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[^:]*:[^:]*)\")",
+				"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?\")",
 				"desc": "The path or id for the file."
 			}
 		],
@@ -3569,7 +4576,7 @@
 		"parameters": [
 			{
 				"name": "file",
-				"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[^:]*:[^:]*)\")",
+				"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?\")",
 				"desc": "File from which to remove members."
 			},
 			{
@@ -3610,7 +4617,7 @@
 		"parameters": [
 			{
 				"name": "file",
-				"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[^:]*:[^:]*)\")",
+				"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?\")",
 				"desc": "File from which to remove members."
 			},
 			{
@@ -3711,7 +4718,7 @@
 		"parameters": [
 			{
 				"name": "path",
-				"type": "String(pattern=\"/(.|[\\r\\n])*\")",
+				"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
 				"desc": "The path to the folder to share. If it does not exist, then a new one is created."
 			},
 			{
@@ -3844,7 +4851,7 @@
 		"parameters": [
 			{
 				"name": "file",
-				"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[^:]*:[^:]*)\")",
+				"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?\")",
 				"desc": "The file to unshare."
 			}
 		],
@@ -3865,6 +4872,94 @@
 				"name": "leave_a_copy",
 				"type": "Boolean",
 				"desc": "If true, members of this shared folder will get a copy of this folder after it's unshared. Otherwise, it will be removed from their Dropbox. The current user, who is an owner, will always retain their copy. The default for this field is False."
+			}
+		],
+		"returnParameters": []
+	},
+	"sharing/update_file_member": {
+		"uri": "https://api.dropboxapi.com/2/sharing/update_file_member",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"endpointType": "RPC",
+		"parameters": [
+			{
+				"name": "file",
+				"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?\")",
+				"desc": "File for which we are changing a member's access."
+			},
+			{
+				"name": "member",
+				"type": "MemberSelector",
+				"desc": "The member whose access we are changing.",
+				"parameters": [
+					{
+						"name": "dropbox_id",
+						"type": "String(min_length=1)",
+						"desc": "Dropbox account, team member, or group ID of member."
+					},
+					{
+						"name": "email",
+						"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
+						"desc": "E-mail address of member."
+					}
+				]
+			},
+			{
+				"name": "dropbox_id",
+				"type": "String(min_length=1)",
+				"desc": "Dropbox account, team member, or group ID of member."
+			},
+			{
+				"name": "email",
+				"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
+				"desc": "E-mail address of member."
+			},
+			{
+				"name": "access_level",
+				"type": "AccessLevel",
+				"desc": "The new access level for the member.",
+				"parameters": [
+					{
+						"name": "owner",
+						"type": "Void",
+						"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
+					},
+					{
+						"name": "editor",
+						"type": "Void",
+						"desc": "The collaborator can both view and edit the shared folder."
+					},
+					{
+						"name": "viewer",
+						"type": "Void",
+						"desc": "The collaborator can only view the shared folder."
+					},
+					{
+						"name": "viewer_no_comment",
+						"type": "Void",
+						"desc": "The collaborator can only view the shared folder and does not have any access to comments."
+					}
+				]
+			},
+			{
+				"name": "owner",
+				"type": "Void",
+				"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
+			},
+			{
+				"name": "editor",
+				"type": "Void",
+				"desc": "The collaborator can both view and edit the shared folder."
+			},
+			{
+				"name": "viewer",
+				"type": "Void",
+				"desc": "The collaborator can only view the shared folder."
+			},
+			{
+				"name": "viewer_no_comment",
+				"type": "Void",
+				"desc": "The collaborator can only view the shared folder and does not have any access to comments."
 			}
 		],
 		"returnParameters": []

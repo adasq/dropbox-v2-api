@@ -1,14 +1,19 @@
-var assert = require('assert');
-var should = require('should');
-var dropbox = require('../dropbox-api.js');
-var fs = require('fs');
-var path = require('path');
-var spec = require('stream-spec');
-var tester = require('stream-tester');
+const assert = require('assert');
+const should = require('should');
+const dropbox = require('../dropbox-api.js');
+const fs = require('fs');
+const path = require('path');
+const spec = require('stream-spec');
+const tester = require('stream-tester');
 
-var credentials = JSON.parse(fs.readFileSync(path.join('example/credentials.json')));
+const credentials = JSON.parse(fs.readFileSync(path.join('example/credentials.json')));
 
-
+function getReadStream(){
+	var item = 0;
+	return tester.createRandomStream(function () {
+		return ['item', (++item)].join('-');
+	}, 20);
+}
 
 describe('Namespace', function() {
 	this.timeout(6000);
@@ -20,39 +25,36 @@ describe('Namespace', function() {
 	beforeEach(function(){
 		console.log('-------------------------');
 	});
-	xdescribe('users', function () {
+	xdescribe('users', () => {
 		it('get_account', function (done) {
 			dropbox({
 				resource: 'users/get_account',
 				parameters: {
 					account_id: 'dbid:AAD6ohziJisQr3HsC9gQc4R-wW4d8Xe_Qic'
 				}
-			}, function callback(err, response){
+			}, (err, response) => {
 				if(err){ throw err; }
 				response.should.have.property('account_id');
 				done();
-				console.log(response);
 			});
 	    });
 	    it('get_current_account', function (done) {
 			dropbox({
 				resource: 'users/get_current_account'
-			}, function callback(err, response){
+			}, (err, response) => {
 				if(err){ throw err; }
 				response.should.have.property('account_id');
 				done();
-				console.log(response);
 			});
 	    });
 
 	    it('get_space_usage', function (done) {
 			dropbox({
 				resource: 'users/get_space_usage'
-			}, function callback(err, response){
+			}, (err, response) => {
 				if(err){ throw err; }
 				response.should.have.property('used');
 				done();
-				console.log(response);
 			});
 	    });
 	    it('get_account_batch', function (done) {
@@ -61,108 +63,126 @@ describe('Namespace', function() {
 				parameters: {
 					account_ids: ['dbid:AAD6ohziJisQr3HsC9gQc4R-wW4d8Xe_Qic']
 				}
-			}, function callback(err, response){
+			}, (err, response) => {
 				if(err){ throw err; }
 				response.should.be.an.Array();
 				done();
-				console.log(response);
 			});
 	    });
 	});
 
-	describe('files', function(){
+	describe('files', () => {
+		const timestamp = (+new Date());
 
-		var dirName = ['dir', +new Date()].join('-');
+		var dirName = `dropbox-api-test-${timestamp}`;
+		var dirPath = `/${dirName}`
 
-		it('create_folder', function(done){
+		it('create_folder', (done) => {
 			dropbox({
 				resource: 'files/create_folder',
 				parameters: {
-					path: ['/', dirName].join('')
+					path: dirPath
 				}
-			}, function callback(err, response){
+			}, (err, response) => {
 				if(err){ throw err; }
 				response.should.have.property('name', dirName);
 				done();
 			});			
 		});
-		it('alpha/get_metadata', function(done){
+		it('alpha/get_metadata', (done) => {
 			dropbox({
 				resource: 'files/alpha/get_metadata',
 				parameters: {
-				    path: "/test/exampleFile.txt",
+				    path: dirPath,
 				    include_media_info: false,
 				    include_deleted: false,
 				    include_has_explicit_shared_members: false
 				}
-			}, function callback(err, response){
+			}, (err, response) => {
 				if(err){ throw err; }
-				response.should.have.property('size', 11);
+				response.should.have.property('.tag', 'folder');
+				response.should.have.property('path_lower', dirPath);
+
 				done();
 			});			
 		});		
-		it('alpha/upload', function(done){
-			function getReadStream(){
-				var item = 0;
-				return tester.createRandomStream(function () {
-					return ['item', (++item)].join('');
-				}, 20);
-			}
-			var filePath = ['/', dirName, '/alpha-upload.txt'].join('');
+		it('alpha/upload', (done) => {
+			var filePath = `${dirPath}/alpha-upload.txt`;
 			dropbox({
 				resource: 'files/alpha/upload',
 				parameters: {
 					path: filePath
 				},
 				readStream: getReadStream()
-			}, function callback(err, response){
+			}, (err, response) => {
 				if(err){ throw err; }
 				response.should.have.property('path_lower', filePath);
 				done();
 			});			
 		});
-		it('upload', function(done){	
-			function getReadStream(){
-				var item = 0;
-				return tester.createRandomStream(function () {
-					return ['item', (++item)].join('');
-				}, 20);
-			}
-			var filePath = ['/', dirName, '/upload.txt'].join('');
+		it('upload', (done) => {	
+			var filePath = `${dirPath}/upload.txt`;
 			dropbox({
 				resource: 'files/upload',
 				parameters: {
 					path: filePath
 				},
 				readStream: getReadStream()
-			}, function callback(err, response){
+			}, (err, response) => {
 				if(err){ throw err; }
 				response.should.have.property('path_lower', filePath);
 				done();
 			});			
 		});
-		it('copy', function(done){
-			var targetFileName = ['/', dirName ,'/example-file.txt'].join('');
+		it('copy', (done) => {
+			var targetFileName = `${dirPath}/upload-copied.txt`;
 			dropbox({
 				resource: 'files/copy',
 				parameters: {
-				    'from_path': '/test/exampleFile.txt',
+				    'from_path': dirPath+'/upload.txt',
 				    'to_path': targetFileName
 				}				
-			}, function callback(err, response){
+			}, (err, response) => {
+				if(err){ throw err; }
+				response.should.have.property('path_lower', targetFileName);
+				done();
+			});
+		});
+		it('delete', (done) => {
+			var fileToDeleteName = `${dirPath}/upload-copied.txt`;
+			dropbox({
+				resource: 'files/delete',
+				parameters: {
+				    'path': fileToDeleteName
+				}				
+			}, (err, response) => {
+				if(err){ throw err; }
+				response.should.have.property('path_lower', fileToDeleteName);
+				done();
+			});
+		});
+		it('move', (done) => {
+			var targetFileName = `${dirPath}/upload-moved.txt`;
+			dropbox({
+				resource: 'files/copy',
+				parameters: {
+				    'from_path': `${dirPath}/upload.txt`,
+				    'to_path': targetFileName
+				}				
+			}, (err, response) => {
 				if(err){ throw err; }
 				response.should.have.property('path_lower', targetFileName);
 				done();
 			});
 		});	
-		it('download', function(done){
-			var filePath = ['/', dirName, '/upload.txt'].join('');
+		it('download', (done) => {
+			var filePath = `${dirPath}/upload.txt`;
 			var dropboxStream = dropbox({
 				resource: 'files/download',
 				parameters: {
 					path: filePath
 				}				
-			}, function callback(err, response){
+			}, (err, response) => {
 				if(err){ throw err; }
 				response.should.have.property('path_lower', filePath);
 				done();

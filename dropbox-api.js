@@ -6,10 +6,10 @@ var _ = require('underscore');
 
 var config = {};
 
-var DB_HEADER_API_ARGS = 'Dropbox-API-Arg',
-DB_HEADER_API_RESULT = 'dropbox-api-result',
-OAUTH2_AUTHORIZE= 'https://www.dropbox.com/1/oauth2/authorize',
-OAUTH2_TOKEN= 'https://api.dropboxapi.com/1/oauth2/token';
+const DB_HEADER_API_ARGS = 'Dropbox-API-Arg';
+const DB_HEADER_API_RESULT = 'dropbox-api-result';
+const OAUTH2_AUTHORIZE= 'https://www.dropbox.com/1/oauth2/authorize';
+const OAUTH2_TOKEN= 'https://api.dropboxapi.com/1/oauth2/token';
 
 var parsedApiDescription = JSON.parse(fs.readFileSync(__dirname+'/dist/api.json'));
 module.exports = generateAPIByParsedApiDescription(parsedApiDescription);
@@ -122,7 +122,7 @@ function generateAPIByParsedApiDescription(parsedApiDescription){
 		 config = _config;
 		 return {
 		 	generateAuthUrl: function(input){
-		 		return OAUTH2_AUTHORIZE+'?client_id='+_config.client_id+'&response_type=code&redirect_uri='+_config.redirect_uri;
+		 		return OAUTH2_AUTHORIZE+'?client_id='+config.client_id+'&response_type=code&redirect_uri='+config.redirect_uri;
 		 	},
 		 	getToken: function(code, cb){
 		 		request({
@@ -132,10 +132,10 @@ function generateAPIByParsedApiDescription(parsedApiDescription){
 					json: true,
 					form: {
 						code: code,
-						client_id: _config.client_id,
-						client_secret: _config.client_secret,
+						client_id: config.client_id,
+						client_secret: config.client_secret,
 						grant_type: 'authorization_code',
-						redirect_uri: _config.redirect_uri
+						redirect_uri: config.redirect_uri
 					}
 				}, function(err, resp, body){
 					if(err || body.error){
