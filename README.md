@@ -23,7 +23,7 @@ dropbox.authenticate({
 - using oauth2 flow (see [example app][example-auth-flow])
 ```js
 //set credentials
-cont oauth = dropbox.authenticate({
+const oauth = dropbox.authenticate({
 	client_id: 'APP_KEY',
 	client_secret: 'APP_SECRET',
 	redirect_uri: 'REDIRECT_URI'
