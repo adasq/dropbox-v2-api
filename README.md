@@ -32,7 +32,7 @@ const oauth = dropbox.authenticate({
 const authUrl = oauth.generateAuthUrl();
 //after redirection, you should receive code
 oauth.getToken(code, (err, response) => {
-  //you are authorized now!
+	//you are authorized now!
 });
 ```
 
