@@ -1,12 +1,9 @@
-const assert = require('assert');
 const should = require('should');
-const dropbox = require('../dropbox-api.js'); // or dropbox-v2-api
-const fs = require('fs');
-const path = require('path');
+const dropbox = require('../dropbox-api.js');
 const spec = require('stream-spec');
 const tester = require('stream-tester');
 
-const credentials = JSON.parse(fs.readFileSync(path.join('example/credentials.json')));
+const DROPBOX_TOKEN = process.env.DROPBOX_TOKEN;
 
 function getReadStream(){
 	var item = 0;
@@ -19,7 +16,7 @@ describe('Namespace', function() {
 	this.timeout(6000);
 	before(function() {
 		dropbox.authenticate({
-			token: credentials.TOKEN
+			token: DROPBOX_TOKEN
 		});
 	});
 	beforeEach(function(){
