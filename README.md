@@ -51,7 +51,9 @@ dropbox({
 ```
 - `resource` (string) represent API target. It contains Dropbox's namespace and method name. eg. `'users/get_account'`, `'users/get_space_usage'`, `'files/upload'`, `'files/list_folder/longpoll'`, `'sharing/share_folder'` [more at official documentation][docs]
 - `parameters` (object?) optional parameters, depends on `resource` field
-- `readStream` (readable stream?) Upload-type requests should contains `readStream` field, which is readable stream
+- `readStream` (readable stream?) Upload-type requests might contains `readStream` field, which is readable stream
+
+For Download-type requests, the function ```dropbox``` returns readable stream.
 
 ## API call examples
 
@@ -68,7 +70,7 @@ dropbox({
 
 #### upload [see docs][files-upload]
 
-Upload-type requests should contains `readStream` field, which is readable stream
+Upload-type requests might contains `readStream` field, which is readable stream
 ```js
 dropbox({
 	resource: 'files/upload',
@@ -80,6 +82,21 @@ dropbox({
 	if(err){ return console.log('err:', err); }
 	console.log(result);
 });
+```
+or, using streams:
+
+```js
+const dropboxUploadStream = dropbox({
+	resource: 'files/upload',
+	parameters: {
+		path: '/dropbox/path/to/file.js'
+	}
+}, (err, result) => {
+	if(err){ return console.log('err:', err); }
+	console.log(result);
+});
+
+fs.createReadStream('path/to/file.js').pipe(dropboxUploadStream);
 ```
 
 #### download [see docs][files-download]
