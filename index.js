@@ -1,1 +1,1 @@
-module.exports = require('./dropbox-api.js');
+module.exports = require('./src/dropbox-api.js');

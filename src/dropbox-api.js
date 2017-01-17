@@ -12,7 +12,7 @@ const DB_HEADER_API_RESULT = 'dropbox-api-result';
 const OAUTH2_AUTHORIZE= 'https://www.dropbox.com/1/oauth2/authorize';
 const OAUTH2_TOKEN= 'https://api.dropboxapi.com/1/oauth2/token';
 
-var parsedApiDescription = JSON.parse(fs.readFileSync(__dirname+'/dist/api.json'));
+var parsedApiDescription = JSON.parse(fs.readFileSync('./dist/api.json'));
 module.exports = generateAPIByParsedApiDescription(parsedApiDescription);
 
 //-------------------------------------------------------------------
@@ -93,30 +93,38 @@ function prepareAPIMethods(parsedApiDescription){
 				}
 				//-------------------------------------------
 				function callback(err, response, body){
-						if(err){ 
-							return cb({
-								network: err
-							});
-						}
+						const statusCode = response.statusCode;
 						var contentType = {
-							'application/octet-stream': function(){
+							'application/octet-stream': () => {
 								if(response.headers[DB_HEADER_API_RESULT]){
-									return cb(false, JSON.parse(response.headers[DB_HEADER_API_RESULT]));
+									return cb(null, JSON.parse(response.headers[DB_HEADER_API_RESULT]));
 								}
 							},
-							'application/json': function(){
-								if(response.statusCode === 200){
-									return cb(false, body);
-								}else{
-									body.statusCode = response.statusCode;
-									return cb(body, null);
+							'application/json': () => {
+								const json = body;
+								if(statusCode === 200) {
+									return cb(null, json);
+								}else {
+									json.code = statusCode;
+									return cb(json);
 								}								
+							},
+							'text/plain; charset=utf-8': () => {
+								const text = body;
+								if(statusCode === 200) {
+									return cb(null, text);
+								}else{
+									return cb({
+										code: statusCode,
+										text: text
+									});
+								}		
 							}
 						};
 						if(contentType[response.headers['content-type']]){
 							contentType[response.headers['content-type']]();
-						}else{
-							cb(body, null);
+						} else{
+							cb(err);
 						}
 				}
 			};
@@ -135,7 +143,7 @@ function generateAPIByParsedApiDescription(parsedApiDescription){
 		if(apiMethods[opt.resource]){
 			return apiMethods[opt.resource](opt, cb);
 		}else{
-			throwError('resource "$name" is invalid.'.replace('$name', opt.resource));
+			throwError(`resource "${opt.resource}" is invalid.`);
 		}
 	};	
 	api.authenticate = function(_config){

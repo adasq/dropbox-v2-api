@@ -1,4 +1,4 @@
-var dropbox = require('../dropbox-api.js');
+var dropbox = require('../src/dropbox-api.js');
 var Hapi = require('hapi');
 var fs = require('fs');
 var path = require('path');
