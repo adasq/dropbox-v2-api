@@ -1,20 +1,26 @@
 {
   "name": "dropbox-v2-api",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "NodeJS Dropbox v2 API wrapper",
   "main": "index.js",
   "scripts": {
     "generate": "node ./src/generate-api-description.js",
     "test": "mocha test/**/*.js"
   },
-  "keywords": ["dropbox", "api", "v2", "wrapper", "node"],
+  "keywords": [
+    "dropbox",
+    "api",
+    "v2",
+    "wrapper",
+    "node"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/adasq/dropbox-v2-api.git"
   },
   "author": "adasq",
   "license": "ISC",
-  "dependencies": {    
+  "dependencies": {
     "request": "2.67.0",
     "underscore": "1.8.3"
   },
