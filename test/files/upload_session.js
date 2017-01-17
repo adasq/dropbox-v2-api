@@ -1,7 +1,7 @@
 const should = require('should');
 const expect = require('expect.js');
 
-const dropbox = require('../../src/dropbox-api.js');
+const dropbox = require('../../src/dropbox-api-test.js');
 const utils = require('../../src/utils.js');
 
 const DROPBOX_TOKEN = process.env.DROPBOX_TOKEN;

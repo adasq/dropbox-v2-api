@@ -7,6 +7,7 @@
     "generate": "node ./src/generate-api-description.js",
     "test": "mocha test/**/*.js"
   },
+  "keywords": ["dropbox", "api", "v2", "wrapper", "node"],
   "repository": {
     "type": "git",
     "url": "https://github.com/adasq/dropbox-v2-api.git"
