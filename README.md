@@ -136,9 +136,81 @@ dropbox({
 });
 ```
 
+#### upload_session [see docs][session-upload]
+
+```js
+const CHUNK_LENGTH = 100;
+//create read streams, which generates set of 100 (CHUNK_LENGTH) characters of values: 1 and 2
+const firstUploadChunkStream = () => utils.createMockedReadStream('1', CHUNK_LENGTH); 
+const secondUploadChunkStream = () => utils.createMockedReadStream('2', CHUNK_LENGTH);
+
+sessionStart((sessionId) => {
+	sessionAppend(sessionId, () => {
+		sessionFinish(sessionId);
+	});
+});
+
+function sessionStart(cb) {
+    dropbox({
+        resource: 'files/upload_session/start',
+        parameters: {
+            close: false
+        },
+        readStream: firstUploadChunkStream()
+    }, (err, response) => {
+		if(err){ return console.log('sessionStart error: ', err) }
+		console.log('sessionStart response:', response);
+		cb(response.session_id);
+	});
+}
+
+
+function sessionAppend(sessionId, cb) {
+    dropbox({
+        resource: 'files/upload_session/append_v2',
+        parameters: {
+            cursor: {
+                session_id: sessionId,
+                offset: CHUNK_LENGTH
+            },
+            close: false,
+        },
+        readStream: secondUploadChunkStream()
+    }, (err, response) => {
+		if(err){ return console.log('sessionAppend error: ', err) }
+		console.log('sessionAppend response:', response);
+		cb();
+	});
+}
+
+function sessionFinish(sessionId) {
+    dropbox({
+        resource: 'files/upload_session/finish',
+        parameters: {
+            cursor: {
+                session_id: sessionId,
+                offset: CHUNK_LENGTH * 2
+            },
+            commit: {
+                path: "/result.txt",
+                mode: "add",
+                autorename: true,
+                mute: false
+            }
+        }
+    }, (err, response) => {
+		if(err){ return console.log('sessionFinish error: ', err) }
+		console.log('sessionFinish response:', response);
+	});
+}
+```
+
+
 #### check [test cases][tests] for more examples...
 
-[tests]: <https://github.com/adasq/dropbox-v2-api/blob/master/test/test.js>
+[tests]: <https://github.com/adasq/dropbox-v2-api/blob/master/test>
+[session-upload]: 
+<https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-start>
 [files-upload]: 
 <https://www.dropbox.com/developers/documentation/http/documentation#files-upload>
 [files-download]: 
