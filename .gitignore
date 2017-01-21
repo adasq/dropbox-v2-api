@@ -1,2 +1,3 @@
 node_modules
 example/credentials.json
+.DS_Store
