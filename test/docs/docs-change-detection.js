@@ -3,7 +3,7 @@ const fs = require('fs');
 const md5 = require('md5');
 const path = require('path');
 const expect = require('expect.js');
-const generate = require('../src/generate-api-description.js');
+const generate = require('../../src/generate-api-description.js');
 
 const DROPBOX_TOKEN = process.env.DROPBOX_TOKEN;
 
