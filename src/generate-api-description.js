@@ -25,7 +25,7 @@ utils = {
 	}
 };
 
-generateApiDescription();
+module.exports = generateApiDescription;
 
 //-------------------------------------------
 
@@ -111,10 +111,11 @@ function parseMethodElement(wrap){
 	return apiMethod;
 }
 
-function generateApiDescription(){
+function generateApiDescription(cb){
 	request('https://www.dropbox.com/developers/documentation/http/documentation', function(err, resp, body){
 		if(err){
-			return console.log('could not retrive documentaion page...');
+			console.log('could not retrive documentaion page...');
+			return cb ? cb(err) : err;
 		}
 		parseBody(body);
 	});
@@ -130,8 +131,15 @@ function generateApiDescription(){
 					})
 				};
 			});
-			fs.writeFileSync('./dist/api.json', JSON.stringify(parseApiDescription(api), null, '\t'));
+
+			const content = JSON.stringify(parseApiDescription(api), null, '\t');
+			if(cb){
+				cb(null, content);
+			}else{
+				fs.writeFileSync('./dist/api.json', content);
+			}
 			console.log('api description has been generated...');
+			
 	}
 }
 

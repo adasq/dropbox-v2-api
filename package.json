@@ -4,7 +4,7 @@
   "description": "NodeJS Dropbox v2 API wrapper",
   "main": "index.js",
   "scripts": {
-    "generate": "node ./src/generate-api-description.js",
+    "generate": "node generate.js",
     "test": "mocha test/**/*.js"
   },
   "keywords": [
@@ -25,6 +25,7 @@
     "underscore": "1.8.3"
   },
   "devDependencies": {
+    "md5": "2.2.1",
     "expect.js": "0.3.1",
     "async": "1.5.0",
     "opn": "3.0.3",
