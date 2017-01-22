@@ -1,5 +1,6 @@
 const request = require('request');
 const fs = require('fs');
+const path = require('path');
 const stream = require('stream');
 const _ = require('underscore');
 
@@ -12,7 +13,8 @@ const DB_HEADER_API_RESULT = 'dropbox-api-result';
 const OAUTH2_AUTHORIZE= 'https://www.dropbox.com/1/oauth2/authorize';
 const OAUTH2_TOKEN= 'https://api.dropboxapi.com/1/oauth2/token';
 
-var parsedApiDescription = JSON.parse(fs.readFileSync('./dist/api.json'));
+
+var parsedApiDescription = JSON.parse(fs.readFileSync(path.join(__dirname, '../dist/api.json')));
 module.exports = generateAPIByParsedApiDescription(parsedApiDescription);
 
 //-------------------------------------------------------------------
