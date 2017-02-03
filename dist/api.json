@@ -3452,9 +3452,19 @@
 				"desc": "File actions to query. This field is optional.",
 				"parameters": [
 					{
+						"name": "disable_viewer_info",
+						"type": "Void",
+						"desc": "Disable viewer information on the file."
+					},
+					{
 						"name": "edit_contents",
 						"type": "Void",
 						"desc": "Change or edit contents of the file."
+					},
+					{
+						"name": "enable_viewer_info",
+						"type": "Void",
+						"desc": "Enable viewer information on the file."
 					},
 					{
 						"name": "invite_viewer",
@@ -3489,9 +3499,19 @@
 				]
 			},
 			{
+				"name": "disable_viewer_info",
+				"type": "Void",
+				"desc": "Disable viewer information on the file."
+			},
+			{
 				"name": "edit_contents",
 				"type": "Void",
 				"desc": "Change or edit contents of the file."
+			},
+			{
+				"name": "enable_viewer_info",
+				"type": "Void",
+				"desc": "Enable viewer information on the file."
 			},
 			{
 				"name": "invite_viewer",
@@ -3544,9 +3564,19 @@
 				"desc": "File actions to query. This field is optional.",
 				"parameters": [
 					{
+						"name": "disable_viewer_info",
+						"type": "Void",
+						"desc": "Disable viewer information on the file."
+					},
+					{
 						"name": "edit_contents",
 						"type": "Void",
 						"desc": "Change or edit contents of the file."
+					},
+					{
+						"name": "enable_viewer_info",
+						"type": "Void",
+						"desc": "Enable viewer information on the file."
 					},
 					{
 						"name": "invite_viewer",
@@ -3581,9 +3611,19 @@
 				]
 			},
 			{
+				"name": "disable_viewer_info",
+				"type": "Void",
+				"desc": "Disable viewer information on the file."
+			},
+			{
 				"name": "edit_contents",
 				"type": "Void",
 				"desc": "Change or edit contents of the file."
+			},
+			{
+				"name": "enable_viewer_info",
+				"type": "Void",
+				"desc": "Enable viewer information on the file."
 			},
 			{
 				"name": "invite_viewer",
@@ -3641,9 +3681,19 @@
 						"desc": "Change folder options, such as who can be invited to join the folder."
 					},
 					{
+						"name": "disable_viewer_info",
+						"type": "Void",
+						"desc": "Disable viewer information for this folder."
+					},
+					{
 						"name": "edit_contents",
 						"type": "Void",
 						"desc": "Change or edit contents of the folder."
+					},
+					{
+						"name": "enable_viewer_info",
+						"type": "Void",
+						"desc": "Enable viewer information on the folder."
 					},
 					{
 						"name": "invite_editor",
@@ -3698,9 +3748,19 @@
 				"desc": "Change folder options, such as who can be invited to join the folder."
 			},
 			{
+				"name": "disable_viewer_info",
+				"type": "Void",
+				"desc": "Disable viewer information for this folder."
+			},
+			{
 				"name": "edit_contents",
 				"type": "Void",
 				"desc": "Change or edit contents of the folder."
+			},
+			{
+				"name": "enable_viewer_info",
+				"type": "Void",
+				"desc": "Enable viewer information on the folder."
 			},
 			{
 				"name": "invite_editor",
@@ -4067,9 +4127,19 @@
 						"desc": "Change folder options, such as who can be invited to join the folder."
 					},
 					{
+						"name": "disable_viewer_info",
+						"type": "Void",
+						"desc": "Disable viewer information for this folder."
+					},
+					{
 						"name": "edit_contents",
 						"type": "Void",
 						"desc": "Change or edit contents of the folder."
+					},
+					{
+						"name": "enable_viewer_info",
+						"type": "Void",
+						"desc": "Enable viewer information on the folder."
 					},
 					{
 						"name": "invite_editor",
@@ -4124,9 +4194,19 @@
 				"desc": "Change folder options, such as who can be invited to join the folder."
 			},
 			{
+				"name": "disable_viewer_info",
+				"type": "Void",
+				"desc": "Disable viewer information for this folder."
+			},
+			{
 				"name": "edit_contents",
 				"type": "Void",
 				"desc": "Change or edit contents of the folder."
+			},
+			{
+				"name": "enable_viewer_info",
+				"type": "Void",
+				"desc": "Enable viewer information on the folder."
 			},
 			{
 				"name": "invite_editor",
@@ -4214,9 +4294,19 @@
 						"desc": "Change folder options, such as who can be invited to join the folder."
 					},
 					{
+						"name": "disable_viewer_info",
+						"type": "Void",
+						"desc": "Disable viewer information for this folder."
+					},
+					{
 						"name": "edit_contents",
 						"type": "Void",
 						"desc": "Change or edit contents of the folder."
+					},
+					{
+						"name": "enable_viewer_info",
+						"type": "Void",
+						"desc": "Enable viewer information on the folder."
 					},
 					{
 						"name": "invite_editor",
@@ -4271,9 +4361,19 @@
 				"desc": "Change folder options, such as who can be invited to join the folder."
 			},
 			{
+				"name": "disable_viewer_info",
+				"type": "Void",
+				"desc": "Disable viewer information for this folder."
+			},
+			{
 				"name": "edit_contents",
 				"type": "Void",
 				"desc": "Change or edit contents of the folder."
+			},
+			{
+				"name": "enable_viewer_info",
+				"type": "Void",
+				"desc": "Enable viewer information on the folder."
 			},
 			{
 				"name": "invite_editor",
@@ -4356,9 +4456,19 @@
 				"desc": "File actions to query. This field is optional.",
 				"parameters": [
 					{
+						"name": "disable_viewer_info",
+						"type": "Void",
+						"desc": "Disable viewer information on the file."
+					},
+					{
 						"name": "edit_contents",
 						"type": "Void",
 						"desc": "Change or edit contents of the file."
+					},
+					{
+						"name": "enable_viewer_info",
+						"type": "Void",
+						"desc": "Enable viewer information on the file."
 					},
 					{
 						"name": "invite_viewer",
@@ -4393,9 +4503,19 @@
 				]
 			},
 			{
+				"name": "disable_viewer_info",
+				"type": "Void",
+				"desc": "Disable viewer information on the file."
+			},
+			{
 				"name": "edit_contents",
 				"type": "Void",
 				"desc": "Change or edit contents of the file."
+			},
+			{
+				"name": "enable_viewer_info",
+				"type": "Void",
+				"desc": "Enable viewer information on the file."
 			},
 			{
 				"name": "invite_viewer",
@@ -4816,8 +4936,8 @@
 			},
 			{
 				"name": "member_policy",
-				"type": "MemberPolicy",
-				"desc": "Who can be a member of this shared folder. Only applicable if the current user is on a team. The default for this union is anyone.",
+				"type": "MemberPolicy?",
+				"desc": "Who can be a member of this shared folder. Only applicable if the current user is on a team. This field is optional.",
 				"parameters": [
 					{
 						"name": "team",
@@ -4843,8 +4963,8 @@
 			},
 			{
 				"name": "acl_update_policy",
-				"type": "AclUpdatePolicy",
-				"desc": "Who can add and remove members of this shared folder. The default for this union is owner.",
+				"type": "AclUpdatePolicy?",
+				"desc": "Who can add and remove members of this shared folder. This field is optional.",
 				"parameters": [
 					{
 						"name": "owner",
@@ -4870,13 +4990,18 @@
 			},
 			{
 				"name": "shared_link_policy",
-				"type": "SharedLinkPolicy",
-				"desc": "The policy to apply to shared links created for content inside this shared folder.  The current user must be on a team to set this policy to SharedLinkPolicy.members. The default for this union is anyone.",
+				"type": "SharedLinkPolicy?",
+				"desc": "The policy to apply to shared links created for content inside this shared folder.  The current user must be on a team to set this policy to SharedLinkPolicy.members. This field is optional.",
 				"parameters": [
 					{
 						"name": "anyone",
 						"type": "Void",
 						"desc": "Links can be shared with anyone."
+					},
+					{
+						"name": "team",
+						"type": "Void",
+						"desc": "Links can be shared with anyone on the same team as the owner."
 					},
 					{
 						"name": "members",
@@ -4891,6 +5016,11 @@
 				"desc": "Links can be shared with anyone."
 			},
 			{
+				"name": "team",
+				"type": "Void",
+				"desc": "Links can be shared with anyone on the same team as the owner."
+			},
+			{
 				"name": "members",
 				"type": "Void",
 				"desc": "Links can only be shared among members of the shared folder."
@@ -4899,6 +5029,394 @@
 				"name": "force_async",
 				"type": "Boolean",
 				"desc": "Whether to force the share to happen asynchronously. The default for this field is False."
+			},
+			{
+				"name": "actions",
+				"type": "List of (FolderAction)?",
+				"desc": "This is a list indicating whether each returned folder data entry will include a boolean field FolderPermission.allow that describes whether the current user can perform the `FolderAction` on the folder. This field is optional.",
+				"parameters": [
+					{
+						"name": "change_options",
+						"type": "Void",
+						"desc": "Change folder options, such as who can be invited to join the folder."
+					},
+					{
+						"name": "disable_viewer_info",
+						"type": "Void",
+						"desc": "Disable viewer information for this folder."
+					},
+					{
+						"name": "edit_contents",
+						"type": "Void",
+						"desc": "Change or edit contents of the folder."
+					},
+					{
+						"name": "enable_viewer_info",
+						"type": "Void",
+						"desc": "Enable viewer information on the folder."
+					},
+					{
+						"name": "invite_editor",
+						"type": "Void",
+						"desc": "Invite a user or group to join the folder with read and write permission."
+					},
+					{
+						"name": "invite_viewer",
+						"type": "Void",
+						"desc": "Invite a user or group to join the folder with read permission."
+					},
+					{
+						"name": "invite_viewer_no_comment",
+						"type": "Void",
+						"desc": "Invite a user or group to join the folder with read permission but no comment permissions."
+					},
+					{
+						"name": "relinquish_membership",
+						"type": "Void",
+						"desc": "Relinquish one's own membership in the folder."
+					},
+					{
+						"name": "unmount",
+						"type": "Void",
+						"desc": "Unmount the folder."
+					},
+					{
+						"name": "unshare",
+						"type": "Void",
+						"desc": "Stop sharing this folder."
+					},
+					{
+						"name": "leave_a_copy",
+						"type": "Void",
+						"desc": "Keep a copy of the contents upon leaving or being kicked from the folder."
+					},
+					{
+						"name": "share_link",
+						"type": "Void",
+						"desc": "This action is deprecated. Use create_link instead."
+					},
+					{
+						"name": "create_link",
+						"type": "Void",
+						"desc": "Create a shared link for folder."
+					}
+				]
+			},
+			{
+				"name": "change_options",
+				"type": "Void",
+				"desc": "Change folder options, such as who can be invited to join the folder."
+			},
+			{
+				"name": "disable_viewer_info",
+				"type": "Void",
+				"desc": "Disable viewer information for this folder."
+			},
+			{
+				"name": "edit_contents",
+				"type": "Void",
+				"desc": "Change or edit contents of the folder."
+			},
+			{
+				"name": "enable_viewer_info",
+				"type": "Void",
+				"desc": "Enable viewer information on the folder."
+			},
+			{
+				"name": "invite_editor",
+				"type": "Void",
+				"desc": "Invite a user or group to join the folder with read and write permission."
+			},
+			{
+				"name": "invite_viewer",
+				"type": "Void",
+				"desc": "Invite a user or group to join the folder with read permission."
+			},
+			{
+				"name": "invite_viewer_no_comment",
+				"type": "Void",
+				"desc": "Invite a user or group to join the folder with read permission but no comment permissions."
+			},
+			{
+				"name": "relinquish_membership",
+				"type": "Void",
+				"desc": "Relinquish one's own membership in the folder."
+			},
+			{
+				"name": "unmount",
+				"type": "Void",
+				"desc": "Unmount the folder."
+			},
+			{
+				"name": "unshare",
+				"type": "Void",
+				"desc": "Stop sharing this folder."
+			},
+			{
+				"name": "leave_a_copy",
+				"type": "Void",
+				"desc": "Keep a copy of the contents upon leaving or being kicked from the folder."
+			},
+			{
+				"name": "share_link",
+				"type": "Void",
+				"desc": "This action is deprecated. Use create_link instead."
+			},
+			{
+				"name": "create_link",
+				"type": "Void",
+				"desc": "Create a shared link for folder."
+			},
+			{
+				"name": "link_settings",
+				"type": "LinkSettings?",
+				"desc": "Settings on the link for this folder. This field is optional.",
+				"parameters": [
+					{
+						"name": "audience",
+						"type": "LinkAudience?",
+						"desc": "The type of audience on the link for this file. This field is optional.",
+						"parameters": [
+							{
+								"name": "public",
+								"type": "Void",
+								"desc": "Link is accessible by anyone."
+							},
+							{
+								"name": "team",
+								"type": "Void",
+								"desc": "Link is accessible only by team members."
+							},
+							{
+								"name": "members",
+								"type": "Void",
+								"desc": "Link is accessible only by members of the content."
+							}
+						]
+					},
+					{
+						"name": "public",
+						"type": "Void",
+						"desc": "Link is accessible by anyone."
+					},
+					{
+						"name": "team",
+						"type": "Void",
+						"desc": "Link is accessible only by team members."
+					},
+					{
+						"name": "members",
+						"type": "Void",
+						"desc": "Link is accessible only by members of the content."
+					},
+					{
+						"name": "expiry",
+						"type": "LinkExpiry?",
+						"desc": "An expiry timestamp to set on a link. This field is optional.",
+						"parameters": [
+							{
+								"name": "remove_expiry",
+								"type": "Void",
+								"desc": "Remove the currently set expiry for the link."
+							},
+							{
+								"name": "set_expiry",
+								"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")",
+								"desc": "Set a new expiry or change an existing expiry."
+							}
+						]
+					},
+					{
+						"name": "remove_expiry",
+						"type": "Void",
+						"desc": "Remove the currently set expiry for the link."
+					},
+					{
+						"name": "set_expiry",
+						"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")",
+						"desc": "Set a new expiry or change an existing expiry."
+					},
+					{
+						"name": "password",
+						"type": "LinkPassword?",
+						"desc": "The password for the link. This field is optional.",
+						"parameters": [
+							{
+								"name": "remove_password",
+								"type": "Void",
+								"desc": "Remove the currently set password for the link."
+							},
+							{
+								"name": "set_password",
+								"type": "String",
+								"desc": "Set a new password or change an existing password."
+							}
+						]
+					},
+					{
+						"name": "remove_password",
+						"type": "Void",
+						"desc": "Remove the currently set password for the link."
+					},
+					{
+						"name": "set_password",
+						"type": "String",
+						"desc": "Set a new password or change an existing password."
+					},
+					{
+						"name": "public",
+						"type": "Void",
+						"desc": "Link is accessible by anyone."
+					},
+					{
+						"name": "team",
+						"type": "Void",
+						"desc": "Link is accessible only by team members."
+					},
+					{
+						"name": "members",
+						"type": "Void",
+						"desc": "Link is accessible only by members of the content."
+					},
+					{
+						"name": "remove_expiry",
+						"type": "Void",
+						"desc": "Remove the currently set expiry for the link."
+					},
+					{
+						"name": "set_expiry",
+						"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")",
+						"desc": "Set a new expiry or change an existing expiry."
+					},
+					{
+						"name": "remove_password",
+						"type": "Void",
+						"desc": "Remove the currently set password for the link."
+					},
+					{
+						"name": "set_password",
+						"type": "String",
+						"desc": "Set a new password or change an existing password."
+					}
+				]
+			},
+			{
+				"name": "audience",
+				"type": "LinkAudience?",
+				"desc": "The type of audience on the link for this file. This field is optional.",
+				"parameters": [
+					{
+						"name": "public",
+						"type": "Void",
+						"desc": "Link is accessible by anyone."
+					},
+					{
+						"name": "team",
+						"type": "Void",
+						"desc": "Link is accessible only by team members."
+					},
+					{
+						"name": "members",
+						"type": "Void",
+						"desc": "Link is accessible only by members of the content."
+					}
+				]
+			},
+			{
+				"name": "public",
+				"type": "Void",
+				"desc": "Link is accessible by anyone."
+			},
+			{
+				"name": "team",
+				"type": "Void",
+				"desc": "Link is accessible only by team members."
+			},
+			{
+				"name": "members",
+				"type": "Void",
+				"desc": "Link is accessible only by members of the content."
+			},
+			{
+				"name": "expiry",
+				"type": "LinkExpiry?",
+				"desc": "An expiry timestamp to set on a link. This field is optional.",
+				"parameters": [
+					{
+						"name": "remove_expiry",
+						"type": "Void",
+						"desc": "Remove the currently set expiry for the link."
+					},
+					{
+						"name": "set_expiry",
+						"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")",
+						"desc": "Set a new expiry or change an existing expiry."
+					}
+				]
+			},
+			{
+				"name": "remove_expiry",
+				"type": "Void",
+				"desc": "Remove the currently set expiry for the link."
+			},
+			{
+				"name": "set_expiry",
+				"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")",
+				"desc": "Set a new expiry or change an existing expiry."
+			},
+			{
+				"name": "password",
+				"type": "LinkPassword?",
+				"desc": "The password for the link. This field is optional.",
+				"parameters": [
+					{
+						"name": "remove_password",
+						"type": "Void",
+						"desc": "Remove the currently set password for the link."
+					},
+					{
+						"name": "set_password",
+						"type": "String",
+						"desc": "Set a new password or change an existing password."
+					}
+				]
+			},
+			{
+				"name": "remove_password",
+				"type": "Void",
+				"desc": "Remove the currently set password for the link."
+			},
+			{
+				"name": "set_password",
+				"type": "String",
+				"desc": "Set a new password or change an existing password."
+			},
+			{
+				"name": "viewer_info_policy",
+				"type": "ViewerInfoPolicy?",
+				"desc": "Who can enable/disable viewer info for this shared folder. This field is optional.",
+				"parameters": [
+					{
+						"name": "enabled",
+						"type": "Void",
+						"desc": "Viewer information is available on this file."
+					},
+					{
+						"name": "disabled",
+						"type": "Void",
+						"desc": "Viewer information is disabled on this file."
+					}
+				]
+			},
+			{
+				"name": "enabled",
+				"type": "Void",
+				"desc": "Viewer information is available on this file."
+			},
+			{
+				"name": "disabled",
+				"type": "Void",
+				"desc": "Viewer information is disabled on this file."
 			}
 		],
 		"returnParameters": []
@@ -5218,6 +5736,33 @@
 				"desc": "Any editor can update the ACL. This may be further restricted to editors on the same team."
 			},
 			{
+				"name": "viewer_info_policy",
+				"type": "ViewerInfoPolicy?",
+				"desc": "Who can enable/disable viewer info for this shared folder. This field is optional.",
+				"parameters": [
+					{
+						"name": "enabled",
+						"type": "Void",
+						"desc": "Viewer information is available on this file."
+					},
+					{
+						"name": "disabled",
+						"type": "Void",
+						"desc": "Viewer information is disabled on this file."
+					}
+				]
+			},
+			{
+				"name": "enabled",
+				"type": "Void",
+				"desc": "Viewer information is available on this file."
+			},
+			{
+				"name": "disabled",
+				"type": "Void",
+				"desc": "Viewer information is disabled on this file."
+			},
+			{
 				"name": "shared_link_policy",
 				"type": "SharedLinkPolicy?",
 				"desc": "The policy to apply to shared links created for content inside this shared folder. The current user must be on a team to set this policy to SharedLinkPolicy.members. This field is optional.",
@@ -5226,6 +5771,11 @@
 						"name": "anyone",
 						"type": "Void",
 						"desc": "Links can be shared with anyone."
+					},
+					{
+						"name": "team",
+						"type": "Void",
+						"desc": "Links can be shared with anyone on the same team as the owner."
 					},
 					{
 						"name": "members",
@@ -5240,9 +5790,238 @@
 				"desc": "Links can be shared with anyone."
 			},
 			{
+				"name": "team",
+				"type": "Void",
+				"desc": "Links can be shared with anyone on the same team as the owner."
+			},
+			{
 				"name": "members",
 				"type": "Void",
 				"desc": "Links can only be shared among members of the shared folder."
+			},
+			{
+				"name": "link_settings",
+				"type": "LinkSettings?",
+				"desc": "Settings on the link for this folder. This field is optional.",
+				"parameters": [
+					{
+						"name": "audience",
+						"type": "LinkAudience?",
+						"desc": "The type of audience on the link for this file. This field is optional.",
+						"parameters": [
+							{
+								"name": "public",
+								"type": "Void",
+								"desc": "Link is accessible by anyone."
+							},
+							{
+								"name": "team",
+								"type": "Void",
+								"desc": "Link is accessible only by team members."
+							},
+							{
+								"name": "members",
+								"type": "Void",
+								"desc": "Link is accessible only by members of the content."
+							}
+						]
+					},
+					{
+						"name": "public",
+						"type": "Void",
+						"desc": "Link is accessible by anyone."
+					},
+					{
+						"name": "team",
+						"type": "Void",
+						"desc": "Link is accessible only by team members."
+					},
+					{
+						"name": "members",
+						"type": "Void",
+						"desc": "Link is accessible only by members of the content."
+					},
+					{
+						"name": "expiry",
+						"type": "LinkExpiry?",
+						"desc": "An expiry timestamp to set on a link. This field is optional.",
+						"parameters": [
+							{
+								"name": "remove_expiry",
+								"type": "Void",
+								"desc": "Remove the currently set expiry for the link."
+							},
+							{
+								"name": "set_expiry",
+								"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")",
+								"desc": "Set a new expiry or change an existing expiry."
+							}
+						]
+					},
+					{
+						"name": "remove_expiry",
+						"type": "Void",
+						"desc": "Remove the currently set expiry for the link."
+					},
+					{
+						"name": "set_expiry",
+						"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")",
+						"desc": "Set a new expiry or change an existing expiry."
+					},
+					{
+						"name": "password",
+						"type": "LinkPassword?",
+						"desc": "The password for the link. This field is optional.",
+						"parameters": [
+							{
+								"name": "remove_password",
+								"type": "Void",
+								"desc": "Remove the currently set password for the link."
+							},
+							{
+								"name": "set_password",
+								"type": "String",
+								"desc": "Set a new password or change an existing password."
+							}
+						]
+					},
+					{
+						"name": "remove_password",
+						"type": "Void",
+						"desc": "Remove the currently set password for the link."
+					},
+					{
+						"name": "set_password",
+						"type": "String",
+						"desc": "Set a new password or change an existing password."
+					},
+					{
+						"name": "public",
+						"type": "Void",
+						"desc": "Link is accessible by anyone."
+					},
+					{
+						"name": "team",
+						"type": "Void",
+						"desc": "Link is accessible only by team members."
+					},
+					{
+						"name": "members",
+						"type": "Void",
+						"desc": "Link is accessible only by members of the content."
+					},
+					{
+						"name": "remove_expiry",
+						"type": "Void",
+						"desc": "Remove the currently set expiry for the link."
+					},
+					{
+						"name": "set_expiry",
+						"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")",
+						"desc": "Set a new expiry or change an existing expiry."
+					},
+					{
+						"name": "remove_password",
+						"type": "Void",
+						"desc": "Remove the currently set password for the link."
+					},
+					{
+						"name": "set_password",
+						"type": "String",
+						"desc": "Set a new password or change an existing password."
+					}
+				]
+			},
+			{
+				"name": "audience",
+				"type": "LinkAudience?",
+				"desc": "The type of audience on the link for this file. This field is optional.",
+				"parameters": [
+					{
+						"name": "public",
+						"type": "Void",
+						"desc": "Link is accessible by anyone."
+					},
+					{
+						"name": "team",
+						"type": "Void",
+						"desc": "Link is accessible only by team members."
+					},
+					{
+						"name": "members",
+						"type": "Void",
+						"desc": "Link is accessible only by members of the content."
+					}
+				]
+			},
+			{
+				"name": "public",
+				"type": "Void",
+				"desc": "Link is accessible by anyone."
+			},
+			{
+				"name": "team",
+				"type": "Void",
+				"desc": "Link is accessible only by team members."
+			},
+			{
+				"name": "members",
+				"type": "Void",
+				"desc": "Link is accessible only by members of the content."
+			},
+			{
+				"name": "expiry",
+				"type": "LinkExpiry?",
+				"desc": "An expiry timestamp to set on a link. This field is optional.",
+				"parameters": [
+					{
+						"name": "remove_expiry",
+						"type": "Void",
+						"desc": "Remove the currently set expiry for the link."
+					},
+					{
+						"name": "set_expiry",
+						"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")",
+						"desc": "Set a new expiry or change an existing expiry."
+					}
+				]
+			},
+			{
+				"name": "remove_expiry",
+				"type": "Void",
+				"desc": "Remove the currently set expiry for the link."
+			},
+			{
+				"name": "set_expiry",
+				"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")",
+				"desc": "Set a new expiry or change an existing expiry."
+			},
+			{
+				"name": "password",
+				"type": "LinkPassword?",
+				"desc": "The password for the link. This field is optional.",
+				"parameters": [
+					{
+						"name": "remove_password",
+						"type": "Void",
+						"desc": "Remove the currently set password for the link."
+					},
+					{
+						"name": "set_password",
+						"type": "String",
+						"desc": "Set a new password or change an existing password."
+					}
+				]
+			},
+			{
+				"name": "remove_password",
+				"type": "Void",
+				"desc": "Remove the currently set password for the link."
+			},
+			{
+				"name": "set_password",
+				"type": "String",
+				"desc": "Set a new password or change an existing password."
 			}
 		],
 		"returnParameters": []
