@@ -6,6 +6,9 @@ The `dropbox-v2-api` module is generated dynamically - it's based on  [Dropbox A
 [api.json]: <https://github.com/adasq/dropbox-v2-api/blob/master/dist/api.json>
 
 ## Get started
+```js
+$ npm i -s dropbox-v2-api
+```
 
 ```js
 const dropbox = require('dropbox-v2-api');
