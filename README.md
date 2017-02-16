@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/adasq/dropbox-v2-api.svg?branch=master)](https://travis-ci.org/adasq/dropbox-v2-api)
 # dropbox-v2-api
 Dropbox API v2 wrapper for nodejs.
 
