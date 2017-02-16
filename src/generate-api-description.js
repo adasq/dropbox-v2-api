@@ -52,14 +52,29 @@ function getTextByElem(el){
 function getExampleData(el){
 	return el.find('pre').text();
 }
+function getReturns(el){
+	const parametersExample = el.find('.literal-block').eq(0).text();
+	let parametersExampleObject = null;
+	if(parametersExample.length > 0){
+		parametersExampleObject = JSON.parse(parametersExample);
+	}
+	return parametersExampleObject;
+}
 function getParameterList(el){
+	const parametersExample = el.find('.literal-block').eq(0).text();
+	let parametersExampleObject = null;
+	if(parametersExample.length > 0){
+		parametersExampleObject = JSON.parse(parametersExample);
+	}
 		return _.map(el.find('.field'), function(item){
 			var desc = utils.getTextNode(item.children);
 			item = $(item);
 			var nestedWrap = item.find('.nested-child');
-			if(!!nestedWrap.length){				
+			if(!!nestedWrap.length){
+				const name = item.find('b code').eq(0).text();	
 				return {
-					name: item.find('b code').eq(0).text(),
+					name,
+					example: parametersExampleObject && parametersExampleObject[name],
 					type: item.find('.type').eq(0).text(),
 					desc: desc,
 					parameters: _.flatten(_.map(nestedWrap, function(item){
@@ -67,8 +82,10 @@ function getParameterList(el){
 					}))
 				};
 			}else{
+				const name = item.find('b code').text();
 				return {
-					name: item.find('b code').text(),
+					name,
+					example: parametersExampleObject && parametersExampleObject[name],
 					type: item.find('.type').text(),
 					desc: desc
 				};				
@@ -82,7 +99,7 @@ function parseMethodElement(wrap){
 		'Description': getTextByElem,
 		'URL Structure': getTextByElem,
 		'Parameters': getParameterList,
-		//'Returns': getParameterList,
+		'Returns': getReturns,
 		'Endpoint format': function(elem){
 			return elem.text().trim().toLowerCase();
 		},
@@ -155,7 +172,7 @@ function parseApiDescription(apiDescription){
 			var methodUri = method['URL Structure'];
 			var methodExample = method['Example'] || null;
 			var methodParameters = method['Parameters'] || [];
-			var returnParameters = method['Returns'] || [];
+			var returnParameters = method['Returns'] || null;
 			var endpointFormat = method['Endpoint format'] || null;
 
 			var requiresAuthHeader = methodExample === null ? true : utils.contains(methodExample, HEADER_AUTH);
