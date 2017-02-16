@@ -79,6 +79,20 @@ describe('Namespace', function() {
                 done();
             });         
         });
+        it('list_folder', (done) => {
+            var filePath = `${dirPath}/alpha-upload.txt`;
+            dropbox({
+                resource: 'files/list_folder',
+                parameters: {
+                    path: dirPath
+                }
+            }, (err, response) => {
+                if(err){ throw err; }
+                response.entries[0].should.have.property('size', 50);
+                response.entries[1].should.have.property('size', 30);
+                done();
+            });         
+        });
         it('download', (done) => {
             var filePath = `${dirPath}/upload.txt`;
             var dropboxStream = dropbox({
