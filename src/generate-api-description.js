@@ -61,11 +61,21 @@ function getReturns(el){
 	return parametersExampleObject;
 }
 function getParameterList(el){
+
+	
+
 	const parametersExample = el.find('.literal-block').eq(0).text();
 	let parametersExampleObject = null;
 	if(parametersExample.length > 0){
 		parametersExampleObject = JSON.parse(parametersExample);
 	}
+
+	return {
+		list: getParameterListInner(el),
+		example: parametersExampleObject
+	};
+
+	function getParameterListInner(el){
 		return _.map(el.find('.field'), function(item){
 			var desc = utils.getTextNode(item.children);
 			item = $(item);
@@ -74,7 +84,6 @@ function getParameterList(el){
 				const name = item.find('b code').eq(0).text();	
 				return {
 					name,
-					example: parametersExampleObject && parametersExampleObject[name],
 					type: item.find('.type').eq(0).text(),
 					desc: desc,
 					parameters: _.flatten(_.map(nestedWrap, function(item){
@@ -85,13 +94,13 @@ function getParameterList(el){
 				const name = item.find('b code').text();
 				return {
 					name,
-					example: parametersExampleObject && parametersExampleObject[name],
 					type: item.find('.type').text(),
 					desc: desc
 				};				
 			}
 
 		});
+	}
 }
 
 function parseMethodElement(wrap){
