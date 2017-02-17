@@ -110,7 +110,13 @@ function parseMethodElement(wrap){
 		'Parameters': getParameterList,
 		'Returns': getReturns,
 		'Endpoint format': function(elem){
-			return elem.text().trim().toLowerCase();
+			const endpointCategory = elem.text().trim().toLowerCase();
+			const categories = {
+				'rpc': 'RPC',
+				'content-upload': 'UPLOAD',
+				'content-download': 'DOWNLOAD'
+			};
+			return categories[endpointCategory] || null;
 		},
 		'Example': getExampleData
 	};
@@ -183,24 +189,17 @@ function parseApiDescription(apiDescription){
 			var methodParameters = method['Parameters'] || [];
 			var returnParameters = method['Returns'] || null;
 			var endpointFormat = method['Endpoint format'] || null;
+			var description = method['Description'] || null;
 
 			var requiresAuthHeader = methodExample === null ? true : utils.contains(methodExample, HEADER_AUTH);
 			var requiresReadableStream = methodExample === null ? false : utils.contains(methodExample, HEADER_CT_OCTET_STREAM);
-			
-			//recognize endpoint
-			var endpointType;
-			if( utils.contains(methodUri, ENDPOINT_RPC) ){
-				endpointType = 'RPC';
-			}else if( utils.contains(methodUri, ENDPOINT_CONTENT) ){
-				endpointType = 'CONTENT';
-			}
 
 			parsedApiDescription[resourceName] = {
 				uri: methodUri,
 				requiresAuthHeader: requiresAuthHeader,
 				requiresReadableStream: requiresReadableStream,
-				endpointType: endpointType,
-				endpointFormat: endpointFormat,
+				category: endpointFormat,
+				description: description,
 				parameters: methodParameters,
 				returnParameters: returnParameters				
 			};

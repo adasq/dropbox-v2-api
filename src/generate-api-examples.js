@@ -6,43 +6,76 @@ const beautify = require('js-beautify').js_beautify;
 var parsedApiDescription = JSON.parse(fs.readFileSync(path.join(__dirname, '../dist/api.json')));
 const options = {};
 
-const API_NAME = 'files/copy_reference/save';
+const API_NAME = 'files/upload';
 const api = parsedApiDescription[API_NAME];
 
-const sufix = API_NAME.replace(/\//g, '-');
-const URL = `https://www.dropbox.com/developers/documentation/http/documentation#${sufix}`;
+const apiNameList = Object.keys(parsedApiDescription);
 
-console.log(URL);
-console.log(api);
+const mdContent = apiNameList.map(apiName => {
+    const example = prepareExampleByApiDescription(parsedApiDescription[apiName], apiName);
+return `
+### ${example.name} ([see docs](${example.docs}))
+${example.description}
 
-const templates = {
-'rpc': `
-    dropbox({
-        resource: '${API_NAME}',
-        parameters: <%- JSON.stringify(parameters.example, null, '    ') %>
-    }, (err, result) => {
-        if(err){ return console.log('err:', err); }
-        console.log(result);
-    });
-`,
-'content-upload': `
-    const uploadStream = dropbox({
-        resource: '${API_NAME}',
-        parameters: <%- JSON.stringify(parameters.example, null, '    ') %>
-    }, (err, result) => {
-        if(err){ return console.log('err:', err); }
-        console.log(result);
-    });
+\`\`\`js
+${example.code}
+\`\`\`
+`;
+});
 
-    fs.createReadStream('./example').pipe(uploadStream)
-`
+
+fs.writeFileSync('examples.out', mdContent.join('\n'));
+
+
+function prepareExampleByApiDescription(apiDescription, apiName){
+
+    function prepareUrl() {
+        const sufix = apiName.replace(/\//g, '-');
+        return `https://www.dropbox.com/developers/documentation/http/documentation#${sufix}`;
+    }
+
+    const templates = {
+    'RPC': `
+dropbox({
+resource: '${apiName}'<% if(parameters.example) { %>,
+parameters: <%- JSON.stringify(parameters.example, null, '') %> <% } %>}, (err, result) => {
+    //see docs for \`result\` parameters
+});
+    `,
+    'UPLOAD': `
+        const stream = dropbox({
+            resource: '${apiName}',
+            parameters: <%- JSON.stringify(parameters.example, null, '') %>}, (err, result) => {
+            //see docs for \`result\` parameters
+        });
+
+        fs.createReadStream(<%- parameters.example.path ? '\\''+parameters.example.path+'\\'': '' %>).pipe(stream);
+    `,
+    'DOWNLOAD': `
+        const stream = dropbox({
+            resource: '${apiName}',
+            parameters: <%- JSON.stringify(parameters.example, null, '') %>}, (err, result) => {
+            //see docs for \`result\` parameters
+        });
+
+        stream
+            .pipe(fs.createWriteStream(<%- parameters.example.path ? '\\''+parameters.example.path+'\\'': '' %>)); //pipe the stream
+    `    
+    }
+
+    const template = ejs.compile(templates[apiDescription.category], options);
+    const code = beautify(template(apiDescription), { indent_size: 4 }).replace(/\"/g, '\'');
+
+    return {
+        docs: prepareUrl(),
+        name: apiName,
+        description: apiDescription.description,
+        code
+    };
+
 }
 
-var template = ejs.compile(templates[api.endpointFormat], options);
 
-const output = template(api);
 
-console.log('========================');
-console.log(beautify(output, { indent_size: 4 }).replace(/\"/g, '\''));
 
 
