@@ -21,7 +21,7 @@ ${example.code}
 });
 
 
-fs.writeFileSync('examples.out', mdContent.join('\n'));
+fs.writeFileSync('EXAMPLES.md', mdContent.join('\n'));
 
 
 function prepareExampleByApiDescription(apiDescription, apiName){
