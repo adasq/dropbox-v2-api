@@ -3,7 +3,6 @@
 		"uri": "https://api.dropboxapi.com/2/auth/token/from_oauth1",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Creates an OAuth 2.0 access token from the supplied OAuth 1.0 access token.",
 		"parameters": {
@@ -32,7 +31,6 @@
 		"uri": "https://api.dropboxapi.com/2/auth/token/revoke",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Disables the access token used to authenticate the call.",
 		"parameters": {
@@ -45,7 +43,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/alpha/get_metadata",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Returns the metadata for a file or folder. This is an alpha endpoint compatible with the properties API.Note: Metadata for the root folder is unsupported.",
 		"parameters": {
@@ -117,7 +114,6 @@
 		"uri": "https://content.dropboxapi.com/2/files/alpha/upload",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
-		"endpointType": "CONTENT",
 		"category": "UPLOAD",
 		"description": "Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API alpha and is slightly different from upload.Do not use this to upload a file larger than 150 MB. Instead, create an upload session with upload_session/start.",
 		"parameters": {
@@ -337,7 +333,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/copy",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Copy a file or folder to a different location in the user's Dropbox.If the source path is a folder all its contents will be copied.",
 		"parameters": {
@@ -404,7 +399,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/copy_batch",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Copy multiple files or folders to different locations at once in the user's Dropbox.If RelocationBatchArg.allow_shared_folder is false, this route is atomic. If on entry failes, the whole transaction will abort. If RelocationBatchArg.allow_shared_folder is true, not atomicity is guaranteed, but you will be able to copy the contents of shared folders to new locations.This route will return job ID immediately and do the async copy job in background. Please use copy_batch/check to check the job status.",
 		"parameters": {
@@ -504,7 +498,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/copy_batch/check",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Returns the status of an asynchronous job for copy_batch. If success, it returns list of results for each entry.",
 		"parameters": {
@@ -560,7 +553,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/copy_reference/get",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Get a copy reference to a file or folder. This reference string can be used to save that file or folder to another user's Dropbox by passing it to copy_reference/save.",
 		"parameters": {
@@ -613,7 +605,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/copy_reference/save",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Save a copy reference returned by copy_reference/get to the user's Dropbox.",
 		"parameters": {
@@ -670,7 +661,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/create_folder",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Create a folder at a given path.",
 		"parameters": {
@@ -719,7 +709,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/delete",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Delete the file or folder at a given path.If the path is a folder, all its contents will be deleted too.A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.",
 		"parameters": {
@@ -768,7 +757,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/delete_batch",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Delete multiple files/folders at once.This route is asynchronous, which returns a job ID immediately and runs the delete batch asynchronously. Use delete_batch/check to check the job status.",
 		"parameters": {
@@ -846,7 +834,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/delete_batch/check",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Returns the status of an asynchronous job for delete_batch. If success, it returns list of result for each entry.",
 		"parameters": {
@@ -903,7 +890,6 @@
 		"uri": "https://content.dropboxapi.com/2/files/download",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "CONTENT",
 		"category": "DOWNLOAD",
 		"description": "Download a file from a user's Dropbox.",
 		"parameters": {
@@ -956,7 +942,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/get_metadata",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Returns the metadata for a file or folder.Note: Metadata for the root folder is unsupported.",
 		"parameters": {
@@ -1023,7 +1008,6 @@
 		"uri": "https://content.dropboxapi.com/2/files/get_preview",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "CONTENT",
 		"category": "DOWNLOAD",
 		"description": "Get a preview for a file. Currently previews are only generated for the files with  the following extensions: .doc, .docx, .docm, .ppt, .pps, .ppsx, .ppsm, .pptx, .pptm,  .xls, .xlsx, .xlsm, .rtf.",
 		"parameters": {
@@ -1076,7 +1060,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/get_temporary_link",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Get a temporary link to stream content of a file. This link will expire in four hours and afterwards you will get 410 Gone. Content-Type of the link is determined automatically by the file's mime type.",
 		"parameters": {
@@ -1127,7 +1110,6 @@
 		"uri": "https://content.dropboxapi.com/2/files/get_thumbnail",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "CONTENT",
 		"category": "DOWNLOAD",
 		"description": "Get a thumbnail for an image.This method currently supports files with the following file extensions: jpg, jpeg, png, tiff, tif, gif and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.",
 		"parameters": {
@@ -1271,7 +1253,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/list_folder",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Starts returning the contents of a folder. If the result's ListFolderResult.has_more field is true, call list_folder/continue with the returned ListFolderResult.cursor to retrieve more entries.If you're using ListFolderArg.recursive set to true to keep a local cache of the contents of a Dropbox account, iterate through each entry in order and process them as follows to keep your local state in sync:For each FileMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it and remove all its children.For each FolderMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it but leave the children as they are. Check the new entry's FolderSharingInfo.read_only and set all its children's read-only statuses to match.For each DeletedMetadata, if your local state has something at the given path, remove it and all its children. If there's nothing at the given path, ignore this entry.",
 		"parameters": {
@@ -1374,7 +1355,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/list_folder/continue",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Once a cursor has been retrieved from list_folder, use this to paginate through all files and retrieve updates to the folder, following the same rules as documented for list_folder.",
 		"parameters": {
@@ -1453,7 +1433,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/list_folder/get_latest_cursor",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "A way to quickly get a cursor for the folder's state. Unlike list_folder, list_folder/get_latest_cursor doesn't return any entries. This endpoint is for app which only needs to know about new files and modifications and doesn't need to know about files that already exist in Dropbox.",
 		"parameters": {
@@ -1528,7 +1507,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/list_revisions",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Return revisions of a file.",
 		"parameters": {
@@ -1587,7 +1565,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/move",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Move a file or folder to a different location in the user's Dropbox.If the source path is a folder all its contents will be moved.",
 		"parameters": {
@@ -1654,7 +1631,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/move_batch",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Move multiple files or folders to different locations at once in the user's Dropbox.This route is 'all or nothing', which means if one entry fails, the whole transaction will abort.This route will return job ID immediately and do the async moving job in background. Please use move_batch/check to check the job status.",
 		"parameters": {
@@ -1754,7 +1730,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/move_batch/check",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Returns the status of an asynchronous job for move_batch. If success, it returns list of results for each entry.",
 		"parameters": {
@@ -1810,7 +1785,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/permanently_delete",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Permanently delete the file or folder at a given path (see https://www.dropbox.com/en/help/40).Note: This endpoint is only available for Dropbox Business apps.",
 		"parameters": {
@@ -1831,7 +1805,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/properties/add",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Add custom properties to a file using a filled property template. See properties/template/add to create new property templates.",
 		"parameters": {
@@ -1964,7 +1937,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/properties/overwrite",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Overwrite custom properties from a specified template associated with a file.",
 		"parameters": {
@@ -2097,7 +2069,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/properties/remove",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Remove all custom properties from a specified template associated with a file. To remove specific property key value pairs, see properties/update. To update a property template, see properties/template/update. Property templates can't be removed once created.",
 		"parameters": {
@@ -2126,7 +2097,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/properties/template/get",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Get the schema for a specified template.",
 		"parameters": {
@@ -2159,7 +2129,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/properties/template/list",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Get the property template identifiers for a user. To get the schema of each template use properties/template/get.",
 		"parameters": {
@@ -2176,7 +2145,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/properties/update",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Add, update or remove custom properties from a specified template associated with a file. Fields that already exist and not described in the request will not be modified.",
 		"parameters": {
@@ -2320,7 +2288,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/restore",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Restore a file to a specific revision.",
 		"parameters": {
@@ -2374,7 +2341,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/save_url",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Save a specified URL into a file in user's Dropbox. If the given path already exists, the file will be renamed to avoid the conflict (e.g. myfile (1).txt).",
 		"parameters": {
@@ -2401,7 +2367,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/save_url/check_job_status",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Check the status of a save_url job.",
 		"parameters": {
@@ -2424,7 +2389,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/search",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Searches for files and folders.Note: Recent changes may not immediately be reflected in search results due to a short delay in indexing.",
 		"parameters": {
@@ -2545,7 +2509,6 @@
 		"uri": "https://content.dropboxapi.com/2/files/upload",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
-		"endpointType": "CONTENT",
 		"category": "UPLOAD",
 		"description": "Create a new file with the contents provided in the request.Do not use this to upload a file larger than 150 MB. Instead, create an upload session with upload_session/start.",
 		"parameters": {
@@ -2653,7 +2616,6 @@
 		"uri": "https://content.dropboxapi.com/2/files/upload_session/append",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
-		"endpointType": "CONTENT",
 		"category": "UPLOAD",
 		"description": "Append more data to an upload session.A single request should not upload more than 150 MB of file contents.",
 		"parameters": {
@@ -2680,7 +2642,6 @@
 		"uri": "https://content.dropboxapi.com/2/files/upload_session/append_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
-		"endpointType": "CONTENT",
 		"category": "UPLOAD",
 		"description": "Append more data to an upload session.When the parameter close is set, this call will close the session.A single request should not upload more than 150 MB of file contents.",
 		"parameters": {
@@ -2737,7 +2698,6 @@
 		"uri": "https://content.dropboxapi.com/2/files/upload_session/finish",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
-		"endpointType": "CONTENT",
 		"category": "UPLOAD",
 		"description": "Finish an upload session and save the uploaded data to the given file path.A single request should not upload more than 150 MB of file contents.",
 		"parameters": {
@@ -2977,7 +2937,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/upload_session/finish_batch",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "This route helps you commit many files at once into a user's Dropbox. Use upload_session/start and upload_session/append_v2 to upload file contents. We recommend uploading many files in parallel to increase throughput. Once the file contents have been uploaded, rather than calling upload_session/finish, use this route to finish all your upload sessions in a single request.UploadSessionStartArg.close or UploadSessionAppendArg.close needs to be true for the last upload_session/start or upload_session/append_v2 call.This route will return a job_id immediately and do the async commit job in background. Use upload_session/finish_batch/check to check the job status.For the same account, this route should be executed serially. That means you should not start the next job before current job finishes. We allow up to 1000 entries in a single request.",
 		"parameters": {
@@ -3531,7 +3490,6 @@
 		"uri": "https://api.dropboxapi.com/2/files/upload_session/finish_batch/check",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Returns the status of an asynchronous job for upload_session/finish_batch. If success, it returns list of result for each entry.",
 		"parameters": {
@@ -3585,7 +3543,6 @@
 		"uri": "https://content.dropboxapi.com/2/files/upload_session/start",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
-		"endpointType": "CONTENT",
 		"category": "UPLOAD",
 		"description": "Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use upload_session/append_v2 to add more data and upload_session/finish to save all the data to a file in Dropbox.A single request should not upload more than 150 MB of file contents.",
 		"parameters": {
@@ -3608,7 +3565,6 @@
 		"uri": "https://api.dropboxapi.com/2/paper/docs/archive",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Marks the given Paper doc as deleted. This operation is non-destructive and the doc can be revived by the owner.Note: This action can be performed only by the doc owner.",
 		"parameters": {
@@ -3629,7 +3585,6 @@
 		"uri": "https://api.dropboxapi.com/2/paper/docs/download",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "DOWNLOAD",
 		"description": "Exports and downloads Paper doc either as HTML or markdown.",
 		"parameters": {
@@ -3688,7 +3643,6 @@
 		"uri": "https://api.dropboxapi.com/2/paper/docs/folder_users/list",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Lists the users who are explicitly invited to the Paper folder in which the Paper doc is contained. For private folders all users (including owner) shared on the folder are listed and for team folders all non-team users shared on the folder are returned.",
 		"parameters": {
@@ -3734,7 +3688,6 @@
 		"uri": "https://api.dropboxapi.com/2/paper/docs/folder_users/list/continue",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Once a cursor has been retrieved from docs/folder_users/list, use this to paginate through all users on the Paper folder.",
 		"parameters": {
@@ -3780,7 +3733,6 @@
 		"uri": "https://api.dropboxapi.com/2/paper/docs/get_folder_info",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Retrieves folder information for the given Paper doc. This includes:  - folder sharing policy; permissions for subfolders are set by the top-level folder.  - full 'filepath', i.e. the list of folders (both folderId and folderName) from the root folder to the folder directly containing the Paper doc.Note: If the Paper doc is not in any folder (aka unfiled) the response will be empty.",
 		"parameters": {
@@ -3811,7 +3763,6 @@
 		"uri": "https://api.dropboxapi.com/2/paper/docs/list",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Return the list of all Paper docs according to the argument specifications. To iterate over through the full pagination, pass the cursor to docs/list/continue.",
 		"parameters": {
@@ -3952,7 +3903,6 @@
 		"uri": "https://api.dropboxapi.com/2/paper/docs/list/continue",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Once a cursor has been retrieved from docs/list, use this to paginate through all Paper doc.",
 		"parameters": {
@@ -3984,7 +3934,6 @@
 		"uri": "https://api.dropboxapi.com/2/paper/docs/permanently_delete",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Permanently deletes the given Paper doc. This operation is final as the doc cannot be recovered.Note: This action can be performed only by the doc owner.",
 		"parameters": {
@@ -4005,7 +3954,6 @@
 		"uri": "https://api.dropboxapi.com/2/paper/docs/sharing_policy/get",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Gets the default sharing policy for the given Paper doc.",
 		"parameters": {
@@ -4033,7 +3981,6 @@
 		"uri": "https://api.dropboxapi.com/2/paper/docs/sharing_policy/set",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Sets the default sharing policy for the given Paper doc. The default 'team_sharing_policy' can be changed only by teams, omit this field for personal accounts.Note: 'public_sharing_policy' cannot be set to the value 'disabled' because this setting can be changed only via the team admin console.",
 		"parameters": {
@@ -4303,7 +4250,6 @@
 		"uri": "https://api.dropboxapi.com/2/paper/docs/users/add",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Allows an owner or editor to add users to a Paper doc or change their permissions using their email or Dropbox account id.Note: The Doc owner's permissions cannot be changed.",
 		"parameters": {
@@ -4517,7 +4463,6 @@
 		"uri": "https://api.dropboxapi.com/2/paper/docs/users/list",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Lists all users who visited the Paper doc or users with explicit access. This call excludes users who have been removed. The list is sorted by the date of the visit or the share date.The list will include both users, the explicitly shared ones as well as those who came in using the Paper url link.",
 		"parameters": {
@@ -4611,7 +4556,6 @@
 		"uri": "https://api.dropboxapi.com/2/paper/docs/users/list/continue",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Once a cursor has been retrieved from docs/users/list, use this to paginate through all users on the Paper doc.",
 		"parameters": {
@@ -4672,7 +4616,6 @@
 		"uri": "https://api.dropboxapi.com/2/paper/docs/users/remove",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Allows an owner or editor to remove users from a Paper doc using their email or Dropbox account id.Note: Doc owner cannot be removed.",
 		"parameters": {
@@ -4729,7 +4672,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/add_file_member",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Adds specified members to a file.",
 		"parameters": {
@@ -4859,7 +4801,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/add_folder_member",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Allows an owner or editor (if the ACL update policy allows) of a shared folder to add another member.For the new member to get access to all the functionality for this folder, you will need to call mount_folder on their behalf.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -5132,7 +5073,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/change_file_member_access",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Identical to update_file_member but with less information returned.",
 		"parameters": {
@@ -5242,7 +5182,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/check_job_status",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Returns the status of an asynchronous job.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -5265,7 +5204,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/check_remove_member_job_status",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Returns the status of an asynchronous job for sharing a folder.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -5288,7 +5226,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/check_share_job_status",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Returns the status of an asynchronous job for sharing a folder.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -5362,7 +5299,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/create_shared_link",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Create a shared link.If a shared link already exists for the given path, that link is returned.Note that in the returned PathLinkMetadata, the PathLinkMetadata.url field is the shortened URL if CreateSharedLinkArg.short_url argument is set to true.Previously, it was technically possible to break a shared link by moving or renaming the corresponding file or folder. In the future, this will no longer be the case, so your app shouldn't rely on this behavior. Instead, if your app needs to revoke a shared link, use revoke_shared_link.",
 		"parameters": {
@@ -5427,7 +5363,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/create_shared_link_with_settings",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Create a shared link with custom settings. If no settings are given then the default visibility is RequestedVisibility.public (The resolved visibility, though, may depend on other aspects such as team and shared folder settings).",
 		"parameters": {
@@ -5614,7 +5549,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/get_file_metadata",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Returns shared file metadata.",
 		"parameters": {
@@ -5764,7 +5698,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/get_file_metadata/batch",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Returns shared file metadata.",
 		"parameters": {
@@ -5891,7 +5824,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/get_folder_metadata",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Returns shared folder metadata by its folder ID.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -6107,7 +6039,6 @@
 		"uri": "https://content.dropboxapi.com/2/sharing/get_shared_link_file",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "CONTENT",
 		"category": "DOWNLOAD",
 		"description": "Download the shared link's file from a user's Dropbox.",
 		"parameters": {
@@ -6166,7 +6097,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/get_shared_link_metadata",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Get the shared link's metadata.",
 		"parameters": {
@@ -6225,7 +6155,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/get_shared_links",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Returns a list of LinkMetadata objects for this user, including collection links.If no path is given, returns a list of all shared links for the current user, including collection links.If a non-empty path is given, returns a list of all shared links that allow access to the given path.  Collection links are never returned in this case.Note that the url field in the response is never the shortened URL.",
 		"parameters": {
@@ -6246,7 +6175,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/list_file_members",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Use to obtain the members who have been invited to a file, both inherited and uninherited members.",
 		"parameters": {
@@ -6402,7 +6330,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/list_file_members/batch",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Get members of multiple files at once. The arguments to this route are more limited, and the limit on query result size per file is more strict. To customize the results more, use the individual file endpoint.Inherited users and groups are not included in the result, and permissions are not returned for this endpoint.",
 		"parameters": {
@@ -6432,7 +6359,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/list_file_members/continue",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Once a cursor has been retrieved from list_file_members or list_file_members/batch, use this to paginate through all shared file members.",
 		"parameters": {
@@ -6504,7 +6430,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/list_folder_members",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Returns shared folder membership by its folder ID.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -6656,7 +6581,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/list_folder_members/continue",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Once a cursor has been retrieved from list_folder_members, use this to paginate through all shared folder members.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -6729,7 +6653,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/list_folders",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Return the list of all shared folders the current user has access to.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -6950,7 +6873,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/list_folders/continue",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Once a cursor has been retrieved from list_folders, use this to paginate through all shared folders. The cursor must come from a previous call to list_folders or list_folders/continue.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -7028,7 +6950,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/list_mountable_folders",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Return the list of all shared folders the current user can mount or unmount.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -7249,7 +7170,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/list_mountable_folders/continue",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Once a cursor has been retrieved from list_mountable_folders, use this to paginate through all mountable shared folders. The cursor must come from a previous call to list_mountable_folders or list_mountable_folders/continue.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -7327,7 +7247,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/list_received_files",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Returns a list of all files shared with current user. Does not include files the user has received via shared folders, and does  not include unclaimed invitations.",
 		"parameters": {
@@ -7482,7 +7401,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/list_received_files/continue",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Get more results with a cursor from list_received_files.",
 		"parameters": {
@@ -7534,7 +7452,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/list_shared_links",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "List shared links of this user.If no path is given, returns a list of all shared links for the current user.If a non-empty path is given, returns a list of all shared links that allow access to the given path - direct links to the given path and links to parent folders of the given path. Links to parent folders can be suppressed by setting direct_only to true.",
 		"parameters": {
@@ -7598,7 +7515,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/modify_shared_link_settings",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Modify the shared link's settings.If the requested visibility conflict with the shared links policy of the team or the shared folder (in case the linked file is part of a shared folder) then the LinkPermissions.resolved_visibility of the returned SharedLinkMetadata will reflect the actual visibility of the shared link and the LinkPermissions.requested_visibility will reflect the requested visibility.",
 		"parameters": {
@@ -7791,7 +7707,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/mount_folder",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "The current user mounts the designated folder.Mount a shared folder for a user after they have been added as a member. Once mounted, the shared folder will appear in their Dropbox.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -7864,7 +7779,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/relinquish_file_membership",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "The current user relinquishes their membership in the designated file. Note that the current user may still have inherited access to this file through the parent folder.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -7885,7 +7799,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/relinquish_folder_membership",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "The current user relinquishes their membership in the designated shared folder and will no longer have access to the folder.  A folder owner cannot relinquish membership in their own folder.This will run synchronously if leave_a_copy is false, and asynchronously if leave_a_copy is true. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -7914,7 +7827,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/remove_file_member",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Identical to remove_file_member_2 but with less information returned.",
 		"parameters": {
@@ -7973,7 +7885,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/remove_file_member_2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Removes a specified member from the file.",
 		"parameters": {
@@ -8032,7 +7943,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/remove_folder_member",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Allows an owner or editor (if the ACL update policy allows) of a shared folder to remove another member.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -8095,7 +8005,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/revoke_shared_link",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Revoke a shared link.Note that even after revoking a shared link to a file, the file may be accessible if there are shared links leading to any of the file parent folders. To list all shared links that enable access to a specific file, you can use the list_shared_links with the file as the ListSharedLinksArg.path argument.",
 		"parameters": {
@@ -8116,7 +8025,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/share_folder",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Share a folder with collaborators.Most sharing will be completed synchronously. Large folders will be completed asynchronously. To make testing the async case repeatable, set `ShareFolderArg.force_async`.If a ShareFolderLaunch.async_job_id is returned, you'll need to call check_share_job_status until the action completes to get the metadata for the folder.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -8753,7 +8661,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/transfer_folder",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Transfer ownership of a shared folder to a member of the shared folder.User must have AccessLevel.owner access to the shared folder to perform a transfer.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -8780,7 +8687,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/unmount_folder",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "The current user unmounts the designated folder. They can re-mount the folder at a later time using mount_folder.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -8801,7 +8707,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/unshare_file",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Remove all members from this file. Does not remove inherited members.",
 		"parameters": {
@@ -8822,7 +8727,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/unshare_folder",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Allows a shared folder owner to unshare the folder.You'll need to call check_job_status to determine if the action has completed successfully.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -8851,7 +8755,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/update_file_member",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Changes a member's access on a shared file.",
 		"parameters": {
@@ -8961,7 +8864,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/update_folder_member",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Allows an owner or editor of a shared folder to update another member's permissions.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -9071,7 +8973,6 @@
 		"uri": "https://api.dropboxapi.com/2/sharing/update_folder_policy",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Update the sharing policies for a shared folder.User must have AccessLevel.owner access to the shared folder to update its policies.Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
@@ -9559,7 +9460,6 @@
 		"uri": "https://api.dropboxapi.com/2/users/get_account",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Get information about a user's account.",
 		"parameters": {
@@ -9594,7 +9494,6 @@
 		"uri": "https://api.dropboxapi.com/2/users/get_account_batch",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Get information about multiple user accounts.  At most 300 accounts may be queried per request.",
 		"parameters": {
@@ -9618,7 +9517,6 @@
 		"uri": "https://api.dropboxapi.com/2/users/get_current_account",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Get information about the current user's account.",
 		"parameters": {
@@ -9666,7 +9564,6 @@
 		"uri": "https://api.dropboxapi.com/2/users/get_space_usage",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
-		"endpointType": "RPC",
 		"category": "RPC",
 		"description": "Get the space usage information for the current user's account.",
 		"parameters": {

@@ -47,7 +47,7 @@ function getAPIDescriptionElems(){
 }
 
 function getTextByElem(el){
-	return el.text().trim();
+	return el.text().trim().replace(/\\s+/g, ' ');
 }
 function getExampleData(el){
 	return el.find('pre').text();
@@ -61,8 +61,6 @@ function getReturns(el){
 	return parametersExampleObject;
 }
 function getParameterList(el){
-
-	
 
 	const parametersExample = el.find('.literal-block').eq(0).text();
 	let parametersExampleObject = null;
@@ -151,7 +149,7 @@ function generateApiDescription(cb){
 		}
 		parseBody(body);
 	});
-	//parseBody(fs.readFileSync('api.html'));
+
 	function parseBody(body){
 			$ = cheerio.load(body);
 			var api = _.map( getAPIDescriptionElems(), function(section){

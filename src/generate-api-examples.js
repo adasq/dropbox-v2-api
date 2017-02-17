@@ -6,9 +6,6 @@ const beautify = require('js-beautify').js_beautify;
 var parsedApiDescription = JSON.parse(fs.readFileSync(path.join(__dirname, '../dist/api.json')));
 const options = {};
 
-const API_NAME = 'files/upload';
-const api = parsedApiDescription[API_NAME];
-
 const apiNameList = Object.keys(parsedApiDescription);
 
 const mdContent = apiNameList.map(apiName => {
