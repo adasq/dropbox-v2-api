@@ -167,7 +167,7 @@ function generateApiDescription(cb){
 
 	function parseBody(body){
 			$ = cheerio.load(body);
-			var api = _.map( getAPIDescriptionElems(), function(section){
+			var fullApi = _.map( getAPIDescriptionElems(), function(section){
 				return {
 					name: section.name,
 					methods: _.map(section.el, function(el){
@@ -176,16 +176,32 @@ function generateApiDescription(cb){
 					})
 				};
 			});
+			const fullApiObject = parseApiDescription(fullApi);
+			const fullApiContent = JSON.stringify(fullApiObject, null, '\t');
 
-			const content = JSON.stringify(parseApiDescription(api), null, '\t');
-			if(cb){
-				cb(null, content);
+			const apiObject = createApiObject(fullApiObject);
+			const apiContent = JSON.stringify(apiObject, null, '\t');
+
+			if(cb) {
+				cb(null, fullApiContent);
 			}else{
-				fs.writeFileSync('./dist/api.json', content);
+				fs.writeFileSync('./dist/api.json', apiContent);
+				fs.writeFileSync('./dist/api-examples.json', fullApiContent);
 			}
+
 			console.log('api description has been generated...');
 			
 	}
+}
+
+function createApiObject(fullApiObject) {
+			Object.keys(fullApiObject).forEach((name => {
+				const apiDescription = fullApiObject[name];
+				delete apiDescription.description;
+				delete apiDescription.returnParameters;
+				delete apiDescription.parameters.example;
+			}));
+			return fullApiObject;
 }
 
 function parseApiDescription(apiDescription){

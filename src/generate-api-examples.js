@@ -3,7 +3,7 @@ const path = require('path');
 const ejs = require('ejs');
 const beautify = require('js-beautify').js_beautify;
 
-var parsedApiDescription = JSON.parse(fs.readFileSync(path.join(__dirname, '../dist/api.json')));
+var parsedApiDescription = JSON.parse(fs.readFileSync(path.join(__dirname, '../dist/api-examples.json')));
 const options = {};
 
 const apiNameList = Object.keys(parsedApiDescription);
