@@ -47,6 +47,21 @@ function getAPIDescriptionElems(){
 }
 
 function getTextByElem(el){
+	el.find('br').replaceWith('\n');
+	const links = el.find('a');
+	let text = el.text();
+	if(links.length > 0){
+		_.each(links, (link, i) => {
+			link = links.eq(i);
+			const linkText = link.text();
+			const linkHref = link.attr('href').replace(/-/g, '');
+			if('#'+linkText === linkHref || linkHref[0] !== '#')return;
+			text = text.replace(link.text(), `[${linkText}](${linkHref}-see-docs)`);
+		});
+	}
+	return text.replace(/\n/g, ' ').trim();
+}
+function getTextByElem2(el){
 	return el.text().trim().replace(/\\s+/g, ' ');
 }
 function getExampleData(el){
@@ -104,7 +119,7 @@ function getParameterList(el){
 function parseMethodElement(wrap){
 	var parsers = {
 		'Description': getTextByElem,
-		'URL Structure': getTextByElem,
+		'URL Structure': getTextByElem2,
 		'Parameters': getParameterList,
 		'Returns': getReturns,
 		'Endpoint format': function(elem){
