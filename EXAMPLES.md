@@ -173,7 +173,7 @@ dropbox({
 
 
 ### files/delete ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-delete))
-Delete the file or folder at a given path.If the path is a folder, all its contents will be deleted too.A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding [FileMetadata](#FileMetadata-see-docs) or [FolderMetadata](#FolderMetadata-see-docs) for the item at time of deletion, and not a [DeletedMetadata](#DeletedMetadata-see-docs) object.
+Delete the file or folder at a given path.If the path is a folder, all its contents will be deleted too.A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.
 
 ```js
 dropbox({
@@ -309,7 +309,7 @@ stream
 
 
 ### files/list_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-list_folder))
-Starts returning the contents of a folder. If the result's ListFolderResult.has_more field is true, call [list_folder/continue](#fileslist_foldercontinue-see-docs) with the returned ListFolderResult.cursor to retrieve more entries.If you're using ListFolderArg.recursive set to true to keep a local cache of the contents of a Dropbox account, iterate through each entry in order and process them as follows to keep your local state in sync:For each [FileMetadata](#FileMetadata-see-docs), store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it and remove all its children.For each [FolderMetadata](#FolderMetadata-see-docs), store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it but leave the children as they are. Check the new entry's FolderSharingInfo.read_only and set all its children's read-only statuses to match.For each [DeletedMetadata](#DeletedMetadata-see-docs), if your local state has something at the given path, remove it and all its children. If there's nothing at the given path, ignore this entry.
+Starts returning the contents of a folder. If the result's ListFolderResult.has_more field is true, call [list_folder/continue](#fileslist_foldercontinue-see-docs) with the returned ListFolderResult.cursor to retrieve more entries.If you're using ListFolderArg.recursive set to true to keep a local cache of the contents of a Dropbox account, iterate through each entry in order and process them as follows to keep your local state in sync:For each FileMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it and remove all its children.For each FolderMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it but leave the children as they are. Check the new entry's FolderSharingInfo.read_only and set all its children's read-only statuses to match.For each DeletedMetadata, if your local state has something at the given path, remove it and all its children. If there's nothing at the given path, ignore this entry.
 
 ```js
 dropbox({
@@ -1146,7 +1146,7 @@ dropbox({
 
 
 ### sharing/create_shared_link ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-create_shared_link))
-Create a shared link.If a shared link already exists for the given path, that link is returned.Note that in the returned [PathLinkMetadata](#PathLinkMetadata-see-docs), the PathLinkMetadata.url field is the shortened URL if CreateSharedLinkArg.short_url argument is set to true.Previously, it was technically possible to break a shared link by moving or renaming the corresponding file or folder. In the future, this will no longer be the case, so your app shouldn't rely on this behavior. Instead, if your app needs to revoke a shared link, use [revoke_shared_link](#sharingrevoke_shared_link-see-docs).
+Create a shared link.If a shared link already exists for the given path, that link is returned.Note that in the returned PathLinkMetadata, the PathLinkMetadata.url field is the shortened URL if CreateSharedLinkArg.short_url argument is set to true.Previously, it was technically possible to break a shared link by moving or renaming the corresponding file or folder. In the future, this will no longer be the case, so your app shouldn't rely on this behavior. Instead, if your app needs to revoke a shared link, use [revoke_shared_link](#sharingrevoke_shared_link-see-docs).
 
 ```js
 dropbox({
@@ -1263,7 +1263,7 @@ dropbox({
 
 
 ### sharing/get_shared_links ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-get_shared_links))
-Returns a list of [LinkMetadata](#LinkMetadata-see-docs) objects for this user, including collection links.If no path is given, returns a list of all shared links for the current user, including collection links.If a non-empty path is given, returns a list of all shared links that allow access to the given path.  Collection links are never returned in this case.Note that the url field in the response is never the shortened URL.
+Returns a list of LinkMetadata objects for this user, including collection links.If no path is given, returns a list of all shared links for the current user, including collection links.If a non-empty path is given, returns a list of all shared links that allow access to the given path.  Collection links are never returned in this case.Note that the url field in the response is never the shortened URL.
 
 ```js
 dropbox({
@@ -1466,7 +1466,7 @@ dropbox({
 
 
 ### sharing/modify_shared_link_settings ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-modify_shared_link_settings))
-Modify the shared link's settings.If the requested visibility conflict with the shared links policy of the team or the shared folder (in case the linked file is part of a shared folder) then the LinkPermissions.resolved_visibility of the returned [SharedLinkMetadata](#SharedLinkMetadata-see-docs) will reflect the actual visibility of the shared link and the LinkPermissions.requested_visibility will reflect the requested visibility.
+Modify the shared link's settings.If the requested visibility conflict with the shared links policy of the team or the shared folder (in case the linked file is part of a shared folder) then the LinkPermissions.resolved_visibility of the returned SharedLinkMetadata will reflect the actual visibility of the shared link and the LinkPermissions.requested_visibility will reflect the requested visibility.
 
 ```js
 dropbox({
