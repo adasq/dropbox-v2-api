@@ -107,7 +107,7 @@ dropbox({
 }, (err, result) => {
 	//download completed
 })
-.pipe( fs.createWriteStream('./image.jpg') );
+.pipe(fs.createWriteStream('./image.jpg'));
 ```
 
 #### download & upload
