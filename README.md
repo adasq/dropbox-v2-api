@@ -7,7 +7,7 @@ The `dropbox-v2-api` module is generated dynamically - it's based on  [Dropbox A
 [api.json]: <https://github.com/adasq/dropbox-v2-api/blob/master/dist/api.json>
 ## Why this package?
 
-- Simple API (no custom function names)
+- Simple API (no custom function names, see [full api showcase](#full-api-showcase))
 - Full support for streams (see [upload/download](#upload-and-download-examples) examples)
 - Examples for all endpoints
 
@@ -78,6 +78,7 @@ dropbox({
 	},
 	readStream: fs.createReadStream('path/to/file.js')
 }, (err, result) => {
+	//upload completed
 });
 ```
 or, using streams:
@@ -89,6 +90,7 @@ const dropboxUploadStream = dropbox({
 		path: '/dropbox/path/to/file.js'
 	}
 }, (err, result) => {
+	//upload completed
 });
 
 fs.createReadStream('path/to/file.js').pipe(dropboxUploadStream);
@@ -103,7 +105,9 @@ dropbox({
 	parameters: {
 		path: '/dropbox/image.jpg'
 	}
-}, (err, result) => {})
+}, (err, result) => {
+	//download completed
+})
 .pipe( fs.createWriteStream('./image.jpg') );
 ```
 
