@@ -362,7 +362,7 @@ dropbox({
 
 
 ### files/list_folder/longpoll ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-list_folder-longpoll))
-A longpoll endpoint to wait for changes on an account. In conjunction with [list_folder/continue](#fileslist_foldercontinue-see-docs), this call gives you a low-latency way to monitor an account for file changes. The connection will block until there are changes available or a timeout occurs. This endpoint is useful mostly for client-side apps. If you're looking for server-side notifications, check out our [webhooks documentation](https://www.dropbox.com/developers/reference/webhooks-see-docs).
+A longpoll endpoint to wait for changes on an account. In conjunction with [list_folder/continue](#fileslist_foldercontinue-see-docs), this call gives you a low-latency way to monitor an account for file changes. The connection will block until there are changes available or a timeout occurs. This endpoint is useful mostly for client-side apps. If you're looking for server-side notifications, check out our webhooks documentation.
 
 ```js
 dropbox({
