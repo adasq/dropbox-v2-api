@@ -9,7 +9,7 @@ The `dropbox-v2-api` module is generated dynamically - it's based on  [Dropbox A
 
 - Simple API (no custom function names, see [full api showcase](#full-api-showcase))
 - Full support for streams (see [upload/download](#upload-and-download-examples) examples)
-- Examples for all endpoints ([see more](#api-call-examples))
+- Examples for all endpoints ([see more](https://github.com/adasq/dropbox-v2-api/blob/master/EXAMPLES.md))
 
 
 ## Get started
