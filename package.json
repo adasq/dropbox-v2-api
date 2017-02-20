@@ -27,7 +27,6 @@
   "devDependencies": {
     "async": "1.5.0",
     "cheerio": "0.19.0",
-    "dropbox-v2-api": "1.0.5",
     "ejs": "^2.5.6",
     "expect.js": "0.3.1",
     "hapi": "11.1.4",
