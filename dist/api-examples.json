@@ -4,6 +4,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Creates an OAuth 2.0 access token from the supplied OAuth 1.0 access token.",
 		"parameters": {
 			"list": [
 				{
@@ -16,7 +17,14 @@
 					"type": "String(min_length=1)",
 					"desc": "The token secret associated with the supplied access token."
 				}
-			]
+			],
+			"example": {
+				"oauth1_token": "qievr8hamyg6ndck",
+				"oauth1_token_secret": "qomoftv0472git7"
+			}
+		},
+		"returnParameters": {
+			"oauth2_token": "9mCrkS7BIdAAAAAAAAAAHHS0TsSnpYvKQVtKdBnN5IuzhYOGblSgTcHgBFKFMmFn"
 		}
 	},
 	"auth/token/revoke": {
@@ -24,15 +32,19 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Disables the access token used to authenticate the call.",
 		"parameters": {
-			"list": []
-		}
+			"list": [],
+			"example": null
+		},
+		"returnParameters": null
 	},
 	"files/alpha/get_metadata": {
 		"uri": "https://api.dropboxapi.com/2/files/alpha/get_metadata",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Returns the metadata for a file or folder. This is an alpha endpoint compatible with the properties API. Note: Metadata for the root folder is unsupported.",
 		"parameters": {
 			"list": [
 				{
@@ -60,7 +72,42 @@
 					"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"))?",
 					"desc": "If set to a valid list of template IDs, FileMetadata.property_groups is set for files with custom properties. This field is optional."
 				}
-			]
+			],
+			"example": {
+				"path": "/Homework/math",
+				"include_media_info": false,
+				"include_deleted": false,
+				"include_has_explicit_shared_members": false
+			}
+		},
+		"returnParameters": {
+			".tag": "file",
+			"name": "Prime_Numbers.txt",
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"path_display": "/Homework/math/Prime_Numbers.txt",
+			"sharing_info": {
+				"read_only": true,
+				"parent_shared_folder_id": "84528192421",
+				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+			},
+			"property_groups": [
+				{
+					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+					"fields": [
+						{
+							"name": "Security Policy",
+							"value": "Confidential"
+						}
+					]
+				}
+			],
+			"has_explicit_shared_members": false,
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
 	},
 	"files/alpha/upload": {
@@ -68,6 +115,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
+		"description": "Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API alpha and is slightly different from [upload](#filesupload-see-docs). Do not use this to upload a file larger than 150 MB. Instead, create an upload session with [upload_session/start](#filesupload_sessionstart-see-docs).",
 		"parameters": {
 			"list": [
 				{
@@ -233,7 +281,52 @@
 					"type": "String",
 					"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
 				}
-			]
+			],
+			"example": {
+				"path": "/Homework/math/Matrices.txt",
+				"mode": "add",
+				"autorename": true,
+				"mute": false,
+				"property_groups": [
+					{
+						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+						"fields": [
+							{
+								"name": "Security Policy",
+								"value": "Confidential"
+							}
+						]
+					}
+				]
+			}
+		},
+		"returnParameters": {
+			"name": "Prime_Numbers.txt",
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"path_display": "/Homework/math/Prime_Numbers.txt",
+			"sharing_info": {
+				"read_only": true,
+				"parent_shared_folder_id": "84528192421",
+				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+			},
+			"property_groups": [
+				{
+					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+					"fields": [
+						{
+							"name": "Security Policy",
+							"value": "Confidential"
+						}
+					]
+				}
+			],
+			"has_explicit_shared_members": false,
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
 	},
 	"files/copy": {
@@ -241,6 +334,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be copied.",
 		"parameters": {
 			"list": [
 				{
@@ -263,7 +357,42 @@
 					"type": "Boolean",
 					"desc": "If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict. The default for this field is False."
 				}
-			]
+			],
+			"example": {
+				"from_path": "/Homework/math",
+				"to_path": "/Homework/algebra",
+				"allow_shared_folder": false,
+				"autorename": false
+			}
+		},
+		"returnParameters": {
+			".tag": "file",
+			"name": "Prime_Numbers.txt",
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"path_display": "/Homework/math/Prime_Numbers.txt",
+			"sharing_info": {
+				"read_only": true,
+				"parent_shared_folder_id": "84528192421",
+				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+			},
+			"property_groups": [
+				{
+					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+					"fields": [
+						{
+							"name": "Security Policy",
+							"value": "Confidential"
+						}
+					]
+				}
+			],
+			"has_explicit_shared_members": false,
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
 	},
 	"files/copy_batch": {
@@ -271,6 +400,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Copy multiple files or folders to different locations at once in the user's Dropbox. If RelocationBatchArg.allow_shared_folder is false, this route is atomic. If on entry failes, the whole transaction will abort. If RelocationBatchArg.allow_shared_folder is true, not atomicity is guaranteed, but you will be able to copy the contents of shared folders to new locations. This route will return job ID immediately and do the async copy job in background. Please use [copy_batch/check](#filescopy_batchcheck-see-docs) to check the job status.",
 		"parameters": {
 			"list": [
 				{
@@ -315,6 +445,52 @@
 					"type": "Boolean",
 					"desc": "If there's a conflict with any file, have the Dropbox server try to autorename that file to avoid the conflict. The default for this field is False."
 				}
+			],
+			"example": {
+				"entries": [
+					{
+						"from_path": "/Homework/math",
+						"to_path": "/Homework/algebra"
+					}
+				],
+				"allow_shared_folder": false,
+				"autorename": false
+			}
+		},
+		"returnParameters": {
+			".tag": "complete",
+			"entries": [
+				{
+					"metadata": {
+						".tag": "file",
+						"name": "Prime_Numbers.txt",
+						"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+						"client_modified": "2015-05-12T15:50:38Z",
+						"server_modified": "2015-05-12T15:50:38Z",
+						"rev": "a1c10ce0dd78",
+						"size": 7212,
+						"path_lower": "/homework/math/prime_numbers.txt",
+						"path_display": "/Homework/math/Prime_Numbers.txt",
+						"sharing_info": {
+							"read_only": true,
+							"parent_shared_folder_id": "84528192421",
+							"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+						},
+						"property_groups": [
+							{
+								"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+								"fields": [
+									{
+										"name": "Security Policy",
+										"value": "Confidential"
+									}
+								]
+							}
+						],
+						"has_explicit_shared_members": false,
+						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+					}
+				}
 			]
 		}
 	},
@@ -323,12 +499,52 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Returns the status of an asynchronous job for [copy_batch](#filescopy_batch-see-docs). If success, it returns list of results for each entry.",
 		"parameters": {
 			"list": [
 				{
 					"name": "async_job_id",
 					"type": "String(min_length=1)",
 					"desc": "Id of the asynchronous job. This is the value of a response returned from the method that launched the job."
+				}
+			],
+			"example": {
+				"async_job_id": "34g93hh34h04y384084"
+			}
+		},
+		"returnParameters": {
+			".tag": "complete",
+			"entries": [
+				{
+					"metadata": {
+						".tag": "file",
+						"name": "Prime_Numbers.txt",
+						"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+						"client_modified": "2015-05-12T15:50:38Z",
+						"server_modified": "2015-05-12T15:50:38Z",
+						"rev": "a1c10ce0dd78",
+						"size": 7212,
+						"path_lower": "/homework/math/prime_numbers.txt",
+						"path_display": "/Homework/math/Prime_Numbers.txt",
+						"sharing_info": {
+							"read_only": true,
+							"parent_shared_folder_id": "84528192421",
+							"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+						},
+						"property_groups": [
+							{
+								"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+								"fields": [
+									{
+										"name": "Security Policy",
+										"value": "Confidential"
+									}
+								]
+							}
+						],
+						"has_explicit_shared_members": false,
+						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+					}
 				}
 			]
 		}
@@ -338,6 +554,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Get a copy reference to a file or folder. This reference string can be used to save that file or folder to another user's Dropbox by passing it to [copy_reference/save](#filescopy_referencesave-see-docs).",
 		"parameters": {
 			"list": [
 				{
@@ -345,7 +562,43 @@
 					"type": "String(pattern=\"(/(.|[\\r\\n])*|id:.*)|(rev:[0-9a-f]{9,})|(ns:[0-9]+(/.*)?)\")",
 					"desc": "The path to the file or folder you want to get a copy reference to."
 				}
-			]
+			],
+			"example": {
+				"path": "/video.mp4"
+			}
+		},
+		"returnParameters": {
+			"metadata": {
+				".tag": "file",
+				"name": "Prime_Numbers.txt",
+				"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+				"client_modified": "2015-05-12T15:50:38Z",
+				"server_modified": "2015-05-12T15:50:38Z",
+				"rev": "a1c10ce0dd78",
+				"size": 7212,
+				"path_lower": "/homework/math/prime_numbers.txt",
+				"path_display": "/Homework/math/Prime_Numbers.txt",
+				"sharing_info": {
+					"read_only": true,
+					"parent_shared_folder_id": "84528192421",
+					"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+				},
+				"property_groups": [
+					{
+						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+						"fields": [
+							{
+								"name": "Security Policy",
+								"value": "Confidential"
+							}
+						]
+					}
+				],
+				"has_explicit_shared_members": false,
+				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+			},
+			"copy_reference": "z1X6ATl6aWtzOGq0c3g5Ng",
+			"expires": "2045-05-12T15:50:38Z"
 		}
 	},
 	"files/copy_reference/save": {
@@ -353,6 +606,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Save a copy reference returned by [copy_reference/get](#filescopy_referenceget-see-docs) to the user's Dropbox.",
 		"parameters": {
 			"list": [
 				{
@@ -365,7 +619,42 @@
 					"type": "String(pattern=\"/(.|[\\r\\n])*\")",
 					"desc": "Path in the user's Dropbox that is the destination."
 				}
-			]
+			],
+			"example": {
+				"copy_reference": "z1X6ATl6aWtzOGq0c3g5Ng",
+				"path": "/video.mp4"
+			}
+		},
+		"returnParameters": {
+			"metadata": {
+				".tag": "file",
+				"name": "Prime_Numbers.txt",
+				"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+				"client_modified": "2015-05-12T15:50:38Z",
+				"server_modified": "2015-05-12T15:50:38Z",
+				"rev": "a1c10ce0dd78",
+				"size": 7212,
+				"path_lower": "/homework/math/prime_numbers.txt",
+				"path_display": "/Homework/math/Prime_Numbers.txt",
+				"sharing_info": {
+					"read_only": true,
+					"parent_shared_folder_id": "84528192421",
+					"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+				},
+				"property_groups": [
+					{
+						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+						"fields": [
+							{
+								"name": "Security Policy",
+								"value": "Confidential"
+							}
+						]
+					}
+				],
+				"has_explicit_shared_members": false,
+				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+			}
 		}
 	},
 	"files/create_folder": {
@@ -373,6 +662,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Create a folder at a given path.",
 		"parameters": {
 			"list": [
 				{
@@ -385,6 +675,33 @@
 					"type": "Boolean",
 					"desc": "If there's a conflict, have the Dropbox server try to autorename the folder to avoid the conflict. The default for this field is False."
 				}
+			],
+			"example": {
+				"path": "/Homework/math",
+				"autorename": false
+			}
+		},
+		"returnParameters": {
+			"name": "math",
+			"id": "id:a4ayc_80_OEAAAAAAAAAXz",
+			"path_lower": "/homework/math",
+			"path_display": "/Homework/math",
+			"sharing_info": {
+				"read_only": false,
+				"parent_shared_folder_id": "84528192421",
+				"traverse_only": false,
+				"no_access": false
+			},
+			"property_groups": [
+				{
+					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+					"fields": [
+						{
+							"name": "Security Policy",
+							"value": "Confidential"
+						}
+					]
+				}
 			]
 		}
 	},
@@ -393,6 +710,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.",
 		"parameters": {
 			"list": [
 				{
@@ -400,7 +718,39 @@
 					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
 					"desc": "Path in the user's Dropbox to delete."
 				}
-			]
+			],
+			"example": {
+				"path": "/Homework/math/Prime_Numbers.txt"
+			}
+		},
+		"returnParameters": {
+			".tag": "file",
+			"name": "Prime_Numbers.txt",
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"path_display": "/Homework/math/Prime_Numbers.txt",
+			"sharing_info": {
+				"read_only": true,
+				"parent_shared_folder_id": "84528192421",
+				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+			},
+			"property_groups": [
+				{
+					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+					"fields": [
+						{
+							"name": "Security Policy",
+							"value": "Confidential"
+						}
+					]
+				}
+			],
+			"has_explicit_shared_members": false,
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
 	},
 	"files/delete_batch": {
@@ -408,6 +758,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Delete multiple files/folders at once. This route is asynchronous, which returns a job ID immediately and runs the delete batch asynchronously. Use [delete_batch/check](#filesdelete_batchcheck-see-docs) to check the job status.",
 		"parameters": {
 			"list": [
 				{
@@ -432,6 +783,50 @@
 					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
 					"desc": "Path in the user's Dropbox to delete."
 				}
+			],
+			"example": {
+				"entries": [
+					{
+						"path": "/Homework/math/Prime_Numbers.txt"
+					}
+				]
+			}
+		},
+		"returnParameters": {
+			".tag": "complete",
+			"entries": [
+				{
+					".tag": "success",
+					"metadata": {
+						".tag": "file",
+						"name": "Prime_Numbers.txt",
+						"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+						"client_modified": "2015-05-12T15:50:38Z",
+						"server_modified": "2015-05-12T15:50:38Z",
+						"rev": "a1c10ce0dd78",
+						"size": 7212,
+						"path_lower": "/homework/math/prime_numbers.txt",
+						"path_display": "/Homework/math/Prime_Numbers.txt",
+						"sharing_info": {
+							"read_only": true,
+							"parent_shared_folder_id": "84528192421",
+							"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+						},
+						"property_groups": [
+							{
+								"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+								"fields": [
+									{
+										"name": "Security Policy",
+										"value": "Confidential"
+									}
+								]
+							}
+						],
+						"has_explicit_shared_members": false,
+						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+					}
+				}
 			]
 		}
 	},
@@ -440,12 +835,53 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Returns the status of an asynchronous job for [delete_batch](#filesdelete_batch-see-docs). If success, it returns list of result for each entry.",
 		"parameters": {
 			"list": [
 				{
 					"name": "async_job_id",
 					"type": "String(min_length=1)",
 					"desc": "Id of the asynchronous job. This is the value of a response returned from the method that launched the job."
+				}
+			],
+			"example": {
+				"async_job_id": "34g93hh34h04y384084"
+			}
+		},
+		"returnParameters": {
+			".tag": "complete",
+			"entries": [
+				{
+					".tag": "success",
+					"metadata": {
+						".tag": "file",
+						"name": "Prime_Numbers.txt",
+						"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+						"client_modified": "2015-05-12T15:50:38Z",
+						"server_modified": "2015-05-12T15:50:38Z",
+						"rev": "a1c10ce0dd78",
+						"size": 7212,
+						"path_lower": "/homework/math/prime_numbers.txt",
+						"path_display": "/Homework/math/Prime_Numbers.txt",
+						"sharing_info": {
+							"read_only": true,
+							"parent_shared_folder_id": "84528192421",
+							"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+						},
+						"property_groups": [
+							{
+								"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+								"fields": [
+									{
+										"name": "Security Policy",
+										"value": "Confidential"
+									}
+								]
+							}
+						],
+						"has_explicit_shared_members": false,
+						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+					}
 				}
 			]
 		}
@@ -455,6 +891,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "DOWNLOAD",
+		"description": "Download a file from a user's Dropbox.",
 		"parameters": {
 			"list": [
 				{
@@ -467,7 +904,38 @@
 					"type": "String(min_length=9, pattern=\"[0-9a-f]+\")?",
 					"desc": "Deprecated. Please specify revision in path instead. This field is optional."
 				}
-			]
+			],
+			"example": {
+				"path": "/Homework/math/Prime_Numbers.txt"
+			}
+		},
+		"returnParameters": {
+			"name": "Prime_Numbers.txt",
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"path_display": "/Homework/math/Prime_Numbers.txt",
+			"sharing_info": {
+				"read_only": true,
+				"parent_shared_folder_id": "84528192421",
+				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+			},
+			"property_groups": [
+				{
+					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+					"fields": [
+						{
+							"name": "Security Policy",
+							"value": "Confidential"
+						}
+					]
+				}
+			],
+			"has_explicit_shared_members": false,
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
 	},
 	"files/get_metadata": {
@@ -475,6 +943,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Returns the metadata for a file or folder. Note: Metadata for the root folder is unsupported.",
 		"parameters": {
 			"list": [
 				{
@@ -497,7 +966,42 @@
 					"type": "Boolean",
 					"desc": "If true, the results will include a flag for each file indicating whether or not  that file has any explicit members. The default for this field is False."
 				}
-			]
+			],
+			"example": {
+				"path": "/Homework/math",
+				"include_media_info": false,
+				"include_deleted": false,
+				"include_has_explicit_shared_members": false
+			}
+		},
+		"returnParameters": {
+			".tag": "file",
+			"name": "Prime_Numbers.txt",
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"path_display": "/Homework/math/Prime_Numbers.txt",
+			"sharing_info": {
+				"read_only": true,
+				"parent_shared_folder_id": "84528192421",
+				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+			},
+			"property_groups": [
+				{
+					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+					"fields": [
+						{
+							"name": "Security Policy",
+							"value": "Confidential"
+						}
+					]
+				}
+			],
+			"has_explicit_shared_members": false,
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
 	},
 	"files/get_preview": {
@@ -505,6 +1009,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "DOWNLOAD",
+		"description": "Get a preview for a file. Currently previews are only generated for the files with  the following extensions: .doc, .docx, .docm, .ppt, .pps, .ppsx, .ppsm, .pptx, .pptm,  .xls, .xlsx, .xlsm, .rtf.",
 		"parameters": {
 			"list": [
 				{
@@ -517,7 +1022,38 @@
 					"type": "String(min_length=9, pattern=\"[0-9a-f]+\")?",
 					"desc": "Deprecated. Please specify revision in path instead. This field is optional."
 				}
-			]
+			],
+			"example": {
+				"path": "/word.docx"
+			}
+		},
+		"returnParameters": {
+			"name": "Prime_Numbers.txt",
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"path_display": "/Homework/math/Prime_Numbers.txt",
+			"sharing_info": {
+				"read_only": true,
+				"parent_shared_folder_id": "84528192421",
+				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+			},
+			"property_groups": [
+				{
+					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+					"fields": [
+						{
+							"name": "Security Policy",
+							"value": "Confidential"
+						}
+					]
+				}
+			],
+			"has_explicit_shared_members": false,
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
 	},
 	"files/get_temporary_link": {
@@ -525,6 +1061,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Get a temporary link to stream content of a file. This link will expire in four hours and afterwards you will get 410 Gone. Content-Type of the link is determined automatically by the file's mime type.",
 		"parameters": {
 			"list": [
 				{
@@ -532,7 +1069,41 @@
 					"type": "String(pattern=\"(/(.|[\\r\\n])*|id:.*)|(rev:[0-9a-f]{9,})|(ns:[0-9]+(/.*)?)\")",
 					"desc": "The path to the file you want a temporary link to."
 				}
-			]
+			],
+			"example": {
+				"path": "/video.mp4"
+			}
+		},
+		"returnParameters": {
+			"metadata": {
+				"name": "Prime_Numbers.txt",
+				"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+				"client_modified": "2015-05-12T15:50:38Z",
+				"server_modified": "2015-05-12T15:50:38Z",
+				"rev": "a1c10ce0dd78",
+				"size": 7212,
+				"path_lower": "/homework/math/prime_numbers.txt",
+				"path_display": "/Homework/math/Prime_Numbers.txt",
+				"sharing_info": {
+					"read_only": true,
+					"parent_shared_folder_id": "84528192421",
+					"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+				},
+				"property_groups": [
+					{
+						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+						"fields": [
+							{
+								"name": "Security Policy",
+								"value": "Confidential"
+							}
+						]
+					}
+				],
+				"has_explicit_shared_members": false,
+				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+			},
+			"link": "https://dl.dropboxusercontent.com/apitl/1/YXNkZmFzZGcyMzQyMzI0NjU2NDU2NDU2"
 		}
 	},
 	"files/get_thumbnail": {
@@ -540,6 +1111,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "DOWNLOAD",
+		"description": "Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg, png, tiff, tif, gif and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.",
 		"parameters": {
 			"list": [
 				{
@@ -641,7 +1213,40 @@
 					"type": "Void",
 					"desc": "1024 by 768."
 				}
-			]
+			],
+			"example": {
+				"path": "/image.jpg",
+				"format": "jpeg",
+				"size": "w64h64"
+			}
+		},
+		"returnParameters": {
+			"name": "Prime_Numbers.txt",
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"path_display": "/Homework/math/Prime_Numbers.txt",
+			"sharing_info": {
+				"read_only": true,
+				"parent_shared_folder_id": "84528192421",
+				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+			},
+			"property_groups": [
+				{
+					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+					"fields": [
+						{
+							"name": "Security Policy",
+							"value": "Confidential"
+						}
+					]
+				}
+			],
+			"has_explicit_shared_members": false,
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
 	},
 	"files/list_folder": {
@@ -649,6 +1254,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Starts returning the contents of a folder. If the result's ListFolderResult.has_more field is true, call [list_folder/continue](#fileslist_foldercontinue-see-docs) with the returned ListFolderResult.cursor to retrieve more entries. If you're using ListFolderArg.recursive set to true to keep a local cache of the contents of a Dropbox account, iterate through each entry in order and process them as follows to keep your local state in sync: For each FileMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it and remove all its children. For each FolderMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it but leave the children as they are. Check the new entry's FolderSharingInfo.read_only and set all its children's read-only statuses to match. For each DeletedMetadata, if your local state has something at the given path, remove it and all its children. If there's nothing at the given path, ignore this entry.",
 		"parameters": {
 			"list": [
 				{
@@ -676,7 +1282,73 @@
 					"type": "Boolean",
 					"desc": "If true, the results will include a flag for each file indicating whether or not  that file has any explicit members. The default for this field is False."
 				}
-			]
+			],
+			"example": {
+				"path": "/Homework/math",
+				"recursive": false,
+				"include_media_info": false,
+				"include_deleted": false,
+				"include_has_explicit_shared_members": false
+			}
+		},
+		"returnParameters": {
+			"entries": [
+				{
+					".tag": "file",
+					"name": "Prime_Numbers.txt",
+					"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+					"client_modified": "2015-05-12T15:50:38Z",
+					"server_modified": "2015-05-12T15:50:38Z",
+					"rev": "a1c10ce0dd78",
+					"size": 7212,
+					"path_lower": "/homework/math/prime_numbers.txt",
+					"path_display": "/Homework/math/Prime_Numbers.txt",
+					"sharing_info": {
+						"read_only": true,
+						"parent_shared_folder_id": "84528192421",
+						"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+					},
+					"property_groups": [
+						{
+							"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+							"fields": [
+								{
+									"name": "Security Policy",
+									"value": "Confidential"
+								}
+							]
+						}
+					],
+					"has_explicit_shared_members": false,
+					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+				},
+				{
+					".tag": "folder",
+					"name": "math",
+					"id": "id:a4ayc_80_OEAAAAAAAAAXz",
+					"path_lower": "/homework/math",
+					"path_display": "/Homework/math",
+					"sharing_info": {
+						"read_only": false,
+						"parent_shared_folder_id": "84528192421",
+						"traverse_only": false,
+						"no_access": false
+					},
+					"property_groups": [
+						{
+							"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+							"fields": [
+								{
+									"name": "Security Policy",
+									"value": "Confidential"
+								}
+							]
+						}
+					]
+				}
+			],
+			"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu",
+			"has_more": false
 		}
 	},
 	"files/list_folder/continue": {
@@ -684,6 +1356,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Once a cursor has been retrieved from [[list_folder](#fileslist_folder-see-docs)](#fileslist_folder-see-docs), use this to paginate through all files and retrieve updates to the folder, following the same rules as documented for list_folder.",
 		"parameters": {
 			"list": [
 				{
@@ -691,7 +1364,69 @@
 					"type": "String(min_length=1)",
 					"desc": "The cursor returned by your last call to   or  ."
 				}
-			]
+			],
+			"example": {
+				"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
+			}
+		},
+		"returnParameters": {
+			"entries": [
+				{
+					".tag": "file",
+					"name": "Prime_Numbers.txt",
+					"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+					"client_modified": "2015-05-12T15:50:38Z",
+					"server_modified": "2015-05-12T15:50:38Z",
+					"rev": "a1c10ce0dd78",
+					"size": 7212,
+					"path_lower": "/homework/math/prime_numbers.txt",
+					"path_display": "/Homework/math/Prime_Numbers.txt",
+					"sharing_info": {
+						"read_only": true,
+						"parent_shared_folder_id": "84528192421",
+						"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+					},
+					"property_groups": [
+						{
+							"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+							"fields": [
+								{
+									"name": "Security Policy",
+									"value": "Confidential"
+								}
+							]
+						}
+					],
+					"has_explicit_shared_members": false,
+					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+				},
+				{
+					".tag": "folder",
+					"name": "math",
+					"id": "id:a4ayc_80_OEAAAAAAAAAXz",
+					"path_lower": "/homework/math",
+					"path_display": "/Homework/math",
+					"sharing_info": {
+						"read_only": false,
+						"parent_shared_folder_id": "84528192421",
+						"traverse_only": false,
+						"no_access": false
+					},
+					"property_groups": [
+						{
+							"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+							"fields": [
+								{
+									"name": "Security Policy",
+									"value": "Confidential"
+								}
+							]
+						}
+					]
+				}
+			],
+			"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu",
+			"has_more": false
 		}
 	},
 	"files/list_folder/get_latest_cursor": {
@@ -699,6 +1434,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "A way to quickly get a cursor for the folder's state. Unlike [list_folder](#fileslist_folder-see-docs), [list_folder/get_latest_cursor](#fileslist_folderget_latest_cursor-see-docs) doesn't return any entries. This endpoint is for app which only needs to know about new files and modifications and doesn't need to know about files that already exist in Dropbox.",
 		"parameters": {
 			"list": [
 				{
@@ -726,7 +1462,17 @@
 					"type": "Boolean",
 					"desc": "If true, the results will include a flag for each file indicating whether or not  that file has any explicit members. The default for this field is False."
 				}
-			]
+			],
+			"example": {
+				"path": "/Homework/math",
+				"recursive": false,
+				"include_media_info": false,
+				"include_deleted": false,
+				"include_has_explicit_shared_members": false
+			}
+		},
+		"returnParameters": {
+			"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
 		}
 	},
 	"files/list_folder/longpoll": {
@@ -734,6 +1480,7 @@
 		"requiresAuthHeader": false,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "A longpoll endpoint to wait for changes on an account. In conjunction with [list_folder/continue](#fileslist_foldercontinue-see-docs), this call gives you a low-latency way to monitor an account for file changes. The connection will block until there are changes available or a timeout occurs. This endpoint is useful mostly for client-side apps. If you're looking for server-side notifications, check out our webhooks documentation.",
 		"parameters": {
 			"list": [
 				{
@@ -746,7 +1493,14 @@
 					"type": "UInt64",
 					"desc": "A timeout in seconds. The request will block for at most this length of time, plus up to 90 seconds of random jitter added to avoid the thundering herd problem. Care should be taken when using this parameter, as some network infrastructure does not support long timeouts. The default for this field is 30."
 				}
-			]
+			],
+			"example": {
+				"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu",
+				"timeout": 30
+			}
+		},
+		"returnParameters": {
+			"changes": true
 		}
 	},
 	"files/list_revisions": {
@@ -754,6 +1508,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Return revisions of a file.",
 		"parameters": {
 			"list": [
 				{
@@ -766,6 +1521,43 @@
 					"type": "UInt64",
 					"desc": "The maximum number of revision entries returned. The default for this field is 10."
 				}
+			],
+			"example": {
+				"path": "/root/word.docx",
+				"limit": 10
+			}
+		},
+		"returnParameters": {
+			"is_deleted": false,
+			"entries": [
+				{
+					"name": "Prime_Numbers.txt",
+					"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+					"client_modified": "2015-05-12T15:50:38Z",
+					"server_modified": "2015-05-12T15:50:38Z",
+					"rev": "a1c10ce0dd78",
+					"size": 7212,
+					"path_lower": "/homework/math/prime_numbers.txt",
+					"path_display": "/Homework/math/Prime_Numbers.txt",
+					"sharing_info": {
+						"read_only": true,
+						"parent_shared_folder_id": "84528192421",
+						"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+					},
+					"property_groups": [
+						{
+							"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+							"fields": [
+								{
+									"name": "Security Policy",
+									"value": "Confidential"
+								}
+							]
+						}
+					],
+					"has_explicit_shared_members": false,
+					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+				}
 			]
 		}
 	},
@@ -774,6 +1566,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be moved.",
 		"parameters": {
 			"list": [
 				{
@@ -796,7 +1589,42 @@
 					"type": "Boolean",
 					"desc": "If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict. The default for this field is False."
 				}
-			]
+			],
+			"example": {
+				"from_path": "/Homework/math",
+				"to_path": "/Homework/algebra",
+				"allow_shared_folder": false,
+				"autorename": false
+			}
+		},
+		"returnParameters": {
+			".tag": "file",
+			"name": "Prime_Numbers.txt",
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"path_display": "/Homework/math/Prime_Numbers.txt",
+			"sharing_info": {
+				"read_only": true,
+				"parent_shared_folder_id": "84528192421",
+				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+			},
+			"property_groups": [
+				{
+					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+					"fields": [
+						{
+							"name": "Security Policy",
+							"value": "Confidential"
+						}
+					]
+				}
+			],
+			"has_explicit_shared_members": false,
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
 	},
 	"files/move_batch": {
@@ -804,6 +1632,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Move multiple files or folders to different locations at once in the user's Dropbox. This route is 'all or nothing', which means if one entry fails, the whole transaction will abort. This route will return job ID immediately and do the async moving job in background. Please use [move_batch/check](#filesmove_batchcheck-see-docs) to check the job status.",
 		"parameters": {
 			"list": [
 				{
@@ -848,6 +1677,52 @@
 					"type": "Boolean",
 					"desc": "If there's a conflict with any file, have the Dropbox server try to autorename that file to avoid the conflict. The default for this field is False."
 				}
+			],
+			"example": {
+				"entries": [
+					{
+						"from_path": "/Homework/math",
+						"to_path": "/Homework/algebra"
+					}
+				],
+				"allow_shared_folder": false,
+				"autorename": false
+			}
+		},
+		"returnParameters": {
+			".tag": "complete",
+			"entries": [
+				{
+					"metadata": {
+						".tag": "file",
+						"name": "Prime_Numbers.txt",
+						"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+						"client_modified": "2015-05-12T15:50:38Z",
+						"server_modified": "2015-05-12T15:50:38Z",
+						"rev": "a1c10ce0dd78",
+						"size": 7212,
+						"path_lower": "/homework/math/prime_numbers.txt",
+						"path_display": "/Homework/math/Prime_Numbers.txt",
+						"sharing_info": {
+							"read_only": true,
+							"parent_shared_folder_id": "84528192421",
+							"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+						},
+						"property_groups": [
+							{
+								"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+								"fields": [
+									{
+										"name": "Security Policy",
+										"value": "Confidential"
+									}
+								]
+							}
+						],
+						"has_explicit_shared_members": false,
+						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+					}
+				}
 			]
 		}
 	},
@@ -856,12 +1731,52 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Returns the status of an asynchronous job for [move_batch](#filesmove_batch-see-docs). If success, it returns list of results for each entry.",
 		"parameters": {
 			"list": [
 				{
 					"name": "async_job_id",
 					"type": "String(min_length=1)",
 					"desc": "Id of the asynchronous job. This is the value of a response returned from the method that launched the job."
+				}
+			],
+			"example": {
+				"async_job_id": "34g93hh34h04y384084"
+			}
+		},
+		"returnParameters": {
+			".tag": "complete",
+			"entries": [
+				{
+					"metadata": {
+						".tag": "file",
+						"name": "Prime_Numbers.txt",
+						"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+						"client_modified": "2015-05-12T15:50:38Z",
+						"server_modified": "2015-05-12T15:50:38Z",
+						"rev": "a1c10ce0dd78",
+						"size": 7212,
+						"path_lower": "/homework/math/prime_numbers.txt",
+						"path_display": "/Homework/math/Prime_Numbers.txt",
+						"sharing_info": {
+							"read_only": true,
+							"parent_shared_folder_id": "84528192421",
+							"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+						},
+						"property_groups": [
+							{
+								"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+								"fields": [
+									{
+										"name": "Security Policy",
+										"value": "Confidential"
+									}
+								]
+							}
+						],
+						"has_explicit_shared_members": false,
+						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+					}
 				}
 			]
 		}
@@ -871,6 +1786,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Permanently delete the file or folder at a given path (see https://www.dropbox.com/en/help/40). Note: This endpoint is only available for Dropbox Business apps.",
 		"parameters": {
 			"list": [
 				{
@@ -878,14 +1794,19 @@
 					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
 					"desc": "Path in the user's Dropbox to delete."
 				}
-			]
-		}
+			],
+			"example": {
+				"path": "/Homework/math/Prime_Numbers.txt"
+			}
+		},
+		"returnParameters": null
 	},
 	"files/properties/add": {
 		"uri": "https://api.dropboxapi.com/2/files/properties/add",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Add custom properties to a file using a filled property template. See properties/template/add to create new property templates.",
 		"parameters": {
 			"list": [
 				{
@@ -994,14 +1915,30 @@
 					"type": "String",
 					"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
 				}
-			]
-		}
+			],
+			"example": {
+				"path": "/my_awesome/word.docx",
+				"property_groups": [
+					{
+						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+						"fields": [
+							{
+								"name": "Security Policy",
+								"value": "Confidential"
+							}
+						]
+					}
+				]
+			}
+		},
+		"returnParameters": null
 	},
 	"files/properties/overwrite": {
 		"uri": "https://api.dropboxapi.com/2/files/properties/overwrite",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Overwrite custom properties from a specified template associated with a file.",
 		"parameters": {
 			"list": [
 				{
@@ -1110,14 +2047,30 @@
 					"type": "String",
 					"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
 				}
-			]
-		}
+			],
+			"example": {
+				"path": "/my_awesome/word.docx",
+				"property_groups": [
+					{
+						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+						"fields": [
+							{
+								"name": "Security Policy",
+								"value": "Confidential"
+							}
+						]
+					}
+				]
+			}
+		},
+		"returnParameters": null
 	},
 	"files/properties/remove": {
 		"uri": "https://api.dropboxapi.com/2/files/properties/remove",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Remove all custom properties from a specified template associated with a file. To remove specific property key value pairs, see [properties/update](#filespropertiesupdate-see-docs). To update a property template, see properties/template/update. Property templates can't be removed once created.",
 		"parameters": {
 			"list": [
 				{
@@ -1130,20 +2083,44 @@
 					"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"))",
 					"desc": "A list of identifiers for a property template created by route properties/template/add."
 				}
-			]
-		}
+			],
+			"example": {
+				"path": "/my_awesome/word.docx",
+				"property_template_ids": [
+					"ptid:1a5n2i6d3OYEAAAAAAAAAYa"
+				]
+			}
+		},
+		"returnParameters": null
 	},
 	"files/properties/template/get": {
 		"uri": "https://api.dropboxapi.com/2/files/properties/template/get",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Get the schema for a specified template.",
 		"parameters": {
 			"list": [
 				{
 					"name": "template_id",
 					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
 					"desc": "An identifier for property template added by route properties/template/add."
+				}
+			],
+			"example": {
+				"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa"
+			}
+		},
+		"returnParameters": {
+			"name": "Security",
+			"description": "These properties describe how confidential this file is.",
+			"fields": [
+				{
+					"name": "Security Policy",
+					"description": "This is the security policy of the file or folder described.\nPolicies can be Confidential, Public or Internal.",
+					"type": {
+						".tag": "string"
+					}
 				}
 			]
 		}
@@ -1153,8 +2130,15 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Get the property template identifiers for a user. To get the schema of each template use [properties/template/get](#filespropertiestemplateget-see-docs).",
 		"parameters": {
-			"list": []
+			"list": [],
+			"example": null
+		},
+		"returnParameters": {
+			"template_ids": [
+				"ptid:1a5n2i6d3OYEAAAAAAAAAYa"
+			]
 		}
 	},
 	"files/properties/update": {
@@ -1162,6 +2146,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Add, update or remove custom properties from a specified template associated with a file. Fields that already exist and not described in the request will not be modified.",
 		"parameters": {
 			"list": [
 				{
@@ -1280,14 +2265,31 @@
 					"type": "List of (String)?",
 					"desc": "List of property field names to remove from property group if the field exists. This field is optional."
 				}
-			]
-		}
+			],
+			"example": {
+				"path": "/my_awesome/word.docx",
+				"update_property_groups": [
+					{
+						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+						"add_or_update_fields": [
+							{
+								"name": "Security Policy",
+								"value": "Confidential"
+							}
+						],
+						"remove_fields": []
+					}
+				]
+			}
+		},
+		"returnParameters": null
 	},
 	"files/restore": {
 		"uri": "https://api.dropboxapi.com/2/files/restore",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Restore a file to a specific revision.",
 		"parameters": {
 			"list": [
 				{
@@ -1300,7 +2302,39 @@
 					"type": "String(min_length=9, pattern=\"[0-9a-f]+\")",
 					"desc": "The revision to restore for the file."
 				}
-			]
+			],
+			"example": {
+				"path": "/root/word.docx",
+				"rev": "a1c10ce0dd78"
+			}
+		},
+		"returnParameters": {
+			"name": "Prime_Numbers.txt",
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"path_display": "/Homework/math/Prime_Numbers.txt",
+			"sharing_info": {
+				"read_only": true,
+				"parent_shared_folder_id": "84528192421",
+				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+			},
+			"property_groups": [
+				{
+					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+					"fields": [
+						{
+							"name": "Security Policy",
+							"value": "Confidential"
+						}
+					]
+				}
+			],
+			"has_explicit_shared_members": false,
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
 	},
 	"files/save_url": {
@@ -1308,6 +2342,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Save a specified URL into a file in user's Dropbox. If the given path already exists, the file will be renamed to avoid the conflict (e.g. myfile (1).txt).",
 		"parameters": {
 			"list": [
 				{
@@ -1320,14 +2355,20 @@
 					"type": "String",
 					"desc": "The URL to be saved."
 				}
-			]
-		}
+			],
+			"example": {
+				"path": "/a.txt",
+				"url": "http://example.com/a.txt"
+			}
+		},
+		"returnParameters": null
 	},
 	"files/save_url/check_job_status": {
 		"uri": "https://api.dropboxapi.com/2/files/save_url/check_job_status",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Check the status of a [save_url](#filessave_url-see-docs) job.",
 		"parameters": {
 			"list": [
 				{
@@ -1335,7 +2376,13 @@
 					"type": "String(min_length=1)",
 					"desc": "Id of the asynchronous job. This is the value of a response returned from the method that launched the job."
 				}
-			]
+			],
+			"example": {
+				"async_job_id": "34g93hh34h04y384084"
+			}
+		},
+		"returnParameters": {
+			".tag": "in_progress"
 		}
 	},
 	"files/search": {
@@ -1343,6 +2390,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Searches for files and folders. Note: Recent changes may not immediately be reflected in search results due to a short delay in indexing.",
 		"parameters": {
 			"list": [
 				{
@@ -1407,7 +2455,54 @@
 					"type": "Void",
 					"desc": "Search for deleted file and folder names."
 				}
-			]
+			],
+			"example": {
+				"path": "",
+				"query": "prime numbers",
+				"start": 0,
+				"max_results": 100,
+				"mode": "filename"
+			}
+		},
+		"returnParameters": {
+			"matches": [
+				{
+					"match_type": {
+						".tag": "content"
+					},
+					"metadata": {
+						".tag": "file",
+						"name": "Prime_Numbers.txt",
+						"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+						"client_modified": "2015-05-12T15:50:38Z",
+						"server_modified": "2015-05-12T15:50:38Z",
+						"rev": "a1c10ce0dd78",
+						"size": 7212,
+						"path_lower": "/homework/math/prime_numbers.txt",
+						"path_display": "/Homework/math/Prime_Numbers.txt",
+						"sharing_info": {
+							"read_only": true,
+							"parent_shared_folder_id": "84528192421",
+							"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+						},
+						"property_groups": [
+							{
+								"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+								"fields": [
+									{
+										"name": "Security Policy",
+										"value": "Confidential"
+									}
+								]
+							}
+						],
+						"has_explicit_shared_members": false,
+						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+					}
+				}
+			],
+			"more": false,
+			"start": 1
 		}
 	},
 	"files/upload": {
@@ -1415,6 +2510,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
+		"description": "Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB. Instead, create an upload session with [upload_session/start](#filesupload_sessionstart-see-docs).",
 		"parameters": {
 			"list": [
 				{
@@ -1479,7 +2575,41 @@
 					"type": "Boolean",
 					"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If true, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
 				}
-			]
+			],
+			"example": {
+				"path": "/Homework/math/Matrices.txt",
+				"mode": "add",
+				"autorename": true,
+				"mute": false
+			}
+		},
+		"returnParameters": {
+			"name": "Prime_Numbers.txt",
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"path_display": "/Homework/math/Prime_Numbers.txt",
+			"sharing_info": {
+				"read_only": true,
+				"parent_shared_folder_id": "84528192421",
+				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+			},
+			"property_groups": [
+				{
+					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+					"fields": [
+						{
+							"name": "Security Policy",
+							"value": "Confidential"
+						}
+					]
+				}
+			],
+			"has_explicit_shared_members": false,
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
 	},
 	"files/upload_session/append": {
@@ -1487,6 +2617,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
+		"description": "Append more data to an upload session. A single request should not upload more than 150 MB of file contents.",
 		"parameters": {
 			"list": [
 				{
@@ -1499,14 +2630,20 @@
 					"type": "UInt64",
 					"desc": "The amount of data that has been uploaded so far. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
 				}
-			]
-		}
+			],
+			"example": {
+				"session_id": "1234faaf0678bcde",
+				"offset": 0
+			}
+		},
+		"returnParameters": null
 	},
 	"files/upload_session/append_v2": {
 		"uri": "https://content.dropboxapi.com/2/files/upload_session/append_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
+		"description": "Append more data to an upload session. When the parameter close is set, this call will close the session. A single request should not upload more than 150 MB of file contents.",
 		"parameters": {
 			"list": [
 				{
@@ -1546,14 +2683,23 @@
 					"type": "Boolean",
 					"desc": "If true, the current session will be closed, at which point you won't be able to call   anymore with the current session. The default for this field is False."
 				}
-			]
-		}
+			],
+			"example": {
+				"cursor": {
+					"session_id": "1234faaf0678bcde",
+					"offset": 0
+				},
+				"close": false
+			}
+		},
+		"returnParameters": null
 	},
 	"files/upload_session/finish": {
 		"uri": "https://content.dropboxapi.com/2/files/upload_session/finish",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
+		"description": "Finish an upload session and save the uploaded data to the given file path. A single request should not upload more than 150 MB of file contents.",
 		"parameters": {
 			"list": [
 				{
@@ -1744,7 +2890,47 @@
 					"type": "Boolean",
 					"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If true, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
 				}
-			]
+			],
+			"example": {
+				"cursor": {
+					"session_id": "1234faaf0678bcde",
+					"offset": 0
+				},
+				"commit": {
+					"path": "/Homework/math/Matrices.txt",
+					"mode": "add",
+					"autorename": true,
+					"mute": false
+				}
+			}
+		},
+		"returnParameters": {
+			"name": "Prime_Numbers.txt",
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"path_display": "/Homework/math/Prime_Numbers.txt",
+			"sharing_info": {
+				"read_only": true,
+				"parent_shared_folder_id": "84528192421",
+				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+			},
+			"property_groups": [
+				{
+					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+					"fields": [
+						{
+							"name": "Security Policy",
+							"value": "Confidential"
+						}
+					]
+				}
+			],
+			"has_explicit_shared_members": false,
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
 	},
 	"files/upload_session/finish_batch": {
@@ -1752,6 +2938,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "This route helps you commit many files at once into a user's Dropbox. Use [[upload_session/start](#filesupload_sessionstart-see-docs)](#filesupload_sessionstart-see-docs) and [[upload_session/append_v2](#filesupload_sessionappend_v2-see-docs)](#filesupload_sessionappend_v2-see-docs) to upload file contents. We recommend uploading many files in parallel to increase throughput. Once the file contents have been uploaded, rather than calling [upload_session/finish](#filesupload_sessionfinish-see-docs), use this route to finish all your upload sessions in a single request. UploadSessionStartArg.close or UploadSessionAppendArg.close needs to be true for the last upload_session/start or upload_session/append_v2 call. This route will return a job_id immediately and do the async commit job in background. Use [upload_session/finish_batch/check](#filesupload_sessionfinish_batchcheck-see-docs) to check the job status. For the same account, this route should be executed serially. That means you should not start the next job before current job finishes. We allow up to 1000 entries in a single request.",
 		"parameters": {
 			"list": [
 				{
@@ -2244,6 +3431,58 @@
 					"type": "Boolean",
 					"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If true, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
 				}
+			],
+			"example": {
+				"entries": [
+					{
+						"cursor": {
+							"session_id": "1234faaf0678bcde",
+							"offset": 0
+						},
+						"commit": {
+							"path": "/Homework/math/Matrices.txt",
+							"mode": {
+								".tag": "add"
+							},
+							"autorename": true,
+							"mute": false
+						}
+					}
+				]
+			}
+		},
+		"returnParameters": {
+			".tag": "complete",
+			"entries": [
+				{
+					".tag": "success",
+					"name": "Prime_Numbers.txt",
+					"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+					"client_modified": "2015-05-12T15:50:38Z",
+					"server_modified": "2015-05-12T15:50:38Z",
+					"rev": "a1c10ce0dd78",
+					"size": 7212,
+					"path_lower": "/homework/math/prime_numbers.txt",
+					"path_display": "/Homework/math/Prime_Numbers.txt",
+					"sharing_info": {
+						"read_only": true,
+						"parent_shared_folder_id": "84528192421",
+						"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+					},
+					"property_groups": [
+						{
+							"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+							"fields": [
+								{
+									"name": "Security Policy",
+									"value": "Confidential"
+								}
+							]
+						}
+					],
+					"has_explicit_shared_members": false,
+					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+				}
 			]
 		}
 	},
@@ -2252,12 +3491,50 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Returns the status of an asynchronous job for [upload_session/finish_batch](#filesupload_sessionfinish_batch-see-docs). If success, it returns list of result for each entry.",
 		"parameters": {
 			"list": [
 				{
 					"name": "async_job_id",
 					"type": "String(min_length=1)",
 					"desc": "Id of the asynchronous job. This is the value of a response returned from the method that launched the job."
+				}
+			],
+			"example": {
+				"async_job_id": "34g93hh34h04y384084"
+			}
+		},
+		"returnParameters": {
+			".tag": "complete",
+			"entries": [
+				{
+					".tag": "success",
+					"name": "Prime_Numbers.txt",
+					"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+					"client_modified": "2015-05-12T15:50:38Z",
+					"server_modified": "2015-05-12T15:50:38Z",
+					"rev": "a1c10ce0dd78",
+					"size": 7212,
+					"path_lower": "/homework/math/prime_numbers.txt",
+					"path_display": "/Homework/math/Prime_Numbers.txt",
+					"sharing_info": {
+						"read_only": true,
+						"parent_shared_folder_id": "84528192421",
+						"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+					},
+					"property_groups": [
+						{
+							"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+							"fields": [
+								{
+									"name": "Security Policy",
+									"value": "Confidential"
+								}
+							]
+						}
+					],
+					"has_explicit_shared_members": false,
+					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 				}
 			]
 		}
@@ -2267,6 +3544,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
+		"description": "Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use [upload_session/append_v2](#filesupload_sessionappend_v2-see-docs) to add more data and [upload_session/finish](#filesupload_sessionfinish-see-docs) to save all the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.",
 		"parameters": {
 			"list": [
 				{
@@ -2274,7 +3552,13 @@
 					"type": "Boolean",
 					"desc": "If true, the current session will be closed, at which point you won't be able to call   anymore with the current session. The default for this field is False."
 				}
-			]
+			],
+			"example": {
+				"close": false
+			}
+		},
+		"returnParameters": {
+			"session_id": "1234faaf0678bcde"
 		}
 	},
 	"paper/docs/archive": {
@@ -2282,6 +3566,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Marks the given Paper doc as deleted. This operation is non-destructive and the doc can be revived by the owner.  Note: This action can be performed only by the doc owner.",
 		"parameters": {
 			"list": [
 				{
@@ -2289,14 +3574,19 @@
 					"type": "String",
 					"desc": ""
 				}
-			]
-		}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q"
+			}
+		},
+		"returnParameters": null
 	},
 	"paper/docs/download": {
 		"uri": "https://api.dropboxapi.com/2/paper/docs/download",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "DOWNLOAD",
+		"description": "Exports and downloads Paper doc either as HTML or markdown.",
 		"parameters": {
 			"list": [
 				{
@@ -2336,7 +3626,17 @@
 					"type": "Void",
 					"desc": "The markdown export format."
 				}
-			]
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+				"export_format": "markdown"
+			}
+		},
+		"returnParameters": {
+			"owner": "james@example.com",
+			"title": "Week one retention",
+			"revision": 456736745,
+			"mime_type": "text/x-markdown"
 		}
 	},
 	"paper/docs/folder_users/list": {
@@ -2344,6 +3644,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Lists the users who are explicitly invited to the Paper folder in which the Paper doc is contained. For private folders all users (including owner) shared on the folder are listed and for team folders all non-team users shared on the folder are returned.",
 		"parameters": {
 			"list": [
 				{
@@ -2356,7 +3657,31 @@
 					"type": "Int32",
 					"desc": "Size limit per batch. The maximum number of users that can be retrieved per batch is 1000. Higher value results in invalid arguments error. The default for this field is 1000."
 				}
-			]
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+				"limit": 100
+			}
+		},
+		"returnParameters": {
+			"invitees": [
+				{
+					".tag": "email",
+					"email": "jessica@example.com"
+				}
+			],
+			"users": [
+				{
+					"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+					"same_team": true,
+					"team_member_id": "dbmid:abcd1234"
+				}
+			],
+			"cursor": {
+				"value": "zHZvTPBnXilGgm1AmDgVyZ10zf7qb0qznd5sAVQbbIvoteSnWLjUdLU7aR25hb",
+				"expiration": "2016-08-07T14:56:15Z"
+			},
+			"has_more": false
 		}
 	},
 	"paper/docs/folder_users/list/continue": {
@@ -2364,6 +3689,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Once a cursor has been retrieved from [docs/folder_users/list](#paperdocsfolder_userslist-see-docs), use this to paginate through all users on the Paper folder.",
 		"parameters": {
 			"list": [
 				{
@@ -2376,7 +3702,31 @@
 					"type": "String",
 					"desc": "The cursor obtained from   or  . Allows for pagination."
 				}
-			]
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+				"cursor": "U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd"
+			}
+		},
+		"returnParameters": {
+			"invitees": [
+				{
+					".tag": "email",
+					"email": "jessica@example.com"
+				}
+			],
+			"users": [
+				{
+					"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+					"same_team": true,
+					"team_member_id": "dbmid:abcd1234"
+				}
+			],
+			"cursor": {
+				"value": "zHZvTPBnXilGgm1AmDgVyZ10zf7qb0qznd5sAVQbbIvoteSnWLjUdLU7aR25hb",
+				"expiration": "2016-08-07T14:56:15Z"
+			},
+			"has_more": false
 		}
 	},
 	"paper/docs/get_folder_info": {
@@ -2384,12 +3734,27 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Retrieves folder information for the given Paper doc. This includes:   - folder sharing policy; permissions for subfolders are set by the top-level folder.   - full 'filepath', i.e. the list of folders (both folderId and folderName) from the root folder to the folder directly containing the Paper doc.  Note: If the Paper doc is not in any folder (aka unfiled) the response will be empty.",
 		"parameters": {
 			"list": [
 				{
 					"name": "doc_id",
 					"type": "String",
 					"desc": ""
+				}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q"
+			}
+		},
+		"returnParameters": {
+			"folder_sharing_policy_type": {
+				".tag": "team"
+			},
+			"folders": [
+				{
+					"id": "e.gGYT6HSafpMej9bUv306oGm60vrHiCHgEFnzziioPGCvHf",
+					"name": "Design docs"
 				}
 			]
 		}
@@ -2399,6 +3764,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Return the list of all Paper docs according to the argument specifications. To iterate over through the full pagination, pass the cursor to [docs/list/continue](#paperdocslistcontinue-see-docs).",
 		"parameters": {
 			"list": [
 				{
@@ -2512,7 +3878,25 @@
 					"type": "Int32",
 					"desc": "Size limit per batch. The maximum number of docs that can be retrieved per batch is 1000. Higher value results in invalid arguments error. The default for this field is 1000."
 				}
-			]
+			],
+			"example": {
+				"filter_by": "docs_created",
+				"sort_by": "modified",
+				"sort_order": "descending",
+				"limit": 100
+			}
+		},
+		"returnParameters": {
+			"doc_ids": [
+				"zO1E7coc54sE8IuMdUoxz",
+				"mm1AmDgVyZ10zf7qb0qzn",
+				"dByYHZvTPBnXilGgyc5mm"
+			],
+			"cursor": {
+				"value": "zHZvTPBnXilGgm1AmDgVyZ10zf7qb0qznd5sAVQbbIvoteSnWLjUdLU7aR25hb",
+				"expiration": "2016-08-07T14:56:15Z"
+			},
+			"has_more": true
 		}
 	},
 	"paper/docs/list/continue": {
@@ -2520,6 +3904,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Once a cursor has been retrieved from [docs/list](#paperdocslist-see-docs), use this to paginate through all Paper doc.",
 		"parameters": {
 			"list": [
 				{
@@ -2527,7 +3912,22 @@
 					"type": "String",
 					"desc": "The cursor obtained from   or  . Allows for pagination."
 				}
-			]
+			],
+			"example": {
+				"cursor": "U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd"
+			}
+		},
+		"returnParameters": {
+			"doc_ids": [
+				"zO1E7coc54sE8IuMdUoxz",
+				"mm1AmDgVyZ10zf7qb0qzn",
+				"dByYHZvTPBnXilGgyc5mm"
+			],
+			"cursor": {
+				"value": "zHZvTPBnXilGgm1AmDgVyZ10zf7qb0qznd5sAVQbbIvoteSnWLjUdLU7aR25hb",
+				"expiration": "2016-08-07T14:56:15Z"
+			},
+			"has_more": true
 		}
 	},
 	"paper/docs/permanently_delete": {
@@ -2535,6 +3935,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Permanently deletes the given Paper doc. This operation is final as the doc cannot be recovered.  Note: This action can be performed only by the doc owner.",
 		"parameters": {
 			"list": [
 				{
@@ -2542,14 +3943,19 @@
 					"type": "String",
 					"desc": ""
 				}
-			]
-		}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q"
+			}
+		},
+		"returnParameters": null
 	},
 	"paper/docs/sharing_policy/get": {
 		"uri": "https://api.dropboxapi.com/2/paper/docs/sharing_policy/get",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Gets the default sharing policy for the given Paper doc.",
 		"parameters": {
 			"list": [
 				{
@@ -2557,7 +3963,18 @@
 					"type": "String",
 					"desc": ""
 				}
-			]
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q"
+			}
+		},
+		"returnParameters": {
+			"public_sharing_policy": {
+				".tag": "people_with_link_can_edit"
+			},
+			"team_sharing_policy": {
+				".tag": "people_with_link_can_edit"
+			}
 		}
 	},
 	"paper/docs/sharing_policy/set": {
@@ -2565,6 +3982,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Sets the default sharing policy for the given Paper doc. The default 'team_sharing_policy' can be changed only by teams, omit this field for personal accounts.  Note: 'public_sharing_policy' cannot be set to the value 'disabled' because this setting can be changed only via the team admin console.",
 		"parameters": {
 			"list": [
 				{
@@ -2817,14 +4235,23 @@
 					"type": "Void",
 					"desc": "Users must be explicitly invited to this doc."
 				}
-			]
-		}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+				"sharing_policy": {
+					"public_sharing_policy": "people_with_link_can_edit",
+					"team_sharing_policy": "people_with_link_can_edit"
+				}
+			}
+		},
+		"returnParameters": null
 	},
 	"paper/docs/users/add": {
 		"uri": "https://api.dropboxapi.com/2/paper/docs/users/add",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Allows an owner or editor to add users to a Paper doc or change their permissions using their email or Dropbox account id.  Note: The Doc owner's permissions cannot be changed.",
 		"parameters": {
 			"list": [
 				{
@@ -3012,14 +4439,32 @@
 					"type": "Boolean",
 					"desc": "Clients should set this to true if no email shall be sent to added users. The default for this field is False."
 				}
-			]
-		}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+				"members": [
+					{
+						"member": {
+							".tag": "email",
+							"email": "justin@example.com"
+						},
+						"permission_level": {
+							".tag": "view_and_comment"
+						}
+					}
+				],
+				"custom_message": "Welcome to Paper.",
+				"quiet": false
+			}
+		},
+		"returnParameters": null
 	},
 	"paper/docs/users/list": {
 		"uri": "https://api.dropboxapi.com/2/paper/docs/users/list",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Lists all users who visited the Paper doc or users with explicit access. This call excludes users who have been removed. The list is sorted by the date of the visit or the share date. The list will include both users, the explicitly shared ones as well as those who came in using the Paper url link.",
 		"parameters": {
 			"list": [
 				{
@@ -3064,7 +4509,47 @@
 					"type": "Void",
 					"desc": "All uses who are shared on the Paper doc. This includes all users who have visited the Paper doc as well as those who have not."
 				}
-			]
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+				"limit": 100,
+				"filter_by": "shared"
+			}
+		},
+		"returnParameters": {
+			"invitees": [
+				{
+					"invitee": {
+						".tag": "email",
+						"email": "jessica@example.com"
+					},
+					"permission_level": {
+						".tag": "edit"
+					}
+				}
+			],
+			"users": [
+				{
+					"user": {
+						"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+						"same_team": true,
+						"team_member_id": "dbmid:abcd1234"
+					},
+					"permission_level": {
+						".tag": "view_and_comment"
+					}
+				}
+			],
+			"doc_owner": {
+				"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+				"same_team": true,
+				"team_member_id": "dbmid:abcd1234"
+			},
+			"cursor": {
+				"value": "zHZvTPBnXilGgm1AmDgVyZ10zf7qb0qznd5sAVQbbIvoteSnWLjUdLU7aR25hb",
+				"expiration": "2016-08-07T14:56:15Z"
+			},
+			"has_more": false
 		}
 	},
 	"paper/docs/users/list/continue": {
@@ -3072,6 +4557,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Once a cursor has been retrieved from [docs/users/list](#paperdocsuserslist-see-docs), use this to paginate through all users on the Paper doc.",
 		"parameters": {
 			"list": [
 				{
@@ -3084,7 +4570,46 @@
 					"type": "String",
 					"desc": "The cursor obtained from   or  . Allows for pagination."
 				}
-			]
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+				"cursor": "U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd"
+			}
+		},
+		"returnParameters": {
+			"invitees": [
+				{
+					"invitee": {
+						".tag": "email",
+						"email": "jessica@example.com"
+					},
+					"permission_level": {
+						".tag": "edit"
+					}
+				}
+			],
+			"users": [
+				{
+					"user": {
+						"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+						"same_team": true,
+						"team_member_id": "dbmid:abcd1234"
+					},
+					"permission_level": {
+						".tag": "view_and_comment"
+					}
+				}
+			],
+			"doc_owner": {
+				"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+				"same_team": true,
+				"team_member_id": "dbmid:abcd1234"
+			},
+			"cursor": {
+				"value": "zHZvTPBnXilGgm1AmDgVyZ10zf7qb0qznd5sAVQbbIvoteSnWLjUdLU7aR25hb",
+				"expiration": "2016-08-07T14:56:15Z"
+			},
+			"has_more": false
 		}
 	},
 	"paper/docs/users/remove": {
@@ -3092,6 +4617,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Allows an owner or editor to remove users from a Paper doc using their email or Dropbox account id.  Note: Doc owner cannot be removed.",
 		"parameters": {
 			"list": [
 				{
@@ -3131,14 +4657,23 @@
 					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
 					"desc": "E-mail address of member."
 				}
-			]
-		}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+				"member": {
+					".tag": "email",
+					"email": "justin@example.com"
+				}
+			}
+		},
+		"returnParameters": null
 	},
 	"sharing/add_file_member": {
 		"uri": "https://api.dropboxapi.com/2/sharing/add_file_member",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Adds specified members to a file.",
 		"parameters": {
 			"list": [
 				{
@@ -3245,14 +4780,29 @@
 					"type": "Boolean",
 					"desc": "If the custom message should be added as a comment on the file. The default for this field is False."
 				}
-			]
-		}
+			],
+			"example": {
+				"file": "id:3kmLmQFnf1AAAAAAAAAAAw",
+				"members": [
+					{
+						".tag": "email",
+						"email": "justin@example.com"
+					}
+				],
+				"custom_message": "This is a custom message about ACME.doc",
+				"quiet": false,
+				"access_level": "viewer",
+				"add_message_as_comment": false
+			}
+		},
+		"returnParameters": null
 	},
 	"sharing/add_folder_member": {
 		"uri": "https://api.dropboxapi.com/2/sharing/add_folder_member",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Allows an owner or editor (if the ACL update policy allows) of a shared folder to add another member. For the new member to get access to all the functionality for this folder, you will need to call [mount_folder](#sharingmount_folder-see-docs) on their behalf. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -3490,14 +5040,41 @@
 					"type": "String(min_length=1)?",
 					"desc": "Optional message to display to added members in their invitation. This field is optional."
 				}
-			]
-		}
+			],
+			"example": {
+				"shared_folder_id": "84528192421",
+				"members": [
+					{
+						"member": {
+							".tag": "email",
+							"email": "justin@example.com"
+						},
+						"access_level": {
+							".tag": "editor"
+						}
+					},
+					{
+						"member": {
+							".tag": "dropbox_id",
+							"dropbox_id": "dbid:AAEufNrMPSPe0dMQijRP0N_aZtBJRm26W4Q"
+						},
+						"access_level": {
+							".tag": "viewer"
+						}
+					}
+				],
+				"quiet": false,
+				"custom_message": "Documentation for launch day"
+			}
+		},
+		"returnParameters": null
 	},
 	"sharing/change_file_member_access": {
 		"uri": "https://api.dropboxapi.com/2/sharing/change_file_member_access",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Identical to update_file_member but with less information returned.",
 		"parameters": {
 			"list": [
 				{
@@ -3589,14 +5166,24 @@
 					"type": "Void",
 					"desc": "The collaborator can only view the shared folder and does not have any access to comments."
 				}
-			]
-		}
+			],
+			"example": {
+				"file": "id:3kmLmQFnf1AAAAAAAAAAAw",
+				"member": {
+					".tag": "email",
+					"email": "justin@example.com"
+				},
+				"access_level": "viewer"
+			}
+		},
+		"returnParameters": null
 	},
 	"sharing/check_job_status": {
 		"uri": "https://api.dropboxapi.com/2/sharing/check_job_status",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Returns the status of an asynchronous job. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -3604,7 +5191,13 @@
 					"type": "String(min_length=1)",
 					"desc": "Id of the asynchronous job. This is the value of a response returned from the method that launched the job."
 				}
-			]
+			],
+			"example": {
+				"async_job_id": "34g93hh34h04y384084"
+			}
+		},
+		"returnParameters": {
+			".tag": "in_progress"
 		}
 	},
 	"sharing/check_remove_member_job_status": {
@@ -3612,6 +5205,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Returns the status of an asynchronous job for sharing a folder. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -3619,7 +5213,13 @@
 					"type": "String(min_length=1)",
 					"desc": "Id of the asynchronous job. This is the value of a response returned from the method that launched the job."
 				}
-			]
+			],
+			"example": {
+				"async_job_id": "34g93hh34h04y384084"
+			}
+		},
+		"returnParameters": {
+			".tag": "complete"
 		}
 	},
 	"sharing/check_share_job_status": {
@@ -3627,6 +5227,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Returns the status of an asynchronous job for sharing a folder. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -3634,7 +5235,64 @@
 					"type": "String(min_length=1)",
 					"desc": "Id of the asynchronous job. This is the value of a response returned from the method that launched the job."
 				}
-			]
+			],
+			"example": {
+				"async_job_id": "34g93hh34h04y384084"
+			}
+		},
+		"returnParameters": {
+			".tag": "complete",
+			"access_type": {
+				".tag": "owner"
+			},
+			"is_inside_team_folder": false,
+			"is_team_folder": false,
+			"name": "dir",
+			"policy": {
+				"acl_update_policy": {
+					".tag": "owner"
+				},
+				"shared_link_policy": {
+					".tag": "anyone"
+				},
+				"member_policy": {
+					".tag": "anyone"
+				},
+				"resolved_member_policy": {
+					".tag": "team"
+				}
+			},
+			"preview_url": "https://www.dropbox.com/scl/fo/fir9vjelf",
+			"shared_folder_id": "84528192421",
+			"time_invited": "2016-01-20T00:00:00Z",
+			"path_lower": "/dir",
+			"link_metadata": {
+				"audience_options": [
+					{
+						".tag": "public"
+					},
+					{
+						".tag": "team"
+					},
+					{
+						".tag": "members"
+					}
+				],
+				"current_audience": {
+					".tag": "public"
+				},
+				"link_permissions": [
+					{
+						"action": {
+							".tag": "change_audience"
+						},
+						"allow": true
+					}
+				],
+				"password_protected": false,
+				"url": ""
+			},
+			"permissions": []
 		}
 	},
 	"sharing/create_shared_link": {
@@ -3642,6 +5300,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Create a shared link. If a shared link already exists for the given path, that link is returned. Note that in the returned PathLinkMetadata, the PathLinkMetadata.url field is the shortened URL if CreateSharedLinkArg.short_url argument is set to true. Previously, it was technically possible to break a shared link by moving or renaming the corresponding file or folder. In the future, this will no longer be the case, so your app shouldn't rely on this behavior. Instead, if your app needs to revoke a shared link, use [revoke_shared_link](#sharingrevoke_shared_link-see-docs).",
 		"parameters": {
 			"list": [
 				{
@@ -3686,7 +5345,18 @@
 					"type": "Void",
 					"desc": "Assume pending uploads are folders."
 				}
-			]
+			],
+			"example": {
+				"path": "/Homework/Math/Prime_Numbers.txt",
+				"short_url": false
+			}
+		},
+		"returnParameters": {
+			"url": "https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0",
+			"visibility": {
+				".tag": "public"
+			},
+			"path": "/Homework/Math/Prime_Numbers.txt"
 		}
 	},
 	"sharing/create_shared_link_with_settings": {
@@ -3694,6 +5364,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Create a shared link with custom settings. If no settings are given then the default visibility is RequestedVisibility.public (The resolved visibility, though, may depend on other aspects such as team and shared folder settings).",
 		"parameters": {
 			"list": [
 				{
@@ -3837,7 +5508,41 @@
 					"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")?",
 					"desc": "Expiration time of the shared link. By default the link won't expire. This field is optional."
 				}
-			]
+			],
+			"example": {
+				"path": "/Prime_Numbers.txt",
+				"settings": {
+					"requested_visibility": "public"
+				}
+			}
+		},
+		"returnParameters": {
+			".tag": "file",
+			"url": "https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0",
+			"name": "Prime_Numbers.txt",
+			"link_permissions": {
+				"can_revoke": false,
+				"resolved_visibility": {
+					".tag": "public"
+				},
+				"revoke_failure_reason": {
+					".tag": "owner_only"
+				}
+			},
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"team_member_info": {
+				"team_info": {
+					"id": "dbtid:AAFdgehTzw7WlXhZJsbGCLePe8RvQGYDr-I",
+					"name": "Acme, Inc."
+				},
+				"display_name": "Roger Rabbit",
+				"member_id": "dbmid:abcd1234"
+			}
 		}
 	},
 	"sharing/get_file_metadata": {
@@ -3845,6 +5550,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Returns shared file metadata.",
 		"parameters": {
 			"list": [
 				{
@@ -3954,7 +5660,38 @@
 					"type": "Void",
 					"desc": "Create a shared link to the file."
 				}
-			]
+			],
+			"example": {
+				"file": "id:3kmLmQFnf1AAAAAAAAAAAw",
+				"actions": []
+			}
+		},
+		"returnParameters": {
+			"policy": {
+				"acl_update_policy": {
+					".tag": "owner"
+				},
+				"shared_link_policy": {
+					".tag": "anyone"
+				},
+				"member_policy": {
+					".tag": "anyone"
+				},
+				"resolved_member_policy": {
+					".tag": "team"
+				}
+			},
+			"preview_url": "https://www.dropbox.com/scl/fi/fir9vjelf",
+			"name": "file.txt",
+			"id": "id:3kmLmQFnf1AAAAAAAAAAAw",
+			"permissions": [],
+			"owner_team": {
+				"id": "dbtid:AAFdgehTzw7WlXhZJsbGCLePe8RvQGYDr-I",
+				"name": "Acme, Inc."
+			},
+			"path_lower": "/dir/file.txt",
+			"path_display": "/dir/file.txt",
+			"time_invited": "2016-01-20T00:00:00Z"
 		}
 	},
 	"sharing/get_file_metadata/batch": {
@@ -3962,6 +5699,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Returns shared file metadata.",
 		"parameters": {
 			"list": [
 				{
@@ -4071,14 +5809,23 @@
 					"type": "Void",
 					"desc": "Create a shared link to the file."
 				}
-			]
-		}
+			],
+			"example": {
+				"files": [
+					"id:3kmLmQFnf1AAAAAAAAAAAw",
+					"id:VvTaJu2VZzAAAAAAAAAADQ"
+				],
+				"actions": []
+			}
+		},
+		"returnParameters": null
 	},
 	"sharing/get_folder_metadata": {
 		"uri": "https://api.dropboxapi.com/2/sharing/get_folder_metadata",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Returns shared folder metadata by its folder ID. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -4228,7 +5975,64 @@
 					"type": "Void",
 					"desc": "Create a shared link for folder."
 				}
-			]
+			],
+			"example": {
+				"shared_folder_id": "84528192421",
+				"actions": []
+			}
+		},
+		"returnParameters": {
+			"access_type": {
+				".tag": "owner"
+			},
+			"is_inside_team_folder": false,
+			"is_team_folder": false,
+			"name": "dir",
+			"policy": {
+				"acl_update_policy": {
+					".tag": "owner"
+				},
+				"shared_link_policy": {
+					".tag": "anyone"
+				},
+				"member_policy": {
+					".tag": "anyone"
+				},
+				"resolved_member_policy": {
+					".tag": "team"
+				}
+			},
+			"preview_url": "https://www.dropbox.com/scl/fo/fir9vjelf",
+			"shared_folder_id": "84528192421",
+			"time_invited": "2016-01-20T00:00:00Z",
+			"path_lower": "/dir",
+			"link_metadata": {
+				"audience_options": [
+					{
+						".tag": "public"
+					},
+					{
+						".tag": "team"
+					},
+					{
+						".tag": "members"
+					}
+				],
+				"current_audience": {
+					".tag": "public"
+				},
+				"link_permissions": [
+					{
+						"action": {
+							".tag": "change_audience"
+						},
+						"allow": true
+					}
+				],
+				"password_protected": false,
+				"url": ""
+			},
+			"permissions": []
 		}
 	},
 	"sharing/get_shared_link_file": {
@@ -4236,6 +6040,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "DOWNLOAD",
+		"description": "Download the shared link's file from a user's Dropbox.",
 		"parameters": {
 			"list": [
 				{
@@ -4253,7 +6058,39 @@
 					"type": "String?",
 					"desc": "If the shared link has a password, this parameter can be used. This field is optional."
 				}
-			]
+			],
+			"example": {
+				"url": "https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0",
+				"path": "/Prime_Numbers.txt"
+			}
+		},
+		"returnParameters": {
+			".tag": "file",
+			"url": "https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0",
+			"name": "Prime_Numbers.txt",
+			"link_permissions": {
+				"can_revoke": false,
+				"resolved_visibility": {
+					".tag": "public"
+				},
+				"revoke_failure_reason": {
+					".tag": "owner_only"
+				}
+			},
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"team_member_info": {
+				"team_info": {
+					"id": "dbtid:AAFdgehTzw7WlXhZJsbGCLePe8RvQGYDr-I",
+					"name": "Acme, Inc."
+				},
+				"display_name": "Roger Rabbit",
+				"member_id": "dbmid:abcd1234"
+			}
 		}
 	},
 	"sharing/get_shared_link_metadata": {
@@ -4261,6 +6098,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Get the shared link's metadata.",
 		"parameters": {
 			"list": [
 				{
@@ -4278,7 +6116,39 @@
 					"type": "String?",
 					"desc": "If the shared link has a password, this parameter can be used. This field is optional."
 				}
-			]
+			],
+			"example": {
+				"url": "https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0",
+				"path": "/Prime_Numbers.txt"
+			}
+		},
+		"returnParameters": {
+			".tag": "file",
+			"url": "https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0",
+			"name": "Prime_Numbers.txt",
+			"link_permissions": {
+				"can_revoke": false,
+				"resolved_visibility": {
+					".tag": "public"
+				},
+				"revoke_failure_reason": {
+					".tag": "owner_only"
+				}
+			},
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"team_member_info": {
+				"team_info": {
+					"id": "dbtid:AAFdgehTzw7WlXhZJsbGCLePe8RvQGYDr-I",
+					"name": "Acme, Inc."
+				},
+				"display_name": "Roger Rabbit",
+				"member_id": "dbmid:abcd1234"
+			}
 		}
 	},
 	"sharing/get_shared_links": {
@@ -4286,6 +6156,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Returns a list of LinkMetadata objects for this user, including collection links. If no path is given, returns a list of all shared links for the current user, including collection links. If a non-empty path is given, returns a list of all shared links that allow access to the given path.  Collection links are never returned in this case. Note that the url field in the response is never the shortened URL.",
 		"parameters": {
 			"list": [
 				{
@@ -4293,14 +6164,19 @@
 					"type": "String?",
 					"desc": "See   description. This field is optional."
 				}
-			]
-		}
+			],
+			"example": {
+				"path": ""
+			}
+		},
+		"returnParameters": null
 	},
 	"sharing/list_file_members": {
 		"uri": "https://api.dropboxapi.com/2/sharing/list_file_members",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Use to obtain the members who have been invited to a file, both inherited and uninherited members.",
 		"parameters": {
 			"list": [
 				{
@@ -4390,6 +6266,63 @@
 					"type": "UInt32",
 					"desc": "Number of members to return max per query. Defaults to 100 if no limit is specified. The default for this field is 100."
 				}
+			],
+			"example": {
+				"file": "id:3kmLmQFnf1AAAAAAAAAAAw",
+				"include_inherited": true,
+				"limit": 100
+			}
+		},
+		"returnParameters": {
+			"users": [
+				{
+					"access_type": {
+						".tag": "owner"
+					},
+					"user": {
+						"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+						"same_team": true,
+						"team_member_id": "dbmid:abcd1234"
+					},
+					"permissions": [],
+					"is_inherited": false
+				}
+			],
+			"groups": [
+				{
+					"access_type": {
+						".tag": "editor"
+					},
+					"group": {
+						"group_name": "Test group",
+						"group_id": "g:e2db7665347abcd600000000001a2b3c",
+						"group_management_type": {
+							".tag": "user_managed"
+						},
+						"group_type": {
+							".tag": "user_managed"
+						},
+						"is_member": false,
+						"is_owner": false,
+						"same_team": true,
+						"member_count": 10
+					},
+					"permissions": [],
+					"is_inherited": false
+				}
+			],
+			"invitees": [
+				{
+					"access_type": {
+						".tag": "viewer"
+					},
+					"invitee": {
+						".tag": "email",
+						"email": "jessica@example.com"
+					},
+					"permissions": [],
+					"is_inherited": false
+				}
 			]
 		}
 	},
@@ -4398,6 +6331,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Get members of multiple files at once. The arguments to this route are more limited, and the limit on query result size per file is more strict. To customize the results more, use the individual file endpoint. Inherited users and groups are not included in the result, and permissions are not returned for this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -4410,20 +6344,84 @@
 					"type": "UInt32",
 					"desc": "Number of members to return max per query. Defaults to 10 if no limit is specified. The default for this field is 10."
 				}
-			]
-		}
+			],
+			"example": {
+				"files": [
+					"id:3kmLmQFnf1AAAAAAAAAAAw",
+					"id:VvTaJu2VZzAAAAAAAAAADQ"
+				],
+				"limit": 10
+			}
+		},
+		"returnParameters": null
 	},
 	"sharing/list_file_members/continue": {
 		"uri": "https://api.dropboxapi.com/2/sharing/list_file_members/continue",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Once a cursor has been retrieved from [list_file_members](#sharinglist_file_members-see-docs) or [list_file_members/batch](#sharinglist_file_membersbatch-see-docs), use this to paginate through all shared file members.",
 		"parameters": {
 			"list": [
 				{
 					"name": "cursor",
 					"type": "String",
 					"desc": "The cursor returned by your last call to  ,  , or  ."
+				}
+			],
+			"example": {
+				"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
+			}
+		},
+		"returnParameters": {
+			"users": [
+				{
+					"access_type": {
+						".tag": "owner"
+					},
+					"user": {
+						"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+						"same_team": true,
+						"team_member_id": "dbmid:abcd1234"
+					},
+					"permissions": [],
+					"is_inherited": false
+				}
+			],
+			"groups": [
+				{
+					"access_type": {
+						".tag": "editor"
+					},
+					"group": {
+						"group_name": "Test group",
+						"group_id": "g:e2db7665347abcd600000000001a2b3c",
+						"group_management_type": {
+							".tag": "user_managed"
+						},
+						"group_type": {
+							".tag": "user_managed"
+						},
+						"is_member": false,
+						"is_owner": false,
+						"same_team": true,
+						"member_count": 10
+					},
+					"permissions": [],
+					"is_inherited": false
+				}
+			],
+			"invitees": [
+				{
+					"access_type": {
+						".tag": "viewer"
+					},
+					"invitee": {
+						".tag": "email",
+						"email": "jessica@example.com"
+					},
+					"permissions": [],
+					"is_inherited": false
 				}
 			]
 		}
@@ -4433,6 +6431,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Returns shared folder membership by its folder ID. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -4517,7 +6516,65 @@
 					"type": "UInt32",
 					"desc": "The maximum number of results that include members, groups and invitees to return per request. The default for this field is 1000."
 				}
-			]
+			],
+			"example": {
+				"shared_folder_id": "84528192421",
+				"actions": [],
+				"limit": 10
+			}
+		},
+		"returnParameters": {
+			"users": [
+				{
+					"access_type": {
+						".tag": "owner"
+					},
+					"user": {
+						"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+						"same_team": true,
+						"team_member_id": "dbmid:abcd1234"
+					},
+					"permissions": [],
+					"is_inherited": false
+				}
+			],
+			"groups": [
+				{
+					"access_type": {
+						".tag": "editor"
+					},
+					"group": {
+						"group_name": "Test group",
+						"group_id": "g:e2db7665347abcd600000000001a2b3c",
+						"group_management_type": {
+							".tag": "user_managed"
+						},
+						"group_type": {
+							".tag": "user_managed"
+						},
+						"is_member": false,
+						"is_owner": false,
+						"same_team": true,
+						"member_count": 10
+					},
+					"permissions": [],
+					"is_inherited": false
+				}
+			],
+			"invitees": [
+				{
+					"access_type": {
+						".tag": "viewer"
+					},
+					"invitee": {
+						".tag": "email",
+						"email": "jessica@example.com"
+					},
+					"permissions": [],
+					"is_inherited": false
+				}
+			],
+			"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
 		}
 	},
 	"sharing/list_folder_members/continue": {
@@ -4525,6 +6582,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Once a cursor has been retrieved from [list_folder_members](#sharinglist_folder_members-see-docs), use this to paginate through all shared folder members. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -4532,7 +6590,63 @@
 					"type": "String",
 					"desc": "The cursor returned by your last call to   or  ."
 				}
-			]
+			],
+			"example": {
+				"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
+			}
+		},
+		"returnParameters": {
+			"users": [
+				{
+					"access_type": {
+						".tag": "owner"
+					},
+					"user": {
+						"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+						"same_team": true,
+						"team_member_id": "dbmid:abcd1234"
+					},
+					"permissions": [],
+					"is_inherited": false
+				}
+			],
+			"groups": [
+				{
+					"access_type": {
+						".tag": "editor"
+					},
+					"group": {
+						"group_name": "Test group",
+						"group_id": "g:e2db7665347abcd600000000001a2b3c",
+						"group_management_type": {
+							".tag": "user_managed"
+						},
+						"group_type": {
+							".tag": "user_managed"
+						},
+						"is_member": false,
+						"is_owner": false,
+						"same_team": true,
+						"member_count": 10
+					},
+					"permissions": [],
+					"is_inherited": false
+				}
+			],
+			"invitees": [
+				{
+					"access_type": {
+						".tag": "viewer"
+					},
+					"invitee": {
+						".tag": "email",
+						"email": "jessica@example.com"
+					},
+					"permissions": [],
+					"is_inherited": false
+				}
+			],
+			"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
 		}
 	},
 	"sharing/list_folders": {
@@ -4540,6 +6654,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Return the list of all shared folders the current user has access to. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -4689,7 +6804,69 @@
 					"type": "Void",
 					"desc": "Create a shared link for folder."
 				}
-			]
+			],
+			"example": {
+				"limit": 100,
+				"actions": []
+			}
+		},
+		"returnParameters": {
+			"entries": [
+				{
+					"access_type": {
+						".tag": "owner"
+					},
+					"is_inside_team_folder": false,
+					"is_team_folder": false,
+					"name": "dir",
+					"policy": {
+						"acl_update_policy": {
+							".tag": "owner"
+						},
+						"shared_link_policy": {
+							".tag": "anyone"
+						},
+						"member_policy": {
+							".tag": "anyone"
+						},
+						"resolved_member_policy": {
+							".tag": "team"
+						}
+					},
+					"preview_url": "https://www.dropbox.com/scl/fo/fir9vjelf",
+					"shared_folder_id": "84528192421",
+					"time_invited": "2016-01-20T00:00:00Z",
+					"path_lower": "/dir",
+					"link_metadata": {
+						"audience_options": [
+							{
+								".tag": "public"
+							},
+							{
+								".tag": "team"
+							},
+							{
+								".tag": "members"
+							}
+						],
+						"current_audience": {
+							".tag": "public"
+						},
+						"link_permissions": [
+							{
+								"action": {
+									".tag": "change_audience"
+								},
+								"allow": true
+							}
+						],
+						"password_protected": false,
+						"url": ""
+					},
+					"permissions": []
+				}
+			],
+			"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
 		}
 	},
 	"sharing/list_folders/continue": {
@@ -4697,6 +6874,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Once a cursor has been retrieved from [[list_folders](#sharinglist_folders-see-docs)](#sharinglist_folders-see-docs), use this to paginate through all shared folders. The cursor must come from a previous call to list_folders or [list_folders/continue](#sharinglist_folderscontinue-see-docs). Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -4704,7 +6882,68 @@
 					"type": "String",
 					"desc": "The cursor returned by the previous API call specified in the endpoint description."
 				}
-			]
+			],
+			"example": {
+				"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
+			}
+		},
+		"returnParameters": {
+			"entries": [
+				{
+					"access_type": {
+						".tag": "owner"
+					},
+					"is_inside_team_folder": false,
+					"is_team_folder": false,
+					"name": "dir",
+					"policy": {
+						"acl_update_policy": {
+							".tag": "owner"
+						},
+						"shared_link_policy": {
+							".tag": "anyone"
+						},
+						"member_policy": {
+							".tag": "anyone"
+						},
+						"resolved_member_policy": {
+							".tag": "team"
+						}
+					},
+					"preview_url": "https://www.dropbox.com/scl/fo/fir9vjelf",
+					"shared_folder_id": "84528192421",
+					"time_invited": "2016-01-20T00:00:00Z",
+					"path_lower": "/dir",
+					"link_metadata": {
+						"audience_options": [
+							{
+								".tag": "public"
+							},
+							{
+								".tag": "team"
+							},
+							{
+								".tag": "members"
+							}
+						],
+						"current_audience": {
+							".tag": "public"
+						},
+						"link_permissions": [
+							{
+								"action": {
+									".tag": "change_audience"
+								},
+								"allow": true
+							}
+						],
+						"password_protected": false,
+						"url": ""
+					},
+					"permissions": []
+				}
+			],
+			"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
 		}
 	},
 	"sharing/list_mountable_folders": {
@@ -4712,6 +6951,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Return the list of all shared folders the current user can mount or unmount. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -4861,7 +7101,69 @@
 					"type": "Void",
 					"desc": "Create a shared link for folder."
 				}
-			]
+			],
+			"example": {
+				"limit": 100,
+				"actions": []
+			}
+		},
+		"returnParameters": {
+			"entries": [
+				{
+					"access_type": {
+						".tag": "owner"
+					},
+					"is_inside_team_folder": false,
+					"is_team_folder": false,
+					"name": "dir",
+					"policy": {
+						"acl_update_policy": {
+							".tag": "owner"
+						},
+						"shared_link_policy": {
+							".tag": "anyone"
+						},
+						"member_policy": {
+							".tag": "anyone"
+						},
+						"resolved_member_policy": {
+							".tag": "team"
+						}
+					},
+					"preview_url": "https://www.dropbox.com/scl/fo/fir9vjelf",
+					"shared_folder_id": "84528192421",
+					"time_invited": "2016-01-20T00:00:00Z",
+					"path_lower": "/dir",
+					"link_metadata": {
+						"audience_options": [
+							{
+								".tag": "public"
+							},
+							{
+								".tag": "team"
+							},
+							{
+								".tag": "members"
+							}
+						],
+						"current_audience": {
+							".tag": "public"
+						},
+						"link_permissions": [
+							{
+								"action": {
+									".tag": "change_audience"
+								},
+								"allow": true
+							}
+						],
+						"password_protected": false,
+						"url": ""
+					},
+					"permissions": []
+				}
+			],
+			"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
 		}
 	},
 	"sharing/list_mountable_folders/continue": {
@@ -4869,6 +7171,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Once a cursor has been retrieved from [[list_mountable_folders](#sharinglist_mountable_folders-see-docs)](#sharinglist_mountable_folders-see-docs), use this to paginate through all mountable shared folders. The cursor must come from a previous call to list_mountable_folders or [list_mountable_folders/continue](#sharinglist_mountable_folderscontinue-see-docs). Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -4876,7 +7179,68 @@
 					"type": "String",
 					"desc": "The cursor returned by the previous API call specified in the endpoint description."
 				}
-			]
+			],
+			"example": {
+				"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
+			}
+		},
+		"returnParameters": {
+			"entries": [
+				{
+					"access_type": {
+						".tag": "owner"
+					},
+					"is_inside_team_folder": false,
+					"is_team_folder": false,
+					"name": "dir",
+					"policy": {
+						"acl_update_policy": {
+							".tag": "owner"
+						},
+						"shared_link_policy": {
+							".tag": "anyone"
+						},
+						"member_policy": {
+							".tag": "anyone"
+						},
+						"resolved_member_policy": {
+							".tag": "team"
+						}
+					},
+					"preview_url": "https://www.dropbox.com/scl/fo/fir9vjelf",
+					"shared_folder_id": "84528192421",
+					"time_invited": "2016-01-20T00:00:00Z",
+					"path_lower": "/dir",
+					"link_metadata": {
+						"audience_options": [
+							{
+								".tag": "public"
+							},
+							{
+								".tag": "team"
+							},
+							{
+								".tag": "members"
+							}
+						],
+						"current_audience": {
+							".tag": "public"
+						},
+						"link_permissions": [
+							{
+								"action": {
+									".tag": "change_audience"
+								},
+								"allow": true
+							}
+						],
+						"password_protected": false,
+						"url": ""
+					},
+					"permissions": []
+				}
+			],
+			"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
 		}
 	},
 	"sharing/list_received_files": {
@@ -4884,6 +7248,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Returns a list of all files shared with current user.  Does not include files the user has received via shared folders, and does  not include unclaimed invitations.",
 		"parameters": {
 			"list": [
 				{
@@ -4993,7 +7358,43 @@
 					"type": "Void",
 					"desc": "Create a shared link to the file."
 				}
-			]
+			],
+			"example": {
+				"limit": 100,
+				"actions": []
+			}
+		},
+		"returnParameters": {
+			"entries": [
+				{
+					"policy": {
+						"acl_update_policy": {
+							".tag": "owner"
+						},
+						"shared_link_policy": {
+							".tag": "anyone"
+						},
+						"member_policy": {
+							".tag": "anyone"
+						},
+						"resolved_member_policy": {
+							".tag": "team"
+						}
+					},
+					"preview_url": "https://www.dropbox.com/scl/fi/fir9vjelf",
+					"name": "file.txt",
+					"id": "id:3kmLmQFnf1AAAAAAAAAAAw",
+					"permissions": [],
+					"owner_team": {
+						"id": "dbtid:AAFdgehTzw7WlXhZJsbGCLePe8RvQGYDr-I",
+						"name": "Acme, Inc."
+					},
+					"path_lower": "/dir/file.txt",
+					"path_display": "/dir/file.txt",
+					"time_invited": "2016-01-20T00:00:00Z"
+				}
+			],
+			"cursor": "AzJJbGlzdF90eXBdofe9c3RPbGlzdGFyZ3NfYnlfZ2lkMRhcbric7Rdog9cmV2aXNpb24H3Qf6o1fkHxQ"
 		}
 	},
 	"sharing/list_received_files/continue": {
@@ -5001,6 +7402,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Get more results with a cursor from [list_received_files](#sharinglist_received_files-see-docs).",
 		"parameters": {
 			"list": [
 				{
@@ -5008,7 +7410,42 @@
 					"type": "String",
 					"desc": "Cursor in ListFilesResult.cursor."
 				}
-			]
+			],
+			"example": {
+				"cursor": "AzJJbGlzdF90eXBdofe9c3RPbGlzdGFyZ3NfYnlfZ2lkMRhcbric7Rdog9emfGRlc2MCRWxpbWl0BGRId"
+			}
+		},
+		"returnParameters": {
+			"entries": [
+				{
+					"policy": {
+						"acl_update_policy": {
+							".tag": "owner"
+						},
+						"shared_link_policy": {
+							".tag": "anyone"
+						},
+						"member_policy": {
+							".tag": "anyone"
+						},
+						"resolved_member_policy": {
+							".tag": "team"
+						}
+					},
+					"preview_url": "https://www.dropbox.com/scl/fi/fir9vjelf",
+					"name": "file.txt",
+					"id": "id:3kmLmQFnf1AAAAAAAAAAAw",
+					"permissions": [],
+					"owner_team": {
+						"id": "dbtid:AAFdgehTzw7WlXhZJsbGCLePe8RvQGYDr-I",
+						"name": "Acme, Inc."
+					},
+					"path_lower": "/dir/file.txt",
+					"path_display": "/dir/file.txt",
+					"time_invited": "2016-01-20T00:00:00Z"
+				}
+			],
+			"cursor": "AzJJbGlzdF90eXBdofe9c3RPbGlzdGFyZ3NfYnlfZ2lkMRhcbric7Rdog9cmV2aXNpb24H3Qf6o1fkHxQ"
 		}
 	},
 	"sharing/list_shared_links": {
@@ -5016,6 +7453,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "List shared links of this user. If no path is given, returns a list of all shared links for the current user. If a non-empty path is given, returns a list of all shared links that allow access to the given path - direct links to the given path and links to parent folders of the given path. Links to parent folders can be suppressed by setting direct_only to true.",
 		"parameters": {
 			"list": [
 				{
@@ -5033,7 +7471,44 @@
 					"type": "Boolean?",
 					"desc": "See   description. This field is optional."
 				}
-			]
+			],
+			"example": {
+				"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
+			}
+		},
+		"returnParameters": {
+			"links": [
+				{
+					".tag": "file",
+					"url": "https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0",
+					"name": "Prime_Numbers.txt",
+					"link_permissions": {
+						"can_revoke": false,
+						"resolved_visibility": {
+							".tag": "public"
+						},
+						"revoke_failure_reason": {
+							".tag": "owner_only"
+						}
+					},
+					"client_modified": "2015-05-12T15:50:38Z",
+					"server_modified": "2015-05-12T15:50:38Z",
+					"rev": "a1c10ce0dd78",
+					"size": 7212,
+					"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+					"path_lower": "/homework/math/prime_numbers.txt",
+					"team_member_info": {
+						"team_info": {
+							"id": "dbtid:AAFdgehTzw7WlXhZJsbGCLePe8RvQGYDr-I",
+							"name": "Acme, Inc."
+						},
+						"display_name": "Roger Rabbit",
+						"member_id": "dbmid:abcd1234"
+					}
+				}
+			],
+			"has_more": true,
+			"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
 		}
 	},
 	"sharing/modify_shared_link_settings": {
@@ -5041,6 +7516,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Modify the shared link's settings. If the requested visibility conflict with the shared links policy of the team or the shared folder (in case the linked file is part of a shared folder) then the LinkPermissions.resolved_visibility of the returned SharedLinkMetadata will reflect the actual visibility of the shared link and the LinkPermissions.requested_visibility will reflect the requested visibility.",
 		"parameters": {
 			"list": [
 				{
@@ -5189,7 +7665,42 @@
 					"type": "Boolean",
 					"desc": "If set to true, removes the expiration of the shared link. The default for this field is False."
 				}
-			]
+			],
+			"example": {
+				"url": "https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0",
+				"settings": {
+					"requested_visibility": "public"
+				},
+				"remove_expiration": false
+			}
+		},
+		"returnParameters": {
+			".tag": "file",
+			"url": "https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0",
+			"name": "Prime_Numbers.txt",
+			"link_permissions": {
+				"can_revoke": false,
+				"resolved_visibility": {
+					".tag": "public"
+				},
+				"revoke_failure_reason": {
+					".tag": "owner_only"
+				}
+			},
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"team_member_info": {
+				"team_info": {
+					"id": "dbtid:AAFdgehTzw7WlXhZJsbGCLePe8RvQGYDr-I",
+					"name": "Acme, Inc."
+				},
+				"display_name": "Roger Rabbit",
+				"member_id": "dbmid:abcd1234"
+			}
 		}
 	},
 	"sharing/mount_folder": {
@@ -5197,6 +7708,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "The current user mounts the designated folder. Mount a shared folder for a user after they have been added as a member. Once mounted, the shared folder will appear in their Dropbox. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -5204,7 +7716,63 @@
 					"type": "String(pattern=\"[-_0-9a-zA-Z:]+\")",
 					"desc": "The ID of the shared folder to mount."
 				}
-			]
+			],
+			"example": {
+				"shared_folder_id": "84528192421"
+			}
+		},
+		"returnParameters": {
+			"access_type": {
+				".tag": "owner"
+			},
+			"is_inside_team_folder": false,
+			"is_team_folder": false,
+			"name": "dir",
+			"policy": {
+				"acl_update_policy": {
+					".tag": "owner"
+				},
+				"shared_link_policy": {
+					".tag": "anyone"
+				},
+				"member_policy": {
+					".tag": "anyone"
+				},
+				"resolved_member_policy": {
+					".tag": "team"
+				}
+			},
+			"preview_url": "https://www.dropbox.com/scl/fo/fir9vjelf",
+			"shared_folder_id": "84528192421",
+			"time_invited": "2016-01-20T00:00:00Z",
+			"path_lower": "/dir",
+			"link_metadata": {
+				"audience_options": [
+					{
+						".tag": "public"
+					},
+					{
+						".tag": "team"
+					},
+					{
+						".tag": "members"
+					}
+				],
+				"current_audience": {
+					".tag": "public"
+				},
+				"link_permissions": [
+					{
+						"action": {
+							".tag": "change_audience"
+						},
+						"allow": true
+					}
+				],
+				"password_protected": false,
+				"url": ""
+			},
+			"permissions": []
 		}
 	},
 	"sharing/relinquish_file_membership": {
@@ -5212,6 +7780,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "The current user relinquishes their membership in the designated file. Note that the current user may still have inherited access to this file through the parent folder. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -5219,14 +7788,19 @@
 					"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?\")",
 					"desc": "The path or id for the file."
 				}
-			]
-		}
+			],
+			"example": {
+				"file": "id:3kmLmQFnf1AAAAAAAAAAAw"
+			}
+		},
+		"returnParameters": null
 	},
 	"sharing/relinquish_folder_membership": {
 		"uri": "https://api.dropboxapi.com/2/sharing/relinquish_folder_membership",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "The current user relinquishes their membership in the designated shared folder and will no longer have access to the folder.  A folder owner cannot relinquish membership in their own folder. This will run synchronously if leave_a_copy is false, and asynchronously if leave_a_copy is true. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -5239,7 +7813,14 @@
 					"type": "Boolean",
 					"desc": "Keep a copy of the folder's contents upon relinquishing membership. The default for this field is False."
 				}
-			]
+			],
+			"example": {
+				"shared_folder_id": "84528192421",
+				"leave_a_copy": false
+			}
+		},
+		"returnParameters": {
+			".tag": "complete"
 		}
 	},
 	"sharing/remove_file_member": {
@@ -5247,6 +7828,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Identical to remove_file_member_2 but with less information returned.",
 		"parameters": {
 			"list": [
 				{
@@ -5286,7 +7868,17 @@
 					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
 					"desc": "E-mail address of member."
 				}
-			]
+			],
+			"example": {
+				"file": "id:3kmLmQFnf1AAAAAAAAAAAw",
+				"member": {
+					".tag": "email",
+					"email": "justin@example.com"
+				}
+			}
+		},
+		"returnParameters": {
+			".tag": "success"
 		}
 	},
 	"sharing/remove_file_member_2": {
@@ -5294,6 +7886,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Removes a specified member from the file.",
 		"parameters": {
 			"list": [
 				{
@@ -5333,7 +7926,17 @@
 					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
 					"desc": "E-mail address of member."
 				}
-			]
+			],
+			"example": {
+				"file": "id:3kmLmQFnf1AAAAAAAAAAAw",
+				"member": {
+					".tag": "email",
+					"email": "justin@example.com"
+				}
+			}
+		},
+		"returnParameters": {
+			".tag": "other"
 		}
 	},
 	"sharing/remove_folder_member": {
@@ -5341,6 +7944,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Allows an owner or editor (if the ACL update policy allows) of a shared folder to remove another member. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -5385,14 +7989,24 @@
 					"type": "Boolean",
 					"desc": "If true, the removed user will keep their copy of the folder after it's unshared, assuming it was mounted. Otherwise, it will be removed from their Dropbox. Also, this must be set to false when kicking a group."
 				}
-			]
-		}
+			],
+			"example": {
+				"shared_folder_id": "84528192421",
+				"member": {
+					".tag": "email",
+					"email": "justin@example.com"
+				},
+				"leave_a_copy": false
+			}
+		},
+		"returnParameters": null
 	},
 	"sharing/revoke_shared_link": {
 		"uri": "https://api.dropboxapi.com/2/sharing/revoke_shared_link",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Revoke a shared link. Note that even after revoking a shared link to a file, the file may be accessible if there are shared links leading to any of the file parent folders. To list all shared links that enable access to a specific file, you can use the [list_shared_links](#sharinglist_shared_links-see-docs) with the file as the ListSharedLinksArg.path argument.",
 		"parameters": {
 			"list": [
 				{
@@ -5400,14 +8014,19 @@
 					"type": "String",
 					"desc": "URL of the shared link."
 				}
-			]
-		}
+			],
+			"example": {
+				"url": "https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0"
+			}
+		},
+		"returnParameters": null
 	},
 	"sharing/share_folder": {
 		"uri": "https://api.dropboxapi.com/2/sharing/share_folder",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Share a folder with collaborators. Most sharing will be completed synchronously. Large folders will be completed asynchronously. To make testing the async case repeatable, set `ShareFolderArg.force_async`. If a ShareFolderLaunch.async_job_id is returned, you'll need to call [check_share_job_status](#sharingcheck_share_job_status-see-docs) until the action completes to get the metadata for the folder. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -5974,7 +8593,68 @@
 					"type": "Void",
 					"desc": "Viewer information is disabled on this file."
 				}
-			]
+			],
+			"example": {
+				"path": "/example/workspace",
+				"member_policy": "team",
+				"acl_update_policy": "editors",
+				"shared_link_policy": "members",
+				"force_async": false
+			}
+		},
+		"returnParameters": {
+			".tag": "complete",
+			"access_type": {
+				".tag": "owner"
+			},
+			"is_inside_team_folder": false,
+			"is_team_folder": false,
+			"name": "dir",
+			"policy": {
+				"acl_update_policy": {
+					".tag": "owner"
+				},
+				"shared_link_policy": {
+					".tag": "anyone"
+				},
+				"member_policy": {
+					".tag": "anyone"
+				},
+				"resolved_member_policy": {
+					".tag": "team"
+				}
+			},
+			"preview_url": "https://www.dropbox.com/scl/fo/fir9vjelf",
+			"shared_folder_id": "84528192421",
+			"time_invited": "2016-01-20T00:00:00Z",
+			"path_lower": "/dir",
+			"link_metadata": {
+				"audience_options": [
+					{
+						".tag": "public"
+					},
+					{
+						".tag": "team"
+					},
+					{
+						".tag": "members"
+					}
+				],
+				"current_audience": {
+					".tag": "public"
+				},
+				"link_permissions": [
+					{
+						"action": {
+							".tag": "change_audience"
+						},
+						"allow": true
+					}
+				],
+				"password_protected": false,
+				"url": ""
+			},
+			"permissions": []
 		}
 	},
 	"sharing/transfer_folder": {
@@ -5982,6 +8662,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Transfer ownership of a shared folder to a member of the shared folder. User must have AccessLevel.owner access to the shared folder to perform a transfer. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -5994,14 +8675,20 @@
 					"type": "String(min_length=1)",
 					"desc": "A account or team member ID to transfer ownership to."
 				}
-			]
-		}
+			],
+			"example": {
+				"shared_folder_id": "84528192421",
+				"to_dropbox_id": "dbid:AAEufNrMPSPe0dMQijRP0N_aZtBJRm26W4Q"
+			}
+		},
+		"returnParameters": null
 	},
 	"sharing/unmount_folder": {
 		"uri": "https://api.dropboxapi.com/2/sharing/unmount_folder",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "The current user unmounts the designated folder. They can re-mount the folder at a later time using [mount_folder](#sharingmount_folder-see-docs). Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -6009,14 +8696,19 @@
 					"type": "String(pattern=\"[-_0-9a-zA-Z:]+\")",
 					"desc": "The ID for the shared folder."
 				}
-			]
-		}
+			],
+			"example": {
+				"shared_folder_id": "84528192421"
+			}
+		},
+		"returnParameters": null
 	},
 	"sharing/unshare_file": {
 		"uri": "https://api.dropboxapi.com/2/sharing/unshare_file",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Remove all members from this file. Does not remove inherited members.",
 		"parameters": {
 			"list": [
 				{
@@ -6024,14 +8716,19 @@
 					"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?\")",
 					"desc": "The file to unshare."
 				}
-			]
-		}
+			],
+			"example": {
+				"file": "id:3kmLmQFnf1AAAAAAAAAAAw"
+			}
+		},
+		"returnParameters": null
 	},
 	"sharing/unshare_folder": {
 		"uri": "https://api.dropboxapi.com/2/sharing/unshare_folder",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Allows a shared folder owner to unshare the folder. You'll need to call [check_job_status](#sharingcheck_job_status-see-docs) to determine if the action has completed successfully. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -6044,7 +8741,14 @@
 					"type": "Boolean",
 					"desc": "If true, members of this shared folder will get a copy of this folder after it's unshared. Otherwise, it will be removed from their Dropbox. The current user, who is an owner, will always retain their copy. The default for this field is False."
 				}
-			]
+			],
+			"example": {
+				"shared_folder_id": "84528192421",
+				"leave_a_copy": false
+			}
+		},
+		"returnParameters": {
+			".tag": "complete"
 		}
 	},
 	"sharing/update_file_member": {
@@ -6052,6 +8756,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Changes a member's access on a shared file.",
 		"parameters": {
 			"list": [
 				{
@@ -6143,14 +8848,24 @@
 					"type": "Void",
 					"desc": "The collaborator can only view the shared folder and does not have any access to comments."
 				}
-			]
-		}
+			],
+			"example": {
+				"file": "id:3kmLmQFnf1AAAAAAAAAAAw",
+				"member": {
+					".tag": "email",
+					"email": "justin@example.com"
+				},
+				"access_level": "viewer"
+			}
+		},
+		"returnParameters": null
 	},
 	"sharing/update_folder_member": {
 		"uri": "https://api.dropboxapi.com/2/sharing/update_folder_member",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Allows an owner or editor of a shared folder to update another member's permissions. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -6242,14 +8957,24 @@
 					"type": "Void",
 					"desc": "The collaborator can only view the shared folder and does not have any access to comments."
 				}
-			]
-		}
+			],
+			"example": {
+				"shared_folder_id": "84528192421",
+				"member": {
+					".tag": "email",
+					"email": "justin@example.com"
+				},
+				"access_level": "editor"
+			}
+		},
+		"returnParameters": null
 	},
 	"sharing/update_folder_policy": {
 		"uri": "https://api.dropboxapi.com/2/sharing/update_folder_policy",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Update the sharing policies for a shared folder. User must have AccessLevel.owner access to the shared folder to update its policies. Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -6669,7 +9394,66 @@
 					"type": "String",
 					"desc": "Set a new password or change an existing password."
 				}
-			]
+			],
+			"example": {
+				"shared_folder_id": "84528192421",
+				"member_policy": "team",
+				"acl_update_policy": "owner",
+				"shared_link_policy": "members"
+			}
+		},
+		"returnParameters": {
+			"access_type": {
+				".tag": "owner"
+			},
+			"is_inside_team_folder": false,
+			"is_team_folder": false,
+			"name": "dir",
+			"policy": {
+				"acl_update_policy": {
+					".tag": "owner"
+				},
+				"shared_link_policy": {
+					".tag": "anyone"
+				},
+				"member_policy": {
+					".tag": "anyone"
+				},
+				"resolved_member_policy": {
+					".tag": "team"
+				}
+			},
+			"preview_url": "https://www.dropbox.com/scl/fo/fir9vjelf",
+			"shared_folder_id": "84528192421",
+			"time_invited": "2016-01-20T00:00:00Z",
+			"path_lower": "/dir",
+			"link_metadata": {
+				"audience_options": [
+					{
+						".tag": "public"
+					},
+					{
+						".tag": "team"
+					},
+					{
+						".tag": "members"
+					}
+				],
+				"current_audience": {
+					".tag": "public"
+				},
+				"link_permissions": [
+					{
+						"action": {
+							".tag": "change_audience"
+						},
+						"allow": true
+					}
+				],
+				"password_protected": false,
+				"url": ""
+			},
+			"permissions": []
 		}
 	},
 	"users/get_account": {
@@ -6677,6 +9461,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Get information about a user's account.",
 		"parameters": {
 			"list": [
 				{
@@ -6684,7 +9469,25 @@
 					"type": "String(min_length=40, max_length=40)",
 					"desc": "A user's account identifier."
 				}
-			]
+			],
+			"example": {
+				"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+			}
+		},
+		"returnParameters": {
+			"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+			"name": {
+				"given_name": "Franz",
+				"surname": "Ferdinand",
+				"familiar_name": "Franz",
+				"display_name": "Franz Ferdinand (Personal)",
+				"abbreviated_name": "FF"
+			},
+			"email": "franz@dropbox.com",
+			"email_verified": true,
+			"disabled": false,
+			"is_teammate": false,
+			"profile_photo_url": "https://dl-web.dropbox.com/account_photo/get/dbid%3AAAH4f99T0taONIb-OurWxbNQ6ywGRopQngc?vers=1453416696524&size=128x128"
 		}
 	},
 	"users/get_account_batch": {
@@ -6692,6 +9495,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Get information about multiple user accounts.  At most 300 accounts may be queried per request.",
 		"parameters": {
 			"list": [
 				{
@@ -6699,16 +9503,61 @@
 					"type": "List of (String(min_length=40, max_length=40), min_items=1)",
 					"desc": "List of user account identifiers.  Should not contain any duplicate account IDs."
 				}
-			]
-		}
+			],
+			"example": {
+				"account_ids": [
+					"dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+					"dbid:AAH1Vcz-DVoRDeixtr_OA8oUGgiqhs4XPOQ"
+				]
+			}
+		},
+		"returnParameters": null
 	},
 	"users/get_current_account": {
 		"uri": "https://api.dropboxapi.com/2/users/get_current_account",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Get information about the current user's account.",
 		"parameters": {
-			"list": []
+			"list": [],
+			"example": null
+		},
+		"returnParameters": {
+			"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+			"name": {
+				"given_name": "Franz",
+				"surname": "Ferdinand",
+				"familiar_name": "Franz",
+				"display_name": "Franz Ferdinand (Personal)",
+				"abbreviated_name": "FF"
+			},
+			"email": "franz@dropbox.com",
+			"email_verified": true,
+			"disabled": false,
+			"locale": "en",
+			"referral_link": "https://db.tt/ZITNuhtI",
+			"is_paired": true,
+			"account_type": {
+				".tag": "business"
+			},
+			"country": "US",
+			"team": {
+				"id": "dbtid:AAFdgehTzw7WlXhZJsbGCLePe8RvQGYDr-I",
+				"name": "Acme, Inc.",
+				"sharing_policies": {
+					"shared_folder_member_policy": {
+						".tag": "team"
+					},
+					"shared_folder_join_policy": {
+						".tag": "from_anyone"
+					},
+					"shared_link_create_policy": {
+						".tag": "team_only"
+					}
+				}
+			},
+			"team_member_id": "dbmid:AAHhy7WsR0x-u4ZCqiDl5Fz5zvuL3kmspwU"
 		}
 	},
 	"users/get_space_usage": {
@@ -6716,8 +9565,17 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"description": "Get the space usage information for the current user's account.",
 		"parameters": {
-			"list": []
+			"list": [],
+			"example": null
+		},
+		"returnParameters": {
+			"used": 314159265,
+			"allocation": {
+				".tag": "individual",
+				"allocated": 10000000000
+			}
 		}
 	}
 }

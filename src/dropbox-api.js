@@ -41,9 +41,9 @@ var cusomizeRequestObjectMiddleware = [
 				}
 	},
 	function prepareValidEndpoint(requestOpts, resourceDescription, userOpts, config){						
-				if(resourceDescription.endpointType === 'RPC'){
-					requestOpts.body = resourceDescription.parameters.length > 0 ? userOpts.parameters : null;
-				}else if(resourceDescription.endpointType === 'CONTENT'){
+				if(resourceDescription.category === 'RPC'){
+					requestOpts.body = resourceDescription.parameters.list.length > 0 ? userOpts.parameters : null;
+				}else if(resourceDescription.category === 'UPLOAD' || resourceDescription.category === 'DOWNLOAD'){
 					requestOpts.headers[DB_HEADER_API_ARGS] = _.isObject(userOpts.parameters) ? JSON.stringify(userOpts.parameters): '';
 				}
 	}	
@@ -78,7 +78,7 @@ function prepareAPIMethods(parsedApiDescription){
 				//send request
 				
 				
-				if(resourceDescription.endpointFormat === "content-upload"){
+				if(resourceDescription.category === "UPLOAD"){
 					//it's upload type request, so pipe
 					if(opt.readStream){
 						// read stream specified, so pipe it
@@ -87,9 +87,9 @@ function prepareAPIMethods(parsedApiDescription){
 						// readStream not specified, so return writable stream
 						return request(requestOpts, callback);
 					}
-				}else if(resourceDescription.endpointFormat === "content-download"){
+				}else if(resourceDescription.category === "DOWNLOAD"){
 					return request(requestOpts, callback).pipe(createTransformStream());
-				}else{
+				}else {
 					//ordinary api call/download request 
 					return request(requestOpts, callback);
 				}

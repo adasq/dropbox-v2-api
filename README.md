@@ -5,6 +5,12 @@ Dropbox API v2 wrapper for nodejs.
 The `dropbox-v2-api` module is generated dynamically - it's based on  [Dropbox API description JSON file][api.json] which is an representation of Dropbox API v2 HTTP methods description, retrived from [official documentaion webpage][docs].
 
 [api.json]: <https://github.com/adasq/dropbox-v2-api/blob/master/dist/api.json>
+## Why this package?
+
+- Simple API (no custom function names, see [full api showcase](#full-api-showcase))
+- Full support for streams (see [upload/download](#upload-and-download-examples) examples)
+- Examples for all endpoints ([see more](#api-call-examples))
+
 
 ## Get started
 ```js
@@ -16,7 +22,6 @@ const dropbox = require('dropbox-v2-api');
 ```
 
 ## Auth
-
 
 - using token
 ```js
@@ -59,18 +64,7 @@ dropbox({
 
 For Download-type requests, the function ```dropbox``` returns readable stream.
 
-## API call examples
-
-#### get_current_account [see docs][get_current_account]
-
-```js
-dropbox({
-	resource: 'users/get_current_account'
-}, (err, response) => {
-	if(err){ return console.log('err:', err); }
-	console.log(response);
-});
-```
+## Upload and Download examples
 
 #### upload [see docs][files-upload]
 
@@ -83,8 +77,7 @@ dropbox({
 	},
 	readStream: fs.createReadStream('path/to/file.js')
 }, (err, result) => {
-	if(err){ return console.log('err:', err); }
-	console.log(result);
+	//upload completed
 });
 ```
 or, using streams:
@@ -96,8 +89,7 @@ const dropboxUploadStream = dropbox({
 		path: '/dropbox/path/to/file.js'
 	}
 }, (err, result) => {
-	if(err){ return console.log('err:', err); }
-	console.log(result);
+	//upload completed
 });
 
 fs.createReadStream('path/to/file.js').pipe(dropboxUploadStream);
@@ -113,9 +105,9 @@ dropbox({
 		path: '/dropbox/image.jpg'
 	}
 }, (err, result) => {
-	if(err){ return console.log('err:', err); }
-	console.log(result);
-}).pipe( fs.createWriteStream('./image.jpg') );
+	//download completed
+})
+.pipe(fs.createWriteStream('./image.jpg'));
 ```
 
 #### download & upload
@@ -131,16 +123,24 @@ const uploadStream = dropbox({
 	resource: 'files/upload',
 	parameters: { path: '/target/file/path' }				
 }, (err, response) => {
-	!err && console.log('file succesfully uploaded!');
+	//upload finished
 });
 
 downloadStream.pipe(uploadStream);
-// fs.createReadStream('/file/path').pipe(uploadStream);
-// downloadStream.pipe(fs.createWriteStream('/file/path'));
 ```
 
+## API call examples
 
+#### get_current_account [see docs][get_current_account]
 
+```js
+dropbox({
+	resource: 'users/get_current_account'
+}, (err, response) => {
+	if(err){ return console.log('err:', err); }
+	console.log(response);
+});
+```
 
 #### get_metadata [see docs][get_metadata]
 
