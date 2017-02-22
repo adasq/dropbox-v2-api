@@ -1,6 +1,6 @@
 {
   "name": "dropbox-v2-api",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "NodeJS Dropbox v2 API wrapper",
   "main": "index.js",
   "scripts": {
