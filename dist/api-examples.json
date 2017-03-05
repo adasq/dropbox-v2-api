@@ -5561,7 +5561,7 @@
 				{
 					"name": "actions",
 					"type": "List of (FileAction)?",
-					"desc": "File actions to query. This field is optional.",
+					"desc": "A list of `FileAction`s corresponding to `FilePermission`s that should appear in the  response's SharedFileMetadata.permissions field describing the actions the  authenticated user can perform on the file. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -5710,7 +5710,7 @@
 				{
 					"name": "actions",
 					"type": "List of (FileAction)?",
-					"desc": "File actions to query. This field is optional.",
+					"desc": "A list of `FileAction`s corresponding to `FilePermission`s that should appear in the  response's SharedFileMetadata.permissions field describing the actions the  authenticated user can perform on the file. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -5836,7 +5836,7 @@
 				{
 					"name": "actions",
 					"type": "List of (FolderAction)?",
-					"desc": "This is a list indicating whether the returned folder data will include a boolean value  FolderPermission.allow that describes whether the current user can perform the  FolderAction on the folder. This field is optional.",
+					"desc": "A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's SharedFolderMetadata.permissions field describing the actions the  authenticated user can perform on the folder. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -6665,7 +6665,7 @@
 				{
 					"name": "actions",
 					"type": "List of (FolderAction)?",
-					"desc": "This is a list indicating whether each returned folder data entry will include a boolean field FolderPermission.allow that describes whether the current user can perform the `FolderAction` on the folder. This field is optional.",
+					"desc": "A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's SharedFolderMetadata.permissions field describing the actions the  authenticated user can perform on the folder. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -6962,7 +6962,7 @@
 				{
 					"name": "actions",
 					"type": "List of (FolderAction)?",
-					"desc": "This is a list indicating whether each returned folder data entry will include a boolean field FolderPermission.allow that describes whether the current user can perform the `FolderAction` on the folder. This field is optional.",
+					"desc": "A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's SharedFolderMetadata.permissions field describing the actions the  authenticated user can perform on the folder. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -7259,7 +7259,7 @@
 				{
 					"name": "actions",
 					"type": "List of (FileAction)?",
-					"desc": "File actions to query. This field is optional.",
+					"desc": "A list of `FileAction`s corresponding to `FilePermission`s that should appear in the  response's SharedFileMetadata.permissions field describing the actions the  authenticated user can perform on the file. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -8148,7 +8148,7 @@
 				{
 					"name": "actions",
 					"type": "List of (FolderAction)?",
-					"desc": "This is a list indicating whether each returned folder data entry will include a boolean field FolderPermission.allow that describes whether the current user can perform the `FolderAction` on the folder. This field is optional.",
+					"desc": "A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's SharedFolderMetadata.permissions field describing the actions the  authenticated user can perform on the folder. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -8295,6 +8295,58 @@
 						{
 							"list": [
 								{
+									"name": "access_level",
+									"type": "AccessLevel?",
+									"desc": "The access level on the link for this file. Currently, it only accepts 'viewer' and 'viewer_no_comment'. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "owner",
+													"type": "Void",
+													"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
+												},
+												{
+													"name": "editor",
+													"type": "Void",
+													"desc": "The collaborator can both view and edit the shared folder."
+												},
+												{
+													"name": "viewer",
+													"type": "Void",
+													"desc": "The collaborator can only view the shared folder."
+												},
+												{
+													"name": "viewer_no_comment",
+													"type": "Void",
+													"desc": "The collaborator can only view the shared folder and does not have any access to comments."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "owner",
+									"type": "Void",
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
+								},
+								{
+									"name": "editor",
+									"type": "Void",
+									"desc": "The collaborator can both view and edit the shared folder."
+								},
+								{
+									"name": "viewer",
+									"type": "Void",
+									"desc": "The collaborator can only view the shared folder."
+								},
+								{
+									"name": "viewer_no_comment",
+									"type": "Void",
+									"desc": "The collaborator can only view the shared folder and does not have any access to comments."
+								},
+								{
 									"name": "audience",
 									"type": "LinkAudience?",
 									"desc": "The type of audience on the link for this file. This field is optional.",
@@ -8406,6 +8458,31 @@
 						{
 							"list": [
 								{
+									"name": "owner",
+									"type": "Void",
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
+								},
+								{
+									"name": "editor",
+									"type": "Void",
+									"desc": "The collaborator can both view and edit the shared folder."
+								},
+								{
+									"name": "viewer",
+									"type": "Void",
+									"desc": "The collaborator can only view the shared folder."
+								},
+								{
+									"name": "viewer_no_comment",
+									"type": "Void",
+									"desc": "The collaborator can only view the shared folder and does not have any access to comments."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
 									"name": "public",
 									"type": "Void",
 									"desc": "Link is accessible by anyone."
@@ -8454,6 +8531,58 @@
 							"example": null
 						}
 					]
+				},
+				{
+					"name": "access_level",
+					"type": "AccessLevel?",
+					"desc": "The access level on the link for this file. Currently, it only accepts 'viewer' and 'viewer_no_comment'. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "owner",
+									"type": "Void",
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
+								},
+								{
+									"name": "editor",
+									"type": "Void",
+									"desc": "The collaborator can both view and edit the shared folder."
+								},
+								{
+									"name": "viewer",
+									"type": "Void",
+									"desc": "The collaborator can only view the shared folder."
+								},
+								{
+									"name": "viewer_no_comment",
+									"type": "Void",
+									"desc": "The collaborator can only view the shared folder and does not have any access to comments."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "owner",
+					"type": "Void",
+					"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
+				},
+				{
+					"name": "editor",
+					"type": "Void",
+					"desc": "The collaborator can both view and edit the shared folder."
+				},
+				{
+					"name": "viewer",
+					"type": "Void",
+					"desc": "The collaborator can only view the shared folder."
+				},
+				{
+					"name": "viewer_no_comment",
+					"type": "Void",
+					"desc": "The collaborator can only view the shared folder and does not have any access to comments."
 				},
 				{
 					"name": "audience",
@@ -9128,6 +9257,58 @@
 						{
 							"list": [
 								{
+									"name": "access_level",
+									"type": "AccessLevel?",
+									"desc": "The access level on the link for this file. Currently, it only accepts 'viewer' and 'viewer_no_comment'. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "owner",
+													"type": "Void",
+													"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
+												},
+												{
+													"name": "editor",
+													"type": "Void",
+													"desc": "The collaborator can both view and edit the shared folder."
+												},
+												{
+													"name": "viewer",
+													"type": "Void",
+													"desc": "The collaborator can only view the shared folder."
+												},
+												{
+													"name": "viewer_no_comment",
+													"type": "Void",
+													"desc": "The collaborator can only view the shared folder and does not have any access to comments."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "owner",
+									"type": "Void",
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
+								},
+								{
+									"name": "editor",
+									"type": "Void",
+									"desc": "The collaborator can both view and edit the shared folder."
+								},
+								{
+									"name": "viewer",
+									"type": "Void",
+									"desc": "The collaborator can only view the shared folder."
+								},
+								{
+									"name": "viewer_no_comment",
+									"type": "Void",
+									"desc": "The collaborator can only view the shared folder and does not have any access to comments."
+								},
+								{
 									"name": "audience",
 									"type": "LinkAudience?",
 									"desc": "The type of audience on the link for this file. This field is optional.",
@@ -9239,6 +9420,31 @@
 						{
 							"list": [
 								{
+									"name": "owner",
+									"type": "Void",
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
+								},
+								{
+									"name": "editor",
+									"type": "Void",
+									"desc": "The collaborator can both view and edit the shared folder."
+								},
+								{
+									"name": "viewer",
+									"type": "Void",
+									"desc": "The collaborator can only view the shared folder."
+								},
+								{
+									"name": "viewer_no_comment",
+									"type": "Void",
+									"desc": "The collaborator can only view the shared folder and does not have any access to comments."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
 									"name": "public",
 									"type": "Void",
 									"desc": "Link is accessible by anyone."
@@ -9287,6 +9493,58 @@
 							"example": null
 						}
 					]
+				},
+				{
+					"name": "access_level",
+					"type": "AccessLevel?",
+					"desc": "The access level on the link for this file. Currently, it only accepts 'viewer' and 'viewer_no_comment'. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "owner",
+									"type": "Void",
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
+								},
+								{
+									"name": "editor",
+									"type": "Void",
+									"desc": "The collaborator can both view and edit the shared folder."
+								},
+								{
+									"name": "viewer",
+									"type": "Void",
+									"desc": "The collaborator can only view the shared folder."
+								},
+								{
+									"name": "viewer_no_comment",
+									"type": "Void",
+									"desc": "The collaborator can only view the shared folder and does not have any access to comments."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "owner",
+					"type": "Void",
+					"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
+				},
+				{
+					"name": "editor",
+					"type": "Void",
+					"desc": "The collaborator can both view and edit the shared folder."
+				},
+				{
+					"name": "viewer",
+					"type": "Void",
+					"desc": "The collaborator can only view the shared folder."
+				},
+				{
+					"name": "viewer_no_comment",
+					"type": "Void",
+					"desc": "The collaborator can only view the shared folder and does not have any access to comments."
 				},
 				{
 					"name": "audience",
@@ -9393,6 +9651,148 @@
 					"name": "set_password",
 					"type": "String",
 					"desc": "Set a new password or change an existing password."
+				},
+				{
+					"name": "actions",
+					"type": "List of (FolderAction)?",
+					"desc": "A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's SharedFolderMetadata.permissions field describing the actions the  authenticated user can perform on the folder. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "change_options",
+									"type": "Void",
+									"desc": "Change folder options, such as who can be invited to join the folder."
+								},
+								{
+									"name": "disable_viewer_info",
+									"type": "Void",
+									"desc": "Disable viewer information for this folder."
+								},
+								{
+									"name": "edit_contents",
+									"type": "Void",
+									"desc": "Change or edit contents of the folder."
+								},
+								{
+									"name": "enable_viewer_info",
+									"type": "Void",
+									"desc": "Enable viewer information on the folder."
+								},
+								{
+									"name": "invite_editor",
+									"type": "Void",
+									"desc": "Invite a user or group to join the folder with read and write permission."
+								},
+								{
+									"name": "invite_viewer",
+									"type": "Void",
+									"desc": "Invite a user or group to join the folder with read permission."
+								},
+								{
+									"name": "invite_viewer_no_comment",
+									"type": "Void",
+									"desc": "Invite a user or group to join the folder with read permission but no comment permissions."
+								},
+								{
+									"name": "relinquish_membership",
+									"type": "Void",
+									"desc": "Relinquish one's own membership in the folder."
+								},
+								{
+									"name": "unmount",
+									"type": "Void",
+									"desc": "Unmount the folder."
+								},
+								{
+									"name": "unshare",
+									"type": "Void",
+									"desc": "Stop sharing this folder."
+								},
+								{
+									"name": "leave_a_copy",
+									"type": "Void",
+									"desc": "Keep a copy of the contents upon leaving or being kicked from the folder."
+								},
+								{
+									"name": "share_link",
+									"type": "Void",
+									"desc": "This action is deprecated. Use create_link instead."
+								},
+								{
+									"name": "create_link",
+									"type": "Void",
+									"desc": "Create a shared link for folder."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "change_options",
+					"type": "Void",
+					"desc": "Change folder options, such as who can be invited to join the folder."
+				},
+				{
+					"name": "disable_viewer_info",
+					"type": "Void",
+					"desc": "Disable viewer information for this folder."
+				},
+				{
+					"name": "edit_contents",
+					"type": "Void",
+					"desc": "Change or edit contents of the folder."
+				},
+				{
+					"name": "enable_viewer_info",
+					"type": "Void",
+					"desc": "Enable viewer information on the folder."
+				},
+				{
+					"name": "invite_editor",
+					"type": "Void",
+					"desc": "Invite a user or group to join the folder with read and write permission."
+				},
+				{
+					"name": "invite_viewer",
+					"type": "Void",
+					"desc": "Invite a user or group to join the folder with read permission."
+				},
+				{
+					"name": "invite_viewer_no_comment",
+					"type": "Void",
+					"desc": "Invite a user or group to join the folder with read permission but no comment permissions."
+				},
+				{
+					"name": "relinquish_membership",
+					"type": "Void",
+					"desc": "Relinquish one's own membership in the folder."
+				},
+				{
+					"name": "unmount",
+					"type": "Void",
+					"desc": "Unmount the folder."
+				},
+				{
+					"name": "unshare",
+					"type": "Void",
+					"desc": "Stop sharing this folder."
+				},
+				{
+					"name": "leave_a_copy",
+					"type": "Void",
+					"desc": "Keep a copy of the contents upon leaving or being kicked from the folder."
+				},
+				{
+					"name": "share_link",
+					"type": "Void",
+					"desc": "This action is deprecated. Use create_link instead."
+				},
+				{
+					"name": "create_link",
+					"type": "Void",
+					"desc": "Create a shared link for folder."
 				}
 			],
 			"example": {
