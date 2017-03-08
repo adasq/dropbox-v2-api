@@ -3572,7 +3572,7 @@
 				{
 					"name": "doc_id",
 					"type": "String",
-					"desc": ""
+					"desc": "The Paper doc ID."
 				}
 			],
 			"example": {
@@ -3592,7 +3592,7 @@
 				{
 					"name": "doc_id",
 					"type": "String",
-					"desc": ""
+					"desc": "The Paper doc ID."
 				},
 				{
 					"name": "export_format",
@@ -3650,7 +3650,7 @@
 				{
 					"name": "doc_id",
 					"type": "String",
-					"desc": ""
+					"desc": "The Paper doc ID."
 				},
 				{
 					"name": "limit",
@@ -3695,7 +3695,7 @@
 				{
 					"name": "doc_id",
 					"type": "String",
-					"desc": ""
+					"desc": "The Paper doc ID."
 				},
 				{
 					"name": "cursor",
@@ -3740,7 +3740,7 @@
 				{
 					"name": "doc_id",
 					"type": "String",
-					"desc": ""
+					"desc": "The Paper doc ID."
 				}
 			],
 			"example": {
@@ -3777,12 +3777,12 @@
 								{
 									"name": "docs_accessed",
 									"type": "Void",
-									"desc": "Fetches all Paper doc ids that the user has ever accessed."
+									"desc": "Fetches all Paper doc IDs that the user has ever accessed."
 								},
 								{
 									"name": "docs_created",
 									"type": "Void",
-									"desc": "Fetches only the Paper doc ids that the user has created."
+									"desc": "Fetches only the Paper doc IDs that the user has created."
 								}
 							],
 							"example": null
@@ -3792,12 +3792,12 @@
 				{
 					"name": "docs_accessed",
 					"type": "Void",
-					"desc": "Fetches all Paper doc ids that the user has ever accessed."
+					"desc": "Fetches all Paper doc IDs that the user has ever accessed."
 				},
 				{
 					"name": "docs_created",
 					"type": "Void",
-					"desc": "Fetches only the Paper doc ids that the user has created."
+					"desc": "Fetches only the Paper doc IDs that the user has created."
 				},
 				{
 					"name": "sort_by",
@@ -3941,7 +3941,7 @@
 				{
 					"name": "doc_id",
 					"type": "String",
-					"desc": ""
+					"desc": "The Paper doc ID."
 				}
 			],
 			"example": {
@@ -3961,7 +3961,7 @@
 				{
 					"name": "doc_id",
 					"type": "String",
-					"desc": ""
+					"desc": "The Paper doc ID."
 				}
 			],
 			"example": {
@@ -3988,7 +3988,7 @@
 				{
 					"name": "doc_id",
 					"type": "String",
-					"desc": ""
+					"desc": "The Paper doc ID."
 				},
 				{
 					"name": "sharing_policy",
@@ -4251,25 +4251,25 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Allows an owner or editor to add users to a Paper doc or change their permissions using their email or Dropbox account id.  Note: The Doc owner's permissions cannot be changed.",
+		"description": "Allows an owner or editor to add users to a Paper doc or change their permissions using their email address or Dropbox account ID.  Note: The Doc owner's permissions cannot be changed.",
 		"parameters": {
 			"list": [
 				{
 					"name": "doc_id",
 					"type": "String",
-					"desc": ""
+					"desc": "The Paper doc ID."
 				},
 				{
 					"name": "members",
 					"type": "List of (AddMember, max_items=20)",
-					"desc": "User which should be added to the Paper doc. Specify only email or Dropbox account id.",
+					"desc": "User which should be added to the Paper doc. Specify only email address or Dropbox account ID.",
 					"parameters": [
 						{
 							"list": [
 								{
 									"name": "member",
 									"type": "MemberSelector",
-									"desc": "User which should be added to the Paper doc. Specify only email or Dropbox account id.",
+									"desc": "User which should be added to the Paper doc. Specify only email address or Dropbox account ID.",
 									"parameters": [
 										{
 											"list": [
@@ -4368,7 +4368,7 @@
 				{
 					"name": "member",
 					"type": "MemberSelector",
-					"desc": "User which should be added to the Paper doc. Specify only email or Dropbox account id.",
+					"desc": "User which should be added to the Paper doc. Specify only email address or Dropbox account ID.",
 					"parameters": [
 						{
 							"list": [
@@ -4437,7 +4437,7 @@
 				{
 					"name": "quiet",
 					"type": "Boolean",
-					"desc": "Clients should set this to true if no email shall be sent to added users. The default for this field is False."
+					"desc": "Clients should set this to true if no email message shall be sent to added users. The default for this field is False."
 				}
 			],
 			"example": {
@@ -4470,7 +4470,7 @@
 				{
 					"name": "doc_id",
 					"type": "String",
-					"desc": ""
+					"desc": "The Paper doc ID."
 				},
 				{
 					"name": "limit",
@@ -4563,7 +4563,7 @@
 				{
 					"name": "doc_id",
 					"type": "String",
-					"desc": ""
+					"desc": "The Paper doc ID."
 				},
 				{
 					"name": "cursor",
@@ -4617,18 +4617,18 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Allows an owner or editor to remove users from a Paper doc using their email or Dropbox account id.  Note: Doc owner cannot be removed.",
+		"description": "Allows an owner or editor to remove users from a Paper doc using their email address or Dropbox account ID.  Note: Doc owner cannot be removed.",
 		"parameters": {
 			"list": [
 				{
 					"name": "doc_id",
 					"type": "String",
-					"desc": ""
+					"desc": "The Paper doc ID."
 				},
 				{
 					"name": "member",
 					"type": "MemberSelector",
-					"desc": "User which should be removed from the Paper doc. Specify only email or Dropbox account id.",
+					"desc": "User which should be removed from the Paper doc. Specify only email address or Dropbox account ID.",
 					"parameters": [
 						{
 							"list": [
