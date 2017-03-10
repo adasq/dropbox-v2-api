@@ -5691,7 +5691,10 @@
 			},
 			"path_lower": "/dir/file.txt",
 			"path_display": "/dir/file.txt",
-			"time_invited": "2016-01-20T00:00:00Z"
+			"time_invited": "2016-01-20T00:00:00Z",
+			"access_type": {
+				".tag": "viewer"
+			}
 		}
 	},
 	"sharing/get_file_metadata/batch": {
@@ -7391,7 +7394,10 @@
 					},
 					"path_lower": "/dir/file.txt",
 					"path_display": "/dir/file.txt",
-					"time_invited": "2016-01-20T00:00:00Z"
+					"time_invited": "2016-01-20T00:00:00Z",
+					"access_type": {
+						".tag": "viewer"
+					}
 				}
 			],
 			"cursor": "AzJJbGlzdF90eXBdofe9c3RPbGlzdGFyZ3NfYnlfZ2lkMRhcbric7Rdog9cmV2aXNpb24H3Qf6o1fkHxQ"
@@ -7442,7 +7448,10 @@
 					},
 					"path_lower": "/dir/file.txt",
 					"path_display": "/dir/file.txt",
-					"time_invited": "2016-01-20T00:00:00Z"
+					"time_invited": "2016-01-20T00:00:00Z",
+					"access_type": {
+						".tag": "viewer"
+					}
 				}
 			],
 			"cursor": "AzJJbGlzdF90eXBdofe9c3RPbGlzdGFyZ3NfYnlfZ2lkMRhcbric7Rdog9cmV2aXNpb24H3Qf6o1fkHxQ"
