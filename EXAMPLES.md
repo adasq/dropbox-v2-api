@@ -946,7 +946,7 @@ dropbox({
 
 
 ### paper/docs/users/add ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-users-add))
-Allows an owner or editor to add users to a Paper doc or change their permissions using their email or Dropbox account id.  Note: The Doc owner's permissions cannot be changed.
+Allows an owner or editor to add users to a Paper doc or change their permissions using their email address or Dropbox account ID.  Note: The Doc owner's permissions cannot be changed.
 
 ```js
 dropbox({
@@ -1005,7 +1005,7 @@ dropbox({
 
 
 ### paper/docs/users/remove ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-users-remove))
-Allows an owner or editor to remove users from a Paper doc using their email or Dropbox account id.  Note: Doc owner cannot be removed.
+Allows an owner or editor to remove users from a Paper doc using their email address or Dropbox account ID.  Note: Doc owner cannot be removed.
 
 ```js
 dropbox({
