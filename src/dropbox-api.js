@@ -2,7 +2,6 @@ const request = require('request');
 const fs = require('fs');
 const path = require('path');
 const stream = require('stream');
-const _ = require('underscore');
 
 const RPC_RESOURCE_CATEGORY = 'RPC';
 const UPLOAD_RESOURCE_CATEGORY = 'UPLOAD';
@@ -41,7 +40,7 @@ const updateRequestOptsFnList = [
 			requestOpts.body = resourceDescription.parameters.available ? userParameters : null;
 		}else {
 			//if not RPC, then we have 2 options: download or uplad type request
-			requestOpts.headers[DB_HEADER_API_ARGS] = _.isObject(userParameters) ? JSON.stringify(userParameters): '';
+			requestOpts.headers[DB_HEADER_API_ARGS] = isObject(userParameters) ? JSON.stringify(userParameters): '';
 		}
 	}	
 ];
@@ -53,7 +52,8 @@ module.exports = generateAPIByResourcesDescriptionList(loadResourcesDescriptionL
 
 function generateResourcesHandlingFunctions(resourcesDescriptionList){
 	const resourcesHandlingFunctions = {};
-	_.each(resourcesDescriptionList, (resourceDescription, resourceName) => {
+	Object.keys(resourcesDescriptionList).forEach((resourceName) => {
+			const resourceDescription = resourcesDescriptionList[resourceName];
 			const resourceCategory = resourceDescription.category;
 
 			resourcesHandlingFunctions[resourceName] = function(userOpts, userCb) {
@@ -61,7 +61,7 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList){
 				const requestOpts = createDefaultRequestOptObject(resourceDescription);
 
 				//prepare requestOpts based on userOpts, config, etc.
-				_.each(updateRequestOptsFnList, 
+				updateRequestOptsFnList.forEach( 
 					(updateRequestOptsFn) => updateRequestOptsFn(requestOpts, resourceDescription, userOpts, config)
 				);
 
@@ -135,10 +135,11 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList){
 function generateAPIByResourcesDescriptionList(resourcesDescriptionList){
 	const resourceHandlingFunctions = generateResourcesHandlingFunctions(resourcesDescriptionList);
 	const dropboxApi = function(userOpt, cb = noop){
-		const opt = _.extend({
-			parameters: {},
-			resource: ''
-		}, userOpt);
+		const opt = {
+			parameters: userOpt.parameters || {},
+			resource: userOpt.resource || '',
+			readStream: userOpt.readStream
+		};
 		
 		const resourceName = opt.resource;
 		if(resourceHandlingFunctions[resourceName]){
@@ -207,4 +208,8 @@ function createDefaultRequestOptObject(resourceDescription){
 		followRedirect: false,
 		headers: {}
 	}
+}
+
+function isObject (obj) {
+	return (typeof obj) === 'object' && !!obj;
 }
