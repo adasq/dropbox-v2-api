@@ -59,9 +59,9 @@ dropbox({
 });
 
 ```
-- `resource` (string) represent API target. It contains Dropbox's namespace and method name. eg. `'users/get_account'`, `'users/get_space_usage'`, `'files/upload'`, `'files/list_folder/longpoll'`, `'sharing/share_folder'` [more at official documentation][docs]
-- `parameters` (object?) optional parameters, depends on `resource` field
-- `readStream` (readable stream?) Upload-type requests might contains `readStream` field, which is readable stream
+- `resource` (*string*) represent API target. It contains Dropbox's namespace and method name. eg. `'users/get_account'`, `'users/get_space_usage'`, `'files/upload'`, `'files/list_folder/longpoll'`, `'sharing/share_folder'` [more at official documentation][docs]
+- `parameters` (*object?*) optional parameters, depends on `resource` field
+- `readStream` (*readable stream?*) Upload-type requests might contains `readStream` field, which is readable stream
 
 For Download-type requests, the function ```dropbox``` returns readable stream.
 
