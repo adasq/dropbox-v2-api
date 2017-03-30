@@ -783,7 +783,7 @@ fs.createReadStream().pipe(stream);
 
 
 ### paper/docs/archive ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-archive))
-Marks the given Paper doc as deleted. This operation is non-destructive and the doc can be revived by the owner.  Note: This action can be performed only by the doc owner.
+Marks the given Paper doc as archived. Note: This action can be performed or undone by anyone with edit permissions to the doc.
 
 ```js
 dropbox({
