@@ -10,7 +10,7 @@ The `dropbox-v2-api` package interface is generated automatically - it's based o
 
 - Simple API (no custom function names, see [full api showcase](#full-api-showcase))
 - Full support for streams (see [upload/download](#upload-and-download-examples) examples)
-- Examples for all endpoints ([see more](https://github.com/adasq/dropbox-v2-api/blob/master/EXAMPLES.md))
+- Examples for all endpoints ([see more][examples])
 
 
 ## Get started
@@ -228,8 +228,9 @@ function sessionFinish(sessionId) {
 ```
 
 
-#### check [test cases][tests] for more examples...
+#### check [test cases][tests] or [examples][examples] for more examples...
 
+[examples]: <https://github.com/adasq/dropbox-v2-api/blob/master/EXAMPLES.md>
 [tests]: <https://github.com/adasq/dropbox-v2-api/blob/master/test>
 [session-upload]: 
 <https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-start>
