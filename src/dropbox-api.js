@@ -4,157 +4,156 @@ const path = require('path');
 const stream = require('stream');
 const _ = require('underscore');
 
-//-------------------------------------------------------------------
-
-var config = {};
+const RPC_RESOURCE_CATEGORY = 'RPC';
+const UPLOAD_RESOURCE_CATEGORY = 'UPLOAD';
+const DOWNLOAD_RESOURCE_CATEGORY = 'DOWNLOAD';
 
 const DB_HEADER_API_ARGS = 'Dropbox-API-Arg';
-const DB_HEADER_API_RESULT = 'dropbox-api-result';
+const DB_API_RESULT_HEADER_NAME = 'dropbox-api-result';
 const OAUTH2_AUTHORIZE= 'https://www.dropbox.com/1/oauth2/authorize';
 const OAUTH2_TOKEN= 'https://api.dropboxapi.com/1/oauth2/token';
 
+const RESOURCES_DESCRIPTION_PATH = path.join(__dirname, '../dist/api.json');
 
-var parsedApiDescription = JSON.parse(fs.readFileSync(path.join(__dirname, '../dist/api.json')));
-module.exports = generateAPIByParsedApiDescription(parsedApiDescription);
-
-//-------------------------------------------------------------------
-
-function throwError(content){
-	throw content;
-}
-
-var cusomizeRequestObjectMiddleware = [
-	function requiresAuthHeader(requestOpts, resourceDescription, userOpts, config){
-				if(resourceDescription.requiresAuthHeader){
+const updateRequestOptsFnList = [
+	/* For requests, which requires auth header, set valid header */
+	(requestOpts, {requiresAuthHeader}, userOpts, config) => {
+				if(requiresAuthHeader){
 					if(!config.token){
 						throwError('No "token" specified!');
 					}
-					requestOpts.headers['Authorization']= "Bearer "+config.token;
+					requestOpts.headers['Authorization']= `Bearer ${config.token}`;
 				}
 	},
-	function requiresReadableStream(requestOpts, resourceDescription, userOpts){						
-				if(resourceDescription.requiresReadableStream){
-					if(!userOpts.readStream){
-						// throwError('No readable stream specified!');
-					}
+	/* If resource requires upload stream, provide valid header */
+	(requestOpts, {requiresReadableStream}, userOpts) => {						
+				if(requiresReadableStream) {
 					requestOpts.headers['Content-Type']= 'application/octet-stream';
 				}
 	},
-	function prepareValidEndpoint(requestOpts, resourceDescription, userOpts, config){						
-				if(resourceDescription.category === 'RPC'){
-					requestOpts.body = resourceDescription.parameters.list.length > 0 ? userOpts.parameters : null;
-				}else if(resourceDescription.category === 'UPLOAD' || resourceDescription.category === 'DOWNLOAD'){
-					requestOpts.headers[DB_HEADER_API_ARGS] = _.isObject(userOpts.parameters) ? JSON.stringify(userOpts.parameters): '';
-				}
+	/* Sets request parameter as request body (for RPC requests) or as header (for DOWNLOAD / UPLOAD requests) */
+	(requestOpts, resourceDescription, userOpts, config) => {
+		const resourceCategory = resourceDescription.category;
+		const userParameters = userOpts.parameters;
+
+		if (resourceCategory === RPC_RESOURCE_CATEGORY) {
+			//RPC, put it as body
+			requestOpts.body = resourceDescription.parameters.list.length > 0 ? userParameters : null;
+		}else {
+			//if not RPC, then we have 2 options: download or uplad type request
+			requestOpts.headers[DB_HEADER_API_ARGS] = _.isObject(userParameters) ? JSON.stringify(userParameters): '';
+		}
 	}	
 ];
 
-function createTransformStream() {
-	const streamInstance = new stream.Transform();
-	streamInstance._transform = function (chunk,encoding,done) {
-		this.push(chunk);
-		done();
-	};
-	return streamInstance;
-}
+let config = {};
+module.exports = generateAPIByResourcesDescriptionList(loadResourcesDescriptionList());
 
-function prepareAPIMethods(parsedApiDescription){
-	var resources = {};
-	_.each(parsedApiDescription, function(resourceDescription, resourceName){
-			resources[resourceName] = function(opt, cb){
-				//default request object
-				var requestOpts = {
-					method: 'POST',
-					uri: resourceDescription.uri,
-					json: true,
-					followRedirect: false,
-					headers: {}
-				};
+//------------------------------------------------------------------------------------
+
+function generateResourcesHandlingFunctions(resourcesDescriptionList){
+	const resourcesHandlingFunctions = {};
+	_.each(resourcesDescriptionList, (resourceDescription, resourceName) => {
+			const resourceCategory = resourceDescription.category;
+
+			resourcesHandlingFunctions[resourceName] = function(userOpts, userCb) {
+				//create default request object
+				const requestOpts = createDefaultRequestOptObject(resourceDescription);
+
 				//prepare requestOpts based on userOpts, config, etc.
-				_.each(cusomizeRequestObjectMiddleware, function(fn){
-					fn(requestOpts, resourceDescription, opt, config);
-				});
-				//-------------------------------------------------------
+				_.each(updateRequestOptsFnList, 
+					(updateRequestOptsFn) => updateRequestOptsFn(requestOpts, resourceDescription, userOpts, config)
+				);
+
+				const callback = prepareCallback(userCb);
+
 				//send request
-				
-				
-				if(resourceDescription.category === "UPLOAD"){
+				if (resourceCategory === UPLOAD_RESOURCE_CATEGORY) {
 					//it's upload type request, so pipe
-					if(opt.readStream){
+					if(userOpts.readStream){
 						// read stream specified, so pipe it
-						return opt.readStream.pipe(request(requestOpts, callback));
+						return userOpts.readStream.pipe(request(requestOpts, callback));
 					}else {
 						// readStream not specified, so return writable stream
 						return request(requestOpts, callback);
 					}
-				}else if(resourceDescription.category === "DOWNLOAD"){
+				}else if(resourceCategory === DOWNLOAD_RESOURCE_CATEGORY) {
 					return request(requestOpts, callback).pipe(createTransformStream());
 				}else {
-					//ordinary api call/download request 
+					//ordinary api call request 
 					return request(requestOpts, callback);
 				}
-				//-------------------------------------------
-				function callback(err, response, body){
+
+				function prepareCallback(userCb) {
+					return (err, response, body) => {
+						const responseContentType = response.headers['content-type'];
 						const statusCode = response.statusCode;
-						var contentType = {
+
+						const handleResponseByContentType = {
+							/* it's content-stream response type, so response object is located inside header */
 							'application/octet-stream': () => {
-								if(response.headers[DB_HEADER_API_RESULT]){
-									return cb(null, JSON.parse(response.headers[DB_HEADER_API_RESULT]));
-								}
+								const dropboxApiResultContent = response.headers[DB_API_RESULT_HEADER_NAME];
+								return dropboxApiResultContent && userCb(null, JSON.parse(dropboxApiResultContent));
 							},
+							/* it's ordinary RPC response, so result object is located inside body */
 							'application/json': () => {
 								const json = body;
 								if(statusCode === 200) {
-									return cb(null, json);
+									return userCb(null, json);
 								}else {
 									json.code = statusCode;
-									return cb(json);
+									return userCb(json);
 								}								
 							},
+							/* text type response */
 							'text/plain; charset=utf-8': () => {
 								const text = body;
 								if(statusCode === 200) {
-									return cb(null, text);
+									return userCb(null, text);
 								}else{
-									return cb({
+									return userCb({
 										code: statusCode,
 										text: text
 									});
 								}		
 							}
 						};
-						if(contentType[response.headers['content-type']]){
-							contentType[response.headers['content-type']]();
-						} else{
-							cb(err);
+
+						const responseHandlerFn = handleResponseByContentType[responseContentType];
+						if (responseHandlerFn) {
+							responseHandlerFn();
+						}else {
+							userCb(err || {});
 						}
 				}
+			}
 			};
 	});
-	return resources;
+	return resourcesHandlingFunctions;
 }
 
-function generateAPIByParsedApiDescription(parsedApiDescription){
-	var apiMethods = prepareAPIMethods(parsedApiDescription);
-	var api = function(userOpt, cb){
-		var opt = _.extend({
+function generateAPIByResourcesDescriptionList(resourcesDescriptionList){
+	const resourceHandlingFunctions = generateResourcesHandlingFunctions(resourcesDescriptionList);
+	const dropboxApi = function(userOpt, cb = noop){
+		const opt = _.extend({
 			parameters: {},
 			resource: ''
 		}, userOpt);
-		cb = cb || function(){};
-		if(apiMethods[opt.resource]){
-			return apiMethods[opt.resource](opt, cb);
+		
+		const resourceName = opt.resource;
+		if(resourceHandlingFunctions[resourceName]){
+			return resourceHandlingFunctions[resourceName](opt, cb);
 		}else{
 			throwError(`resource "${opt.resource}" is invalid.`);
 		}
 	};	
-	api.authenticate = function(_config){
+	dropboxApi.authenticate = function(_config) {
 		 config = _config;
 		 return {
-		 	generateAuthUrl: function(input){
-		 		return OAUTH2_AUTHORIZE+'?client_id='+config.client_id+'&response_type=code&redirect_uri='+config.redirect_uri;
+		 	generateAuthUrl: (input) => {
+		 		return `${OAUTH2_AUTHORIZE}?client_id=${config.client_id}&response_type=code&redirect_uri=${config.redirect_uri}`;
 		 	},
-		 	getToken: function(code, cb){
+		 	getToken: (code, userCb) => {
 		 		request({
 					method: 'POST',
 					uri: OAUTH2_TOKEN,
@@ -167,16 +166,45 @@ function generateAPIByParsedApiDescription(parsedApiDescription){
 						grant_type: 'authorization_code',
 						redirect_uri: config.redirect_uri
 					}
-				}, function(err, resp, body){
-					if(err || body.error){
-						cb(body.error || {});
+				}, (err, resp, body) => {
+					if(err || body.error) {
+						userCb(body.error || {});
 					}
 					config.token = body.access_token;
-					cb(false, body);
+					userCb(false, body);
 				});
 		 	}
 		 }
 
 	};
-	return api;
+	return dropboxApi;
+}
+
+function throwError(content) {
+	throw content;
+}
+
+function createTransformStream() {
+	const streamInstance = new stream.Transform();
+	streamInstance._transform = function (chunk, enc, done) {
+		this.push(chunk);
+		done();
+	};
+	return streamInstance;
+}
+
+function noop() {}
+
+function loadResourcesDescriptionList() {
+	return JSON.parse(fs.readFileSync(RESOURCES_DESCRIPTION_PATH));
+}
+
+function createDefaultRequestOptObject(resourceDescription){
+	return {
+		method: 'POST',
+		uri: resourceDescription.uri,
+		json: true,
+		followRedirect: false,
+		headers: {}
+	}
 }
