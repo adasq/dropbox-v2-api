@@ -84,7 +84,7 @@ function getParameterList(el){
 	}
 
 	return {
-		list: getParameterListInner(el),
+		available: getParameterListInner(el).length > 0,
 		example: parametersExampleObject
 	};
 

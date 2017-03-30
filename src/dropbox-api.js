@@ -38,7 +38,7 @@ const updateRequestOptsFnList = [
 
 		if (resourceCategory === RPC_RESOURCE_CATEGORY) {
 			//RPC, put it as body
-			requestOpts.body = resourceDescription.parameters.list.length > 0 ? userParameters : null;
+			requestOpts.body = resourceDescription.parameters.available ? userParameters : null;
 		}else {
 			//if not RPC, then we have 2 options: download or uplad type request
 			requestOpts.headers[DB_HEADER_API_ARGS] = _.isObject(userParameters) ? JSON.stringify(userParameters): '';
