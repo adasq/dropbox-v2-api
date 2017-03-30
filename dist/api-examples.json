@@ -3566,7 +3566,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Marks the given Paper doc as deleted. This operation is non-destructive and the doc can be revived by the owner.  Note: This action can be performed only by the doc owner.",
+		"description": "Marks the given Paper doc as archived. Note: This action can be performed or undone by anyone with edit permissions to the doc.",
 		"parameters": {
 			"list": [
 				{
