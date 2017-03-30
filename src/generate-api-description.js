@@ -84,7 +84,7 @@ function getParameterList(el){
 	}
 
 	return {
-		available: getParameterListInner(el).length > 0,
+		list: getParameterListInner(el),
 		example: parametersExampleObject
 	};
 
@@ -200,6 +200,9 @@ function createApiObject(fullApiObject) {
 				delete apiDescription.description;
 				delete apiDescription.returnParameters;
 				delete apiDescription.parameters.example;
+				apiDescription.parameters.available = apiDescription.parameters.list.length > 0;
+				delete apiDescription.parameters.list;
+
 			}));
 			return fullApiObject;
 }
