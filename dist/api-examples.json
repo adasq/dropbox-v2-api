@@ -1254,7 +1254,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Starts returning the contents of a folder. If the result's ListFolderResult.has_more field is true, call [list_folder/continue](#fileslist_foldercontinue-see-docs) with the returned ListFolderResult.cursor to retrieve more entries. If you're using ListFolderArg.recursive set to true to keep a local cache of the contents of a Dropbox account, iterate through each entry in order and process them as follows to keep your local state in sync: For each FileMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it and remove all its children. For each FolderMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it but leave the children as they are. Check the new entry's FolderSharingInfo.read_only and set all its children's read-only statuses to match. For each DeletedMetadata, if your local state has something at the given path, remove it and all its children. If there's nothing at the given path, ignore this entry.",
+		"description": "Starts returning the contents of a folder. If the result's ListFolderResult.has_more field is true, call [[list_folder](#fileslist_folder-see-docs)/continue](#fileslist_foldercontinue-see-docs) with the returned ListFolderResult.cursor to retrieve more entries. If you're using ListFolderArg.recursive set to true to keep a local cache of the contents of a Dropbox account, iterate through each entry in order and process them as follows to keep your local state in sync: For each FileMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it and remove all its children. For each FolderMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it but leave the children as they are. Check the new entry's FolderSharingInfo.read_only and set all its children's read-only statuses to match. For each DeletedMetadata, if your local state has something at the given path, remove it and all its children. If there's nothing at the given path, ignore this entry. Note: auth.RateLimitError may be returned if multiple list_folder or [list_folder/continue](#fileslist_foldercontinue-see-docs) calls with same parameters are made simultaneously by same API app for same user. If your app implements retry logic, please hold off the retry until the previous request finishes.",
 		"parameters": {
 			"list": [
 				{
@@ -5667,6 +5667,8 @@
 			}
 		},
 		"returnParameters": {
+			"id": "id:3kmLmQFnf1AAAAAAAAAAAw",
+			"name": "file.txt",
 			"policy": {
 				"acl_update_policy": {
 					".tag": "owner"
@@ -5682,19 +5684,17 @@
 				}
 			},
 			"preview_url": "https://www.dropbox.com/scl/fi/fir9vjelf",
-			"name": "file.txt",
-			"id": "id:3kmLmQFnf1AAAAAAAAAAAw",
-			"permissions": [],
+			"access_type": {
+				".tag": "viewer"
+			},
 			"owner_team": {
 				"id": "dbtid:AAFdgehTzw7WlXhZJsbGCLePe8RvQGYDr-I",
 				"name": "Acme, Inc."
 			},
-			"path_lower": "/dir/file.txt",
 			"path_display": "/dir/file.txt",
-			"time_invited": "2016-01-20T00:00:00Z",
-			"access_type": {
-				".tag": "viewer"
-			}
+			"path_lower": "/dir/file.txt",
+			"permissions": [],
+			"time_invited": "2016-01-20T00:00:00Z"
 		}
 	},
 	"sharing/get_file_metadata/batch": {
@@ -7370,6 +7370,8 @@
 		"returnParameters": {
 			"entries": [
 				{
+					"id": "id:3kmLmQFnf1AAAAAAAAAAAw",
+					"name": "file.txt",
 					"policy": {
 						"acl_update_policy": {
 							".tag": "owner"
@@ -7385,19 +7387,17 @@
 						}
 					},
 					"preview_url": "https://www.dropbox.com/scl/fi/fir9vjelf",
-					"name": "file.txt",
-					"id": "id:3kmLmQFnf1AAAAAAAAAAAw",
-					"permissions": [],
+					"access_type": {
+						".tag": "viewer"
+					},
 					"owner_team": {
 						"id": "dbtid:AAFdgehTzw7WlXhZJsbGCLePe8RvQGYDr-I",
 						"name": "Acme, Inc."
 					},
-					"path_lower": "/dir/file.txt",
 					"path_display": "/dir/file.txt",
-					"time_invited": "2016-01-20T00:00:00Z",
-					"access_type": {
-						".tag": "viewer"
-					}
+					"path_lower": "/dir/file.txt",
+					"permissions": [],
+					"time_invited": "2016-01-20T00:00:00Z"
 				}
 			],
 			"cursor": "AzJJbGlzdF90eXBdofe9c3RPbGlzdGFyZ3NfYnlfZ2lkMRhcbric7Rdog9cmV2aXNpb24H3Qf6o1fkHxQ"
@@ -7424,6 +7424,8 @@
 		"returnParameters": {
 			"entries": [
 				{
+					"id": "id:3kmLmQFnf1AAAAAAAAAAAw",
+					"name": "file.txt",
 					"policy": {
 						"acl_update_policy": {
 							".tag": "owner"
@@ -7439,19 +7441,17 @@
 						}
 					},
 					"preview_url": "https://www.dropbox.com/scl/fi/fir9vjelf",
-					"name": "file.txt",
-					"id": "id:3kmLmQFnf1AAAAAAAAAAAw",
-					"permissions": [],
+					"access_type": {
+						".tag": "viewer"
+					},
 					"owner_team": {
 						"id": "dbtid:AAFdgehTzw7WlXhZJsbGCLePe8RvQGYDr-I",
 						"name": "Acme, Inc."
 					},
-					"path_lower": "/dir/file.txt",
 					"path_display": "/dir/file.txt",
-					"time_invited": "2016-01-20T00:00:00Z",
-					"access_type": {
-						".tag": "viewer"
-					}
+					"path_lower": "/dir/file.txt",
+					"permissions": [],
+					"time_invited": "2016-01-20T00:00:00Z"
 				}
 			],
 			"cursor": "AzJJbGlzdF90eXBdofe9c3RPbGlzdGFyZ3NfYnlfZ2lkMRhcbric7Rdog9cmV2aXNpb24H3Qf6o1fkHxQ"
