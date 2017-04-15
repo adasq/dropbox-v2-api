@@ -309,7 +309,7 @@ stream
 
 
 ### files/list_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-list_folder))
-Starts returning the contents of a folder. If the result's ListFolderResult.has_more field is true, call [list_folder/continue](#fileslist_foldercontinue-see-docs) with the returned ListFolderResult.cursor to retrieve more entries. If you're using ListFolderArg.recursive set to true to keep a local cache of the contents of a Dropbox account, iterate through each entry in order and process them as follows to keep your local state in sync: For each FileMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it and remove all its children. For each FolderMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it but leave the children as they are. Check the new entry's FolderSharingInfo.read_only and set all its children's read-only statuses to match. For each DeletedMetadata, if your local state has something at the given path, remove it and all its children. If there's nothing at the given path, ignore this entry.
+Starts returning the contents of a folder. If the result's ListFolderResult.has_more field is true, call [[list_folder](#fileslist_folder-see-docs)/continue](#fileslist_foldercontinue-see-docs) with the returned ListFolderResult.cursor to retrieve more entries. If you're using ListFolderArg.recursive set to true to keep a local cache of the contents of a Dropbox account, iterate through each entry in order and process them as follows to keep your local state in sync: For each FileMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it and remove all its children. For each FolderMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it but leave the children as they are. Check the new entry's FolderSharingInfo.read_only and set all its children's read-only statuses to match. For each DeletedMetadata, if your local state has something at the given path, remove it and all its children. If there's nothing at the given path, ignore this entry. Note: auth.RateLimitError may be returned if multiple list_folder or [list_folder/continue](#fileslist_foldercontinue-see-docs) calls with same parameters are made simultaneously by same API app for same user. If your app implements retry logic, please hold off the retry until the previous request finishes.
 
 ```js
 dropbox({
@@ -658,7 +658,7 @@ fs.createReadStream('/Homework/math/Matrices.txt').pipe(stream);
 
 
 ### files/upload_session/append ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-append))
-Append more data to an upload session. A single request should not upload more than 150 MB of file contents.
+Append more data to an upload session. A single request should not upload more than 150 MB.
 
 ```js
 const stream = dropbox({
@@ -676,7 +676,7 @@ fs.createReadStream().pipe(stream);
 
 
 ### files/upload_session/append_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-append_v2))
-Append more data to an upload session. When the parameter close is set, this call will close the session. A single request should not upload more than 150 MB of file contents.
+Append more data to an upload session. When the parameter close is set, this call will close the session. A single request should not upload more than 150 MB.
 
 ```js
 const stream = dropbox({
@@ -697,7 +697,7 @@ fs.createReadStream().pipe(stream);
 
 
 ### files/upload_session/finish ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-finish))
-Finish an upload session and save the uploaded data to the given file path. A single request should not upload more than 150 MB of file contents.
+Finish an upload session and save the uploaded data to the given file path. A single request should not upload more than 150 MB.
 
 ```js
 const stream = dropbox({
@@ -766,7 +766,7 @@ dropbox({
 
 
 ### files/upload_session/start ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-start))
-Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use [upload_session/append_v2](#filesupload_sessionappend_v2-see-docs) to add more data and [upload_session/finish](#filesupload_sessionfinish-see-docs) to save all the data to a file in Dropbox. A single request should not upload more than 150 MB of file contents.
+Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use [[upload_session/append_v2](#filesupload_sessionappend_v2-see-docs)](#filesupload_sessionappend_v2-see-docs) to add more data and [[upload_session/finish](#filesupload_sessionfinish-see-docs)](#filesupload_sessionfinish-see-docs) to save all the data to a file in Dropbox. A single request should not upload more than 150 MB. An upload session can be used for a maximum of 48 hours. Attempting to use an UploadSessionStartResult.session_id with upload_session/append_v2 or upload_session/finish more than 48 hours after its creation will return a UploadSessionLookupError.not_found.
 
 ```js
 const stream = dropbox({
