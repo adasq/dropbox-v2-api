@@ -27,22 +27,22 @@ const dropbox = require('dropbox-v2-api');
 - using token
 ```js
 dropbox.authenticate({
-	token: 'your token'
+    token: 'your token'
 });
 ```
 - using oauth2 flow (see [example app][example-auth-flow])
 ```js
 //set credentials
 const oauth = dropbox.authenticate({
-	client_id: 'APP_KEY',
-	client_secret: 'APP_SECRET',
-	redirect_uri: 'REDIRECT_URI'
+    client_id: 'APP_KEY',
+    client_secret: 'APP_SECRET',
+    redirect_uri: 'REDIRECT_URI'
 });
 //generate and visit authorization sevice 
 const authUrl = oauth.generateAuthUrl();
 //after redirection, you should receive code
 oauth.getToken(code, (err, response) => {
-	//you are authorized now!
+    //you are authorized now!
 });
 ```
 
@@ -54,7 +54,7 @@ dropbox({
     parameters: (object?),
     readStream: (readable stream object?)
 }, (err, result) => {
-    if(err){ return console.log('err:', err); }
+    if (err) { return console.log('err:', err); }
     console.log(result);
 });
 
@@ -72,25 +72,25 @@ For Download-type requests, the function ```dropbox``` returns readable stream.
 Upload-type requests might contains `readStream` field, which is readable stream
 ```js
 dropbox({
-	resource: 'files/upload',
-	parameters: {
-		path: '/dropbox/path/to/file.js'
-	},
-	readStream: fs.createReadStream('path/to/file.js')
+    resource: 'files/upload',
+    parameters: {
+        path: '/dropbox/path/to/file.js'
+    },
+    readStream: fs.createReadStream('path/to/file.js')
 }, (err, result) => {
-	//upload completed
+    //upload completed
 });
 ```
 or, using streams:
 
 ```js
 const dropboxUploadStream = dropbox({
-	resource: 'files/upload',
-	parameters: {
-		path: '/dropbox/path/to/file.js'
-	}
+    resource: 'files/upload',
+    parameters: {
+        path: '/dropbox/path/to/file.js'
+    }
 }, (err, result) => {
-	//upload completed
+    //upload completed
 });
 
 fs.createReadStream('path/to/file.js').pipe(dropboxUploadStream);
@@ -101,12 +101,12 @@ fs.createReadStream('path/to/file.js').pipe(dropboxUploadStream);
 Download-type requests return `writableStream`
 ```js
 dropbox({
-	resource: 'files/download',
-	parameters: {
-		path: '/dropbox/image.jpg'
-	}
+    resource: 'files/download',
+    parameters: {
+        path: '/dropbox/image.jpg'
+    }
 }, (err, result) => {
-	//download completed
+    //download completed
 })
 .pipe(fs.createWriteStream('./image.jpg'));
 ```
@@ -116,15 +116,15 @@ dropbox({
 You can easely use streams: 
 ```js
 const downloadStream = dropbox({
-	resource: 'files/download',
-	parameters: { path: '/source/file/path' }				
+    resource: 'files/download',
+    parameters: { path: '/source/file/path' }				
 });
 
 const uploadStream = dropbox({
-	resource: 'files/upload',
-	parameters: { path: '/target/file/path' }				
+    resource: 'files/upload',
+    parameters: { path: '/target/file/path' }				
 }, (err, response) => {
-	//upload finished
+    //upload finished
 });
 
 downloadStream.pipe(uploadStream);
@@ -136,10 +136,10 @@ downloadStream.pipe(uploadStream);
 
 ```js
 dropbox({
-	resource: 'users/get_current_account'
+    resource: 'users/get_current_account'
 }, (err, response) => {
-	if(err){ return console.log('err:', err); }
-	console.log(response);
+    if (err) { return console.log('err:', err); }
+    console.log(response);
 });
 ```
 
@@ -147,14 +147,14 @@ dropbox({
 
 ```js
 dropbox({
-	resource: 'files/get_metadata',
-	parameters: {
-		path: '/dropbox/path/to/file.js',
-		include_media_info: false
+    resource: 'files/get_metadata',
+    parameters: {
+        path: '/dropbox/path/to/file.js',
+        include_media_info: false
 	}
 }, function(err, result) => {
-	if(err){ return console.log('err:', err); }
-	console.log(result);
+    if(err){ return console.log('err:', err); }
+    console.log(result);
 });
 ```
 
@@ -167,9 +167,9 @@ const firstUploadChunkStream = () => utils.createMockedReadStream('1', CHUNK_LEN
 const secondUploadChunkStream = () => utils.createMockedReadStream('2', CHUNK_LENGTH);
 
 sessionStart((sessionId) => {
-	sessionAppend(sessionId, () => {
-		sessionFinish(sessionId);
-	});
+    sessionAppend(sessionId, () => {
+        sessionFinish(sessionId);
+    });
 });
 
 function sessionStart(cb) {
@@ -180,10 +180,10 @@ function sessionStart(cb) {
         },
         readStream: firstUploadChunkStream()
     }, (err, response) => {
-		if(err){ return console.log('sessionStart error: ', err) }
-		console.log('sessionStart response:', response);
-		cb(response.session_id);
-	});
+        if (err) { return console.log('sessionStart error: ', err) }
+        console.log('sessionStart response:', response);
+        cb(response.session_id);
+    });
 }
 
 
@@ -199,10 +199,10 @@ function sessionAppend(sessionId, cb) {
         },
         readStream: secondUploadChunkStream()
     }, (err, response) => {
-		if(err){ return console.log('sessionAppend error: ', err) }
-		console.log('sessionAppend response:', response);
-		cb();
-	});
+        if(err){ return console.log('sessionAppend error: ', err) }
+        console.log('sessionAppend response:', response);
+        cb();
+    });
 }
 
 function sessionFinish(sessionId) {
@@ -221,12 +221,11 @@ function sessionFinish(sessionId) {
             }
         }
     }, (err, response) => {
-		if(err){ return console.log('sessionFinish error: ', err) }
-		console.log('sessionFinish response:', response);
-	});
+        if (err) { return console.log('sessionFinish error: ', err) }
+        console.log('sessionFinish response:', response);
+    });
 }
 ```
-
 
 #### check [test cases][tests] or [examples][examples] for more examples...
 
