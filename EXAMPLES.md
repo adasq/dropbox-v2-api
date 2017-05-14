@@ -82,7 +82,8 @@ dropbox({
         'from_path': '/Homework/math',
         'to_path': '/Homework/algebra',
         'allow_shared_folder': false,
-        'autorename': false
+        'autorename': false,
+        'allow_ownership_transfer': true
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -102,7 +103,8 @@ dropbox({
             'to_path': '/Homework/algebra'
         }],
         'allow_shared_folder': false,
-        'autorename': false
+        'autorename': false,
+        'allow_ownership_transfer': true
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -256,7 +258,7 @@ dropbox({
 
 
 ### files/get_preview ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-get_preview))
-Get a preview for a file. Currently previews are only generated for the files with  the following extensions: .doc, .docx, .docm, .ppt, .pps, .ppsx, .ppsm, .pptx, .pptm,  .xls, .xlsx, .xlsm, .rtf.
+Get a preview for a file. Currently, PDF previews are generated for files with the following extensions: .ai, .doc, .docm, .docx, .eps, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are generated for files with the following extensions: .csv, .ods, .xls, .xlsm, .xlsx. Other formats will return an unsupported extension error.
 
 ```js
 const stream = dropbox({
@@ -403,7 +405,8 @@ dropbox({
         'from_path': '/Homework/math',
         'to_path': '/Homework/algebra',
         'allow_shared_folder': false,
-        'autorename': false
+        'autorename': false,
+        'allow_ownership_transfer': true
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -423,7 +426,8 @@ dropbox({
             'to_path': '/Homework/algebra'
         }],
         'allow_shared_folder': false,
-        'autorename': false
+        'autorename': false,
+        'allow_ownership_transfer': true
     }
 }, (err, result) => {
     //see docs for `result` parameters
