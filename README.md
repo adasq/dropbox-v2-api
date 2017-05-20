@@ -10,6 +10,7 @@ The `dropbox-v2-api` package interface is generated automatically - it's based o
 
 - Simple API (no custom function names, see [full api showcase](#full-api-showcase))
 - Full support for streams (see [upload/download](#upload-and-download-examples) examples)
+- Supports Dropbox Paper API 
 - Examples for all endpoints ([see more][examples])
 
 
