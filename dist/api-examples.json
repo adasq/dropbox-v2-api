@@ -9988,6 +9988,9 @@
 					"shared_link_create_policy": {
 						".tag": "team_only"
 					}
+				},
+				"office_addin_policy": {
+					".tag": "disabled"
 				}
 			},
 			"team_member_id": "dbmid:AAHhy7WsR0x-u4ZCqiDl5Fz5zvuL3kmspwU"
