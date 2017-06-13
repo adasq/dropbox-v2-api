@@ -25,7 +25,7 @@ const updateRequestOptsFnList = [
 				}
 	},
 	/* If resource requires upload stream, provide valid header */
-	(requestOpts, {requiresReadableStream}, userOpts) => {						
+	(requestOpts, {requiresReadableStream}, userOpts) => {
 				if(requiresReadableStream) {
 					requestOpts.headers['Content-Type']= 'application/octet-stream';
 				}
@@ -42,7 +42,7 @@ const updateRequestOptsFnList = [
 			//if not RPC, then we have 2 options: download or uplad type request
 			requestOpts.headers[DB_HEADER_API_ARGS] = isObject(userParameters) ? JSON.stringify(userParameters): '';
 		}
-	}	
+	}
 ];
 
 let config = {};
@@ -61,7 +61,7 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList){
 				const requestOpts = createDefaultRequestOptObject(resourceDescription);
 
 				//prepare requestOpts based on userOpts, config, etc.
-				updateRequestOptsFnList.forEach( 
+				updateRequestOptsFnList.forEach(
 					(updateRequestOptsFn) => updateRequestOptsFn(requestOpts, resourceDescription, userOpts, config)
 				);
 
@@ -80,12 +80,16 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList){
 				}else if(resourceCategory === DOWNLOAD_RESOURCE_CATEGORY) {
 					return request(requestOpts, callback).pipe(createTransformStream());
 				}else {
-					//ordinary api call request 
+					//ordinary api call request
 					return request(requestOpts, callback);
 				}
 
 				function prepareCallback(userCb) {
 					return (err, response, body) => {
+						if (err) {
+							return userCb(err);
+						}
+
 						const responseContentType = response.headers['content-type'];
 						const statusCode = response.statusCode;
 
@@ -103,7 +107,7 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList){
 								}else {
 									json.code = statusCode;
 									return userCb(json);
-								}								
+								}
 							},
 							/* text type response */
 							'text/plain; charset=utf-8': () => {
@@ -115,7 +119,7 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList){
 										code: statusCode,
 										text: text
 									});
-								}		
+								}
 							}
 						};
 
@@ -140,14 +144,14 @@ function generateAPIByResourcesDescriptionList(resourcesDescriptionList){
 			resource: userOpt.resource || '',
 			readStream: userOpt.readStream
 		};
-		
+
 		const resourceName = opt.resource;
 		if(resourceHandlingFunctions[resourceName]){
 			return resourceHandlingFunctions[resourceName](opt, cb);
 		}else{
 			throwError(`resource "${opt.resource}" is invalid.`);
 		}
-	};	
+	};
 	dropboxApi.authenticate = function(_config) {
 		 config = _config;
 		 return {
