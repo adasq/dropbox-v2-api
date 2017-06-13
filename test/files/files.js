@@ -1,15 +1,16 @@
 const should = require('should');
 const spec = require('stream-spec');
 
-const dropbox = require('../../src/dropbox-api-test.js');
+const dropboxV2Api = require('../../src/dropbox-api-test.js');
 const utils = require('../../src/utils.js');
 
 const DROPBOX_TOKEN = process.env.DROPBOX_TOKEN;
+let dropbox;
 
 describe('Namespace', function() {
     this.timeout(6000);
     before(function() {
-        dropbox.authenticate({
+        dropbox = dropboxV2Api.authenticate({
             token: DROPBOX_TOKEN
         });
     });
@@ -18,7 +19,6 @@ describe('Namespace', function() {
     });
     describe('files', () => {
         const timestamp = (+new Date());
-
         var dirName = `dropbox-api-test-${timestamp}`;
         var dirPath = `/${dirName}`
 

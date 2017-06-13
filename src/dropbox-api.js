@@ -45,12 +45,11 @@ const updateRequestOptsFnList = [
 	}	
 ];
 
-let config = {};
-module.exports = generateAPIByResourcesDescriptionList(loadResourcesDescriptionList());
+const resourcesDescriptionList = loadResourcesDescriptionList();
 
 //------------------------------------------------------------------------------------
 
-function generateResourcesHandlingFunctions(resourcesDescriptionList){
+function generateResourcesHandlingFunctions(resourcesDescriptionList, config){
 	const resourcesHandlingFunctions = {};
 	Object.keys(resourcesDescriptionList).forEach((resourceName) => {
 			const resourceDescription = resourcesDescriptionList[resourceName];
@@ -132,53 +131,50 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList){
 	return resourcesHandlingFunctions;
 }
 
-function generateAPIByResourcesDescriptionList(resourcesDescriptionList){
-	const resourceHandlingFunctions = generateResourcesHandlingFunctions(resourcesDescriptionList);
-	const dropboxApi = function(userOpt, cb = noop){
-		const opt = {
-			parameters: userOpt.parameters || {},
-			resource: userOpt.resource || '',
-			readStream: userOpt.readStream
+module.exports = {
+	authenticate: function (config) {
+		const resourceHandlingFunctions = generateResourcesHandlingFunctions(resourcesDescriptionList, config);
+		const clientSession = function(userOpt, cb = noop) {
+			const opt = {
+				parameters: userOpt.parameters || {},
+				resource: userOpt.resource || '',
+				readStream: userOpt.readStream
+			};
+			const resourceName = opt.resource;
+			if(resourceHandlingFunctions[resourceName]){
+				return resourceHandlingFunctions[resourceName](opt, cb);
+			}else{
+				throwError(`resource "${opt.resource}" is invalid.`);
+			}
 		};
-		
-		const resourceName = opt.resource;
-		if(resourceHandlingFunctions[resourceName]){
-			return resourceHandlingFunctions[resourceName](opt, cb);
-		}else{
-			throwError(`resource "${opt.resource}" is invalid.`);
-		}
-	};	
-	dropboxApi.authenticate = function(_config) {
-		 config = _config;
-		 return {
-		 	generateAuthUrl: (input) => {
-		 		return `${OAUTH2_AUTHORIZE}?client_id=${config.client_id}&response_type=code&redirect_uri=${config.redirect_uri}`;
-		 	},
-		 	getToken: (code, userCb) => {
-		 		request({
-					method: 'POST',
-					uri: OAUTH2_TOKEN,
-					followRedirect: true,
-					json: true,
-					form: {
-						code: code,
-						client_id: config.client_id,
-						client_secret: config.client_secret,
-						grant_type: 'authorization_code',
-						redirect_uri: config.redirect_uri
-					}
-				}, (err, resp, body) => {
-					if(err || body.error) {
-						userCb(body.error || {});
-					}
-					config.token = body.access_token;
-					userCb(false, body);
-				});
-		 	}
-		 }
-
-	};
-	return dropboxApi;
+		Object.assign(clientSession, {
+				generateAuthUrl: (input) => {
+					return `${OAUTH2_AUTHORIZE}?client_id=${config.client_id}&response_type=code&redirect_uri=${config.redirect_uri}`;
+				},
+				getToken: (code, userCb) => {
+					request({
+						method: 'POST',
+						uri: OAUTH2_TOKEN,
+						followRedirect: true,
+						json: true,
+						form: {
+							code: code,
+							client_id: config.client_id,
+							client_secret: config.client_secret,
+							grant_type: 'authorization_code',
+							redirect_uri: config.redirect_uri
+						}
+					}, (err, resp, body) => {
+						if(err || body.error) {
+							userCb(body.error || {});
+						}
+						config.token = body.access_token;
+						userCb(false, body);
+					});
+				}
+		});
+		return clientSession;
+	}
 }
 
 function throwError(content) {

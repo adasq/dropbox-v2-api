@@ -21,29 +21,29 @@ $ npm i -s dropbox-v2-api
 ```
 
 ```js
-const dropbox = require('dropbox-v2-api');
+const dropboxV2Api = require('dropbox-v2-api');
 ```
 
 ## Auth
 
 - using token
 ```js
-dropbox.authenticate({
+const dropbox = dropboxV2Api.authenticate({
     token: 'your token'
 });
 ```
 - using oauth2 flow (see [example app][example-auth-flow])
 ```js
 //set credentials
-const oauth = dropbox.authenticate({
+const dropbox = dropboxV2Api.authenticate({
     client_id: 'APP_KEY',
     client_secret: 'APP_SECRET',
     redirect_uri: 'REDIRECT_URI'
 });
 //generate and visit authorization sevice 
-const authUrl = oauth.generateAuthUrl();
+const authUrl = dropbox.generateAuthUrl();
 //after redirection, you should receive code
-oauth.getToken(code, (err, response) => {
+dropbox.getToken(code, (err, response) => {
     //you are authorized now!
 });
 ```
