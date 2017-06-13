@@ -8068,38 +8068,6 @@
 					"desc": "The path to the folder to share. If it does not exist, then a new one is created."
 				},
 				{
-					"name": "member_policy",
-					"type": "MemberPolicy?",
-					"desc": "Who can be a member of this shared folder. Only applicable if the current user is on a team. This field is optional.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "team",
-									"type": "Void",
-									"desc": "Only a teammate can become a member."
-								},
-								{
-									"name": "anyone",
-									"type": "Void",
-									"desc": "Anyone can become a member."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "team",
-					"type": "Void",
-					"desc": "Only a teammate can become a member."
-				},
-				{
-					"name": "anyone",
-					"type": "Void",
-					"desc": "Anyone can become a member."
-				},
-				{
 					"name": "acl_update_policy",
 					"type": "AclUpdatePolicy?",
 					"desc": "Who can add and remove members of this shared folder. This field is optional.",
@@ -8130,6 +8098,43 @@
 					"name": "editors",
 					"type": "Void",
 					"desc": "Any editor can update the ACL. This may be further restricted to editors on the same team."
+				},
+				{
+					"name": "force_async",
+					"type": "Boolean",
+					"desc": "Whether to force the share to happen asynchronously. The default for this field is False."
+				},
+				{
+					"name": "member_policy",
+					"type": "MemberPolicy?",
+					"desc": "Who can be a member of this shared folder. Only applicable if the current user is on a team. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "team",
+									"type": "Void",
+									"desc": "Only a teammate can become a member."
+								},
+								{
+									"name": "anyone",
+									"type": "Void",
+									"desc": "Anyone can become a member."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "team",
+					"type": "Void",
+					"desc": "Only a teammate can become a member."
+				},
+				{
+					"name": "anyone",
+					"type": "Void",
+					"desc": "Anyone can become a member."
 				},
 				{
 					"name": "shared_link_policy",
@@ -8174,9 +8179,36 @@
 					"desc": "Links can only be shared among members of the shared folder."
 				},
 				{
-					"name": "force_async",
-					"type": "Boolean",
-					"desc": "Whether to force the share to happen asynchronously. The default for this field is False."
+					"name": "viewer_info_policy",
+					"type": "ViewerInfoPolicy?",
+					"desc": "Who can enable/disable viewer info for this shared folder. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "enabled",
+									"type": "Void",
+									"desc": "Viewer information is available on this file."
+								},
+								{
+									"name": "disabled",
+									"type": "Void",
+									"desc": "Viewer information is disabled on this file."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "enabled",
+					"type": "Void",
+					"desc": "Viewer information is available on this file."
+				},
+				{
+					"name": "disabled",
+					"type": "Void",
+					"desc": "Viewer information is disabled on this file."
 				},
 				{
 					"name": "actions",
@@ -8722,46 +8754,14 @@
 					"name": "set_password",
 					"type": "String",
 					"desc": "Set a new password or change an existing password."
-				},
-				{
-					"name": "viewer_info_policy",
-					"type": "ViewerInfoPolicy?",
-					"desc": "Who can enable/disable viewer info for this shared folder. This field is optional.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "enabled",
-									"type": "Void",
-									"desc": "Viewer information is available on this file."
-								},
-								{
-									"name": "disabled",
-									"type": "Void",
-									"desc": "Viewer information is disabled on this file."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "enabled",
-					"type": "Void",
-					"desc": "Viewer information is available on this file."
-				},
-				{
-					"name": "disabled",
-					"type": "Void",
-					"desc": "Viewer information is disabled on this file."
 				}
 			],
 			"example": {
 				"path": "/example/workspace",
-				"member_policy": "team",
 				"acl_update_policy": "editors",
-				"shared_link_policy": "members",
-				"force_async": false
+				"force_async": false,
+				"member_policy": "team",
+				"shared_link_policy": "members"
 			}
 		},
 		"returnParameters": {
