@@ -1,4 +1,11 @@
-const dropbox = require('../src/dropbox-api.js');
+/**
+ * To run example you have to create 'credentials.json' file
+ * in current location.
+ * 
+ * File should contain JSON object, with 'TOKEN' property.
+ */
+
+const dropboxV2Api = require('../src/dropbox-api.js');
 const utils = require('../src/utils.js');
 
 const fs = require('fs');
@@ -7,7 +14,7 @@ const path = require('path');
 const credentials = JSON.parse(fs.readFileSync(path.join(__dirname, 'credentials.json')));
 
 //set token authentication:
-dropbox.authenticate({
+const dropbox = dropboxV2Api.authenticate({
 	token: credentials.TOKEN
 });
 
