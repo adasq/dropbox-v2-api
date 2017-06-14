@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.org/adasq/dropbox-v2-api.svg?branch=master)](https://travis-ci.org/adasq/dropbox-v2-api)
 [![NPM Downloads](https://img.shields.io/npm/dm/dropbox-v2-api.svg?style=flat)](https://www.npmjs.org/package/dropbox-v2-api)
 [![NPM Downloads](https://img.shields.io/npm/dt/dropbox-v2-api.svg?style=flat)](https://www.npmjs.org/package/dropbox-v2-api)
+[![npm version](https://badge.fury.io/js/dropbox-v2-api.svg)](https://badge.fury.io/js/dropbox-v2-api)
+
 # dropbox-v2-api
 Dropbox API v2 wrapper for nodejs.
 
