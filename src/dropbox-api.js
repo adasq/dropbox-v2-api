@@ -25,7 +25,7 @@ const updateRequestOptsFnList = [
 				}
 	},
 	/* If resource requires upload stream, provide valid header */
-	(requestOpts, {requiresReadableStream}, userOpts) => {						
+	(requestOpts, {requiresReadableStream}, userOpts) => {
 				if(requiresReadableStream) {
 					requestOpts.headers['Content-Type']= 'application/octet-stream';
 				}
@@ -42,7 +42,7 @@ const updateRequestOptsFnList = [
 			//if not RPC, then we have 2 options: download or uplad type request
 			requestOpts.headers[DB_HEADER_API_ARGS] = isObject(userParameters) ? JSON.stringify(userParameters): '';
 		}
-	}	
+	}
 ];
 
 const resourcesDescriptionList = loadResourcesDescriptionList();
@@ -60,7 +60,7 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList, config){
 				const requestOpts = createDefaultRequestOptObject(resourceDescription);
 
 				//prepare requestOpts based on userOpts, config, etc.
-				updateRequestOptsFnList.forEach( 
+				updateRequestOptsFnList.forEach(
 					(updateRequestOptsFn) => updateRequestOptsFn(requestOpts, resourceDescription, userOpts, config)
 				);
 
@@ -79,12 +79,16 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList, config){
 				}else if(resourceCategory === DOWNLOAD_RESOURCE_CATEGORY) {
 					return request(requestOpts, callback).pipe(createTransformStream());
 				}else {
-					//ordinary api call request 
+					//ordinary api call request
 					return request(requestOpts, callback);
 				}
 
 				function prepareCallback(userCb) {
 					return (err, response, body) => {
+						if (err) {
+							return userCb(err);
+						}
+
 						const responseContentType = response.headers['content-type'];
 						const statusCode = response.statusCode;
 
@@ -102,7 +106,7 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList, config){
 								}else {
 									json.code = statusCode;
 									return userCb(json);
-								}								
+								}
 							},
 							/* text type response */
 							'text/plain; charset=utf-8': () => {
@@ -114,7 +118,7 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList, config){
 										code: statusCode,
 										text: text
 									});
-								}		
+								}
 							}
 						};
 
