@@ -27,10 +27,24 @@ const dropboxV2Api = require('dropbox-v2-api');
 ## Auth
 
 - using token
+
 ```js
+// create session ref:
 const dropbox = dropboxV2Api.authenticate({
     token: 'your token'
 });
+
+// use session ref to call API, i.e.:
+dropbox({
+    resource: 'users/get_account',
+    parameters: {
+        'account_id': 'dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc'
+    }
+}, (err, result) => {
+    if (err) { return console.log(err); }
+    console.log(result);
+});
+
 ```
 - using oauth2 flow (see [example app][example-auth-flow])
 ```js
