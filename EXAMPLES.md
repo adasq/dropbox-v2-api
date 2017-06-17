@@ -83,7 +83,7 @@ dropbox({
         'to_path': '/Homework/algebra',
         'allow_shared_folder': false,
         'autorename': false,
-        'allow_ownership_transfer': true
+        'allow_ownership_transfer': false
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -104,7 +104,7 @@ dropbox({
         }],
         'allow_shared_folder': false,
         'autorename': false,
-        'allow_ownership_transfer': true
+        'allow_ownership_transfer': false
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -236,6 +236,24 @@ const stream = dropbox({
 
 stream
     .pipe(fs.createWriteStream('/Homework/math/Prime_Numbers.txt')); //pipe the stream
+```
+
+
+### files/download_zip ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-download_zip))
+Download a folder from the user's Dropbox, as a zip file. The folder must be less than 1 GB in size and have fewer than 10,000 total files. The input cannot be a single file.
+
+```js
+const stream = dropbox({
+    resource: 'files/download_zip',
+    parameters: {
+        'path': '/Homework/math'
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+
+stream
+    .pipe(fs.createWriteStream('/Homework/math')); //pipe the stream
 ```
 
 
@@ -406,7 +424,7 @@ dropbox({
         'to_path': '/Homework/algebra',
         'allow_shared_folder': false,
         'autorename': false,
-        'allow_ownership_transfer': true
+        'allow_ownership_transfer': false
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -427,7 +445,7 @@ dropbox({
         }],
         'allow_shared_folder': false,
         'autorename': false,
-        'allow_ownership_transfer': true
+        'allow_ownership_transfer': false
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -1615,10 +1633,10 @@ dropbox({
     resource: 'sharing/share_folder',
     parameters: {
         'path': '/example/workspace',
-        'member_policy': 'team',
         'acl_update_policy': 'editors',
-        'shared_link_policy': 'members',
-        'force_async': false
+        'force_async': false,
+        'member_policy': 'team',
+        'shared_link_policy': 'members'
     }
 }, (err, result) => {
     //see docs for `result` parameters
