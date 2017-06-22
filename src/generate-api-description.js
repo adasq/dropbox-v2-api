@@ -56,9 +56,10 @@ function getTextByElem(el){
 			const linkText = link.text();
 			const linkHref = link.attr('href').replace(/-/g, '');
 			if('#'+linkText === linkHref || linkHref[0] !== '#')return;
-			text = text.replace(link.text(), `[${linkText}](${linkHref}-see-docs)`);
+			link.text(`[${linkText}](${linkHref}-see-docs)`);
 		});
 	}
+	text = el.text();
 	return text.replace(/\n/g, ' ').trim();
 }
 function getTextByElem2(el){
