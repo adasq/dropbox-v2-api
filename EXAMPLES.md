@@ -158,12 +158,47 @@ dropbox({
 ```
 
 
+### files/copy_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-copy_v2))
+Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be copied.
+
+```js
+dropbox({
+    resource: 'files/copy_v2',
+    parameters: {
+        'from_path': '/Homework/math',
+        'to_path': '/Homework/algebra',
+        'allow_shared_folder': false,
+        'autorename': false,
+        'allow_ownership_transfer': false
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### files/create_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-create_folder))
 Create a folder at a given path.
 
 ```js
 dropbox({
     resource: 'files/create_folder',
+    parameters: {
+        'path': '/Homework/math',
+        'autorename': false
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/create_folder_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-create_folder_v2))
+Create a folder at a given path.
+
+```js
+dropbox({
+    resource: 'files/create_folder_v2',
     parameters: {
         'path': '/Homework/math',
         'autorename': false
@@ -221,6 +256,21 @@ dropbox({
 ```
 
 
+### files/delete_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-delete_v2))
+Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.
+
+```js
+dropbox({
+    resource: 'files/delete_v2',
+    parameters: {
+        'path': '/Homework/math/Prime_Numbers.txt'
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### files/download ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-download))
 Download a file from a user's Dropbox.
 
@@ -236,24 +286,6 @@ const stream = dropbox({
 
 stream
     .pipe(fs.createWriteStream('/Homework/math/Prime_Numbers.txt')); //pipe the stream
-```
-
-
-### files/download_zip ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-download_zip))
-Download a folder from the user's Dropbox, as a zip file. The folder must be less than 1 GB in size and have fewer than 10,000 total files. The input cannot be a single file.
-
-```js
-const stream = dropbox({
-    resource: 'files/download_zip',
-    parameters: {
-        'path': '/Homework/math'
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-
-stream
-    .pipe(fs.createWriteStream('/Homework/math')); //pipe the stream
 ```
 
 
@@ -461,6 +493,25 @@ dropbox({
     resource: 'files/move_batch/check',
     parameters: {
         'async_job_id': '34g93hh34h04y384084'
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/move_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-move_v2))
+Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be moved.
+
+```js
+dropbox({
+    resource: 'files/move_v2',
+    parameters: {
+        'from_path': '/Homework/math',
+        'to_path': '/Homework/algebra',
+        'allow_shared_folder': false,
+        'autorename': false,
+        'allow_ownership_transfer': false
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -1285,7 +1336,7 @@ dropbox({
 
 
 ### sharing/get_shared_links ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-get_shared_links))
-Returns a list of LinkMetadata objects for this user, including collection links. If no path is given, returns a list of all shared links for the current user, including collection links. If a non-empty path is given, returns a list of all shared links that allow access to the given path.  Collection links are never returned in this case. Note that the url field in the response is never the shortened URL.
+Returns a list of LinkMetadata objects for this user, including collection links. If no path is given, returns a list of all shared links for the current user, including collection links, up to a maximum of 1000 links. If a non-empty path is given, returns a list of all shared links that allow access to the given path.  Collection links are never returned in this case. Note that the url field in the response is never the shortened URL.
 
 ```js
 dropbox({
