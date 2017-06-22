@@ -1440,7 +1440,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Starts returning the contents of a folder. If the result's ListFolderResult.has_more field is true, call [[list_folder](#fileslist_folder-see-docs)/continue](#fileslist_foldercontinue-see-docs) with the returned ListFolderResult.cursor to retrieve more entries. If you're using ListFolderArg.recursive set to true to keep a local cache of the contents of a Dropbox account, iterate through each entry in order and process them as follows to keep your local state in sync: For each FileMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it and remove all its children. For each FolderMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it but leave the children as they are. Check the new entry's FolderSharingInfo.read_only and set all its children's read-only statuses to match. For each DeletedMetadata, if your local state has something at the given path, remove it and all its children. If there's nothing at the given path, ignore this entry. Note: auth.RateLimitError may be returned if multiple list_folder or [list_folder/continue](#fileslist_foldercontinue-see-docs) calls with same parameters are made simultaneously by same API app for same user. If your app implements retry logic, please hold off the retry until the previous request finishes.",
+		"description": "Starts returning the contents of a folder. If the result's ListFolderResult.has_more field is true, call [list_folder/continue](#fileslist_foldercontinue-see-docs) with the returned ListFolderResult.cursor to retrieve more entries. If you're using ListFolderArg.recursive set to true to keep a local cache of the contents of a Dropbox account, iterate through each entry in order and process them as follows to keep your local state in sync: For each FileMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it and remove all its children. For each FolderMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it but leave the children as they are. Check the new entry's FolderSharingInfo.read_only and set all its children's read-only statuses to match. For each DeletedMetadata, if your local state has something at the given path, remove it and all its children. If there's nothing at the given path, ignore this entry. Note: auth.RateLimitError may be returned if multiple [list_folder](#fileslist_folder-see-docs) or [list_folder/continue](#fileslist_foldercontinue-see-docs) calls with same parameters are made simultaneously by same API app for same user. If your app implements retry logic, please hold off the retry until the previous request finishes.",
 		"parameters": {
 			"list": [
 				{
@@ -1542,7 +1542,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Once a cursor has been retrieved from [[list_folder](#fileslist_folder-see-docs)](#fileslist_folder-see-docs), use this to paginate through all files and retrieve updates to the folder, following the same rules as documented for list_folder.",
+		"description": "Once a cursor has been retrieved from [list_folder](#fileslist_folder-see-docs), use this to paginate through all files and retrieve updates to the folder, following the same rules as documented for [list_folder](#fileslist_folder-see-docs).",
 		"parameters": {
 			"list": [
 				{
@@ -3210,7 +3210,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "This route helps you commit many files at once into a user's Dropbox. Use [[upload_session/start](#filesupload_sessionstart-see-docs)](#filesupload_sessionstart-see-docs) and [[upload_session/append_v2](#filesupload_sessionappend_v2-see-docs)](#filesupload_sessionappend_v2-see-docs) to upload file contents. We recommend uploading many files in parallel to increase throughput. Once the file contents have been uploaded, rather than calling [upload_session/finish](#filesupload_sessionfinish-see-docs), use this route to finish all your upload sessions in a single request. UploadSessionStartArg.close or UploadSessionAppendArg.close needs to be true for the last upload_session/start or upload_session/append_v2 call. This route will return a job_id immediately and do the async commit job in background. Use [upload_session/finish_batch/check](#filesupload_sessionfinish_batchcheck-see-docs) to check the job status. For the same account, this route should be executed serially. That means you should not start the next job before current job finishes. We allow up to 1000 entries in a single request.",
+		"description": "This route helps you commit many files at once into a user's Dropbox. Use [upload_session/start](#filesupload_sessionstart-see-docs) and [upload_session/append_v2](#filesupload_sessionappend_v2-see-docs) to upload file contents. We recommend uploading many files in parallel to increase throughput. Once the file contents have been uploaded, rather than calling [upload_session/finish](#filesupload_sessionfinish-see-docs), use this route to finish all your upload sessions in a single request. UploadSessionStartArg.close or UploadSessionAppendArg.close needs to be true for the last [upload_session/start](#filesupload_sessionstart-see-docs) or [upload_session/append_v2](#filesupload_sessionappend_v2-see-docs) call. This route will return a job_id immediately and do the async commit job in background. Use [upload_session/finish_batch/check](#filesupload_sessionfinish_batchcheck-see-docs) to check the job status. For the same account, this route should be executed serially. That means you should not start the next job before current job finishes. We allow up to 1000 entries in a single request.",
 		"parameters": {
 			"list": [
 				{
@@ -3816,7 +3816,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
-		"description": "Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use [[upload_session/append_v2](#filesupload_sessionappend_v2-see-docs)](#filesupload_sessionappend_v2-see-docs) to add more data and [[upload_session/finish](#filesupload_sessionfinish-see-docs)](#filesupload_sessionfinish-see-docs) to save all the data to a file in Dropbox. A single request should not upload more than 150 MB. An upload session can be used for a maximum of 48 hours. Attempting to use an UploadSessionStartResult.session_id with upload_session/append_v2 or upload_session/finish more than 48 hours after its creation will return a UploadSessionLookupError.not_found.",
+		"description": "Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use [upload_session/append_v2](#filesupload_sessionappend_v2-see-docs) to add more data and [upload_session/finish](#filesupload_sessionfinish-see-docs) to save all the data to a file in Dropbox. A single request should not upload more than 150 MB. An upload session can be used for a maximum of 48 hours. Attempting to use an UploadSessionStartResult.session_id with [upload_session/append_v2](#filesupload_sessionappend_v2-see-docs) or [upload_session/finish](#filesupload_sessionfinish-see-docs) more than 48 hours after its creation will return a UploadSessionLookupError.not_found.",
 		"parameters": {
 			"list": [
 				{
@@ -7149,7 +7149,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Once a cursor has been retrieved from [[list_folders](#sharinglist_folders-see-docs)](#sharinglist_folders-see-docs), use this to paginate through all shared folders. The cursor must come from a previous call to list_folders or [list_folders/continue](#sharinglist_folderscontinue-see-docs). Apps must have full Dropbox access to use this endpoint.",
+		"description": "Once a cursor has been retrieved from [list_folders](#sharinglist_folders-see-docs), use this to paginate through all shared folders. The cursor must come from a previous call to [list_folders](#sharinglist_folders-see-docs) or [list_folders/continue](#sharinglist_folderscontinue-see-docs). Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
@@ -7446,7 +7446,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Once a cursor has been retrieved from [[list_mountable_folders](#sharinglist_mountable_folders-see-docs)](#sharinglist_mountable_folders-see-docs), use this to paginate through all mountable shared folders. The cursor must come from a previous call to list_mountable_folders or [list_mountable_folders/continue](#sharinglist_mountable_folderscontinue-see-docs). Apps must have full Dropbox access to use this endpoint.",
+		"description": "Once a cursor has been retrieved from [list_mountable_folders](#sharinglist_mountable_folders-see-docs), use this to paginate through all mountable shared folders. The cursor must come from a previous call to [list_mountable_folders](#sharinglist_mountable_folders-see-docs) or [list_mountable_folders/continue](#sharinglist_mountable_folderscontinue-see-docs). Apps must have full Dropbox access to use this endpoint.",
 		"parameters": {
 			"list": [
 				{
