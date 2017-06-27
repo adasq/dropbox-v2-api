@@ -1445,8 +1445,8 @@
 			"list": [
 				{
 					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)?|(ns:[0-9]+(/.*)?)\")",
-					"desc": "The path to the folder you want to see the contents of."
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)?|id:.*|(ns:[0-9]+(/.*)?)\")",
+					"desc": "A unique identifier for the file."
 				},
 				{
 					"name": "recursive",
@@ -1625,8 +1625,8 @@
 			"list": [
 				{
 					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)?|(ns:[0-9]+(/.*)?)\")",
-					"desc": "The path to the folder you want to see the contents of."
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)?|id:.*|(ns:[0-9]+(/.*)?)\")",
+					"desc": "A unique identifier for the file."
 				},
 				{
 					"name": "recursive",
