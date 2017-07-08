@@ -120,7 +120,7 @@
 			"list": [
 				{
 					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox to save the file."
 				},
 				{
@@ -339,12 +339,12 @@
 			"list": [
 				{
 					"name": "from_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox to be copied or moved."
 				},
 				{
 					"name": "to_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox that is the destination."
 				},
 				{
@@ -418,12 +418,12 @@
 							"list": [
 								{
 									"name": "from_path",
-									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 									"desc": "Path in the user's Dropbox to be copied or moved."
 								},
 								{
 									"name": "to_path",
-									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 									"desc": "Path in the user's Dropbox that is the destination."
 								}
 							],
@@ -433,12 +433,12 @@
 				},
 				{
 					"name": "from_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox to be copied or moved."
 				},
 				{
 					"name": "to_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox that is the destination."
 				},
 				{
@@ -679,12 +679,12 @@
 			"list": [
 				{
 					"name": "from_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox to be copied or moved."
 				},
 				{
 					"name": "to_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox that is the destination."
 				},
 				{
@@ -851,7 +851,7 @@
 			"list": [
 				{
 					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox to delete."
 				}
 			],
@@ -906,7 +906,7 @@
 							"list": [
 								{
 									"name": "path",
-									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 									"desc": "Path in the user's Dropbox to delete."
 								}
 							],
@@ -916,7 +916,7 @@
 				},
 				{
 					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox to delete."
 				}
 			],
@@ -1032,7 +1032,7 @@
 			"list": [
 				{
 					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox to delete."
 				}
 			],
@@ -1757,12 +1757,12 @@
 			"list": [
 				{
 					"name": "from_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox to be copied or moved."
 				},
 				{
 					"name": "to_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox that is the destination."
 				},
 				{
@@ -1836,12 +1836,12 @@
 							"list": [
 								{
 									"name": "from_path",
-									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 									"desc": "Path in the user's Dropbox to be copied or moved."
 								},
 								{
 									"name": "to_path",
-									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 									"desc": "Path in the user's Dropbox that is the destination."
 								}
 							],
@@ -1851,12 +1851,12 @@
 				},
 				{
 					"name": "from_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox to be copied or moved."
 				},
 				{
 					"name": "to_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox that is the destination."
 				},
 				{
@@ -1989,12 +1989,12 @@
 			"list": [
 				{
 					"name": "from_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox to be copied or moved."
 				},
 				{
 					"name": "to_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox that is the destination."
 				},
 				{
@@ -2063,7 +2063,7 @@
 			"list": [
 				{
 					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox to delete."
 				}
 			],
@@ -2667,7 +2667,7 @@
 			"list": [
 				{
 					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)?|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)?|id:.*|(ns:[0-9]+(/.*)?)\")",
 					"desc": "The path in the user's Dropbox to search. Should probably be a folder."
 				},
 				{
@@ -2787,7 +2787,7 @@
 			"list": [
 				{
 					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox to save the file."
 				},
 				{
@@ -3015,7 +3015,7 @@
 							"list": [
 								{
 									"name": "path",
-									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 									"desc": "Path in the user's Dropbox to save the file."
 								},
 								{
@@ -3102,7 +3102,7 @@
 				},
 				{
 					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox to save the file."
 				},
 				{
@@ -3261,7 +3261,7 @@
 											"list": [
 												{
 													"name": "path",
-													"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+													"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 													"desc": "Path in the user's Dropbox to save the file."
 												},
 												{
@@ -3348,7 +3348,7 @@
 								},
 								{
 									"name": "path",
-									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 									"desc": "Path in the user's Dropbox to save the file."
 								},
 								{
@@ -3430,7 +3430,7 @@
 							"list": [
 								{
 									"name": "path",
-									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 									"desc": "Path in the user's Dropbox to save the file."
 								},
 								{
@@ -3556,7 +3556,7 @@
 							"list": [
 								{
 									"name": "path",
-									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 									"desc": "Path in the user's Dropbox to save the file."
 								},
 								{
@@ -3643,7 +3643,7 @@
 				},
 				{
 					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox to save the file."
 				},
 				{
