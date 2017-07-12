@@ -1,7 +1,7 @@
 {
 	"auth/token/from_oauth1": {
 		"uri": "https://api.dropboxapi.com/2/auth/token/from_oauth1",
-		"requiresAuthHeader": true,
+		"requiresAuthHeader": false,
 		"requiresReadableStream": false,
 		"category": "RPC",
 		"description": "Creates an OAuth 2.0 access token from the supplied OAuth 1.0 access token.",
@@ -1502,14 +1502,11 @@
 				}
 			],
 			"example": {
+				"path": "/Homework/math",
 				"recursive": false,
 				"include_media_info": false,
 				"include_deleted": false,
-				"include_has_explicit_shared_members": false,
-				"shared_link": {
-					"url": "https://www.dropbox.com/s/2sn712vy1ovegw8?dl=0",
-					"password": "password"
-				}
+				"include_has_explicit_shared_members": false
 			}
 		},
 		"returnParameters": {

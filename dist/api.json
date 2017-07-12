@@ -1,7 +1,7 @@
 {
 	"auth/token/from_oauth1": {
 		"uri": "https://api.dropboxapi.com/2/auth/token/from_oauth1",
-		"requiresAuthHeader": true,
+		"requiresAuthHeader": false,
 		"requiresReadableStream": false,
 		"category": "RPC",
 		"parameters": {
