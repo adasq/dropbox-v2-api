@@ -5991,6 +5991,9 @@
 			"access_type": {
 				".tag": "viewer"
 			},
+			"owner_display_names": [
+				"Jane Doe"
+			],
 			"owner_team": {
 				"id": "dbtid:AAFdgehTzw7WlXhZJsbGCLePe8RvQGYDr-I",
 				"name": "Acme, Inc."
@@ -7694,6 +7697,9 @@
 					"access_type": {
 						".tag": "viewer"
 					},
+					"owner_display_names": [
+						"Jane Doe"
+					],
 					"owner_team": {
 						"id": "dbtid:AAFdgehTzw7WlXhZJsbGCLePe8RvQGYDr-I",
 						"name": "Acme, Inc."
@@ -7748,6 +7754,9 @@
 					"access_type": {
 						".tag": "viewer"
 					},
+					"owner_display_names": [
+						"Jane Doe"
+					],
 					"owner_team": {
 						"id": "dbtid:AAFdgehTzw7WlXhZJsbGCLePe8RvQGYDr-I",
 						"name": "Acme, Inc."
