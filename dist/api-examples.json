@@ -1445,8 +1445,8 @@
 			"list": [
 				{
 					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)?|id:.*|(ns:[0-9]+(/.*)?)\")?",
-					"desc": "A unique identifier for the file. This field is optional."
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)?|id:.*|(ns:[0-9]+(/.*)?)\")",
+					"desc": "A unique identifier for the file."
 				},
 				{
 					"name": "recursive",
@@ -1467,38 +1467,6 @@
 					"name": "include_has_explicit_shared_members",
 					"type": "Boolean",
 					"desc": "If true, the results will include a flag for each file indicating whether or not  that file has any explicit members. The default for this field is False."
-				},
-				{
-					"name": "shared_link",
-					"type": "SharedLink?",
-					"desc": "A shared link to list the contents of, if the link is protected provide the password. This field is optional.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "url",
-									"type": "String",
-									"desc": "Shared link url."
-								},
-								{
-									"name": "password",
-									"type": "String?",
-									"desc": "Password for the shared link. This field is optional."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "url",
-					"type": "String",
-					"desc": "Shared link url."
-				},
-				{
-					"name": "password",
-					"type": "String?",
-					"desc": "Password for the shared link. This field is optional."
 				}
 			],
 			"example": {
@@ -1657,8 +1625,8 @@
 			"list": [
 				{
 					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)?|id:.*|(ns:[0-9]+(/.*)?)\")?",
-					"desc": "A unique identifier for the file. This field is optional."
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)?|id:.*|(ns:[0-9]+(/.*)?)\")",
+					"desc": "A unique identifier for the file."
 				},
 				{
 					"name": "recursive",
@@ -1704,7 +1672,7 @@
 				{
 					"name": "cursor",
 					"type": "String(min_length=1)",
-					"desc": "A cursor as returned by   or  . Cursors retrieved by setting ListFolderGetCursorArg.include_media_info to true are not supported."
+					"desc": "A cursor as returned by   or  . Cursors retrieved by setting ListFolderArg.include_media_info to true are not supported."
 				},
 				{
 					"name": "timeout",
