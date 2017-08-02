@@ -188,6 +188,15 @@
 			"available": true
 		}
 	},
+	"files/get_thumbnail_batch": {
+		"uri": "https://content.dropboxapi.com/2/files/get_thumbnail_batch",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
 	"files/list_folder": {
 		"uri": "https://api.dropboxapi.com/2/files/list_folder",
 		"requiresAuthHeader": true,

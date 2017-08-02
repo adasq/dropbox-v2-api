@@ -360,6 +360,25 @@ stream
 ```
 
 
+### files/get_thumbnail_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-get_thumbnail_batch))
+Get thumbnails for a list of images. We allow up to 25 thumbnails in a single batch. This method currently supports files with the following file extensions: jpg, jpeg, png, tiff, tif, gif and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
+
+```js
+dropbox({
+    resource: 'files/get_thumbnail_batch',
+    parameters: {
+        'entries': [{
+            'path': '/image.jpg',
+            'format': 'jpeg',
+            'size': 'w64h64'
+        }]
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### files/list_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-list_folder))
 Starts returning the contents of a folder. If the result's ListFolderResult.has_more field is true, call [list_folder/continue](#fileslist_foldercontinue-see-docs) with the returned ListFolderResult.cursor to retrieve more entries. If you're using ListFolderArg.recursive set to true to keep a local cache of the contents of a Dropbox account, iterate through each entry in order and process them as follows to keep your local state in sync: For each FileMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it and remove all its children. For each FolderMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it but leave the children as they are. Check the new entry's FolderSharingInfo.read_only and set all its children's read-only statuses to match. For each DeletedMetadata, if your local state has something at the given path, remove it and all its children. If there's nothing at the given path, ignore this entry. Note: auth.RateLimitError may be returned if multiple [list_folder](#fileslist_folder-see-docs) or [list_folder/continue](#fileslist_foldercontinue-see-docs) calls with same parameters are made simultaneously by same API app for same user. If your app implements retry logic, please hold off the retry until the previous request finishes.
 
@@ -809,9 +828,7 @@ dropbox({
             },
             'commit': {
                 'path': '/Homework/math/Matrices.txt',
-                'mode': {
-                    '.tag': 'add'
-                },
+                'mode': 'add',
                 'autorename': true,
                 'mute': false
             }
@@ -1031,9 +1048,7 @@ dropbox({
                 '.tag': 'email',
                 'email': 'justin@example.com'
             },
-            'permission_level': {
-                '.tag': 'view_and_comment'
-            }
+            'permission_level': 'view_and_comment'
         }],
         'custom_message': 'Welcome to Paper.',
         'quiet': false
@@ -1132,17 +1147,13 @@ dropbox({
                 '.tag': 'email',
                 'email': 'justin@example.com'
             },
-            'access_level': {
-                '.tag': 'editor'
-            }
+            'access_level': 'editor'
         }, {
             'member': {
                 '.tag': 'dropbox_id',
                 'dropbox_id': 'dbid:AAEufNrMPSPe0dMQijRP0N_aZtBJRm26W4Q'
             },
-            'access_level': {
-                '.tag': 'viewer'
-            }
+            'access_level': 'viewer'
         }],
         'quiet': false,
         'custom_message': 'Documentation for launch day'

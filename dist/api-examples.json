@@ -1435,6 +1435,317 @@
 			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
 	},
+	"files/get_thumbnail_batch": {
+		"uri": "https://content.dropboxapi.com/2/files/get_thumbnail_batch",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Get thumbnails for a list of images. We allow up to 25 thumbnails in a single batch. This method currently supports files with the following file extensions: jpg, jpeg, png, tiff, tif, gif and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.",
+		"parameters": {
+			"list": [
+				{
+					"name": "entries",
+					"type": "List of (ThumbnailArg)",
+					"desc": "List of files to get thumbnails.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "path",
+									"type": "String(pattern=\"(/(.|[\\r\\n])*|id:.*)|(rev:[0-9a-f]{9,})|(ns:[0-9]+(/.*)?)\")",
+									"desc": "The path to the image file you want to thumbnail."
+								},
+								{
+									"name": "format",
+									"type": "ThumbnailFormat",
+									"desc": "The format for the thumbnail image, jpeg (default) or png. For  images that are photos, jpeg should be preferred, while png is  better for screenshots and digital arts. The default for this union is jpeg.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "jpeg",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "png",
+													"type": "Void",
+													"desc": ""
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "jpeg",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "png",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "size",
+									"type": "ThumbnailSize",
+									"desc": "The size for the thumbnail image. The default for this union is w64h64.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "w32h32",
+													"type": "Void",
+													"desc": "32 by 32 px."
+												},
+												{
+													"name": "w64h64",
+													"type": "Void",
+													"desc": "64 by 64 px."
+												},
+												{
+													"name": "w128h128",
+													"type": "Void",
+													"desc": "128 by 128 px."
+												},
+												{
+													"name": "w640h480",
+													"type": "Void",
+													"desc": "640 by 480 px."
+												},
+												{
+													"name": "w1024h768",
+													"type": "Void",
+													"desc": "1024 by 768."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "w32h32",
+									"type": "Void",
+									"desc": "32 by 32 px."
+								},
+								{
+									"name": "w64h64",
+									"type": "Void",
+									"desc": "64 by 64 px."
+								},
+								{
+									"name": "w128h128",
+									"type": "Void",
+									"desc": "128 by 128 px."
+								},
+								{
+									"name": "w640h480",
+									"type": "Void",
+									"desc": "640 by 480 px."
+								},
+								{
+									"name": "w1024h768",
+									"type": "Void",
+									"desc": "1024 by 768."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "jpeg",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "png",
+									"type": "Void",
+									"desc": ""
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "w32h32",
+									"type": "Void",
+									"desc": "32 by 32 px."
+								},
+								{
+									"name": "w64h64",
+									"type": "Void",
+									"desc": "64 by 64 px."
+								},
+								{
+									"name": "w128h128",
+									"type": "Void",
+									"desc": "128 by 128 px."
+								},
+								{
+									"name": "w640h480",
+									"type": "Void",
+									"desc": "640 by 480 px."
+								},
+								{
+									"name": "w1024h768",
+									"type": "Void",
+									"desc": "1024 by 768."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "path",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*|id:.*)|(rev:[0-9a-f]{9,})|(ns:[0-9]+(/.*)?)\")",
+					"desc": "The path to the image file you want to thumbnail."
+				},
+				{
+					"name": "format",
+					"type": "ThumbnailFormat",
+					"desc": "The format for the thumbnail image, jpeg (default) or png. For  images that are photos, jpeg should be preferred, while png is  better for screenshots and digital arts. The default for this union is jpeg.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "jpeg",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "png",
+									"type": "Void",
+									"desc": ""
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "jpeg",
+					"type": "Void",
+					"desc": ""
+				},
+				{
+					"name": "png",
+					"type": "Void",
+					"desc": ""
+				},
+				{
+					"name": "size",
+					"type": "ThumbnailSize",
+					"desc": "The size for the thumbnail image. The default for this union is w64h64.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "w32h32",
+									"type": "Void",
+									"desc": "32 by 32 px."
+								},
+								{
+									"name": "w64h64",
+									"type": "Void",
+									"desc": "64 by 64 px."
+								},
+								{
+									"name": "w128h128",
+									"type": "Void",
+									"desc": "128 by 128 px."
+								},
+								{
+									"name": "w640h480",
+									"type": "Void",
+									"desc": "640 by 480 px."
+								},
+								{
+									"name": "w1024h768",
+									"type": "Void",
+									"desc": "1024 by 768."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "w32h32",
+					"type": "Void",
+					"desc": "32 by 32 px."
+				},
+				{
+					"name": "w64h64",
+					"type": "Void",
+					"desc": "64 by 64 px."
+				},
+				{
+					"name": "w128h128",
+					"type": "Void",
+					"desc": "128 by 128 px."
+				},
+				{
+					"name": "w640h480",
+					"type": "Void",
+					"desc": "640 by 480 px."
+				},
+				{
+					"name": "w1024h768",
+					"type": "Void",
+					"desc": "1024 by 768."
+				}
+			],
+			"example": {
+				"entries": [
+					{
+						"path": "/image.jpg",
+						"format": "jpeg",
+						"size": "w64h64"
+					}
+				]
+			}
+		},
+		"returnParameters": {
+			"entries": [
+				{
+					".tag": "success",
+					"metadata": {
+						"name": "Prime_Numbers.txt",
+						"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+						"client_modified": "2015-05-12T15:50:38Z",
+						"server_modified": "2015-05-12T15:50:38Z",
+						"rev": "a1c10ce0dd78",
+						"size": 7212,
+						"path_lower": "/homework/math/prime_numbers.txt",
+						"path_display": "/Homework/math/Prime_Numbers.txt",
+						"sharing_info": {
+							"read_only": true,
+							"parent_shared_folder_id": "84528192421",
+							"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+						},
+						"property_groups": [
+							{
+								"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+								"fields": [
+									{
+										"name": "Security Policy",
+										"value": "Confidential"
+									}
+								]
+							}
+						],
+						"has_explicit_shared_members": false,
+						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+					},
+					"thumbnail": "iVBORw0KGgoAAAANSUhEUgAAAdcAAABrCAMAAAI="
+				}
+			]
+		}
+	},
 	"files/list_folder": {
 		"uri": "https://api.dropboxapi.com/2/files/list_folder",
 		"requiresAuthHeader": true,
@@ -3713,9 +4024,7 @@
 						},
 						"commit": {
 							"path": "/Homework/math/Matrices.txt",
-							"mode": {
-								".tag": "add"
-							},
+							"mode": "add",
 							"autorename": true,
 							"mute": false
 						}
@@ -4720,9 +5029,7 @@
 							".tag": "email",
 							"email": "justin@example.com"
 						},
-						"permission_level": {
-							".tag": "view_and_comment"
-						}
+						"permission_level": "view_and_comment"
 					}
 				],
 				"custom_message": "Welcome to Paper.",
@@ -5321,18 +5628,14 @@
 							".tag": "email",
 							"email": "justin@example.com"
 						},
-						"access_level": {
-							".tag": "editor"
-						}
+						"access_level": "editor"
 					},
 					{
 						"member": {
 							".tag": "dropbox_id",
 							"dropbox_id": "dbid:AAEufNrMPSPe0dMQijRP0N_aZtBJRm26W4Q"
 						},
-						"access_level": {
-							".tag": "viewer"
-						}
+						"access_level": "viewer"
 					}
 				],
 				"quiet": false,
