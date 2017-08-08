@@ -1778,6 +1778,11 @@
 					"name": "include_has_explicit_shared_members",
 					"type": "Boolean",
 					"desc": "If true, the results will include a flag for each file indicating whether or not  that file has any explicit members. The default for this field is False."
+				},
+				{
+					"name": "include_mounted_folders",
+					"type": "Boolean",
+					"desc": "If true, the results will include entries under mounted folders which includes app folder, shared folder and team folder. The default for this field is True."
 				}
 			],
 			"example": {
@@ -1785,7 +1790,8 @@
 				"recursive": false,
 				"include_media_info": false,
 				"include_deleted": false,
-				"include_has_explicit_shared_members": false
+				"include_has_explicit_shared_members": false,
+				"include_mounted_folders": true
 			}
 		},
 		"returnParameters": {
@@ -1958,6 +1964,11 @@
 					"name": "include_has_explicit_shared_members",
 					"type": "Boolean",
 					"desc": "If true, the results will include a flag for each file indicating whether or not  that file has any explicit members. The default for this field is False."
+				},
+				{
+					"name": "include_mounted_folders",
+					"type": "Boolean",
+					"desc": "If true, the results will include entries under mounted folders which includes app folder, shared folder and team folder. The default for this field is True."
 				}
 			],
 			"example": {
@@ -1965,7 +1976,8 @@
 				"recursive": false,
 				"include_media_info": false,
 				"include_deleted": false,
-				"include_has_explicit_shared_members": false
+				"include_has_explicit_shared_members": false,
+				"include_mounted_folders": true
 			}
 		},
 		"returnParameters": {
