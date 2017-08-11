@@ -1783,6 +1783,11 @@
 					"name": "include_mounted_folders",
 					"type": "Boolean",
 					"desc": "If true, the results will include entries under mounted folders which includes app folder, shared folder and team folder. The default for this field is True."
+				},
+				{
+					"name": "limit",
+					"type": "UInt32?",
+					"desc": "The maximum number of results to return per request. Note: This is an approximate number and there can be slightly more entries returned in some cases. This field is optional."
 				}
 			],
 			"example": {
@@ -1969,6 +1974,11 @@
 					"name": "include_mounted_folders",
 					"type": "Boolean",
 					"desc": "If true, the results will include entries under mounted folders which includes app folder, shared folder and team folder. The default for this field is True."
+				},
+				{
+					"name": "limit",
+					"type": "UInt32?",
+					"desc": "The maximum number of results to return per request. Note: This is an approximate number and there can be slightly more entries returned in some cases. This field is optional."
 				}
 			],
 			"example": {
