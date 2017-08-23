@@ -4184,6 +4184,72 @@
 		},
 		"returnParameters": null
 	},
+	"paper/docs/create": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/create",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": true,
+		"category": "UPLOAD",
+		"description": "Creates a new Paper doc with the provided content.",
+		"parameters": {
+			"list": [
+				{
+					"name": "import_format",
+					"type": "ImportFormat",
+					"desc": "The format of provided data.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "html",
+									"type": "Void",
+									"desc": "The provided data is interpreted as standard HTML."
+								},
+								{
+									"name": "markdown",
+									"type": "Void",
+									"desc": "The provided data is interpreted as markdown. Note: The first line of the provided document will be used as the doc title."
+								},
+								{
+									"name": "plain_text",
+									"type": "Void",
+									"desc": "The provided data is interpreted as plain text. Note: The first line of the provided document will be used as the doc title."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "html",
+					"type": "Void",
+					"desc": "The provided data is interpreted as standard HTML."
+				},
+				{
+					"name": "markdown",
+					"type": "Void",
+					"desc": "The provided data is interpreted as markdown. Note: The first line of the provided document will be used as the doc title."
+				},
+				{
+					"name": "plain_text",
+					"type": "Void",
+					"desc": "The provided data is interpreted as plain text. Note: The first line of the provided document will be used as the doc title."
+				},
+				{
+					"name": "parent_folder_id",
+					"type": "String?",
+					"desc": "The Paper folder ID where the Paper document should be created. The API user has to have write access to this folder or error is thrown. This field is optional."
+				}
+			],
+			"example": {
+				"import_format": "markdown"
+			}
+		},
+		"returnParameters": {
+			"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+			"revision": 456736745,
+			"title": "Week one retention"
+		}
+	},
 	"paper/docs/download": {
 		"uri": "https://api.dropboxapi.com/2/paper/docs/download",
 		"requiresAuthHeader": true,
@@ -4848,6 +4914,122 @@
 			}
 		},
 		"returnParameters": null
+	},
+	"paper/docs/update": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/update",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": true,
+		"category": "UPLOAD",
+		"description": "Updates an existing Paper doc with the provided content.",
+		"parameters": {
+			"list": [
+				{
+					"name": "doc_id",
+					"type": "String",
+					"desc": "The Paper doc ID."
+				},
+				{
+					"name": "doc_update_policy",
+					"type": "PaperDocUpdatePolicy",
+					"desc": "The policy used for the current update call.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "append",
+									"type": "Void",
+									"desc": "The content will be appended to the doc."
+								},
+								{
+									"name": "prepend",
+									"type": "Void",
+									"desc": "The content will be prepended to the doc. Note: the doc title will not be affected."
+								},
+								{
+									"name": "overwrite_all",
+									"type": "Void",
+									"desc": "The document will be overwitten at the head with the provided content."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "append",
+					"type": "Void",
+					"desc": "The content will be appended to the doc."
+				},
+				{
+					"name": "prepend",
+					"type": "Void",
+					"desc": "The content will be prepended to the doc. Note: the doc title will not be affected."
+				},
+				{
+					"name": "overwrite_all",
+					"type": "Void",
+					"desc": "The document will be overwitten at the head with the provided content."
+				},
+				{
+					"name": "revision",
+					"type": "Int64",
+					"desc": "The latest doc revision. This value must match the head revision or an error code will be returned. This is to prevent colliding writes."
+				},
+				{
+					"name": "import_format",
+					"type": "ImportFormat",
+					"desc": "The format of provided data.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "html",
+									"type": "Void",
+									"desc": "The provided data is interpreted as standard HTML."
+								},
+								{
+									"name": "markdown",
+									"type": "Void",
+									"desc": "The provided data is interpreted as markdown. Note: The first line of the provided document will be used as the doc title."
+								},
+								{
+									"name": "plain_text",
+									"type": "Void",
+									"desc": "The provided data is interpreted as plain text. Note: The first line of the provided document will be used as the doc title."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "html",
+					"type": "Void",
+					"desc": "The provided data is interpreted as standard HTML."
+				},
+				{
+					"name": "markdown",
+					"type": "Void",
+					"desc": "The provided data is interpreted as markdown. Note: The first line of the provided document will be used as the doc title."
+				},
+				{
+					"name": "plain_text",
+					"type": "Void",
+					"desc": "The provided data is interpreted as plain text. Note: The first line of the provided document will be used as the doc title."
+				}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+				"doc_update_policy": "overwrite_all",
+				"revision": 12345,
+				"import_format": "html"
+			}
+		},
+		"returnParameters": {
+			"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+			"revision": 456736745,
+			"title": "Week one retention"
+		}
 	},
 	"paper/docs/users/add": {
 		"uri": "https://api.dropboxapi.com/2/paper/docs/users/add",

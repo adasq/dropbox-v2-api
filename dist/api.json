@@ -449,6 +449,15 @@
 			"available": true
 		}
 	},
+	"paper/docs/create": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/create",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": true,
+		"category": "UPLOAD",
+		"parameters": {
+			"available": true
+		}
+	},
 	"paper/docs/download": {
 		"uri": "https://api.dropboxapi.com/2/paper/docs/download",
 		"requiresAuthHeader": true,
@@ -526,6 +535,15 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"paper/docs/update": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/update",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": true,
+		"category": "UPLOAD",
 		"parameters": {
 			"available": true
 		}

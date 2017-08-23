@@ -390,7 +390,8 @@ dropbox({
         'recursive': false,
         'include_media_info': false,
         'include_deleted': false,
-        'include_has_explicit_shared_members': false
+        'include_has_explicit_shared_members': false,
+        'include_mounted_folders': true
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -424,7 +425,8 @@ dropbox({
         'recursive': false,
         'include_media_info': false,
         'include_deleted': false,
-        'include_has_explicit_shared_members': false
+        'include_has_explicit_shared_members': false,
+        'include_mounted_folders': true
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -887,6 +889,23 @@ dropbox({
 ```
 
 
+### paper/docs/create ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-create))
+Creates a new Paper doc with the provided content.
+
+```js
+const stream = dropbox({
+    resource: 'paper/docs/create',
+    parameters: {
+        'import_format': 'markdown'
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+
+fs.createReadStream().pipe(stream);
+```
+
+
 ### paper/docs/download ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-download))
 Exports and downloads Paper doc either as HTML or markdown.
 
@@ -1032,6 +1051,26 @@ dropbox({
 }, (err, result) => {
     //see docs for `result` parameters
 });
+```
+
+
+### paper/docs/update ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-update))
+Updates an existing Paper doc with the provided content.
+
+```js
+const stream = dropbox({
+    resource: 'paper/docs/update',
+    parameters: {
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'doc_update_policy': 'overwrite_all',
+        'revision': 12345,
+        'import_format': 'html'
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+
+fs.createReadStream().pipe(stream);
 ```
 
 
