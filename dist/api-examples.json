@@ -6149,12 +6149,12 @@
 				{
 					"name": "path",
 					"type": "String(pattern=\"(/(.|[\\r\\n])*|id:.*)|(rev:[0-9a-f]{9,})|(ns:[0-9]+(/.*)?)\")",
-					"desc": "The path to be shared by the shared link"
+					"desc": "The path to be shared by the shared link."
 				},
 				{
 					"name": "settings",
 					"type": "SharedLinkSettings?",
-					"desc": "The requested settings for the newly created shared link This field is optional.",
+					"desc": "The requested settings for the newly created shared link. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -8319,7 +8319,7 @@
 				{
 					"name": "url",
 					"type": "String",
-					"desc": "URL of the shared link to change its settings"
+					"desc": "URL of the shared link to change its settings."
 				},
 				{
 					"name": "settings",
