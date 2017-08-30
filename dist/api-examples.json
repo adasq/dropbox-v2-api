@@ -329,78 +329,6 @@
 			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
 	},
-	"files/copy": {
-		"uri": "https://api.dropboxapi.com/2/files/copy",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be copied.",
-		"parameters": {
-			"list": [
-				{
-					"name": "from_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
-					"desc": "Path in the user's Dropbox to be copied or moved."
-				},
-				{
-					"name": "to_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
-					"desc": "Path in the user's Dropbox that is the destination."
-				},
-				{
-					"name": "allow_shared_folder",
-					"type": "Boolean",
-					"desc": "If true,   will copy contents in shared folder, otherwise RelocationError.cant_copy_shared_folder will be returned if from_path contains shared folder. This field is always true for  . The default for this field is False."
-				},
-				{
-					"name": "autorename",
-					"type": "Boolean",
-					"desc": "If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict. The default for this field is False."
-				},
-				{
-					"name": "allow_ownership_transfer",
-					"type": "Boolean",
-					"desc": "Allow moves by owner even if it would result in an ownership transfer for the content being moved. This does not apply to copies. The default for this field is False."
-				}
-			],
-			"example": {
-				"from_path": "/Homework/math",
-				"to_path": "/Homework/algebra",
-				"allow_shared_folder": false,
-				"autorename": false,
-				"allow_ownership_transfer": false
-			}
-		},
-		"returnParameters": {
-			".tag": "file",
-			"name": "Prime_Numbers.txt",
-			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
-			"client_modified": "2015-05-12T15:50:38Z",
-			"server_modified": "2015-05-12T15:50:38Z",
-			"rev": "a1c10ce0dd78",
-			"size": 7212,
-			"path_lower": "/homework/math/prime_numbers.txt",
-			"path_display": "/Homework/math/Prime_Numbers.txt",
-			"sharing_info": {
-				"read_only": true,
-				"parent_shared_folder_id": "84528192421",
-				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
-			},
-			"property_groups": [
-				{
-					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
-					"fields": [
-						{
-							"name": "Security Policy",
-							"value": "Confidential"
-						}
-					]
-				}
-			],
-			"has_explicit_shared_members": false,
-			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-		}
-	},
 	"files/copy_batch": {
 		"uri": "https://api.dropboxapi.com/2/files/copy_batch",
 		"requiresAuthHeader": true,
@@ -743,54 +671,6 @@
 			}
 		}
 	},
-	"files/create_folder": {
-		"uri": "https://api.dropboxapi.com/2/files/create_folder",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Create a folder at a given path.",
-		"parameters": {
-			"list": [
-				{
-					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
-					"desc": "Path in the user's Dropbox to create."
-				},
-				{
-					"name": "autorename",
-					"type": "Boolean",
-					"desc": "If there's a conflict, have the Dropbox server try to autorename the folder to avoid the conflict. The default for this field is False."
-				}
-			],
-			"example": {
-				"path": "/Homework/math",
-				"autorename": false
-			}
-		},
-		"returnParameters": {
-			"name": "math",
-			"id": "id:a4ayc_80_OEAAAAAAAAAXz",
-			"path_lower": "/homework/math",
-			"path_display": "/Homework/math",
-			"sharing_info": {
-				"read_only": false,
-				"parent_shared_folder_id": "84528192421",
-				"traverse_only": false,
-				"no_access": false
-			},
-			"property_groups": [
-				{
-					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
-					"fields": [
-						{
-							"name": "Security Policy",
-							"value": "Confidential"
-						}
-					]
-				}
-			]
-		}
-	},
 	"files/create_folder_v2": {
 		"uri": "https://api.dropboxapi.com/2/files/create_folder_v2",
 		"requiresAuthHeader": true,
@@ -839,54 +719,6 @@
 					}
 				]
 			}
-		}
-	},
-	"files/delete": {
-		"uri": "https://api.dropboxapi.com/2/files/delete",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.",
-		"parameters": {
-			"list": [
-				{
-					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
-					"desc": "Path in the user's Dropbox to delete."
-				}
-			],
-			"example": {
-				"path": "/Homework/math/Prime_Numbers.txt"
-			}
-		},
-		"returnParameters": {
-			".tag": "file",
-			"name": "Prime_Numbers.txt",
-			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
-			"client_modified": "2015-05-12T15:50:38Z",
-			"server_modified": "2015-05-12T15:50:38Z",
-			"rev": "a1c10ce0dd78",
-			"size": 7212,
-			"path_lower": "/homework/math/prime_numbers.txt",
-			"path_display": "/Homework/math/Prime_Numbers.txt",
-			"sharing_info": {
-				"read_only": true,
-				"parent_shared_folder_id": "84528192421",
-				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
-			},
-			"property_groups": [
-				{
-					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
-					"fields": [
-						{
-							"name": "Security Policy",
-							"value": "Confidential"
-						}
-					]
-				}
-			],
-			"has_explicit_shared_members": false,
-			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
 	},
 	"files/delete_batch": {
@@ -1088,7 +920,7 @@
 				{
 					"name": "rev",
 					"type": "String(min_length=9, pattern=\"[0-9a-f]+\")?",
-					"desc": "Deprecated. Please specify revision in path instead. This field is optional."
+					"desc": "Field is deprecated. Please specify revision in path instead. This field is optional."
 				}
 			],
 			"example": {
@@ -1206,7 +1038,7 @@
 				{
 					"name": "rev",
 					"type": "String(min_length=9, pattern=\"[0-9a-f]+\")?",
-					"desc": "Deprecated. Please specify revision in path instead. This field is optional."
+					"desc": "Field is deprecated. Please specify revision in path instead. This field is optional."
 				}
 			],
 			"example": {
@@ -2078,78 +1910,6 @@
 					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 				}
 			]
-		}
-	},
-	"files/move": {
-		"uri": "https://api.dropboxapi.com/2/files/move",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be moved.",
-		"parameters": {
-			"list": [
-				{
-					"name": "from_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
-					"desc": "Path in the user's Dropbox to be copied or moved."
-				},
-				{
-					"name": "to_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
-					"desc": "Path in the user's Dropbox that is the destination."
-				},
-				{
-					"name": "allow_shared_folder",
-					"type": "Boolean",
-					"desc": "If true,   will copy contents in shared folder, otherwise RelocationError.cant_copy_shared_folder will be returned if from_path contains shared folder. This field is always true for  . The default for this field is False."
-				},
-				{
-					"name": "autorename",
-					"type": "Boolean",
-					"desc": "If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict. The default for this field is False."
-				},
-				{
-					"name": "allow_ownership_transfer",
-					"type": "Boolean",
-					"desc": "Allow moves by owner even if it would result in an ownership transfer for the content being moved. This does not apply to copies. The default for this field is False."
-				}
-			],
-			"example": {
-				"from_path": "/Homework/math",
-				"to_path": "/Homework/algebra",
-				"allow_shared_folder": false,
-				"autorename": false,
-				"allow_ownership_transfer": false
-			}
-		},
-		"returnParameters": {
-			".tag": "file",
-			"name": "Prime_Numbers.txt",
-			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
-			"client_modified": "2015-05-12T15:50:38Z",
-			"server_modified": "2015-05-12T15:50:38Z",
-			"rev": "a1c10ce0dd78",
-			"size": 7212,
-			"path_lower": "/homework/math/prime_numbers.txt",
-			"path_display": "/Homework/math/Prime_Numbers.txt",
-			"sharing_info": {
-				"read_only": true,
-				"parent_shared_folder_id": "84528192421",
-				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
-			},
-			"property_groups": [
-				{
-					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
-					"fields": [
-						{
-							"name": "Security Policy",
-							"value": "Confidential"
-						}
-					]
-				}
-			],
-			"has_explicit_shared_members": false,
-			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
 	},
 	"files/move_batch": {
@@ -3216,32 +2976,6 @@
 			"has_explicit_shared_members": false,
 			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
-	},
-	"files/upload_session/append": {
-		"uri": "https://content.dropboxapi.com/2/files/upload_session/append",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": true,
-		"category": "UPLOAD",
-		"description": "Append more data to an upload session. A single request should not upload more than 150 MB.",
-		"parameters": {
-			"list": [
-				{
-					"name": "session_id",
-					"type": "String",
-					"desc": "The upload session ID (returned by  )."
-				},
-				{
-					"name": "offset",
-					"type": "UInt64",
-					"desc": "The amount of data that has been uploaded so far. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
-				}
-			],
-			"example": {
-				"session_id": "1234faaf0678bcde",
-				"offset": 0
-			}
-		},
-		"returnParameters": null
 	},
 	"files/upload_session/append_v2": {
 		"uri": "https://content.dropboxapi.com/2/files/upload_session/append_v2",
@@ -5848,115 +5582,6 @@
 		},
 		"returnParameters": null
 	},
-	"sharing/change_file_member_access": {
-		"uri": "https://api.dropboxapi.com/2/sharing/change_file_member_access",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Identical to update_file_member but with less information returned.",
-		"parameters": {
-			"list": [
-				{
-					"name": "file",
-					"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?\")",
-					"desc": "File for which we are changing a member's access."
-				},
-				{
-					"name": "member",
-					"type": "MemberSelector",
-					"desc": "The member whose access we are changing.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "dropbox_id",
-									"type": "String(min_length=1)",
-									"desc": "Dropbox account, team member, or group ID of member."
-								},
-								{
-									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
-									"desc": "E-mail address of member."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "dropbox_id",
-					"type": "String(min_length=1)",
-					"desc": "Dropbox account, team member, or group ID of member."
-				},
-				{
-					"name": "email",
-					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
-					"desc": "E-mail address of member."
-				},
-				{
-					"name": "access_level",
-					"type": "AccessLevel",
-					"desc": "The new access level for the member.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "owner",
-									"type": "Void",
-									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
-								},
-								{
-									"name": "editor",
-									"type": "Void",
-									"desc": "The collaborator can both view and edit the shared folder."
-								},
-								{
-									"name": "viewer",
-									"type": "Void",
-									"desc": "The collaborator can only view the shared folder."
-								},
-								{
-									"name": "viewer_no_comment",
-									"type": "Void",
-									"desc": "The collaborator can only view the shared folder and does not have any access to comments."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "owner",
-					"type": "Void",
-					"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
-				},
-				{
-					"name": "editor",
-					"type": "Void",
-					"desc": "The collaborator can both view and edit the shared folder."
-				},
-				{
-					"name": "viewer",
-					"type": "Void",
-					"desc": "The collaborator can only view the shared folder."
-				},
-				{
-					"name": "viewer_no_comment",
-					"type": "Void",
-					"desc": "The collaborator can only view the shared folder and does not have any access to comments."
-				}
-			],
-			"example": {
-				"file": "id:3kmLmQFnf1AAAAAAAAAAAw",
-				"member": {
-					".tag": "email",
-					"email": "justin@example.com"
-				},
-				"access_level": "viewer"
-			}
-		},
-		"returnParameters": null
-	},
 	"sharing/check_job_status": {
 		"uri": "https://api.dropboxapi.com/2/sharing/check_job_status",
 		"requiresAuthHeader": true,
@@ -6072,70 +5697,6 @@
 				"url": ""
 			},
 			"permissions": []
-		}
-	},
-	"sharing/create_shared_link": {
-		"uri": "https://api.dropboxapi.com/2/sharing/create_shared_link",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Create a shared link. If a shared link already exists for the given path, that link is returned. Note that in the returned PathLinkMetadata, the PathLinkMetadata.url field is the shortened URL if CreateSharedLinkArg.short_url argument is set to true. Previously, it was technically possible to break a shared link by moving or renaming the corresponding file or folder. In the future, this will no longer be the case, so your app shouldn't rely on this behavior. Instead, if your app needs to revoke a shared link, use [revoke_shared_link](#sharingrevoke_shared_link-see-docs).",
-		"parameters": {
-			"list": [
-				{
-					"name": "path",
-					"type": "String",
-					"desc": "The path to share."
-				},
-				{
-					"name": "short_url",
-					"type": "Boolean",
-					"desc": "Whether to return a shortened URL. The default for this field is False."
-				},
-				{
-					"name": "pending_upload",
-					"type": "PendingUploadMode?",
-					"desc": "If it's okay to share a path that does not yet exist, set this to either PendingUploadMode.file or PendingUploadMode.folder to indicate whether to assume it's a file or folder. This field is optional.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "file",
-									"type": "Void",
-									"desc": "Assume pending uploads are files."
-								},
-								{
-									"name": "folder",
-									"type": "Void",
-									"desc": "Assume pending uploads are folders."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "file",
-					"type": "Void",
-					"desc": "Assume pending uploads are files."
-				},
-				{
-					"name": "folder",
-					"type": "Void",
-					"desc": "Assume pending uploads are folders."
-				}
-			],
-			"example": {
-				"path": "/Homework/Math/Prime_Numbers.txt",
-				"short_url": false
-			}
-		},
-		"returnParameters": {
-			"url": "https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0",
-			"visibility": {
-				".tag": "public"
-			},
-			"path": "/Homework/Math/Prime_Numbers.txt"
 		}
 	},
 	"sharing/create_shared_link_with_settings": {
@@ -6382,7 +5943,7 @@
 								{
 									"name": "share_link",
 									"type": "Void",
-									"desc": "This action is deprecated. Use create_link instead."
+									"desc": "Field is deprecated. Use create_link instead."
 								},
 								{
 									"name": "create_link",
@@ -6432,7 +5993,7 @@
 				{
 					"name": "share_link",
 					"type": "Void",
-					"desc": "This action is deprecated. Use create_link instead."
+					"desc": "Field is deprecated. Use create_link instead."
 				},
 				{
 					"name": "create_link",
@@ -6537,7 +6098,7 @@
 								{
 									"name": "share_link",
 									"type": "Void",
-									"desc": "This action is deprecated. Use create_link instead."
+									"desc": "Field is deprecated. Use create_link instead."
 								},
 								{
 									"name": "create_link",
@@ -6587,7 +6148,7 @@
 				{
 					"name": "share_link",
 					"type": "Void",
-					"desc": "This action is deprecated. Use create_link instead."
+					"desc": "Field is deprecated. Use create_link instead."
 				},
 				{
 					"name": "create_link",
@@ -6935,26 +6496,6 @@
 				"member_id": "dbmid:abcd1234"
 			}
 		}
-	},
-	"sharing/get_shared_links": {
-		"uri": "https://api.dropboxapi.com/2/sharing/get_shared_links",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Returns a list of LinkMetadata objects for this user, including collection links. If no path is given, returns a list of all shared links for the current user, including collection links, up to a maximum of 1000 links. If a non-empty path is given, returns a list of all shared links that allow access to the given path.  Collection links are never returned in this case. Note that the url field in the response is never the shortened URL.",
-		"parameters": {
-			"list": [
-				{
-					"name": "path",
-					"type": "String?",
-					"desc": "See   description. This field is optional."
-				}
-			],
-			"example": {
-				"path": ""
-			}
-		},
-		"returnParameters": null
 	},
 	"sharing/list_file_members": {
 		"uri": "https://api.dropboxapi.com/2/sharing/list_file_members",
@@ -8086,7 +7627,7 @@
 								{
 									"name": "share_link",
 									"type": "Void",
-									"desc": "This action is deprecated. Use create_link instead."
+									"desc": "Field is deprecated. Use create_link instead."
 								},
 								{
 									"name": "create_link",
@@ -8136,7 +7677,7 @@
 				{
 					"name": "share_link",
 					"type": "Void",
-					"desc": "This action is deprecated. Use create_link instead."
+					"desc": "Field is deprecated. Use create_link instead."
 				},
 				{
 					"name": "create_link",
@@ -8618,64 +8159,6 @@
 		},
 		"returnParameters": {
 			".tag": "complete"
-		}
-	},
-	"sharing/remove_file_member": {
-		"uri": "https://api.dropboxapi.com/2/sharing/remove_file_member",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Identical to remove_file_member_2 but with less information returned.",
-		"parameters": {
-			"list": [
-				{
-					"name": "file",
-					"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?\")",
-					"desc": "File from which to remove members."
-				},
-				{
-					"name": "member",
-					"type": "MemberSelector",
-					"desc": "Member to remove from this file. Note that even if an email is specified, it may result in the removal of a user (not an invitee) if the user's main account corresponds to that email address.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "dropbox_id",
-									"type": "String(min_length=1)",
-									"desc": "Dropbox account, team member, or group ID of member."
-								},
-								{
-									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
-									"desc": "E-mail address of member."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "dropbox_id",
-					"type": "String(min_length=1)",
-					"desc": "Dropbox account, team member, or group ID of member."
-				},
-				{
-					"name": "email",
-					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
-					"desc": "E-mail address of member."
-				}
-			],
-			"example": {
-				"file": "id:3kmLmQFnf1AAAAAAAAAAAw",
-				"member": {
-					".tag": "email",
-					"email": "justin@example.com"
-				}
-			}
-		},
-		"returnParameters": {
-			".tag": "success"
 		}
 	},
 	"sharing/remove_file_member_2": {
@@ -10776,6 +10259,523 @@
 				".tag": "individual",
 				"allocated": 10000000000
 			}
+		}
+	},
+	"deprecated/copy": {
+		"uri": "https://api.dropboxapi.com/2/files/copy",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be copied.",
+		"parameters": {
+			"list": [
+				{
+					"name": "from_path",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
+					"desc": "Path in the user's Dropbox to be copied or moved."
+				},
+				{
+					"name": "to_path",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
+					"desc": "Path in the user's Dropbox that is the destination."
+				},
+				{
+					"name": "allow_shared_folder",
+					"type": "Boolean",
+					"desc": "If true,   will copy contents in shared folder, otherwise RelocationError.cant_copy_shared_folder will be returned if from_path contains shared folder. This field is always true for  . The default for this field is False."
+				},
+				{
+					"name": "autorename",
+					"type": "Boolean",
+					"desc": "If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict. The default for this field is False."
+				},
+				{
+					"name": "allow_ownership_transfer",
+					"type": "Boolean",
+					"desc": "Allow moves by owner even if it would result in an ownership transfer for the content being moved. This does not apply to copies. The default for this field is False."
+				}
+			],
+			"example": {
+				"from_path": "/Homework/math",
+				"to_path": "/Homework/algebra",
+				"allow_shared_folder": false,
+				"autorename": false,
+				"allow_ownership_transfer": false
+			}
+		},
+		"returnParameters": {
+			".tag": "file",
+			"name": "Prime_Numbers.txt",
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"path_display": "/Homework/math/Prime_Numbers.txt",
+			"sharing_info": {
+				"read_only": true,
+				"parent_shared_folder_id": "84528192421",
+				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+			},
+			"property_groups": [
+				{
+					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+					"fields": [
+						{
+							"name": "Security Policy",
+							"value": "Confidential"
+						}
+					]
+				}
+			],
+			"has_explicit_shared_members": false,
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+		}
+	},
+	"deprecated/create_folder": {
+		"uri": "https://api.dropboxapi.com/2/files/create_folder",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Create a folder at a given path.",
+		"parameters": {
+			"list": [
+				{
+					"name": "path",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"desc": "Path in the user's Dropbox to create."
+				},
+				{
+					"name": "autorename",
+					"type": "Boolean",
+					"desc": "If there's a conflict, have the Dropbox server try to autorename the folder to avoid the conflict. The default for this field is False."
+				}
+			],
+			"example": {
+				"path": "/Homework/math",
+				"autorename": false
+			}
+		},
+		"returnParameters": {
+			"name": "math",
+			"id": "id:a4ayc_80_OEAAAAAAAAAXz",
+			"path_lower": "/homework/math",
+			"path_display": "/Homework/math",
+			"sharing_info": {
+				"read_only": false,
+				"parent_shared_folder_id": "84528192421",
+				"traverse_only": false,
+				"no_access": false
+			},
+			"property_groups": [
+				{
+					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+					"fields": [
+						{
+							"name": "Security Policy",
+							"value": "Confidential"
+						}
+					]
+				}
+			]
+		}
+	},
+	"deprecated/delete": {
+		"uri": "https://api.dropboxapi.com/2/files/delete",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.",
+		"parameters": {
+			"list": [
+				{
+					"name": "path",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
+					"desc": "Path in the user's Dropbox to delete."
+				}
+			],
+			"example": {
+				"path": "/Homework/math/Prime_Numbers.txt"
+			}
+		},
+		"returnParameters": {
+			".tag": "file",
+			"name": "Prime_Numbers.txt",
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"path_display": "/Homework/math/Prime_Numbers.txt",
+			"sharing_info": {
+				"read_only": true,
+				"parent_shared_folder_id": "84528192421",
+				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+			},
+			"property_groups": [
+				{
+					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+					"fields": [
+						{
+							"name": "Security Policy",
+							"value": "Confidential"
+						}
+					]
+				}
+			],
+			"has_explicit_shared_members": false,
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+		}
+	},
+	"deprecated/move": {
+		"uri": "https://api.dropboxapi.com/2/files/move",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be moved.",
+		"parameters": {
+			"list": [
+				{
+					"name": "from_path",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
+					"desc": "Path in the user's Dropbox to be copied or moved."
+				},
+				{
+					"name": "to_path",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
+					"desc": "Path in the user's Dropbox that is the destination."
+				},
+				{
+					"name": "allow_shared_folder",
+					"type": "Boolean",
+					"desc": "If true,   will copy contents in shared folder, otherwise RelocationError.cant_copy_shared_folder will be returned if from_path contains shared folder. This field is always true for  . The default for this field is False."
+				},
+				{
+					"name": "autorename",
+					"type": "Boolean",
+					"desc": "If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict. The default for this field is False."
+				},
+				{
+					"name": "allow_ownership_transfer",
+					"type": "Boolean",
+					"desc": "Allow moves by owner even if it would result in an ownership transfer for the content being moved. This does not apply to copies. The default for this field is False."
+				}
+			],
+			"example": {
+				"from_path": "/Homework/math",
+				"to_path": "/Homework/algebra",
+				"allow_shared_folder": false,
+				"autorename": false,
+				"allow_ownership_transfer": false
+			}
+		},
+		"returnParameters": {
+			".tag": "file",
+			"name": "Prime_Numbers.txt",
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"path_display": "/Homework/math/Prime_Numbers.txt",
+			"sharing_info": {
+				"read_only": true,
+				"parent_shared_folder_id": "84528192421",
+				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+			},
+			"property_groups": [
+				{
+					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+					"fields": [
+						{
+							"name": "Security Policy",
+							"value": "Confidential"
+						}
+					]
+				}
+			],
+			"has_explicit_shared_members": false,
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+		}
+	},
+	"deprecated/upload_session/append": {
+		"uri": "https://content.dropboxapi.com/2/files/upload_session/append",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": true,
+		"category": "UPLOAD",
+		"description": "Append more data to an upload session. A single request should not upload more than 150 MB.",
+		"parameters": {
+			"list": [
+				{
+					"name": "session_id",
+					"type": "String",
+					"desc": "The upload session ID (returned by  )."
+				},
+				{
+					"name": "offset",
+					"type": "UInt64",
+					"desc": "The amount of data that has been uploaded so far. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
+				}
+			],
+			"example": {
+				"session_id": "1234faaf0678bcde",
+				"offset": 0
+			}
+		},
+		"returnParameters": null
+	},
+	"deprecated/change_file_member_access": {
+		"uri": "https://api.dropboxapi.com/2/sharing/change_file_member_access",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Identical to update_file_member but with less information returned.",
+		"parameters": {
+			"list": [
+				{
+					"name": "file",
+					"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?\")",
+					"desc": "File for which we are changing a member's access."
+				},
+				{
+					"name": "member",
+					"type": "MemberSelector",
+					"desc": "The member whose access we are changing.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "dropbox_id",
+									"type": "String(min_length=1)",
+									"desc": "Dropbox account, team member, or group ID of member."
+								},
+								{
+									"name": "email",
+									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
+									"desc": "E-mail address of member."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "dropbox_id",
+					"type": "String(min_length=1)",
+					"desc": "Dropbox account, team member, or group ID of member."
+				},
+				{
+					"name": "email",
+					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
+					"desc": "E-mail address of member."
+				},
+				{
+					"name": "access_level",
+					"type": "AccessLevel",
+					"desc": "The new access level for the member.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "owner",
+									"type": "Void",
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
+								},
+								{
+									"name": "editor",
+									"type": "Void",
+									"desc": "The collaborator can both view and edit the shared folder."
+								},
+								{
+									"name": "viewer",
+									"type": "Void",
+									"desc": "The collaborator can only view the shared folder."
+								},
+								{
+									"name": "viewer_no_comment",
+									"type": "Void",
+									"desc": "The collaborator can only view the shared folder and does not have any access to comments."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "owner",
+					"type": "Void",
+					"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
+				},
+				{
+					"name": "editor",
+					"type": "Void",
+					"desc": "The collaborator can both view and edit the shared folder."
+				},
+				{
+					"name": "viewer",
+					"type": "Void",
+					"desc": "The collaborator can only view the shared folder."
+				},
+				{
+					"name": "viewer_no_comment",
+					"type": "Void",
+					"desc": "The collaborator can only view the shared folder and does not have any access to comments."
+				}
+			],
+			"example": {
+				"file": "id:3kmLmQFnf1AAAAAAAAAAAw",
+				"member": {
+					".tag": "email",
+					"email": "justin@example.com"
+				},
+				"access_level": "viewer"
+			}
+		},
+		"returnParameters": null
+	},
+	"deprecated/create_shared_link": {
+		"uri": "https://api.dropboxapi.com/2/sharing/create_shared_link",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Create a shared link. If a shared link already exists for the given path, that link is returned. Note that in the returned PathLinkMetadata, the PathLinkMetadata.url field is the shortened URL if CreateSharedLinkArg.short_url argument is set to true. Previously, it was technically possible to break a shared link by moving or renaming the corresponding file or folder. In the future, this will no longer be the case, so your app shouldn't rely on this behavior. Instead, if your app needs to revoke a shared link, use [revoke_shared_link](#deprecatedrevoke_shared_link-see-docs).",
+		"parameters": {
+			"list": [
+				{
+					"name": "path",
+					"type": "String",
+					"desc": "The path to share."
+				},
+				{
+					"name": "short_url",
+					"type": "Boolean",
+					"desc": "Whether to return a shortened URL. The default for this field is False."
+				},
+				{
+					"name": "pending_upload",
+					"type": "PendingUploadMode?",
+					"desc": "If it's okay to share a path that does not yet exist, set this to either PendingUploadMode.file or PendingUploadMode.folder to indicate whether to assume it's a file or folder. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "file",
+									"type": "Void",
+									"desc": "Assume pending uploads are files."
+								},
+								{
+									"name": "folder",
+									"type": "Void",
+									"desc": "Assume pending uploads are folders."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "file",
+					"type": "Void",
+					"desc": "Assume pending uploads are files."
+				},
+				{
+					"name": "folder",
+					"type": "Void",
+					"desc": "Assume pending uploads are folders."
+				}
+			],
+			"example": {
+				"path": "/Homework/Math/Prime_Numbers.txt",
+				"short_url": false
+			}
+		},
+		"returnParameters": {
+			"url": "https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0",
+			"visibility": {
+				".tag": "public"
+			},
+			"path": "/Homework/Math/Prime_Numbers.txt"
+		}
+	},
+	"deprecated/get_shared_links": {
+		"uri": "https://api.dropboxapi.com/2/sharing/get_shared_links",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Returns a list of LinkMetadata objects for this user, including collection links. If no path is given, returns a list of all shared links for the current user, including collection links, up to a maximum of 1000 links. If a non-empty path is given, returns a list of all shared links that allow access to the given path.  Collection links are never returned in this case. Note that the url field in the response is never the shortened URL.",
+		"parameters": {
+			"list": [
+				{
+					"name": "path",
+					"type": "String?",
+					"desc": "See   description. This field is optional."
+				}
+			],
+			"example": {
+				"path": ""
+			}
+		},
+		"returnParameters": null
+	},
+	"deprecated/remove_file_member": {
+		"uri": "https://api.dropboxapi.com/2/sharing/remove_file_member",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Identical to remove_file_member_2 but with less information returned.",
+		"parameters": {
+			"list": [
+				{
+					"name": "file",
+					"type": "String(min_length=1, pattern=\"((/|id:).*|nspath:[0-9]+:.*)|ns:[0-9]+(/.*)?\")",
+					"desc": "File from which to remove members."
+				},
+				{
+					"name": "member",
+					"type": "MemberSelector",
+					"desc": "Member to remove from this file. Note that even if an email is specified, it may result in the removal of a user (not an invitee) if the user's main account corresponds to that email address.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "dropbox_id",
+									"type": "String(min_length=1)",
+									"desc": "Dropbox account, team member, or group ID of member."
+								},
+								{
+									"name": "email",
+									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
+									"desc": "E-mail address of member."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "dropbox_id",
+					"type": "String(min_length=1)",
+					"desc": "Dropbox account, team member, or group ID of member."
+				},
+				{
+					"name": "email",
+					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\")",
+					"desc": "E-mail address of member."
+				}
+			],
+			"example": {
+				"file": "id:3kmLmQFnf1AAAAAAAAAAAw",
+				"member": {
+					".tag": "email",
+					"email": "justin@example.com"
+				}
+			}
+		},
+		"returnParameters": {
+			".tag": "success"
 		}
 	}
 }

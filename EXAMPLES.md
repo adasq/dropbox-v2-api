@@ -72,25 +72,6 @@ fs.createReadStream('/Homework/math/Matrices.txt').pipe(stream);
 ```
 
 
-### files/copy ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-copy))
-Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be copied.
-
-```js
-dropbox({
-    resource: 'files/copy',
-    parameters: {
-        'from_path': '/Homework/math',
-        'to_path': '/Homework/algebra',
-        'allow_shared_folder': false,
-        'autorename': false,
-        'allow_ownership_transfer': false
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
 ### files/copy_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-copy_batch))
 Copy multiple files or folders to different locations at once in the user's Dropbox. If RelocationBatchArg.allow_shared_folder is false, this route is atomic. If on entry failes, the whole transaction will abort. If RelocationBatchArg.allow_shared_folder is true, not atomicity is guaranteed, but you will be able to copy the contents of shared folders to new locations. This route will return job ID immediately and do the async copy job in background. Please use [copy_batch/check](#filescopy_batchcheck-see-docs) to check the job status.
 
@@ -177,22 +158,6 @@ dropbox({
 ```
 
 
-### files/create_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-create_folder))
-Create a folder at a given path.
-
-```js
-dropbox({
-    resource: 'files/create_folder',
-    parameters: {
-        'path': '/Homework/math',
-        'autorename': false
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
 ### files/create_folder_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-create_folder_v2))
 Create a folder at a given path.
 
@@ -202,21 +167,6 @@ dropbox({
     parameters: {
         'path': '/Homework/math',
         'autorename': false
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### files/delete ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-delete))
-Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.
-
-```js
-dropbox({
-    resource: 'files/delete',
-    parameters: {
-        'path': '/Homework/math/Prime_Numbers.txt'
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -459,25 +409,6 @@ dropbox({
     parameters: {
         'path': '/root/word.docx',
         'limit': 10
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### files/move ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-move))
-Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be moved.
-
-```js
-dropbox({
-    resource: 'files/move',
-    parameters: {
-        'from_path': '/Homework/math',
-        'to_path': '/Homework/algebra',
-        'allow_shared_folder': false,
-        'autorename': false,
-        'allow_ownership_transfer': false
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -748,24 +679,6 @@ const stream = dropbox({
 });
 
 fs.createReadStream('/Homework/math/Matrices.txt').pipe(stream);
-```
-
-
-### files/upload_session/append ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-append))
-Append more data to an upload session. A single request should not upload more than 150 MB.
-
-```js
-const stream = dropbox({
-    resource: 'files/upload_session/append',
-    parameters: {
-        'session_id': '1234faaf0678bcde',
-        'offset': 0
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-
-fs.createReadStream().pipe(stream);
 ```
 
 
@@ -1203,26 +1116,6 @@ dropbox({
 ```
 
 
-### sharing/change_file_member_access ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-change_file_member_access))
-Identical to update_file_member but with less information returned.
-
-```js
-dropbox({
-    resource: 'sharing/change_file_member_access',
-    parameters: {
-        'file': 'id:3kmLmQFnf1AAAAAAAAAAAw',
-        'member': {
-            '.tag': 'email',
-            'email': 'justin@example.com'
-        },
-        'access_level': 'viewer'
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
 ### sharing/check_job_status ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-check_job_status))
 Returns the status of an asynchronous job. Apps must have full Dropbox access to use this endpoint.
 
@@ -1261,22 +1154,6 @@ dropbox({
     resource: 'sharing/check_share_job_status',
     parameters: {
         'async_job_id': '34g93hh34h04y384084'
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### sharing/create_shared_link ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-create_shared_link))
-Create a shared link. If a shared link already exists for the given path, that link is returned. Note that in the returned PathLinkMetadata, the PathLinkMetadata.url field is the shortened URL if CreateSharedLinkArg.short_url argument is set to true. Previously, it was technically possible to break a shared link by moving or renaming the corresponding file or folder. In the future, this will no longer be the case, so your app shouldn't rely on this behavior. Instead, if your app needs to revoke a shared link, use [revoke_shared_link](#sharingrevoke_shared_link-see-docs).
-
-```js
-dropbox({
-    resource: 'sharing/create_shared_link',
-    parameters: {
-        'path': '/Homework/Math/Prime_Numbers.txt',
-        'short_url': false
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -1378,21 +1255,6 @@ dropbox({
     parameters: {
         'url': 'https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0',
         'path': '/Prime_Numbers.txt'
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### sharing/get_shared_links ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-get_shared_links))
-Returns a list of LinkMetadata objects for this user, including collection links. If no path is given, returns a list of all shared links for the current user, including collection links, up to a maximum of 1000 links. If a non-empty path is given, returns a list of all shared links that allow access to the given path.  Collection links are never returned in this case. Note that the url field in the response is never the shortened URL.
-
-```js
-dropbox({
-    resource: 'sharing/get_shared_links',
-    parameters: {
-        'path': ''
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -1653,25 +1515,6 @@ dropbox({
 ```
 
 
-### sharing/remove_file_member ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-remove_file_member))
-Identical to remove_file_member_2 but with less information returned.
-
-```js
-dropbox({
-    resource: 'sharing/remove_file_member',
-    parameters: {
-        'file': 'id:3kmLmQFnf1AAAAAAAAAAAw',
-        'member': {
-            '.tag': 'email',
-            'email': 'justin@example.com'
-        }
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
 ### sharing/remove_file_member_2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-remove_file_member_2))
 Removes a specified member from the file.
 
@@ -1913,6 +1756,163 @@ Get the space usage information for the current user's account.
 ```js
 dropbox({
     resource: 'users/get_space_usage'
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/copy ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-copy))
+Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be copied.
+
+```js
+dropbox({
+    resource: 'deprecated/copy',
+    parameters: {
+        'from_path': '/Homework/math',
+        'to_path': '/Homework/algebra',
+        'allow_shared_folder': false,
+        'autorename': false,
+        'allow_ownership_transfer': false
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/create_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-create_folder))
+Create a folder at a given path.
+
+```js
+dropbox({
+    resource: 'deprecated/create_folder',
+    parameters: {
+        'path': '/Homework/math',
+        'autorename': false
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/delete ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-delete))
+Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.
+
+```js
+dropbox({
+    resource: 'deprecated/delete',
+    parameters: {
+        'path': '/Homework/math/Prime_Numbers.txt'
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/move ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-move))
+Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be moved.
+
+```js
+dropbox({
+    resource: 'deprecated/move',
+    parameters: {
+        'from_path': '/Homework/math',
+        'to_path': '/Homework/algebra',
+        'allow_shared_folder': false,
+        'autorename': false,
+        'allow_ownership_transfer': false
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/upload_session/append ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-upload_session-append))
+Append more data to an upload session. A single request should not upload more than 150 MB.
+
+```js
+const stream = dropbox({
+    resource: 'deprecated/upload_session/append',
+    parameters: {
+        'session_id': '1234faaf0678bcde',
+        'offset': 0
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+
+fs.createReadStream().pipe(stream);
+```
+
+
+### deprecated/change_file_member_access ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-change_file_member_access))
+Identical to update_file_member but with less information returned.
+
+```js
+dropbox({
+    resource: 'deprecated/change_file_member_access',
+    parameters: {
+        'file': 'id:3kmLmQFnf1AAAAAAAAAAAw',
+        'member': {
+            '.tag': 'email',
+            'email': 'justin@example.com'
+        },
+        'access_level': 'viewer'
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/create_shared_link ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-create_shared_link))
+Create a shared link. If a shared link already exists for the given path, that link is returned. Note that in the returned PathLinkMetadata, the PathLinkMetadata.url field is the shortened URL if CreateSharedLinkArg.short_url argument is set to true. Previously, it was technically possible to break a shared link by moving or renaming the corresponding file or folder. In the future, this will no longer be the case, so your app shouldn't rely on this behavior. Instead, if your app needs to revoke a shared link, use [revoke_shared_link](#deprecatedrevoke_shared_link-see-docs).
+
+```js
+dropbox({
+    resource: 'deprecated/create_shared_link',
+    parameters: {
+        'path': '/Homework/Math/Prime_Numbers.txt',
+        'short_url': false
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/get_shared_links ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-get_shared_links))
+Returns a list of LinkMetadata objects for this user, including collection links. If no path is given, returns a list of all shared links for the current user, including collection links, up to a maximum of 1000 links. If a non-empty path is given, returns a list of all shared links that allow access to the given path.  Collection links are never returned in this case. Note that the url field in the response is never the shortened URL.
+
+```js
+dropbox({
+    resource: 'deprecated/get_shared_links',
+    parameters: {
+        'path': ''
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/remove_file_member ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-remove_file_member))
+Identical to remove_file_member_2 but with less information returned.
+
+```js
+dropbox({
+    resource: 'deprecated/remove_file_member',
+    parameters: {
+        'file': 'id:3kmLmQFnf1AAAAAAAAAAAw',
+        'member': {
+            '.tag': 'email',
+            'email': 'justin@example.com'
+        }
+    }
 }, (err, result) => {
     //see docs for `result` parameters
 });

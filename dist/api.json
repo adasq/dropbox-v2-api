@@ -35,15 +35,6 @@
 			"available": true
 		}
 	},
-	"files/copy": {
-		"uri": "https://api.dropboxapi.com/2/files/copy",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
 	"files/copy_batch": {
 		"uri": "https://api.dropboxapi.com/2/files/copy_batch",
 		"requiresAuthHeader": true,
@@ -89,26 +80,8 @@
 			"available": true
 		}
 	},
-	"files/create_folder": {
-		"uri": "https://api.dropboxapi.com/2/files/create_folder",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
 	"files/create_folder_v2": {
 		"uri": "https://api.dropboxapi.com/2/files/create_folder_v2",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"files/delete": {
-		"uri": "https://api.dropboxapi.com/2/files/delete",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
@@ -235,15 +208,6 @@
 	},
 	"files/list_revisions": {
 		"uri": "https://api.dropboxapi.com/2/files/list_revisions",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"files/move": {
-		"uri": "https://api.dropboxapi.com/2/files/move",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
@@ -379,15 +343,6 @@
 	},
 	"files/upload": {
 		"uri": "https://content.dropboxapi.com/2/files/upload",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": true,
-		"category": "UPLOAD",
-		"parameters": {
-			"available": true
-		}
-	},
-	"files/upload_session/append": {
-		"uri": "https://content.dropboxapi.com/2/files/upload_session/append",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
@@ -602,15 +557,6 @@
 			"available": true
 		}
 	},
-	"sharing/change_file_member_access": {
-		"uri": "https://api.dropboxapi.com/2/sharing/change_file_member_access",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
 	"sharing/check_job_status": {
 		"uri": "https://api.dropboxapi.com/2/sharing/check_job_status",
 		"requiresAuthHeader": true,
@@ -631,15 +577,6 @@
 	},
 	"sharing/check_share_job_status": {
 		"uri": "https://api.dropboxapi.com/2/sharing/check_share_job_status",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"sharing/create_shared_link": {
-		"uri": "https://api.dropboxapi.com/2/sharing/create_shared_link",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
@@ -694,15 +631,6 @@
 	},
 	"sharing/get_shared_link_metadata": {
 		"uri": "https://api.dropboxapi.com/2/sharing/get_shared_link_metadata",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"sharing/get_shared_links": {
-		"uri": "https://api.dropboxapi.com/2/sharing/get_shared_links",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
@@ -854,15 +782,6 @@
 			"available": true
 		}
 	},
-	"sharing/remove_file_member": {
-		"uri": "https://api.dropboxapi.com/2/sharing/remove_file_member",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
 	"sharing/remove_file_member_2": {
 		"uri": "https://api.dropboxapi.com/2/sharing/remove_file_member_2",
 		"requiresAuthHeader": true,
@@ -996,6 +915,87 @@
 		"category": "RPC",
 		"parameters": {
 			"available": false
+		}
+	},
+	"deprecated/copy": {
+		"uri": "https://api.dropboxapi.com/2/files/copy",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/create_folder": {
+		"uri": "https://api.dropboxapi.com/2/files/create_folder",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/delete": {
+		"uri": "https://api.dropboxapi.com/2/files/delete",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/move": {
+		"uri": "https://api.dropboxapi.com/2/files/move",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/upload_session/append": {
+		"uri": "https://content.dropboxapi.com/2/files/upload_session/append",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": true,
+		"category": "UPLOAD",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/change_file_member_access": {
+		"uri": "https://api.dropboxapi.com/2/sharing/change_file_member_access",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/create_shared_link": {
+		"uri": "https://api.dropboxapi.com/2/sharing/create_shared_link",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/get_shared_links": {
+		"uri": "https://api.dropboxapi.com/2/sharing/get_shared_links",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/remove_file_member": {
+		"uri": "https://api.dropboxapi.com/2/sharing/remove_file_member",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
 		}
 	}
 }
