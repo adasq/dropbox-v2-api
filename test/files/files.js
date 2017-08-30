@@ -22,15 +22,15 @@ describe('Namespace', function() {
         var dirName = `dropbox-api-test-${timestamp}`;
         var dirPath = `/${dirName}`
 
-        it('create_folder', (done) => {
+        it('create_folder_v2 ', (done) => {
             dropbox({
-                resource: 'files/create_folder',
+                resource: 'files/create_folder_v2',
                 parameters: {
                     path: dirPath
                 }
             }, (err, response) => {
                 if(err){ throw err; }
-                response.should.have.property('name', dirName);
+                response.metadata.should.have.property('name', dirName);
                 done();
             });
         });
@@ -129,45 +129,45 @@ describe('Namespace', function() {
 
             dlStream.pipe(uploadSteram);
         });
-        it('copy', (done) => {
+        it('copy_v2', (done) => {
             const sourceFileName = `${dirPath}/upload-2.txt`;
             const targetFileName = `${dirPath}/upload-2-copied.txt`;
             dropbox({
-                resource: 'files/copy',
+                resource: 'files/copy_v2',
                 parameters: {
                     'from_path': sourceFileName,
                     'to_path': targetFileName
                 }               
             }, (err, response) => {
                 if(err){ throw err; }
-                response.should.have.property('path_lower', targetFileName);
+                response.metadata.should.have.property('path_lower', targetFileName);
                 done();
             });
         });
-        it('delete', (done) => {
+        it('delete_v2', (done) => {
             var fileToDeleteName = `${dirPath}/upload-2-copied.txt`;
             dropbox({
-                resource: 'files/delete',
+                resource: 'files/delete_v2',
                 parameters: {
                     'path': fileToDeleteName
                 }               
             }, (err, response) => {
                 if(err){ throw err; }
-                response.should.have.property('path_lower', fileToDeleteName);
+                response.metadata.should.have.property('path_lower', fileToDeleteName);
                 done();
             });
         });
         it('move', (done) => {
             var targetFileName = `${dirPath}/upload-moved.txt`;
             dropbox({
-                resource: 'files/copy',
+                resource: 'files/copy_v2',
                 parameters: {
                     'from_path': `${dirPath}/upload.txt`,
                     'to_path': targetFileName
                 }               
             }, (err, response) => {
                 if(err){ throw err; }
-                response.should.have.property('path_lower', targetFileName);
+                response.metadata.should.have.property('path_lower', targetFileName);
                 done();
             });
         }); 
