@@ -39,6 +39,786 @@
 		},
 		"returnParameters": null
 	},
+	"file_properties/properties/add": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/properties/add",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Add properties to a Dropbox file. Properties must be associated with a template. See route `templates/add_for_` to create new templates.",
+		"parameters": {
+			"list": [
+				{
+					"name": "path",
+					"type": "String(pattern=\"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)\")",
+					"desc": "A unique identifier for the file or folder."
+				},
+				{
+					"name": "property_groups",
+					"type": "List of (PropertyGroup)",
+					"desc": "The group of properties, associated with a template, which are to be added to a Dropbox file.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "template_id",
+									"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+									"desc": "A unique identifier for the associated template."
+								},
+								{
+									"name": "fields",
+									"type": "List of (PropertyField)",
+									"desc": "The actual properties associated with the template. There can be up to 32 property types per template.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "name",
+													"type": "String",
+													"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+												},
+												{
+													"name": "value",
+													"type": "String",
+													"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "template_id",
+					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+					"desc": "A unique identifier for the associated template."
+				},
+				{
+					"name": "fields",
+					"type": "List of (PropertyField)",
+					"desc": "The actual properties associated with the template. There can be up to 32 property types per template.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+				},
+				{
+					"name": "value",
+					"type": "String",
+					"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+				}
+			],
+			"example": {
+				"path": "/my_awesome/word.docx",
+				"property_groups": [
+					{
+						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+						"fields": [
+							{
+								"name": "Security Policy",
+								"value": "Confidential"
+							}
+						]
+					}
+				]
+			}
+		},
+		"returnParameters": null
+	},
+	"file_properties/properties/overwrite": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/properties/overwrite",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Overwrite properties associated with the supplied file and templates.",
+		"parameters": {
+			"list": [
+				{
+					"name": "path",
+					"type": "String(pattern=\"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)\")",
+					"desc": "A unique identifier for the file or folder."
+				},
+				{
+					"name": "property_groups",
+					"type": "List of (PropertyGroup)",
+					"desc": "Properties and the IDs of the templates to which they should be added.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "template_id",
+									"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+									"desc": "A unique identifier for the associated template."
+								},
+								{
+									"name": "fields",
+									"type": "List of (PropertyField)",
+									"desc": "The actual properties associated with the template. There can be up to 32 property types per template.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "name",
+													"type": "String",
+													"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+												},
+												{
+													"name": "value",
+													"type": "String",
+													"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "template_id",
+					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+					"desc": "A unique identifier for the associated template."
+				},
+				{
+					"name": "fields",
+					"type": "List of (PropertyField)",
+					"desc": "The actual properties associated with the template. There can be up to 32 property types per template.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+				},
+				{
+					"name": "value",
+					"type": "String",
+					"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+				}
+			],
+			"example": {
+				"path": "/my_awesome/word.docx",
+				"property_groups": [
+					{
+						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+						"fields": [
+							{
+								"name": "Security Policy",
+								"value": "Confidential"
+							}
+						]
+					}
+				]
+			}
+		},
+		"returnParameters": null
+	},
+	"file_properties/properties/remove": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/properties/remove",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Remove the specified property group from the file. To remove specific property key value pairs, see route [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see route `templates/update_for_`. Templates can't be removed once created.",
+		"parameters": {
+			"list": [
+				{
+					"name": "path",
+					"type": "String(pattern=\"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)\")",
+					"desc": "A unique identifier for the file or folder."
+				},
+				{
+					"name": "property_template_ids",
+					"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"))",
+					"desc": "A list of identifiers for a template created by route `templates/add_for_"
+				}
+			],
+			"example": {
+				"path": "/my_awesome/word.docx",
+				"property_template_ids": [
+					"ptid:1a5n2i6d3OYEAAAAAAAAAYa"
+				]
+			}
+		},
+		"returnParameters": null
+	},
+	"file_properties/properties/search": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/properties/search",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Search across property templates for particular values.",
+		"parameters": {
+			"list": [
+				{
+					"name": "query",
+					"type": "String",
+					"desc": "The property field value for which to search across templates."
+				},
+				{
+					"name": "field_name",
+					"type": "String",
+					"desc": "The property field name on which to scope the search across templates."
+				},
+				{
+					"name": "template_ids",
+					"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"))?",
+					"desc": "Filter results to contain only properties associated with these template IDs. This field is optional."
+				}
+			],
+			"example": {
+				"query": "Confidential",
+				"field_name": "Security"
+			}
+		},
+		"returnParameters": {
+			"matches": [
+				{
+					"id": "id:a4ayc_80_OEAAAAAAAAAXz",
+					"path": "/my_awesome/word.docx",
+					"property_groups": [
+						{
+							"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+							"fields": [
+								{
+									"name": "Security Policy",
+									"value": "Confidential"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	},
+	"file_properties/properties/update": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/properties/update",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Add, update or remove properties associated with the supplied file and templates. Properties which already exist and are not described in the request will not be modified.",
+		"parameters": {
+			"list": [
+				{
+					"name": "path",
+					"type": "String(pattern=\"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)\")",
+					"desc": "A unique identifier for the file or folder."
+				},
+				{
+					"name": "update_property_groups",
+					"type": "List of (PropertyGroupUpdate)",
+					"desc": "The group of properties, associated with a template, which are to be added to a Dropbox file.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "template_id",
+									"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+									"desc": "A unique identifier for a property template."
+								},
+								{
+									"name": "add_or_update_fields",
+									"type": "List of (PropertyField)?",
+									"desc": "Property groups to update. If the property group already exists, it is updated. If the property group doesn't exist, the property group is added. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "name",
+													"type": "String",
+													"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+												},
+												{
+													"name": "value",
+													"type": "String",
+													"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+								},
+								{
+									"name": "remove_fields",
+									"type": "List of (String)?",
+									"desc": "Properties to remove (by name), provided they exist. This field is optional."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "template_id",
+					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+					"desc": "A unique identifier for a property template."
+				},
+				{
+					"name": "add_or_update_fields",
+					"type": "List of (PropertyField)?",
+					"desc": "Property groups to update. If the property group already exists, it is updated. If the property group doesn't exist, the property group is added. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+				},
+				{
+					"name": "value",
+					"type": "String",
+					"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+				},
+				{
+					"name": "remove_fields",
+					"type": "List of (String)?",
+					"desc": "Properties to remove (by name), provided they exist. This field is optional."
+				}
+			],
+			"example": {
+				"path": "/my_awesome/word.docx",
+				"update_property_groups": [
+					{
+						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+						"add_or_update_fields": [
+							{
+								"name": "Security Policy",
+								"value": "Confidential"
+							}
+						],
+						"remove_fields": []
+					}
+				]
+			}
+		},
+		"returnParameters": null
+	},
+	"file_properties/templates/add_for_user": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/templates/add_for_user",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Add a template associated with a user. See route [properties/add](#file_propertiespropertiesadd-see-docs) to add properties to a file.",
+		"parameters": {
+			"list": [
+				{
+					"name": "name",
+					"type": "String",
+					"desc": "Display name for the template. Template names can be up to 256 bytes."
+				},
+				{
+					"name": "description",
+					"type": "String",
+					"desc": "Description for the template. Template descriptions can be up to 1024 bytes."
+				},
+				{
+					"name": "fields",
+					"type": "List of (PropertyFieldTemplate)",
+					"desc": "Definitions of the properties associated with this template. There can be up to 64 properties in a single template.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property being described. File property keys can be up to 256 bytes."
+								},
+								{
+									"name": "description",
+									"type": "String",
+									"desc": "Description of the property. File property descriptions can be up to 1024 bytes."
+								},
+								{
+									"name": "type",
+									"type": "PropertyType",
+									"desc": "Data type of the value of this property. This type will be enforced upon property creation and modifications.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "string",
+													"type": "Void",
+													"desc": "The associated property will be of type string. Unicode is supported."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "string",
+									"type": "Void",
+									"desc": "The associated property will be of type string. Unicode is supported."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "string",
+									"type": "Void",
+									"desc": "The associated property will be of type string. Unicode is supported."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"desc": "Key of the property being described. File property keys can be up to 256 bytes."
+				},
+				{
+					"name": "description",
+					"type": "String",
+					"desc": "Description of the property. File property descriptions can be up to 1024 bytes."
+				},
+				{
+					"name": "type",
+					"type": "PropertyType",
+					"desc": "Data type of the value of this property. This type will be enforced upon property creation and modifications.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "string",
+									"type": "Void",
+									"desc": "The associated property will be of type string. Unicode is supported."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "string",
+					"type": "Void",
+					"desc": "The associated property will be of type string. Unicode is supported."
+				}
+			],
+			"example": {
+				"name": "Security",
+				"description": "These properties describe how confidential this file or folder is.",
+				"fields": [
+					{
+						"name": "Security Policy",
+						"description": "This is the security policy of the file or folder described.\nPolicies can be Confidential, Public or Internal.",
+						"type": "string"
+					}
+				]
+			}
+		},
+		"returnParameters": {
+			"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa"
+		}
+	},
+	"file_properties/templates/get_for_user": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/templates/get_for_user",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Get the schema for a specified template.",
+		"parameters": {
+			"list": [
+				{
+					"name": "template_id",
+					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+					"desc": "An identifier for template added by route `templates/add_for_"
+				}
+			],
+			"example": {
+				"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa"
+			}
+		},
+		"returnParameters": {
+			"name": "Security",
+			"description": "These properties describe how confidential this file or folder is.",
+			"fields": [
+				{
+					"name": "Security Policy",
+					"description": "This is the security policy of the file or folder described.\nPolicies can be Confidential, Public or Internal.",
+					"type": {
+						".tag": "string"
+					}
+				}
+			]
+		}
+	},
+	"file_properties/templates/list_for_user": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/templates/list_for_user",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Get the template identifiers for a team. To get the schema of each template use [templates/get_for_user](#file_propertiestemplatesget_for_user-see-docs).",
+		"parameters": {
+			"list": [],
+			"example": null
+		},
+		"returnParameters": {
+			"template_ids": [
+				"ptid:1a5n2i6d3OYEAAAAAAAAAYa"
+			]
+		}
+	},
+	"file_properties/templates/update_for_user": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/templates/update_for_user",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Update a template associated with a user. This route can update the template name, the template description and add optional properties to templates.",
+		"parameters": {
+			"list": [
+				{
+					"name": "template_id",
+					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+					"desc": "An identifier for template added by route `templates/add_for_"
+				},
+				{
+					"name": "name",
+					"type": "String?",
+					"desc": "A display name for the template. template names can be up to 256 bytes. This field is optional."
+				},
+				{
+					"name": "description",
+					"type": "String?",
+					"desc": "Description for the new template. Template descriptions can be up to 1024 bytes. This field is optional."
+				},
+				{
+					"name": "add_fields",
+					"type": "List of (PropertyFieldTemplate)?",
+					"desc": "Property templates to be added to the group template. There can be up to 64 properties in a single template. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property being described. File property keys can be up to 256 bytes."
+								},
+								{
+									"name": "description",
+									"type": "String",
+									"desc": "Description of the property. File property descriptions can be up to 1024 bytes."
+								},
+								{
+									"name": "type",
+									"type": "PropertyType",
+									"desc": "Data type of the value of this property. This type will be enforced upon property creation and modifications.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "string",
+													"type": "Void",
+													"desc": "The associated property will be of type string. Unicode is supported."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "string",
+									"type": "Void",
+									"desc": "The associated property will be of type string. Unicode is supported."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "string",
+									"type": "Void",
+									"desc": "The associated property will be of type string. Unicode is supported."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"desc": "Key of the property being described. File property keys can be up to 256 bytes."
+				},
+				{
+					"name": "description",
+					"type": "String",
+					"desc": "Description of the property. File property descriptions can be up to 1024 bytes."
+				},
+				{
+					"name": "type",
+					"type": "PropertyType",
+					"desc": "Data type of the value of this property. This type will be enforced upon property creation and modifications.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "string",
+									"type": "Void",
+									"desc": "The associated property will be of type string. Unicode is supported."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "string",
+					"type": "Void",
+					"desc": "The associated property will be of type string. Unicode is supported."
+				}
+			],
+			"example": {
+				"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+				"name": "New Security Template Name",
+				"description": "These properties will describe how confidential this file or folder is.",
+				"add_fields": [
+					{
+						"name": "Security Policy",
+						"description": "This is the security policy of the file or folder described.\nPolicies can be Confidential, Public or Internal.",
+						"type": "string"
+					}
+				]
+			}
+		},
+		"returnParameters": {
+			"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa"
+		}
+	},
 	"files/alpha/get_metadata": {
 		"uri": "https://api.dropboxapi.com/2/files/alpha/get_metadata",
 		"requiresAuthHeader": true,
@@ -190,24 +970,24 @@
 								{
 									"name": "template_id",
 									"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
-									"desc": "A unique identifier for a property template type."
+									"desc": "A unique identifier for the associated template."
 								},
 								{
 									"name": "fields",
 									"type": "List of (PropertyField)",
-									"desc": "This is a list of custom properties associated with a file. There can be up to 32 properties for a template.",
+									"desc": "The actual properties associated with the template. There can be up to 32 property types per template.",
 									"parameters": [
 										{
 											"list": [
 												{
 													"name": "name",
 													"type": "String",
-													"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
+													"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
 												},
 												{
 													"name": "value",
 													"type": "String",
-													"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
+													"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
 												}
 											],
 											"example": null
@@ -217,12 +997,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -232,12 +1012,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -247,24 +1027,24 @@
 				{
 					"name": "template_id",
 					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
-					"desc": "A unique identifier for a property template type."
+					"desc": "A unique identifier for the associated template."
 				},
 				{
 					"name": "fields",
 					"type": "List of (PropertyField)",
-					"desc": "This is a list of custom properties associated with a file. There can be up to 32 properties for a template.",
+					"desc": "The actual properties associated with the template. There can be up to 32 property types per template.",
 					"parameters": [
 						{
 							"list": [
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -274,12 +1054,12 @@
 				{
 					"name": "name",
 					"type": "String",
-					"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
+					"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
 				},
 				{
 					"name": "value",
 					"type": "String",
-					"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
+					"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
 				}
 			],
 			"example": {
@@ -2162,489 +2942,6 @@
 			],
 			"example": {
 				"path": "/Homework/math/Prime_Numbers.txt"
-			}
-		},
-		"returnParameters": null
-	},
-	"files/properties/add": {
-		"uri": "https://api.dropboxapi.com/2/files/properties/add",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Add custom properties to a file using a filled property template. See properties/template/add to create new property templates.",
-		"parameters": {
-			"list": [
-				{
-					"name": "path",
-					"type": "String(pattern=\"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)\")",
-					"desc": "A unique identifier for the file."
-				},
-				{
-					"name": "property_groups",
-					"type": "List of (PropertyGroup)",
-					"desc": "Filled custom property templates associated with a file.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "template_id",
-									"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
-									"desc": "A unique identifier for a property template type."
-								},
-								{
-									"name": "fields",
-									"type": "List of (PropertyField)",
-									"desc": "This is a list of custom properties associated with a file. There can be up to 32 properties for a template.",
-									"parameters": [
-										{
-											"list": [
-												{
-													"name": "name",
-													"type": "String",
-													"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
-												},
-												{
-													"name": "value",
-													"type": "String",
-													"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
-												}
-											],
-											"example": null
-										}
-									]
-								},
-								{
-									"name": "name",
-									"type": "String",
-									"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
-								},
-								{
-									"name": "value",
-									"type": "String",
-									"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
-								}
-							],
-							"example": null
-						},
-						{
-							"list": [
-								{
-									"name": "name",
-									"type": "String",
-									"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
-								},
-								{
-									"name": "value",
-									"type": "String",
-									"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "template_id",
-					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
-					"desc": "A unique identifier for a property template type."
-				},
-				{
-					"name": "fields",
-					"type": "List of (PropertyField)",
-					"desc": "This is a list of custom properties associated with a file. There can be up to 32 properties for a template.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "name",
-									"type": "String",
-									"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
-								},
-								{
-									"name": "value",
-									"type": "String",
-									"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "name",
-					"type": "String",
-					"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
-				},
-				{
-					"name": "value",
-					"type": "String",
-					"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
-				}
-			],
-			"example": {
-				"path": "/my_awesome/word.docx",
-				"property_groups": [
-					{
-						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
-						"fields": [
-							{
-								"name": "Security Policy",
-								"value": "Confidential"
-							}
-						]
-					}
-				]
-			}
-		},
-		"returnParameters": null
-	},
-	"files/properties/overwrite": {
-		"uri": "https://api.dropboxapi.com/2/files/properties/overwrite",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Overwrite custom properties from a specified template associated with a file.",
-		"parameters": {
-			"list": [
-				{
-					"name": "path",
-					"type": "String(pattern=\"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)\")",
-					"desc": "A unique identifier for the file."
-				},
-				{
-					"name": "property_groups",
-					"type": "List of (PropertyGroup)",
-					"desc": "Filled custom property templates associated with a file.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "template_id",
-									"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
-									"desc": "A unique identifier for a property template type."
-								},
-								{
-									"name": "fields",
-									"type": "List of (PropertyField)",
-									"desc": "This is a list of custom properties associated with a file. There can be up to 32 properties for a template.",
-									"parameters": [
-										{
-											"list": [
-												{
-													"name": "name",
-													"type": "String",
-													"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
-												},
-												{
-													"name": "value",
-													"type": "String",
-													"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
-												}
-											],
-											"example": null
-										}
-									]
-								},
-								{
-									"name": "name",
-									"type": "String",
-									"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
-								},
-								{
-									"name": "value",
-									"type": "String",
-									"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
-								}
-							],
-							"example": null
-						},
-						{
-							"list": [
-								{
-									"name": "name",
-									"type": "String",
-									"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
-								},
-								{
-									"name": "value",
-									"type": "String",
-									"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "template_id",
-					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
-					"desc": "A unique identifier for a property template type."
-				},
-				{
-					"name": "fields",
-					"type": "List of (PropertyField)",
-					"desc": "This is a list of custom properties associated with a file. There can be up to 32 properties for a template.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "name",
-									"type": "String",
-									"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
-								},
-								{
-									"name": "value",
-									"type": "String",
-									"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "name",
-					"type": "String",
-					"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
-				},
-				{
-					"name": "value",
-					"type": "String",
-					"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
-				}
-			],
-			"example": {
-				"path": "/my_awesome/word.docx",
-				"property_groups": [
-					{
-						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
-						"fields": [
-							{
-								"name": "Security Policy",
-								"value": "Confidential"
-							}
-						]
-					}
-				]
-			}
-		},
-		"returnParameters": null
-	},
-	"files/properties/remove": {
-		"uri": "https://api.dropboxapi.com/2/files/properties/remove",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Remove all custom properties from a specified template associated with a file. To remove specific property key value pairs, see [properties/update](#filespropertiesupdate-see-docs). To update a property template, see properties/template/update. Property templates can't be removed once created.",
-		"parameters": {
-			"list": [
-				{
-					"name": "path",
-					"type": "String(pattern=\"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)\")",
-					"desc": "A unique identifier for the file."
-				},
-				{
-					"name": "property_template_ids",
-					"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"))",
-					"desc": "A list of identifiers for a property template created by route properties/template/add."
-				}
-			],
-			"example": {
-				"path": "/my_awesome/word.docx",
-				"property_template_ids": [
-					"ptid:1a5n2i6d3OYEAAAAAAAAAYa"
-				]
-			}
-		},
-		"returnParameters": null
-	},
-	"files/properties/template/get": {
-		"uri": "https://api.dropboxapi.com/2/files/properties/template/get",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Get the schema for a specified template.",
-		"parameters": {
-			"list": [
-				{
-					"name": "template_id",
-					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
-					"desc": "An identifier for property template added by route properties/template/add."
-				}
-			],
-			"example": {
-				"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa"
-			}
-		},
-		"returnParameters": {
-			"name": "Security",
-			"description": "These properties describe how confidential this file is.",
-			"fields": [
-				{
-					"name": "Security Policy",
-					"description": "This is the security policy of the file or folder described.\nPolicies can be Confidential, Public or Internal.",
-					"type": {
-						".tag": "string"
-					}
-				}
-			]
-		}
-	},
-	"files/properties/template/list": {
-		"uri": "https://api.dropboxapi.com/2/files/properties/template/list",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Get the property template identifiers for a user. To get the schema of each template use [properties/template/get](#filespropertiestemplateget-see-docs).",
-		"parameters": {
-			"list": [],
-			"example": null
-		},
-		"returnParameters": {
-			"template_ids": [
-				"ptid:1a5n2i6d3OYEAAAAAAAAAYa"
-			]
-		}
-	},
-	"files/properties/update": {
-		"uri": "https://api.dropboxapi.com/2/files/properties/update",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Add, update or remove custom properties from a specified template associated with a file. Fields that already exist and not described in the request will not be modified.",
-		"parameters": {
-			"list": [
-				{
-					"name": "path",
-					"type": "String(pattern=\"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)\")",
-					"desc": "A unique identifier for the file."
-				},
-				{
-					"name": "update_property_groups",
-					"type": "List of (PropertyGroupUpdate)",
-					"desc": "Filled custom property templates associated with a file.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "template_id",
-									"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
-									"desc": "A unique identifier for a property template."
-								},
-								{
-									"name": "add_or_update_fields",
-									"type": "List of (PropertyField)?",
-									"desc": "List of property fields to update if the field already exists. If the field doesn't exist, add the field to the property group. This field is optional.",
-									"parameters": [
-										{
-											"list": [
-												{
-													"name": "name",
-													"type": "String",
-													"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
-												},
-												{
-													"name": "value",
-													"type": "String",
-													"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
-												}
-											],
-											"example": null
-										}
-									]
-								},
-								{
-									"name": "name",
-									"type": "String",
-									"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
-								},
-								{
-									"name": "value",
-									"type": "String",
-									"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
-								},
-								{
-									"name": "remove_fields",
-									"type": "List of (String)?",
-									"desc": "List of property field names to remove from property group if the field exists. This field is optional."
-								}
-							],
-							"example": null
-						},
-						{
-							"list": [
-								{
-									"name": "name",
-									"type": "String",
-									"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
-								},
-								{
-									"name": "value",
-									"type": "String",
-									"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "template_id",
-					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
-					"desc": "A unique identifier for a property template."
-				},
-				{
-					"name": "add_or_update_fields",
-					"type": "List of (PropertyField)?",
-					"desc": "List of property fields to update if the field already exists. If the field doesn't exist, add the field to the property group. This field is optional.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "name",
-									"type": "String",
-									"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
-								},
-								{
-									"name": "value",
-									"type": "String",
-									"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "name",
-					"type": "String",
-					"desc": "This is the name or key of a custom property in a property template. File property names can be up to 256 bytes."
-				},
-				{
-					"name": "value",
-					"type": "String",
-					"desc": "Value of a custom property attached to a file. Values can be up to 1024 bytes."
-				},
-				{
-					"name": "remove_fields",
-					"type": "List of (String)?",
-					"desc": "List of property field names to remove from property group if the field exists. This field is optional."
-				}
-			],
-			"example": {
-				"path": "/my_awesome/word.docx",
-				"update_property_groups": [
-					{
-						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
-						"add_or_update_fields": [
-							{
-								"name": "Security Policy",
-								"value": "Confidential"
-							}
-						],
-						"remove_fields": []
-					}
-				]
 			}
 		},
 		"returnParameters": null
@@ -10500,6 +10797,489 @@
 			"has_explicit_shared_members": false,
 			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
+	},
+	"deprecated/properties/add": {
+		"uri": "https://api.dropboxapi.com/2/files/properties/add",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "No description",
+		"parameters": {
+			"list": [
+				{
+					"name": "path",
+					"type": "String(pattern=\"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)\")",
+					"desc": "A unique identifier for the file or folder."
+				},
+				{
+					"name": "property_groups",
+					"type": "List of (PropertyGroup)",
+					"desc": "The group of properties, associated with a template, which are to be added to a Dropbox file.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "template_id",
+									"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+									"desc": "A unique identifier for the associated template."
+								},
+								{
+									"name": "fields",
+									"type": "List of (PropertyField)",
+									"desc": "The actual properties associated with the template. There can be up to 32 property types per template.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "name",
+													"type": "String",
+													"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+												},
+												{
+													"name": "value",
+													"type": "String",
+													"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "template_id",
+					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+					"desc": "A unique identifier for the associated template."
+				},
+				{
+					"name": "fields",
+					"type": "List of (PropertyField)",
+					"desc": "The actual properties associated with the template. There can be up to 32 property types per template.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+				},
+				{
+					"name": "value",
+					"type": "String",
+					"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+				}
+			],
+			"example": {
+				"path": "/my_awesome/word.docx",
+				"property_groups": [
+					{
+						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+						"fields": [
+							{
+								"name": "Security Policy",
+								"value": "Confidential"
+							}
+						]
+					}
+				]
+			}
+		},
+		"returnParameters": null
+	},
+	"deprecated/properties/overwrite": {
+		"uri": "https://api.dropboxapi.com/2/files/properties/overwrite",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "No description",
+		"parameters": {
+			"list": [
+				{
+					"name": "path",
+					"type": "String(pattern=\"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)\")",
+					"desc": "A unique identifier for the file or folder."
+				},
+				{
+					"name": "property_groups",
+					"type": "List of (PropertyGroup)",
+					"desc": "Properties and the IDs of the templates to which they should be added.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "template_id",
+									"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+									"desc": "A unique identifier for the associated template."
+								},
+								{
+									"name": "fields",
+									"type": "List of (PropertyField)",
+									"desc": "The actual properties associated with the template. There can be up to 32 property types per template.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "name",
+													"type": "String",
+													"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+												},
+												{
+													"name": "value",
+													"type": "String",
+													"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "template_id",
+					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+					"desc": "A unique identifier for the associated template."
+				},
+				{
+					"name": "fields",
+					"type": "List of (PropertyField)",
+					"desc": "The actual properties associated with the template. There can be up to 32 property types per template.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+				},
+				{
+					"name": "value",
+					"type": "String",
+					"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+				}
+			],
+			"example": {
+				"path": "/my_awesome/word.docx",
+				"property_groups": [
+					{
+						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+						"fields": [
+							{
+								"name": "Security Policy",
+								"value": "Confidential"
+							}
+						]
+					}
+				]
+			}
+		},
+		"returnParameters": null
+	},
+	"deprecated/properties/remove": {
+		"uri": "https://api.dropboxapi.com/2/files/properties/remove",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "No description",
+		"parameters": {
+			"list": [
+				{
+					"name": "path",
+					"type": "String(pattern=\"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)\")",
+					"desc": "A unique identifier for the file or folder."
+				},
+				{
+					"name": "property_template_ids",
+					"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"))",
+					"desc": "A list of identifiers for a template created by route `templates/add_for_"
+				}
+			],
+			"example": {
+				"path": "/my_awesome/word.docx",
+				"property_template_ids": [
+					"ptid:1a5n2i6d3OYEAAAAAAAAAYa"
+				]
+			}
+		},
+		"returnParameters": null
+	},
+	"deprecated/properties/template/get": {
+		"uri": "https://api.dropboxapi.com/2/files/properties/template/get",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "No description",
+		"parameters": {
+			"list": [
+				{
+					"name": "template_id",
+					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+					"desc": "An identifier for template added by route `templates/add_for_"
+				}
+			],
+			"example": {
+				"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa"
+			}
+		},
+		"returnParameters": {
+			"name": "Security",
+			"description": "These properties describe how confidential this file or folder is.",
+			"fields": [
+				{
+					"name": "Security Policy",
+					"description": "This is the security policy of the file or folder described.\nPolicies can be Confidential, Public or Internal.",
+					"type": {
+						".tag": "string"
+					}
+				}
+			]
+		}
+	},
+	"deprecated/properties/template/list": {
+		"uri": "https://api.dropboxapi.com/2/files/properties/template/list",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "No description",
+		"parameters": {
+			"list": [],
+			"example": null
+		},
+		"returnParameters": {
+			"template_ids": [
+				"ptid:1a5n2i6d3OYEAAAAAAAAAYa"
+			]
+		}
+	},
+	"deprecated/properties/update": {
+		"uri": "https://api.dropboxapi.com/2/files/properties/update",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "No description",
+		"parameters": {
+			"list": [
+				{
+					"name": "path",
+					"type": "String(pattern=\"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)\")",
+					"desc": "A unique identifier for the file or folder."
+				},
+				{
+					"name": "update_property_groups",
+					"type": "List of (PropertyGroupUpdate)",
+					"desc": "The group of properties, associated with a template, which are to be added to a Dropbox file.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "template_id",
+									"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+									"desc": "A unique identifier for a property template."
+								},
+								{
+									"name": "add_or_update_fields",
+									"type": "List of (PropertyField)?",
+									"desc": "Property groups to update. If the property group already exists, it is updated. If the property group doesn't exist, the property group is added. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "name",
+													"type": "String",
+													"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+												},
+												{
+													"name": "value",
+													"type": "String",
+													"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+								},
+								{
+									"name": "remove_fields",
+									"type": "List of (String)?",
+									"desc": "Properties to remove (by name), provided they exist. This field is optional."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "template_id",
+					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+					"desc": "A unique identifier for a property template."
+				},
+				{
+					"name": "add_or_update_fields",
+					"type": "List of (PropertyField)?",
+					"desc": "Property groups to update. If the property group already exists, it is updated. If the property group doesn't exist, the property group is added. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+				},
+				{
+					"name": "value",
+					"type": "String",
+					"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+				},
+				{
+					"name": "remove_fields",
+					"type": "List of (String)?",
+					"desc": "Properties to remove (by name), provided they exist. This field is optional."
+				}
+			],
+			"example": {
+				"path": "/my_awesome/word.docx",
+				"update_property_groups": [
+					{
+						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+						"add_or_update_fields": [
+							{
+								"name": "Security Policy",
+								"value": "Confidential"
+							}
+						],
+						"remove_fields": []
+					}
+				]
+			}
+		},
+		"returnParameters": null
 	},
 	"deprecated/upload_session/append": {
 		"uri": "https://content.dropboxapi.com/2/files/upload_session/append",

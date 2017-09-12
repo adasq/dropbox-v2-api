@@ -17,6 +17,87 @@
 			"available": false
 		}
 	},
+	"file_properties/properties/add": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/properties/add",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"file_properties/properties/overwrite": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/properties/overwrite",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"file_properties/properties/remove": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/properties/remove",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"file_properties/properties/search": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/properties/search",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"file_properties/properties/update": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/properties/update",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"file_properties/templates/add_for_user": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/templates/add_for_user",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"file_properties/templates/get_for_user": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/templates/get_for_user",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"file_properties/templates/list_for_user": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/templates/list_for_user",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": false
+		}
+	},
+	"file_properties/templates/update_for_user": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/templates/update_for_user",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
 	"files/alpha/get_metadata": {
 		"uri": "https://api.dropboxapi.com/2/files/alpha/get_metadata",
 		"requiresAuthHeader": true,
@@ -244,60 +325,6 @@
 	},
 	"files/permanently_delete": {
 		"uri": "https://api.dropboxapi.com/2/files/permanently_delete",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"files/properties/add": {
-		"uri": "https://api.dropboxapi.com/2/files/properties/add",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"files/properties/overwrite": {
-		"uri": "https://api.dropboxapi.com/2/files/properties/overwrite",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"files/properties/remove": {
-		"uri": "https://api.dropboxapi.com/2/files/properties/remove",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"files/properties/template/get": {
-		"uri": "https://api.dropboxapi.com/2/files/properties/template/get",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"files/properties/template/list": {
-		"uri": "https://api.dropboxapi.com/2/files/properties/template/list",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": false
-		}
-	},
-	"files/properties/update": {
-		"uri": "https://api.dropboxapi.com/2/files/properties/update",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
@@ -946,6 +973,60 @@
 	},
 	"deprecated/move": {
 		"uri": "https://api.dropboxapi.com/2/files/move",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/properties/add": {
+		"uri": "https://api.dropboxapi.com/2/files/properties/add",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/properties/overwrite": {
+		"uri": "https://api.dropboxapi.com/2/files/properties/overwrite",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/properties/remove": {
+		"uri": "https://api.dropboxapi.com/2/files/properties/remove",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/properties/template/get": {
+		"uri": "https://api.dropboxapi.com/2/files/properties/template/get",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/properties/template/list": {
+		"uri": "https://api.dropboxapi.com/2/files/properties/template/list",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": false
+		}
+	},
+	"deprecated/properties/update": {
+		"uri": "https://api.dropboxapi.com/2/files/properties/update",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",

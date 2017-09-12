@@ -27,6 +27,175 @@ dropbox({
 ```
 
 
+### file_properties/properties/add ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-add))
+Add properties to a Dropbox file. Properties must be associated with a template. See route `templates/add_for_` to create new templates.
+
+```js
+dropbox({
+    resource: 'file_properties/properties/add',
+    parameters: {
+        'path': '/my_awesome/word.docx',
+        'property_groups': [{
+            'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
+            'fields': [{
+                'name': 'Security Policy',
+                'value': 'Confidential'
+            }]
+        }]
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### file_properties/properties/overwrite ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-overwrite))
+Overwrite properties associated with the supplied file and templates.
+
+```js
+dropbox({
+    resource: 'file_properties/properties/overwrite',
+    parameters: {
+        'path': '/my_awesome/word.docx',
+        'property_groups': [{
+            'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
+            'fields': [{
+                'name': 'Security Policy',
+                'value': 'Confidential'
+            }]
+        }]
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### file_properties/properties/remove ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-remove))
+Remove the specified property group from the file. To remove specific property key value pairs, see route [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see route `templates/update_for_`. Templates can't be removed once created.
+
+```js
+dropbox({
+    resource: 'file_properties/properties/remove',
+    parameters: {
+        'path': '/my_awesome/word.docx',
+        'property_template_ids': ['ptid:1a5n2i6d3OYEAAAAAAAAAYa']
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### file_properties/properties/search ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-search))
+Search across property templates for particular values.
+
+```js
+dropbox({
+    resource: 'file_properties/properties/search',
+    parameters: {
+        'query': 'Confidential',
+        'field_name': 'Security'
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### file_properties/properties/update ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-update))
+Add, update or remove properties associated with the supplied file and templates. Properties which already exist and are not described in the request will not be modified.
+
+```js
+dropbox({
+    resource: 'file_properties/properties/update',
+    parameters: {
+        'path': '/my_awesome/word.docx',
+        'update_property_groups': [{
+            'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
+            'add_or_update_fields': [{
+                'name': 'Security Policy',
+                'value': 'Confidential'
+            }],
+            'remove_fields': []
+        }]
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### file_properties/templates/add_for_user ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-templates-add_for_user))
+Add a template associated with a user. See route [properties/add](#file_propertiespropertiesadd-see-docs) to add properties to a file.
+
+```js
+dropbox({
+    resource: 'file_properties/templates/add_for_user',
+    parameters: {
+        'name': 'Security',
+        'description': 'These properties describe how confidential this file or folder is.',
+        'fields': [{
+            'name': 'Security Policy',
+            'description': 'This is the security policy of the file or folder described.\nPolicies can be Confidential, Public or Internal.',
+            'type': 'string'
+        }]
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### file_properties/templates/get_for_user ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-templates-get_for_user))
+Get the schema for a specified template.
+
+```js
+dropbox({
+    resource: 'file_properties/templates/get_for_user',
+    parameters: {
+        'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa'
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### file_properties/templates/list_for_user ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-templates-list_for_user))
+Get the template identifiers for a team. To get the schema of each template use [templates/get_for_user](#file_propertiestemplatesget_for_user-see-docs).
+
+```js
+dropbox({
+    resource: 'file_properties/templates/list_for_user'
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### file_properties/templates/update_for_user ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-templates-update_for_user))
+Update a template associated with a user. This route can update the template name, the template description and add optional properties to templates.
+
+```js
+dropbox({
+    resource: 'file_properties/templates/update_for_user',
+    parameters: {
+        'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
+        'name': 'New Security Template Name',
+        'description': 'These properties will describe how confidential this file or folder is.',
+        'add_fields': [{
+            'name': 'Security Policy',
+            'description': 'This is the security policy of the file or folder described.\nPolicies can be Confidential, Public or Internal.',
+            'type': 'string'
+        }]
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### files/alpha/get_metadata ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-alpha-get_metadata))
 Returns the metadata for a file or folder. This is an alpha endpoint compatible with the properties API. Note: Metadata for the root folder is unsupported.
 
@@ -479,116 +648,6 @@ dropbox({
     resource: 'files/permanently_delete',
     parameters: {
         'path': '/Homework/math/Prime_Numbers.txt'
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### files/properties/add ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-properties-add))
-Add custom properties to a file using a filled property template. See properties/template/add to create new property templates.
-
-```js
-dropbox({
-    resource: 'files/properties/add',
-    parameters: {
-        'path': '/my_awesome/word.docx',
-        'property_groups': [{
-            'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
-            'fields': [{
-                'name': 'Security Policy',
-                'value': 'Confidential'
-            }]
-        }]
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### files/properties/overwrite ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-properties-overwrite))
-Overwrite custom properties from a specified template associated with a file.
-
-```js
-dropbox({
-    resource: 'files/properties/overwrite',
-    parameters: {
-        'path': '/my_awesome/word.docx',
-        'property_groups': [{
-            'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
-            'fields': [{
-                'name': 'Security Policy',
-                'value': 'Confidential'
-            }]
-        }]
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### files/properties/remove ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-properties-remove))
-Remove all custom properties from a specified template associated with a file. To remove specific property key value pairs, see [properties/update](#filespropertiesupdate-see-docs). To update a property template, see properties/template/update. Property templates can't be removed once created.
-
-```js
-dropbox({
-    resource: 'files/properties/remove',
-    parameters: {
-        'path': '/my_awesome/word.docx',
-        'property_template_ids': ['ptid:1a5n2i6d3OYEAAAAAAAAAYa']
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### files/properties/template/get ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-properties-template-get))
-Get the schema for a specified template.
-
-```js
-dropbox({
-    resource: 'files/properties/template/get',
-    parameters: {
-        'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa'
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### files/properties/template/list ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-properties-template-list))
-Get the property template identifiers for a user. To get the schema of each template use [properties/template/get](#filespropertiestemplateget-see-docs).
-
-```js
-dropbox({
-    resource: 'files/properties/template/list'
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### files/properties/update ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-properties-update))
-Add, update or remove custom properties from a specified template associated with a file. Fields that already exist and not described in the request will not be modified.
-
-```js
-dropbox({
-    resource: 'files/properties/update',
-    parameters: {
-        'path': '/my_awesome/word.docx',
-        'update_property_groups': [{
-            'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
-            'add_or_update_fields': [{
-                'name': 'Security Policy',
-                'value': 'Confidential'
-            }],
-            'remove_fields': []
-        }]
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -1824,6 +1883,116 @@ dropbox({
         'allow_shared_folder': false,
         'autorename': false,
         'allow_ownership_transfer': false
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/properties/add ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-properties-add))
+No description
+
+```js
+dropbox({
+    resource: 'deprecated/properties/add',
+    parameters: {
+        'path': '/my_awesome/word.docx',
+        'property_groups': [{
+            'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
+            'fields': [{
+                'name': 'Security Policy',
+                'value': 'Confidential'
+            }]
+        }]
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/properties/overwrite ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-properties-overwrite))
+No description
+
+```js
+dropbox({
+    resource: 'deprecated/properties/overwrite',
+    parameters: {
+        'path': '/my_awesome/word.docx',
+        'property_groups': [{
+            'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
+            'fields': [{
+                'name': 'Security Policy',
+                'value': 'Confidential'
+            }]
+        }]
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/properties/remove ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-properties-remove))
+No description
+
+```js
+dropbox({
+    resource: 'deprecated/properties/remove',
+    parameters: {
+        'path': '/my_awesome/word.docx',
+        'property_template_ids': ['ptid:1a5n2i6d3OYEAAAAAAAAAYa']
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/properties/template/get ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-properties-template-get))
+No description
+
+```js
+dropbox({
+    resource: 'deprecated/properties/template/get',
+    parameters: {
+        'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa'
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/properties/template/list ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-properties-template-list))
+No description
+
+```js
+dropbox({
+    resource: 'deprecated/properties/template/list'
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/properties/update ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-properties-update))
+No description
+
+```js
+dropbox({
+    resource: 'deprecated/properties/update',
+    parameters: {
+        'path': '/my_awesome/word.docx',
+        'update_property_groups': [{
+            'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
+            'add_or_update_fields': [{
+                'name': 'Security Policy',
+                'value': 'Confidential'
+            }],
+            'remove_fields': []
+        }]
     }
 }, (err, result) => {
     //see docs for `result` parameters
