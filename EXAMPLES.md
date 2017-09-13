@@ -28,7 +28,7 @@ dropbox({
 
 
 ### file_properties/properties/add ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-add))
-Add properties to a Dropbox file. Properties must be associated with a template. See route `templates/add_for_` to create new templates.
+Add properties to a Dropbox file. Properties must be associated with a template. See [templates/add_for_user](#file_propertiestemplatesadd_for_user-see-docs) or [templates/add_for_team](#file_propertiestemplatesadd_for_team-see-docs) to create new templates.
 
 ```js
 dropbox({
@@ -189,6 +189,77 @@ dropbox({
             'description': 'This is the security policy of the file or folder described.\nPolicies can be Confidential, Public or Internal.',
             'type': 'string'
         }]
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### file_requests/create ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_requests-create))
+Creates a file request for this user. Warning: This endpoint is in beta and is subject to backwards-incompatible changes.
+
+```js
+dropbox({
+    resource: 'file_requests/create',
+    parameters: {
+        'title': 'Homework submission',
+        'destination': '/File Requests/Homework',
+        'deadline': {
+            'deadline': '2020-10-12T17:00:00Z',
+            'allow_late_uploads': 'seven_days'
+        },
+        'open': true
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### file_requests/get ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_requests-get))
+Returns the specified file request. Warning: This endpoint is in beta and is subject to backwards-incompatible changes.
+
+```js
+dropbox({
+    resource: 'file_requests/get',
+    parameters: {
+        'id': 'oaCAVmEyrqYnkZX9955Y'
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### file_requests/list ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_requests-list))
+Returns a list of file requests owned by this user. For apps with the app folder permission, this will only return file requests with destinations in the app folder. Warning: This endpoint is in beta and is subject to backwards-incompatible changes.
+
+```js
+dropbox({
+    resource: 'file_requests/list'
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### file_requests/update ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_requests-update))
+Update a file request. Warning: This endpoint is in beta and is subject to backwards-incompatible changes.
+
+```js
+dropbox({
+    resource: 'file_requests/update',
+    parameters: {
+        'id': 'oaCAVmEyrqYnkZX9955Y',
+        'title': 'Homework submission',
+        'destination': '/File Requests/Homework',
+        'deadline': {
+            '.tag': 'update',
+            'deadline': '2020-10-12T17:00:00Z',
+            'allow_late_uploads': 'seven_days'
+        },
+        'open': true
     }
 }, (err, result) => {
     //see docs for `result` parameters

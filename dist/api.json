@@ -98,6 +98,42 @@
 			"available": true
 		}
 	},
+	"file_requests/create": {
+		"uri": "https://api.dropboxapi.com/2/file_requests/create",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"file_requests/get": {
+		"uri": "https://api.dropboxapi.com/2/file_requests/get",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"file_requests/list": {
+		"uri": "https://api.dropboxapi.com/2/file_requests/list",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": false
+		}
+	},
+	"file_requests/update": {
+		"uri": "https://api.dropboxapi.com/2/file_requests/update",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
 	"files/alpha/get_metadata": {
 		"uri": "https://api.dropboxapi.com/2/files/alpha/get_metadata",
 		"requiresAuthHeader": true,

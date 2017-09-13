@@ -44,7 +44,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Add properties to a Dropbox file. Properties must be associated with a template. See route `templates/add_for_` to create new templates.",
+		"description": "Add properties to a Dropbox file. Properties must be associated with a template. See [templates/add_for_user](#file_propertiestemplatesadd_for_user-see-docs) or [templates/add_for_team](#file_propertiestemplatesadd_for_team-see-docs) to create new templates.",
 		"parameters": {
 			"list": [
 				{
@@ -319,7 +319,7 @@
 				{
 					"name": "property_template_ids",
 					"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"))",
-					"desc": "A list of identifiers for a template created by route `templates/add_for_"
+					"desc": "A list of identifiers for a template created by  See   or  ."
 				}
 			],
 			"example": {
@@ -655,7 +655,7 @@
 				{
 					"name": "template_id",
 					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
-					"desc": "An identifier for template added by route `templates/add_for_"
+					"desc": "An identifier for template added by route  See   or  ."
 				}
 			],
 			"example": {
@@ -703,7 +703,7 @@
 				{
 					"name": "template_id",
 					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
-					"desc": "An identifier for template added by route `templates/add_for_"
+					"desc": "An identifier for template added by  See   or  ."
 				},
 				{
 					"name": "name",
@@ -817,6 +817,850 @@
 		},
 		"returnParameters": {
 			"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa"
+		}
+	},
+	"file_requests/create": {
+		"uri": "https://api.dropboxapi.com/2/file_requests/create",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Creates a file request for this user. Warning: This endpoint is in beta and is subject to backwards-incompatible changes.",
+		"parameters": {
+			"list": [
+				{
+					"name": "title",
+					"type": "String(min_length=1)",
+					"desc": "The title of the file request. Must not be empty."
+				},
+				{
+					"name": "destination",
+					"type": "String(pattern=\"/(.|[\\r\\n])*\")",
+					"desc": "The path of the folder in the Dropbox where uploaded files will be sent. For apps with the app folder permission, this will be relative to the app folder."
+				},
+				{
+					"name": "deadline",
+					"type": "FileRequestDeadline?",
+					"desc": "The deadline for the file request. Deadlines can only be set by Pro and Business accounts. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "deadline",
+									"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")",
+									"desc": "The deadline for this file request."
+								},
+								{
+									"name": "allow_late_uploads",
+									"type": "GracePeriod?",
+									"desc": "If set, allow uploads after the deadline has passed. These uploads will be marked overdue. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "one_day",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "two_days",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "seven_days",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "thirty_days",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "always",
+													"type": "Void",
+													"desc": ""
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "one_day",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "two_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "seven_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "thirty_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "always",
+									"type": "Void",
+									"desc": ""
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "one_day",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "two_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "seven_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "thirty_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "always",
+									"type": "Void",
+									"desc": ""
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "deadline",
+					"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")",
+					"desc": "The deadline for this file request."
+				},
+				{
+					"name": "allow_late_uploads",
+					"type": "GracePeriod?",
+					"desc": "If set, allow uploads after the deadline has passed. These uploads will be marked overdue. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "one_day",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "two_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "seven_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "thirty_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "always",
+									"type": "Void",
+									"desc": ""
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "one_day",
+					"type": "Void",
+					"desc": ""
+				},
+				{
+					"name": "two_days",
+					"type": "Void",
+					"desc": ""
+				},
+				{
+					"name": "seven_days",
+					"type": "Void",
+					"desc": ""
+				},
+				{
+					"name": "thirty_days",
+					"type": "Void",
+					"desc": ""
+				},
+				{
+					"name": "always",
+					"type": "Void",
+					"desc": ""
+				},
+				{
+					"name": "open",
+					"type": "Boolean",
+					"desc": "Whether or not the file request should be open. If the file request is closed, it will not accept any file submissions, but it can be opened later. The default for this field is True."
+				}
+			],
+			"example": {
+				"title": "Homework submission",
+				"destination": "/File Requests/Homework",
+				"deadline": {
+					"deadline": "2020-10-12T17:00:00Z",
+					"allow_late_uploads": "seven_days"
+				},
+				"open": true
+			}
+		},
+		"returnParameters": {
+			"id": "oaCAVmEyrqYnkZX9955Y",
+			"url": "https://www.dropbox.com/request/oaCAVmEyrqYnkZX9955Y",
+			"title": "Homework submission",
+			"created": "2015-10-05T17:00:00Z",
+			"is_open": true,
+			"file_count": 3,
+			"destination": "/File Requests/Homework",
+			"deadline": {
+				"deadline": "2020-10-12T17:00:00Z",
+				"allow_late_uploads": {
+					".tag": "seven_days"
+				}
+			}
+		}
+	},
+	"file_requests/get": {
+		"uri": "https://api.dropboxapi.com/2/file_requests/get",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Returns the specified file request. Warning: This endpoint is in beta and is subject to backwards-incompatible changes.",
+		"parameters": {
+			"list": [
+				{
+					"name": "id",
+					"type": "String(min_length=1, pattern=\"[-_0-9a-zA-Z]+\")",
+					"desc": "The ID of the file request to retrieve."
+				}
+			],
+			"example": {
+				"id": "oaCAVmEyrqYnkZX9955Y"
+			}
+		},
+		"returnParameters": {
+			"id": "oaCAVmEyrqYnkZX9955Y",
+			"url": "https://www.dropbox.com/request/oaCAVmEyrqYnkZX9955Y",
+			"title": "Homework submission",
+			"created": "2015-10-05T17:00:00Z",
+			"is_open": true,
+			"file_count": 3,
+			"destination": "/File Requests/Homework",
+			"deadline": {
+				"deadline": "2020-10-12T17:00:00Z",
+				"allow_late_uploads": {
+					".tag": "seven_days"
+				}
+			}
+		}
+	},
+	"file_requests/list": {
+		"uri": "https://api.dropboxapi.com/2/file_requests/list",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Returns a list of file requests owned by this user. For apps with the app folder permission, this will only return file requests with destinations in the app folder. Warning: This endpoint is in beta and is subject to backwards-incompatible changes.",
+		"parameters": {
+			"list": [],
+			"example": null
+		},
+		"returnParameters": {
+			"file_requests": [
+				{
+					"id": "oaCAVmEyrqYnkZX9955Y",
+					"url": "https://www.dropbox.com/request/oaCAVmEyrqYnkZX9955Y",
+					"title": "Homework submission",
+					"created": "2015-10-05T17:00:00Z",
+					"is_open": true,
+					"file_count": 3,
+					"destination": "/File Requests/Homework",
+					"deadline": {
+						"deadline": "2020-10-12T17:00:00Z",
+						"allow_late_uploads": {
+							".tag": "seven_days"
+						}
+					}
+				},
+				{
+					"id": "BAJ7IrRGicQKGToykQdB",
+					"url": "https://www.dropbox.com/request/BAJ7IrRGjcQKGToykQdB",
+					"title": "Photo contest submission",
+					"created": "2015-11-02T04:00:00Z",
+					"is_open": true,
+					"file_count": 105,
+					"destination": "/Photo contest entries",
+					"deadline": {
+						"deadline": "2020-10-12T17:00:00Z"
+					}
+				},
+				{
+					"id": "rxwMPvK3ATTa0VxOJu5T",
+					"url": "https://www.dropbox.com/request/rxwMPvK3ATTa0VxOJu5T",
+					"title": "Wedding photo submission",
+					"created": "2015-12-15T13:02:00Z",
+					"is_open": true,
+					"file_count": 37,
+					"destination": "/Wedding photos"
+				}
+			]
+		}
+	},
+	"file_requests/update": {
+		"uri": "https://api.dropboxapi.com/2/file_requests/update",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Update a file request. Warning: This endpoint is in beta and is subject to backwards-incompatible changes.",
+		"parameters": {
+			"list": [
+				{
+					"name": "id",
+					"type": "String(min_length=1, pattern=\"[-_0-9a-zA-Z]+\")",
+					"desc": "The ID of the file request to update."
+				},
+				{
+					"name": "title",
+					"type": "String(min_length=1)?",
+					"desc": "The new title of the file request. Must not be empty. This field is optional."
+				},
+				{
+					"name": "destination",
+					"type": "String(pattern=\"/(.|[\\r\\n])*\")?",
+					"desc": "The new path of the folder in the Dropbox where uploaded files will be sent. For apps with the app folder permission, this will be relative to the app folder. This field is optional."
+				},
+				{
+					"name": "deadline",
+					"type": "UpdateFileRequestDeadline",
+					"desc": "The new deadline for the file request. The default for this union is no_update.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "no_update",
+									"type": "Void",
+									"desc": "Do not change the file request's deadline."
+								},
+								{
+									"name": "update",
+									"type": "FileRequestDeadline?",
+									"desc": "If None, the file request's deadline is cleared. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "deadline",
+													"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")",
+													"desc": "The deadline for this file request."
+												},
+												{
+													"name": "allow_late_uploads",
+													"type": "GracePeriod?",
+													"desc": "If set, allow uploads after the deadline has passed. These uploads will be marked overdue. This field is optional.",
+													"parameters": [
+														{
+															"list": [
+																{
+																	"name": "one_day",
+																	"type": "Void",
+																	"desc": ""
+																},
+																{
+																	"name": "two_days",
+																	"type": "Void",
+																	"desc": ""
+																},
+																{
+																	"name": "seven_days",
+																	"type": "Void",
+																	"desc": ""
+																},
+																{
+																	"name": "thirty_days",
+																	"type": "Void",
+																	"desc": ""
+																},
+																{
+																	"name": "always",
+																	"type": "Void",
+																	"desc": ""
+																}
+															],
+															"example": null
+														}
+													]
+												},
+												{
+													"name": "one_day",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "two_days",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "seven_days",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "thirty_days",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "always",
+													"type": "Void",
+													"desc": ""
+												}
+											],
+											"example": null
+										},
+										{
+											"list": [
+												{
+													"name": "one_day",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "two_days",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "seven_days",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "thirty_days",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "always",
+													"type": "Void",
+													"desc": ""
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "deadline",
+									"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")",
+									"desc": "The deadline for this file request."
+								},
+								{
+									"name": "allow_late_uploads",
+									"type": "GracePeriod?",
+									"desc": "If set, allow uploads after the deadline has passed. These uploads will be marked overdue. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "one_day",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "two_days",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "seven_days",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "thirty_days",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "always",
+													"type": "Void",
+													"desc": ""
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "one_day",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "two_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "seven_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "thirty_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "always",
+									"type": "Void",
+									"desc": ""
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "deadline",
+									"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")",
+									"desc": "The deadline for this file request."
+								},
+								{
+									"name": "allow_late_uploads",
+									"type": "GracePeriod?",
+									"desc": "If set, allow uploads after the deadline has passed. These uploads will be marked overdue. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "one_day",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "two_days",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "seven_days",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "thirty_days",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "always",
+													"type": "Void",
+													"desc": ""
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "one_day",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "two_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "seven_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "thirty_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "always",
+									"type": "Void",
+									"desc": ""
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "one_day",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "two_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "seven_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "thirty_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "always",
+									"type": "Void",
+									"desc": ""
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "no_update",
+					"type": "Void",
+					"desc": "Do not change the file request's deadline."
+				},
+				{
+					"name": "update",
+					"type": "FileRequestDeadline?",
+					"desc": "If None, the file request's deadline is cleared. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "deadline",
+									"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")",
+									"desc": "The deadline for this file request."
+								},
+								{
+									"name": "allow_late_uploads",
+									"type": "GracePeriod?",
+									"desc": "If set, allow uploads after the deadline has passed. These uploads will be marked overdue. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "one_day",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "two_days",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "seven_days",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "thirty_days",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "always",
+													"type": "Void",
+													"desc": ""
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "one_day",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "two_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "seven_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "thirty_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "always",
+									"type": "Void",
+									"desc": ""
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "one_day",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "two_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "seven_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "thirty_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "always",
+									"type": "Void",
+									"desc": ""
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "deadline",
+					"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")",
+					"desc": "The deadline for this file request."
+				},
+				{
+					"name": "allow_late_uploads",
+					"type": "GracePeriod?",
+					"desc": "If set, allow uploads after the deadline has passed. These uploads will be marked overdue. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "one_day",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "two_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "seven_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "thirty_days",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "always",
+									"type": "Void",
+									"desc": ""
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "one_day",
+					"type": "Void",
+					"desc": ""
+				},
+				{
+					"name": "two_days",
+					"type": "Void",
+					"desc": ""
+				},
+				{
+					"name": "seven_days",
+					"type": "Void",
+					"desc": ""
+				},
+				{
+					"name": "thirty_days",
+					"type": "Void",
+					"desc": ""
+				},
+				{
+					"name": "always",
+					"type": "Void",
+					"desc": ""
+				},
+				{
+					"name": "open",
+					"type": "Boolean?",
+					"desc": "Whether to set this file request as open or closed. This field is optional."
+				}
+			],
+			"example": {
+				"id": "oaCAVmEyrqYnkZX9955Y",
+				"title": "Homework submission",
+				"destination": "/File Requests/Homework",
+				"deadline": {
+					".tag": "update",
+					"deadline": "2020-10-12T17:00:00Z",
+					"allow_late_uploads": "seven_days"
+				},
+				"open": true
+			}
+		},
+		"returnParameters": {
+			"id": "oaCAVmEyrqYnkZX9955Y",
+			"url": "https://www.dropbox.com/request/oaCAVmEyrqYnkZX9955Y",
+			"title": "Homework submission",
+			"created": "2015-10-05T17:00:00Z",
+			"is_open": true,
+			"file_count": 3,
+			"destination": "/File Requests/Homework",
+			"deadline": {
+				"deadline": "2020-10-12T17:00:00Z",
+				"allow_late_uploads": {
+					".tag": "seven_days"
+				}
+			}
 		}
 	},
 	"files/alpha/get_metadata": {
@@ -11078,7 +11922,7 @@
 				{
 					"name": "property_template_ids",
 					"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"))",
-					"desc": "A list of identifiers for a template created by route `templates/add_for_"
+					"desc": "A list of identifiers for a template created by  See   or  ."
 				}
 			],
 			"example": {
@@ -11101,7 +11945,7 @@
 				{
 					"name": "template_id",
 					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
-					"desc": "An identifier for template added by route `templates/add_for_"
+					"desc": "An identifier for template added by route  See   or  ."
 				}
 			],
 			"example": {
