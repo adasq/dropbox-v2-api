@@ -308,7 +308,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Remove the specified property group from the file. To remove specific property key value pairs, see route [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see route `templates/update_for_`. Templates can't be removed once created.",
+		"description": "Remove the specified property group from the file. To remove specific property key value pairs, see route [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see route `templates/update_for_`.",
 		"parameters": {
 			"list": [
 				{
@@ -319,7 +319,7 @@
 				{
 					"name": "property_template_ids",
 					"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"))",
-					"desc": "A list of identifiers for a template created by  See   or  ."
+					"desc": "A list of identifiers for a template created by   or  ."
 				}
 			],
 			"example": {
@@ -340,24 +340,180 @@
 		"parameters": {
 			"list": [
 				{
+					"name": "queries",
+					"type": "List of (PropertiesSearchQuery, min_items=1)",
+					"desc": "Queries to search.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "query",
+									"type": "String",
+									"desc": "The property field value for which to search across templates."
+								},
+								{
+									"name": "mode",
+									"type": "PropertiesSearchMode",
+									"desc": "The mode with which to perform the search.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "field_name",
+													"type": "String",
+													"desc": "Search for a value associated with this field name."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "field_name",
+									"type": "String",
+									"desc": "Search for a value associated with this field name."
+								},
+								{
+									"name": "logical_operator",
+									"type": "LogicalOperator",
+									"desc": "The logical operator with which to append the query. The default for this union is or_operator.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "or_operator",
+													"type": "Void",
+													"desc": "Append a query with an \"or\" operator."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "or_operator",
+									"type": "Void",
+									"desc": "Append a query with an \"or\" operator."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "field_name",
+									"type": "String",
+									"desc": "Search for a value associated with this field name."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "or_operator",
+									"type": "Void",
+									"desc": "Append a query with an \"or\" operator."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
 					"name": "query",
 					"type": "String",
 					"desc": "The property field value for which to search across templates."
 				},
 				{
-					"name": "field_name",
-					"type": "String",
-					"desc": "The property field name on which to scope the search across templates."
+					"name": "mode",
+					"type": "PropertiesSearchMode",
+					"desc": "The mode with which to perform the search.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "field_name",
+									"type": "String",
+									"desc": "Search for a value associated with this field name."
+								}
+							],
+							"example": null
+						}
+					]
 				},
 				{
-					"name": "template_ids",
-					"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"))?",
-					"desc": "Filter results to contain only properties associated with these template IDs. This field is optional."
+					"name": "field_name",
+					"type": "String",
+					"desc": "Search for a value associated with this field name."
+				},
+				{
+					"name": "logical_operator",
+					"type": "LogicalOperator",
+					"desc": "The logical operator with which to append the query. The default for this union is or_operator.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "or_operator",
+									"type": "Void",
+									"desc": "Append a query with an \"or\" operator."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "or_operator",
+					"type": "Void",
+					"desc": "Append a query with an \"or\" operator."
+				},
+				{
+					"name": "template_filter",
+					"type": "TemplateFilter",
+					"desc": "Filter results to contain only properties associated with these template IDs. The default for this union is filter_none.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "filter_none",
+									"type": "Void",
+									"desc": "No templates will be filtered from the result (all templates will be returned)."
+								},
+								{
+									"name": "filter_some",
+									"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"), min_items=1)",
+									"desc": "Only templates with an ID in the supplied list will be returned (a subset of templates will be returned)."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "filter_none",
+					"type": "Void",
+					"desc": "No templates will be filtered from the result (all templates will be returned)."
+				},
+				{
+					"name": "filter_some",
+					"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"), min_items=1)",
+					"desc": "Only templates with an ID in the supplied list will be returned (a subset of templates will be returned)."
 				}
 			],
 			"example": {
-				"query": "Confidential",
-				"field_name": "Security"
+				"queries": [
+					{
+						"query": "Confidential",
+						"mode": {
+							".tag": "field_name",
+							"field_name": "Security"
+						},
+						"logical_operator": "or_operator"
+					}
+				],
+				"template_filter": "filter_none"
 			}
 		},
 		"returnParameters": {
@@ -11922,7 +12078,7 @@
 				{
 					"name": "property_template_ids",
 					"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"))",
-					"desc": "A list of identifiers for a template created by  See   or  ."
+					"desc": "A list of identifiers for a template created by   or  ."
 				}
 			],
 			"example": {

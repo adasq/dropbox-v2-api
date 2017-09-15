@@ -72,7 +72,7 @@ dropbox({
 
 
 ### file_properties/properties/remove ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-remove))
-Remove the specified property group from the file. To remove specific property key value pairs, see route [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see route `templates/update_for_`. Templates can't be removed once created.
+Remove the specified property group from the file. To remove specific property key value pairs, see route [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see route `templates/update_for_`.
 
 ```js
 dropbox({
@@ -94,8 +94,15 @@ Search across property templates for particular values.
 dropbox({
     resource: 'file_properties/properties/search',
     parameters: {
-        'query': 'Confidential',
-        'field_name': 'Security'
+        'queries': [{
+            'query': 'Confidential',
+            'mode': {
+                '.tag': 'field_name',
+                'field_name': 'Security'
+            },
+            'logical_operator': 'or_operator'
+        }],
+        'template_filter': 'filter_none'
     }
 }, (err, result) => {
     //see docs for `result` parameters
