@@ -28,7 +28,7 @@ dropbox({
 
 
 ### file_properties/properties/add ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-add))
-Add properties to a Dropbox file. Properties must be associated with a template. See [templates/add_for_user](#file_propertiestemplatesadd_for_user-see-docs) or [templates/add_for_team](#file_propertiestemplatesadd_for_team-see-docs) to create new templates.
+Add property groups to a Dropbox file. See [templates/add_for_user](#file_propertiestemplatesadd_for_user-see-docs) or [templates/add_for_team](#file_propertiestemplatesadd_for_team-see-docs) to create new templates.
 
 ```js
 dropbox({
@@ -50,7 +50,7 @@ dropbox({
 
 
 ### file_properties/properties/overwrite ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-overwrite))
-Overwrite properties associated with the supplied file and templates.
+Overwrite property groups associated with a file. This endpoint should be used instead of [properties/update](#file_propertiespropertiesupdate-see-docs) when property groups are being updated via a "snapshot" instead of via a "delta". In other words, this endpoint will delete all omitted fields from a property group, whereas [properties/update](#file_propertiespropertiesupdate-see-docs) will only delete fields that are explicitly marked for deletion.
 
 ```js
 dropbox({
@@ -72,7 +72,7 @@ dropbox({
 
 
 ### file_properties/properties/remove ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-remove))
-Remove the specified property group from the file. To remove specific property key value pairs, see route [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see route `templates/update_for_`.
+Remove the specified property group from the file. To remove specific property field key value pairs, see route [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see [templates/update_for_user](#file_propertiestemplatesupdate_for_user-see-docs) or [templates/update_for_team](#file_propertiestemplatesupdate_for_team-see-docs). Templates can't be removed once created.
 
 ```js
 dropbox({
@@ -88,7 +88,7 @@ dropbox({
 
 
 ### file_properties/properties/search ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-search))
-Search across property templates for particular values.
+Search across property templates for particular property field values.
 
 ```js
 dropbox({
@@ -111,7 +111,7 @@ dropbox({
 
 
 ### file_properties/properties/update ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-update))
-Add, update or remove properties associated with the supplied file and templates. Properties which already exist and are not described in the request will not be modified.
+Add, update or remove properties associated with the supplied file and templates. This endpoint should be used instead of [properties/overwrite](#file_propertiespropertiesoverwrite-see-docs) when property groups are being updated via a "delta" instead of via a "snapshot" . In other words, this endpoint will not delete any omitted fields from a property group, whereas [properties/overwrite](#file_propertiespropertiesoverwrite-see-docs) will delete any fields that are omitted from a property group.
 
 ```js
 dropbox({

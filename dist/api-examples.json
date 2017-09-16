@@ -44,7 +44,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Add properties to a Dropbox file. Properties must be associated with a template. See [templates/add_for_user](#file_propertiestemplatesadd_for_user-see-docs) or [templates/add_for_team](#file_propertiestemplatesadd_for_team-see-docs) to create new templates.",
+		"description": "Add property groups to a Dropbox file. See [templates/add_for_user](#file_propertiestemplatesadd_for_user-see-docs) or [templates/add_for_team](#file_propertiestemplatesadd_for_team-see-docs) to create new templates.",
 		"parameters": {
 			"list": [
 				{
@@ -55,7 +55,7 @@
 				{
 					"name": "property_groups",
 					"type": "List of (PropertyGroup)",
-					"desc": "The group of properties, associated with a template, which are to be added to a Dropbox file.",
+					"desc": "The property groups which are to be added to a Dropbox file.",
 					"parameters": [
 						{
 							"list": [
@@ -74,12 +74,12 @@
 												{
 													"name": "name",
 													"type": "String",
-													"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+													"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 												},
 												{
 													"name": "value",
 													"type": "String",
-													"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+													"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 												}
 											],
 											"example": null
@@ -89,12 +89,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -104,12 +104,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -131,12 +131,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -146,12 +146,12 @@
 				{
 					"name": "name",
 					"type": "String",
-					"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+					"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 				},
 				{
 					"name": "value",
 					"type": "String",
-					"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+					"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 				}
 			],
 			"example": {
@@ -176,7 +176,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Overwrite properties associated with the supplied file and templates.",
+		"description": "Overwrite property groups associated with a file. This endpoint should be used instead of [properties/update](#file_propertiespropertiesupdate-see-docs) when property groups are being updated via a \"snapshot\" instead of via a \"delta\". In other words, this endpoint will delete all omitted fields from a property group, whereas [properties/update](#file_propertiespropertiesupdate-see-docs) will only delete fields that are explicitly marked for deletion.",
 		"parameters": {
 			"list": [
 				{
@@ -186,8 +186,8 @@
 				},
 				{
 					"name": "property_groups",
-					"type": "List of (PropertyGroup)",
-					"desc": "Properties and the IDs of the templates to which they should be added.",
+					"type": "List of (PropertyGroup, min_items=1)",
+					"desc": "The property groups \"snapshot\" updates to force apply.",
 					"parameters": [
 						{
 							"list": [
@@ -206,12 +206,12 @@
 												{
 													"name": "name",
 													"type": "String",
-													"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+													"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 												},
 												{
 													"name": "value",
 													"type": "String",
-													"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+													"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 												}
 											],
 											"example": null
@@ -221,12 +221,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -236,12 +236,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -263,12 +263,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -278,12 +278,12 @@
 				{
 					"name": "name",
 					"type": "String",
-					"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+					"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 				},
 				{
 					"name": "value",
 					"type": "String",
-					"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+					"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 				}
 			],
 			"example": {
@@ -308,7 +308,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Remove the specified property group from the file. To remove specific property key value pairs, see route [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see route `templates/update_for_`.",
+		"description": "Remove the specified property group from the file. To remove specific property field key value pairs, see route [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see [templates/update_for_user](#file_propertiestemplatesupdate_for_user-see-docs) or [templates/update_for_team](#file_propertiestemplatesupdate_for_team-see-docs). Templates can't be removed once created.",
 		"parameters": {
 			"list": [
 				{
@@ -336,7 +336,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Search across property templates for particular values.",
+		"description": "Search across property templates for particular property field values.",
 		"parameters": {
 			"list": [
 				{
@@ -541,7 +541,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Add, update or remove properties associated with the supplied file and templates. Properties which already exist and are not described in the request will not be modified.",
+		"description": "Add, update or remove properties associated with the supplied file and templates. This endpoint should be used instead of [properties/overwrite](#file_propertiespropertiesoverwrite-see-docs) when property groups are being updated via a \"delta\" instead of via a \"snapshot\" . In other words, this endpoint will not delete any omitted fields from a property group, whereas [properties/overwrite](#file_propertiespropertiesoverwrite-see-docs) will delete any fields that are omitted from a property group.",
 		"parameters": {
 			"list": [
 				{
@@ -552,7 +552,7 @@
 				{
 					"name": "update_property_groups",
 					"type": "List of (PropertyGroupUpdate)",
-					"desc": "The group of properties, associated with a template, which are to be added to a Dropbox file.",
+					"desc": "The property groups \"delta\" updates to apply.",
 					"parameters": [
 						{
 							"list": [
@@ -564,19 +564,19 @@
 								{
 									"name": "add_or_update_fields",
 									"type": "List of (PropertyField)?",
-									"desc": "Property groups to update. If the property group already exists, it is updated. If the property group doesn't exist, the property group is added. This field is optional.",
+									"desc": "Property fields to update. If the property field already exists, it is updated. If the property field doesn't exist, the property group is added. This field is optional.",
 									"parameters": [
 										{
 											"list": [
 												{
 													"name": "name",
 													"type": "String",
-													"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+													"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 												},
 												{
 													"name": "value",
 													"type": "String",
-													"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+													"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 												}
 											],
 											"example": null
@@ -586,17 +586,17 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								},
 								{
 									"name": "remove_fields",
 									"type": "List of (String)?",
-									"desc": "Properties to remove (by name), provided they exist. This field is optional."
+									"desc": "Property fields to remove (by name), provided they exist. This field is optional."
 								}
 							],
 							"example": null
@@ -606,12 +606,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -626,19 +626,19 @@
 				{
 					"name": "add_or_update_fields",
 					"type": "List of (PropertyField)?",
-					"desc": "Property groups to update. If the property group already exists, it is updated. If the property group doesn't exist, the property group is added. This field is optional.",
+					"desc": "Property fields to update. If the property field already exists, it is updated. If the property field doesn't exist, the property group is added. This field is optional.",
 					"parameters": [
 						{
 							"list": [
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -648,17 +648,17 @@
 				{
 					"name": "name",
 					"type": "String",
-					"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+					"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 				},
 				{
 					"name": "value",
 					"type": "String",
-					"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+					"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 				},
 				{
 					"name": "remove_fields",
 					"type": "List of (String)?",
-					"desc": "Properties to remove (by name), provided they exist. This field is optional."
+					"desc": "Property fields to remove (by name), provided they exist. This field is optional."
 				}
 			],
 			"example": {
@@ -700,31 +700,31 @@
 				{
 					"name": "fields",
 					"type": "List of (PropertyFieldTemplate)",
-					"desc": "Definitions of the properties associated with this template. There can be up to 64 properties in a single template.",
+					"desc": "Definitions of the property fields associated with this template. There can be up to 32 properties in a single template.",
 					"parameters": [
 						{
 							"list": [
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property being described. File property keys can be up to 256 bytes."
+									"desc": "Key of the property field being described. Property field keys can be up to 256 bytes."
 								},
 								{
 									"name": "description",
 									"type": "String",
-									"desc": "Description of the property. File property descriptions can be up to 1024 bytes."
+									"desc": "Description of the property field. Property field descriptions can be up to 1024 bytes."
 								},
 								{
 									"name": "type",
 									"type": "PropertyType",
-									"desc": "Data type of the value of this property. This type will be enforced upon property creation and modifications.",
+									"desc": "Data type of the value of this property field. This type will be enforced upon property creation and modifications.",
 									"parameters": [
 										{
 											"list": [
 												{
 													"name": "string",
 													"type": "Void",
-													"desc": "The associated property will be of type string. Unicode is supported."
+													"desc": "The associated property field will be of type string. Unicode is supported."
 												}
 											],
 											"example": null
@@ -734,7 +734,7 @@
 								{
 									"name": "string",
 									"type": "Void",
-									"desc": "The associated property will be of type string. Unicode is supported."
+									"desc": "The associated property field will be of type string. Unicode is supported."
 								}
 							],
 							"example": null
@@ -744,7 +744,7 @@
 								{
 									"name": "string",
 									"type": "Void",
-									"desc": "The associated property will be of type string. Unicode is supported."
+									"desc": "The associated property field will be of type string. Unicode is supported."
 								}
 							],
 							"example": null
@@ -754,24 +754,24 @@
 				{
 					"name": "name",
 					"type": "String",
-					"desc": "Key of the property being described. File property keys can be up to 256 bytes."
+					"desc": "Key of the property field being described. Property field keys can be up to 256 bytes."
 				},
 				{
 					"name": "description",
 					"type": "String",
-					"desc": "Description of the property. File property descriptions can be up to 1024 bytes."
+					"desc": "Description of the property field. Property field descriptions can be up to 1024 bytes."
 				},
 				{
 					"name": "type",
 					"type": "PropertyType",
-					"desc": "Data type of the value of this property. This type will be enforced upon property creation and modifications.",
+					"desc": "Data type of the value of this property field. This type will be enforced upon property creation and modifications.",
 					"parameters": [
 						{
 							"list": [
 								{
 									"name": "string",
 									"type": "Void",
-									"desc": "The associated property will be of type string. Unicode is supported."
+									"desc": "The associated property field will be of type string. Unicode is supported."
 								}
 							],
 							"example": null
@@ -781,7 +781,7 @@
 				{
 					"name": "string",
 					"type": "Void",
-					"desc": "The associated property will be of type string. Unicode is supported."
+					"desc": "The associated property field will be of type string. Unicode is supported."
 				}
 			],
 			"example": {
@@ -874,31 +874,31 @@
 				{
 					"name": "add_fields",
 					"type": "List of (PropertyFieldTemplate)?",
-					"desc": "Property templates to be added to the group template. There can be up to 64 properties in a single template. This field is optional.",
+					"desc": "Property field templates to be added to the group template. There can be up to 32 properties in a single template. This field is optional.",
 					"parameters": [
 						{
 							"list": [
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property being described. File property keys can be up to 256 bytes."
+									"desc": "Key of the property field being described. Property field keys can be up to 256 bytes."
 								},
 								{
 									"name": "description",
 									"type": "String",
-									"desc": "Description of the property. File property descriptions can be up to 1024 bytes."
+									"desc": "Description of the property field. Property field descriptions can be up to 1024 bytes."
 								},
 								{
 									"name": "type",
 									"type": "PropertyType",
-									"desc": "Data type of the value of this property. This type will be enforced upon property creation and modifications.",
+									"desc": "Data type of the value of this property field. This type will be enforced upon property creation and modifications.",
 									"parameters": [
 										{
 											"list": [
 												{
 													"name": "string",
 													"type": "Void",
-													"desc": "The associated property will be of type string. Unicode is supported."
+													"desc": "The associated property field will be of type string. Unicode is supported."
 												}
 											],
 											"example": null
@@ -908,7 +908,7 @@
 								{
 									"name": "string",
 									"type": "Void",
-									"desc": "The associated property will be of type string. Unicode is supported."
+									"desc": "The associated property field will be of type string. Unicode is supported."
 								}
 							],
 							"example": null
@@ -918,7 +918,7 @@
 								{
 									"name": "string",
 									"type": "Void",
-									"desc": "The associated property will be of type string. Unicode is supported."
+									"desc": "The associated property field will be of type string. Unicode is supported."
 								}
 							],
 							"example": null
@@ -928,24 +928,24 @@
 				{
 					"name": "name",
 					"type": "String",
-					"desc": "Key of the property being described. File property keys can be up to 256 bytes."
+					"desc": "Key of the property field being described. Property field keys can be up to 256 bytes."
 				},
 				{
 					"name": "description",
 					"type": "String",
-					"desc": "Description of the property. File property descriptions can be up to 1024 bytes."
+					"desc": "Description of the property field. Property field descriptions can be up to 1024 bytes."
 				},
 				{
 					"name": "type",
 					"type": "PropertyType",
-					"desc": "Data type of the value of this property. This type will be enforced upon property creation and modifications.",
+					"desc": "Data type of the value of this property field. This type will be enforced upon property creation and modifications.",
 					"parameters": [
 						{
 							"list": [
 								{
 									"name": "string",
 									"type": "Void",
-									"desc": "The associated property will be of type string. Unicode is supported."
+									"desc": "The associated property field will be of type string. Unicode is supported."
 								}
 							],
 							"example": null
@@ -955,7 +955,7 @@
 				{
 					"name": "string",
 					"type": "Void",
-					"desc": "The associated property will be of type string. Unicode is supported."
+					"desc": "The associated property field will be of type string. Unicode is supported."
 				}
 			],
 			"example": {
@@ -1982,12 +1982,12 @@
 												{
 													"name": "name",
 													"type": "String",
-													"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+													"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 												},
 												{
 													"name": "value",
 													"type": "String",
-													"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+													"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 												}
 											],
 											"example": null
@@ -1997,12 +1997,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -2012,12 +2012,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -2039,12 +2039,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -2054,12 +2054,12 @@
 				{
 					"name": "name",
 					"type": "String",
-					"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+					"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 				},
 				{
 					"name": "value",
 					"type": "String",
-					"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+					"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 				}
 			],
 			"example": {
@@ -11814,7 +11814,7 @@
 				{
 					"name": "property_groups",
 					"type": "List of (PropertyGroup)",
-					"desc": "The group of properties, associated with a template, which are to be added to a Dropbox file.",
+					"desc": "The property groups which are to be added to a Dropbox file.",
 					"parameters": [
 						{
 							"list": [
@@ -11833,12 +11833,12 @@
 												{
 													"name": "name",
 													"type": "String",
-													"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+													"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 												},
 												{
 													"name": "value",
 													"type": "String",
-													"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+													"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 												}
 											],
 											"example": null
@@ -11848,12 +11848,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -11863,12 +11863,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -11890,12 +11890,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -11905,12 +11905,12 @@
 				{
 					"name": "name",
 					"type": "String",
-					"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+					"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 				},
 				{
 					"name": "value",
 					"type": "String",
-					"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+					"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 				}
 			],
 			"example": {
@@ -11945,8 +11945,8 @@
 				},
 				{
 					"name": "property_groups",
-					"type": "List of (PropertyGroup)",
-					"desc": "Properties and the IDs of the templates to which they should be added.",
+					"type": "List of (PropertyGroup, min_items=1)",
+					"desc": "The property groups \"snapshot\" updates to force apply.",
 					"parameters": [
 						{
 							"list": [
@@ -11965,12 +11965,12 @@
 												{
 													"name": "name",
 													"type": "String",
-													"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+													"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 												},
 												{
 													"name": "value",
 													"type": "String",
-													"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+													"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 												}
 											],
 											"example": null
@@ -11980,12 +11980,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -11995,12 +11995,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -12022,12 +12022,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -12037,12 +12037,12 @@
 				{
 					"name": "name",
 					"type": "String",
-					"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+					"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 				},
 				{
 					"name": "value",
 					"type": "String",
-					"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+					"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 				}
 			],
 			"example": {
@@ -12154,7 +12154,7 @@
 				{
 					"name": "update_property_groups",
 					"type": "List of (PropertyGroupUpdate)",
-					"desc": "The group of properties, associated with a template, which are to be added to a Dropbox file.",
+					"desc": "The property groups \"delta\" updates to apply.",
 					"parameters": [
 						{
 							"list": [
@@ -12166,19 +12166,19 @@
 								{
 									"name": "add_or_update_fields",
 									"type": "List of (PropertyField)?",
-									"desc": "Property groups to update. If the property group already exists, it is updated. If the property group doesn't exist, the property group is added. This field is optional.",
+									"desc": "Property fields to update. If the property field already exists, it is updated. If the property field doesn't exist, the property group is added. This field is optional.",
 									"parameters": [
 										{
 											"list": [
 												{
 													"name": "name",
 													"type": "String",
-													"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+													"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 												},
 												{
 													"name": "value",
 													"type": "String",
-													"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+													"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 												}
 											],
 											"example": null
@@ -12188,17 +12188,17 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								},
 								{
 									"name": "remove_fields",
 									"type": "List of (String)?",
-									"desc": "Properties to remove (by name), provided they exist. This field is optional."
+									"desc": "Property fields to remove (by name), provided they exist. This field is optional."
 								}
 							],
 							"example": null
@@ -12208,12 +12208,12 @@
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -12228,19 +12228,19 @@
 				{
 					"name": "add_or_update_fields",
 					"type": "List of (PropertyField)?",
-					"desc": "Property groups to update. If the property group already exists, it is updated. If the property group doesn't exist, the property group is added. This field is optional.",
+					"desc": "Property fields to update. If the property field already exists, it is updated. If the property field doesn't exist, the property group is added. This field is optional.",
 					"parameters": [
 						{
 							"list": [
 								{
 									"name": "name",
 									"type": "String",
-									"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 								},
 								{
 									"name": "value",
 									"type": "String",
-									"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 								}
 							],
 							"example": null
@@ -12250,17 +12250,17 @@
 				{
 					"name": "name",
 					"type": "String",
-					"desc": "Key of the property associated with a file and template. Keys can be up to 256 bytes."
+					"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
 				},
 				{
 					"name": "value",
 					"type": "String",
-					"desc": "Value of the property associated with a file and template. Values can be up to 1024 bytes."
+					"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
 				},
 				{
 					"name": "remove_fields",
 					"type": "List of (String)?",
-					"desc": "Properties to remove (by name), provided they exist. This field is optional."
+					"desc": "Property fields to remove (by name), provided they exist. This field is optional."
 				}
 			],
 			"example": {
