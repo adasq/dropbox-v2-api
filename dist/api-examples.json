@@ -980,7 +980,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Creates a file request for this user. Warning: This endpoint is in beta and is subject to backwards-incompatible changes.",
+		"description": "Creates a file request for this user.",
 		"parameters": {
 			"list": [
 				{
@@ -1206,7 +1206,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Returns the specified file request. Warning: This endpoint is in beta and is subject to backwards-incompatible changes.",
+		"description": "Returns the specified file request.",
 		"parameters": {
 			"list": [
 				{
@@ -1240,7 +1240,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Returns a list of file requests owned by this user. For apps with the app folder permission, this will only return file requests with destinations in the app folder. Warning: This endpoint is in beta and is subject to backwards-incompatible changes.",
+		"description": "Returns a list of file requests owned by this user. For apps with the app folder permission, this will only return file requests with destinations in the app folder.",
 		"parameters": {
 			"list": [],
 			"example": null
@@ -1291,7 +1291,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Update a file request. Warning: This endpoint is in beta and is subject to backwards-incompatible changes.",
+		"description": "Update a file request.",
 		"parameters": {
 			"list": [
 				{
