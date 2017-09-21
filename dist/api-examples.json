@@ -308,7 +308,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Remove the specified property group from the file. To remove specific property field key value pairs, see route [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see [templates/update_for_user](#file_propertiestemplatesupdate_for_user-see-docs) or [templates/update_for_team](#file_propertiestemplatesupdate_for_team-see-docs). Templates can't be removed once created.",
+		"description": "Remove the specified property group from the file. To remove specific property field key value pairs, see [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see [templates/update_for_user](#file_propertiestemplatesupdate_for_user-see-docs) or [templates/update_for_team](#file_propertiestemplatesupdate_for_team-see-docs). Templates can't be removed once created.",
 		"parameters": {
 			"list": [
 				{
@@ -684,7 +684,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Add a template associated with a user. See route [properties/add](#file_propertiespropertiesadd-see-docs) to add properties to a file.",
+		"description": "Add a template associated with a user. See [properties/add](#file_propertiespropertiesadd-see-docs) to add properties to a file. This endpoint can't be called on a team member or admin's behalf.",
 		"parameters": {
 			"list": [
 				{
@@ -805,7 +805,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Get the schema for a specified template.",
+		"description": "Get the schema for a specified template. This endpoint can't be called on a team member or admin's behalf.",
 		"parameters": {
 			"list": [
 				{
@@ -837,7 +837,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Get the template identifiers for a team. To get the schema of each template use [templates/get_for_user](#file_propertiestemplatesget_for_user-see-docs).",
+		"description": "Get the template identifiers for a team. To get the schema of each template use [templates/get_for_user](#file_propertiestemplatesget_for_user-see-docs). This endpoint can't be called on a team member or admin's behalf.",
 		"parameters": {
 			"list": [],
 			"example": null
@@ -853,7 +853,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Update a template associated with a user. This route can update the template name, the template description and add optional properties to templates.",
+		"description": "Update a template associated with a user. This route can update the template name, the template description and add optional properties to templates. This endpoint can't be called on a team member or admin's behalf.",
 		"parameters": {
 			"list": [
 				{
