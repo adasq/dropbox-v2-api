@@ -7908,7 +7908,8 @@
 						"team_member_id": "dbmid:abcd1234"
 					},
 					"permissions": [],
-					"is_inherited": false
+					"is_inherited": false,
+					"time_last_seen": "2016-01-20T00:00:00Z"
 				}
 			],
 			"groups": [
@@ -8008,7 +8009,8 @@
 						"team_member_id": "dbmid:abcd1234"
 					},
 					"permissions": [],
-					"is_inherited": false
+					"is_inherited": false,
+					"time_last_seen": "2016-01-20T00:00:00Z"
 				}
 			],
 			"groups": [
