@@ -3372,6 +3372,38 @@
 					"desc": "A unique identifier for the file."
 				},
 				{
+					"name": "shared_link",
+					"type": "SharedLink?",
+					"desc": "A shared link to list the contents of, if the link is protected provide the password. if this field is present, ListFolderArg.path will be relative to root of the shared link. Only non-recursive mode is supported for shared link. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "url",
+									"type": "String",
+									"desc": "Shared link url."
+								},
+								{
+									"name": "password",
+									"type": "String?",
+									"desc": "Password for the shared link. This field is optional."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "url",
+					"type": "String",
+					"desc": "Shared link url."
+				},
+				{
+					"name": "password",
+					"type": "String?",
+					"desc": "Password for the shared link. This field is optional."
+				},
+				{
 					"name": "recursive",
 					"type": "Boolean",
 					"desc": "If true, the list folder operation will be applied recursively to all subfolders and the response will contain contents of all subfolders. The default for this field is False."
@@ -3561,6 +3593,38 @@
 					"name": "path",
 					"type": "String(pattern=\"(/(.|[\\r\\n])*)?|id:.*|(ns:[0-9]+(/.*)?)\")",
 					"desc": "A unique identifier for the file."
+				},
+				{
+					"name": "shared_link",
+					"type": "SharedLink?",
+					"desc": "A shared link to list the contents of, if the link is protected provide the password. if this field is present, ListFolderArg.path will be relative to root of the shared link. Only non-recursive mode is supported for shared link. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "url",
+									"type": "String",
+									"desc": "Shared link url."
+								},
+								{
+									"name": "password",
+									"type": "String?",
+									"desc": "Password for the shared link. This field is optional."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "url",
+					"type": "String",
+					"desc": "Shared link url."
+				},
+				{
+					"name": "password",
+					"type": "String?",
+					"desc": "Password for the shared link. This field is optional."
 				},
 				{
 					"name": "recursive",
