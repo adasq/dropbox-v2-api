@@ -3374,7 +3374,7 @@
 				{
 					"name": "shared_link",
 					"type": "SharedLink?",
-					"desc": "A shared link to list the contents of, if the link is protected provide the password. if this field is present, ListFolderArg.path will be relative to root of the shared link. Only non-recursive mode is supported for shared link. This field is optional.",
+					"desc": "A shared link to list the contents of. If the link is password-protected, the password must be provided. If this field is present, ListFolderArg.path will be relative to root of the shared link. Only non-recursive mode is supported for shared link. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -3597,7 +3597,7 @@
 				{
 					"name": "shared_link",
 					"type": "SharedLink?",
-					"desc": "A shared link to list the contents of, if the link is protected provide the password. if this field is present, ListFolderArg.path will be relative to root of the shared link. Only non-recursive mode is supported for shared link. This field is optional.",
+					"desc": "A shared link to list the contents of. If the link is password-protected, the password must be provided. If this field is present, ListFolderArg.path will be relative to root of the shared link. Only non-recursive mode is supported for shared link. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -3703,13 +3703,45 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Return revisions of a file.",
+		"description": "Returns revisions for files based on a file path or a file id. The file path or file id is identified from the latest file entry at the given file path or id. This end point allows your app to query either by file path or file id by setting the mode parameter appropriately. In the ListRevisionsMode.path (default) mode, all revisions at the same file path as the latest file entry are returned. If revisions with the same file id are desired, then mode must be set to ListRevisionsMode.id. The ListRevisionsMode.id mode is useful to retrieve revisions for a given file across moves or renames.",
 		"parameters": {
 			"list": [
 				{
 					"name": "path",
 					"type": "String(pattern=\"/(.|[\\r\\n])*|id:.*|(ns:[0-9]+(/.*)?)\")",
 					"desc": "The path to the file you want to see the revisions of."
+				},
+				{
+					"name": "mode",
+					"type": "ListRevisionsMode",
+					"desc": "Determines the behavior of the API in listing the revisions for a given file path or id. The default for this union is path.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "path",
+									"type": "Void",
+									"desc": "Returns revisions with the same file path as identified by the latest file entry at the given file path or id."
+								},
+								{
+									"name": "id",
+									"type": "Void",
+									"desc": "Returns revisions with the same file id as identified by the latest file entry at the given file path or id."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "path",
+					"type": "Void",
+					"desc": "Returns revisions with the same file path as identified by the latest file entry at the given file path or id."
+				},
+				{
+					"name": "id",
+					"type": "Void",
+					"desc": "Returns revisions with the same file id as identified by the latest file entry at the given file path or id."
 				},
 				{
 					"name": "limit",
@@ -3719,6 +3751,7 @@
 			],
 			"example": {
 				"path": "/root/word.docx",
+				"mode": "path",
 				"limit": 10
 			}
 		},
