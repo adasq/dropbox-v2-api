@@ -3372,6 +3372,36 @@
 					"desc": "A unique identifier for the file."
 				},
 				{
+					"name": "recursive",
+					"type": "Boolean",
+					"desc": "If true, the list folder operation will be applied recursively to all subfolders and the response will contain contents of all subfolders. The default for this field is False."
+				},
+				{
+					"name": "include_media_info",
+					"type": "Boolean",
+					"desc": "If true, FileMetadata.media_info is set for photo and video. The default for this field is False."
+				},
+				{
+					"name": "include_deleted",
+					"type": "Boolean",
+					"desc": "If true, the results will include entries for files and folders that used to exist but were deleted. The default for this field is False."
+				},
+				{
+					"name": "include_has_explicit_shared_members",
+					"type": "Boolean",
+					"desc": "If true, the results will include a flag for each file indicating whether or not  that file has any explicit members. The default for this field is False."
+				},
+				{
+					"name": "include_mounted_folders",
+					"type": "Boolean",
+					"desc": "If true, the results will include entries under mounted folders which includes app folder, shared folder and team folder. The default for this field is True."
+				},
+				{
+					"name": "limit",
+					"type": "UInt32?",
+					"desc": "The maximum number of results to return per request. Note: This is an approximate number and there can be slightly more entries returned in some cases. This field is optional."
+				},
+				{
 					"name": "shared_link",
 					"type": "SharedLink?",
 					"desc": "A shared link to list the contents of. If the link is password-protected, the password must be provided. If this field is present, ListFolderArg.path will be relative to root of the shared link. Only non-recursive mode is supported for shared link. This field is optional.",
@@ -3402,36 +3432,6 @@
 					"name": "password",
 					"type": "String?",
 					"desc": "Password for the shared link. This field is optional."
-				},
-				{
-					"name": "recursive",
-					"type": "Boolean",
-					"desc": "If true, the list folder operation will be applied recursively to all subfolders and the response will contain contents of all subfolders. The default for this field is False."
-				},
-				{
-					"name": "include_media_info",
-					"type": "Boolean",
-					"desc": "If true, FileMetadata.media_info is set for photo and video. The default for this field is False."
-				},
-				{
-					"name": "include_deleted",
-					"type": "Boolean",
-					"desc": "If true, the results will include entries for files and folders that used to exist but were deleted. The default for this field is False."
-				},
-				{
-					"name": "include_has_explicit_shared_members",
-					"type": "Boolean",
-					"desc": "If true, the results will include a flag for each file indicating whether or not  that file has any explicit members. The default for this field is False."
-				},
-				{
-					"name": "include_mounted_folders",
-					"type": "Boolean",
-					"desc": "If true, the results will include entries under mounted folders which includes app folder, shared folder and team folder. The default for this field is True."
-				},
-				{
-					"name": "limit",
-					"type": "UInt32?",
-					"desc": "The maximum number of results to return per request. Note: This is an approximate number and there can be slightly more entries returned in some cases. This field is optional."
 				}
 			],
 			"example": {
@@ -3595,6 +3595,36 @@
 					"desc": "A unique identifier for the file."
 				},
 				{
+					"name": "recursive",
+					"type": "Boolean",
+					"desc": "If true, the list folder operation will be applied recursively to all subfolders and the response will contain contents of all subfolders. The default for this field is False."
+				},
+				{
+					"name": "include_media_info",
+					"type": "Boolean",
+					"desc": "If true, FileMetadata.media_info is set for photo and video. The default for this field is False."
+				},
+				{
+					"name": "include_deleted",
+					"type": "Boolean",
+					"desc": "If true, the results will include entries for files and folders that used to exist but were deleted. The default for this field is False."
+				},
+				{
+					"name": "include_has_explicit_shared_members",
+					"type": "Boolean",
+					"desc": "If true, the results will include a flag for each file indicating whether or not  that file has any explicit members. The default for this field is False."
+				},
+				{
+					"name": "include_mounted_folders",
+					"type": "Boolean",
+					"desc": "If true, the results will include entries under mounted folders which includes app folder, shared folder and team folder. The default for this field is True."
+				},
+				{
+					"name": "limit",
+					"type": "UInt32?",
+					"desc": "The maximum number of results to return per request. Note: This is an approximate number and there can be slightly more entries returned in some cases. This field is optional."
+				},
+				{
 					"name": "shared_link",
 					"type": "SharedLink?",
 					"desc": "A shared link to list the contents of. If the link is password-protected, the password must be provided. If this field is present, ListFolderArg.path will be relative to root of the shared link. Only non-recursive mode is supported for shared link. This field is optional.",
@@ -3625,36 +3655,6 @@
 					"name": "password",
 					"type": "String?",
 					"desc": "Password for the shared link. This field is optional."
-				},
-				{
-					"name": "recursive",
-					"type": "Boolean",
-					"desc": "If true, the list folder operation will be applied recursively to all subfolders and the response will contain contents of all subfolders. The default for this field is False."
-				},
-				{
-					"name": "include_media_info",
-					"type": "Boolean",
-					"desc": "If true, FileMetadata.media_info is set for photo and video. The default for this field is False."
-				},
-				{
-					"name": "include_deleted",
-					"type": "Boolean",
-					"desc": "If true, the results will include entries for files and folders that used to exist but were deleted. The default for this field is False."
-				},
-				{
-					"name": "include_has_explicit_shared_members",
-					"type": "Boolean",
-					"desc": "If true, the results will include a flag for each file indicating whether or not  that file has any explicit members. The default for this field is False."
-				},
-				{
-					"name": "include_mounted_folders",
-					"type": "Boolean",
-					"desc": "If true, the results will include entries under mounted folders which includes app folder, shared folder and team folder. The default for this field is True."
-				},
-				{
-					"name": "limit",
-					"type": "UInt32?",
-					"desc": "The maximum number of results to return per request. Note: This is an approximate number and there can be slightly more entries returned in some cases. This field is optional."
 				}
 			],
 			"example": {
