@@ -34,9 +34,9 @@ describe('Namespace', function() {
                 done();
             });
         });
-        it('alpha/get_metadata', (done) => {
+        it('get_metadata', (done) => {
             dropbox({
-                resource: 'files/alpha/get_metadata',
+                resource: 'files/get_metadata',
                 parameters: {
                     path: dirPath,
                     include_media_info: false,
@@ -51,10 +51,10 @@ describe('Namespace', function() {
                 done();
             });         
         });     
-        it('alpha/upload', (done) => {
+        it('upload', (done) => {
             var filePath = `${dirPath}/alpha-upload.txt`;
             dropbox({
-                resource: 'files/alpha/upload',
+                resource: 'files/upload',
                 parameters: {
                     path: filePath
                 },
