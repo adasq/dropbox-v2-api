@@ -13,12 +13,16 @@ describe('Docs change detection', function() {
     this.timeout(16000);
     describe('', () => {
         it('contains equal content', function (done) {
-            const currentDocsDescription = fs.readFileSync(API_DESC_FILE_PATH);
-            generate((err, retrivedDocsDescription) => {
+            const currentDocsDescription = normalizeString(fs.readFileSync(API_DESC_FILE_PATH).toString());
+            generate((err, retrievedDocsDescription) => {
                 expect(err).to.be(null);
-                expect(md5(retrivedDocsDescription)).to.be(md5(currentDocsDescription));
+                retrievedDocsDescription = normalizeString(retrievedDocsDescription);
+                expect(md5(retrievedDocsDescription)).to.be(md5(currentDocsDescription));
                 done();
             });
         });
+        function normalizeString(str) {
+            return str.replace(/\s+/g, '');
+        }
     });
 });
