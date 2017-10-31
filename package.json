@@ -37,6 +37,7 @@
     "opn": "3.0.3",
     "should": "8.0.2",
     "stream-spec": "0.3.6",
-    "stream-tester": "0.0.5"
+    "stream-tester": "0.0.5",
+    "nconf": "0.8.5"
   }
 }

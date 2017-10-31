@@ -5,8 +5,6 @@ const path = require('path');
 const expect = require('expect.js');
 const generate = require('../../src/generate-api-description.js');
 
-const DROPBOX_TOKEN = process.env.DROPBOX_TOKEN;
-
 const API_DESC_FILE_PATH = path.join(__dirname, '../../dist/api-examples.json');
 
 describe('Docs change detection', function() {
