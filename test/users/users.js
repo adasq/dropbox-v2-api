@@ -1,7 +1,6 @@
 const should = require('should');
 const dropboxV2Api = require('../../src/dropbox-api-test.js');
-
-const DROPBOX_TOKEN = process.env.DROPBOX_TOKEN;
+const config = require('./../config.js');
 
 let dropbox, dropboxMalformed;
 
@@ -10,10 +9,10 @@ describe('Namespace', function() {
     this.timeout(6000);
     before(function() {
         dropbox = dropboxV2Api.authenticate({
-            token: DROPBOX_TOKEN
+            token: config.get('DROPBOX_TOKEN')
         });
         dropboxMalformed = dropboxV2Api.authenticate({
-            token: DROPBOX_TOKEN + '1'
+            token: config.get('DROPBOX_TOKEN') + '1'
         });
     });
     beforeEach(function(){
@@ -30,7 +29,7 @@ describe('Namespace', function() {
                 err.text.should.match(/The given OAuth 2 access token is malformed/);
                 done();
             });
-        });        
+        });
         it('get_account', function (done) {
             dropbox({
                 resource: 'users/get_account',

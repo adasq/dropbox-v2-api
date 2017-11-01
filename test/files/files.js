@@ -3,15 +3,14 @@ const spec = require('stream-spec');
 
 const dropboxV2Api = require('../../src/dropbox-api-test.js');
 const utils = require('../../src/utils.js');
+const config = require('./../config.js');
 
-const DROPBOX_TOKEN = process.env.DROPBOX_TOKEN;
 let dropbox;
-
 describe('Namespace', function() {
     this.timeout(6000);
     before(function() {
         dropbox = dropboxV2Api.authenticate({
-            token: DROPBOX_TOKEN
+            token: config.get('DROPBOX_TOKEN')
         });
     });
     beforeEach(function(){
@@ -49,8 +48,8 @@ describe('Namespace', function() {
                 response.should.have.property('path_lower', dirPath);
 
                 done();
-            });         
-        });     
+            });
+        });
         it('upload', (done) => {
             var filePath = `${dirPath}/alpha-upload.txt`;
             dropbox({
@@ -63,9 +62,9 @@ describe('Namespace', function() {
                 if(err){ throw err; }
                 response.should.have.property('path_lower', filePath);
                 done();
-            });         
+            });
         });
-        it('upload', (done) => {    
+        it('upload', (done) => {
             var filePath = `${dirPath}/upload.txt`;
             dropbox({
                 resource: 'files/upload',
@@ -77,7 +76,7 @@ describe('Namespace', function() {
                 if(err){ throw err; }
                 response.should.have.property('path_lower', filePath);
                 done();
-            });         
+            });
         });
         it('list_folder', (done) => {
             var filePath = `${dirPath}/alpha-upload.txt`;
@@ -91,7 +90,7 @@ describe('Namespace', function() {
                 response.entries[0].should.have.property('size', 50);
                 response.entries[1].should.have.property('size', 30);
                 done();
-            });         
+            });
         });
         it('download', (done) => {
             var filePath = `${dirPath}/upload.txt`;
@@ -99,7 +98,7 @@ describe('Namespace', function() {
                 resource: 'files/download',
                 parameters: {
                     path: filePath
-                }               
+                }
             }, (err, response) => {
                 if(err){ throw err; }
                 response.should.have.property('path_lower', filePath);
@@ -114,7 +113,7 @@ describe('Namespace', function() {
                 resource: 'files/download',
                 parameters: {
                     path: downloadFilePath
-                }               
+                }
             });
 
             const uploadSteram = dropbox({
@@ -137,7 +136,7 @@ describe('Namespace', function() {
                 parameters: {
                     'from_path': sourceFileName,
                     'to_path': targetFileName
-                }               
+                }
             }, (err, response) => {
                 if(err){ throw err; }
                 response.metadata.should.have.property('path_lower', targetFileName);
@@ -150,7 +149,7 @@ describe('Namespace', function() {
                 resource: 'files/delete_v2',
                 parameters: {
                     'path': fileToDeleteName
-                }               
+                }
             }, (err, response) => {
                 if(err){ throw err; }
                 response.metadata.should.have.property('path_lower', fileToDeleteName);
@@ -164,12 +163,12 @@ describe('Namespace', function() {
                 parameters: {
                     'from_path': `${dirPath}/upload.txt`,
                     'to_path': targetFileName
-                }               
+                }
             }, (err, response) => {
                 if(err){ throw err; }
                 response.metadata.should.have.property('path_lower', targetFileName);
                 done();
             });
-        }); 
+        });
     });
 });

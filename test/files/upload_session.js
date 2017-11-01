@@ -3,8 +3,8 @@ const expect = require('expect.js');
 
 const dropboxV2Api = require('../../src/dropbox-api-test.js');
 const utils = require('../../src/utils.js');
+const config = require('./../config.js');
 
-const DROPBOX_TOKEN = process.env.DROPBOX_TOKEN;
 const CHUNK_LENGTH = 100;
 const firstUploadChunkStream = () => utils.createMockedReadStream('1', CHUNK_LENGTH);
 const secondUploadChunkStream = () => utils.createMockedReadStream('2', CHUNK_LENGTH);
@@ -15,7 +15,7 @@ describe('Namespace ', function() {
     this.timeout(10 * 000);
     before(function() {
         dropbox = dropboxV2Api.authenticate({
-            token: DROPBOX_TOKEN
+            token: config.get('DROPBOX_TOKEN')
         });
     });
     describe('files/upload_session', () => {
