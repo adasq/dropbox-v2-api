@@ -3936,7 +3936,35 @@
 				"url": "http://example.com/a.txt"
 			}
 		},
-		"returnParameters": null
+		"returnParameters": {
+			".tag": "complete",
+			"name": "Prime_Numbers.txt",
+			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"client_modified": "2015-05-12T15:50:38Z",
+			"server_modified": "2015-05-12T15:50:38Z",
+			"rev": "a1c10ce0dd78",
+			"size": 7212,
+			"path_lower": "/homework/math/prime_numbers.txt",
+			"path_display": "/Homework/math/Prime_Numbers.txt",
+			"sharing_info": {
+				"read_only": true,
+				"parent_shared_folder_id": "84528192421",
+				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+			},
+			"property_groups": [
+				{
+					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+					"fields": [
+						{
+							"name": "Security Policy",
+							"value": "Confidential"
+						}
+					]
+				}
+			],
+			"has_explicit_shared_members": false,
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+		}
 	},
 	"files/save_url/check_job_status": {
 		"uri": "https://api.dropboxapi.com/2/files/save_url/check_job_status",
@@ -8490,7 +8518,7 @@
 								{
 									"name": "share_link",
 									"type": "Void",
-									"desc": "This action is deprecated. Use create_link instead."
+									"desc": "Field is deprecated. Use create_link instead."
 								},
 								{
 									"name": "create_link",
@@ -8560,7 +8588,7 @@
 				{
 					"name": "share_link",
 					"type": "Void",
-					"desc": "This action is deprecated. Use create_link instead."
+					"desc": "Field is deprecated. Use create_link instead."
 				},
 				{
 					"name": "create_link",
@@ -9301,7 +9329,7 @@
 								{
 									"name": "share_link",
 									"type": "Void",
-									"desc": "This action is deprecated. Use create_link instead."
+									"desc": "Field is deprecated. Use create_link instead."
 								},
 								{
 									"name": "create_link",
@@ -9371,7 +9399,7 @@
 				{
 					"name": "share_link",
 					"type": "Void",
-					"desc": "This action is deprecated. Use create_link instead."
+					"desc": "Field is deprecated. Use create_link instead."
 				},
 				{
 					"name": "create_link",
@@ -9598,7 +9626,7 @@
 								{
 									"name": "share_link",
 									"type": "Void",
-									"desc": "This action is deprecated. Use create_link instead."
+									"desc": "Field is deprecated. Use create_link instead."
 								},
 								{
 									"name": "create_link",
@@ -9668,7 +9696,7 @@
 				{
 					"name": "share_link",
 					"type": "Void",
-					"desc": "This action is deprecated. Use create_link instead."
+					"desc": "Field is deprecated. Use create_link instead."
 				},
 				{
 					"name": "create_link",
@@ -10527,7 +10555,10 @@
 				"leave_a_copy": false
 			}
 		},
-		"returnParameters": null
+		"returnParameters": {
+			".tag": "async_job_id",
+			"async_job_id": "34g93hh34h04y384084"
+		}
 	},
 	"sharing/revoke_shared_link": {
 		"uri": "https://api.dropboxapi.com/2/sharing/revoke_shared_link",
@@ -10770,7 +10801,7 @@
 								{
 									"name": "share_link",
 									"type": "Void",
-									"desc": "This action is deprecated. Use create_link instead."
+									"desc": "Field is deprecated. Use create_link instead."
 								},
 								{
 									"name": "create_link",
@@ -10840,7 +10871,7 @@
 				{
 					"name": "share_link",
 					"type": "Void",
-					"desc": "This action is deprecated. Use create_link instead."
+					"desc": "Field is deprecated. Use create_link instead."
 				},
 				{
 					"name": "create_link",
@@ -12245,7 +12276,7 @@
 								{
 									"name": "share_link",
 									"type": "Void",
-									"desc": "This action is deprecated. Use create_link instead."
+									"desc": "Field is deprecated. Use create_link instead."
 								},
 								{
 									"name": "create_link",
@@ -12315,7 +12346,7 @@
 				{
 					"name": "share_link",
 					"type": "Void",
-					"desc": "This action is deprecated. Use create_link instead."
+					"desc": "Field is deprecated. Use create_link instead."
 				},
 				{
 					"name": "create_link",
@@ -13666,7 +13697,15 @@
 				"access_level": "viewer"
 			}
 		},
-		"returnParameters": null
+		"returnParameters": {
+			"member": {
+				".tag": "email",
+				"email": "justin@example.com"
+			},
+			"result": {
+				".tag": "success"
+			}
+		}
 	},
 	"deprecated/create_shared_link": {
 		"uri": "https://api.dropboxapi.com/2/sharing/create_shared_link",
@@ -13750,7 +13789,18 @@
 				"path": ""
 			}
 		},
-		"returnParameters": null
+		"returnParameters": {
+			"links": [
+				{
+					".tag": "path",
+					"url": "https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0",
+					"visibility": {
+						".tag": "public"
+					},
+					"path": "/Homework/Math/Prime_Numbers.txt"
+				}
+			]
+		}
 	},
 	"deprecated/remove_file_member": {
 		"uri": "https://api.dropboxapi.com/2/sharing/remove_file_member",
