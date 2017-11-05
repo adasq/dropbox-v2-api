@@ -98,6 +98,15 @@
 			"available": false
 		}
 	},
+	"file_properties/templates/remove_for_user": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/templates/remove_for_user",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
 	"file_properties/templates/update_for_user": {
 		"uri": "https://api.dropboxapi.com/2/file_properties/templates/update_for_user",
 		"requiresAuthHeader": true,

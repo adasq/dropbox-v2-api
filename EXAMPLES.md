@@ -72,7 +72,7 @@ dropbox({
 
 
 ### file_properties/properties/remove ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-remove))
-Remove the specified property group from the file. To remove specific property field key value pairs, see route [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see [templates/update_for_user](#file_propertiestemplatesupdate_for_user-see-docs) or [templates/update_for_team](#file_propertiestemplatesupdate_for_team-see-docs). Templates can't be removed once created.
+Permanently removes the specified property group from the file. To remove specific property field key value pairs, see [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see [templates/update_for_user](#file_propertiestemplatesupdate_for_user-see-docs) or [templates/update_for_team](#file_propertiestemplatesupdate_for_team-see-docs). Templates can't be removed once created.
 
 ```js
 dropbox({
@@ -110,6 +110,21 @@ dropbox({
 ```
 
 
+### file_properties/properties/search/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-search-continue))
+Once a cursor has been retrieved from [properties/search](#file_propertiespropertiessearch-see-docs), use this to paginate through all search results.
+
+```js
+dropbox({
+    resource: 'file_properties/properties/search/continue',
+    parameters: {
+        'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### file_properties/properties/update ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-update))
 Add, update or remove properties associated with the supplied file and templates. This endpoint should be used instead of [properties/overwrite](#file_propertiespropertiesoverwrite-see-docs) when property groups are being updated via a "delta" instead of via a "snapshot" . In other words, this endpoint will not delete any omitted fields from a property group, whereas [properties/overwrite](#file_propertiespropertiesoverwrite-see-docs) will delete any fields that are omitted from a property group.
 
@@ -134,7 +149,7 @@ dropbox({
 
 
 ### file_properties/templates/add_for_user ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-templates-add_for_user))
-Add a template associated with a user. See route [properties/add](#file_propertiespropertiesadd-see-docs) to add properties to a file.
+Add a template associated with a user. See [properties/add](#file_propertiespropertiesadd-see-docs) to add properties to a file. This endpoint can't be called on a team member or admin's behalf.
 
 ```js
 dropbox({
@@ -155,7 +170,7 @@ dropbox({
 
 
 ### file_properties/templates/get_for_user ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-templates-get_for_user))
-Get the schema for a specified template.
+Get the schema for a specified template. This endpoint can't be called on a team member or admin's behalf.
 
 ```js
 dropbox({
@@ -170,7 +185,7 @@ dropbox({
 
 
 ### file_properties/templates/list_for_user ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-templates-list_for_user))
-Get the template identifiers for a team. To get the schema of each template use [templates/get_for_user](#file_propertiestemplatesget_for_user-see-docs).
+Get the template identifiers for a team. To get the schema of each template use [templates/get_for_user](#file_propertiestemplatesget_for_user-see-docs). This endpoint can't be called on a team member or admin's behalf.
 
 ```js
 dropbox({
@@ -181,8 +196,23 @@ dropbox({
 ```
 
 
+### file_properties/templates/remove_for_user ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-templates-remove_for_user))
+Permanently removes the specified template created from [templates/add_for_user](#file_propertiestemplatesadd_for_user-see-docs). All properties associated with the template will also be removed. This action cannot be undone.
+
+```js
+dropbox({
+    resource: 'file_properties/templates/remove_for_user',
+    parameters: {
+        'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa'
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### file_properties/templates/update_for_user ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-templates-update_for_user))
-Update a template associated with a user. This route can update the template name, the template description and add optional properties to templates.
+Update a template associated with a user. This route can update the template name, the template description and add optional properties to templates. This endpoint can't be called on a team member or admin's behalf.
 
 ```js
 dropbox({
@@ -204,7 +234,7 @@ dropbox({
 
 
 ### file_requests/create ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_requests-create))
-Creates a file request for this user. Warning: This endpoint is in beta and is subject to backwards-incompatible changes.
+Creates a file request for this user.
 
 ```js
 dropbox({
@@ -225,7 +255,7 @@ dropbox({
 
 
 ### file_requests/get ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_requests-get))
-Returns the specified file request. Warning: This endpoint is in beta and is subject to backwards-incompatible changes.
+Returns the specified file request.
 
 ```js
 dropbox({
@@ -240,7 +270,7 @@ dropbox({
 
 
 ### file_requests/list ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_requests-list))
-Returns a list of file requests owned by this user. For apps with the app folder permission, this will only return file requests with destinations in the app folder. Warning: This endpoint is in beta and is subject to backwards-incompatible changes.
+Returns a list of file requests owned by this user. For apps with the app folder permission, this will only return file requests with destinations in the app folder.
 
 ```js
 dropbox({
@@ -252,7 +282,7 @@ dropbox({
 
 
 ### file_requests/update ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_requests-update))
-Update a file request. Warning: This endpoint is in beta and is subject to backwards-incompatible changes.
+Update a file request.
 
 ```js
 dropbox({
@@ -271,51 +301,6 @@ dropbox({
 }, (err, result) => {
     //see docs for `result` parameters
 });
-```
-
-
-### files/alpha/get_metadata ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-alpha-get_metadata))
-Returns the metadata for a file or folder. This is an alpha endpoint compatible with the properties API. Note: Metadata for the root folder is unsupported.
-
-```js
-dropbox({
-    resource: 'files/alpha/get_metadata',
-    parameters: {
-        'path': '/Homework/math',
-        'include_media_info': false,
-        'include_deleted': false,
-        'include_has_explicit_shared_members': false
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### files/alpha/upload ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-alpha-upload))
-Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API alpha and is slightly different from [upload](#filesupload-see-docs). Do not use this to upload a file larger than 150 MB. Instead, create an upload session with [upload_session/start](#filesupload_sessionstart-see-docs).
-
-```js
-const stream = dropbox({
-    resource: 'files/alpha/upload',
-    parameters: {
-        'path': '/Homework/math/Matrices.txt',
-        'mode': 'add',
-        'autorename': true,
-        'mute': false,
-        'property_groups': [{
-            'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
-            'fields': [{
-                'name': 'Security Policy',
-                'value': 'Confidential'
-            }]
-        }]
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-
-fs.createReadStream('/Homework/math/Matrices.txt').pipe(stream);
 ```
 
 
@@ -648,13 +633,14 @@ dropbox({
 
 
 ### files/list_revisions ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-list_revisions))
-Return revisions of a file.
+Returns revisions for files based on a file path or a file id. The file path or file id is identified from the latest file entry at the given file path or id. This end point allows your app to query either by file path or file id by setting the mode parameter appropriately. In the ListRevisionsMode.path (default) mode, all revisions at the same file path as the latest file entry are returned. If revisions with the same file id are desired, then mode must be set to ListRevisionsMode.id. The ListRevisionsMode.id mode is useful to retrieve revisions for a given file across moves or renames.
 
 ```js
 dropbox({
     resource: 'files/list_revisions',
     parameters: {
         'path': '/root/word.docx',
+        'mode': 'path',
         'limit': 10
     }
 }, (err, result) => {
@@ -1896,6 +1882,44 @@ dropbox({
 }, (err, result) => {
     //see docs for `result` parameters
 });
+```
+
+
+### deprecated/alpha/get_metadata ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-alpha-get_metadata))
+Returns the metadata for a file or folder. This is an alpha endpoint compatible with the properties API. Note: Metadata for the root folder is unsupported.
+
+```js
+dropbox({
+    resource: 'deprecated/alpha/get_metadata',
+    parameters: {
+        'path': '/Homework/math',
+        'include_media_info': false,
+        'include_deleted': false,
+        'include_has_explicit_shared_members': false
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/alpha/upload ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-alpha-upload))
+Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API alpha and is slightly different from [upload](#deprecatedupload-see-docs). Do not use this to upload a file larger than 150 MB. Instead, create an upload session with [upload_session/start](#deprecatedupload_sessionstart-see-docs).
+
+```js
+const stream = dropbox({
+    resource: 'deprecated/alpha/upload',
+    parameters: {
+        'path': '/Homework/math/Matrices.txt',
+        'mode': 'add',
+        'autorename': true,
+        'mute': false
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+
+fs.createReadStream('/Homework/math/Matrices.txt').pipe(stream);
 ```
 
 

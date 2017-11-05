@@ -308,7 +308,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Remove the specified property group from the file. To remove specific property field key value pairs, see [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see [templates/update_for_user](#file_propertiestemplatesupdate_for_user-see-docs) or [templates/update_for_team](#file_propertiestemplatesupdate_for_team-see-docs). Templates can't be removed once created.",
+		"description": "Permanently removes the specified property group from the file. To remove specific property field key value pairs, see [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see [templates/update_for_user](#file_propertiestemplatesupdate_for_user-see-docs) or [templates/update_for_team](#file_propertiestemplatesupdate_for_team-see-docs). Templates can't be removed once created.",
 		"parameters": {
 			"list": [
 				{
@@ -887,6 +887,26 @@
 				"ptid:1a5n2i6d3OYEAAAAAAAAAYa"
 			]
 		}
+	},
+	"file_properties/templates/remove_for_user": {
+		"uri": "https://api.dropboxapi.com/2/file_properties/templates/remove_for_user",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Permanently removes the specified template created from [templates/add_for_user](#file_propertiestemplatesadd_for_user-see-docs). All properties associated with the template will also be removed. This action cannot be undone.",
+		"parameters": {
+			"list": [
+				{
+					"name": "template_id",
+					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+					"desc": "An identifier for a template created by   or  ."
+				}
+			],
+			"example": {
+				"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa"
+			}
+		},
+		"returnParameters": null
 	},
 	"file_properties/templates/update_for_user": {
 		"uri": "https://api.dropboxapi.com/2/file_properties/templates/update_for_user",
