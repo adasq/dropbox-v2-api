@@ -12520,6 +12520,11 @@
 			"account_type": {
 				".tag": "business"
 			},
+			"root_info": {
+				".tag": "user",
+				"root_namespace_id": "3235641",
+				"home_namespace_id": "3235641"
+			},
 			"country": "US",
 			"team": {
 				"id": "dbtid:AAFdgehTzw7WlXhZJsbGCLePe8RvQGYDr-I",
