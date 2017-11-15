@@ -7589,7 +7589,7 @@
 				{
 					"name": "add_message_as_comment",
 					"type": "Boolean",
-					"desc": "If the custom message should be added as a comment on the file. The default for this field is False."
+					"desc": "Field is deprecated. If the custom message should be added as a comment on the file. The default for this field is False."
 				}
 			],
 			"example": {
