@@ -22,7 +22,7 @@
   "author": "adasq",
   "license": "ISC",
   "dependencies": {
-    "request": "2.67.0"
+    "request": "2.83.0"
   },
   "devDependencies": {
     "underscore": "1.8.3",
