@@ -242,6 +242,15 @@
 			"available": true
 		}
 	},
+	"files/download_zip": {
+		"uri": "https://content.dropboxapi.com/2/files/download_zip",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "DOWNLOAD",
+		"parameters": {
+			"available": true
+		}
+	},
 	"files/get_metadata": {
 		"uri": "https://api.dropboxapi.com/2/files/get_metadata",
 		"requiresAuthHeader": true,
