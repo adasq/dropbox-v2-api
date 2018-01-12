@@ -10555,9 +10555,7 @@
 				}
 			}
 		},
-		"returnParameters": {
-			".tag": "other"
-		}
+		"returnParameters": null
 	},
 	"sharing/remove_folder_member": {
 		"uri": "https://api.dropboxapi.com/2/sharing/remove_folder_member",
