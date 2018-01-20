@@ -2808,14 +2808,34 @@
 									"desc": "128 by 128 px."
 								},
 								{
+									"name": "w256h256",
+									"type": "Void",
+									"desc": "256 by 256 px."
+								},
+								{
+									"name": "w480h320",
+									"type": "Void",
+									"desc": "480 by 320 px."
+								},
+								{
 									"name": "w640h480",
 									"type": "Void",
 									"desc": "640 by 480 px."
 								},
 								{
+									"name": "w960h640",
+									"type": "Void",
+									"desc": "960 by 640 px."
+								},
+								{
 									"name": "w1024h768",
 									"type": "Void",
-									"desc": "1024 by 768."
+									"desc": "1024 by 768 px."
+								},
+								{
+									"name": "w2048h1536",
+									"type": "Void",
+									"desc": "2048 by 1536 px."
 								}
 							],
 							"example": null
@@ -2838,20 +2858,83 @@
 					"desc": "128 by 128 px."
 				},
 				{
+					"name": "w256h256",
+					"type": "Void",
+					"desc": "256 by 256 px."
+				},
+				{
+					"name": "w480h320",
+					"type": "Void",
+					"desc": "480 by 320 px."
+				},
+				{
 					"name": "w640h480",
 					"type": "Void",
 					"desc": "640 by 480 px."
 				},
 				{
+					"name": "w960h640",
+					"type": "Void",
+					"desc": "960 by 640 px."
+				},
+				{
 					"name": "w1024h768",
 					"type": "Void",
-					"desc": "1024 by 768."
+					"desc": "1024 by 768 px."
+				},
+				{
+					"name": "w2048h1536",
+					"type": "Void",
+					"desc": "2048 by 1536 px."
+				},
+				{
+					"name": "mode",
+					"type": "ThumbnailMode",
+					"desc": "How to resize and crop the image to achieve the desired size. The default for this union is strict.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "strict",
+									"type": "Void",
+									"desc": "Scale down the image to fit within the given size."
+								},
+								{
+									"name": "bestfit",
+									"type": "Void",
+									"desc": "Scale down the image to fit within the given size or its transpose."
+								},
+								{
+									"name": "fitone_bestfit",
+									"type": "Void",
+									"desc": "Scale down the image to completely cover the given size or its transpose."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "strict",
+					"type": "Void",
+					"desc": "Scale down the image to fit within the given size."
+				},
+				{
+					"name": "bestfit",
+					"type": "Void",
+					"desc": "Scale down the image to fit within the given size or its transpose."
+				},
+				{
+					"name": "fitone_bestfit",
+					"type": "Void",
+					"desc": "Scale down the image to completely cover the given size or its transpose."
 				}
 			],
 			"example": {
 				"path": "/image.jpg",
 				"format": "jpeg",
-				"size": "w64h64"
+				"size": "w64h64",
+				"mode": "strict"
 			}
 		},
 		"returnParameters": {
@@ -2958,14 +3041,34 @@
 													"desc": "128 by 128 px."
 												},
 												{
+													"name": "w256h256",
+													"type": "Void",
+													"desc": "256 by 256 px."
+												},
+												{
+													"name": "w480h320",
+													"type": "Void",
+													"desc": "480 by 320 px."
+												},
+												{
 													"name": "w640h480",
 													"type": "Void",
 													"desc": "640 by 480 px."
 												},
 												{
+													"name": "w960h640",
+													"type": "Void",
+													"desc": "960 by 640 px."
+												},
+												{
 													"name": "w1024h768",
 													"type": "Void",
-													"desc": "1024 by 768."
+													"desc": "1024 by 768 px."
+												},
+												{
+													"name": "w2048h1536",
+													"type": "Void",
+													"desc": "2048 by 1536 px."
 												}
 											],
 											"example": null
@@ -2988,14 +3091,76 @@
 									"desc": "128 by 128 px."
 								},
 								{
+									"name": "w256h256",
+									"type": "Void",
+									"desc": "256 by 256 px."
+								},
+								{
+									"name": "w480h320",
+									"type": "Void",
+									"desc": "480 by 320 px."
+								},
+								{
 									"name": "w640h480",
 									"type": "Void",
 									"desc": "640 by 480 px."
 								},
 								{
+									"name": "w960h640",
+									"type": "Void",
+									"desc": "960 by 640 px."
+								},
+								{
 									"name": "w1024h768",
 									"type": "Void",
-									"desc": "1024 by 768."
+									"desc": "1024 by 768 px."
+								},
+								{
+									"name": "w2048h1536",
+									"type": "Void",
+									"desc": "2048 by 1536 px."
+								},
+								{
+									"name": "mode",
+									"type": "ThumbnailMode",
+									"desc": "How to resize and crop the image to achieve the desired size. The default for this union is strict.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "strict",
+													"type": "Void",
+													"desc": "Scale down the image to fit within the given size."
+												},
+												{
+													"name": "bestfit",
+													"type": "Void",
+													"desc": "Scale down the image to fit within the given size or its transpose."
+												},
+												{
+													"name": "fitone_bestfit",
+													"type": "Void",
+													"desc": "Scale down the image to completely cover the given size or its transpose."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "strict",
+									"type": "Void",
+									"desc": "Scale down the image to fit within the given size."
+								},
+								{
+									"name": "bestfit",
+									"type": "Void",
+									"desc": "Scale down the image to fit within the given size or its transpose."
+								},
+								{
+									"name": "fitone_bestfit",
+									"type": "Void",
+									"desc": "Scale down the image to completely cover the given size or its transpose."
 								}
 							],
 							"example": null
@@ -3033,14 +3198,54 @@
 									"desc": "128 by 128 px."
 								},
 								{
+									"name": "w256h256",
+									"type": "Void",
+									"desc": "256 by 256 px."
+								},
+								{
+									"name": "w480h320",
+									"type": "Void",
+									"desc": "480 by 320 px."
+								},
+								{
 									"name": "w640h480",
 									"type": "Void",
 									"desc": "640 by 480 px."
 								},
 								{
+									"name": "w960h640",
+									"type": "Void",
+									"desc": "960 by 640 px."
+								},
+								{
 									"name": "w1024h768",
 									"type": "Void",
-									"desc": "1024 by 768."
+									"desc": "1024 by 768 px."
+								},
+								{
+									"name": "w2048h1536",
+									"type": "Void",
+									"desc": "2048 by 1536 px."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "strict",
+									"type": "Void",
+									"desc": "Scale down the image to fit within the given size."
+								},
+								{
+									"name": "bestfit",
+									"type": "Void",
+									"desc": "Scale down the image to fit within the given size or its transpose."
+								},
+								{
+									"name": "fitone_bestfit",
+									"type": "Void",
+									"desc": "Scale down the image to completely cover the given size or its transpose."
 								}
 							],
 							"example": null
@@ -3107,14 +3312,34 @@
 									"desc": "128 by 128 px."
 								},
 								{
+									"name": "w256h256",
+									"type": "Void",
+									"desc": "256 by 256 px."
+								},
+								{
+									"name": "w480h320",
+									"type": "Void",
+									"desc": "480 by 320 px."
+								},
+								{
 									"name": "w640h480",
 									"type": "Void",
 									"desc": "640 by 480 px."
 								},
 								{
+									"name": "w960h640",
+									"type": "Void",
+									"desc": "960 by 640 px."
+								},
+								{
 									"name": "w1024h768",
 									"type": "Void",
-									"desc": "1024 by 768."
+									"desc": "1024 by 768 px."
+								},
+								{
+									"name": "w2048h1536",
+									"type": "Void",
+									"desc": "2048 by 1536 px."
 								}
 							],
 							"example": null
@@ -3137,14 +3362,76 @@
 					"desc": "128 by 128 px."
 				},
 				{
+					"name": "w256h256",
+					"type": "Void",
+					"desc": "256 by 256 px."
+				},
+				{
+					"name": "w480h320",
+					"type": "Void",
+					"desc": "480 by 320 px."
+				},
+				{
 					"name": "w640h480",
 					"type": "Void",
 					"desc": "640 by 480 px."
 				},
 				{
+					"name": "w960h640",
+					"type": "Void",
+					"desc": "960 by 640 px."
+				},
+				{
 					"name": "w1024h768",
 					"type": "Void",
-					"desc": "1024 by 768."
+					"desc": "1024 by 768 px."
+				},
+				{
+					"name": "w2048h1536",
+					"type": "Void",
+					"desc": "2048 by 1536 px."
+				},
+				{
+					"name": "mode",
+					"type": "ThumbnailMode",
+					"desc": "How to resize and crop the image to achieve the desired size. The default for this union is strict.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "strict",
+									"type": "Void",
+									"desc": "Scale down the image to fit within the given size."
+								},
+								{
+									"name": "bestfit",
+									"type": "Void",
+									"desc": "Scale down the image to fit within the given size or its transpose."
+								},
+								{
+									"name": "fitone_bestfit",
+									"type": "Void",
+									"desc": "Scale down the image to completely cover the given size or its transpose."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "strict",
+					"type": "Void",
+					"desc": "Scale down the image to fit within the given size."
+				},
+				{
+					"name": "bestfit",
+					"type": "Void",
+					"desc": "Scale down the image to fit within the given size or its transpose."
+				},
+				{
+					"name": "fitone_bestfit",
+					"type": "Void",
+					"desc": "Scale down the image to completely cover the given size or its transpose."
 				}
 			],
 			"example": {
@@ -3152,7 +3439,8 @@
 					{
 						"path": "/image.jpg",
 						"format": "jpeg",
-						"size": "w64h64"
+						"size": "w64h64",
+						"mode": "strict"
 					}
 				]
 			}
