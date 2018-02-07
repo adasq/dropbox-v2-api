@@ -197,6 +197,24 @@
 			"available": true
 		}
 	},
+	"files/create_folder_batch": {
+		"uri": "https://api.dropboxapi.com/2/files/create_folder_batch",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"files/create_folder_batch/check": {
+		"uri": "https://api.dropboxapi.com/2/files/create_folder_batch/check",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
 	"files/create_folder_v2": {
 		"uri": "https://api.dropboxapi.com/2/files/create_folder_v2",
 		"requiresAuthHeader": true,
@@ -874,6 +892,15 @@
 	},
 	"sharing/revoke_shared_link": {
 		"uri": "https://api.dropboxapi.com/2/sharing/revoke_shared_link",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"sharing/set_access_inheritance": {
+		"uri": "https://api.dropboxapi.com/2/sharing/set_access_inheritance",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",

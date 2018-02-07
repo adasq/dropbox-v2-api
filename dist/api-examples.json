@@ -2221,6 +2221,120 @@
 			}
 		}
 	},
+	"files/create_folder_batch": {
+		"uri": "https://api.dropboxapi.com/2/files/create_folder_batch",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Create multiple folders at once. This route is asynchronous for large batches, which returns a job ID immediately and runs the create folder batch asynchronously. Otherwise, creates the folders and returns the result synchronously for smaller inputs. You can force asynchronous behaviour by using the CreateFolderBatchArg.force_async flag.  Use [create_folder_batch/check](#filescreate_folder_batchcheck-see-docs) to check the job status.",
+		"parameters": {
+			"list": [
+				{
+					"name": "paths",
+					"type": "List of (String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\"))",
+					"desc": "List of paths to be created in the user's Dropbox. Duplicate path arguments in the batch are considered only once."
+				},
+				{
+					"name": "autorename",
+					"type": "Boolean",
+					"desc": "If there's a conflict, have the Dropbox server try to autorename the folder to avoid the conflict. The default for this field is False."
+				},
+				{
+					"name": "force_async",
+					"type": "Boolean",
+					"desc": "Whether to force the create to happen asynchronously. The default for this field is False."
+				}
+			],
+			"example": {
+				"paths": [
+					"/Homework/math"
+				],
+				"autorename": false,
+				"force_async": false
+			}
+		},
+		"returnParameters": {
+			".tag": "complete",
+			"entries": [
+				{
+					".tag": "success",
+					"metadata": {
+						"name": "math",
+						"id": "id:a4ayc_80_OEAAAAAAAAAXz",
+						"path_lower": "/homework/math",
+						"path_display": "/Homework/math",
+						"sharing_info": {
+							"read_only": false,
+							"parent_shared_folder_id": "84528192421",
+							"traverse_only": false,
+							"no_access": false
+						},
+						"property_groups": [
+							{
+								"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+								"fields": [
+									{
+										"name": "Security Policy",
+										"value": "Confidential"
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	},
+	"files/create_folder_batch/check": {
+		"uri": "https://api.dropboxapi.com/2/files/create_folder_batch/check",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Returns the status of an asynchronous job for [create_folder_batch](#filescreate_folder_batch-see-docs). If success, it returns list of result for each entry.",
+		"parameters": {
+			"list": [
+				{
+					"name": "async_job_id",
+					"type": "String(min_length=1)",
+					"desc": "Id of the asynchronous job. This is the value of a response returned from the method that launched the job."
+				}
+			],
+			"example": {
+				"async_job_id": "34g93hh34h04y384084"
+			}
+		},
+		"returnParameters": {
+			".tag": "complete",
+			"entries": [
+				{
+					".tag": "success",
+					"metadata": {
+						"name": "math",
+						"id": "id:a4ayc_80_OEAAAAAAAAAXz",
+						"path_lower": "/homework/math",
+						"path_display": "/Homework/math",
+						"sharing_info": {
+							"read_only": false,
+							"parent_shared_folder_id": "84528192421",
+							"traverse_only": false,
+							"no_access": false
+						},
+						"property_groups": [
+							{
+								"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+								"fields": [
+									{
+										"name": "Security Policy",
+										"value": "Confidential"
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		}
+	},
 	"files/create_folder_v2": {
 		"uri": "https://api.dropboxapi.com/2/files/create_folder_v2",
 		"requiresAuthHeader": true,
@@ -8322,7 +8436,10 @@
 				"password_protected": false,
 				"url": ""
 			},
-			"permissions": []
+			"permissions": [],
+			"access_inheritance": {
+				".tag": "inherit"
+			}
 		}
 	},
 	"sharing/create_shared_link_with_settings": {
@@ -8876,6 +8993,11 @@
 									"name": "create_link",
 									"type": "Void",
 									"desc": "Create a shared link for folder."
+								},
+								{
+									"name": "set_access_inheritance",
+									"type": "Void",
+									"desc": "Set whether the folder inherits permissions from its parent."
 								}
 							],
 							"example": null
@@ -8946,6 +9068,11 @@
 					"name": "create_link",
 					"type": "Void",
 					"desc": "Create a shared link for folder."
+				},
+				{
+					"name": "set_access_inheritance",
+					"type": "Void",
+					"desc": "Set whether the folder inherits permissions from its parent."
 				}
 			],
 			"example": {
@@ -9004,7 +9131,10 @@
 				"password_protected": false,
 				"url": ""
 			},
-			"permissions": []
+			"permissions": [],
+			"access_inheritance": {
+				".tag": "inherit"
+			}
 		}
 	},
 	"sharing/get_shared_link_file": {
@@ -9687,6 +9817,11 @@
 									"name": "create_link",
 									"type": "Void",
 									"desc": "Create a shared link for folder."
+								},
+								{
+									"name": "set_access_inheritance",
+									"type": "Void",
+									"desc": "Set whether the folder inherits permissions from its parent."
 								}
 							],
 							"example": null
@@ -9757,6 +9892,11 @@
 					"name": "create_link",
 					"type": "Void",
 					"desc": "Create a shared link for folder."
+				},
+				{
+					"name": "set_access_inheritance",
+					"type": "Void",
+					"desc": "Set whether the folder inherits permissions from its parent."
 				}
 			],
 			"example": {
@@ -9817,7 +9957,10 @@
 						"password_protected": false,
 						"url": ""
 					},
-					"permissions": []
+					"permissions": [],
+					"access_inheritance": {
+						".tag": "inherit"
+					}
 				}
 			],
 			"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
@@ -9894,7 +10037,10 @@
 						"password_protected": false,
 						"url": ""
 					},
-					"permissions": []
+					"permissions": [],
+					"access_inheritance": {
+						".tag": "inherit"
+					}
 				}
 			],
 			"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
@@ -9984,6 +10130,11 @@
 									"name": "create_link",
 									"type": "Void",
 									"desc": "Create a shared link for folder."
+								},
+								{
+									"name": "set_access_inheritance",
+									"type": "Void",
+									"desc": "Set whether the folder inherits permissions from its parent."
 								}
 							],
 							"example": null
@@ -10054,6 +10205,11 @@
 					"name": "create_link",
 					"type": "Void",
 					"desc": "Create a shared link for folder."
+				},
+				{
+					"name": "set_access_inheritance",
+					"type": "Void",
+					"desc": "Set whether the folder inherits permissions from its parent."
 				}
 			],
 			"example": {
@@ -10114,7 +10270,10 @@
 						"password_protected": false,
 						"url": ""
 					},
-					"permissions": []
+					"permissions": [],
+					"access_inheritance": {
+						".tag": "inherit"
+					}
 				}
 			],
 			"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
@@ -10191,7 +10350,10 @@
 						"password_protected": false,
 						"url": ""
 					},
-					"permissions": []
+					"permissions": [],
+					"access_inheritance": {
+						".tag": "inherit"
+					}
 				}
 			],
 			"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
@@ -10738,7 +10900,10 @@
 				"password_protected": false,
 				"url": ""
 			},
-			"permissions": []
+			"permissions": [],
+			"access_inheritance": {
+				".tag": "inherit"
+			}
 		}
 	},
 	"sharing/relinquish_file_membership": {
@@ -10929,6 +11094,115 @@
 			}
 		},
 		"returnParameters": null
+	},
+	"sharing/set_access_inheritance": {
+		"uri": "https://api.dropboxapi.com/2/sharing/set_access_inheritance",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Change the inheritance policy of an existing Shared Folder. Only permitted for shared folders in a team shared dropbox. If a ShareFolderLaunch.async_job_id is returned, you'll need to call [check_share_job_status](#sharingcheck_share_job_status-see-docs) until the action completes to get the metadata for the folder.",
+		"parameters": {
+			"list": [
+				{
+					"name": "shared_folder_id",
+					"type": "String(pattern=\"[-_0-9a-zA-Z:]+\")",
+					"desc": "The ID for the shared folder."
+				},
+				{
+					"name": "access_inheritance",
+					"type": "AccessInheritance",
+					"desc": "The access inheritance settings for the folder. The default for this union is inherit.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "inherit",
+									"type": "Void",
+									"desc": "The shared folder inherits its members from the parent folder."
+								},
+								{
+									"name": "no_inherit",
+									"type": "Void",
+									"desc": "The shared folder does not inherit its members from the parent folder."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "inherit",
+					"type": "Void",
+					"desc": "The shared folder inherits its members from the parent folder."
+				},
+				{
+					"name": "no_inherit",
+					"type": "Void",
+					"desc": "The shared folder does not inherit its members from the parent folder."
+				}
+			],
+			"example": {
+				"shared_folder_id": "84528192421",
+				"access_inheritance": "inherit"
+			}
+		},
+		"returnParameters": {
+			".tag": "complete",
+			"access_type": {
+				".tag": "owner"
+			},
+			"is_inside_team_folder": false,
+			"is_team_folder": false,
+			"name": "dir",
+			"policy": {
+				"acl_update_policy": {
+					".tag": "owner"
+				},
+				"shared_link_policy": {
+					".tag": "anyone"
+				},
+				"member_policy": {
+					".tag": "anyone"
+				},
+				"resolved_member_policy": {
+					".tag": "team"
+				}
+			},
+			"preview_url": "https://www.dropbox.com/scl/fo/fir9vjelf",
+			"shared_folder_id": "84528192421",
+			"time_invited": "2016-01-20T00:00:00Z",
+			"path_lower": "/dir",
+			"link_metadata": {
+				"audience_options": [
+					{
+						".tag": "public"
+					},
+					{
+						".tag": "team"
+					},
+					{
+						".tag": "members"
+					}
+				],
+				"current_audience": {
+					".tag": "public"
+				},
+				"link_permissions": [
+					{
+						"action": {
+							".tag": "change_audience"
+						},
+						"allow": true
+					}
+				],
+				"password_protected": false,
+				"url": ""
+			},
+			"permissions": [],
+			"access_inheritance": {
+				".tag": "inherit"
+			}
+		}
 	},
 	"sharing/share_folder": {
 		"uri": "https://api.dropboxapi.com/2/sharing/share_folder",
@@ -11157,6 +11431,11 @@
 									"name": "create_link",
 									"type": "Void",
 									"desc": "Create a shared link for folder."
+								},
+								{
+									"name": "set_access_inheritance",
+									"type": "Void",
+									"desc": "Set whether the folder inherits permissions from its parent."
 								}
 							],
 							"example": null
@@ -11227,6 +11506,11 @@
 					"name": "create_link",
 					"type": "Void",
 					"desc": "Create a shared link for folder."
+				},
+				{
+					"name": "set_access_inheritance",
+					"type": "Void",
+					"desc": "Set whether the folder inherits permissions from its parent."
 				},
 				{
 					"name": "link_settings",
@@ -11692,7 +11976,10 @@
 				"password_protected": false,
 				"url": ""
 			},
-			"permissions": []
+			"permissions": [],
+			"access_inheritance": {
+				".tag": "inherit"
+			}
 		}
 	},
 	"sharing/transfer_folder": {
@@ -12632,6 +12919,11 @@
 									"name": "create_link",
 									"type": "Void",
 									"desc": "Create a shared link for folder."
+								},
+								{
+									"name": "set_access_inheritance",
+									"type": "Void",
+									"desc": "Set whether the folder inherits permissions from its parent."
 								}
 							],
 							"example": null
@@ -12702,6 +12994,11 @@
 					"name": "create_link",
 					"type": "Void",
 					"desc": "Create a shared link for folder."
+				},
+				{
+					"name": "set_access_inheritance",
+					"type": "Void",
+					"desc": "Set whether the folder inherits permissions from its parent."
 				}
 			],
 			"example": {
@@ -12762,7 +13059,10 @@
 				"password_protected": false,
 				"url": ""
 			},
-			"permissions": []
+			"permissions": [],
+			"access_inheritance": {
+				".tag": "inherit"
+			}
 		}
 	},
 	"users/get_account": {
