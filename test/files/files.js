@@ -27,9 +27,9 @@ describe('Namespace', function() {
                 parameters: {
                     path: dirPath
                 }
-            }, (err, response) => {
+            }, (err, result) => {
                 if(err){ throw err; }
-                response.metadata.should.have.property('name', dirName);
+                result.metadata.should.have.property('name', dirName);
                 done();
             });
         });
@@ -42,10 +42,10 @@ describe('Namespace', function() {
                     include_deleted: false,
                     include_has_explicit_shared_members: false
                 }
-            }, (err, response) => {
+            }, (err, result) => {
                 if(err){ throw err; }
-                response.should.have.property('.tag', 'folder');
-                response.should.have.property('path_lower', dirPath);
+                result.should.have.property('.tag', 'folder');
+                result.should.have.property('path_lower', dirPath);
 
                 done();
             });
@@ -58,9 +58,9 @@ describe('Namespace', function() {
                     path: filePath
                 },
                 readStream: utils.createMockedReadStream('1', 50)
-            }, (err, response) => {
+            }, (err, result) => {
                 if(err){ throw err; }
-                response.should.have.property('path_lower', filePath);
+                result.should.have.property('path_lower', filePath);
                 done();
             });
         });
@@ -72,9 +72,9 @@ describe('Namespace', function() {
                     path: filePath
                 },
                 readStream: utils.createMockedReadStream('2', 30)
-            }, (err, response) => {
+            }, (err, result) => {
                 if(err){ throw err; }
-                response.should.have.property('path_lower', filePath);
+                result.should.have.property('path_lower', filePath);
                 done();
             });
         });
@@ -85,10 +85,10 @@ describe('Namespace', function() {
                 parameters: {
                     path: dirPath
                 }
-            }, (err, response) => {
+            }, (err, data) => {
                 if(err){ throw err; }
-                response.entries[0].should.have.property('size', 50);
-                response.entries[1].should.have.property('size', 30);
+                data.entries[0].should.have.property('size', 50);
+                data.entries[1].should.have.property('size', 30);            
                 done();
             });
         });
@@ -99,9 +99,9 @@ describe('Namespace', function() {
                 parameters: {
                     path: filePath
                 }
-            }, (err, response) => {
+            }, (err, result) => {
                 if(err){ throw err; }
-                response.should.have.property('path_lower', filePath);
+                result.should.have.property('path_lower', filePath);
                 done();
             });
         });
@@ -121,8 +121,8 @@ describe('Namespace', function() {
                 parameters: {
                     path: uploadFilePath
                 }
-            }, (err, response) => {
-                response.should.have.property('size', 30);
+            }, (err, result) => {
+                result.should.have.property('size', 30);
                 done();
             });
 
@@ -137,9 +137,9 @@ describe('Namespace', function() {
                     'from_path': sourceFileName,
                     'to_path': targetFileName
                 }
-            }, (err, response) => {
+            }, (err, result) => {
                 if(err){ throw err; }
-                response.metadata.should.have.property('path_lower', targetFileName);
+                result.metadata.should.have.property('path_lower', targetFileName);
                 done();
             });
         });
@@ -150,9 +150,9 @@ describe('Namespace', function() {
                 parameters: {
                     'path': fileToDeleteName
                 }
-            }, (err, response) => {
+            }, (err, result) => {
                 if(err){ throw err; }
-                response.metadata.should.have.property('path_lower', fileToDeleteName);
+                result.metadata.should.have.property('path_lower', fileToDeleteName);
                 done();
             });
         });
@@ -164,9 +164,9 @@ describe('Namespace', function() {
                     'from_path': `${dirPath}/upload.txt`,
                     'to_path': targetFileName
                 }
-            }, (err, response) => {
+            }, (err, result) => {
                 if(err){ throw err; }
-                response.metadata.should.have.property('path_lower', targetFileName);
+                result.metadata.should.have.property('path_lower', targetFileName);
                 done();
             });
         });

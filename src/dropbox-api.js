@@ -86,7 +86,7 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList, config){
 				function prepareCallback(userCb) {
 					return (err, response, body) => {
 						if (err) {
-							return userCb(err);
+							return userCb(err, null, response);
 						}
 
 						const responseContentType = response.headers['content-type'];
@@ -96,28 +96,28 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList, config){
 							/* it's content-stream response type, so response object is located inside header */
 							'application/octet-stream': () => {
 								const dropboxApiResultContent = response.headers[DB_API_RESULT_HEADER_NAME];
-								return dropboxApiResultContent && userCb(null, JSON.parse(dropboxApiResultContent));
+								return dropboxApiResultContent && userCb(null, JSON.parse(dropboxApiResultContent), response);
 							},
 							/* it's ordinary RPC response, so result object is located inside body */
 							'application/json': () => {
 								const json = body;
 								if(statusCode === 200) {
-									return userCb(null, json);
+									return userCb(null, json, response);
 								}else {
 									json.code = statusCode;
-									return userCb(json);
+									return userCb(json, null, response);
 								}
 							},
 							/* text type response */
 							'text/plain; charset=utf-8': () => {
 								const text = body;
 								if(statusCode === 200) {
-									return userCb(null, text);
+									return userCb(null, text, response);
 								}else{
 									return userCb({
 										code: statusCode,
 										text: text
-									});
+									}, null, response);
 								}
 							}
 						};
