@@ -85,10 +85,10 @@ describe('Namespace', function() {
                 parameters: {
                     path: dirPath
                 }
-            }, (err, data) => {
+            }, (err, result) => {
                 if(err){ throw err; }
-                data.entries[0].should.have.property('size', 50);
-                data.entries[1].should.have.property('size', 30);            
+                result.entries[0].should.have.property('size', 50);
+                result.entries[1].should.have.property('size', 30);            
                 done();
             });
         });
