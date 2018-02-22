@@ -36,18 +36,19 @@ describe('Namespace', function() {
                 parameters: {
                     account_id: 'dbid:AAD6ohziJisQr3HsC9gQc4R-wW4d8Xe_Qic'
                 }
-            }, (err, response) => {
+            }, (err, result, response) => {
                 if(err){ throw err; }
-                response.should.have.property('account_id');
+                result.should.have.property('account_id');
+                response.headers.should.have.property('content-type', 'application/json');
                 done();
             });
         });
         it('get_current_account', function (done) {
             dropbox({
                 resource: 'users/get_current_account'
-            }, (err, response) => {
+            }, (err, result) => {
                 if(err){ throw err; }
-                response.should.have.property('account_id');
+                result.should.have.property('account_id');
                 done();
             });
         });
@@ -55,9 +56,9 @@ describe('Namespace', function() {
         it('get_space_usage', function (done) {
             dropbox({
                 resource: 'users/get_space_usage'
-            }, (err, response) => {
+            }, (err, result) => {
                 if(err){ throw err; }
-                response.should.have.property('used');
+                result.should.have.property('used');
                 done();
             });
         });
@@ -67,9 +68,9 @@ describe('Namespace', function() {
                 parameters: {
                     account_ids: ['dbid:AAD6ohziJisQr3HsC9gQc4R-wW4d8Xe_Qic']
                 }
-            }, (err, response) => {
+            }, (err, result) => {
                 if(err){ throw err; }
-                response.should.be.an.Array();
+                result.should.be.an.Array();
                 done();
             });
         });

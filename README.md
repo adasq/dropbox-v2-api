@@ -42,7 +42,7 @@ dropbox({
     parameters: {
         'account_id': 'dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     if (err) { return console.log(err); }
     console.log(result);
 });
@@ -71,9 +71,10 @@ dropbox({
     resource: (string),
     parameters: (object?),
     readStream: (readable stream object?)
-}, (err, result) => {
+}, (err, result, response) => {
     if (err) { return console.log('err:', err); }
     console.log(result);
+    console.log(response.headers);
 });
 
 ```
@@ -95,7 +96,7 @@ dropbox({
         path: '/dropbox/path/to/file.js'
     },
     readStream: fs.createReadStream('path/to/file.js')
-}, (err, result) => {
+}, (err, result, response) => {
     //upload completed
 });
 ```
@@ -107,7 +108,7 @@ const dropboxUploadStream = dropbox({
     parameters: {
         path: '/dropbox/path/to/file.js'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //upload completed
 });
 
@@ -123,7 +124,7 @@ dropbox({
     parameters: {
         path: '/dropbox/image.jpg'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //download completed
 })
 .pipe(fs.createWriteStream('./image.jpg'));
@@ -170,7 +171,7 @@ dropbox({
         path: '/dropbox/path/to/file.js',
         include_media_info: false
 	}
-}, function(err, result) => {
+}, function(err, result, response) => {
     if(err){ return console.log('err:', err); }
     console.log(result);
 });
