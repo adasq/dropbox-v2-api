@@ -171,7 +171,7 @@ dropbox({
         path: '/dropbox/path/to/file.js',
         include_media_info: false
 	}
-}, function(err, result, response) => {
+}, (err, result, response) => {
     if(err){ return console.log('err:', err); }
     console.log(result);
 });
