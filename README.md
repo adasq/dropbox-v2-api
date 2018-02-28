@@ -59,7 +59,7 @@ const dropbox = dropboxV2Api.authenticate({
 //generate and visit authorization sevice 
 const authUrl = dropbox.generateAuthUrl();
 //after redirection, you should receive code
-dropbox.getToken(code, (err, response) => {
+dropbox.getToken(code, (err, result, response) => {
     //you are authorized now!
 });
 ```
@@ -142,7 +142,7 @@ const downloadStream = dropbox({
 const uploadStream = dropbox({
     resource: 'files/upload',
     parameters: { path: '/target/file/path' }				
-}, (err, response) => {
+}, (err, result, response) => {
     //upload finished
 });
 
@@ -156,9 +156,9 @@ downloadStream.pipe(uploadStream);
 ```js
 dropbox({
     resource: 'users/get_current_account'
-}, (err, response) => {
+}, (err, result, response) => {
     if (err) { return console.log('err:', err); }
-    console.log(response);
+    console.log(result);
 });
 ```
 
@@ -198,10 +198,10 @@ function sessionStart(cb) {
             close: false
         },
         readStream: firstUploadChunkStream()
-    }, (err, response) => {
+    }, (err, result, response) => {
         if (err) { return console.log('sessionStart error: ', err) }
-        console.log('sessionStart response:', response);
-        cb(response.session_id);
+        console.log('sessionStart result:', result);
+        cb(result.session_id);
     });
 }
 
@@ -217,9 +217,9 @@ function sessionAppend(sessionId, cb) {
             close: false,
         },
         readStream: secondUploadChunkStream()
-    }, (err, response) => {
+    }, (err, result, response) => {
         if(err){ return console.log('sessionAppend error: ', err) }
-        console.log('sessionAppend response:', response);
+        console.log('sessionAppend result:', result);
         cb();
     });
 }
@@ -239,9 +239,9 @@ function sessionFinish(sessionId) {
                 mute: false
             }
         }
-    }, (err, response) => {
+    }, (err, result, response) => {
         if (err) { return console.log('sessionFinish error: ', err) }
-        console.log('sessionFinish response:', response);
+        console.log('sessionFinish result:', result);
     });
 }
 ```
