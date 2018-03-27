@@ -2404,6 +2404,11 @@
 									"name": "path",
 									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 									"desc": "Path in the user's Dropbox to delete."
+								},
+								{
+									"name": "parent_rev",
+									"type": "String(min_length=9, pattern=\"[0-9a-f]+\")?",
+									"desc": "Perform delete if given \"rev\" matches the existing file's latest \"rev\". This field does not support deleting a folder. This field is optional."
 								}
 							],
 							"example": null
@@ -2414,6 +2419,11 @@
 					"name": "path",
 					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox to delete."
+				},
+				{
+					"name": "parent_rev",
+					"type": "String(min_length=9, pattern=\"[0-9a-f]+\")?",
+					"desc": "Perform delete if given \"rev\" matches the existing file's latest \"rev\". This field does not support deleting a folder. This field is optional."
 				}
 			],
 			"example": {
@@ -2530,6 +2540,11 @@
 					"name": "path",
 					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox to delete."
+				},
+				{
+					"name": "parent_rev",
+					"type": "String(min_length=9, pattern=\"[0-9a-f]+\")?",
+					"desc": "Perform delete if given \"rev\" matches the existing file's latest \"rev\". This field does not support deleting a folder. This field is optional."
 				}
 			],
 			"example": {
@@ -4317,6 +4332,11 @@
 					"name": "path",
 					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox to delete."
+				},
+				{
+					"name": "parent_rev",
+					"type": "String(min_length=9, pattern=\"[0-9a-f]+\")?",
+					"desc": "Perform delete if given \"rev\" matches the existing file's latest \"rev\". This field does not support deleting a folder. This field is optional."
 				}
 			],
 			"example": {
@@ -6816,6 +6836,8 @@
 			"users": [
 				{
 					"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+					"email": "bob@example.com",
+					"display_name": "Robert Smith",
 					"same_team": true,
 					"team_member_id": "dbmid:abcd1234"
 				}
@@ -6861,6 +6883,8 @@
 			"users": [
 				{
 					"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+					"email": "bob@example.com",
+					"display_name": "Robert Smith",
 					"same_team": true,
 					"team_member_id": "dbmid:abcd1234"
 				}
@@ -7789,6 +7813,8 @@
 				{
 					"user": {
 						"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+						"email": "bob@example.com",
+						"display_name": "Robert Smith",
 						"same_team": true,
 						"team_member_id": "dbmid:abcd1234"
 					},
@@ -7799,6 +7825,8 @@
 			],
 			"doc_owner": {
 				"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+				"email": "bob@example.com",
+				"display_name": "Robert Smith",
 				"same_team": true,
 				"team_member_id": "dbmid:abcd1234"
 			},
@@ -7849,6 +7877,8 @@
 				{
 					"user": {
 						"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+						"email": "bob@example.com",
+						"display_name": "Robert Smith",
 						"same_team": true,
 						"team_member_id": "dbmid:abcd1234"
 					},
@@ -7859,6 +7889,8 @@
 			],
 			"doc_owner": {
 				"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+				"email": "bob@example.com",
+				"display_name": "Robert Smith",
 				"same_team": true,
 				"team_member_id": "dbmid:abcd1234"
 			},
@@ -9363,12 +9395,17 @@
 					},
 					"user": {
 						"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+						"email": "bob@example.com",
+						"display_name": "Robert Smith",
 						"same_team": true,
 						"team_member_id": "dbmid:abcd1234"
 					},
 					"permissions": [],
 					"is_inherited": false,
-					"time_last_seen": "2016-01-20T00:00:00Z"
+					"time_last_seen": "2016-01-20T00:00:00Z",
+					"platform_type": {
+						".tag": "unknown"
+					}
 				}
 			],
 			"groups": [
@@ -9464,12 +9501,17 @@
 					},
 					"user": {
 						"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+						"email": "bob@example.com",
+						"display_name": "Robert Smith",
 						"same_team": true,
 						"team_member_id": "dbmid:abcd1234"
 					},
 					"permissions": [],
 					"is_inherited": false,
-					"time_last_seen": "2016-01-20T00:00:00Z"
+					"time_last_seen": "2016-01-20T00:00:00Z",
+					"platform_type": {
+						".tag": "unknown"
+					}
 				}
 			],
 			"groups": [
@@ -9615,6 +9657,8 @@
 					},
 					"user": {
 						"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+						"email": "bob@example.com",
+						"display_name": "Robert Smith",
 						"same_team": true,
 						"team_member_id": "dbmid:abcd1234"
 					},
@@ -9687,6 +9731,8 @@
 					},
 					"user": {
 						"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+						"email": "bob@example.com",
+						"display_name": "Robert Smith",
 						"same_team": true,
 						"team_member_id": "dbmid:abcd1234"
 					},
@@ -13628,6 +13674,11 @@
 					"name": "path",
 					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
 					"desc": "Path in the user's Dropbox to delete."
+				},
+				{
+					"name": "parent_rev",
+					"type": "String(min_length=9, pattern=\"[0-9a-f]+\")?",
+					"desc": "Perform delete if given \"rev\" matches the existing file's latest \"rev\". This field does not support deleting a folder. This field is optional."
 				}
 			],
 			"example": {
