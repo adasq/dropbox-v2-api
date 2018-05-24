@@ -1890,7 +1890,7 @@
 				{
 					"name": "entries",
 					"type": "List of (RelocationPath, min_items=1)",
-					"desc": "List of entries to be moved or copied. Each entry is  .",
+					"desc": "List of entries to be moved or copied. Each entry is RelocationPath.",
 					"parameters": [
 						{
 							"list": [
@@ -2700,7 +2700,7 @@
 				{
 					"name": "include_deleted",
 					"type": "Boolean",
-					"desc": "If true,   will be returned for deleted file or folder, otherwise LookupError.not_found will be returned. The default for this field is False."
+					"desc": "If true, DeletedMetadata will be returned for deleted file or folder, otherwise LookupError.not_found will be returned. The default for this field is False."
 				},
 				{
 					"name": "include_has_explicit_shared_members",
@@ -4097,7 +4097,7 @@
 				{
 					"name": "entries",
 					"type": "List of (RelocationPath, min_items=1)",
-					"desc": "List of entries to be moved or copied. Each entry is  .",
+					"desc": "List of entries to be moved or copied. Each entry is RelocationPath.",
 					"parameters": [
 						{
 							"list": [
@@ -13262,7 +13262,7 @@
 				{
 					"name": "include_deleted",
 					"type": "Boolean",
-					"desc": "If true,   will be returned for deleted file or folder, otherwise LookupError.not_found will be returned. The default for this field is False."
+					"desc": "If true, DeletedMetadata will be returned for deleted file or folder, otherwise LookupError.not_found will be returned. The default for this field is False."
 				},
 				{
 					"name": "include_has_explicit_shared_members",
@@ -13339,7 +13339,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
-		"description": "Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API alpha and is slightly different from [upload](#deprecatedupload-see-docs). Do not use this to upload a file larger than 150 MB. Instead, create an upload session with [upload_session/start](#deprecatedupload_sessionstart-see-docs).",
+		"description": "Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API alpha and is slightly different from [upload](#filesupload-see-docs). Do not use this to upload a file larger than 150 MB. Instead, create an upload session with [upload_session/start](#filesupload_sessionstart-see-docs).",
 		"parameters": {
 			"list": [
 				{
@@ -14418,7 +14418,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Create a shared link. If a shared link already exists for the given path, that link is returned. Note that in the returned PathLinkMetadata, the PathLinkMetadata.url field is the shortened URL if CreateSharedLinkArg.short_url argument is set to true. Previously, it was technically possible to break a shared link by moving or renaming the corresponding file or folder. In the future, this will no longer be the case, so your app shouldn't rely on this behavior. Instead, if your app needs to revoke a shared link, use [revoke_shared_link](#deprecatedrevoke_shared_link-see-docs).",
+		"description": "Create a shared link. If a shared link already exists for the given path, that link is returned. Note that in the returned PathLinkMetadata, the PathLinkMetadata.url field is the shortened URL if CreateSharedLinkArg.short_url argument is set to true. Previously, it was technically possible to break a shared link by moving or renaming the corresponding file or folder. In the future, this will no longer be the case, so your app shouldn't rely on this behavior. Instead, if your app needs to revoke a shared link, use [revoke_shared_link](#sharingrevoke_shared_link-see-docs).",
 		"parameters": {
 			"list": [
 				{
