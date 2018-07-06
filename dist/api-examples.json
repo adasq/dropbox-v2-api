@@ -1879,6 +1879,80 @@
 			}
 		}
 	},
+	"files/copy": {
+		"uri": "https://api.dropboxapi.com/2/files/copy_v2",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be copied.",
+		"parameters": {
+			"list": [
+				{
+					"name": "from_path",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
+					"desc": "Path in the user's Dropbox to be copied or moved."
+				},
+				{
+					"name": "to_path",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
+					"desc": "Path in the user's Dropbox that is the destination."
+				},
+				{
+					"name": "allow_shared_folder",
+					"type": "Boolean",
+					"desc": "If true,   will copy contents in shared folder, otherwise RelocationError.cant_copy_shared_folder will be returned if from_path contains shared folder. This field is always true for  . The default for this field is False."
+				},
+				{
+					"name": "autorename",
+					"type": "Boolean",
+					"desc": "If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict. The default for this field is False."
+				},
+				{
+					"name": "allow_ownership_transfer",
+					"type": "Boolean",
+					"desc": "Allow moves by owner even if it would result in an ownership transfer for the content being moved. This does not apply to copies. The default for this field is False."
+				}
+			],
+			"example": {
+				"from_path": "/Homework/math",
+				"to_path": "/Homework/algebra",
+				"allow_shared_folder": false,
+				"autorename": false,
+				"allow_ownership_transfer": false
+			}
+		},
+		"returnParameters": {
+			"metadata": {
+				".tag": "file",
+				"name": "Prime_Numbers.txt",
+				"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+				"client_modified": "2015-05-12T15:50:38Z",
+				"server_modified": "2015-05-12T15:50:38Z",
+				"rev": "a1c10ce0dd78",
+				"size": 7212,
+				"path_lower": "/homework/math/prime_numbers.txt",
+				"path_display": "/Homework/math/Prime_Numbers.txt",
+				"sharing_info": {
+					"read_only": true,
+					"parent_shared_folder_id": "84528192421",
+					"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+				},
+				"property_groups": [
+					{
+						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+						"fields": [
+							{
+								"name": "Security Policy",
+								"value": "Confidential"
+							}
+						]
+					}
+				],
+				"has_explicit_shared_members": false,
+				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+			}
+		}
+	},
 	"files/copy_batch": {
 		"uri": "https://api.dropboxapi.com/2/files/copy_batch",
 		"requiresAuthHeader": true,
@@ -2147,63 +2221,41 @@
 			}
 		}
 	},
-	"files/copy_v2": {
-		"uri": "https://api.dropboxapi.com/2/files/copy_v2",
+	"files/create_folder": {
+		"uri": "https://api.dropboxapi.com/2/files/create_folder_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be copied.",
+		"description": "Create a folder at a given path.",
 		"parameters": {
 			"list": [
 				{
-					"name": "from_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
-					"desc": "Path in the user's Dropbox to be copied or moved."
-				},
-				{
-					"name": "to_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
-					"desc": "Path in the user's Dropbox that is the destination."
-				},
-				{
-					"name": "allow_shared_folder",
-					"type": "Boolean",
-					"desc": "If true,   will copy contents in shared folder, otherwise RelocationError.cant_copy_shared_folder will be returned if from_path contains shared folder. This field is always true for  . The default for this field is False."
+					"name": "path",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"desc": "Path in the user's Dropbox to create."
 				},
 				{
 					"name": "autorename",
 					"type": "Boolean",
-					"desc": "If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict. The default for this field is False."
-				},
-				{
-					"name": "allow_ownership_transfer",
-					"type": "Boolean",
-					"desc": "Allow moves by owner even if it would result in an ownership transfer for the content being moved. This does not apply to copies. The default for this field is False."
+					"desc": "If there's a conflict, have the Dropbox server try to autorename the folder to avoid the conflict. The default for this field is False."
 				}
 			],
 			"example": {
-				"from_path": "/Homework/math",
-				"to_path": "/Homework/algebra",
-				"allow_shared_folder": false,
-				"autorename": false,
-				"allow_ownership_transfer": false
+				"path": "/Homework/math",
+				"autorename": false
 			}
 		},
 		"returnParameters": {
 			"metadata": {
-				".tag": "file",
-				"name": "Prime_Numbers.txt",
-				"id": "id:a4ayc_80_OEAAAAAAAAAXw",
-				"client_modified": "2015-05-12T15:50:38Z",
-				"server_modified": "2015-05-12T15:50:38Z",
-				"rev": "a1c10ce0dd78",
-				"size": 7212,
-				"path_lower": "/homework/math/prime_numbers.txt",
-				"path_display": "/Homework/math/Prime_Numbers.txt",
+				"name": "math",
+				"id": "id:a4ayc_80_OEAAAAAAAAAXz",
+				"path_lower": "/homework/math",
+				"path_display": "/Homework/math",
 				"sharing_info": {
-					"read_only": true,
+					"read_only": false,
 					"parent_shared_folder_id": "84528192421",
-					"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+					"traverse_only": false,
+					"no_access": false
 				},
 				"property_groups": [
 					{
@@ -2215,9 +2267,7 @@
 							}
 						]
 					}
-				],
-				"has_explicit_shared_members": false,
-				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+				]
 			}
 		}
 	},
@@ -2335,41 +2385,44 @@
 			]
 		}
 	},
-	"files/create_folder_v2": {
-		"uri": "https://api.dropboxapi.com/2/files/create_folder_v2",
+	"files/delete": {
+		"uri": "https://api.dropboxapi.com/2/files/delete_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Create a folder at a given path.",
+		"description": "Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.",
 		"parameters": {
 			"list": [
 				{
 					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
-					"desc": "Path in the user's Dropbox to create."
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
+					"desc": "Path in the user's Dropbox to delete."
 				},
 				{
-					"name": "autorename",
-					"type": "Boolean",
-					"desc": "If there's a conflict, have the Dropbox server try to autorename the folder to avoid the conflict. The default for this field is False."
+					"name": "parent_rev",
+					"type": "String(min_length=9, pattern=\"[0-9a-f]+\")?",
+					"desc": "Perform delete if given \"rev\" matches the existing file's latest \"rev\". This field does not support deleting a folder. This field is optional."
 				}
 			],
 			"example": {
-				"path": "/Homework/math",
-				"autorename": false
+				"path": "/Homework/math/Prime_Numbers.txt"
 			}
 		},
 		"returnParameters": {
 			"metadata": {
-				"name": "math",
-				"id": "id:a4ayc_80_OEAAAAAAAAAXz",
-				"path_lower": "/homework/math",
-				"path_display": "/Homework/math",
+				".tag": "file",
+				"name": "Prime_Numbers.txt",
+				"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+				"client_modified": "2015-05-12T15:50:38Z",
+				"server_modified": "2015-05-12T15:50:38Z",
+				"rev": "a1c10ce0dd78",
+				"size": 7212,
+				"path_lower": "/homework/math/prime_numbers.txt",
+				"path_display": "/Homework/math/Prime_Numbers.txt",
 				"sharing_info": {
-					"read_only": false,
+					"read_only": true,
 					"parent_shared_folder_id": "84528192421",
-					"traverse_only": false,
-					"no_access": false
+					"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
 				},
 				"property_groups": [
 					{
@@ -2381,7 +2434,9 @@
 							}
 						]
 					}
-				]
+				],
+				"has_explicit_shared_members": false,
+				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 			}
 		}
 	},
@@ -2526,61 +2581,6 @@
 					}
 				}
 			]
-		}
-	},
-	"files/delete_v2": {
-		"uri": "https://api.dropboxapi.com/2/files/delete_v2",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.",
-		"parameters": {
-			"list": [
-				{
-					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
-					"desc": "Path in the user's Dropbox to delete."
-				},
-				{
-					"name": "parent_rev",
-					"type": "String(min_length=9, pattern=\"[0-9a-f]+\")?",
-					"desc": "Perform delete if given \"rev\" matches the existing file's latest \"rev\". This field does not support deleting a folder. This field is optional."
-				}
-			],
-			"example": {
-				"path": "/Homework/math/Prime_Numbers.txt"
-			}
-		},
-		"returnParameters": {
-			"metadata": {
-				".tag": "file",
-				"name": "Prime_Numbers.txt",
-				"id": "id:a4ayc_80_OEAAAAAAAAAXw",
-				"client_modified": "2015-05-12T15:50:38Z",
-				"server_modified": "2015-05-12T15:50:38Z",
-				"rev": "a1c10ce0dd78",
-				"size": 7212,
-				"path_lower": "/homework/math/prime_numbers.txt",
-				"path_display": "/Homework/math/Prime_Numbers.txt",
-				"sharing_info": {
-					"read_only": true,
-					"parent_shared_folder_id": "84528192421",
-					"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
-				},
-				"property_groups": [
-					{
-						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
-						"fields": [
-							{
-								"name": "Security Policy",
-								"value": "Confidential"
-							}
-						]
-					}
-				],
-				"has_explicit_shared_members": false,
-				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-			}
 		}
 	},
 	"files/download": {
@@ -4086,6 +4086,80 @@
 			]
 		}
 	},
+	"files/move": {
+		"uri": "https://api.dropboxapi.com/2/files/move_v2",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be moved.",
+		"parameters": {
+			"list": [
+				{
+					"name": "from_path",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
+					"desc": "Path in the user's Dropbox to be copied or moved."
+				},
+				{
+					"name": "to_path",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
+					"desc": "Path in the user's Dropbox that is the destination."
+				},
+				{
+					"name": "allow_shared_folder",
+					"type": "Boolean",
+					"desc": "If true,   will copy contents in shared folder, otherwise RelocationError.cant_copy_shared_folder will be returned if from_path contains shared folder. This field is always true for  . The default for this field is False."
+				},
+				{
+					"name": "autorename",
+					"type": "Boolean",
+					"desc": "If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict. The default for this field is False."
+				},
+				{
+					"name": "allow_ownership_transfer",
+					"type": "Boolean",
+					"desc": "Allow moves by owner even if it would result in an ownership transfer for the content being moved. This does not apply to copies. The default for this field is False."
+				}
+			],
+			"example": {
+				"from_path": "/Homework/math",
+				"to_path": "/Homework/algebra",
+				"allow_shared_folder": false,
+				"autorename": false,
+				"allow_ownership_transfer": false
+			}
+		},
+		"returnParameters": {
+			"metadata": {
+				".tag": "file",
+				"name": "Prime_Numbers.txt",
+				"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+				"client_modified": "2015-05-12T15:50:38Z",
+				"server_modified": "2015-05-12T15:50:38Z",
+				"rev": "a1c10ce0dd78",
+				"size": 7212,
+				"path_lower": "/homework/math/prime_numbers.txt",
+				"path_display": "/Homework/math/Prime_Numbers.txt",
+				"sharing_info": {
+					"read_only": true,
+					"parent_shared_folder_id": "84528192421",
+					"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+				},
+				"property_groups": [
+					{
+						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+						"fields": [
+							{
+								"name": "Security Policy",
+								"value": "Confidential"
+							}
+						]
+					}
+				],
+				"has_explicit_shared_members": false,
+				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+			}
+		}
+	},
 	"files/move_batch": {
 		"uri": "https://api.dropboxapi.com/2/files/move_batch",
 		"requiresAuthHeader": true,
@@ -4244,80 +4318,6 @@
 					}
 				}
 			]
-		}
-	},
-	"files/move_v2": {
-		"uri": "https://api.dropboxapi.com/2/files/move_v2",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be moved.",
-		"parameters": {
-			"list": [
-				{
-					"name": "from_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
-					"desc": "Path in the user's Dropbox to be copied or moved."
-				},
-				{
-					"name": "to_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
-					"desc": "Path in the user's Dropbox that is the destination."
-				},
-				{
-					"name": "allow_shared_folder",
-					"type": "Boolean",
-					"desc": "If true,   will copy contents in shared folder, otherwise RelocationError.cant_copy_shared_folder will be returned if from_path contains shared folder. This field is always true for  . The default for this field is False."
-				},
-				{
-					"name": "autorename",
-					"type": "Boolean",
-					"desc": "If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict. The default for this field is False."
-				},
-				{
-					"name": "allow_ownership_transfer",
-					"type": "Boolean",
-					"desc": "Allow moves by owner even if it would result in an ownership transfer for the content being moved. This does not apply to copies. The default for this field is False."
-				}
-			],
-			"example": {
-				"from_path": "/Homework/math",
-				"to_path": "/Homework/algebra",
-				"allow_shared_folder": false,
-				"autorename": false,
-				"allow_ownership_transfer": false
-			}
-		},
-		"returnParameters": {
-			"metadata": {
-				".tag": "file",
-				"name": "Prime_Numbers.txt",
-				"id": "id:a4ayc_80_OEAAAAAAAAAXw",
-				"client_modified": "2015-05-12T15:50:38Z",
-				"server_modified": "2015-05-12T15:50:38Z",
-				"rev": "a1c10ce0dd78",
-				"size": 7212,
-				"path_lower": "/homework/math/prime_numbers.txt",
-				"path_display": "/Homework/math/Prime_Numbers.txt",
-				"sharing_info": {
-					"read_only": true,
-					"parent_shared_folder_id": "84528192421",
-					"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
-				},
-				"property_groups": [
-					{
-						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
-						"fields": [
-							{
-								"name": "Security Policy",
-								"value": "Confidential"
-							}
-						]
-					}
-				],
-				"has_explicit_shared_members": false,
-				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-			}
 		}
 	},
 	"files/permanently_delete": {
@@ -4802,7 +4802,7 @@
 			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
 	},
-	"files/upload_session/append_v2": {
+	"files/upload_session/append": {
 		"uri": "https://content.dropboxapi.com/2/files/upload_session/append_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
@@ -5361,7 +5361,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "This route helps you commit many files at once into a user's Dropbox. Use [upload_session/start](#filesupload_sessionstart-see-docs) and [upload_session/append_v2](#filesupload_sessionappend_v2-see-docs) to upload file contents. We recommend uploading many files in parallel to increase throughput. Once the file contents have been uploaded, rather than calling [upload_session/finish](#filesupload_sessionfinish-see-docs), use this route to finish all your upload sessions in a single request. UploadSessionStartArg.close or UploadSessionAppendArg.close needs to be true for the last [upload_session/start](#filesupload_sessionstart-see-docs) or [upload_session/append_v2](#filesupload_sessionappend_v2-see-docs) call. The maximum size of a file one can upload to an upload session is 350 GB. This route will return a job_id immediately and do the async commit job in background. Use [upload_session/finish_batch/check](#filesupload_sessionfinish_batchcheck-see-docs) to check the job status. For the same account, this route should be executed serially. That means you should not start the next job before current job finishes. We allow up to 1000 entries in a single request.",
+		"description": "This route helps you commit many files at once into a user's Dropbox. Use [upload_session/start](#filesupload_sessionstart-see-docs) and [upload_session/append:2](#filesupload_sessionappend:2-see-docs) to upload file contents. We recommend uploading many files in parallel to increase throughput. Once the file contents have been uploaded, rather than calling [upload_session/finish](#filesupload_sessionfinish-see-docs), use this route to finish all your upload sessions in a single request. UploadSessionStartArg.close or UploadSessionAppendArg.close needs to be true for the last [upload_session/start](#filesupload_sessionstart-see-docs) or [upload_session/append:2](#filesupload_sessionappend:2-see-docs) call. The maximum size of a file one can upload to an upload session is 350 GB. This route will return a job_id immediately and do the async commit job in background. Use [upload_session/finish_batch/check](#filesupload_sessionfinish_batchcheck-see-docs) to check the job status. For the same account, this route should be executed serially. That means you should not start the next job before current job finishes. We allow up to 1000 entries in a single request.",
 		"parameters": {
 			"list": [
 				{
@@ -6641,7 +6641,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
-		"description": "Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use [upload_session/append_v2](#filesupload_sessionappend_v2-see-docs) to add more data and [upload_session/finish](#filesupload_sessionfinish-see-docs) to save all the data to a file in Dropbox. A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB. An upload session can be used for a maximum of 48 hours. Attempting to use an UploadSessionStartResult.session_id with [upload_session/append_v2](#filesupload_sessionappend_v2-see-docs) or [upload_session/finish](#filesupload_sessionfinish-see-docs) more than 48 hours after its creation will return a UploadSessionLookupError.not_found.",
+		"description": "Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use [upload_session/append:2](#filesupload_sessionappend:2-see-docs) to add more data and [upload_session/finish](#filesupload_sessionfinish-see-docs) to save all the data to a file in Dropbox. A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB. An upload session can be used for a maximum of 48 hours. Attempting to use an UploadSessionStartResult.session_id with [upload_session/append:2](#filesupload_sessionappend:2-see-docs) or [upload_session/finish](#filesupload_sessionfinish-see-docs) more than 48 hours after its creation will return a UploadSessionLookupError.not_found.",
 		"parameters": {
 			"list": [
 				{
@@ -13542,251 +13542,6 @@
 			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 		}
 	},
-	"deprecated/copy": {
-		"uri": "https://api.dropboxapi.com/2/files/copy",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be copied.",
-		"parameters": {
-			"list": [
-				{
-					"name": "from_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
-					"desc": "Path in the user's Dropbox to be copied or moved."
-				},
-				{
-					"name": "to_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
-					"desc": "Path in the user's Dropbox that is the destination."
-				},
-				{
-					"name": "allow_shared_folder",
-					"type": "Boolean",
-					"desc": "If true,   will copy contents in shared folder, otherwise RelocationError.cant_copy_shared_folder will be returned if from_path contains shared folder. This field is always true for  . The default for this field is False."
-				},
-				{
-					"name": "autorename",
-					"type": "Boolean",
-					"desc": "If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict. The default for this field is False."
-				},
-				{
-					"name": "allow_ownership_transfer",
-					"type": "Boolean",
-					"desc": "Allow moves by owner even if it would result in an ownership transfer for the content being moved. This does not apply to copies. The default for this field is False."
-				}
-			],
-			"example": {
-				"from_path": "/Homework/math",
-				"to_path": "/Homework/algebra",
-				"allow_shared_folder": false,
-				"autorename": false,
-				"allow_ownership_transfer": false
-			}
-		},
-		"returnParameters": {
-			".tag": "file",
-			"name": "Prime_Numbers.txt",
-			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
-			"client_modified": "2015-05-12T15:50:38Z",
-			"server_modified": "2015-05-12T15:50:38Z",
-			"rev": "a1c10ce0dd78",
-			"size": 7212,
-			"path_lower": "/homework/math/prime_numbers.txt",
-			"path_display": "/Homework/math/Prime_Numbers.txt",
-			"sharing_info": {
-				"read_only": true,
-				"parent_shared_folder_id": "84528192421",
-				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
-			},
-			"property_groups": [
-				{
-					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
-					"fields": [
-						{
-							"name": "Security Policy",
-							"value": "Confidential"
-						}
-					]
-				}
-			],
-			"has_explicit_shared_members": false,
-			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-		}
-	},
-	"deprecated/create_folder": {
-		"uri": "https://api.dropboxapi.com/2/files/create_folder",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Create a folder at a given path.",
-		"parameters": {
-			"list": [
-				{
-					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
-					"desc": "Path in the user's Dropbox to create."
-				},
-				{
-					"name": "autorename",
-					"type": "Boolean",
-					"desc": "If there's a conflict, have the Dropbox server try to autorename the folder to avoid the conflict. The default for this field is False."
-				}
-			],
-			"example": {
-				"path": "/Homework/math",
-				"autorename": false
-			}
-		},
-		"returnParameters": {
-			"name": "math",
-			"id": "id:a4ayc_80_OEAAAAAAAAAXz",
-			"path_lower": "/homework/math",
-			"path_display": "/Homework/math",
-			"sharing_info": {
-				"read_only": false,
-				"parent_shared_folder_id": "84528192421",
-				"traverse_only": false,
-				"no_access": false
-			},
-			"property_groups": [
-				{
-					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
-					"fields": [
-						{
-							"name": "Security Policy",
-							"value": "Confidential"
-						}
-					]
-				}
-			]
-		}
-	},
-	"deprecated/delete": {
-		"uri": "https://api.dropboxapi.com/2/files/delete",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.",
-		"parameters": {
-			"list": [
-				{
-					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
-					"desc": "Path in the user's Dropbox to delete."
-				},
-				{
-					"name": "parent_rev",
-					"type": "String(min_length=9, pattern=\"[0-9a-f]+\")?",
-					"desc": "Perform delete if given \"rev\" matches the existing file's latest \"rev\". This field does not support deleting a folder. This field is optional."
-				}
-			],
-			"example": {
-				"path": "/Homework/math/Prime_Numbers.txt"
-			}
-		},
-		"returnParameters": {
-			".tag": "file",
-			"name": "Prime_Numbers.txt",
-			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
-			"client_modified": "2015-05-12T15:50:38Z",
-			"server_modified": "2015-05-12T15:50:38Z",
-			"rev": "a1c10ce0dd78",
-			"size": 7212,
-			"path_lower": "/homework/math/prime_numbers.txt",
-			"path_display": "/Homework/math/Prime_Numbers.txt",
-			"sharing_info": {
-				"read_only": true,
-				"parent_shared_folder_id": "84528192421",
-				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
-			},
-			"property_groups": [
-				{
-					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
-					"fields": [
-						{
-							"name": "Security Policy",
-							"value": "Confidential"
-						}
-					]
-				}
-			],
-			"has_explicit_shared_members": false,
-			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-		}
-	},
-	"deprecated/move": {
-		"uri": "https://api.dropboxapi.com/2/files/move",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be moved.",
-		"parameters": {
-			"list": [
-				{
-					"name": "from_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
-					"desc": "Path in the user's Dropbox to be copied or moved."
-				},
-				{
-					"name": "to_path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
-					"desc": "Path in the user's Dropbox that is the destination."
-				},
-				{
-					"name": "allow_shared_folder",
-					"type": "Boolean",
-					"desc": "If true,   will copy contents in shared folder, otherwise RelocationError.cant_copy_shared_folder will be returned if from_path contains shared folder. This field is always true for  . The default for this field is False."
-				},
-				{
-					"name": "autorename",
-					"type": "Boolean",
-					"desc": "If there's a conflict, have the Dropbox server try to autorename the file to avoid the conflict. The default for this field is False."
-				},
-				{
-					"name": "allow_ownership_transfer",
-					"type": "Boolean",
-					"desc": "Allow moves by owner even if it would result in an ownership transfer for the content being moved. This does not apply to copies. The default for this field is False."
-				}
-			],
-			"example": {
-				"from_path": "/Homework/math",
-				"to_path": "/Homework/algebra",
-				"allow_shared_folder": false,
-				"autorename": false,
-				"allow_ownership_transfer": false
-			}
-		},
-		"returnParameters": {
-			".tag": "file",
-			"name": "Prime_Numbers.txt",
-			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
-			"client_modified": "2015-05-12T15:50:38Z",
-			"server_modified": "2015-05-12T15:50:38Z",
-			"rev": "a1c10ce0dd78",
-			"size": 7212,
-			"path_lower": "/homework/math/prime_numbers.txt",
-			"path_display": "/Homework/math/Prime_Numbers.txt",
-			"sharing_info": {
-				"read_only": true,
-				"parent_shared_folder_id": "84528192421",
-				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
-			},
-			"property_groups": [
-				{
-					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
-					"fields": [
-						{
-							"name": "Security Policy",
-							"value": "Confidential"
-						}
-					]
-				}
-			],
-			"has_explicit_shared_members": false,
-			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-		}
-	},
 	"deprecated/properties/add": {
 		"uri": "https://api.dropboxapi.com/2/files/properties/add",
 		"requiresAuthHeader": true,
@@ -14266,32 +14021,6 @@
 						"remove_fields": []
 					}
 				]
-			}
-		},
-		"returnParameters": null
-	},
-	"deprecated/upload_session/append": {
-		"uri": "https://content.dropboxapi.com/2/files/upload_session/append",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": true,
-		"category": "UPLOAD",
-		"description": "Append more data to an upload session. A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB.",
-		"parameters": {
-			"list": [
-				{
-					"name": "session_id",
-					"type": "String",
-					"desc": "The upload session ID (returned by  )."
-				},
-				{
-					"name": "offset",
-					"type": "UInt64",
-					"desc": "The amount of data that has been uploaded so far. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
-				}
-			],
-			"example": {
-				"session_id": "1234faaf0678bcde",
-				"offset": 0
 			}
 		},
 		"returnParameters": null

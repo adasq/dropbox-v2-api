@@ -152,6 +152,15 @@
 			"available": true
 		}
 	},
+	"files/copy": {
+		"uri": "https://api.dropboxapi.com/2/files/copy_v2",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
 	"files/copy_batch": {
 		"uri": "https://api.dropboxapi.com/2/files/copy_batch",
 		"requiresAuthHeader": true,
@@ -188,8 +197,8 @@
 			"available": true
 		}
 	},
-	"files/copy_v2": {
-		"uri": "https://api.dropboxapi.com/2/files/copy_v2",
+	"files/create_folder": {
+		"uri": "https://api.dropboxapi.com/2/files/create_folder_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
@@ -215,8 +224,8 @@
 			"available": true
 		}
 	},
-	"files/create_folder_v2": {
-		"uri": "https://api.dropboxapi.com/2/files/create_folder_v2",
+	"files/delete": {
+		"uri": "https://api.dropboxapi.com/2/files/delete_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
@@ -235,15 +244,6 @@
 	},
 	"files/delete_batch/check": {
 		"uri": "https://api.dropboxapi.com/2/files/delete_batch/check",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"files/delete_v2": {
-		"uri": "https://api.dropboxapi.com/2/files/delete_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
@@ -359,6 +359,15 @@
 			"available": true
 		}
 	},
+	"files/move": {
+		"uri": "https://api.dropboxapi.com/2/files/move_v2",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
 	"files/move_batch": {
 		"uri": "https://api.dropboxapi.com/2/files/move_batch",
 		"requiresAuthHeader": true,
@@ -370,15 +379,6 @@
 	},
 	"files/move_batch/check": {
 		"uri": "https://api.dropboxapi.com/2/files/move_batch/check",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"files/move_v2": {
-		"uri": "https://api.dropboxapi.com/2/files/move_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
@@ -440,7 +440,7 @@
 			"available": true
 		}
 	},
-	"files/upload_session/append_v2": {
+	"files/upload_session/append": {
 		"uri": "https://content.dropboxapi.com/2/files/upload_session/append_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
@@ -1034,42 +1034,6 @@
 			"available": true
 		}
 	},
-	"deprecated/copy": {
-		"uri": "https://api.dropboxapi.com/2/files/copy",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"deprecated/create_folder": {
-		"uri": "https://api.dropboxapi.com/2/files/create_folder",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"deprecated/delete": {
-		"uri": "https://api.dropboxapi.com/2/files/delete",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"deprecated/move": {
-		"uri": "https://api.dropboxapi.com/2/files/move",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
 	"deprecated/properties/add": {
 		"uri": "https://api.dropboxapi.com/2/files/properties/add",
 		"requiresAuthHeader": true,
@@ -1120,15 +1084,6 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"deprecated/upload_session/append": {
-		"uri": "https://content.dropboxapi.com/2/files/upload_session/append",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": true,
-		"category": "UPLOAD",
 		"parameters": {
 			"available": true
 		}
