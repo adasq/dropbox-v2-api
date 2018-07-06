@@ -72,7 +72,7 @@ dropbox({
 
 
 ### file_properties/properties/remove ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-remove))
-Permanently removes the specified property group from the file. To remove specific property field key value pairs, see [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see [templates/update_for_user](#file_propertiestemplatesupdate_for_user-see-docs) or [templates/update_for_team](#file_propertiestemplatesupdate_for_team-see-docs). Templates can't be removed once created.
+Permanently removes the specified property group from the file. To remove specific property field key value pairs, see [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see [templates/update_for_user](#file_propertiestemplatesupdate_for_user-see-docs) or [templates/update_for_team](#file_propertiestemplatesupdate_for_team-see-docs). To remove a template, see [templates/remove_for_user](#file_propertiestemplatesremove_for_user-see-docs) or [templates/remove_for_team](#file_propertiestemplatesremove_for_team-see-docs).
 
 ```js
 dropbox({
@@ -304,6 +304,25 @@ dropbox({
 ```
 
 
+### files/copy ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-copy))
+Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be copied.
+
+```js
+dropbox({
+    resource: 'files/copy',
+    parameters: {
+        'from_path': '/Homework/math',
+        'to_path': '/Homework/algebra',
+        'allow_shared_folder': false,
+        'autorename': false,
+        'allow_ownership_transfer': false
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### files/copy_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-copy_batch))
 Copy multiple files or folders to different locations at once in the user's Dropbox. If RelocationBatchArg.allow_shared_folder is false, this route is atomic. If on entry failes, the whole transaction will abort. If RelocationBatchArg.allow_shared_folder is true, not atomicity is guaranteed, but you will be able to copy the contents of shared folders to new locations. This route will return job ID immediately and do the async copy job in background. Please use [copy_batch/check](#filescopy_batchcheck-see-docs) to check the job status.
 
@@ -371,18 +390,15 @@ dropbox({
 ```
 
 
-### files/copy_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-copy_v2))
-Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be copied.
+### files/create_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-create_folder))
+Create a folder at a given path.
 
 ```js
 dropbox({
-    resource: 'files/copy_v2',
+    resource: 'files/create_folder',
     parameters: {
-        'from_path': '/Homework/math',
-        'to_path': '/Homework/algebra',
-        'allow_shared_folder': false,
-        'autorename': false,
-        'allow_ownership_transfer': false
+        'path': '/Homework/math',
+        'autorename': false
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -390,15 +406,46 @@ dropbox({
 ```
 
 
-### files/create_folder_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-create_folder_v2))
-Create a folder at a given path.
+### files/create_folder_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-create_folder_batch))
+Create multiple folders at once. This route is asynchronous for large batches, which returns a job ID immediately and runs the create folder batch asynchronously. Otherwise, creates the folders and returns the result synchronously for smaller inputs. You can force asynchronous behaviour by using the CreateFolderBatchArg.force_async flag.  Use [create_folder_batch/check](#filescreate_folder_batchcheck-see-docs) to check the job status.
 
 ```js
 dropbox({
-    resource: 'files/create_folder_v2',
+    resource: 'files/create_folder_batch',
     parameters: {
-        'path': '/Homework/math',
-        'autorename': false
+        'paths': ['/Homework/math'],
+        'autorename': false,
+        'force_async': false
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/create_folder_batch/check ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-create_folder_batch-check))
+Returns the status of an asynchronous job for [create_folder_batch](#filescreate_folder_batch-see-docs). If success, it returns list of result for each entry.
+
+```js
+dropbox({
+    resource: 'files/create_folder_batch/check',
+    parameters: {
+        'async_job_id': '34g93hh34h04y384084'
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/delete ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-delete))
+Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.
+
+```js
+dropbox({
+    resource: 'files/delete',
+    parameters: {
+        'path': '/Homework/math/Prime_Numbers.txt'
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -438,21 +485,6 @@ dropbox({
 ```
 
 
-### files/delete_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-delete_v2))
-Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.
-
-```js
-dropbox({
-    resource: 'files/delete_v2',
-    parameters: {
-        'path': '/Homework/math/Prime_Numbers.txt'
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
 ### files/download ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-download))
 Download a file from a user's Dropbox.
 
@@ -468,6 +500,24 @@ const stream = dropbox({
 
 stream
     .pipe(fs.createWriteStream('/Homework/math/Prime_Numbers.txt')); //pipe the stream
+```
+
+
+### files/download_zip ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-download_zip))
+Download a folder from the user's Dropbox, as a zip file. The folder must be less than 1 GB in size and have fewer than 10,000 total files. The input cannot be a single file.
+
+```js
+const stream = dropbox({
+    resource: 'files/download_zip',
+    parameters: {
+        'path': '/Homework/math'
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+
+stream
+    .pipe(fs.createWriteStream('/Homework/math')); //pipe the stream
 ```
 
 
@@ -531,7 +581,8 @@ const stream = dropbox({
     parameters: {
         'path': '/image.jpg',
         'format': 'jpeg',
-        'size': 'w64h64'
+        'size': 'w64h64',
+        'mode': 'strict'
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -552,7 +603,8 @@ dropbox({
         'entries': [{
             'path': '/image.jpg',
             'format': 'jpeg',
-            'size': 'w64h64'
+            'size': 'w64h64',
+            'mode': 'strict'
         }]
     }
 }, (err, result) => {
@@ -649,6 +701,25 @@ dropbox({
 ```
 
 
+### files/move ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-move))
+Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be moved.
+
+```js
+dropbox({
+    resource: 'files/move',
+    parameters: {
+        'from_path': '/Homework/math',
+        'to_path': '/Homework/algebra',
+        'allow_shared_folder': false,
+        'autorename': false,
+        'allow_ownership_transfer': false
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### files/move_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-move_batch))
 Move multiple files or folders to different locations at once in the user's Dropbox. This route is 'all or nothing', which means if one entry fails, the whole transaction will abort. This route will return job ID immediately and do the async moving job in background. Please use [move_batch/check](#filesmove_batchcheck-see-docs) to check the job status.
 
@@ -678,25 +749,6 @@ dropbox({
     resource: 'files/move_batch/check',
     parameters: {
         'async_job_id': '34g93hh34h04y384084'
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### files/move_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-move_v2))
-Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be moved.
-
-```js
-dropbox({
-    resource: 'files/move_v2',
-    parameters: {
-        'from_path': '/Homework/math',
-        'to_path': '/Homework/algebra',
-        'allow_shared_folder': false,
-        'autorename': false,
-        'allow_ownership_transfer': false
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -805,12 +857,12 @@ fs.createReadStream('/Homework/math/Matrices.txt').pipe(stream);
 ```
 
 
-### files/upload_session/append_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-append_v2))
-Append more data to an upload session. When the parameter close is set, this call will close the session. A single request should not upload more than 150 MB.
+### files/upload_session/append ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-append))
+Append more data to an upload session. When the parameter close is set, this call will close the session. A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB.
 
 ```js
 const stream = dropbox({
-    resource: 'files/upload_session/append_v2',
+    resource: 'files/upload_session/append',
     parameters: {
         'cursor': {
             'session_id': '1234faaf0678bcde',
@@ -827,7 +879,7 @@ fs.createReadStream().pipe(stream);
 
 
 ### files/upload_session/finish ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-finish))
-Finish an upload session and save the uploaded data to the given file path. A single request should not upload more than 150 MB.
+Finish an upload session and save the uploaded data to the given file path. A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB.
 
 ```js
 const stream = dropbox({
@@ -853,7 +905,7 @@ fs.createReadStream().pipe(stream);
 
 
 ### files/upload_session/finish_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-finish_batch))
-This route helps you commit many files at once into a user's Dropbox. Use [upload_session/start](#filesupload_sessionstart-see-docs) and [upload_session/append_v2](#filesupload_sessionappend_v2-see-docs) to upload file contents. We recommend uploading many files in parallel to increase throughput. Once the file contents have been uploaded, rather than calling [upload_session/finish](#filesupload_sessionfinish-see-docs), use this route to finish all your upload sessions in a single request. UploadSessionStartArg.close or UploadSessionAppendArg.close needs to be true for the last [upload_session/start](#filesupload_sessionstart-see-docs) or [upload_session/append_v2](#filesupload_sessionappend_v2-see-docs) call. This route will return a job_id immediately and do the async commit job in background. Use [upload_session/finish_batch/check](#filesupload_sessionfinish_batchcheck-see-docs) to check the job status. For the same account, this route should be executed serially. That means you should not start the next job before current job finishes. We allow up to 1000 entries in a single request.
+This route helps you commit many files at once into a user's Dropbox. Use [upload_session/start](#filesupload_sessionstart-see-docs) and [upload_session/append:2](#filesupload_sessionappend:2-see-docs) to upload file contents. We recommend uploading many files in parallel to increase throughput. Once the file contents have been uploaded, rather than calling [upload_session/finish](#filesupload_sessionfinish-see-docs), use this route to finish all your upload sessions in a single request. UploadSessionStartArg.close or UploadSessionAppendArg.close needs to be true for the last [upload_session/start](#filesupload_sessionstart-see-docs) or [upload_session/append:2](#filesupload_sessionappend:2-see-docs) call. The maximum size of a file one can upload to an upload session is 350 GB. This route will return a job_id immediately and do the async commit job in background. Use [upload_session/finish_batch/check](#filesupload_sessionfinish_batchcheck-see-docs) to check the job status. For the same account, this route should be executed serially. That means you should not start the next job before current job finishes. We allow up to 1000 entries in a single request.
 
 ```js
 dropbox({
@@ -894,7 +946,7 @@ dropbox({
 
 
 ### files/upload_session/start ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-start))
-Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use [upload_session/append_v2](#filesupload_sessionappend_v2-see-docs) to add more data and [upload_session/finish](#filesupload_sessionfinish-see-docs) to save all the data to a file in Dropbox. A single request should not upload more than 150 MB. An upload session can be used for a maximum of 48 hours. Attempting to use an UploadSessionStartResult.session_id with [upload_session/append_v2](#filesupload_sessionappend_v2-see-docs) or [upload_session/finish](#filesupload_sessionfinish-see-docs) more than 48 hours after its creation will return a UploadSessionLookupError.not_found.
+Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use [upload_session/append:2](#filesupload_sessionappend:2-see-docs) to add more data and [upload_session/finish](#filesupload_sessionfinish-see-docs) to save all the data to a file in Dropbox. A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB. An upload session can be used for a maximum of 48 hours. Attempting to use an UploadSessionStartResult.session_id with [upload_session/append:2](#filesupload_sessionappend:2-see-docs) or [upload_session/finish](#filesupload_sessionfinish-see-docs) more than 48 hours after its creation will return a UploadSessionLookupError.not_found.
 
 ```js
 const stream = dropbox({
@@ -994,7 +1046,7 @@ dropbox({
 
 
 ### paper/docs/get_folder_info ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-get_folder_info))
-Retrieves folder information for the given Paper doc. This includes:   - folder sharing policy; permissions for subfolders are set by the top-level folder.   - full 'filepath', i.e. the list of folders (both folderId and folderName) from the root folder to the folder directly containing the Paper doc.  Note: If the Paper doc is not in any folder (aka unfiled) the response will be empty.
+Retrieves folder information for the given Paper doc. This includes:   - folder sharing policy; permissions for subfolders are set by the top-level folder.   - full 'filepath', i.e. the list of folders (both folderId and folderName) from     the root folder to the folder directly containing the Paper doc.  Note: If the Paper doc is not in any folder (aka unfiled) the response will be empty.
 
 ```js
 dropbox({
@@ -1692,6 +1744,22 @@ dropbox({
 ```
 
 
+### sharing/set_access_inheritance ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-set_access_inheritance))
+Change the inheritance policy of an existing Shared Folder. Only permitted for shared folders in a shared team root. If a ShareFolderLaunch.async_job_id is returned, you'll need to call [check_share_job_status](#sharingcheck_share_job_status-see-docs) until the action completes to get the metadata for the folder.
+
+```js
+dropbox({
+    resource: 'sharing/set_access_inheritance',
+    parameters: {
+        'shared_folder_id': '84528192421',
+        'access_inheritance': 'inherit'
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### sharing/share_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-share_folder))
 Share a folder with collaborators. Most sharing will be completed synchronously. Large folders will be completed asynchronously. To make testing the async case repeatable, set `ShareFolderArg.force_async`. If a ShareFolderLaunch.async_job_id is returned, you'll need to call [check_share_job_status](#sharingcheck_share_job_status-see-docs) until the action completes to get the metadata for the folder. Apps must have full Dropbox access to use this endpoint.
 
@@ -1904,7 +1972,7 @@ dropbox({
 
 
 ### deprecated/alpha/upload ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-alpha-upload))
-Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API alpha and is slightly different from [upload](#deprecatedupload-see-docs). Do not use this to upload a file larger than 150 MB. Instead, create an upload session with [upload_session/start](#deprecatedupload_sessionstart-see-docs).
+Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API alpha and is slightly different from [upload](#filesupload-see-docs). Do not use this to upload a file larger than 150 MB. Instead, create an upload session with [upload_session/start](#filesupload_sessionstart-see-docs).
 
 ```js
 const stream = dropbox({
@@ -1920,75 +1988,6 @@ const stream = dropbox({
 });
 
 fs.createReadStream('/Homework/math/Matrices.txt').pipe(stream);
-```
-
-
-### deprecated/copy ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-copy))
-Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be copied.
-
-```js
-dropbox({
-    resource: 'deprecated/copy',
-    parameters: {
-        'from_path': '/Homework/math',
-        'to_path': '/Homework/algebra',
-        'allow_shared_folder': false,
-        'autorename': false,
-        'allow_ownership_transfer': false
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/create_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-create_folder))
-Create a folder at a given path.
-
-```js
-dropbox({
-    resource: 'deprecated/create_folder',
-    parameters: {
-        'path': '/Homework/math',
-        'autorename': false
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/delete ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-delete))
-Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.
-
-```js
-dropbox({
-    resource: 'deprecated/delete',
-    parameters: {
-        'path': '/Homework/math/Prime_Numbers.txt'
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/move ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-move))
-Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be moved.
-
-```js
-dropbox({
-    resource: 'deprecated/move',
-    parameters: {
-        'from_path': '/Homework/math',
-        'to_path': '/Homework/algebra',
-        'allow_shared_folder': false,
-        'autorename': false,
-        'allow_ownership_transfer': false
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
 ```
 
 
@@ -2102,24 +2101,6 @@ dropbox({
 ```
 
 
-### deprecated/upload_session/append ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-upload_session-append))
-Append more data to an upload session. A single request should not upload more than 150 MB.
-
-```js
-const stream = dropbox({
-    resource: 'deprecated/upload_session/append',
-    parameters: {
-        'session_id': '1234faaf0678bcde',
-        'offset': 0
-    }
-}, (err, result) => {
-    //see docs for `result` parameters
-});
-
-fs.createReadStream().pipe(stream);
-```
-
-
 ### deprecated/change_file_member_access ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-change_file_member_access))
 Identical to update_file_member but with less information returned.
 
@@ -2141,7 +2122,7 @@ dropbox({
 
 
 ### deprecated/create_shared_link ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-create_shared_link))
-Create a shared link. If a shared link already exists for the given path, that link is returned. Note that in the returned PathLinkMetadata, the PathLinkMetadata.url field is the shortened URL if CreateSharedLinkArg.short_url argument is set to true. Previously, it was technically possible to break a shared link by moving or renaming the corresponding file or folder. In the future, this will no longer be the case, so your app shouldn't rely on this behavior. Instead, if your app needs to revoke a shared link, use [revoke_shared_link](#deprecatedrevoke_shared_link-see-docs).
+Create a shared link. If a shared link already exists for the given path, that link is returned. Note that in the returned PathLinkMetadata, the PathLinkMetadata.url field is the shortened URL if CreateSharedLinkArg.short_url argument is set to true. Previously, it was technically possible to break a shared link by moving or renaming the corresponding file or folder. In the future, this will no longer be the case, so your app shouldn't rely on this behavior. Instead, if your app needs to revoke a shared link, use [revoke_shared_link](#sharingrevoke_shared_link-see-docs).
 
 ```js
 dropbox({
