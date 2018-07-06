@@ -21,9 +21,9 @@ describe('Namespace', function() {
         var dirName = `dropbox-api-test-${timestamp}`;
         var dirPath = `/${dirName}`
 
-        it('create_folder_v2 ', (done) => {
+        it('create_folder', (done) => {
             dropbox({
-                resource: 'files/create_folder_v2',
+                resource: 'files/create_folder',
                 parameters: {
                     path: dirPath
                 }
@@ -128,11 +128,11 @@ describe('Namespace', function() {
 
             dlStream.pipe(uploadSteram);
         });
-        it('copy_v2', (done) => {
+        it('copy', (done) => {
             const sourceFileName = `${dirPath}/upload-2.txt`;
             const targetFileName = `${dirPath}/upload-2-copied.txt`;
             dropbox({
-                resource: 'files/copy_v2',
+                resource: 'files/copy',
                 parameters: {
                     'from_path': sourceFileName,
                     'to_path': targetFileName
@@ -143,10 +143,10 @@ describe('Namespace', function() {
                 done();
             });
         });
-        it('delete_v2', (done) => {
+        it('delete', (done) => {
             var fileToDeleteName = `${dirPath}/upload-2-copied.txt`;
             dropbox({
-                resource: 'files/delete_v2',
+                resource: 'files/delete',
                 parameters: {
                     'path': fileToDeleteName
                 }
@@ -159,7 +159,7 @@ describe('Namespace', function() {
         it('move', (done) => {
             var targetFileName = `${dirPath}/upload-moved.txt`;
             dropbox({
-                resource: 'files/copy_v2',
+                resource: 'files/copy',
                 parameters: {
                     'from_path': `${dirPath}/upload.txt`,
                     'to_path': targetFileName
