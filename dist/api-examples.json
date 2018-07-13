@@ -1958,7 +1958,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Copy multiple files or folders to different locations at once in the user's Dropbox. If RelocationBatchArg.allow_shared_folder is false, this route is atomic. If on entry failes, the whole transaction will abort. If RelocationBatchArg.allow_shared_folder is true, not atomicity is guaranteed, but you will be able to copy the contents of shared folders to new locations. This route will return job ID immediately and do the async copy job in background. Please use [copy_batch/check](#filescopy_batchcheck-see-docs) to check the job status.",
+		"description": "Copy multiple files or folders to different locations at once in the user's Dropbox. If RelocationBatchArg.allow_shared_folder is false, this route is atomic. If one entry fails, the whole transaction will abort. If RelocationBatchArg.allow_shared_folder is true, atomicity is not guaranteed, but it allows you to copy the contents of shared folders to new locations. This route will return job ID immediately and do the async copy job in background. Please use [copy_batch/check](#filescopy_batchcheck-see-docs) to check the job status.",
 		"parameters": {
 			"list": [
 				{
