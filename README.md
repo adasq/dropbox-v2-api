@@ -208,7 +208,7 @@ function sessionStart(cb) {
 
 function sessionAppend(sessionId, cb) {
     dropbox({
-        resource: 'files/upload_session/append_v2',
+        resource: 'files/upload_session/append',
         parameters: {
             cursor: {
                 session_id: sessionId,
