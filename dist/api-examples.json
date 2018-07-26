@@ -2869,6 +2869,460 @@
 			"link": "https://dl.dropboxusercontent.com/apitl/1/YXNkZmFzZGcyMzQyMzI0NjU2NDU2NDU2"
 		}
 	},
+	"files/get_temporary_upload_link": {
+		"uri": "https://api.dropboxapi.com/2/files/get_temporary_upload_link",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Get a one-time use temporary upload link to upload a file to a Dropbox location.  This endpoint acts as a delayed [upload](#filesupload-see-docs). The returned temporary upload link may be used to make a POST request with the data to be uploaded. The upload will then be perfomed with the CommitInfo previously provided to [get_temporary_upload_link](#filesget_temporary_upload_link-see-docs) but evaluated only upon consumption. Hence, errors stemming from invalid CommitInfo with respect to the state of the user's Dropbox will only be communicated at consumption time. Additionally, these errors are surfaced as generic HTTP 409 Conflict responses, potentially hiding issue details. The maximum temporary upload link duration is 4 hours. Upon consumption or expiration, a new link will have to be generated. Multiple links may exist for a specific upload path at any given time. A successful temporary upload link consumption returns the content hash of the uploaded data in json format.  Example temporary upload link consumption request: curl -X POST https://dl.dropboxusercontent.com/apitul/1/bNi2uIYF51cVBND --data-binary @local_file.txt  Example temporary upload link consumption response: {\"content-hash\": \"599d71033d700ac892a0e48fa61b125d2f5994\"}",
+		"parameters": {
+			"list": [
+				{
+					"name": "commit_info",
+					"type": "CommitInfo",
+					"desc": "Contains the path and other optional modifiers for the future upload commit. Equivalent to the parameters provided to  .",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "path",
+									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
+									"desc": "Path in the user's Dropbox to save the file."
+								},
+								{
+									"name": "mode",
+									"type": "WriteMode",
+									"desc": "Selects what to do if the file already exists. The default for this union is add.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "add",
+													"type": "Void",
+													"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+												},
+												{
+													"name": "overwrite",
+													"type": "Void",
+													"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
+												},
+												{
+													"name": "update",
+													"type": "String(min_length=9, pattern=\"[0-9a-f]+\")",
+													"desc": "Overwrite if the given \"rev\" matches the existing file's \"rev\". The autorename strategy is to append the string \"conflicted copy\" to the file name. For example, \"document.txt\" might become \"document (conflicted copy).txt\" or \"document (Panda's conflicted copy).txt\"."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "add",
+									"type": "Void",
+									"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+								},
+								{
+									"name": "overwrite",
+									"type": "Void",
+									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
+								},
+								{
+									"name": "update",
+									"type": "String(min_length=9, pattern=\"[0-9a-f]+\")",
+									"desc": "Overwrite if the given \"rev\" matches the existing file's \"rev\". The autorename strategy is to append the string \"conflicted copy\" to the file name. For example, \"document.txt\" might become \"document (conflicted copy).txt\" or \"document (Panda's conflicted copy).txt\"."
+								},
+								{
+									"name": "autorename",
+									"type": "Boolean",
+									"desc": "If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
+								},
+								{
+									"name": "client_modified",
+									"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")?",
+									"desc": "The value to store as the client_modified timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
+								},
+								{
+									"name": "mute",
+									"type": "Boolean",
+									"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If true, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
+								},
+								{
+									"name": "property_groups",
+									"type": "List of (PropertyGroup)?",
+									"desc": "List of custom properties to add to file. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "template_id",
+													"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+													"desc": "A unique identifier for the associated template."
+												},
+												{
+													"name": "fields",
+													"type": "List of (PropertyField)",
+													"desc": "The actual properties associated with the template. There can be up to 32 property types per template.",
+													"parameters": [
+														{
+															"list": [
+																{
+																	"name": "name",
+																	"type": "String",
+																	"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
+																},
+																{
+																	"name": "value",
+																	"type": "String",
+																	"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
+																}
+															],
+															"example": null
+														}
+													]
+												},
+												{
+													"name": "name",
+													"type": "String",
+													"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
+												},
+												{
+													"name": "value",
+													"type": "String",
+													"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
+												}
+											],
+											"example": null
+										},
+										{
+											"list": [
+												{
+													"name": "name",
+													"type": "String",
+													"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
+												},
+												{
+													"name": "value",
+													"type": "String",
+													"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "template_id",
+									"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+									"desc": "A unique identifier for the associated template."
+								},
+								{
+									"name": "fields",
+									"type": "List of (PropertyField)",
+									"desc": "The actual properties associated with the template. There can be up to 32 property types per template.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "name",
+													"type": "String",
+													"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
+												},
+												{
+													"name": "value",
+													"type": "String",
+													"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
+								},
+								{
+									"name": "strict_conflict",
+									"type": "Boolean",
+									"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. The default for this field is False."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "add",
+									"type": "Void",
+									"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+								},
+								{
+									"name": "overwrite",
+									"type": "Void",
+									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
+								},
+								{
+									"name": "update",
+									"type": "String(min_length=9, pattern=\"[0-9a-f]+\")",
+									"desc": "Overwrite if the given \"rev\" matches the existing file's \"rev\". The autorename strategy is to append the string \"conflicted copy\" to the file name. For example, \"document.txt\" might become \"document (conflicted copy).txt\" or \"document (Panda's conflicted copy).txt\"."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "template_id",
+									"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+									"desc": "A unique identifier for the associated template."
+								},
+								{
+									"name": "fields",
+									"type": "List of (PropertyField)",
+									"desc": "The actual properties associated with the template. There can be up to 32 property types per template.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "name",
+													"type": "String",
+													"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
+												},
+												{
+													"name": "value",
+													"type": "String",
+													"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "path",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
+					"desc": "Path in the user's Dropbox to save the file."
+				},
+				{
+					"name": "mode",
+					"type": "WriteMode",
+					"desc": "Selects what to do if the file already exists. The default for this union is add.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "add",
+									"type": "Void",
+									"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+								},
+								{
+									"name": "overwrite",
+									"type": "Void",
+									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
+								},
+								{
+									"name": "update",
+									"type": "String(min_length=9, pattern=\"[0-9a-f]+\")",
+									"desc": "Overwrite if the given \"rev\" matches the existing file's \"rev\". The autorename strategy is to append the string \"conflicted copy\" to the file name. For example, \"document.txt\" might become \"document (conflicted copy).txt\" or \"document (Panda's conflicted copy).txt\"."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "add",
+					"type": "Void",
+					"desc": "Do not overwrite an existing file if there is a conflict. The autorename strategy is to append a number to the file name. For example, \"document.txt\" might become \"document (2).txt\"."
+				},
+				{
+					"name": "overwrite",
+					"type": "Void",
+					"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
+				},
+				{
+					"name": "update",
+					"type": "String(min_length=9, pattern=\"[0-9a-f]+\")",
+					"desc": "Overwrite if the given \"rev\" matches the existing file's \"rev\". The autorename strategy is to append the string \"conflicted copy\" to the file name. For example, \"document.txt\" might become \"document (conflicted copy).txt\" or \"document (Panda's conflicted copy).txt\"."
+				},
+				{
+					"name": "autorename",
+					"type": "Boolean",
+					"desc": "If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
+				},
+				{
+					"name": "client_modified",
+					"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")?",
+					"desc": "The value to store as the client_modified timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
+				},
+				{
+					"name": "mute",
+					"type": "Boolean",
+					"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If true, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
+				},
+				{
+					"name": "property_groups",
+					"type": "List of (PropertyGroup)?",
+					"desc": "List of custom properties to add to file. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "template_id",
+									"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+									"desc": "A unique identifier for the associated template."
+								},
+								{
+									"name": "fields",
+									"type": "List of (PropertyField)",
+									"desc": "The actual properties associated with the template. There can be up to 32 property types per template.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "name",
+													"type": "String",
+													"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
+												},
+												{
+													"name": "value",
+													"type": "String",
+													"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "template_id",
+					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
+					"desc": "A unique identifier for the associated template."
+				},
+				{
+					"name": "fields",
+					"type": "List of (PropertyField)",
+					"desc": "The actual properties associated with the template. There can be up to 32 property types per template.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "name",
+									"type": "String",
+									"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
+								},
+								{
+									"name": "value",
+									"type": "String",
+									"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"desc": "Key of the property field associated with a file and template. Keys can be up to 256 bytes."
+				},
+				{
+					"name": "value",
+					"type": "String",
+					"desc": "Value of the property field associated with a file and template. Values can be up to 1024 bytes."
+				},
+				{
+					"name": "strict_conflict",
+					"type": "Boolean",
+					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. The default for this field is False."
+				},
+				{
+					"name": "duration",
+					"type": "Float64",
+					"desc": "How long before this link expires, in seconds.  Attempting to start an upload with this link longer than this period  of time after link creation will result in an error. The default for this field is 14400."
+				}
+			],
+			"example": {
+				"commit_info": {
+					"path": "/Homework/math/Matrices.txt",
+					"mode": "add",
+					"autorename": true,
+					"mute": false,
+					"strict_conflict": false
+				},
+				"duration": 3600
+			}
+		},
+		"returnParameters": {
+			"link": "https://dl.dropboxusercontent.com/apitul/1/bNi2uIYF51cVBND"
+		}
+	},
 	"files/get_thumbnail": {
 		"uri": "https://content.dropboxapi.com/2/files/get_thumbnail",
 		"requiresAuthHeader": true,

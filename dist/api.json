@@ -296,6 +296,15 @@
 			"available": true
 		}
 	},
+	"files/get_temporary_upload_link": {
+		"uri": "https://api.dropboxapi.com/2/files/get_temporary_upload_link",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
 	"files/get_thumbnail": {
 		"uri": "https://content.dropboxapi.com/2/files/get_thumbnail",
 		"requiresAuthHeader": true,
