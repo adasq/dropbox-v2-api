@@ -324,7 +324,7 @@ dropbox({
 
 
 ### files/copy_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-copy_batch))
-Copy multiple files or folders to different locations at once in the user's Dropbox. If RelocationBatchArg.allow_shared_folder is false, this route is atomic. If on entry failes, the whole transaction will abort. If RelocationBatchArg.allow_shared_folder is true, not atomicity is guaranteed, but you will be able to copy the contents of shared folders to new locations. This route will return job ID immediately and do the async copy job in background. Please use [copy_batch/check](#filescopy_batchcheck-see-docs) to check the job status.
+Copy multiple files or folders to different locations at once in the user's Dropbox. If RelocationBatchArg.allow_shared_folder is false, this route is atomic. If one entry fails, the whole transaction will abort. If RelocationBatchArg.allow_shared_folder is true, atomicity is not guaranteed, but it allows you to copy the contents of shared folders to new locations. This route will return job ID immediately and do the async copy job in background. Please use [copy_batch/check](#filescopy_batchcheck-see-docs) to check the job status.
 
 ```js
 dropbox({
@@ -504,7 +504,7 @@ stream
 
 
 ### files/download_zip ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-download_zip))
-Download a folder from the user's Dropbox, as a zip file. The folder must be less than 1 GB in size and have fewer than 10,000 total files. The input cannot be a single file.
+Download a folder from the user's Dropbox, as a zip file. The folder must be less than 20 GB in size and have fewer than 10,000 total files. The input cannot be a single file. Any single file must be less than 4GB in size.
 
 ```js
 const stream = dropbox({
@@ -565,6 +565,28 @@ dropbox({
     resource: 'files/get_temporary_link',
     parameters: {
         'path': '/video.mp4'
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/get_temporary_upload_link ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-get_temporary_upload_link))
+Get a one-time use temporary upload link to upload a file to a Dropbox location.  This endpoint acts as a delayed [upload](#filesupload-see-docs). The returned temporary upload link may be used to make a POST request with the data to be uploaded. The upload will then be perfomed with the CommitInfo previously provided to [get_temporary_upload_link](#filesget_temporary_upload_link-see-docs) but evaluated only upon consumption. Hence, errors stemming from invalid CommitInfo with respect to the state of the user's Dropbox will only be communicated at consumption time. Additionally, these errors are surfaced as generic HTTP 409 Conflict responses, potentially hiding issue details. The maximum temporary upload link duration is 4 hours. Upon consumption or expiration, a new link will have to be generated. Multiple links may exist for a specific upload path at any given time. A successful temporary upload link consumption returns the content hash of the uploaded data in json format.  Example temporary upload link consumption request: curl -X POST https://dl.dropboxusercontent.com/apitul/1/bNi2uIYF51cVBND --data-binary @local_file.txt  Example temporary upload link consumption response: {"content-hash": "599d71033d700ac892a0e48fa61b125d2f5994"}
+
+```js
+dropbox({
+    resource: 'files/get_temporary_upload_link',
+    parameters: {
+        'commit_info': {
+            'path': '/Homework/math/Matrices.txt',
+            'mode': 'add',
+            'autorename': true,
+            'mute': false,
+            'strict_conflict': false
+        },
+        'duration': 3600
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -847,7 +869,8 @@ const stream = dropbox({
         'path': '/Homework/math/Matrices.txt',
         'mode': 'add',
         'autorename': true,
-        'mute': false
+        'mute': false,
+        'strict_conflict': false
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -893,7 +916,8 @@ const stream = dropbox({
             'path': '/Homework/math/Matrices.txt',
             'mode': 'add',
             'autorename': true,
-            'mute': false
+            'mute': false,
+            'strict_conflict': false
         }
     }
 }, (err, result) => {
@@ -920,7 +944,8 @@ dropbox({
                 'path': '/Homework/math/Matrices.txt',
                 'mode': 'add',
                 'autorename': true,
-                'mute': false
+                'mute': false,
+                'strict_conflict': false
             }
         }]
     }
@@ -1981,7 +2006,8 @@ const stream = dropbox({
         'path': '/Homework/math/Matrices.txt',
         'mode': 'add',
         'autorename': true,
-        'mute': false
+        'mute': false,
+        'strict_conflict': false
     }
 }, (err, result) => {
     //see docs for `result` parameters
