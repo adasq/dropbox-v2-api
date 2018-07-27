@@ -11904,6 +11904,38 @@
 					"desc": "Viewer information is disabled on this file."
 				},
 				{
+					"name": "access_inheritance",
+					"type": "AccessInheritance",
+					"desc": "The access inheritance settings for the folder. The default for this union is inherit.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "inherit",
+									"type": "Void",
+									"desc": "The shared folder inherits its members from the parent folder."
+								},
+								{
+									"name": "no_inherit",
+									"type": "Void",
+									"desc": "The shared folder does not inherit its members from the parent folder."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "inherit",
+					"type": "Void",
+					"desc": "The shared folder inherits its members from the parent folder."
+				},
+				{
+					"name": "no_inherit",
+					"type": "Void",
+					"desc": "The shared folder does not inherit its members from the parent folder."
+				},
+				{
 					"name": "actions",
 					"type": "List of (FolderAction)?",
 					"desc": "A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's SharedFolderMetadata.permissions field describing the actions the  authenticated user can perform on the folder. This field is optional.",
@@ -12464,7 +12496,8 @@
 				"acl_update_policy": "editors",
 				"force_async": false,
 				"member_policy": "team",
-				"shared_link_policy": "members"
+				"shared_link_policy": "members",
+				"access_inheritance": "inherit"
 			}
 		},
 		"returnParameters": {
