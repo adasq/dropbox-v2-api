@@ -9203,6 +9203,11 @@
 									"desc": "Add a member with view permissions but no comment permissions."
 								},
 								{
+									"name": "invite_editor",
+									"type": "Void",
+									"desc": "Add a member with edit permissions."
+								},
+								{
 									"name": "unshare",
 									"type": "Void",
 									"desc": "Stop sharing this file."
@@ -9251,6 +9256,11 @@
 					"name": "invite_viewer_no_comment",
 					"type": "Void",
 					"desc": "Add a member with view permissions but no comment permissions."
+				},
+				{
+					"name": "invite_editor",
+					"type": "Void",
+					"desc": "Add a member with edit permissions."
 				},
 				{
 					"name": "unshare",
@@ -9358,6 +9368,11 @@
 									"desc": "Add a member with view permissions but no comment permissions."
 								},
 								{
+									"name": "invite_editor",
+									"type": "Void",
+									"desc": "Add a member with edit permissions."
+								},
+								{
 									"name": "unshare",
 									"type": "Void",
 									"desc": "Stop sharing this file."
@@ -9406,6 +9421,11 @@
 					"name": "invite_viewer_no_comment",
 					"type": "Void",
 					"desc": "Add a member with view permissions but no comment permissions."
+				},
+				{
+					"name": "invite_editor",
+					"type": "Void",
+					"desc": "Add a member with edit permissions."
 				},
 				{
 					"name": "unshare",
@@ -10948,6 +10968,11 @@
 									"desc": "Add a member with view permissions but no comment permissions."
 								},
 								{
+									"name": "invite_editor",
+									"type": "Void",
+									"desc": "Add a member with edit permissions."
+								},
+								{
 									"name": "unshare",
 									"type": "Void",
 									"desc": "Stop sharing this file."
@@ -10996,6 +11021,11 @@
 					"name": "invite_viewer_no_comment",
 					"type": "Void",
 					"desc": "Add a member with view permissions but no comment permissions."
+				},
+				{
+					"name": "invite_editor",
+					"type": "Void",
+					"desc": "Add a member with edit permissions."
 				},
 				{
 					"name": "unshare",
