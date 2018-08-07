@@ -3304,7 +3304,7 @@
 				},
 				{
 					"name": "duration",
-					"type": "Float64",
+					"type": "Float64(min=60.0, max=14400.0)",
 					"desc": "How long before this link expires, in seconds.  Attempting to start an upload with this link longer than this period  of time after link creation will result in an error. The default for this field is 14400."
 				}
 			],
@@ -4105,7 +4105,7 @@
 				},
 				{
 					"name": "limit",
-					"type": "UInt32?",
+					"type": "UInt32(min=1, max=2000)?",
 					"desc": "The maximum number of results to return per request. Note: This is an approximate number and there can be slightly more entries returned in some cases. This field is optional."
 				},
 				{
@@ -4350,7 +4350,7 @@
 				},
 				{
 					"name": "limit",
-					"type": "UInt32?",
+					"type": "UInt32(min=1, max=2000)?",
 					"desc": "The maximum number of results to return per request. Note: This is an approximate number and there can be slightly more entries returned in some cases. This field is optional."
 				},
 				{
@@ -4436,7 +4436,7 @@
 				},
 				{
 					"name": "timeout",
-					"type": "UInt64",
+					"type": "UInt64(min=30, max=480)",
 					"desc": "A timeout in seconds. The request will block for at most this length of time, plus up to 90 seconds of random jitter added to avoid the thundering herd problem. Care should be taken when using this parameter, as some network infrastructure does not support long timeouts. The default for this field is 30."
 				}
 			],
@@ -4496,7 +4496,7 @@
 				},
 				{
 					"name": "limit",
-					"type": "UInt64",
+					"type": "UInt64(min=1, max=100)",
 					"desc": "The maximum number of revision entries returned. The default for this field is 10."
 				}
 			],
@@ -4953,7 +4953,7 @@
 				},
 				{
 					"name": "max_results",
-					"type": "UInt64",
+					"type": "UInt64(min=1, max=1000)",
 					"desc": "The maximum number of search results to return. The default for this field is 100."
 				},
 				{
@@ -7314,7 +7314,7 @@
 				},
 				{
 					"name": "limit",
-					"type": "Int32",
+					"type": "Int32(min=1, max=1000)",
 					"desc": "Size limit per batch. The maximum number of users that can be retrieved per batch is 1000. Higher value results in invalid arguments error. The default for this field is 1000."
 				}
 			],
@@ -7539,7 +7539,7 @@
 				},
 				{
 					"name": "limit",
-					"type": "Int32",
+					"type": "Int32(min=1, max=1000)",
 					"desc": "Size limit per batch. The maximum number of docs that can be retrieved per batch is 1000. Higher value results in invalid arguments error. The default for this field is 1000."
 				}
 			],
@@ -8252,7 +8252,7 @@
 				},
 				{
 					"name": "limit",
-					"type": "Int32",
+					"type": "Int32(min=1, max=1000)",
 					"desc": "Size limit per batch. The maximum number of users that can be retrieved per batch is 1000. Higher value results in invalid arguments error. The default for this field is 1000."
 				},
 				{
@@ -9894,7 +9894,7 @@
 				},
 				{
 					"name": "limit",
-					"type": "UInt32",
+					"type": "UInt32(min=1, max=300)",
 					"desc": "Number of members to return max per query. Defaults to 100 if no limit is specified. The default for this field is 100."
 				}
 			],
@@ -9978,7 +9978,7 @@
 				},
 				{
 					"name": "limit",
-					"type": "UInt32",
+					"type": "UInt32(max=20)",
 					"desc": "Number of members to return max per query. Defaults to 10 if no limit is specified. The default for this field is 10."
 				}
 			],
@@ -10156,7 +10156,7 @@
 				},
 				{
 					"name": "limit",
-					"type": "UInt32",
+					"type": "UInt32(min=1, max=1000)",
 					"desc": "The maximum number of results that include members, groups and invitees to return per request. The default for this field is 1000."
 				}
 			],
@@ -10306,7 +10306,7 @@
 			"list": [
 				{
 					"name": "limit",
-					"type": "UInt32",
+					"type": "UInt32(min=1, max=1000)",
 					"desc": "The maximum number of results to return per request. The default for this field is 1000."
 				},
 				{
@@ -10619,7 +10619,7 @@
 			"list": [
 				{
 					"name": "limit",
-					"type": "UInt32",
+					"type": "UInt32(min=1, max=1000)",
 					"desc": "The maximum number of results to return per request. The default for this field is 1000."
 				},
 				{
@@ -10932,7 +10932,7 @@
 			"list": [
 				{
 					"name": "limit",
-					"type": "UInt32",
+					"type": "UInt32(min=1, max=300)",
 					"desc": "Number of files to return max per query. Defaults to 100 if no limit is specified. The default for this field is 100."
 				},
 				{
