@@ -4804,18 +4804,18 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Restore a file to a specific revision.",
+		"description": "Restore a specific revision of a file to the given path.",
 		"parameters": {
 			"list": [
 				{
 					"name": "path",
 					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
-					"desc": "The path to the file you want to restore."
+					"desc": "The path to save the restored file."
 				},
 				{
 					"name": "rev",
 					"type": "String(min_length=9, pattern=\"[0-9a-f]+\")",
-					"desc": "The revision to restore for the file."
+					"desc": "The revision to restore."
 				}
 			],
 			"example": {
