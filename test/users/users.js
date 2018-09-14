@@ -23,7 +23,7 @@ describe('Namespace', function() {
             dropboxMalformed({
                 resource: 'users/get_account',
                 parameters: {
-                    account_id: 'dbid:AAD6ohziJisQr3HsC9gQc4R-wW4d8Xe_Qic'
+                    account_id: 'dbid:AAA-vESAc6wjBUxydOH4U-J9hM5SNoQVMNk'
                 }
             }, (err) => {
                 err.text.should.match(/The given OAuth 2 access token is malformed/);
@@ -34,7 +34,7 @@ describe('Namespace', function() {
             dropbox({
                 resource: 'users/get_account',
                 parameters: {
-                    account_id: 'dbid:AAD6ohziJisQr3HsC9gQc4R-wW4d8Xe_Qic'
+                    account_id: 'dbid:AAA-vESAc6wjBUxydOH4U-J9hM5SNoQVMNk'
                 }
             }, (err, result, response) => {
                 if(err){ throw err; }
@@ -66,7 +66,7 @@ describe('Namespace', function() {
             dropbox({
                 resource: 'users/get_account_batch',
                 parameters: {
-                    account_ids: ['dbid:AAD6ohziJisQr3HsC9gQc4R-wW4d8Xe_Qic']
+                    account_ids: ['dbid:AAA-vESAc6wjBUxydOH4U-J9hM5SNoQVMNk']
                 }
             }, (err, result) => {
                 if(err){ throw err; }
