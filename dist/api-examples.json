@@ -39,6 +39,18 @@
 		},
 		"returnParameters": null
 	},
+	"contacts/delete_manual_contacts": {
+		"uri": "https://api.dropboxapi.com/2/contacts/delete_manual_contacts",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Removes all manually added contacts. You'll still keep contacts who are on your team or who you imported. New contacts will be added when you share.",
+		"parameters": {
+			"list": [],
+			"example": null
+		},
+		"returnParameters": null
+	},
 	"file_properties/properties/add": {
 		"uri": "https://api.dropboxapi.com/2/file_properties/properties/add",
 		"requiresAuthHeader": true,
