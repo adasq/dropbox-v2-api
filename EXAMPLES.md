@@ -27,6 +27,18 @@ dropbox({
 ```
 
 
+### contacts/delete_manual_contacts ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#contacts-delete_manual_contacts))
+Removes all manually added contacts. You'll still keep contacts who are on your team or who you imported. New contacts will be added when you share.
+
+```js
+dropbox({
+    resource: 'contacts/delete_manual_contacts'
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### file_properties/properties/add ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-add))
 Add property groups to a Dropbox file. See [templates/add_for_user](#file_propertiestemplatesadd_for_user-see-docs) or [templates/add_for_team](#file_propertiestemplatesadd_for_team-see-docs) to create new templates.
 
