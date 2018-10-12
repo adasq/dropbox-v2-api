@@ -26,6 +26,15 @@
 			"available": false
 		}
 	},
+	"contacts/delete_manual_contacts_batch": {
+		"uri": "https://api.dropboxapi.com/2/contacts/delete_manual_contacts_batch",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
 	"file_properties/properties/add": {
 		"uri": "https://api.dropboxapi.com/2/file_properties/properties/add",
 		"requiresAuthHeader": true,

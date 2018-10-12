@@ -51,6 +51,29 @@
 		},
 		"returnParameters": null
 	},
+	"contacts/delete_manual_contacts_batch": {
+		"uri": "https://api.dropboxapi.com/2/contacts/delete_manual_contacts_batch",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Removes manually added contacts from the given list.",
+		"parameters": {
+			"list": [
+				{
+					"name": "email_addresses",
+					"type": "List of (String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*.[A-Za-z]{2,15}$\"))",
+					"desc": "List of manually added contacts to be deleted."
+				}
+			],
+			"example": {
+				"email_addresses": [
+					"contactemailaddress1@domain.com",
+					"contactemailaddress2@domain.com"
+				]
+			}
+		},
+		"returnParameters": null
+	},
 	"file_properties/properties/add": {
 		"uri": "https://api.dropboxapi.com/2/file_properties/properties/add",
 		"requiresAuthHeader": true,
