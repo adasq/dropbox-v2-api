@@ -51,7 +51,7 @@ describe('Namespace', function() {
             });
         });
         it('upload', (done) => {
-            var filePath = `${dirPath}/alpha-upload.txt`;
+            var filePath = `${dirPath}/alpha-üpload.txt`;
             dropbox({
                 resource: 'files/upload',
                 parameters: {
