@@ -138,7 +138,6 @@ function parseMethodElement(wrap){
 	var h3 = wrap.find('h3');
 	var dl = wrap.find('dl');
 
-	var dds = $(dl).find('dd');
 	var dts = $(dl).find('dt');
 
 	var apiMethod = {
@@ -146,7 +145,7 @@ function parseMethodElement(wrap){
 	};
 	_.each(dts, function(dt, i){
 		var name = $(dts[i]).text();
-		var valueEl = $(dds[i]);
+		var valueEl = $(dt.nextSibling.nextSibling);
 		if(parsers[name]){
 			var value = parsers[name](valueEl);		
 			apiMethod[name] = value
