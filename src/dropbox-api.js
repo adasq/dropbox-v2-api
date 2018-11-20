@@ -14,6 +14,19 @@ const OAUTH2_TOKEN= 'https://api.dropboxapi.com/1/oauth2/token';
 
 const RESOURCES_DESCRIPTION_PATH = path.join(__dirname, '../dist/api.json');
 
+// https://www.dropbox.com/developers/reference/json-encoding
+var charsToEncode = /[\u007f-\uffff]/g;
+
+// This function is simple and has OK performance compared to more
+// complicated ones: http://jsperf.com/json-escape-unicode/4
+function http_header_safe_json(v) {
+  return JSON.stringify(v).replace(charsToEncode,
+    function(c) {
+      return '\\u'+('000'+c.charCodeAt(0).toString(16)).slice(-4);
+    }
+  );
+}
+
 const updateRequestOptsFnList = [
 	/* For requests, which requires auth header, set valid header */
 	(requestOpts, {requiresAuthHeader}, userOpts, config) => {
@@ -40,7 +53,7 @@ const updateRequestOptsFnList = [
 			requestOpts.body = resourceDescription.parameters.available ? userParameters : null;
 		}else {
 			//if not RPC, then we have 2 options: download or uplad type request
-			requestOpts.headers[DB_HEADER_API_ARGS] = isObject(userParameters) ? JSON.stringify(userParameters): '';
+			requestOpts.headers[DB_HEADER_API_ARGS] = isObject(userParameters) ? http_header_safe_json(userParameters): '';
 		}
 	}
 ];
