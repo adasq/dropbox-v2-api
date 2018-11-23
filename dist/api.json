@@ -180,7 +180,7 @@
 		}
 	},
 	"files/copy_batch": {
-		"uri": "https://api.dropboxapi.com/2/files/copy_batch",
+		"uri": "https://api.dropboxapi.com/2/files/copy_batch_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
@@ -189,7 +189,7 @@
 		}
 	},
 	"files/copy_batch/check": {
-		"uri": "https://api.dropboxapi.com/2/files/copy_batch/check",
+		"uri": "https://api.dropboxapi.com/2/files/copy_batch/check_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
@@ -396,7 +396,7 @@
 		}
 	},
 	"files/move_batch": {
-		"uri": "https://api.dropboxapi.com/2/files/move_batch",
+		"uri": "https://api.dropboxapi.com/2/files/move_batch_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
@@ -405,7 +405,7 @@
 		}
 	},
 	"files/move_batch/check": {
-		"uri": "https://api.dropboxapi.com/2/files/move_batch/check",
+		"uri": "https://api.dropboxapi.com/2/files/move_batch/check_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
