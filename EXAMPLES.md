@@ -351,7 +351,7 @@ dropbox({
 
 
 ### files/copy_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-copy_batch))
-Copy multiple files or folders to different locations at once in the user's Dropbox. If RelocationBatchArg.allow_shared_folder is false, this route is atomic. If one entry fails, the whole transaction will abort. If RelocationBatchArg.allow_shared_folder is true, atomicity is not guaranteed, but it allows you to copy the contents of shared folders to new locations. This route will return job ID immediately and do the async copy job in background. Please use [copy_batch/check](#filescopy_batchcheck-see-docs) to check the job status.
+Copy multiple files or folders to different locations at once in the user's Dropbox. This route will replace [copy_batch](#filescopy_batch-see-docs). The main difference is this route will return stutus for each entry, while [copy_batch](#filescopy_batch-see-docs) raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async copy job in background. Please use [copy_batch/check:2](#filescopy_batchcheck:2-see-docs) to check the job status.
 
 ```js
 dropbox({
@@ -361,9 +361,7 @@ dropbox({
             'from_path': '/Homework/math',
             'to_path': '/Homework/algebra'
         }],
-        'allow_shared_folder': false,
-        'autorename': false,
-        'allow_ownership_transfer': false
+        'autorename': false
     }
 }, (err, result) => {
     //see docs for `result` parameters
@@ -372,7 +370,7 @@ dropbox({
 
 
 ### files/copy_batch/check ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-copy_batch-check))
-Returns the status of an asynchronous job for [copy_batch](#filescopy_batch-see-docs). If success, it returns list of results for each entry.
+Returns the status of an asynchronous job for [copy_batch:2](#filescopy_batch:2-see-docs). It returns list of results for each entry.
 
 ```js
 dropbox({
@@ -770,7 +768,7 @@ dropbox({
 
 
 ### files/move_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-move_batch))
-Move multiple files or folders to different locations at once in the user's Dropbox. This route is 'all or nothing', which means if one entry fails, the whole transaction will abort. This route will return job ID immediately and do the async moving job in background. Please use [move_batch/check](#filesmove_batchcheck-see-docs) to check the job status.
+Move multiple files or folders to different locations at once in the user's Dropbox. This route will replace [move_batch:2](#filesmove_batch:2-see-docs). The main difference is this route will return stutus for each entry, while [move_batch](#filesmove_batch-see-docs) raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async move job in background. Please use [move_batch/check:2](#filesmove_batchcheck:2-see-docs) to check the job status.
 
 ```js
 dropbox({
@@ -780,7 +778,6 @@ dropbox({
             'from_path': '/Homework/math',
             'to_path': '/Homework/algebra'
         }],
-        'allow_shared_folder': false,
         'autorename': false,
         'allow_ownership_transfer': false
     }
@@ -791,7 +788,7 @@ dropbox({
 
 
 ### files/move_batch/check ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-move_batch-check))
-Returns the status of an asynchronous job for [move_batch](#filesmove_batch-see-docs). If success, it returns list of results for each entry.
+Returns the status of an asynchronous job for [move_batch:2](#filesmove_batch:2-see-docs). It returns list of results for each entry.
 
 ```js
 dropbox({
@@ -837,7 +834,7 @@ dropbox({
 
 
 ### files/save_url ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-save_url))
-Save a specified URL into a file in user's Dropbox. If the given path already exists, the file will be renamed to avoid the conflict (e.g. myfile (1).txt).
+Save the data from a specified URL into a file in user's Dropbox. Note that the transfer from the URL must complete within 5 minutes, or the operation will time out and the job will fail. If the given path already exists, the file will be renamed to avoid the conflict (e.g. myfile (1).txt).
 
 ```js
 dropbox({
@@ -1314,7 +1311,7 @@ dropbox({
 
 
 ### sharing/add_folder_member ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-add_folder_member))
-Allows an owner or editor (if the ACL update policy allows) of a shared folder to add another member. For the new member to get access to all the functionality for this folder, you will need to call [mount_folder](#sharingmount_folder-see-docs) on their behalf. Apps must have full Dropbox access to use this endpoint.
+Allows an owner or editor (if the ACL update policy allows) of a shared folder to add another member. For the new member to get access to all the functionality for this folder, you will need to call [mount_folder](#sharingmount_folder-see-docs) on their behalf.
 
 ```js
 dropbox({
@@ -1344,7 +1341,7 @@ dropbox({
 
 
 ### sharing/check_job_status ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-check_job_status))
-Returns the status of an asynchronous job. Apps must have full Dropbox access to use this endpoint.
+Returns the status of an asynchronous job.
 
 ```js
 dropbox({
@@ -1359,7 +1356,7 @@ dropbox({
 
 
 ### sharing/check_remove_member_job_status ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-check_remove_member_job_status))
-Returns the status of an asynchronous job for sharing a folder. Apps must have full Dropbox access to use this endpoint.
+Returns the status of an asynchronous job for sharing a folder.
 
 ```js
 dropbox({
@@ -1374,7 +1371,7 @@ dropbox({
 
 
 ### sharing/check_share_job_status ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-check_share_job_status))
-Returns the status of an asynchronous job for sharing a folder. Apps must have full Dropbox access to use this endpoint.
+Returns the status of an asynchronous job for sharing a folder.
 
 ```js
 dropbox({
@@ -1439,7 +1436,7 @@ dropbox({
 
 
 ### sharing/get_folder_metadata ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-get_folder_metadata))
-Returns shared folder metadata by its folder ID. Apps must have full Dropbox access to use this endpoint.
+Returns shared folder metadata by its folder ID.
 
 ```js
 dropbox({
@@ -1538,7 +1535,7 @@ dropbox({
 
 
 ### sharing/list_folder_members ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_folder_members))
-Returns shared folder membership by its folder ID. Apps must have full Dropbox access to use this endpoint.
+Returns shared folder membership by its folder ID.
 
 ```js
 dropbox({
@@ -1555,7 +1552,7 @@ dropbox({
 
 
 ### sharing/list_folder_members/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_folder_members-continue))
-Once a cursor has been retrieved from [list_folder_members](#sharinglist_folder_members-see-docs), use this to paginate through all shared folder members. Apps must have full Dropbox access to use this endpoint.
+Once a cursor has been retrieved from [list_folder_members](#sharinglist_folder_members-see-docs), use this to paginate through all shared folder members.
 
 ```js
 dropbox({
@@ -1570,7 +1567,7 @@ dropbox({
 
 
 ### sharing/list_folders ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_folders))
-Return the list of all shared folders the current user has access to. Apps must have full Dropbox access to use this endpoint.
+Return the list of all shared folders the current user has access to.
 
 ```js
 dropbox({
@@ -1586,7 +1583,7 @@ dropbox({
 
 
 ### sharing/list_folders/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_folders-continue))
-Once a cursor has been retrieved from [list_folders](#sharinglist_folders-see-docs), use this to paginate through all shared folders. The cursor must come from a previous call to [list_folders](#sharinglist_folders-see-docs) or [list_folders/continue](#sharinglist_folderscontinue-see-docs). Apps must have full Dropbox access to use this endpoint.
+Once a cursor has been retrieved from [list_folders](#sharinglist_folders-see-docs), use this to paginate through all shared folders. The cursor must come from a previous call to [list_folders](#sharinglist_folders-see-docs) or [list_folders/continue](#sharinglist_folderscontinue-see-docs).
 
 ```js
 dropbox({
@@ -1601,7 +1598,7 @@ dropbox({
 
 
 ### sharing/list_mountable_folders ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_mountable_folders))
-Return the list of all shared folders the current user can mount or unmount. Apps must have full Dropbox access to use this endpoint.
+Return the list of all shared folders the current user can mount or unmount.
 
 ```js
 dropbox({
@@ -1617,7 +1614,7 @@ dropbox({
 
 
 ### sharing/list_mountable_folders/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_mountable_folders-continue))
-Once a cursor has been retrieved from [list_mountable_folders](#sharinglist_mountable_folders-see-docs), use this to paginate through all mountable shared folders. The cursor must come from a previous call to [list_mountable_folders](#sharinglist_mountable_folders-see-docs) or [list_mountable_folders/continue](#sharinglist_mountable_folderscontinue-see-docs). Apps must have full Dropbox access to use this endpoint.
+Once a cursor has been retrieved from [list_mountable_folders](#sharinglist_mountable_folders-see-docs), use this to paginate through all mountable shared folders. The cursor must come from a previous call to [list_mountable_folders](#sharinglist_mountable_folders-see-docs) or [list_mountable_folders/continue](#sharinglist_mountable_folderscontinue-see-docs).
 
 ```js
 dropbox({
@@ -1697,7 +1694,7 @@ dropbox({
 
 
 ### sharing/mount_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-mount_folder))
-The current user mounts the designated folder. Mount a shared folder for a user after they have been added as a member. Once mounted, the shared folder will appear in their Dropbox. Apps must have full Dropbox access to use this endpoint.
+The current user mounts the designated folder. Mount a shared folder for a user after they have been added as a member. Once mounted, the shared folder will appear in their Dropbox.
 
 ```js
 dropbox({
@@ -1712,7 +1709,7 @@ dropbox({
 
 
 ### sharing/relinquish_file_membership ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-relinquish_file_membership))
-The current user relinquishes their membership in the designated file. Note that the current user may still have inherited access to this file through the parent folder. Apps must have full Dropbox access to use this endpoint.
+The current user relinquishes their membership in the designated file. Note that the current user may still have inherited access to this file through the parent folder.
 
 ```js
 dropbox({
@@ -1727,7 +1724,7 @@ dropbox({
 
 
 ### sharing/relinquish_folder_membership ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-relinquish_folder_membership))
-The current user relinquishes their membership in the designated shared folder and will no longer have access to the folder.  A folder owner cannot relinquish membership in their own folder. This will run synchronously if leave_a_copy is false, and asynchronously if leave_a_copy is true. Apps must have full Dropbox access to use this endpoint.
+The current user relinquishes their membership in the designated shared folder and will no longer have access to the folder.  A folder owner cannot relinquish membership in their own folder. This will run synchronously if leave_a_copy is false, and asynchronously if leave_a_copy is true.
 
 ```js
 dropbox({
@@ -1762,7 +1759,7 @@ dropbox({
 
 
 ### sharing/remove_folder_member ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-remove_folder_member))
-Allows an owner or editor (if the ACL update policy allows) of a shared folder to remove another member. Apps must have full Dropbox access to use this endpoint.
+Allows an owner or editor (if the ACL update policy allows) of a shared folder to remove another member.
 
 ```js
 dropbox({
@@ -1813,7 +1810,7 @@ dropbox({
 
 
 ### sharing/share_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-share_folder))
-Share a folder with collaborators. Most sharing will be completed synchronously. Large folders will be completed asynchronously. To make testing the async case repeatable, set `ShareFolderArg.force_async`. If a ShareFolderLaunch.async_job_id is returned, you'll need to call [check_share_job_status](#sharingcheck_share_job_status-see-docs) until the action completes to get the metadata for the folder. Apps must have full Dropbox access to use this endpoint.
+Share a folder with collaborators. Most sharing will be completed synchronously. Large folders will be completed asynchronously. To make testing the async case repeatable, set `ShareFolderArg.force_async`. If a ShareFolderLaunch.async_job_id is returned, you'll need to call [check_share_job_status](#sharingcheck_share_job_status-see-docs) until the action completes to get the metadata for the folder.
 
 ```js
 dropbox({
@@ -1833,7 +1830,7 @@ dropbox({
 
 
 ### sharing/transfer_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-transfer_folder))
-Transfer ownership of a shared folder to a member of the shared folder. User must have AccessLevel.owner access to the shared folder to perform a transfer. Apps must have full Dropbox access to use this endpoint.
+Transfer ownership of a shared folder to a member of the shared folder. User must have AccessLevel.owner access to the shared folder to perform a transfer.
 
 ```js
 dropbox({
@@ -1849,7 +1846,7 @@ dropbox({
 
 
 ### sharing/unmount_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-unmount_folder))
-The current user unmounts the designated folder. They can re-mount the folder at a later time using [mount_folder](#sharingmount_folder-see-docs). Apps must have full Dropbox access to use this endpoint.
+The current user unmounts the designated folder. They can re-mount the folder at a later time using [mount_folder](#sharingmount_folder-see-docs).
 
 ```js
 dropbox({
@@ -1879,7 +1876,7 @@ dropbox({
 
 
 ### sharing/unshare_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-unshare_folder))
-Allows a shared folder owner to unshare the folder. You'll need to call [check_job_status](#sharingcheck_job_status-see-docs) to determine if the action has completed successfully. Apps must have full Dropbox access to use this endpoint.
+Allows a shared folder owner to unshare the folder. You'll need to call [check_job_status](#sharingcheck_job_status-see-docs) to determine if the action has completed successfully.
 
 ```js
 dropbox({
@@ -1915,7 +1912,7 @@ dropbox({
 
 
 ### sharing/update_folder_member ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-update_folder_member))
-Allows an owner or editor of a shared folder to update another member's permissions. Apps must have full Dropbox access to use this endpoint.
+Allows an owner or editor of a shared folder to update another member's permissions.
 
 ```js
 dropbox({
@@ -1935,7 +1932,7 @@ dropbox({
 
 
 ### sharing/update_folder_policy ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-update_folder_policy))
-Update the sharing policies for a shared folder. User must have AccessLevel.owner access to the shared folder to update its policies. Apps must have full Dropbox access to use this endpoint.
+Update the sharing policies for a shared folder. User must have AccessLevel.owner access to the shared folder to update its policies.
 
 ```js
 dropbox({
