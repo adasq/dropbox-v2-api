@@ -130,6 +130,8 @@ dropbox({
 .pipe(fs.createWriteStream('./image.jpg'));
 ```
 
+Problems with downloading? More [here](#download-issues)
+
 #### download & upload
 
 You can easely use streams: 
@@ -245,6 +247,10 @@ function sessionFinish(sessionId) {
     });
 }
 ```
+
+### Downloading issues
+
+1. test
 
 #### check [test cases][tests] or [examples][examples] for more examples...
 
