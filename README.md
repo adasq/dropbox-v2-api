@@ -130,7 +130,7 @@ dropbox({
 .pipe(fs.createWriteStream('./image.jpg'));
 ```
 
-Problems with downloading? More [here](#download-issues)
+Problems with downloading? More [here](#downloading-issues)
 
 #### download & upload
 
@@ -250,7 +250,10 @@ function sessionFinish(sessionId) {
 
 ### Downloading issues
 
-1. test
+1. `FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory`
+
+You can increase default your memory limit for an app:
+`NODE_OPTIONS=--max_old_space_size= 4096 node app.js` where `4096` stands for 4GB.
 
 #### check [test cases][tests] or [examples][examples] for more examples...
 
