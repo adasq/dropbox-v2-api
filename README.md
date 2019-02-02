@@ -252,8 +252,8 @@ function sessionFinish(sessionId) {
 
 1. `FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory`
 
-You can increase default your memory limit for an app:
-`NODE_OPTIONS=--max_old_space_size= 4096 node app.js` where `4096` stands for 4GB.
+You can increase your default memory limit for an app:
+`$ NODE_OPTIONS=--max_old_space_size= 4096 node app.js` where `4096` stands for 4GB.
 
 #### check [test cases][tests] or [examples][examples] for more examples...
 
