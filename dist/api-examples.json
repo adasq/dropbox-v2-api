@@ -1296,6 +1296,68 @@
 			}
 		}
 	},
+	"file_requests/delete": {
+		"uri": "https://api.dropboxapi.com/2/file_requests/delete",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Update a file request.",
+		"parameters": {
+			"list": [
+				{
+					"name": "ids",
+					"type": "List of (String(min_length=1, pattern=\"[-_0-9a-zA-Z]+\"))",
+					"desc": "List IDs of the file requests to delete."
+				}
+			],
+			"example": {
+				"ids": [
+					"oaCAVmEyrqYnkZX9955Y",
+					"BaZmehYoXMPtaRmfTbSG"
+				]
+			}
+		},
+		"returnParameters": {
+			"file_requests": [
+				{
+					"id": "oaCAVmEyrqYnkZX9955Y",
+					"url": "https://www.dropbox.com/request/oaCAVmEyrqYnkZX9955Y",
+					"title": "Homework submission",
+					"created": "2015-10-05T17:00:00Z",
+					"is_open": true,
+					"file_count": 3,
+					"destination": "/File Requests/Homework",
+					"deadline": {
+						"deadline": "2020-10-12T17:00:00Z",
+						"allow_late_uploads": {
+							".tag": "seven_days"
+						}
+					}
+				},
+				{
+					"id": "BAJ7IrRGicQKGToykQdB",
+					"url": "https://www.dropbox.com/request/BAJ7IrRGjcQKGToykQdB",
+					"title": "Photo contest submission",
+					"created": "2015-11-02T04:00:00Z",
+					"is_open": true,
+					"file_count": 105,
+					"destination": "/Photo contest entries",
+					"deadline": {
+						"deadline": "2020-10-12T17:00:00Z"
+					}
+				},
+				{
+					"id": "rxwMPvK3ATTa0VxOJu5T",
+					"url": "https://www.dropbox.com/request/rxwMPvK3ATTa0VxOJu5T",
+					"title": "Wedding photo submission",
+					"created": "2015-12-15T13:02:00Z",
+					"is_open": true,
+					"file_count": 37,
+					"destination": "/Wedding photos"
+				}
+			]
+		}
+	},
 	"file_requests/get": {
 		"uri": "https://api.dropboxapi.com/2/file_requests/get",
 		"requiresAuthHeader": true,
@@ -4969,7 +5031,7 @@
 				},
 				{
 					"name": "start",
-					"type": "UInt64",
+					"type": "UInt64(max=9999)",
 					"desc": "The starting index within the search results (used for paging). The default for this field is 0."
 				},
 				{

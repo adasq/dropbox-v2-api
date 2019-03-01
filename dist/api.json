@@ -143,6 +143,15 @@
 			"available": true
 		}
 	},
+	"file_requests/delete": {
+		"uri": "https://api.dropboxapi.com/2/file_requests/delete",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
 	"file_requests/get": {
 		"uri": "https://api.dropboxapi.com/2/file_requests/get",
 		"requiresAuthHeader": true,
