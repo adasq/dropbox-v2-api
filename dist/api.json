@@ -162,12 +162,21 @@
 		}
 	},
 	"file_requests/list": {
-		"uri": "https://api.dropboxapi.com/2/file_requests/list",
+		"uri": "https://api.dropboxapi.com/2/file_requests/list_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
 		"parameters": {
-			"available": false
+			"available": true
+		}
+	},
+	"file_requests/list/continue": {
+		"uri": "https://api.dropboxapi.com/2/file_requests/list/continue",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
 		}
 	},
 	"file_requests/update": {

@@ -1393,14 +1393,22 @@
 		}
 	},
 	"file_requests/list": {
-		"uri": "https://api.dropboxapi.com/2/file_requests/list",
+		"uri": "https://api.dropboxapi.com/2/file_requests/list_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
 		"description": "Returns a list of file requests owned by this user. For apps with the app folder permission, this will only return file requests with destinations in the app folder.",
 		"parameters": {
-			"list": [],
-			"example": null
+			"list": [
+				{
+					"name": "limit",
+					"type": "UInt64",
+					"desc": "The maximum number of file requests that should be returned per request. The default for this field is 1000."
+				}
+			],
+			"example": {
+				"limit": 1000
+			}
 		},
 		"returnParameters": {
 			"file_requests": [
@@ -1440,7 +1448,70 @@
 					"file_count": 37,
 					"destination": "/Wedding photos"
 				}
-			]
+			],
+			"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu",
+			"has_more": true
+		}
+	},
+	"file_requests/list/continue": {
+		"uri": "https://api.dropboxapi.com/2/file_requests/list/continue",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Once a cursor has been retrieved from [list:2](#file_requestslist:2-see-docs), use this to paginate through all file requests. The cursor must come from a previous call to [list:2](#file_requestslist:2-see-docs) or [list/continue](#file_requestslistcontinue-see-docs).",
+		"parameters": {
+			"list": [
+				{
+					"name": "cursor",
+					"type": "String",
+					"desc": "The cursor returned by the previous API call specified in the endpoint description."
+				}
+			],
+			"example": {
+				"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
+			}
+		},
+		"returnParameters": {
+			"file_requests": [
+				{
+					"id": "oaCAVmEyrqYnkZX9955Y",
+					"url": "https://www.dropbox.com/request/oaCAVmEyrqYnkZX9955Y",
+					"title": "Homework submission",
+					"created": "2015-10-05T17:00:00Z",
+					"is_open": true,
+					"file_count": 3,
+					"destination": "/File Requests/Homework",
+					"deadline": {
+						"deadline": "2020-10-12T17:00:00Z",
+						"allow_late_uploads": {
+							".tag": "seven_days"
+						}
+					}
+				},
+				{
+					"id": "BAJ7IrRGicQKGToykQdB",
+					"url": "https://www.dropbox.com/request/BAJ7IrRGjcQKGToykQdB",
+					"title": "Photo contest submission",
+					"created": "2015-11-02T04:00:00Z",
+					"is_open": true,
+					"file_count": 105,
+					"destination": "/Photo contest entries",
+					"deadline": {
+						"deadline": "2020-10-12T17:00:00Z"
+					}
+				},
+				{
+					"id": "rxwMPvK3ATTa0VxOJu5T",
+					"url": "https://www.dropbox.com/request/rxwMPvK3ATTa0VxOJu5T",
+					"title": "Wedding photo submission",
+					"created": "2015-12-15T13:02:00Z",
+					"is_open": true,
+					"file_count": 37,
+					"destination": "/Wedding photos"
+				}
+			],
+			"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu",
+			"has_more": true
 		}
 	},
 	"file_requests/update": {
@@ -2055,7 +2126,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Copy multiple files or folders to different locations at once in the user's Dropbox. This route will replace [copy_batch](#filescopy_batch-see-docs). The main difference is this route will return status for each entry, while [copy_batch](#filescopy_batch-see-docs) raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async copy job in background. Please use [copy_batch/check:2](#filescopy_batchcheck:2-see-docs) to check the job status.",
+		"description": "Copy multiple files or folders to different locations at once in the user's Dropbox. This route will replace [copy_batch:1](#filescopy_batch:1-see-docs). The main difference is this route will return status for each entry, while [copy_batch:1](#filescopy_batch:1-see-docs) raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async copy job in background. Please use [copy_batch/check:2](#filescopy_batchcheck:2-see-docs) to check the job status.",
 		"parameters": {
 			"list": [
 				{
@@ -4706,7 +4777,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Move multiple files or folders to different locations at once in the user's Dropbox. This route will replace [move_batch:2](#filesmove_batch:2-see-docs). The main difference is this route will return status for each entry, while [move_batch](#filesmove_batch-see-docs) raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async move job in background. Please use [move_batch/check:2](#filesmove_batchcheck:2-see-docs) to check the job status.",
+		"description": "Move multiple files or folders to different locations at once in the user's Dropbox. This route will replace [move_batch:1](#filesmove_batch:1-see-docs). The main difference is this route will return status for each entry, while [move_batch:1](#filesmove_batch:1-see-docs) raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async move job in background. Please use [move_batch/check:2](#filesmove_batchcheck:2-see-docs) to check the job status.",
 		"parameters": {
 			"list": [
 				{
