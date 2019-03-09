@@ -4,23 +4,7 @@ const ejs = require('ejs');
 const beautify = require('js-beautify').js_beautify;
 
 var parsedApiDescription = JSON.parse(fs.readFileSync(path.join(__dirname, '../dist/api-examples.json')));
-
-function stringify(obj_from_json) {
-    if(typeof obj_from_json !== "object" || Array.isArray(obj_from_json)){
-        // not an object, stringify using native function
-        return JSON.stringify(obj_from_json);
-    }
-    // Implements recursive object serialization according to JSON spec
-    // but without quotes around the keys.
-    let props = Object
-        .keys(obj_from_json)
-        .map(key => `${key}:${stringify(obj_from_json[key])}`)
-        .join(",");
-    return `{${props}}`;
-}
-
-
-const options = { };
+const options = {};
 
 const apiNameList = Object.keys(parsedApiDescription);
 
@@ -51,14 +35,14 @@ function prepareExampleByApiDescription(apiDescription, apiName){
     'RPC': `
 dropbox({
 resource: '${apiName}'<% if(parameters.example) { %>,
-parameters: <%- stringify(parameters.example, null, '') %> <% } %>}, (err, result, response) => {
+parameters: <%- JSON.stringify(parameters.example, null, '') %> <% } %>}, (err, result, response) => {
     //see docs for \`result\` parameters
 });
     `,
     'UPLOAD': `
         const stream = dropbox({
             resource: '${apiName}',
-            parameters: <%- stringify(parameters.example, null, '') %>}, (err, result, response) => {
+            parameters: <%- JSON.stringify(parameters.example, null, '') %>}, (err, result, response) => {
             //see docs for \`result\` parameters
         });
 
@@ -67,7 +51,7 @@ parameters: <%- stringify(parameters.example, null, '') %> <% } %>}, (err, resul
     'DOWNLOAD': `
         const stream = dropbox({
             resource: '${apiName}',
-            parameters: <%- stringify(parameters.example, null, '') %>}, (err, result, response) => {
+            parameters: <%- JSON.stringify(parameters.example, null, '') %>}, (err, result, response) => {
             //see docs for \`result\` parameters
         });
 
@@ -77,7 +61,7 @@ parameters: <%- stringify(parameters.example, null, '') %> <% } %>}, (err, resul
     }
 
     const template = ejs.compile(templates[apiDescription.category], options);
-    const code = beautify(template({ ...apiDescription, stringify }), { indent_size: 4 }).replace(/\"/g, '\'');
+    const code = beautify(template(apiDescription), { indent_size: 4 }).replace(/\"/g, '\'');
 
     return {
         docs: prepareUrl(),

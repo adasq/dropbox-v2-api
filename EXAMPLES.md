@@ -6,8 +6,8 @@ Creates an OAuth 2.0 access token from the supplied OAuth 1.0 access token.
 dropbox({
     resource: 'auth/token/from_oauth1',
     parameters: {
-        oauth1_token: 'qievr8hamyg6ndck',
-        oauth1_token_secret: 'qomoftv0472git7'
+        'oauth1_token': 'qievr8hamyg6ndck',
+        'oauth1_token_secret': 'qomoftv0472git7'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -46,7 +46,7 @@ Removes manually added contacts from the given list.
 dropbox({
     resource: 'contacts/delete_manual_contacts_batch',
     parameters: {
-        email_addresses: ['contactemailaddress1@domain.com', 'contactemailaddress2@domain.com']
+        'email_addresses': ['contactemailaddress1@domain.com', 'contactemailaddress2@domain.com']
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -61,8 +61,8 @@ Add property groups to a Dropbox file. See [templates/add_for_user](#file_proper
 dropbox({
     resource: 'file_properties/properties/add',
     parameters: {
-        path: '/my_awesome/word.docx',
-        property_groups: [{
+        'path': '/my_awesome/word.docx',
+        'property_groups': [{
             'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
             'fields': [{
                 'name': 'Security Policy',
@@ -83,8 +83,8 @@ Overwrite property groups associated with a file. This endpoint should be used i
 dropbox({
     resource: 'file_properties/properties/overwrite',
     parameters: {
-        path: '/my_awesome/word.docx',
-        property_groups: [{
+        'path': '/my_awesome/word.docx',
+        'property_groups': [{
             'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
             'fields': [{
                 'name': 'Security Policy',
@@ -105,8 +105,8 @@ Permanently removes the specified property group from the file. To remove specif
 dropbox({
     resource: 'file_properties/properties/remove',
     parameters: {
-        path: '/my_awesome/word.docx',
-        property_template_ids: ['ptid:1a5n2i6d3OYEAAAAAAAAAYa']
+        'path': '/my_awesome/word.docx',
+        'property_template_ids': ['ptid:1a5n2i6d3OYEAAAAAAAAAYa']
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -121,7 +121,7 @@ Search across property templates for particular property field values.
 dropbox({
     resource: 'file_properties/properties/search',
     parameters: {
-        queries: [{
+        'queries': [{
             'query': 'Confidential',
             'mode': {
                 '.tag': 'field_name',
@@ -129,7 +129,7 @@ dropbox({
             },
             'logical_operator': 'or_operator'
         }],
-        template_filter: 'filter_none'
+        'template_filter': 'filter_none'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -144,7 +144,7 @@ Once a cursor has been retrieved from [properties/search](#file_propertiesproper
 dropbox({
     resource: 'file_properties/properties/search/continue',
     parameters: {
-        cursor: 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
+        'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -159,8 +159,8 @@ Add, update or remove properties associated with the supplied file and templates
 dropbox({
     resource: 'file_properties/properties/update',
     parameters: {
-        path: '/my_awesome/word.docx',
-        update_property_groups: [{
+        'path': '/my_awesome/word.docx',
+        'update_property_groups': [{
             'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
             'add_or_update_fields': [{
                 'name': 'Security Policy',
@@ -182,9 +182,9 @@ Add a template associated with a user. See [properties/add](#file_propertiesprop
 dropbox({
     resource: 'file_properties/templates/add_for_user',
     parameters: {
-        name: 'Security',
-        description: 'These properties describe how confidential this file or folder is.',
-        fields: [{
+        'name': 'Security',
+        'description': 'These properties describe how confidential this file or folder is.',
+        'fields': [{
             'name': 'Security Policy',
             'description': 'This is the security policy of the file or folder described.\nPolicies can be Confidential, Public or Internal.',
             'type': 'string'
@@ -203,7 +203,7 @@ Get the schema for a specified template. This endpoint can't be called on a team
 dropbox({
     resource: 'file_properties/templates/get_for_user',
     parameters: {
-        template_id: 'ptid:1a5n2i6d3OYEAAAAAAAAAYa'
+        'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -230,7 +230,7 @@ Permanently removes the specified template created from [templates/add_for_user]
 dropbox({
     resource: 'file_properties/templates/remove_for_user',
     parameters: {
-        template_id: 'ptid:1a5n2i6d3OYEAAAAAAAAAYa'
+        'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -245,10 +245,10 @@ Update a template associated with a user. This route can update the template nam
 dropbox({
     resource: 'file_properties/templates/update_for_user',
     parameters: {
-        template_id: 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
-        name: 'New Security Template Name',
-        description: 'These properties will describe how confidential this file or folder is.',
-        add_fields: [{
+        'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
+        'name': 'New Security Template Name',
+        'description': 'These properties will describe how confidential this file or folder is.',
+        'add_fields': [{
             'name': 'Security Policy',
             'description': 'This is the security policy of the file or folder described.\nPolicies can be Confidential, Public or Internal.',
             'type': 'string'
@@ -267,13 +267,13 @@ Creates a file request for this user.
 dropbox({
     resource: 'file_requests/create',
     parameters: {
-        title: 'Homework submission',
-        destination: '/File Requests/Homework',
-        deadline: {
-            deadline: '2020-10-12T17:00:00Z',
-            allow_late_uploads: 'seven_days'
+        'title': 'Homework submission',
+        'destination': '/File Requests/Homework',
+        'deadline': {
+            'deadline': '2020-10-12T17:00:00Z',
+            'allow_late_uploads': 'seven_days'
         },
-        open: true
+        'open': true
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -288,7 +288,7 @@ Update a file request.
 dropbox({
     resource: 'file_requests/delete',
     parameters: {
-        ids: ['oaCAVmEyrqYnkZX9955Y', 'BaZmehYoXMPtaRmfTbSG']
+        'ids': ['oaCAVmEyrqYnkZX9955Y', 'BaZmehYoXMPtaRmfTbSG']
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -303,7 +303,7 @@ Returns the specified file request.
 dropbox({
     resource: 'file_requests/get',
     parameters: {
-        id: 'oaCAVmEyrqYnkZX9955Y'
+        'id': 'oaCAVmEyrqYnkZX9955Y'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -318,7 +318,7 @@ Returns a list of file requests owned by this user. For apps with the app folder
 dropbox({
     resource: 'file_requests/list',
     parameters: {
-        limit: 1000
+        'limit': 1000
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -333,7 +333,7 @@ Once a cursor has been retrieved from [list:2](#file_requestslist:2-see-docs), u
 dropbox({
     resource: 'file_requests/list/continue',
     parameters: {
-        cursor: 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
+        'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -348,14 +348,15 @@ Update a file request.
 dropbox({
     resource: 'file_requests/update',
     parameters: {
-        id: 'oaCAVmEyrqYnkZX9955Y',
-        title: 'Homework submission',
-        destination: '/File Requests/Homework',
-        deadline: {.tag: 'update',
-            deadline: '2020-10-12T17:00:00Z',
-            allow_late_uploads: 'seven_days'
+        'id': 'oaCAVmEyrqYnkZX9955Y',
+        'title': 'Homework submission',
+        'destination': '/File Requests/Homework',
+        'deadline': {
+            '.tag': 'update',
+            'deadline': '2020-10-12T17:00:00Z',
+            'allow_late_uploads': 'seven_days'
         },
-        open: true
+        'open': true
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -370,11 +371,11 @@ Copy a file or folder to a different location in the user's Dropbox. If the sour
 dropbox({
     resource: 'files/copy',
     parameters: {
-        from_path: '/Homework/math',
-        to_path: '/Homework/algebra',
-        allow_shared_folder: false,
-        autorename: false,
-        allow_ownership_transfer: false
+        'from_path': '/Homework/math',
+        'to_path': '/Homework/algebra',
+        'allow_shared_folder': false,
+        'autorename': false,
+        'allow_ownership_transfer': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -389,11 +390,11 @@ Copy multiple files or folders to different locations at once in the user's Drop
 dropbox({
     resource: 'files/copy_batch',
     parameters: {
-        entries: [{
+        'entries': [{
             'from_path': '/Homework/math',
             'to_path': '/Homework/algebra'
         }],
-        autorename: false
+        'autorename': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -408,7 +409,7 @@ Returns the status of an asynchronous job for [copy_batch:2](#filescopy_batch:2-
 dropbox({
     resource: 'files/copy_batch/check',
     parameters: {
-        async_job_id: '34g93hh34h04y384084'
+        'async_job_id': '34g93hh34h04y384084'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -423,7 +424,7 @@ Get a copy reference to a file or folder. This reference string can be used to s
 dropbox({
     resource: 'files/copy_reference/get',
     parameters: {
-        path: '/video.mp4'
+        'path': '/video.mp4'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -438,8 +439,8 @@ Save a copy reference returned by [copy_reference/get](#filescopy_referenceget-s
 dropbox({
     resource: 'files/copy_reference/save',
     parameters: {
-        copy_reference: 'z1X6ATl6aWtzOGq0c3g5Ng',
-        path: '/video.mp4'
+        'copy_reference': 'z1X6ATl6aWtzOGq0c3g5Ng',
+        'path': '/video.mp4'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -454,8 +455,8 @@ Create a folder at a given path.
 dropbox({
     resource: 'files/create_folder',
     parameters: {
-        path: '/Homework/math',
-        autorename: false
+        'path': '/Homework/math',
+        'autorename': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -470,9 +471,9 @@ Create multiple folders at once. This route is asynchronous for large batches, w
 dropbox({
     resource: 'files/create_folder_batch',
     parameters: {
-        paths: ['/Homework/math'],
-        autorename: false,
-        force_async: false
+        'paths': ['/Homework/math'],
+        'autorename': false,
+        'force_async': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -487,7 +488,7 @@ Returns the status of an asynchronous job for [create_folder_batch](#filescreate
 dropbox({
     resource: 'files/create_folder_batch/check',
     parameters: {
-        async_job_id: '34g93hh34h04y384084'
+        'async_job_id': '34g93hh34h04y384084'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -502,7 +503,7 @@ Delete the file or folder at a given path. If the path is a folder, all its cont
 dropbox({
     resource: 'files/delete',
     parameters: {
-        path: '/Homework/math/Prime_Numbers.txt'
+        'path': '/Homework/math/Prime_Numbers.txt'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -517,7 +518,7 @@ Delete multiple files/folders at once. This route is asynchronous, which returns
 dropbox({
     resource: 'files/delete_batch',
     parameters: {
-        entries: [{
+        'entries': [{
             'path': '/Homework/math/Prime_Numbers.txt'
         }]
     }
@@ -534,7 +535,7 @@ Returns the status of an asynchronous job for [delete_batch](#filesdelete_batch-
 dropbox({
     resource: 'files/delete_batch/check',
     parameters: {
-        async_job_id: '34g93hh34h04y384084'
+        'async_job_id': '34g93hh34h04y384084'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -549,7 +550,7 @@ Download a file from a user's Dropbox.
 const stream = dropbox({
     resource: 'files/download',
     parameters: {
-        path: '/Homework/math/Prime_Numbers.txt'
+        'path': '/Homework/math/Prime_Numbers.txt'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -567,7 +568,7 @@ Download a folder from the user's Dropbox, as a zip file. The folder must be les
 const stream = dropbox({
     resource: 'files/download_zip',
     parameters: {
-        path: '/Homework/math'
+        'path': '/Homework/math'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -585,10 +586,10 @@ Returns the metadata for a file or folder. Note: Metadata for the root folder is
 dropbox({
     resource: 'files/get_metadata',
     parameters: {
-        path: '/Homework/math',
-        include_media_info: false,
-        include_deleted: false,
-        include_has_explicit_shared_members: false
+        'path': '/Homework/math',
+        'include_media_info': false,
+        'include_deleted': false,
+        'include_has_explicit_shared_members': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -603,7 +604,7 @@ Get a preview for a file. Currently, PDF previews are generated for files with t
 const stream = dropbox({
     resource: 'files/get_preview',
     parameters: {
-        path: '/word.docx'
+        'path': '/word.docx'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -621,7 +622,7 @@ Get a temporary link to stream content of a file. This link will expire in four 
 dropbox({
     resource: 'files/get_temporary_link',
     parameters: {
-        path: '/video.mp4'
+        'path': '/video.mp4'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -636,14 +637,14 @@ Get a one-time use temporary upload link to upload a file to a Dropbox location.
 dropbox({
     resource: 'files/get_temporary_upload_link',
     parameters: {
-        commit_info: {
-            path: '/Homework/math/Matrices.txt',
-            mode: 'add',
-            autorename: true,
-            mute: false,
-            strict_conflict: false
+        'commit_info': {
+            'path': '/Homework/math/Matrices.txt',
+            'mode': 'add',
+            'autorename': true,
+            'mute': false,
+            'strict_conflict': false
         },
-        duration: 3600
+        'duration': 3600
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -658,10 +659,10 @@ Get a thumbnail for an image. This method currently supports files with the foll
 const stream = dropbox({
     resource: 'files/get_thumbnail',
     parameters: {
-        path: '/image.jpg',
-        format: 'jpeg',
-        size: 'w64h64',
-        mode: 'strict'
+        'path': '/image.jpg',
+        'format': 'jpeg',
+        'size': 'w64h64',
+        'mode': 'strict'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -679,7 +680,7 @@ Get thumbnails for a list of images. We allow up to 25 thumbnails in a single ba
 dropbox({
     resource: 'files/get_thumbnail_batch',
     parameters: {
-        entries: [{
+        'entries': [{
             'path': '/image.jpg',
             'format': 'jpeg',
             'size': 'w64h64',
@@ -699,12 +700,12 @@ Starts returning the contents of a folder. If the result's ListFolderResult.has_
 dropbox({
     resource: 'files/list_folder',
     parameters: {
-        path: '/Homework/math',
-        recursive: false,
-        include_media_info: false,
-        include_deleted: false,
-        include_has_explicit_shared_members: false,
-        include_mounted_folders: true
+        'path': '/Homework/math',
+        'recursive': false,
+        'include_media_info': false,
+        'include_deleted': false,
+        'include_has_explicit_shared_members': false,
+        'include_mounted_folders': true
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -719,7 +720,7 @@ Once a cursor has been retrieved from [list_folder](#fileslist_folder-see-docs),
 dropbox({
     resource: 'files/list_folder/continue',
     parameters: {
-        cursor: 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
+        'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -734,12 +735,12 @@ A way to quickly get a cursor for the folder's state. Unlike [list_folder](#file
 dropbox({
     resource: 'files/list_folder/get_latest_cursor',
     parameters: {
-        path: '/Homework/math',
-        recursive: false,
-        include_media_info: false,
-        include_deleted: false,
-        include_has_explicit_shared_members: false,
-        include_mounted_folders: true
+        'path': '/Homework/math',
+        'recursive': false,
+        'include_media_info': false,
+        'include_deleted': false,
+        'include_has_explicit_shared_members': false,
+        'include_mounted_folders': true
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -754,8 +755,8 @@ A longpoll endpoint to wait for changes on an account. In conjunction with [list
 dropbox({
     resource: 'files/list_folder/longpoll',
     parameters: {
-        cursor: 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu',
-        timeout: 30
+        'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu',
+        'timeout': 30
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -770,9 +771,9 @@ Returns revisions for files based on a file path or a file id. The file path or 
 dropbox({
     resource: 'files/list_revisions',
     parameters: {
-        path: '/root/word.docx',
-        mode: 'path',
-        limit: 10
+        'path': '/root/word.docx',
+        'mode': 'path',
+        'limit': 10
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -787,11 +788,11 @@ Move a file or folder to a different location in the user's Dropbox. If the sour
 dropbox({
     resource: 'files/move',
     parameters: {
-        from_path: '/Homework/math',
-        to_path: '/Homework/algebra',
-        allow_shared_folder: false,
-        autorename: false,
-        allow_ownership_transfer: false
+        'from_path': '/Homework/math',
+        'to_path': '/Homework/algebra',
+        'allow_shared_folder': false,
+        'autorename': false,
+        'allow_ownership_transfer': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -806,12 +807,12 @@ Move multiple files or folders to different locations at once in the user's Drop
 dropbox({
     resource: 'files/move_batch',
     parameters: {
-        entries: [{
+        'entries': [{
             'from_path': '/Homework/math',
             'to_path': '/Homework/algebra'
         }],
-        autorename: false,
-        allow_ownership_transfer: false
+        'autorename': false,
+        'allow_ownership_transfer': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -826,7 +827,7 @@ Returns the status of an asynchronous job for [move_batch:2](#filesmove_batch:2-
 dropbox({
     resource: 'files/move_batch/check',
     parameters: {
-        async_job_id: '34g93hh34h04y384084'
+        'async_job_id': '34g93hh34h04y384084'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -841,7 +842,7 @@ Permanently delete the file or folder at a given path (see https://www.dropbox.c
 dropbox({
     resource: 'files/permanently_delete',
     parameters: {
-        path: '/Homework/math/Prime_Numbers.txt'
+        'path': '/Homework/math/Prime_Numbers.txt'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -856,8 +857,8 @@ Restore a specific revision of a file to the given path.
 dropbox({
     resource: 'files/restore',
     parameters: {
-        path: '/root/word.docx',
-        rev: 'a1c10ce0dd78'
+        'path': '/root/word.docx',
+        'rev': 'a1c10ce0dd78'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -872,8 +873,8 @@ Save the data from a specified URL into a file in user's Dropbox. Note that the 
 dropbox({
     resource: 'files/save_url',
     parameters: {
-        path: '/a.txt',
-        url: 'http://example.com/a.txt'
+        'path': '/a.txt',
+        'url': 'http://example.com/a.txt'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -888,7 +889,7 @@ Check the status of a [save_url](#filessave_url-see-docs) job.
 dropbox({
     resource: 'files/save_url/check_job_status',
     parameters: {
-        async_job_id: '34g93hh34h04y384084'
+        'async_job_id': '34g93hh34h04y384084'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -903,11 +904,11 @@ Searches for files and folders. Note: Recent changes may not immediately be refl
 dropbox({
     resource: 'files/search',
     parameters: {
-        path: '',
-        query: 'prime numbers',
-        start: 0,
-        max_results: 100,
-        mode: 'filename'
+        'path': '',
+        'query': 'prime numbers',
+        'start': 0,
+        'max_results': 100,
+        'mode': 'filename'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -922,11 +923,11 @@ Create a new file with the contents provided in the request. Do not use this to 
 const stream = dropbox({
     resource: 'files/upload',
     parameters: {
-        path: '/Homework/math/Matrices.txt',
-        mode: 'add',
-        autorename: true,
-        mute: false,
-        strict_conflict: false
+        'path': '/Homework/math/Matrices.txt',
+        'mode': 'add',
+        'autorename': true,
+        'mute': false,
+        'strict_conflict': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -943,11 +944,11 @@ Append more data to an upload session. When the parameter close is set, this cal
 const stream = dropbox({
     resource: 'files/upload_session/append',
     parameters: {
-        cursor: {
-            session_id: '1234faaf0678bcde',
-            offset: 0
+        'cursor': {
+            'session_id': '1234faaf0678bcde',
+            'offset': 0
         },
-        close: false
+        'close': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -964,16 +965,16 @@ Finish an upload session and save the uploaded data to the given file path. A si
 const stream = dropbox({
     resource: 'files/upload_session/finish',
     parameters: {
-        cursor: {
-            session_id: '1234faaf0678bcde',
-            offset: 0
+        'cursor': {
+            'session_id': '1234faaf0678bcde',
+            'offset': 0
         },
-        commit: {
-            path: '/Homework/math/Matrices.txt',
-            mode: 'add',
-            autorename: true,
-            mute: false,
-            strict_conflict: false
+        'commit': {
+            'path': '/Homework/math/Matrices.txt',
+            'mode': 'add',
+            'autorename': true,
+            'mute': false,
+            'strict_conflict': false
         }
     }
 }, (err, result, response) => {
@@ -991,7 +992,7 @@ This route helps you commit many files at once into a user's Dropbox. Use [uploa
 dropbox({
     resource: 'files/upload_session/finish_batch',
     parameters: {
-        entries: [{
+        'entries': [{
             'cursor': {
                 'session_id': '1234faaf0678bcde',
                 'offset': 0
@@ -1018,7 +1019,7 @@ Returns the status of an asynchronous job for [upload_session/finish_batch](#fil
 dropbox({
     resource: 'files/upload_session/finish_batch/check',
     parameters: {
-        async_job_id: '34g93hh34h04y384084'
+        'async_job_id': '34g93hh34h04y384084'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1033,7 +1034,7 @@ Upload sessions allow you to upload a single file in one or more requests, for e
 const stream = dropbox({
     resource: 'files/upload_session/start',
     parameters: {
-        close: false
+        'close': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1050,7 +1051,7 @@ Marks the given Paper doc as archived. Note: This action can be performed or und
 dropbox({
     resource: 'paper/docs/archive',
     parameters: {
-        doc_id: 'uaSvRuxvnkFa12PTkBv5q'
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1065,7 +1066,7 @@ Creates a new Paper doc with the provided content.
 const stream = dropbox({
     resource: 'paper/docs/create',
     parameters: {
-        import_format: 'markdown'
+        'import_format': 'markdown'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1082,8 +1083,8 @@ Exports and downloads Paper doc either as HTML or markdown.
 const stream = dropbox({
     resource: 'paper/docs/download',
     parameters: {
-        doc_id: 'uaSvRuxvnkFa12PTkBv5q',
-        export_format: 'markdown'
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'export_format': 'markdown'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1101,8 +1102,8 @@ Lists the users who are explicitly invited to the Paper folder in which the Pape
 dropbox({
     resource: 'paper/docs/folder_users/list',
     parameters: {
-        doc_id: 'uaSvRuxvnkFa12PTkBv5q',
-        limit: 100
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'limit': 100
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1117,8 +1118,8 @@ Once a cursor has been retrieved from [docs/folder_users/list](#paperdocsfolder_
 dropbox({
     resource: 'paper/docs/folder_users/list/continue',
     parameters: {
-        doc_id: 'uaSvRuxvnkFa12PTkBv5q',
-        cursor: 'U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd'
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'cursor': 'U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1133,7 +1134,7 @@ Retrieves folder information for the given Paper doc. This includes:   - folder 
 dropbox({
     resource: 'paper/docs/get_folder_info',
     parameters: {
-        doc_id: 'uaSvRuxvnkFa12PTkBv5q'
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1148,10 +1149,10 @@ Return the list of all Paper docs according to the argument specifications. To i
 dropbox({
     resource: 'paper/docs/list',
     parameters: {
-        filter_by: 'docs_created',
-        sort_by: 'modified',
-        sort_order: 'descending',
-        limit: 100
+        'filter_by': 'docs_created',
+        'sort_by': 'modified',
+        'sort_order': 'descending',
+        'limit': 100
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1166,7 +1167,7 @@ Once a cursor has been retrieved from [docs/list](#paperdocslist-see-docs), use 
 dropbox({
     resource: 'paper/docs/list/continue',
     parameters: {
-        cursor: 'U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd'
+        'cursor': 'U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1181,7 +1182,7 @@ Permanently deletes the given Paper doc. This operation is final as the doc cann
 dropbox({
     resource: 'paper/docs/permanently_delete',
     parameters: {
-        doc_id: 'uaSvRuxvnkFa12PTkBv5q'
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1196,7 +1197,7 @@ Gets the default sharing policy for the given Paper doc.
 dropbox({
     resource: 'paper/docs/sharing_policy/get',
     parameters: {
-        doc_id: 'uaSvRuxvnkFa12PTkBv5q'
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1211,10 +1212,10 @@ Sets the default sharing policy for the given Paper doc. The default 'team_shari
 dropbox({
     resource: 'paper/docs/sharing_policy/set',
     parameters: {
-        doc_id: 'uaSvRuxvnkFa12PTkBv5q',
-        sharing_policy: {
-            public_sharing_policy: 'people_with_link_can_edit',
-            team_sharing_policy: 'people_with_link_can_edit'
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'sharing_policy': {
+            'public_sharing_policy': 'people_with_link_can_edit',
+            'team_sharing_policy': 'people_with_link_can_edit'
         }
     }
 }, (err, result, response) => {
@@ -1230,10 +1231,10 @@ Updates an existing Paper doc with the provided content.
 const stream = dropbox({
     resource: 'paper/docs/update',
     parameters: {
-        doc_id: 'uaSvRuxvnkFa12PTkBv5q',
-        doc_update_policy: 'overwrite_all',
-        revision: 12345,
-        import_format: 'html'
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'doc_update_policy': 'overwrite_all',
+        'revision': 12345,
+        'import_format': 'html'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1250,16 +1251,16 @@ Allows an owner or editor to add users to a Paper doc or change their permission
 dropbox({
     resource: 'paper/docs/users/add',
     parameters: {
-        doc_id: 'uaSvRuxvnkFa12PTkBv5q',
-        members: [{
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'members': [{
             'member': {
                 '.tag': 'email',
                 'email': 'justin@example.com'
             },
             'permission_level': 'view_and_comment'
         }],
-        custom_message: 'Welcome to Paper.',
-        quiet: false
+        'custom_message': 'Welcome to Paper.',
+        'quiet': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1274,9 +1275,9 @@ Lists all users who visited the Paper doc or users with explicit access. This ca
 dropbox({
     resource: 'paper/docs/users/list',
     parameters: {
-        doc_id: 'uaSvRuxvnkFa12PTkBv5q',
-        limit: 100,
-        filter_by: 'shared'
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'limit': 100,
+        'filter_by': 'shared'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1291,8 +1292,8 @@ Once a cursor has been retrieved from [docs/users/list](#paperdocsuserslist-see-
 dropbox({
     resource: 'paper/docs/users/list/continue',
     parameters: {
-        doc_id: 'uaSvRuxvnkFa12PTkBv5q',
-        cursor: 'U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd'
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'cursor': 'U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1307,9 +1308,10 @@ Allows an owner or editor to remove users from a Paper doc using their email add
 dropbox({
     resource: 'paper/docs/users/remove',
     parameters: {
-        doc_id: 'uaSvRuxvnkFa12PTkBv5q',
-        member: {.tag: 'email',
-            email: 'justin@example.com'
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'member': {
+            '.tag': 'email',
+            'email': 'justin@example.com'
         }
     }
 }, (err, result, response) => {
@@ -1325,15 +1327,15 @@ Adds specified members to a file.
 dropbox({
     resource: 'sharing/add_file_member',
     parameters: {
-        file: 'id:3kmLmQFnf1AAAAAAAAAAAw',
-        members: [{
+        'file': 'id:3kmLmQFnf1AAAAAAAAAAAw',
+        'members': [{
             '.tag': 'email',
             'email': 'justin@example.com'
         }],
-        custom_message: 'This is a custom message about ACME.doc',
-        quiet: false,
-        access_level: 'viewer',
-        add_message_as_comment: false
+        'custom_message': 'This is a custom message about ACME.doc',
+        'quiet': false,
+        'access_level': 'viewer',
+        'add_message_as_comment': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1348,8 +1350,8 @@ Allows an owner or editor (if the ACL update policy allows) of a shared folder t
 dropbox({
     resource: 'sharing/add_folder_member',
     parameters: {
-        shared_folder_id: '84528192421',
-        members: [{
+        'shared_folder_id': '84528192421',
+        'members': [{
             'member': {
                 '.tag': 'email',
                 'email': 'justin@example.com'
@@ -1362,8 +1364,8 @@ dropbox({
             },
             'access_level': 'viewer'
         }],
-        quiet: false,
-        custom_message: 'Documentation for launch day'
+        'quiet': false,
+        'custom_message': 'Documentation for launch day'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1378,7 +1380,7 @@ Returns the status of an asynchronous job.
 dropbox({
     resource: 'sharing/check_job_status',
     parameters: {
-        async_job_id: '34g93hh34h04y384084'
+        'async_job_id': '34g93hh34h04y384084'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1393,7 +1395,7 @@ Returns the status of an asynchronous job for sharing a folder.
 dropbox({
     resource: 'sharing/check_remove_member_job_status',
     parameters: {
-        async_job_id: '34g93hh34h04y384084'
+        'async_job_id': '34g93hh34h04y384084'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1408,7 +1410,7 @@ Returns the status of an asynchronous job for sharing a folder.
 dropbox({
     resource: 'sharing/check_share_job_status',
     parameters: {
-        async_job_id: '34g93hh34h04y384084'
+        'async_job_id': '34g93hh34h04y384084'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1423,9 +1425,9 @@ Create a shared link with custom settings. If no settings are given then the def
 dropbox({
     resource: 'sharing/create_shared_link_with_settings',
     parameters: {
-        path: '/Prime_Numbers.txt',
-        settings: {
-            requested_visibility: 'public'
+        'path': '/Prime_Numbers.txt',
+        'settings': {
+            'requested_visibility': 'public'
         }
     }
 }, (err, result, response) => {
@@ -1441,8 +1443,8 @@ Returns shared file metadata.
 dropbox({
     resource: 'sharing/get_file_metadata',
     parameters: {
-        file: 'id:3kmLmQFnf1AAAAAAAAAAAw',
-        actions: []
+        'file': 'id:3kmLmQFnf1AAAAAAAAAAAw',
+        'actions': []
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1457,8 +1459,8 @@ Returns shared file metadata.
 dropbox({
     resource: 'sharing/get_file_metadata/batch',
     parameters: {
-        files: ['id:3kmLmQFnf1AAAAAAAAAAAw', 'id:VvTaJu2VZzAAAAAAAAAADQ'],
-        actions: []
+        'files': ['id:3kmLmQFnf1AAAAAAAAAAAw', 'id:VvTaJu2VZzAAAAAAAAAADQ'],
+        'actions': []
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1473,8 +1475,8 @@ Returns shared folder metadata by its folder ID.
 dropbox({
     resource: 'sharing/get_folder_metadata',
     parameters: {
-        shared_folder_id: '84528192421',
-        actions: []
+        'shared_folder_id': '84528192421',
+        'actions': []
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1489,8 +1491,8 @@ Download the shared link's file from a user's Dropbox.
 const stream = dropbox({
     resource: 'sharing/get_shared_link_file',
     parameters: {
-        url: 'https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0',
-        path: '/Prime_Numbers.txt'
+        'url': 'https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0',
+        'path': '/Prime_Numbers.txt'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1508,8 +1510,8 @@ Get the shared link's metadata.
 dropbox({
     resource: 'sharing/get_shared_link_metadata',
     parameters: {
-        url: 'https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0',
-        path: '/Prime_Numbers.txt'
+        'url': 'https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0',
+        'path': '/Prime_Numbers.txt'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1524,9 +1526,9 @@ Use to obtain the members who have been invited to a file, both inherited and un
 dropbox({
     resource: 'sharing/list_file_members',
     parameters: {
-        file: 'id:3kmLmQFnf1AAAAAAAAAAAw',
-        include_inherited: true,
-        limit: 100
+        'file': 'id:3kmLmQFnf1AAAAAAAAAAAw',
+        'include_inherited': true,
+        'limit': 100
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1541,8 +1543,8 @@ Get members of multiple files at once. The arguments to this route are more limi
 dropbox({
     resource: 'sharing/list_file_members/batch',
     parameters: {
-        files: ['id:3kmLmQFnf1AAAAAAAAAAAw', 'id:VvTaJu2VZzAAAAAAAAAADQ'],
-        limit: 10
+        'files': ['id:3kmLmQFnf1AAAAAAAAAAAw', 'id:VvTaJu2VZzAAAAAAAAAADQ'],
+        'limit': 10
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1557,7 +1559,7 @@ Once a cursor has been retrieved from [list_file_members](#sharinglist_file_memb
 dropbox({
     resource: 'sharing/list_file_members/continue',
     parameters: {
-        cursor: 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
+        'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1572,9 +1574,9 @@ Returns shared folder membership by its folder ID.
 dropbox({
     resource: 'sharing/list_folder_members',
     parameters: {
-        shared_folder_id: '84528192421',
-        actions: [],
-        limit: 10
+        'shared_folder_id': '84528192421',
+        'actions': [],
+        'limit': 10
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1589,7 +1591,7 @@ Once a cursor has been retrieved from [list_folder_members](#sharinglist_folder_
 dropbox({
     resource: 'sharing/list_folder_members/continue',
     parameters: {
-        cursor: 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
+        'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1604,8 +1606,8 @@ Return the list of all shared folders the current user has access to.
 dropbox({
     resource: 'sharing/list_folders',
     parameters: {
-        limit: 100,
-        actions: []
+        'limit': 100,
+        'actions': []
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1620,7 +1622,7 @@ Once a cursor has been retrieved from [list_folders](#sharinglist_folders-see-do
 dropbox({
     resource: 'sharing/list_folders/continue',
     parameters: {
-        cursor: 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
+        'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1635,8 +1637,8 @@ Return the list of all shared folders the current user can mount or unmount.
 dropbox({
     resource: 'sharing/list_mountable_folders',
     parameters: {
-        limit: 100,
-        actions: []
+        'limit': 100,
+        'actions': []
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1651,7 +1653,7 @@ Once a cursor has been retrieved from [list_mountable_folders](#sharinglist_moun
 dropbox({
     resource: 'sharing/list_mountable_folders/continue',
     parameters: {
-        cursor: 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
+        'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1666,8 +1668,8 @@ Returns a list of all files shared with current user.  Does not include files th
 dropbox({
     resource: 'sharing/list_received_files',
     parameters: {
-        limit: 100,
-        actions: []
+        'limit': 100,
+        'actions': []
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1682,7 +1684,7 @@ Get more results with a cursor from [list_received_files](#sharinglist_received_
 dropbox({
     resource: 'sharing/list_received_files/continue',
     parameters: {
-        cursor: 'AzJJbGlzdF90eXBdofe9c3RPbGlzdGFyZ3NfYnlfZ2lkMRhcbric7Rdog9emfGRlc2MCRWxpbWl0BGRId'
+        'cursor': 'AzJJbGlzdF90eXBdofe9c3RPbGlzdGFyZ3NfYnlfZ2lkMRhcbric7Rdog9emfGRlc2MCRWxpbWl0BGRId'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1697,7 +1699,7 @@ List shared links of this user. If no path is given, returns a list of all share
 dropbox({
     resource: 'sharing/list_shared_links',
     parameters: {
-        cursor: 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
+        'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1712,11 +1714,11 @@ Modify the shared link's settings. If the requested visibility conflict with the
 dropbox({
     resource: 'sharing/modify_shared_link_settings',
     parameters: {
-        url: 'https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0',
-        settings: {
-            requested_visibility: 'public'
+        'url': 'https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0',
+        'settings': {
+            'requested_visibility': 'public'
         },
-        remove_expiration: false
+        'remove_expiration': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1731,7 +1733,7 @@ The current user mounts the designated folder. Mount a shared folder for a user 
 dropbox({
     resource: 'sharing/mount_folder',
     parameters: {
-        shared_folder_id: '84528192421'
+        'shared_folder_id': '84528192421'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1746,7 +1748,7 @@ The current user relinquishes their membership in the designated file. Note that
 dropbox({
     resource: 'sharing/relinquish_file_membership',
     parameters: {
-        file: 'id:3kmLmQFnf1AAAAAAAAAAAw'
+        'file': 'id:3kmLmQFnf1AAAAAAAAAAAw'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1761,8 +1763,8 @@ The current user relinquishes their membership in the designated shared folder a
 dropbox({
     resource: 'sharing/relinquish_folder_membership',
     parameters: {
-        shared_folder_id: '84528192421',
-        leave_a_copy: false
+        'shared_folder_id': '84528192421',
+        'leave_a_copy': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1777,9 +1779,10 @@ Removes a specified member from the file.
 dropbox({
     resource: 'sharing/remove_file_member_2',
     parameters: {
-        file: 'id:3kmLmQFnf1AAAAAAAAAAAw',
-        member: {.tag: 'email',
-            email: 'justin@example.com'
+        'file': 'id:3kmLmQFnf1AAAAAAAAAAAw',
+        'member': {
+            '.tag': 'email',
+            'email': 'justin@example.com'
         }
     }
 }, (err, result, response) => {
@@ -1795,11 +1798,12 @@ Allows an owner or editor (if the ACL update policy allows) of a shared folder t
 dropbox({
     resource: 'sharing/remove_folder_member',
     parameters: {
-        shared_folder_id: '84528192421',
-        member: {.tag: 'email',
-            email: 'justin@example.com'
+        'shared_folder_id': '84528192421',
+        'member': {
+            '.tag': 'email',
+            'email': 'justin@example.com'
         },
-        leave_a_copy: false
+        'leave_a_copy': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1814,7 +1818,7 @@ Revoke a shared link. Note that even after revoking a shared link to a file, the
 dropbox({
     resource: 'sharing/revoke_shared_link',
     parameters: {
-        url: 'https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0'
+        'url': 'https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1829,8 +1833,8 @@ Change the inheritance policy of an existing Shared Folder. Only permitted for s
 dropbox({
     resource: 'sharing/set_access_inheritance',
     parameters: {
-        shared_folder_id: '84528192421',
-        access_inheritance: 'inherit'
+        'shared_folder_id': '84528192421',
+        'access_inheritance': 'inherit'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1845,12 +1849,12 @@ Share a folder with collaborators. Most sharing will be completed synchronously.
 dropbox({
     resource: 'sharing/share_folder',
     parameters: {
-        path: '/example/workspace',
-        acl_update_policy: 'editors',
-        force_async: false,
-        member_policy: 'team',
-        shared_link_policy: 'members',
-        access_inheritance: 'inherit'
+        'path': '/example/workspace',
+        'acl_update_policy': 'editors',
+        'force_async': false,
+        'member_policy': 'team',
+        'shared_link_policy': 'members',
+        'access_inheritance': 'inherit'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1865,8 +1869,8 @@ Transfer ownership of a shared folder to a member of the shared folder. User mus
 dropbox({
     resource: 'sharing/transfer_folder',
     parameters: {
-        shared_folder_id: '84528192421',
-        to_dropbox_id: 'dbid:AAEufNrMPSPe0dMQijRP0N_aZtBJRm26W4Q'
+        'shared_folder_id': '84528192421',
+        'to_dropbox_id': 'dbid:AAEufNrMPSPe0dMQijRP0N_aZtBJRm26W4Q'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1881,7 +1885,7 @@ The current user unmounts the designated folder. They can re-mount the folder at
 dropbox({
     resource: 'sharing/unmount_folder',
     parameters: {
-        shared_folder_id: '84528192421'
+        'shared_folder_id': '84528192421'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1896,7 +1900,7 @@ Remove all members from this file. Does not remove inherited members.
 dropbox({
     resource: 'sharing/unshare_file',
     parameters: {
-        file: 'id:3kmLmQFnf1AAAAAAAAAAAw'
+        'file': 'id:3kmLmQFnf1AAAAAAAAAAAw'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1911,8 +1915,8 @@ Allows a shared folder owner to unshare the folder. You'll need to call [check_j
 dropbox({
     resource: 'sharing/unshare_folder',
     parameters: {
-        shared_folder_id: '84528192421',
-        leave_a_copy: false
+        'shared_folder_id': '84528192421',
+        'leave_a_copy': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1927,11 +1931,12 @@ Changes a member's access on a shared file.
 dropbox({
     resource: 'sharing/update_file_member',
     parameters: {
-        file: 'id:3kmLmQFnf1AAAAAAAAAAAw',
-        member: {.tag: 'email',
-            email: 'justin@example.com'
+        'file': 'id:3kmLmQFnf1AAAAAAAAAAAw',
+        'member': {
+            '.tag': 'email',
+            'email': 'justin@example.com'
         },
-        access_level: 'viewer'
+        'access_level': 'viewer'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1946,11 +1951,12 @@ Allows an owner or editor of a shared folder to update another member's permissi
 dropbox({
     resource: 'sharing/update_folder_member',
     parameters: {
-        shared_folder_id: '84528192421',
-        member: {.tag: 'email',
-            email: 'justin@example.com'
+        'shared_folder_id': '84528192421',
+        'member': {
+            '.tag': 'email',
+            'email': 'justin@example.com'
         },
-        access_level: 'editor'
+        'access_level': 'editor'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1965,10 +1971,10 @@ Update the sharing policies for a shared folder. User must have AccessLevel.owne
 dropbox({
     resource: 'sharing/update_folder_policy',
     parameters: {
-        shared_folder_id: '84528192421',
-        member_policy: 'team',
-        acl_update_policy: 'owner',
-        shared_link_policy: 'members'
+        'shared_folder_id': '84528192421',
+        'member_policy': 'team',
+        'acl_update_policy': 'owner',
+        'shared_link_policy': 'members'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1983,7 +1989,7 @@ Get information about a user's account.
 dropbox({
     resource: 'users/get_account',
     parameters: {
-        account_id: 'dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc'
+        'account_id': 'dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1998,7 +2004,7 @@ Get information about multiple user accounts.  At most 300 accounts may be queri
 dropbox({
     resource: 'users/get_account_batch',
     parameters: {
-        account_ids: ['dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc', 'dbid:AAH1Vcz-DVoRDeixtr_OA8oUGgiqhs4XPOQ']
+        'account_ids': ['dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc', 'dbid:AAH1Vcz-DVoRDeixtr_OA8oUGgiqhs4XPOQ']
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -2037,10 +2043,10 @@ Returns the metadata for a file or folder. This is an alpha endpoint compatible 
 dropbox({
     resource: 'deprecated/alpha/get_metadata',
     parameters: {
-        path: '/Homework/math',
-        include_media_info: false,
-        include_deleted: false,
-        include_has_explicit_shared_members: false
+        'path': '/Homework/math',
+        'include_media_info': false,
+        'include_deleted': false,
+        'include_has_explicit_shared_members': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -2055,11 +2061,11 @@ Create a new file with the contents provided in the request. Note that this endp
 const stream = dropbox({
     resource: 'deprecated/alpha/upload',
     parameters: {
-        path: '/Homework/math/Matrices.txt',
-        mode: 'add',
-        autorename: true,
-        mute: false,
-        strict_conflict: false
+        'path': '/Homework/math/Matrices.txt',
+        'mode': 'add',
+        'autorename': true,
+        'mute': false,
+        'strict_conflict': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -2076,8 +2082,8 @@ No description
 dropbox({
     resource: 'deprecated/properties/add',
     parameters: {
-        path: '/my_awesome/word.docx',
-        property_groups: [{
+        'path': '/my_awesome/word.docx',
+        'property_groups': [{
             'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
             'fields': [{
                 'name': 'Security Policy',
@@ -2098,8 +2104,8 @@ No description
 dropbox({
     resource: 'deprecated/properties/overwrite',
     parameters: {
-        path: '/my_awesome/word.docx',
-        property_groups: [{
+        'path': '/my_awesome/word.docx',
+        'property_groups': [{
             'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
             'fields': [{
                 'name': 'Security Policy',
@@ -2120,8 +2126,8 @@ No description
 dropbox({
     resource: 'deprecated/properties/remove',
     parameters: {
-        path: '/my_awesome/word.docx',
-        property_template_ids: ['ptid:1a5n2i6d3OYEAAAAAAAAAYa']
+        'path': '/my_awesome/word.docx',
+        'property_template_ids': ['ptid:1a5n2i6d3OYEAAAAAAAAAYa']
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -2136,7 +2142,7 @@ No description
 dropbox({
     resource: 'deprecated/properties/template/get',
     parameters: {
-        template_id: 'ptid:1a5n2i6d3OYEAAAAAAAAAYa'
+        'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -2163,8 +2169,8 @@ No description
 dropbox({
     resource: 'deprecated/properties/update',
     parameters: {
-        path: '/my_awesome/word.docx',
-        update_property_groups: [{
+        'path': '/my_awesome/word.docx',
+        'update_property_groups': [{
             'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
             'add_or_update_fields': [{
                 'name': 'Security Policy',
@@ -2186,11 +2192,12 @@ Identical to update_file_member but with less information returned.
 dropbox({
     resource: 'deprecated/change_file_member_access',
     parameters: {
-        file: 'id:3kmLmQFnf1AAAAAAAAAAAw',
-        member: {.tag: 'email',
-            email: 'justin@example.com'
+        'file': 'id:3kmLmQFnf1AAAAAAAAAAAw',
+        'member': {
+            '.tag': 'email',
+            'email': 'justin@example.com'
         },
-        access_level: 'viewer'
+        'access_level': 'viewer'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -2205,8 +2212,8 @@ Create a shared link. If a shared link already exists for the given path, that l
 dropbox({
     resource: 'deprecated/create_shared_link',
     parameters: {
-        path: '/Homework/Math/Prime_Numbers.txt',
-        short_url: false
+        'path': '/Homework/Math/Prime_Numbers.txt',
+        'short_url': false
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -2221,7 +2228,7 @@ Returns a list of LinkMetadata objects for this user, including collection links
 dropbox({
     resource: 'deprecated/get_shared_links',
     parameters: {
-        path: ''
+        'path': ''
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -2236,9 +2243,10 @@ Identical to remove_file_member_2 but with less information returned.
 dropbox({
     resource: 'deprecated/remove_file_member',
     parameters: {
-        file: 'id:3kmLmQFnf1AAAAAAAAAAAw',
-        member: {.tag: 'email',
-            email: 'justin@example.com'
+        'file': 'id:3kmLmQFnf1AAAAAAAAAAAw',
+        'member': {
+            '.tag': 'email',
+            'email': 'justin@example.com'
         }
     }
 }, (err, result, response) => {
