@@ -281,6 +281,21 @@ dropbox({
 ```
 
 
+### file_requests/delete ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_requests-delete))
+Update a file request.
+
+```js
+dropbox({
+    resource: 'file_requests/delete',
+    parameters: {
+        'ids': ['oaCAVmEyrqYnkZX9955Y', 'BaZmehYoXMPtaRmfTbSG']
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### file_requests/get ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_requests-get))
 Returns the specified file request.
 
@@ -301,7 +316,25 @@ Returns a list of file requests owned by this user. For apps with the app folder
 
 ```js
 dropbox({
-    resource: 'file_requests/list'
+    resource: 'file_requests/list',
+    parameters: {
+        'limit': 1000
+    }
+}, (err, result) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### file_requests/list/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_requests-list-continue))
+Once a cursor has been retrieved from [list:2](#file_requestslist:2-see-docs), use this to paginate through all file requests. The cursor must come from a previous call to [list:2](#file_requestslist:2-see-docs) or [list/continue](#file_requestslistcontinue-see-docs).
+
+```js
+dropbox({
+    resource: 'file_requests/list/continue',
+    parameters: {
+        'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
+    }
 }, (err, result) => {
     //see docs for `result` parameters
 });
@@ -351,7 +384,7 @@ dropbox({
 
 
 ### files/copy_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-copy_batch))
-Copy multiple files or folders to different locations at once in the user's Dropbox. This route will replace [copy_batch](#filescopy_batch-see-docs). The main difference is this route will return stutus for each entry, while [copy_batch](#filescopy_batch-see-docs) raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async copy job in background. Please use [copy_batch/check:2](#filescopy_batchcheck:2-see-docs) to check the job status.
+Copy multiple files or folders to different locations at once in the user's Dropbox. This route will replace [copy_batch:1](#filescopy_batch:1-see-docs). The main difference is this route will return status for each entry, while [copy_batch:1](#filescopy_batch:1-see-docs) raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async copy job in background. Please use [copy_batch/check:2](#filescopy_batchcheck:2-see-docs) to check the job status.
 
 ```js
 dropbox({
@@ -768,7 +801,7 @@ dropbox({
 
 
 ### files/move_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-move_batch))
-Move multiple files or folders to different locations at once in the user's Dropbox. This route will replace [move_batch:2](#filesmove_batch:2-see-docs). The main difference is this route will return stutus for each entry, while [move_batch](#filesmove_batch-see-docs) raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async move job in background. Please use [move_batch/check:2](#filesmove_batchcheck:2-see-docs) to check the job status.
+Move multiple files or folders to different locations at once in the user's Dropbox. This route will replace [move_batch:1](#filesmove_batch:1-see-docs). The main difference is this route will return status for each entry, while [move_batch:1](#filesmove_batch:1-see-docs) raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async move job in background. Please use [move_batch/check:2](#filesmove_batchcheck:2-see-docs) to check the job status.
 
 ```js
 dropbox({
