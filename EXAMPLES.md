@@ -9,7 +9,7 @@ dropbox({
         'oauth1_token': 'qievr8hamyg6ndck',
         'oauth1_token_secret': 'qomoftv0472git7'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -21,7 +21,7 @@ Disables the access token used to authenticate the call.
 ```js
 dropbox({
     resource: 'auth/token/revoke'
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -33,7 +33,7 @@ Removes all manually added contacts. You'll still keep contacts who are on your 
 ```js
 dropbox({
     resource: 'contacts/delete_manual_contacts'
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -48,7 +48,7 @@ dropbox({
     parameters: {
         'email_addresses': ['contactemailaddress1@domain.com', 'contactemailaddress2@domain.com']
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -70,7 +70,7 @@ dropbox({
             }]
         }]
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -92,7 +92,7 @@ dropbox({
             }]
         }]
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -108,7 +108,7 @@ dropbox({
         'path': '/my_awesome/word.docx',
         'property_template_ids': ['ptid:1a5n2i6d3OYEAAAAAAAAAYa']
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -131,7 +131,7 @@ dropbox({
         }],
         'template_filter': 'filter_none'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -146,7 +146,7 @@ dropbox({
     parameters: {
         'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -169,7 +169,7 @@ dropbox({
             'remove_fields': []
         }]
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -190,7 +190,7 @@ dropbox({
             'type': 'string'
         }]
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -205,7 +205,7 @@ dropbox({
     parameters: {
         'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -217,7 +217,7 @@ Get the template identifiers for a team. To get the schema of each template use 
 ```js
 dropbox({
     resource: 'file_properties/templates/list_for_user'
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -232,7 +232,7 @@ dropbox({
     parameters: {
         'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -254,7 +254,7 @@ dropbox({
             'type': 'string'
         }]
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -275,7 +275,7 @@ dropbox({
         },
         'open': true
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -290,7 +290,7 @@ dropbox({
     parameters: {
         'ids': ['oaCAVmEyrqYnkZX9955Y', 'BaZmehYoXMPtaRmfTbSG']
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -305,7 +305,7 @@ dropbox({
     parameters: {
         'id': 'oaCAVmEyrqYnkZX9955Y'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -320,7 +320,7 @@ dropbox({
     parameters: {
         'limit': 1000
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -335,7 +335,7 @@ dropbox({
     parameters: {
         'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -358,7 +358,7 @@ dropbox({
         },
         'open': true
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -377,7 +377,7 @@ dropbox({
         'autorename': false,
         'allow_ownership_transfer': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -396,7 +396,7 @@ dropbox({
         }],
         'autorename': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -411,7 +411,7 @@ dropbox({
     parameters: {
         'async_job_id': '34g93hh34h04y384084'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -426,7 +426,7 @@ dropbox({
     parameters: {
         'path': '/video.mp4'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -442,7 +442,7 @@ dropbox({
         'copy_reference': 'z1X6ATl6aWtzOGq0c3g5Ng',
         'path': '/video.mp4'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -458,7 +458,7 @@ dropbox({
         'path': '/Homework/math',
         'autorename': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -475,7 +475,7 @@ dropbox({
         'autorename': false,
         'force_async': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -490,7 +490,7 @@ dropbox({
     parameters: {
         'async_job_id': '34g93hh34h04y384084'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -505,7 +505,7 @@ dropbox({
     parameters: {
         'path': '/Homework/math/Prime_Numbers.txt'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -522,7 +522,7 @@ dropbox({
             'path': '/Homework/math/Prime_Numbers.txt'
         }]
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -537,7 +537,7 @@ dropbox({
     parameters: {
         'async_job_id': '34g93hh34h04y384084'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -552,7 +552,7 @@ const stream = dropbox({
     parameters: {
         'path': '/Homework/math/Prime_Numbers.txt'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 
@@ -570,7 +570,7 @@ const stream = dropbox({
     parameters: {
         'path': '/Homework/math'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 
@@ -591,7 +591,7 @@ dropbox({
         'include_deleted': false,
         'include_has_explicit_shared_members': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -606,7 +606,7 @@ const stream = dropbox({
     parameters: {
         'path': '/word.docx'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 
@@ -624,7 +624,7 @@ dropbox({
     parameters: {
         'path': '/video.mp4'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -646,7 +646,7 @@ dropbox({
         },
         'duration': 3600
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -664,7 +664,7 @@ const stream = dropbox({
         'size': 'w64h64',
         'mode': 'strict'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 
@@ -687,7 +687,7 @@ dropbox({
             'mode': 'strict'
         }]
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -707,7 +707,7 @@ dropbox({
         'include_has_explicit_shared_members': false,
         'include_mounted_folders': true
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -722,7 +722,7 @@ dropbox({
     parameters: {
         'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -742,7 +742,7 @@ dropbox({
         'include_has_explicit_shared_members': false,
         'include_mounted_folders': true
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -758,7 +758,7 @@ dropbox({
         'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu',
         'timeout': 30
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -775,7 +775,7 @@ dropbox({
         'mode': 'path',
         'limit': 10
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -794,7 +794,7 @@ dropbox({
         'autorename': false,
         'allow_ownership_transfer': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -814,7 +814,7 @@ dropbox({
         'autorename': false,
         'allow_ownership_transfer': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -829,7 +829,7 @@ dropbox({
     parameters: {
         'async_job_id': '34g93hh34h04y384084'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -844,7 +844,7 @@ dropbox({
     parameters: {
         'path': '/Homework/math/Prime_Numbers.txt'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -860,7 +860,7 @@ dropbox({
         'path': '/root/word.docx',
         'rev': 'a1c10ce0dd78'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -876,7 +876,7 @@ dropbox({
         'path': '/a.txt',
         'url': 'http://example.com/a.txt'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -891,7 +891,7 @@ dropbox({
     parameters: {
         'async_job_id': '34g93hh34h04y384084'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -910,7 +910,7 @@ dropbox({
         'max_results': 100,
         'mode': 'filename'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -929,7 +929,7 @@ const stream = dropbox({
         'mute': false,
         'strict_conflict': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 
@@ -950,7 +950,7 @@ const stream = dropbox({
         },
         'close': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 
@@ -977,7 +977,7 @@ const stream = dropbox({
             'strict_conflict': false
         }
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 
@@ -1006,7 +1006,7 @@ dropbox({
             }
         }]
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1021,7 +1021,7 @@ dropbox({
     parameters: {
         'async_job_id': '34g93hh34h04y384084'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1036,7 +1036,7 @@ const stream = dropbox({
     parameters: {
         'close': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 
@@ -1053,7 +1053,7 @@ dropbox({
     parameters: {
         'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1068,7 +1068,7 @@ const stream = dropbox({
     parameters: {
         'import_format': 'markdown'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 
@@ -1086,7 +1086,7 @@ const stream = dropbox({
         'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
         'export_format': 'markdown'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 
@@ -1105,7 +1105,7 @@ dropbox({
         'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
         'limit': 100
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1121,7 +1121,7 @@ dropbox({
         'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
         'cursor': 'U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1136,7 +1136,7 @@ dropbox({
     parameters: {
         'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1154,7 +1154,7 @@ dropbox({
         'sort_order': 'descending',
         'limit': 100
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1169,7 +1169,7 @@ dropbox({
     parameters: {
         'cursor': 'U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1184,7 +1184,7 @@ dropbox({
     parameters: {
         'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1199,7 +1199,7 @@ dropbox({
     parameters: {
         'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1218,7 +1218,7 @@ dropbox({
             'team_sharing_policy': 'people_with_link_can_edit'
         }
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1236,7 +1236,7 @@ const stream = dropbox({
         'revision': 12345,
         'import_format': 'html'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 
@@ -1262,7 +1262,7 @@ dropbox({
         'custom_message': 'Welcome to Paper.',
         'quiet': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1279,7 +1279,7 @@ dropbox({
         'limit': 100,
         'filter_by': 'shared'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1295,7 +1295,7 @@ dropbox({
         'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
         'cursor': 'U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1314,7 +1314,7 @@ dropbox({
             'email': 'justin@example.com'
         }
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1337,7 +1337,7 @@ dropbox({
         'access_level': 'viewer',
         'add_message_as_comment': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1367,7 +1367,7 @@ dropbox({
         'quiet': false,
         'custom_message': 'Documentation for launch day'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1382,7 +1382,7 @@ dropbox({
     parameters: {
         'async_job_id': '34g93hh34h04y384084'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1397,7 +1397,7 @@ dropbox({
     parameters: {
         'async_job_id': '34g93hh34h04y384084'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1412,7 +1412,7 @@ dropbox({
     parameters: {
         'async_job_id': '34g93hh34h04y384084'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1430,7 +1430,7 @@ dropbox({
             'requested_visibility': 'public'
         }
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1446,7 +1446,7 @@ dropbox({
         'file': 'id:3kmLmQFnf1AAAAAAAAAAAw',
         'actions': []
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1462,7 +1462,7 @@ dropbox({
         'files': ['id:3kmLmQFnf1AAAAAAAAAAAw', 'id:VvTaJu2VZzAAAAAAAAAADQ'],
         'actions': []
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1478,7 +1478,7 @@ dropbox({
         'shared_folder_id': '84528192421',
         'actions': []
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1494,7 +1494,7 @@ const stream = dropbox({
         'url': 'https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0',
         'path': '/Prime_Numbers.txt'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 
@@ -1513,7 +1513,7 @@ dropbox({
         'url': 'https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0',
         'path': '/Prime_Numbers.txt'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1530,7 +1530,7 @@ dropbox({
         'include_inherited': true,
         'limit': 100
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1546,7 +1546,7 @@ dropbox({
         'files': ['id:3kmLmQFnf1AAAAAAAAAAAw', 'id:VvTaJu2VZzAAAAAAAAAADQ'],
         'limit': 10
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1561,7 +1561,7 @@ dropbox({
     parameters: {
         'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1578,7 +1578,7 @@ dropbox({
         'actions': [],
         'limit': 10
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1593,7 +1593,7 @@ dropbox({
     parameters: {
         'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1609,7 +1609,7 @@ dropbox({
         'limit': 100,
         'actions': []
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1624,7 +1624,7 @@ dropbox({
     parameters: {
         'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1640,7 +1640,7 @@ dropbox({
         'limit': 100,
         'actions': []
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1655,7 +1655,7 @@ dropbox({
     parameters: {
         'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1671,7 +1671,7 @@ dropbox({
         'limit': 100,
         'actions': []
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1686,7 +1686,7 @@ dropbox({
     parameters: {
         'cursor': 'AzJJbGlzdF90eXBdofe9c3RPbGlzdGFyZ3NfYnlfZ2lkMRhcbric7Rdog9emfGRlc2MCRWxpbWl0BGRId'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1701,7 +1701,7 @@ dropbox({
     parameters: {
         'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1720,7 +1720,7 @@ dropbox({
         },
         'remove_expiration': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1735,7 +1735,7 @@ dropbox({
     parameters: {
         'shared_folder_id': '84528192421'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1750,7 +1750,7 @@ dropbox({
     parameters: {
         'file': 'id:3kmLmQFnf1AAAAAAAAAAAw'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1766,7 +1766,7 @@ dropbox({
         'shared_folder_id': '84528192421',
         'leave_a_copy': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1785,7 +1785,7 @@ dropbox({
             'email': 'justin@example.com'
         }
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1805,7 +1805,7 @@ dropbox({
         },
         'leave_a_copy': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1820,7 +1820,7 @@ dropbox({
     parameters: {
         'url': 'https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1836,7 +1836,7 @@ dropbox({
         'shared_folder_id': '84528192421',
         'access_inheritance': 'inherit'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1856,7 +1856,7 @@ dropbox({
         'shared_link_policy': 'members',
         'access_inheritance': 'inherit'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1872,7 +1872,7 @@ dropbox({
         'shared_folder_id': '84528192421',
         'to_dropbox_id': 'dbid:AAEufNrMPSPe0dMQijRP0N_aZtBJRm26W4Q'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1887,7 +1887,7 @@ dropbox({
     parameters: {
         'shared_folder_id': '84528192421'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1902,7 +1902,7 @@ dropbox({
     parameters: {
         'file': 'id:3kmLmQFnf1AAAAAAAAAAAw'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1918,7 +1918,7 @@ dropbox({
         'shared_folder_id': '84528192421',
         'leave_a_copy': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1938,7 +1938,7 @@ dropbox({
         },
         'access_level': 'viewer'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1958,7 +1958,7 @@ dropbox({
         },
         'access_level': 'editor'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1976,7 +1976,7 @@ dropbox({
         'acl_update_policy': 'owner',
         'shared_link_policy': 'members'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -1991,7 +1991,7 @@ dropbox({
     parameters: {
         'account_id': 'dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -2006,7 +2006,7 @@ dropbox({
     parameters: {
         'account_ids': ['dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc', 'dbid:AAH1Vcz-DVoRDeixtr_OA8oUGgiqhs4XPOQ']
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -2018,7 +2018,7 @@ Get information about the current user's account.
 ```js
 dropbox({
     resource: 'users/get_current_account'
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -2030,7 +2030,7 @@ Get the space usage information for the current user's account.
 ```js
 dropbox({
     resource: 'users/get_space_usage'
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -2048,7 +2048,7 @@ dropbox({
         'include_deleted': false,
         'include_has_explicit_shared_members': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -2067,7 +2067,7 @@ const stream = dropbox({
         'mute': false,
         'strict_conflict': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 
@@ -2091,7 +2091,7 @@ dropbox({
             }]
         }]
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -2113,7 +2113,7 @@ dropbox({
             }]
         }]
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -2129,7 +2129,7 @@ dropbox({
         'path': '/my_awesome/word.docx',
         'property_template_ids': ['ptid:1a5n2i6d3OYEAAAAAAAAAYa']
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -2144,7 +2144,7 @@ dropbox({
     parameters: {
         'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -2156,7 +2156,7 @@ No description
 ```js
 dropbox({
     resource: 'deprecated/properties/template/list'
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -2179,7 +2179,7 @@ dropbox({
             'remove_fields': []
         }]
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -2199,7 +2199,7 @@ dropbox({
         },
         'access_level': 'viewer'
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -2215,7 +2215,7 @@ dropbox({
         'path': '/Homework/Math/Prime_Numbers.txt',
         'short_url': false
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -2230,7 +2230,7 @@ dropbox({
     parameters: {
         'path': ''
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```
@@ -2249,7 +2249,7 @@ dropbox({
             'email': 'justin@example.com'
         }
     }
-}, (err, result) => {
+}, (err, result, response) => {
     //see docs for `result` parameters
 });
 ```

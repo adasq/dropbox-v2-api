@@ -35,14 +35,14 @@ function prepareExampleByApiDescription(apiDescription, apiName){
     'RPC': `
 dropbox({
 resource: '${apiName}'<% if(parameters.example) { %>,
-parameters: <%- JSON.stringify(parameters.example, null, '') %> <% } %>}, (err, result) => {
+parameters: <%- JSON.stringify(parameters.example, null, '') %> <% } %>}, (err, result, response) => {
     //see docs for \`result\` parameters
 });
     `,
     'UPLOAD': `
         const stream = dropbox({
             resource: '${apiName}',
-            parameters: <%- JSON.stringify(parameters.example, null, '') %>}, (err, result) => {
+            parameters: <%- JSON.stringify(parameters.example, null, '') %>}, (err, result, response) => {
             //see docs for \`result\` parameters
         });
 
@@ -51,7 +51,7 @@ parameters: <%- JSON.stringify(parameters.example, null, '') %> <% } %>}, (err, 
     'DOWNLOAD': `
         const stream = dropbox({
             resource: '${apiName}',
-            parameters: <%- JSON.stringify(parameters.example, null, '') %>}, (err, result) => {
+            parameters: <%- JSON.stringify(parameters.example, null, '') %>}, (err, result, response) => {
             //see docs for \`result\` parameters
         });
 
