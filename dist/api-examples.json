@@ -1301,7 +1301,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Update a file request.",
+		"description": "Delete a batch of file requests.",
 		"parameters": {
 			"list": [
 				{
