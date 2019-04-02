@@ -1301,7 +1301,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Delete a batch of file requests.",
+		"description": "Delete a batch of closed file requests.",
 		"parameters": {
 			"list": [
 				{
