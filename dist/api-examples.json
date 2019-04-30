@@ -1070,6 +1070,20 @@
 			"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa"
 		}
 	},
+	"file_requests/count": {
+		"uri": "https://api.dropboxapi.com/2/file_requests/count",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Returns the total number of file requests owned by this user. Includes both open and closed file requests.",
+		"parameters": {
+			"list": [],
+			"example": null
+		},
+		"returnParameters": {
+			"file_request_count": 15
+		}
+	},
 	"file_requests/create": {
 		"uri": "https://api.dropboxapi.com/2/file_requests/create",
 		"requiresAuthHeader": true,
@@ -1316,6 +1330,57 @@
 					"BaZmehYoXMPtaRmfTbSG"
 				]
 			}
+		},
+		"returnParameters": {
+			"file_requests": [
+				{
+					"id": "oaCAVmEyrqYnkZX9955Y",
+					"url": "https://www.dropbox.com/request/oaCAVmEyrqYnkZX9955Y",
+					"title": "Homework submission",
+					"created": "2015-10-05T17:00:00Z",
+					"is_open": true,
+					"file_count": 3,
+					"destination": "/File Requests/Homework",
+					"deadline": {
+						"deadline": "2020-10-12T17:00:00Z",
+						"allow_late_uploads": {
+							".tag": "seven_days"
+						}
+					}
+				},
+				{
+					"id": "BAJ7IrRGicQKGToykQdB",
+					"url": "https://www.dropbox.com/request/BAJ7IrRGjcQKGToykQdB",
+					"title": "Photo contest submission",
+					"created": "2015-11-02T04:00:00Z",
+					"is_open": true,
+					"file_count": 105,
+					"destination": "/Photo contest entries",
+					"deadline": {
+						"deadline": "2020-10-12T17:00:00Z"
+					}
+				},
+				{
+					"id": "rxwMPvK3ATTa0VxOJu5T",
+					"url": "https://www.dropbox.com/request/rxwMPvK3ATTa0VxOJu5T",
+					"title": "Wedding photo submission",
+					"created": "2015-12-15T13:02:00Z",
+					"is_open": true,
+					"file_count": 37,
+					"destination": "/Wedding photos"
+				}
+			]
+		}
+	},
+	"file_requests/delete_all_closed": {
+		"uri": "https://api.dropboxapi.com/2/file_requests/delete_all_closed",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Delete all closed file requests owned by this user.",
+		"parameters": {
+			"list": [],
+			"example": null
 		},
 		"returnParameters": {
 			"file_requests": [
