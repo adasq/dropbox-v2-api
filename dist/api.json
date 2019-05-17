@@ -323,6 +323,15 @@
 			"available": true
 		}
 	},
+	"files/export": {
+		"uri": "https://content.dropboxapi.com/2/files/export",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "DOWNLOAD",
+		"parameters": {
+			"available": true
+		}
+	},
 	"files/get_metadata": {
 		"uri": "https://api.dropboxapi.com/2/files/get_metadata",
 		"requiresAuthHeader": true,
