@@ -4457,7 +4457,7 @@
 				{
 					"name": "include_non_downloadable_files",
 					"type": "Boolean",
-					"desc": "If true, include files that are not downloadable, ie Google Docs. The default for this field is True."
+					"desc": "If true, include files that are not downloadable, i.e. Google Docs. The default for this field is True."
 				}
 			],
 			"example": {
@@ -4710,7 +4710,7 @@
 				{
 					"name": "include_non_downloadable_files",
 					"type": "Boolean",
-					"desc": "If true, include files that are not downloadable, ie Google Docs. The default for this field is True."
+					"desc": "If true, include files that are not downloadable, i.e. Google Docs. The default for this field is True."
 				}
 			],
 			"example": {
