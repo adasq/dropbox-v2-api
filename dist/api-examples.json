@@ -4378,7 +4378,7 @@
 				{
 					"name": "include_media_info",
 					"type": "Boolean",
-					"desc": "If true, FileMetadata.media_info is set for photo and video. The default for this field is False."
+					"desc": "Field is deprecated. If true, FileMetadata.media_info is set for photo and video. This parameter will no longer have an effect starting December 2, 2019. The default for this field is False."
 				},
 				{
 					"name": "include_deleted",
@@ -4631,7 +4631,7 @@
 				{
 					"name": "include_media_info",
 					"type": "Boolean",
-					"desc": "If true, FileMetadata.media_info is set for photo and video. The default for this field is False."
+					"desc": "Field is deprecated. If true, FileMetadata.media_info is set for photo and video. This parameter will no longer have an effect starting December 2, 2019. The default for this field is False."
 				},
 				{
 					"name": "include_deleted",
@@ -12512,6 +12512,11 @@
 													"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
 												},
 												{
+													"name": "password",
+													"type": "Void",
+													"desc": "A link-specific password is required to access the link. Login is not required."
+												},
+												{
 													"name": "members",
 													"type": "Void",
 													"desc": "Field is deprecated. Link is accessible only by members of the content."
@@ -12535,6 +12540,11 @@
 									"name": "no_one",
 									"type": "Void",
 									"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
+								},
+								{
+									"name": "password",
+									"type": "Void",
+									"desc": "A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -12651,6 +12661,11 @@
 									"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
 								},
 								{
+									"name": "password",
+									"type": "Void",
+									"desc": "A link-specific password is required to access the link. Login is not required."
+								},
+								{
 									"name": "members",
 									"type": "Void",
 									"desc": "Field is deprecated. Link is accessible only by members of the content."
@@ -12765,6 +12780,11 @@
 									"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
 								},
 								{
+									"name": "password",
+									"type": "Void",
+									"desc": "A link-specific password is required to access the link. Login is not required."
+								},
+								{
 									"name": "members",
 									"type": "Void",
 									"desc": "Field is deprecated. Link is accessible only by members of the content."
@@ -12788,6 +12808,11 @@
 					"name": "no_one",
 					"type": "Void",
 					"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
+				},
+				{
+					"name": "password",
+					"type": "Void",
+					"desc": "A link-specific password is required to access the link. Login is not required."
 				},
 				{
 					"name": "members",
@@ -13471,6 +13496,11 @@
 													"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
 												},
 												{
+													"name": "password",
+													"type": "Void",
+													"desc": "A link-specific password is required to access the link. Login is not required."
+												},
+												{
 													"name": "members",
 													"type": "Void",
 													"desc": "Field is deprecated. Link is accessible only by members of the content."
@@ -13494,6 +13524,11 @@
 									"name": "no_one",
 									"type": "Void",
 									"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
+								},
+								{
+									"name": "password",
+									"type": "Void",
+									"desc": "A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -13610,6 +13645,11 @@
 									"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
 								},
 								{
+									"name": "password",
+									"type": "Void",
+									"desc": "A link-specific password is required to access the link. Login is not required."
+								},
+								{
 									"name": "members",
 									"type": "Void",
 									"desc": "Field is deprecated. Link is accessible only by members of the content."
@@ -13724,6 +13764,11 @@
 									"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
 								},
 								{
+									"name": "password",
+									"type": "Void",
+									"desc": "A link-specific password is required to access the link. Login is not required."
+								},
+								{
 									"name": "members",
 									"type": "Void",
 									"desc": "Field is deprecated. Link is accessible only by members of the content."
@@ -13747,6 +13792,11 @@
 					"name": "no_one",
 					"type": "Void",
 					"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
+				},
+				{
+					"name": "password",
+					"type": "Void",
+					"desc": "A link-specific password is required to access the link. Login is not required."
 				},
 				{
 					"name": "members",
