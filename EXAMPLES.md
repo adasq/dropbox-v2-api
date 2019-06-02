@@ -260,6 +260,18 @@ dropbox({
 ```
 
 
+### file_requests/count ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_requests-count))
+Returns the total number of file requests owned by this user. Includes both open and closed file requests.
+
+```js
+dropbox({
+    resource: 'file_requests/count'
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### file_requests/create ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_requests-create))
 Creates a file request for this user.
 
@@ -282,7 +294,7 @@ dropbox({
 
 
 ### file_requests/delete ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_requests-delete))
-Update a file request.
+Delete a batch of closed file requests.
 
 ```js
 dropbox({
@@ -290,6 +302,18 @@ dropbox({
     parameters: {
         'ids': ['oaCAVmEyrqYnkZX9955Y', 'BaZmehYoXMPtaRmfTbSG']
     }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### file_requests/delete_all_closed ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_requests-delete_all_closed))
+Delete all closed file requests owned by this user.
+
+```js
+dropbox({
+    resource: 'file_requests/delete_all_closed'
 }, (err, result, response) => {
     //see docs for `result` parameters
 });
@@ -579,6 +603,24 @@ stream
 ```
 
 
+### files/export ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-export))
+Export a file from a user's Dropbox. This route only supports exporting files that cannot be downloaded directly  and whose ExportResult.file_metadata has ExportInfo.export_as populated.
+
+```js
+const stream = dropbox({
+    resource: 'files/export',
+    parameters: {
+        'path': '/Homework/math/Prime_Numbers.gsheet'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+
+stream
+    .pipe(fs.createWriteStream('/Homework/math/Prime_Numbers.gsheet')); //pipe the stream
+```
+
+
 ### files/get_metadata ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-get_metadata))
 Returns the metadata for a file or folder. Note: Metadata for the root folder is unsupported.
 
@@ -598,7 +640,7 @@ dropbox({
 
 
 ### files/get_preview ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-get_preview))
-Get a preview for a file. Currently, PDF previews are generated for files with the following extensions: .ai, .doc, .docm, .docx, .eps, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are generated for files with the following extensions: .csv, .ods, .xls, .xlsm, .xlsx. Other formats will return an unsupported extension error.
+Get a preview for a file. Currently, PDF previews are generated for files with the following extensions: .ai, .doc, .docm, .docx, .eps, .gdoc, .gslides, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are generated for files with the following extensions: .csv, .ods, .xls, .xlsm, .gsheet, .xlsx. Other formats will return an unsupported extension error.
 
 ```js
 const stream = dropbox({
@@ -616,7 +658,7 @@ stream
 
 
 ### files/get_temporary_link ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-get_temporary_link))
-Get a temporary link to stream content of a file. This link will expire in four hours and afterwards you will get 410 Gone. So this URL should not be used to display content directly in the browser.  Content-Type of the link is determined automatically by the file's mime type.
+Get a temporary link to stream content of a file. This link will expire in four hours and afterwards you will get 410 Gone. This URL should not be used to display content directly in the browser. The Content-Type of the link is determined automatically by the file's mime type.
 
 ```js
 dropbox({
@@ -705,7 +747,8 @@ dropbox({
         'include_media_info': false,
         'include_deleted': false,
         'include_has_explicit_shared_members': false,
-        'include_mounted_folders': true
+        'include_mounted_folders': true,
+        'include_non_downloadable_files': true
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -740,7 +783,8 @@ dropbox({
         'include_media_info': false,
         'include_deleted': false,
         'include_has_explicit_shared_members': false,
-        'include_mounted_folders': true
+        'include_mounted_folders': true,
+        'include_non_downloadable_files': true
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
