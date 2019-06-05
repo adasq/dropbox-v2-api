@@ -9355,6 +9355,110 @@
 									"name": "expires",
 									"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")?",
 									"desc": "Expiration time of the shared link. By default the link won't expire. This field is optional."
+								},
+								{
+									"name": "audience",
+									"type": "LinkAudience?",
+									"desc": "The new audience who can benefit from the access level specified by the link's access level specified in the `link_access_level` field of `LinkPermissions`. This is used in conjunction with team policies and shared folder policies to determine the final effective audience type in the `effective_audience` field of `LinkPermissions. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "public",
+													"type": "Void",
+													"desc": "Link is accessible by anyone."
+												},
+												{
+													"name": "team",
+													"type": "Void",
+													"desc": "Link is accessible only by team members."
+												},
+												{
+													"name": "no_one",
+													"type": "Void",
+													"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
+												},
+												{
+													"name": "password",
+													"type": "Void",
+													"desc": "A link-specific password is required to access the link. Login is not required."
+												},
+												{
+													"name": "members",
+													"type": "Void",
+													"desc": "Field is deprecated. Link is accessible only by members of the content."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "public",
+									"type": "Void",
+									"desc": "Link is accessible by anyone."
+								},
+								{
+									"name": "team",
+									"type": "Void",
+									"desc": "Link is accessible only by team members."
+								},
+								{
+									"name": "no_one",
+									"type": "Void",
+									"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
+								},
+								{
+									"name": "password",
+									"type": "Void",
+									"desc": "A link-specific password is required to access the link. Login is not required."
+								},
+								{
+									"name": "members",
+									"type": "Void",
+									"desc": "Field is deprecated. Link is accessible only by members of the content."
+								},
+								{
+									"name": "access",
+									"type": "RequestedLinkAccessLevel?",
+									"desc": "Requested access level you want the audience to gain from this link. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "viewer",
+													"type": "Void",
+													"desc": "Users who use the link can view and comment on the content."
+												},
+												{
+													"name": "editor",
+													"type": "Void",
+													"desc": "Users who use the link can edit, view and comment on the content."
+												},
+												{
+													"name": "max",
+													"type": "Void",
+													"desc": "Request for the maximum access level you can set the link to."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "viewer",
+									"type": "Void",
+									"desc": "Users who use the link can view and comment on the content."
+								},
+								{
+									"name": "editor",
+									"type": "Void",
+									"desc": "Users who use the link can edit, view and comment on the content."
+								},
+								{
+									"name": "max",
+									"type": "Void",
+									"desc": "Request for the maximum access level you can set the link to."
 								}
 							],
 							"example": null
@@ -9375,6 +9479,56 @@
 									"name": "password",
 									"type": "Void",
 									"desc": "A link-specific password is required to access the link. Login is not required."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "public",
+									"type": "Void",
+									"desc": "Link is accessible by anyone."
+								},
+								{
+									"name": "team",
+									"type": "Void",
+									"desc": "Link is accessible only by team members."
+								},
+								{
+									"name": "no_one",
+									"type": "Void",
+									"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
+								},
+								{
+									"name": "password",
+									"type": "Void",
+									"desc": "A link-specific password is required to access the link. Login is not required."
+								},
+								{
+									"name": "members",
+									"type": "Void",
+									"desc": "Field is deprecated. Link is accessible only by members of the content."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "viewer",
+									"type": "Void",
+									"desc": "Users who use the link can view and comment on the content."
+								},
+								{
+									"name": "editor",
+									"type": "Void",
+									"desc": "Users who use the link can edit, view and comment on the content."
+								},
+								{
+									"name": "max",
+									"type": "Void",
+									"desc": "Request for the maximum access level you can set the link to."
 								}
 							],
 							"example": null
@@ -9432,12 +9586,118 @@
 					"name": "expires",
 					"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")?",
 					"desc": "Expiration time of the shared link. By default the link won't expire. This field is optional."
+				},
+				{
+					"name": "audience",
+					"type": "LinkAudience?",
+					"desc": "The new audience who can benefit from the access level specified by the link's access level specified in the `link_access_level` field of `LinkPermissions`. This is used in conjunction with team policies and shared folder policies to determine the final effective audience type in the `effective_audience` field of `LinkPermissions. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "public",
+									"type": "Void",
+									"desc": "Link is accessible by anyone."
+								},
+								{
+									"name": "team",
+									"type": "Void",
+									"desc": "Link is accessible only by team members."
+								},
+								{
+									"name": "no_one",
+									"type": "Void",
+									"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
+								},
+								{
+									"name": "password",
+									"type": "Void",
+									"desc": "A link-specific password is required to access the link. Login is not required."
+								},
+								{
+									"name": "members",
+									"type": "Void",
+									"desc": "Field is deprecated. Link is accessible only by members of the content."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "public",
+					"type": "Void",
+					"desc": "Link is accessible by anyone."
+				},
+				{
+					"name": "team",
+					"type": "Void",
+					"desc": "Link is accessible only by team members."
+				},
+				{
+					"name": "no_one",
+					"type": "Void",
+					"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
+				},
+				{
+					"name": "password",
+					"type": "Void",
+					"desc": "A link-specific password is required to access the link. Login is not required."
+				},
+				{
+					"name": "members",
+					"type": "Void",
+					"desc": "Field is deprecated. Link is accessible only by members of the content."
+				},
+				{
+					"name": "access",
+					"type": "RequestedLinkAccessLevel?",
+					"desc": "Requested access level you want the audience to gain from this link. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "viewer",
+									"type": "Void",
+									"desc": "Users who use the link can view and comment on the content."
+								},
+								{
+									"name": "editor",
+									"type": "Void",
+									"desc": "Users who use the link can edit, view and comment on the content."
+								},
+								{
+									"name": "max",
+									"type": "Void",
+									"desc": "Request for the maximum access level you can set the link to."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "viewer",
+					"type": "Void",
+					"desc": "Users who use the link can view and comment on the content."
+				},
+				{
+					"name": "editor",
+					"type": "Void",
+					"desc": "Users who use the link can edit, view and comment on the content."
+				},
+				{
+					"name": "max",
+					"type": "Void",
+					"desc": "Request for the maximum access level you can set the link to."
 				}
 			],
 			"example": {
 				"path": "/Prime_Numbers.txt",
 				"settings": {
-					"requested_visibility": "public"
+					"requested_visibility": "public",
+					"audience": "public",
+					"access": "editor"
 				}
 			}
 		},
@@ -9533,12 +9793,22 @@
 								{
 									"name": "share_link",
 									"type": "Void",
-									"desc": "Field is deprecated. Use create_link instead."
+									"desc": "Field is deprecated. Use create_view_link and create_edit_link instead."
 								},
 								{
 									"name": "create_link",
 									"type": "Void",
-									"desc": "Create a shared link to the file."
+									"desc": "Field is deprecated. Use create_view_link and create_edit_link instead."
+								},
+								{
+									"name": "create_view_link",
+									"type": "Void",
+									"desc": "Create a shared link to a file that only allows users to view the content."
+								},
+								{
+									"name": "create_edit_link",
+									"type": "Void",
+									"desc": "Create a shared link to a file that allows users to edit the content."
 								}
 							],
 							"example": null
@@ -9588,12 +9858,22 @@
 				{
 					"name": "share_link",
 					"type": "Void",
-					"desc": "Field is deprecated. Use create_link instead."
+					"desc": "Field is deprecated. Use create_view_link and create_edit_link instead."
 				},
 				{
 					"name": "create_link",
 					"type": "Void",
-					"desc": "Create a shared link to the file."
+					"desc": "Field is deprecated. Use create_view_link and create_edit_link instead."
+				},
+				{
+					"name": "create_view_link",
+					"type": "Void",
+					"desc": "Create a shared link to a file that only allows users to view the content."
+				},
+				{
+					"name": "create_edit_link",
+					"type": "Void",
+					"desc": "Create a shared link to a file that allows users to edit the content."
 				}
 			],
 			"example": {
@@ -9698,12 +9978,22 @@
 								{
 									"name": "share_link",
 									"type": "Void",
-									"desc": "Field is deprecated. Use create_link instead."
+									"desc": "Field is deprecated. Use create_view_link and create_edit_link instead."
 								},
 								{
 									"name": "create_link",
 									"type": "Void",
-									"desc": "Create a shared link to the file."
+									"desc": "Field is deprecated. Use create_view_link and create_edit_link instead."
+								},
+								{
+									"name": "create_view_link",
+									"type": "Void",
+									"desc": "Create a shared link to a file that only allows users to view the content."
+								},
+								{
+									"name": "create_edit_link",
+									"type": "Void",
+									"desc": "Create a shared link to a file that allows users to edit the content."
 								}
 							],
 							"example": null
@@ -9753,12 +10043,22 @@
 				{
 					"name": "share_link",
 					"type": "Void",
-					"desc": "Field is deprecated. Use create_link instead."
+					"desc": "Field is deprecated. Use create_view_link and create_edit_link instead."
 				},
 				{
 					"name": "create_link",
 					"type": "Void",
-					"desc": "Create a shared link to the file."
+					"desc": "Field is deprecated. Use create_view_link and create_edit_link instead."
+				},
+				{
+					"name": "create_view_link",
+					"type": "Void",
+					"desc": "Create a shared link to a file that only allows users to view the content."
+				},
+				{
+					"name": "create_edit_link",
+					"type": "Void",
+					"desc": "Create a shared link to a file that allows users to edit the content."
 				}
 			],
 			"example": {
@@ -11298,12 +11598,22 @@
 								{
 									"name": "share_link",
 									"type": "Void",
-									"desc": "Field is deprecated. Use create_link instead."
+									"desc": "Field is deprecated. Use create_view_link and create_edit_link instead."
 								},
 								{
 									"name": "create_link",
 									"type": "Void",
-									"desc": "Create a shared link to the file."
+									"desc": "Field is deprecated. Use create_view_link and create_edit_link instead."
+								},
+								{
+									"name": "create_view_link",
+									"type": "Void",
+									"desc": "Create a shared link to a file that only allows users to view the content."
+								},
+								{
+									"name": "create_edit_link",
+									"type": "Void",
+									"desc": "Create a shared link to a file that allows users to edit the content."
 								}
 							],
 							"example": null
@@ -11353,12 +11663,22 @@
 				{
 					"name": "share_link",
 					"type": "Void",
-					"desc": "Field is deprecated. Use create_link instead."
+					"desc": "Field is deprecated. Use create_view_link and create_edit_link instead."
 				},
 				{
 					"name": "create_link",
 					"type": "Void",
-					"desc": "Create a shared link to the file."
+					"desc": "Field is deprecated. Use create_view_link and create_edit_link instead."
+				},
+				{
+					"name": "create_view_link",
+					"type": "Void",
+					"desc": "Create a shared link to a file that only allows users to view the content."
+				},
+				{
+					"name": "create_edit_link",
+					"type": "Void",
+					"desc": "Create a shared link to a file that allows users to edit the content."
 				}
 			],
 			"example": {
@@ -11596,6 +11916,110 @@
 									"name": "expires",
 									"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")?",
 									"desc": "Expiration time of the shared link. By default the link won't expire. This field is optional."
+								},
+								{
+									"name": "audience",
+									"type": "LinkAudience?",
+									"desc": "The new audience who can benefit from the access level specified by the link's access level specified in the `link_access_level` field of `LinkPermissions`. This is used in conjunction with team policies and shared folder policies to determine the final effective audience type in the `effective_audience` field of `LinkPermissions. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "public",
+													"type": "Void",
+													"desc": "Link is accessible by anyone."
+												},
+												{
+													"name": "team",
+													"type": "Void",
+													"desc": "Link is accessible only by team members."
+												},
+												{
+													"name": "no_one",
+													"type": "Void",
+													"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
+												},
+												{
+													"name": "password",
+													"type": "Void",
+													"desc": "A link-specific password is required to access the link. Login is not required."
+												},
+												{
+													"name": "members",
+													"type": "Void",
+													"desc": "Field is deprecated. Link is accessible only by members of the content."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "public",
+									"type": "Void",
+									"desc": "Link is accessible by anyone."
+								},
+								{
+									"name": "team",
+									"type": "Void",
+									"desc": "Link is accessible only by team members."
+								},
+								{
+									"name": "no_one",
+									"type": "Void",
+									"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
+								},
+								{
+									"name": "password",
+									"type": "Void",
+									"desc": "A link-specific password is required to access the link. Login is not required."
+								},
+								{
+									"name": "members",
+									"type": "Void",
+									"desc": "Field is deprecated. Link is accessible only by members of the content."
+								},
+								{
+									"name": "access",
+									"type": "RequestedLinkAccessLevel?",
+									"desc": "Requested access level you want the audience to gain from this link. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "viewer",
+													"type": "Void",
+													"desc": "Users who use the link can view and comment on the content."
+												},
+												{
+													"name": "editor",
+													"type": "Void",
+													"desc": "Users who use the link can edit, view and comment on the content."
+												},
+												{
+													"name": "max",
+													"type": "Void",
+													"desc": "Request for the maximum access level you can set the link to."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "viewer",
+									"type": "Void",
+									"desc": "Users who use the link can view and comment on the content."
+								},
+								{
+									"name": "editor",
+									"type": "Void",
+									"desc": "Users who use the link can edit, view and comment on the content."
+								},
+								{
+									"name": "max",
+									"type": "Void",
+									"desc": "Request for the maximum access level you can set the link to."
 								}
 							],
 							"example": null
@@ -11616,6 +12040,56 @@
 									"name": "password",
 									"type": "Void",
 									"desc": "A link-specific password is required to access the link. Login is not required."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "public",
+									"type": "Void",
+									"desc": "Link is accessible by anyone."
+								},
+								{
+									"name": "team",
+									"type": "Void",
+									"desc": "Link is accessible only by team members."
+								},
+								{
+									"name": "no_one",
+									"type": "Void",
+									"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
+								},
+								{
+									"name": "password",
+									"type": "Void",
+									"desc": "A link-specific password is required to access the link. Login is not required."
+								},
+								{
+									"name": "members",
+									"type": "Void",
+									"desc": "Field is deprecated. Link is accessible only by members of the content."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "viewer",
+									"type": "Void",
+									"desc": "Users who use the link can view and comment on the content."
+								},
+								{
+									"name": "editor",
+									"type": "Void",
+									"desc": "Users who use the link can edit, view and comment on the content."
+								},
+								{
+									"name": "max",
+									"type": "Void",
+									"desc": "Request for the maximum access level you can set the link to."
 								}
 							],
 							"example": null
@@ -11675,6 +12149,110 @@
 					"desc": "Expiration time of the shared link. By default the link won't expire. This field is optional."
 				},
 				{
+					"name": "audience",
+					"type": "LinkAudience?",
+					"desc": "The new audience who can benefit from the access level specified by the link's access level specified in the `link_access_level` field of `LinkPermissions`. This is used in conjunction with team policies and shared folder policies to determine the final effective audience type in the `effective_audience` field of `LinkPermissions. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "public",
+									"type": "Void",
+									"desc": "Link is accessible by anyone."
+								},
+								{
+									"name": "team",
+									"type": "Void",
+									"desc": "Link is accessible only by team members."
+								},
+								{
+									"name": "no_one",
+									"type": "Void",
+									"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
+								},
+								{
+									"name": "password",
+									"type": "Void",
+									"desc": "A link-specific password is required to access the link. Login is not required."
+								},
+								{
+									"name": "members",
+									"type": "Void",
+									"desc": "Field is deprecated. Link is accessible only by members of the content."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "public",
+					"type": "Void",
+					"desc": "Link is accessible by anyone."
+				},
+				{
+					"name": "team",
+					"type": "Void",
+					"desc": "Link is accessible only by team members."
+				},
+				{
+					"name": "no_one",
+					"type": "Void",
+					"desc": "The link can be used by no one. The link merely points the user to the content, and does not grant additional rights to the user. Members of the content who use this link can only access the content with their pre-existing access rights."
+				},
+				{
+					"name": "password",
+					"type": "Void",
+					"desc": "A link-specific password is required to access the link. Login is not required."
+				},
+				{
+					"name": "members",
+					"type": "Void",
+					"desc": "Field is deprecated. Link is accessible only by members of the content."
+				},
+				{
+					"name": "access",
+					"type": "RequestedLinkAccessLevel?",
+					"desc": "Requested access level you want the audience to gain from this link. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "viewer",
+									"type": "Void",
+									"desc": "Users who use the link can view and comment on the content."
+								},
+								{
+									"name": "editor",
+									"type": "Void",
+									"desc": "Users who use the link can edit, view and comment on the content."
+								},
+								{
+									"name": "max",
+									"type": "Void",
+									"desc": "Request for the maximum access level you can set the link to."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "viewer",
+					"type": "Void",
+					"desc": "Users who use the link can view and comment on the content."
+				},
+				{
+					"name": "editor",
+					"type": "Void",
+					"desc": "Users who use the link can edit, view and comment on the content."
+				},
+				{
+					"name": "max",
+					"type": "Void",
+					"desc": "Request for the maximum access level you can set the link to."
+				},
+				{
 					"name": "remove_expiration",
 					"type": "Boolean",
 					"desc": "If set to true, removes the expiration of the shared link. The default for this field is False."
@@ -11683,7 +12261,9 @@
 			"example": {
 				"url": "https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0",
 				"settings": {
-					"requested_visibility": "public"
+					"requested_visibility": "public",
+					"audience": "public",
+					"access": "editor"
 				},
 				"remove_expiration": false
 			}
