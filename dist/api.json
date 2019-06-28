@@ -1,4 +1,13 @@
 {
+	"account/set_profile_photo": {
+		"uri": "https://api.dropboxapi.com/2/account/set_profile_photo",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
 	"auth/token/from_oauth1": {
 		"uri": "https://api.dropboxapi.com/2/auth/token/from_oauth1",
 		"requiresAuthHeader": false,
