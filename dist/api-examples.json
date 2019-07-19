@@ -8809,6 +8809,38 @@
 		},
 		"returnParameters": null
 	},
+	"paper/folders/create": {
+		"uri": "https://api.dropboxapi.com/2/paper/folders/create",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Create a new Paper folder with the provided info.",
+		"parameters": {
+			"list": [
+				{
+					"name": "name",
+					"type": "String",
+					"desc": "The name of the new Paper folder."
+				},
+				{
+					"name": "parent_folder_id",
+					"type": "String?",
+					"desc": "The encrypted Paper folder Id where the new Paper folder should be created. The API user has to have write access to this folder or error is thrown. If not supplied, the new folder will be created at top level. This field is optional."
+				},
+				{
+					"name": "is_team_folder",
+					"type": "Boolean?",
+					"desc": "Whether the folder to be created should be a team folder. This value will be ignored if parent_folder_id is supplied, as the new folder will inherit the type (private or team folder) from its parent. We will by default create a top-level private folder if both parent_folder_id and is_team_folder are not supplied. This field is optional."
+				}
+			],
+			"example": {
+				"name": "my new folder"
+			}
+		},
+		"returnParameters": {
+			"folder_id": "abcd"
+		}
+	},
 	"sharing/add_file_member": {
 		"uri": "https://api.dropboxapi.com/2/sharing/add_file_member",
 		"requiresAuthHeader": true,

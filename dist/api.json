@@ -710,6 +710,15 @@
 			"available": true
 		}
 	},
+	"paper/folders/create": {
+		"uri": "https://api.dropboxapi.com/2/paper/folders/create",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
 	"sharing/add_file_member": {
 		"uri": "https://api.dropboxapi.com/2/sharing/add_file_member",
 		"requiresAuthHeader": true,
