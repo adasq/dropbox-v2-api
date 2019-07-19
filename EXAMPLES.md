@@ -1,4 +1,22 @@
 
+### account/set_profile_photo ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#account-set_profile_photo))
+Sets a user's profile photo.
+
+```js
+dropbox({
+    resource: 'account/set_profile_photo',
+    parameters: {
+        'photo': {
+            '.tag': 'base64_data',
+            'base64_data': 'SW1hZ2UgZGF0YSBpbiBiYXNlNjQtZW5jb2RlZCBieXRlcy4gTm90IGEgdmFsaWQgZXhhbXBsZS4='
+        }
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### auth/token/from_oauth1 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#auth-token-from_oauth1))
 Creates an OAuth 2.0 access token from the supplied OAuth 1.0 access token.
 
@@ -1364,6 +1382,21 @@ dropbox({
 ```
 
 
+### paper/folders/create ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-folders-create))
+Create a new Paper folder with the provided info.
+
+```js
+dropbox({
+    resource: 'paper/folders/create',
+    parameters: {
+        'name': 'my new folder'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### sharing/add_file_member ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-add_file_member))
 Adds specified members to a file.
 
@@ -1471,7 +1504,9 @@ dropbox({
     parameters: {
         'path': '/Prime_Numbers.txt',
         'settings': {
-            'requested_visibility': 'public'
+            'requested_visibility': 'public',
+            'audience': 'public',
+            'access': 'editor'
         }
     }
 }, (err, result, response) => {
@@ -1760,7 +1795,9 @@ dropbox({
     parameters: {
         'url': 'https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0',
         'settings': {
-            'requested_visibility': 'public'
+            'requested_visibility': 'public',
+            'audience': 'public',
+            'access': 'editor'
         },
         'remove_expiration': false
     }
