@@ -5279,54 +5279,258 @@
 		}
 	},
 	"files/search": {
-		"uri": "https://api.dropboxapi.com/2/files/search",
+		"uri": "https://api.dropboxapi.com/2/files/search_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Searches for files and folders. Note: Recent changes may not immediately be reflected in search results due to a short delay in indexing.",
+		"description": "Searches for files and folders.",
 		"parameters": {
 			"list": [
 				{
-					"name": "path",
-					"type": "String(pattern=\"(/(.|[\\r\\n])*)?|id:.*|(ns:[0-9]+(/.*)?)\")",
-					"desc": "The path in the user's Dropbox to search. Should probably be a folder."
-				},
-				{
 					"name": "query",
 					"type": "String",
-					"desc": "The string to search for. The search string is split on spaces into multiple tokens. For file name searching, the last token is used for prefix matching (i.e. \"bat c\" matches \"bat cave\" but not \"batman car\")."
+					"desc": "The string to search for. May match across multiple fields based on the request arguments."
 				},
 				{
-					"name": "start",
-					"type": "UInt64(max=9999)",
-					"desc": "The starting index within the search results (used for paging). The default for this field is 0."
-				},
-				{
-					"name": "max_results",
-					"type": "UInt64(min=1, max=1000)",
-					"desc": "The maximum number of search results to return. The default for this field is 100."
-				},
-				{
-					"name": "mode",
-					"type": "SearchMode",
-					"desc": "The search mode (filename, filename_and_content, or deleted_filename). Note that searching file content is only available for Dropbox Business accounts. The default for this union is filename.",
+					"name": "options",
+					"type": "SearchOptions?",
+					"desc": "Options for more targeted search results. This field is optional.",
 					"parameters": [
 						{
 							"list": [
 								{
-									"name": "filename",
-									"type": "Void",
-									"desc": "Search file and folder names."
+									"name": "path",
+									"type": "String(pattern=\"(/(.|[\\r\\n])*)?|id:.*|(ns:[0-9]+(/.*)?)\")?",
+									"desc": "Scopes the search to a path in the user's Dropbox. Searches the entire Dropbox if not specified. This field is optional."
 								},
 								{
-									"name": "filename_and_content",
-									"type": "Void",
-									"desc": "Search file and folder names as well as file contents."
+									"name": "max_results",
+									"type": "UInt64(min=1, max=1000)",
+									"desc": "The maximum number of search results to return. The default for this field is 100."
 								},
 								{
-									"name": "deleted_filename",
+									"name": "file_status",
+									"type": "FileStatus",
+									"desc": "Restricts search to the given file status. The default for this union is active.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "active",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "deleted",
+													"type": "Void",
+													"desc": ""
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "active",
 									"type": "Void",
-									"desc": "Search for deleted file and folder names."
+									"desc": ""
+								},
+								{
+									"name": "deleted",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "filename_only",
+									"type": "Boolean",
+									"desc": "Restricts search to only match on filenames. The default for this field is False."
+								},
+								{
+									"name": "file_extensions",
+									"type": "List of (String)?",
+									"desc": "Restricts search to only the extensions specified. This field is optional."
+								},
+								{
+									"name": "file_categories",
+									"type": "List of (FileCategory)?",
+									"desc": "Restricts search to only the file categories specified. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "image",
+													"type": "Void",
+													"desc": "jpg, png, gif, and more."
+												},
+												{
+													"name": "document",
+													"type": "Void",
+													"desc": "doc, docx, txt, and more."
+												},
+												{
+													"name": "pdf",
+													"type": "Void",
+													"desc": "pdf."
+												},
+												{
+													"name": "spreadsheet",
+													"type": "Void",
+													"desc": "xlsx, xls, csv, and more."
+												},
+												{
+													"name": "presentation",
+													"type": "Void",
+													"desc": "ppt, pptx, key, and more."
+												},
+												{
+													"name": "audio",
+													"type": "Void",
+													"desc": "mp3, wav, mid, and more."
+												},
+												{
+													"name": "video",
+													"type": "Void",
+													"desc": "mov, wmv, mp4, and more."
+												},
+												{
+													"name": "folder",
+													"type": "Void",
+													"desc": "dropbox folder."
+												},
+												{
+													"name": "paper",
+													"type": "Void",
+													"desc": "dropbox paper doc."
+												},
+												{
+													"name": "others",
+													"type": "Void",
+													"desc": "any file not in one of the categories above."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "image",
+									"type": "Void",
+									"desc": "jpg, png, gif, and more."
+								},
+								{
+									"name": "document",
+									"type": "Void",
+									"desc": "doc, docx, txt, and more."
+								},
+								{
+									"name": "pdf",
+									"type": "Void",
+									"desc": "pdf."
+								},
+								{
+									"name": "spreadsheet",
+									"type": "Void",
+									"desc": "xlsx, xls, csv, and more."
+								},
+								{
+									"name": "presentation",
+									"type": "Void",
+									"desc": "ppt, pptx, key, and more."
+								},
+								{
+									"name": "audio",
+									"type": "Void",
+									"desc": "mp3, wav, mid, and more."
+								},
+								{
+									"name": "video",
+									"type": "Void",
+									"desc": "mov, wmv, mp4, and more."
+								},
+								{
+									"name": "folder",
+									"type": "Void",
+									"desc": "dropbox folder."
+								},
+								{
+									"name": "paper",
+									"type": "Void",
+									"desc": "dropbox paper doc."
+								},
+								{
+									"name": "others",
+									"type": "Void",
+									"desc": "any file not in one of the categories above."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "active",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "deleted",
+									"type": "Void",
+									"desc": ""
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "image",
+									"type": "Void",
+									"desc": "jpg, png, gif, and more."
+								},
+								{
+									"name": "document",
+									"type": "Void",
+									"desc": "doc, docx, txt, and more."
+								},
+								{
+									"name": "pdf",
+									"type": "Void",
+									"desc": "pdf."
+								},
+								{
+									"name": "spreadsheet",
+									"type": "Void",
+									"desc": "xlsx, xls, csv, and more."
+								},
+								{
+									"name": "presentation",
+									"type": "Void",
+									"desc": "ppt, pptx, key, and more."
+								},
+								{
+									"name": "audio",
+									"type": "Void",
+									"desc": "mp3, wav, mid, and more."
+								},
+								{
+									"name": "video",
+									"type": "Void",
+									"desc": "mov, wmv, mp4, and more."
+								},
+								{
+									"name": "folder",
+									"type": "Void",
+									"desc": "dropbox folder."
+								},
+								{
+									"name": "paper",
+									"type": "Void",
+									"desc": "dropbox paper doc."
+								},
+								{
+									"name": "others",
+									"type": "Void",
+									"desc": "any file not in one of the categories above."
 								}
 							],
 							"example": null
@@ -5334,69 +5538,278 @@
 					]
 				},
 				{
-					"name": "filename",
-					"type": "Void",
-					"desc": "Search file and folder names."
+					"name": "path",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)?|id:.*|(ns:[0-9]+(/.*)?)\")?",
+					"desc": "Scopes the search to a path in the user's Dropbox. Searches the entire Dropbox if not specified. This field is optional."
 				},
 				{
-					"name": "filename_and_content",
-					"type": "Void",
-					"desc": "Search file and folder names as well as file contents."
+					"name": "max_results",
+					"type": "UInt64(min=1, max=1000)",
+					"desc": "The maximum number of search results to return. The default for this field is 100."
 				},
 				{
-					"name": "deleted_filename",
+					"name": "file_status",
+					"type": "FileStatus",
+					"desc": "Restricts search to the given file status. The default for this union is active.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "active",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "deleted",
+									"type": "Void",
+									"desc": ""
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "active",
 					"type": "Void",
-					"desc": "Search for deleted file and folder names."
+					"desc": ""
+				},
+				{
+					"name": "deleted",
+					"type": "Void",
+					"desc": ""
+				},
+				{
+					"name": "filename_only",
+					"type": "Boolean",
+					"desc": "Restricts search to only match on filenames. The default for this field is False."
+				},
+				{
+					"name": "file_extensions",
+					"type": "List of (String)?",
+					"desc": "Restricts search to only the extensions specified. This field is optional."
+				},
+				{
+					"name": "file_categories",
+					"type": "List of (FileCategory)?",
+					"desc": "Restricts search to only the file categories specified. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "image",
+									"type": "Void",
+									"desc": "jpg, png, gif, and more."
+								},
+								{
+									"name": "document",
+									"type": "Void",
+									"desc": "doc, docx, txt, and more."
+								},
+								{
+									"name": "pdf",
+									"type": "Void",
+									"desc": "pdf."
+								},
+								{
+									"name": "spreadsheet",
+									"type": "Void",
+									"desc": "xlsx, xls, csv, and more."
+								},
+								{
+									"name": "presentation",
+									"type": "Void",
+									"desc": "ppt, pptx, key, and more."
+								},
+								{
+									"name": "audio",
+									"type": "Void",
+									"desc": "mp3, wav, mid, and more."
+								},
+								{
+									"name": "video",
+									"type": "Void",
+									"desc": "mov, wmv, mp4, and more."
+								},
+								{
+									"name": "folder",
+									"type": "Void",
+									"desc": "dropbox folder."
+								},
+								{
+									"name": "paper",
+									"type": "Void",
+									"desc": "dropbox paper doc."
+								},
+								{
+									"name": "others",
+									"type": "Void",
+									"desc": "any file not in one of the categories above."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "image",
+					"type": "Void",
+					"desc": "jpg, png, gif, and more."
+				},
+				{
+					"name": "document",
+					"type": "Void",
+					"desc": "doc, docx, txt, and more."
+				},
+				{
+					"name": "pdf",
+					"type": "Void",
+					"desc": "pdf."
+				},
+				{
+					"name": "spreadsheet",
+					"type": "Void",
+					"desc": "xlsx, xls, csv, and more."
+				},
+				{
+					"name": "presentation",
+					"type": "Void",
+					"desc": "ppt, pptx, key, and more."
+				},
+				{
+					"name": "audio",
+					"type": "Void",
+					"desc": "mp3, wav, mid, and more."
+				},
+				{
+					"name": "video",
+					"type": "Void",
+					"desc": "mov, wmv, mp4, and more."
+				},
+				{
+					"name": "folder",
+					"type": "Void",
+					"desc": "dropbox folder."
+				},
+				{
+					"name": "paper",
+					"type": "Void",
+					"desc": "dropbox paper doc."
+				},
+				{
+					"name": "others",
+					"type": "Void",
+					"desc": "any file not in one of the categories above."
+				},
+				{
+					"name": "include_highlights",
+					"type": "Boolean",
+					"desc": "The default for this field is False."
 				}
 			],
 			"example": {
-				"path": "",
-				"query": "prime numbers",
-				"start": 0,
-				"max_results": 100,
-				"mode": "filename"
+				"query": "cat",
+				"include_highlights": false
 			}
 		},
 		"returnParameters": {
 			"matches": [
 				{
-					"match_type": {
-						".tag": "content"
-					},
 					"metadata": {
-						".tag": "file",
-						"name": "Prime_Numbers.txt",
-						"id": "id:a4ayc_80_OEAAAAAAAAAXw",
-						"client_modified": "2015-05-12T15:50:38Z",
-						"server_modified": "2015-05-12T15:50:38Z",
-						"rev": "a1c10ce0dd78",
-						"size": 7212,
-						"path_lower": "/homework/math/prime_numbers.txt",
-						"path_display": "/Homework/math/Prime_Numbers.txt",
-						"sharing_info": {
-							"read_only": true,
-							"parent_shared_folder_id": "84528192421",
-							"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
-						},
-						"is_downloadable": true,
-						"property_groups": [
-							{
-								"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
-								"fields": [
-									{
-										"name": "Security Policy",
-										"value": "Confidential"
-									}
-								]
-							}
-						],
-						"has_explicit_shared_members": false,
-						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+						".tag": "metadata",
+						"metadata": {
+							".tag": "file",
+							"name": "Prime_Numbers.txt",
+							"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+							"client_modified": "2015-05-12T15:50:38Z",
+							"server_modified": "2015-05-12T15:50:38Z",
+							"rev": "a1c10ce0dd78",
+							"size": 7212,
+							"path_lower": "/homework/math/prime_numbers.txt",
+							"path_display": "/Homework/math/Prime_Numbers.txt",
+							"sharing_info": {
+								"read_only": true,
+								"parent_shared_folder_id": "84528192421",
+								"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+							},
+							"is_downloadable": true,
+							"property_groups": [
+								{
+									"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+									"fields": [
+										{
+											"name": "Security Policy",
+											"value": "Confidential"
+										}
+									]
+								}
+							],
+							"has_explicit_shared_members": false,
+							"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+						}
 					}
 				}
 			],
-			"more": false,
-			"start": 1
+			"has_more": false
+		}
+	},
+	"files/search/continue": {
+		"uri": "https://api.dropboxapi.com/2/files/search/continue_v2",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Fetches the next page of search results returned from [search:2](#filessearch:2-see-docs).",
+		"parameters": {
+			"list": [
+				{
+					"name": "cursor",
+					"type": "String(min_length=1)",
+					"desc": "The cursor returned by your last call to  . Used to fetch the next page of results."
+				}
+			],
+			"example": {
+				"cursor": "ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu"
+			}
+		},
+		"returnParameters": {
+			"matches": [
+				{
+					"metadata": {
+						".tag": "metadata",
+						"metadata": {
+							".tag": "file",
+							"name": "Prime_Numbers.txt",
+							"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+							"client_modified": "2015-05-12T15:50:38Z",
+							"server_modified": "2015-05-12T15:50:38Z",
+							"rev": "a1c10ce0dd78",
+							"size": 7212,
+							"path_lower": "/homework/math/prime_numbers.txt",
+							"path_display": "/Homework/math/Prime_Numbers.txt",
+							"sharing_info": {
+								"read_only": true,
+								"parent_shared_folder_id": "84528192421",
+								"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+							},
+							"is_downloadable": true,
+							"property_groups": [
+								{
+									"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+									"fields": [
+										{
+											"name": "Security Policy",
+											"value": "Confidential"
+										}
+									]
+								}
+							],
+							"has_explicit_shared_members": false,
+							"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+						}
+					}
+				}
+			],
+			"has_more": false
 		}
 	},
 	"files/upload": {

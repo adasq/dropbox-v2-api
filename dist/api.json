@@ -504,7 +504,16 @@
 		}
 	},
 	"files/search": {
-		"uri": "https://api.dropboxapi.com/2/files/search",
+		"uri": "https://api.dropboxapi.com/2/files/search_v2",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"files/search/continue": {
+		"uri": "https://api.dropboxapi.com/2/files/search/continue_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
