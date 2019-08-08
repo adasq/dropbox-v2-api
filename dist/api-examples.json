@@ -5348,12 +5348,12 @@
 								{
 									"name": "file_extensions",
 									"type": "List of (String)?",
-									"desc": "Restricts search to only the extensions specified. This field is optional."
+									"desc": "Restricts search to only the extensions specified. Only supported for active file search. This field is optional."
 								},
 								{
 									"name": "file_categories",
 									"type": "List of (FileCategory)?",
-									"desc": "Restricts search to only the file categories specified. This field is optional.",
+									"desc": "Restricts search to only the file categories specified. Only supported for active file search. This field is optional.",
 									"parameters": [
 										{
 											"list": [
@@ -5587,12 +5587,12 @@
 				{
 					"name": "file_extensions",
 					"type": "List of (String)?",
-					"desc": "Restricts search to only the extensions specified. This field is optional."
+					"desc": "Restricts search to only the extensions specified. Only supported for active file search. This field is optional."
 				},
 				{
 					"name": "file_categories",
 					"type": "List of (FileCategory)?",
-					"desc": "Restricts search to only the file categories specified. This field is optional.",
+					"desc": "Restricts search to only the file categories specified. Only supported for active file search. This field is optional.",
 					"parameters": [
 						{
 							"list": [
