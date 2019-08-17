@@ -4,6 +4,9 @@ on:
   push:
     branches:
     - testing-gh-actions
+  repository_dispatch:
+    branches:
+    - testing-gh-actions
 
 jobs:
   build:
