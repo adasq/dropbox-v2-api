@@ -16,8 +16,9 @@ jobs:
     - run: npm install
     - name: Run a multi-line script
       run: |
-        echo Add other actions to build,
-        echo !test, and deploy your project.
+        echo RUNNING GENERATE,
+        npm run generate
         ls
+        cat dist/api.json
     - name: Run a one-line script!
       run: echo Hello, world!
