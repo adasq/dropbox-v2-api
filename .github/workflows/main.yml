@@ -20,8 +20,6 @@ jobs:
         npm run generate
         ls
         cat dist/api.json
-    - name: Run a one-line script!
-      run: echo Hello, world!
     - uses: adasq/dropbox-v2-api-watcher@master
       env:
         TOKEN: ${{ secrets.TOKEN }}
