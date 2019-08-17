@@ -16,9 +16,14 @@ jobs:
     - run: npm install
     - name: Run a multi-line script
       run: |
-        echo RUNNING GENERATE,
+        echo RUNNING GENERATE 2,
         npm run generate
         ls
         cat dist/api.json
     - name: Run a one-line script!
       run: echo Hello, world!
+    - uses: adasq/dropbox-v2-api-watcher@master
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
+      with:
+        myInput: 'teeeeeeeeeeeeeeeest'
