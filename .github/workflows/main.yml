@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - testing-gh-actions
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        node-version: 10.x 
+    - run: npm install
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo !test, and deploy your project.
+        ls
+    - name: Run a one-line script!
+      run: echo Hello, world!
