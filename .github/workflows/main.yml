@@ -2,9 +2,6 @@ name: CI
 
 on:
   repository_dispatch: {}
-  push:
-    branches:
-    - testing-gh-actions
 
 jobs:
   build:
@@ -17,8 +14,12 @@ jobs:
     - run: npm install
     - name: Run a multi-line script
       run: |
-        echo Add other actions to build,
-        echo !test, and deploy your project.
+        echo RUNNING GENERATE 2,
+        npm run generate
         ls
-    - name: Run a one-line script!
-      run: echo Hello, world!
+        cat dist/api.json
+    - uses: adasq/dropbox-v2-api-watcher@master
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
+      with:
+        myInput: 'teeeeeeeeeeeeeeeest'
