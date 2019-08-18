@@ -8,7 +8,7 @@ const generate = require('../../src/generate-api-description.js');
 
 const API_DESC_FILE_PATH = path.join(__dirname, '../../dist/api-examples.json');
 
-describe.only('Docs change detection', function() {
+describe('Docs change detection', function() {
     this.timeout(16000);
     describe('', () => {
         afterEach(function(done) {
@@ -23,7 +23,7 @@ describe.only('Docs change detection', function() {
             generate((err, retrievedDocsDescription) => {
                 expect(err).to.be(null);
                 retrievedDocsDescription = normalizeString(retrievedDocsDescription);
-                expect(md5(retrievedDocsDescription)).to.be('1'+md5(currentDocsDescription));
+                expect(md5(retrievedDocsDescription)).to.be(md5(currentDocsDescription));
                 done();
             });
         });
