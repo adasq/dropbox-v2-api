@@ -1,6 +1,7 @@
 name: CI
 
 on:
+  repository_dispatch: {}
   push:
     branches:
     - testing-gh-actions
