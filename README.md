@@ -1,3 +1,4 @@
+[![Actions Status](https://github.com/adasq/dropbox-v2-api/workflows/Integration%20Tests/badge.svg)](https://github.com/adasq/dropbox-v2-api/actions)
 [![Build Status](https://travis-ci.org/adasq/dropbox-v2-api.svg?branch=master)](https://travis-ci.org/adasq/dropbox-v2-api)
 [![NPM Downloads](https://img.shields.io/npm/dm/dropbox-v2-api.svg?style=flat)](https://www.npmjs.org/package/dropbox-v2-api)
 [![NPM Downloads](https://img.shields.io/npm/dt/dropbox-v2-api.svg?style=flat)](https://www.npmjs.org/package/dropbox-v2-api)
