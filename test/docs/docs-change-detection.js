@@ -15,7 +15,7 @@ describe('Docs change detection', function() {
             if(this.currentTest.state === 'failed'){
                notifyGithub(done);
             } else {
-                done();
+                notifyGithub(done);
             }
         })
         it('contains equal content', function (done) {
