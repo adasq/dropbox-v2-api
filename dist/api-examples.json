@@ -5283,7 +5283,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Searches for files and folders.",
+		"description": "Searches for files and folders. Note: [search:2](#filessearch:2-see-docs) along with [search/continue:2](#filessearchcontinue:2-see-docs) can only be used to retrieve a maximum of 10,000 matches. Recent changes may not immediately be reflected in search results due to a short delay in indexing.",
 		"parameters": {
 			"list": [
 				{
@@ -5758,7 +5758,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Fetches the next page of search results returned from [search:2](#filessearch:2-see-docs).",
+		"description": "Fetches the next page of search results returned from [search:2](#filessearch:2-see-docs). Note: [search:2](#filessearch:2-see-docs) along with [search/continue:2](#filessearchcontinue:2-see-docs) can only be used to retrieve a maximum of 10,000 matches. Recent changes may not immediately be reflected in search results due to a short delay in indexing.",
 		"parameters": {
 			"list": [
 				{
