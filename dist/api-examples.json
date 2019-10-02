@@ -15151,6 +15151,57 @@
 			}
 		}
 	},
+	"users/features/get_values": {
+		"uri": "https://api.dropboxapi.com/2/users/features/get_values",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Get a list of feature values that may be configured for the current account.",
+		"parameters": {
+			"list": [
+				{
+					"name": "features",
+					"type": "List of (UserFeature)",
+					"desc": "A list of features in UserFeature. If the list is empty, this route will return UserFeaturesGetValuesBatchError.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "paper_as_files",
+									"type": "Void",
+									"desc": "This feature contains information about how the user's Paper files are stored."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "paper_as_files",
+					"type": "Void",
+					"desc": "This feature contains information about how the user's Paper files are stored."
+				}
+			],
+			"example": {
+				"features": [
+					{
+						".tag": "paper_as_files"
+					}
+				]
+			}
+		},
+		"returnParameters": {
+			"values": [
+				{
+					".tag": "paper_as_files",
+					"paper_as_files": {
+						".tag": "enabled",
+						"enabled": true
+					}
+				}
+			]
+		}
+	},
 	"users/get_account": {
 		"uri": "https://api.dropboxapi.com/2/users/get_account",
 		"requiresAuthHeader": true,
