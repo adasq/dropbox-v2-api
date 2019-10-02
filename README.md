@@ -11,7 +11,7 @@ The `dropbox-v2-api` package interface is generated programmatically, based on [
 [api.json]: <https://github.com/adasq/dropbox-v2-api/blob/master/dist/api.json>
 ## Why this package?
 
-- Always **up-to-date API** (PR with the newest Dropbox changes is being made automatically. ([see more][change-detection-pr]))
+- Always **up-to-date API** (PR with the newest Dropbox changes is being made automatically, [see more][change-detection-pr])
 - Simple API (**no custom function names**, see [full api showcase](#full-api-showcase))
 - Full support for **streams** (see [upload/download](#upload-and-download-examples) examples)
 - Supports Dropbox **Paper API** 
