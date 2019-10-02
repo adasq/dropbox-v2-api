@@ -2,7 +2,7 @@ name: Integration Tests
 
 on:
   schedule:
-  - cron: 0 10 * * 1-7
+  - cron: 0 6 * * *
 
 jobs:
   build:

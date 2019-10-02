@@ -4,7 +4,6 @@
   "description": "NodeJS Dropbox v2 API wrapper",
   "main": "index.js",
   "scripts": {
-    "commit": "git add dist; git commit -m \"Dropbox API changes detected\"",
     "generate": "node generate.js",
     "test": "mocha test/**/*.js"
   },
