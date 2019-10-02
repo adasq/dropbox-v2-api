@@ -1079,6 +1079,15 @@
 			"available": true
 		}
 	},
+	"users/features/get_values": {
+		"uri": "https://api.dropboxapi.com/2/users/features/get_values",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
 	"users/get_account": {
 		"uri": "https://api.dropboxapi.com/2/users/get_account",
 		"requiresAuthHeader": true,
