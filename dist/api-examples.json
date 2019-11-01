@@ -81,6 +81,50 @@
 		},
 		"returnParameters": null
 	},
+	"check/app": {
+		"uri": "https://api.dropboxapi.com/2/check/app",
+		"requiresAuthHeader": false,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "This endpoint performs App Authentication, validating the supplied app key and secret, and returns the supplied string, to allow you to test your code and connection to the Dropbox API. It has no other effect. If you receive an HTTP 200 response with the supplied query, it indicates at least part of the Dropbox API infrastructure is working and that the app key and secret valid.",
+		"parameters": {
+			"list": [
+				{
+					"name": "query",
+					"type": "String",
+					"desc": "The string that you'd like to be echoed back to you. The default for this field is \"\"."
+				}
+			],
+			"example": {
+				"query": "foo"
+			}
+		},
+		"returnParameters": {
+			"result": "foo"
+		}
+	},
+	"check/user": {
+		"uri": "https://api.dropboxapi.com/2/check/user",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "This endpoint performs User Authentication, validating the supplied access token, and returns the supplied string, to allow you to test your code and connection to the Dropbox API. It has no other effect. If you receive an HTTP 200 response with the supplied query, it indicates at least part of the Dropbox API infrastructure is working and that the access token is valid.",
+		"parameters": {
+			"list": [
+				{
+					"name": "query",
+					"type": "String",
+					"desc": "The string that you'd like to be echoed back to you. The default for this field is \"\"."
+				}
+			],
+			"example": {
+				"query": "foo"
+			}
+		},
+		"returnParameters": {
+			"result": "foo"
+		}
+	},
 	"contacts/delete_manual_contacts": {
 		"uri": "https://api.dropboxapi.com/2/contacts/delete_manual_contacts",
 		"requiresAuthHeader": true,
