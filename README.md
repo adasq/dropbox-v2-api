@@ -4,14 +4,13 @@
 [![npm version](https://badge.fury.io/js/dropbox-v2-api.svg)](https://badge.fury.io/js/dropbox-v2-api)
 
 # dropbox-v2-api
-Dropbox API v2 wrapper for nodejs.
 
-The `dropbox-v2-api` package interface is generated programmatically, based on [endpoints description JSON][api.json] which is a Dropbox API HTTP endpoints description, fetched from [official docs][docs].
+The package interface is generated programmatically, based on [endpoints description JSON][api.json] which is a Dropbox API HTTP endpoints description, fetched from [official docs][docs].
 
 [api.json]: <https://github.com/adasq/dropbox-v2-api/blob/master/dist/api.json>
 ## Why this package?
 
-- Always **up-to-date API** (PR with the newest Dropbox changes is being made automatically, [see more][change-detection-pr])
+- Always **up-to-date API** (PR with the newest Dropbox changes is being made automatically, [see recent][change-detection-pr])
 - Simple API (**no custom function names**, see [full api showcase](#full-api-showcase))
 - Full support for **streams** (see [upload/download](#upload-and-download-examples) examples)
 - Supports Dropbox **Paper API** 
