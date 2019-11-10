@@ -11,7 +11,7 @@ The package interface is generated programmatically, based on [endpoints descrip
 ## Why this package?
 
 - Always **up-to-date API** (PR with latest changes is generated automatically, [see recent][change-detection-pr])
-- Simple API (**no custom function names**, see [full api showcase](#full-api-showcase))
+- Simple API (**no custom function names**, see [full API showcase](#full-api-showcase))
 - Full support for **streams** (see [upload/download](#upload-and-download-examples) examples)
 - Supports Dropbox **Paper API** 
 - **Examples** for all endpoints ([see more][examples])
