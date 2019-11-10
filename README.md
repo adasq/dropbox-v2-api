@@ -1,9 +1,9 @@
+# dropbox-v2-api
+
 [![Actions Status](https://github.com/adasq/dropbox-v2-api/workflows/Integration%20Tests/badge.svg)](https://github.com/adasq/dropbox-v2-api/actions)
 [![NPM Downloads](https://img.shields.io/npm/dm/dropbox-v2-api.svg?style=flat)](https://www.npmjs.org/package/dropbox-v2-api)
 [![NPM Downloads](https://img.shields.io/npm/dt/dropbox-v2-api.svg?style=flat)](https://www.npmjs.org/package/dropbox-v2-api)
 [![npm version](https://badge.fury.io/js/dropbox-v2-api.svg)](https://badge.fury.io/js/dropbox-v2-api)
-
-# dropbox-v2-api
 
 The package interface is generated programmatically, based on [endpoints description JSON][api.json] which is a Dropbox API HTTP endpoints description, fetched from [official docs][docs].
 
