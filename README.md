@@ -6,7 +6,7 @@
 # dropbox-v2-api
 Dropbox API v2 wrapper for nodejs.
 
-The `dropbox-v2-api` package interface is generated programmatically, based on [endpoints description JSON][api.json] which is a Dropbox API HTTP endpoints description, retrived from [official docs][docs].
+The `dropbox-v2-api` package interface is generated programmatically, based on [endpoints description JSON][api.json] which is a Dropbox API HTTP endpoints description, fetched from [official docs][docs].
 
 [api.json]: <https://github.com/adasq/dropbox-v2-api/blob/master/dist/api.json>
 ## Why this package?
