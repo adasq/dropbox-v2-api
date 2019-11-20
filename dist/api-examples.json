@@ -2269,7 +2269,13 @@
 					}
 				],
 				"has_explicit_shared_members": false,
-				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+				"file_lock_info": {
+					"is_locked": true,
+					"is_lockholder": true,
+					"lockholder_name": "Imaginary User",
+					"created": "2015-05-12T15:50:38Z"
+				}
 			}
 		}
 	},
@@ -2362,7 +2368,13 @@
 							}
 						],
 						"has_explicit_shared_members": false,
-						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+						"file_lock_info": {
+							"is_locked": true,
+							"is_lockholder": true,
+							"lockholder_name": "Imaginary User",
+							"created": "2015-05-12T15:50:38Z"
+						}
 					}
 				}
 			]
@@ -2419,7 +2431,13 @@
 							}
 						],
 						"has_explicit_shared_members": false,
-						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+						"file_lock_info": {
+							"is_locked": true,
+							"is_lockholder": true,
+							"lockholder_name": "Imaginary User",
+							"created": "2015-05-12T15:50:38Z"
+						}
 					}
 				}
 			]
@@ -2472,7 +2490,13 @@
 					}
 				],
 				"has_explicit_shared_members": false,
-				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+				"file_lock_info": {
+					"is_locked": true,
+					"is_lockholder": true,
+					"lockholder_name": "Imaginary User",
+					"created": "2015-05-12T15:50:38Z"
+				}
 			},
 			"copy_reference": "z1X6ATl6aWtzOGq0c3g5Ng",
 			"expires": "2045-05-12T15:50:38Z"
@@ -2531,7 +2555,13 @@
 					}
 				],
 				"has_explicit_shared_members": false,
-				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+				"file_lock_info": {
+					"is_locked": true,
+					"is_lockholder": true,
+					"lockholder_name": "Imaginary User",
+					"created": "2015-05-12T15:50:38Z"
+				}
 			}
 		}
 	},
@@ -2751,7 +2781,13 @@
 					}
 				],
 				"has_explicit_shared_members": false,
-				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+				"file_lock_info": {
+					"is_locked": true,
+					"is_lockholder": true,
+					"lockholder_name": "Imaginary User",
+					"created": "2015-05-12T15:50:38Z"
+				}
 			}
 		}
 	},
@@ -2837,7 +2873,13 @@
 							}
 						],
 						"has_explicit_shared_members": false,
-						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+						"file_lock_info": {
+							"is_locked": true,
+							"is_lockholder": true,
+							"lockholder_name": "Imaginary User",
+							"created": "2015-05-12T15:50:38Z"
+						}
 					}
 				}
 			]
@@ -2894,7 +2936,13 @@
 							}
 						],
 						"has_explicit_shared_members": false,
-						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+						"file_lock_info": {
+							"is_locked": true,
+							"is_lockholder": true,
+							"lockholder_name": "Imaginary User",
+							"created": "2015-05-12T15:50:38Z"
+						}
 					}
 				}
 			]
@@ -2950,7 +2998,13 @@
 				}
 			],
 			"has_explicit_shared_members": false,
-			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+			"file_lock_info": {
+				"is_locked": true,
+				"is_lockholder": true,
+				"lockholder_name": "Imaginary User",
+				"created": "2015-05-12T15:50:38Z"
+			}
 		}
 	},
 	"files/download_zip": {
@@ -3048,8 +3102,105 @@
 					}
 				],
 				"has_explicit_shared_members": false,
-				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+				"file_lock_info": {
+					"is_locked": true,
+					"is_lockholder": true,
+					"lockholder_name": "Imaginary User",
+					"created": "2015-05-12T15:50:38Z"
+				}
 			}
+		}
+	},
+	"files/get_file_lock_batch": {
+		"uri": "https://api.dropboxapi.com/2/files/get_file_lock_batch",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Return the lock metadata for the given list of paths.",
+		"parameters": {
+			"list": [
+				{
+					"name": "entries",
+					"type": "List of (LockFileArg)",
+					"desc": "List of 'entries'. Each 'entry' contains a path of the file which will be locked or queried. Duplicate path arguments in the batch are considered only once.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "path",
+									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+									"desc": "Path in the user's Dropbox to a file."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "path",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"desc": "Path in the user's Dropbox to a file."
+				}
+			],
+			"example": {
+				"entries": [
+					{
+						"path": "/John Doe/sample/test.pdf"
+					}
+				]
+			}
+		},
+		"returnParameters": {
+			"entries": [
+				{
+					".tag": "success",
+					"metadata": {
+						".tag": "file",
+						"name": "Prime_Numbers.txt",
+						"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+						"client_modified": "2015-05-12T15:50:38Z",
+						"server_modified": "2015-05-12T15:50:38Z",
+						"rev": "a1c10ce0dd78",
+						"size": 7212,
+						"path_lower": "/homework/math/prime_numbers.txt",
+						"path_display": "/Homework/math/Prime_Numbers.txt",
+						"sharing_info": {
+							"read_only": true,
+							"parent_shared_folder_id": "84528192421",
+							"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+						},
+						"is_downloadable": true,
+						"property_groups": [
+							{
+								"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+								"fields": [
+									{
+										"name": "Security Policy",
+										"value": "Confidential"
+									}
+								]
+							}
+						],
+						"has_explicit_shared_members": false,
+						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+						"file_lock_info": {
+							"is_locked": true,
+							"is_lockholder": true,
+							"lockholder_name": "Imaginary User",
+							"created": "2015-05-12T15:50:38Z"
+						}
+					},
+					"lock": {
+						"content": {
+							".tag": "single_user",
+							"created": "2015-05-12T15:50:38Z",
+							"lock_holder_account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+							"lock_holder_team_id": "dbtid:1234abcd"
+						}
+					}
+				}
+			]
 		}
 	},
 	"files/get_metadata": {
@@ -3138,7 +3289,13 @@
 				}
 			],
 			"has_explicit_shared_members": false,
-			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+			"file_lock_info": {
+				"is_locked": true,
+				"is_lockholder": true,
+				"lockholder_name": "Imaginary User",
+				"created": "2015-05-12T15:50:38Z"
+			}
 		}
 	},
 	"files/get_preview": {
@@ -3191,7 +3348,13 @@
 				}
 			],
 			"has_explicit_shared_members": false,
-			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+			"file_lock_info": {
+				"is_locked": true,
+				"is_lockholder": true,
+				"lockholder_name": "Imaginary User",
+				"created": "2015-05-12T15:50:38Z"
+			}
 		}
 	},
 	"files/get_temporary_link": {
@@ -3240,7 +3403,13 @@
 					}
 				],
 				"has_explicit_shared_members": false,
-				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+				"file_lock_info": {
+					"is_locked": true,
+					"is_lockholder": true,
+					"lockholder_name": "Imaginary User",
+					"created": "2015-05-12T15:50:38Z"
+				}
 			},
 			"link": "https://dl.dropboxusercontent.com/apitl/1/YXNkZmFzZGcyMzQyMzI0NjU2NDU2NDU2"
 		}
@@ -3923,7 +4092,13 @@
 				}
 			],
 			"has_explicit_shared_members": false,
-			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+			"file_lock_info": {
+				"is_locked": true,
+				"is_lockholder": true,
+				"lockholder_name": "Imaginary User",
+				"created": "2015-05-12T15:50:38Z"
+			}
 		}
 	},
 	"files/get_thumbnail_batch": {
@@ -4436,7 +4611,13 @@
 							}
 						],
 						"has_explicit_shared_members": false,
-						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+						"file_lock_info": {
+							"is_locked": true,
+							"is_lockholder": true,
+							"lockholder_name": "Imaginary User",
+							"created": "2015-05-12T15:50:38Z"
+						}
 					},
 					"thumbnail": "iVBORw0KGgoAAAANSUhEUgAAAdcAAABrCAMAAAI="
 				}
@@ -4586,7 +4767,13 @@
 						}
 					],
 					"has_explicit_shared_members": false,
-					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+					"file_lock_info": {
+						"is_locked": true,
+						"is_lockholder": true,
+						"lockholder_name": "Imaginary User",
+						"created": "2015-05-12T15:50:38Z"
+					}
 				},
 				{
 					".tag": "folder",
@@ -4665,7 +4852,13 @@
 						}
 					],
 					"has_explicit_shared_members": false,
-					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+					"file_lock_info": {
+						"is_locked": true,
+						"is_lockholder": true,
+						"lockholder_name": "Imaginary User",
+						"created": "2015-05-12T15:50:38Z"
+					}
 				},
 				{
 					".tag": "folder",
@@ -4928,7 +5121,104 @@
 						}
 					],
 					"has_explicit_shared_members": false,
-					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+					"file_lock_info": {
+						"is_locked": true,
+						"is_lockholder": true,
+						"lockholder_name": "Imaginary User",
+						"created": "2015-05-12T15:50:38Z"
+					}
+				}
+			]
+		}
+	},
+	"files/lock_file_batch": {
+		"uri": "https://api.dropboxapi.com/2/files/lock_file_batch",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Lock the files at the given paths. A locked file will be writable only by the lock holder. A successful response indicates that the file has been locked. Returns a list of the locked file paths and their metadata after this operation.",
+		"parameters": {
+			"list": [
+				{
+					"name": "entries",
+					"type": "List of (LockFileArg)",
+					"desc": "List of 'entries'. Each 'entry' contains a path of the file which will be locked or queried. Duplicate path arguments in the batch are considered only once.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "path",
+									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+									"desc": "Path in the user's Dropbox to a file."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "path",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"desc": "Path in the user's Dropbox to a file."
+				}
+			],
+			"example": {
+				"entries": [
+					{
+						"path": "/John Doe/sample/test.pdf"
+					}
+				]
+			}
+		},
+		"returnParameters": {
+			"entries": [
+				{
+					".tag": "success",
+					"metadata": {
+						".tag": "file",
+						"name": "Prime_Numbers.txt",
+						"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+						"client_modified": "2015-05-12T15:50:38Z",
+						"server_modified": "2015-05-12T15:50:38Z",
+						"rev": "a1c10ce0dd78",
+						"size": 7212,
+						"path_lower": "/homework/math/prime_numbers.txt",
+						"path_display": "/Homework/math/Prime_Numbers.txt",
+						"sharing_info": {
+							"read_only": true,
+							"parent_shared_folder_id": "84528192421",
+							"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+						},
+						"is_downloadable": true,
+						"property_groups": [
+							{
+								"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+								"fields": [
+									{
+										"name": "Security Policy",
+										"value": "Confidential"
+									}
+								]
+							}
+						],
+						"has_explicit_shared_members": false,
+						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+						"file_lock_info": {
+							"is_locked": true,
+							"is_lockholder": true,
+							"lockholder_name": "Imaginary User",
+							"created": "2015-05-12T15:50:38Z"
+						}
+					},
+					"lock": {
+						"content": {
+							".tag": "single_user",
+							"created": "2015-05-12T15:50:38Z",
+							"lock_holder_account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+							"lock_holder_team_id": "dbtid:1234abcd"
+						}
+					}
 				}
 			]
 		}
@@ -5004,7 +5294,13 @@
 					}
 				],
 				"has_explicit_shared_members": false,
-				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+				"file_lock_info": {
+					"is_locked": true,
+					"is_lockholder": true,
+					"lockholder_name": "Imaginary User",
+					"created": "2015-05-12T15:50:38Z"
+				}
 			}
 		}
 	},
@@ -5103,7 +5399,13 @@
 							}
 						],
 						"has_explicit_shared_members": false,
-						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+						"file_lock_info": {
+							"is_locked": true,
+							"is_lockholder": true,
+							"lockholder_name": "Imaginary User",
+							"created": "2015-05-12T15:50:38Z"
+						}
 					}
 				}
 			]
@@ -5160,7 +5462,13 @@
 							}
 						],
 						"has_explicit_shared_members": false,
-						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+						"file_lock_info": {
+							"is_locked": true,
+							"is_lockholder": true,
+							"lockholder_name": "Imaginary User",
+							"created": "2015-05-12T15:50:38Z"
+						}
 					}
 				}
 			]
@@ -5242,7 +5550,13 @@
 				}
 			],
 			"has_explicit_shared_members": false,
-			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+			"file_lock_info": {
+				"is_locked": true,
+				"is_lockholder": true,
+				"lockholder_name": "Imaginary User",
+				"created": "2015-05-12T15:50:38Z"
+			}
 		}
 	},
 	"files/save_url": {
@@ -5297,7 +5611,13 @@
 				}
 			],
 			"has_explicit_shared_members": false,
-			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+			"file_lock_info": {
+				"is_locked": true,
+				"is_lockholder": true,
+				"lockholder_name": "Imaginary User",
+				"created": "2015-05-12T15:50:38Z"
+			}
 		}
 	},
 	"files/save_url/check_job_status": {
@@ -5789,7 +6109,13 @@
 								}
 							],
 							"has_explicit_shared_members": false,
-							"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+							"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+							"file_lock_info": {
+								"is_locked": true,
+								"is_lockholder": true,
+								"lockholder_name": "Imaginary User",
+								"created": "2015-05-12T15:50:38Z"
+							}
 						}
 					}
 				}
@@ -5848,12 +6174,109 @@
 								}
 							],
 							"has_explicit_shared_members": false,
-							"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+							"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+							"file_lock_info": {
+								"is_locked": true,
+								"is_lockholder": true,
+								"lockholder_name": "Imaginary User",
+								"created": "2015-05-12T15:50:38Z"
+							}
 						}
 					}
 				}
 			],
 			"has_more": false
+		}
+	},
+	"files/unlock_file_batch": {
+		"uri": "https://api.dropboxapi.com/2/files/unlock_file_batch",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Unlock the files at the given paths. A locked file can only be unlocked by the lock holder or, if a business account, a team admin. A successful response indicates that the file has been unlocked. Returns a list of the unlocked file paths and their metadata after this operation.",
+		"parameters": {
+			"list": [
+				{
+					"name": "entries",
+					"type": "List of (UnlockFileArg)",
+					"desc": "List of 'entries'. Each 'entry' contains a path of the file which will be unlocked. Duplicate path arguments in the batch are considered only once.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "path",
+									"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+									"desc": "Path in the user's Dropbox to a file."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "path",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\")",
+					"desc": "Path in the user's Dropbox to a file."
+				}
+			],
+			"example": {
+				"entries": [
+					{
+						"path": "/John Doe/sample/test.pdf"
+					}
+				]
+			}
+		},
+		"returnParameters": {
+			"entries": [
+				{
+					".tag": "success",
+					"metadata": {
+						".tag": "file",
+						"name": "Prime_Numbers.txt",
+						"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+						"client_modified": "2015-05-12T15:50:38Z",
+						"server_modified": "2015-05-12T15:50:38Z",
+						"rev": "a1c10ce0dd78",
+						"size": 7212,
+						"path_lower": "/homework/math/prime_numbers.txt",
+						"path_display": "/Homework/math/Prime_Numbers.txt",
+						"sharing_info": {
+							"read_only": true,
+							"parent_shared_folder_id": "84528192421",
+							"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+						},
+						"is_downloadable": true,
+						"property_groups": [
+							{
+								"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+								"fields": [
+									{
+										"name": "Security Policy",
+										"value": "Confidential"
+									}
+								]
+							}
+						],
+						"has_explicit_shared_members": false,
+						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+						"file_lock_info": {
+							"is_locked": true,
+							"is_lockholder": true,
+							"lockholder_name": "Imaginary User",
+							"created": "2015-05-12T15:50:38Z"
+						}
+					},
+					"lock": {
+						"content": {
+							".tag": "single_user",
+							"created": "2015-05-12T15:50:38Z",
+							"lock_holder_account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+							"lock_holder_team_id": "dbtid:1234abcd"
+						}
+					}
+				}
+			]
 		}
 	},
 	"files/upload": {
@@ -6068,7 +6491,13 @@
 				}
 			],
 			"has_explicit_shared_members": false,
-			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+			"file_lock_info": {
+				"is_locked": true,
+				"is_lockholder": true,
+				"lockholder_name": "Imaginary User",
+				"created": "2015-05-12T15:50:38Z"
+			}
 		}
 	},
 	"files/upload_session/append": {
@@ -6634,7 +7063,13 @@
 				}
 			],
 			"has_explicit_shared_members": false,
-			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+			"file_lock_info": {
+				"is_locked": true,
+				"is_lockholder": true,
+				"lockholder_name": "Imaginary User",
+				"created": "2015-05-12T15:50:38Z"
+			}
 		}
 	},
 	"files/upload_session/finish_batch": {
@@ -7886,7 +8321,13 @@
 						}
 					],
 					"has_explicit_shared_members": false,
-					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+					"file_lock_info": {
+						"is_locked": true,
+						"is_lockholder": true,
+						"lockholder_name": "Imaginary User",
+						"created": "2015-05-12T15:50:38Z"
+					}
 				}
 			]
 		}
@@ -7940,7 +8381,13 @@
 						}
 					],
 					"has_explicit_shared_members": false,
-					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+					"file_lock_info": {
+						"is_locked": true,
+						"is_lockholder": true,
+						"lockholder_name": "Imaginary User",
+						"created": "2015-05-12T15:50:38Z"
+					}
 				}
 			]
 		}
@@ -7965,1337 +8412,6 @@
 		},
 		"returnParameters": {
 			"session_id": "1234faaf0678bcde"
-		}
-	},
-	"paper/docs/archive": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/archive",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Marks the given Paper doc as archived. Note: This action can be performed or undone by anyone with edit permissions to the doc.",
-		"parameters": {
-			"list": [
-				{
-					"name": "doc_id",
-					"type": "String",
-					"desc": "The Paper doc ID."
-				}
-			],
-			"example": {
-				"doc_id": "uaSvRuxvnkFa12PTkBv5q"
-			}
-		},
-		"returnParameters": null
-	},
-	"paper/docs/create": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/create",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": true,
-		"category": "UPLOAD",
-		"description": "Creates a new Paper doc with the provided content.",
-		"parameters": {
-			"list": [
-				{
-					"name": "import_format",
-					"type": "ImportFormat",
-					"desc": "The format of provided data.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "html",
-									"type": "Void",
-									"desc": "The provided data is interpreted as standard HTML."
-								},
-								{
-									"name": "markdown",
-									"type": "Void",
-									"desc": "The provided data is interpreted as markdown. Note: The first line of the provided document will be used as the doc title."
-								},
-								{
-									"name": "plain_text",
-									"type": "Void",
-									"desc": "The provided data is interpreted as plain text. Note: The first line of the provided document will be used as the doc title."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "html",
-					"type": "Void",
-					"desc": "The provided data is interpreted as standard HTML."
-				},
-				{
-					"name": "markdown",
-					"type": "Void",
-					"desc": "The provided data is interpreted as markdown. Note: The first line of the provided document will be used as the doc title."
-				},
-				{
-					"name": "plain_text",
-					"type": "Void",
-					"desc": "The provided data is interpreted as plain text. Note: The first line of the provided document will be used as the doc title."
-				},
-				{
-					"name": "parent_folder_id",
-					"type": "String?",
-					"desc": "The Paper folder ID where the Paper document should be created. The API user has to have write access to this folder or error is thrown. This field is optional."
-				}
-			],
-			"example": {
-				"import_format": "markdown"
-			}
-		},
-		"returnParameters": {
-			"doc_id": "uaSvRuxvnkFa12PTkBv5q",
-			"revision": 456736745,
-			"title": "Week one retention"
-		}
-	},
-	"paper/docs/download": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/download",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "DOWNLOAD",
-		"description": "Exports and downloads Paper doc either as HTML or markdown.",
-		"parameters": {
-			"list": [
-				{
-					"name": "doc_id",
-					"type": "String",
-					"desc": "The Paper doc ID."
-				},
-				{
-					"name": "export_format",
-					"type": "ExportFormat",
-					"desc": "",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "html",
-									"type": "Void",
-									"desc": "The HTML export format."
-								},
-								{
-									"name": "markdown",
-									"type": "Void",
-									"desc": "The markdown export format."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "html",
-					"type": "Void",
-					"desc": "The HTML export format."
-				},
-				{
-					"name": "markdown",
-					"type": "Void",
-					"desc": "The markdown export format."
-				}
-			],
-			"example": {
-				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
-				"export_format": "markdown"
-			}
-		},
-		"returnParameters": {
-			"owner": "james@example.com",
-			"title": "Week one retention",
-			"revision": 456736745,
-			"mime_type": "text/x-markdown"
-		}
-	},
-	"paper/docs/folder_users/list": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/folder_users/list",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Lists the users who are explicitly invited to the Paper folder in which the Paper doc is contained. For private folders all users (including owner) shared on the folder are listed and for team folders all non-team users shared on the folder are returned.",
-		"parameters": {
-			"list": [
-				{
-					"name": "doc_id",
-					"type": "String",
-					"desc": "The Paper doc ID."
-				},
-				{
-					"name": "limit",
-					"type": "Int32(min=1, max=1000)",
-					"desc": "Size limit per batch. The maximum number of users that can be retrieved per batch is 1000. Higher value results in invalid arguments error. The default for this field is 1000."
-				}
-			],
-			"example": {
-				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
-				"limit": 100
-			}
-		},
-		"returnParameters": {
-			"invitees": [
-				{
-					".tag": "email",
-					"email": "jessica@example.com"
-				}
-			],
-			"users": [
-				{
-					"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
-					"email": "bob@example.com",
-					"display_name": "Robert Smith",
-					"same_team": true,
-					"team_member_id": "dbmid:abcd1234"
-				}
-			],
-			"cursor": {
-				"value": "zHZvTPBnXilGgm1AmDgVyZ10zf7qb0qznd5sAVQbbIvoteSnWLjUdLU7aR25hb",
-				"expiration": "2016-08-07T14:56:15Z"
-			},
-			"has_more": false
-		}
-	},
-	"paper/docs/folder_users/list/continue": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/folder_users/list/continue",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Once a cursor has been retrieved from [docs/folder_users/list](#paperdocsfolder_userslist-see-docs), use this to paginate through all users on the Paper folder.",
-		"parameters": {
-			"list": [
-				{
-					"name": "doc_id",
-					"type": "String",
-					"desc": "The Paper doc ID."
-				},
-				{
-					"name": "cursor",
-					"type": "String",
-					"desc": "The cursor obtained from   or  . Allows for pagination."
-				}
-			],
-			"example": {
-				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
-				"cursor": "U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd"
-			}
-		},
-		"returnParameters": {
-			"invitees": [
-				{
-					".tag": "email",
-					"email": "jessica@example.com"
-				}
-			],
-			"users": [
-				{
-					"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
-					"email": "bob@example.com",
-					"display_name": "Robert Smith",
-					"same_team": true,
-					"team_member_id": "dbmid:abcd1234"
-				}
-			],
-			"cursor": {
-				"value": "zHZvTPBnXilGgm1AmDgVyZ10zf7qb0qznd5sAVQbbIvoteSnWLjUdLU7aR25hb",
-				"expiration": "2016-08-07T14:56:15Z"
-			},
-			"has_more": false
-		}
-	},
-	"paper/docs/get_folder_info": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/get_folder_info",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Retrieves folder information for the given Paper doc. This includes:   - folder sharing policy; permissions for subfolders are set by the top-level folder.   - full 'filepath', i.e. the list of folders (both folderId and folderName) from     the root folder to the folder directly containing the Paper doc.  Note: If the Paper doc is not in any folder (aka unfiled) the response will be empty.",
-		"parameters": {
-			"list": [
-				{
-					"name": "doc_id",
-					"type": "String",
-					"desc": "The Paper doc ID."
-				}
-			],
-			"example": {
-				"doc_id": "uaSvRuxvnkFa12PTkBv5q"
-			}
-		},
-		"returnParameters": {
-			"folder_sharing_policy_type": {
-				".tag": "team"
-			},
-			"folders": [
-				{
-					"id": "e.gGYT6HSafpMej9bUv306oGm60vrHiCHgEFnzziioPGCvHf",
-					"name": "Design docs"
-				}
-			]
-		}
-	},
-	"paper/docs/list": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/list",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Return the list of all Paper docs according to the argument specifications. To iterate over through the full pagination, pass the cursor to [docs/list/continue](#paperdocslistcontinue-see-docs).",
-		"parameters": {
-			"list": [
-				{
-					"name": "filter_by",
-					"type": "ListPaperDocsFilterBy",
-					"desc": "Allows user to specify how the Paper docs should be filtered. The default for this union is docs_accessed.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "docs_accessed",
-									"type": "Void",
-									"desc": "Fetches all Paper doc IDs that the user has ever accessed."
-								},
-								{
-									"name": "docs_created",
-									"type": "Void",
-									"desc": "Fetches only the Paper doc IDs that the user has created."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "docs_accessed",
-					"type": "Void",
-					"desc": "Fetches all Paper doc IDs that the user has ever accessed."
-				},
-				{
-					"name": "docs_created",
-					"type": "Void",
-					"desc": "Fetches only the Paper doc IDs that the user has created."
-				},
-				{
-					"name": "sort_by",
-					"type": "ListPaperDocsSortBy",
-					"desc": "Allows user to specify how the Paper docs should be sorted. The default for this union is accessed.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "accessed",
-									"type": "Void",
-									"desc": "Sorts the Paper docs by the time they were last accessed."
-								},
-								{
-									"name": "modified",
-									"type": "Void",
-									"desc": "Sorts the Paper docs by the time they were last modified."
-								},
-								{
-									"name": "created",
-									"type": "Void",
-									"desc": "Sorts the Paper docs by the creation time."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "accessed",
-					"type": "Void",
-					"desc": "Sorts the Paper docs by the time they were last accessed."
-				},
-				{
-					"name": "modified",
-					"type": "Void",
-					"desc": "Sorts the Paper docs by the time they were last modified."
-				},
-				{
-					"name": "created",
-					"type": "Void",
-					"desc": "Sorts the Paper docs by the creation time."
-				},
-				{
-					"name": "sort_order",
-					"type": "ListPaperDocsSortOrder",
-					"desc": "Allows user to specify the sort order of the result. The default for this union is ascending.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "ascending",
-									"type": "Void",
-									"desc": "Sorts the search result in ascending order."
-								},
-								{
-									"name": "descending",
-									"type": "Void",
-									"desc": "Sorts the search result in descending order."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "ascending",
-					"type": "Void",
-					"desc": "Sorts the search result in ascending order."
-				},
-				{
-					"name": "descending",
-					"type": "Void",
-					"desc": "Sorts the search result in descending order."
-				},
-				{
-					"name": "limit",
-					"type": "Int32(min=1, max=1000)",
-					"desc": "Size limit per batch. The maximum number of docs that can be retrieved per batch is 1000. Higher value results in invalid arguments error. The default for this field is 1000."
-				}
-			],
-			"example": {
-				"filter_by": "docs_created",
-				"sort_by": "modified",
-				"sort_order": "descending",
-				"limit": 100
-			}
-		},
-		"returnParameters": {
-			"doc_ids": [
-				"zO1E7coc54sE8IuMdUoxz",
-				"mm1AmDgVyZ10zf7qb0qzn",
-				"dByYHZvTPBnXilGgyc5mm"
-			],
-			"cursor": {
-				"value": "zHZvTPBnXilGgm1AmDgVyZ10zf7qb0qznd5sAVQbbIvoteSnWLjUdLU7aR25hb",
-				"expiration": "2016-08-07T14:56:15Z"
-			},
-			"has_more": true
-		}
-	},
-	"paper/docs/list/continue": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/list/continue",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Once a cursor has been retrieved from [docs/list](#paperdocslist-see-docs), use this to paginate through all Paper doc.",
-		"parameters": {
-			"list": [
-				{
-					"name": "cursor",
-					"type": "String",
-					"desc": "The cursor obtained from   or  . Allows for pagination."
-				}
-			],
-			"example": {
-				"cursor": "U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd"
-			}
-		},
-		"returnParameters": {
-			"doc_ids": [
-				"zO1E7coc54sE8IuMdUoxz",
-				"mm1AmDgVyZ10zf7qb0qzn",
-				"dByYHZvTPBnXilGgyc5mm"
-			],
-			"cursor": {
-				"value": "zHZvTPBnXilGgm1AmDgVyZ10zf7qb0qznd5sAVQbbIvoteSnWLjUdLU7aR25hb",
-				"expiration": "2016-08-07T14:56:15Z"
-			},
-			"has_more": true
-		}
-	},
-	"paper/docs/permanently_delete": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/permanently_delete",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Permanently deletes the given Paper doc. This operation is final as the doc cannot be recovered.  Note: This action can be performed only by the doc owner.",
-		"parameters": {
-			"list": [
-				{
-					"name": "doc_id",
-					"type": "String",
-					"desc": "The Paper doc ID."
-				}
-			],
-			"example": {
-				"doc_id": "uaSvRuxvnkFa12PTkBv5q"
-			}
-		},
-		"returnParameters": null
-	},
-	"paper/docs/sharing_policy/get": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/sharing_policy/get",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Gets the default sharing policy for the given Paper doc.",
-		"parameters": {
-			"list": [
-				{
-					"name": "doc_id",
-					"type": "String",
-					"desc": "The Paper doc ID."
-				}
-			],
-			"example": {
-				"doc_id": "uaSvRuxvnkFa12PTkBv5q"
-			}
-		},
-		"returnParameters": {
-			"public_sharing_policy": {
-				".tag": "people_with_link_can_edit"
-			},
-			"team_sharing_policy": {
-				".tag": "people_with_link_can_edit"
-			}
-		}
-	},
-	"paper/docs/sharing_policy/set": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/sharing_policy/set",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Sets the default sharing policy for the given Paper doc. The default 'team_sharing_policy' can be changed only by teams, omit this field for personal accounts.  Note: 'public_sharing_policy' cannot be set to the value 'disabled' because this setting can be changed only via the team admin console.",
-		"parameters": {
-			"list": [
-				{
-					"name": "doc_id",
-					"type": "String",
-					"desc": "The Paper doc ID."
-				},
-				{
-					"name": "sharing_policy",
-					"type": "SharingPolicy",
-					"desc": "The default sharing policy to be set for the Paper doc.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "public_sharing_policy",
-									"type": "SharingPublicPolicyType?",
-									"desc": "This value applies to the non-team members. This field is optional.",
-									"parameters": [
-										{
-											"list": [
-												{
-													"name": "people_with_link_can_edit",
-													"type": "Void",
-													"desc": "Users who have a link to this doc can edit it."
-												},
-												{
-													"name": "people_with_link_can_view_and_comment",
-													"type": "Void",
-													"desc": "Users who have a link to this doc can view and comment on it."
-												},
-												{
-													"name": "invite_only",
-													"type": "Void",
-													"desc": "Users must be explicitly invited to this doc."
-												},
-												{
-													"name": "disabled",
-													"type": "Void",
-													"desc": "Value used to indicate that doc sharing is enabled only within team."
-												}
-											],
-											"example": null
-										}
-									]
-								},
-								{
-									"name": "people_with_link_can_edit",
-									"type": "Void",
-									"desc": "Users who have a link to this doc can edit it."
-								},
-								{
-									"name": "people_with_link_can_view_and_comment",
-									"type": "Void",
-									"desc": "Users who have a link to this doc can view and comment on it."
-								},
-								{
-									"name": "invite_only",
-									"type": "Void",
-									"desc": "Users must be explicitly invited to this doc."
-								},
-								{
-									"name": "disabled",
-									"type": "Void",
-									"desc": "Value used to indicate that doc sharing is enabled only within team."
-								},
-								{
-									"name": "team_sharing_policy",
-									"type": "SharingTeamPolicyType?",
-									"desc": "This value applies to the team members only. The value is null for all personal accounts. This field is optional.",
-									"parameters": [
-										{
-											"list": [
-												{
-													"name": "people_with_link_can_edit",
-													"type": "Void",
-													"desc": "Users who have a link to this doc can edit it."
-												},
-												{
-													"name": "people_with_link_can_view_and_comment",
-													"type": "Void",
-													"desc": "Users who have a link to this doc can view and comment on it."
-												},
-												{
-													"name": "invite_only",
-													"type": "Void",
-													"desc": "Users must be explicitly invited to this doc."
-												}
-											],
-											"example": null
-										}
-									]
-								},
-								{
-									"name": "people_with_link_can_edit",
-									"type": "Void",
-									"desc": "Users who have a link to this doc can edit it."
-								},
-								{
-									"name": "people_with_link_can_view_and_comment",
-									"type": "Void",
-									"desc": "Users who have a link to this doc can view and comment on it."
-								},
-								{
-									"name": "invite_only",
-									"type": "Void",
-									"desc": "Users must be explicitly invited to this doc."
-								}
-							],
-							"example": null
-						},
-						{
-							"list": [
-								{
-									"name": "people_with_link_can_edit",
-									"type": "Void",
-									"desc": "Users who have a link to this doc can edit it."
-								},
-								{
-									"name": "people_with_link_can_view_and_comment",
-									"type": "Void",
-									"desc": "Users who have a link to this doc can view and comment on it."
-								},
-								{
-									"name": "invite_only",
-									"type": "Void",
-									"desc": "Users must be explicitly invited to this doc."
-								},
-								{
-									"name": "disabled",
-									"type": "Void",
-									"desc": "Value used to indicate that doc sharing is enabled only within team."
-								}
-							],
-							"example": null
-						},
-						{
-							"list": [
-								{
-									"name": "people_with_link_can_edit",
-									"type": "Void",
-									"desc": "Users who have a link to this doc can edit it."
-								},
-								{
-									"name": "people_with_link_can_view_and_comment",
-									"type": "Void",
-									"desc": "Users who have a link to this doc can view and comment on it."
-								},
-								{
-									"name": "invite_only",
-									"type": "Void",
-									"desc": "Users must be explicitly invited to this doc."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "public_sharing_policy",
-					"type": "SharingPublicPolicyType?",
-					"desc": "This value applies to the non-team members. This field is optional.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "people_with_link_can_edit",
-									"type": "Void",
-									"desc": "Users who have a link to this doc can edit it."
-								},
-								{
-									"name": "people_with_link_can_view_and_comment",
-									"type": "Void",
-									"desc": "Users who have a link to this doc can view and comment on it."
-								},
-								{
-									"name": "invite_only",
-									"type": "Void",
-									"desc": "Users must be explicitly invited to this doc."
-								},
-								{
-									"name": "disabled",
-									"type": "Void",
-									"desc": "Value used to indicate that doc sharing is enabled only within team."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "people_with_link_can_edit",
-					"type": "Void",
-					"desc": "Users who have a link to this doc can edit it."
-				},
-				{
-					"name": "people_with_link_can_view_and_comment",
-					"type": "Void",
-					"desc": "Users who have a link to this doc can view and comment on it."
-				},
-				{
-					"name": "invite_only",
-					"type": "Void",
-					"desc": "Users must be explicitly invited to this doc."
-				},
-				{
-					"name": "disabled",
-					"type": "Void",
-					"desc": "Value used to indicate that doc sharing is enabled only within team."
-				},
-				{
-					"name": "team_sharing_policy",
-					"type": "SharingTeamPolicyType?",
-					"desc": "This value applies to the team members only. The value is null for all personal accounts. This field is optional.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "people_with_link_can_edit",
-									"type": "Void",
-									"desc": "Users who have a link to this doc can edit it."
-								},
-								{
-									"name": "people_with_link_can_view_and_comment",
-									"type": "Void",
-									"desc": "Users who have a link to this doc can view and comment on it."
-								},
-								{
-									"name": "invite_only",
-									"type": "Void",
-									"desc": "Users must be explicitly invited to this doc."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "people_with_link_can_edit",
-					"type": "Void",
-					"desc": "Users who have a link to this doc can edit it."
-				},
-				{
-					"name": "people_with_link_can_view_and_comment",
-					"type": "Void",
-					"desc": "Users who have a link to this doc can view and comment on it."
-				},
-				{
-					"name": "invite_only",
-					"type": "Void",
-					"desc": "Users must be explicitly invited to this doc."
-				}
-			],
-			"example": {
-				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
-				"sharing_policy": {
-					"public_sharing_policy": "people_with_link_can_edit",
-					"team_sharing_policy": "people_with_link_can_edit"
-				}
-			}
-		},
-		"returnParameters": null
-	},
-	"paper/docs/update": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/update",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": true,
-		"category": "UPLOAD",
-		"description": "Updates an existing Paper doc with the provided content.",
-		"parameters": {
-			"list": [
-				{
-					"name": "doc_id",
-					"type": "String",
-					"desc": "The Paper doc ID."
-				},
-				{
-					"name": "doc_update_policy",
-					"type": "PaperDocUpdatePolicy",
-					"desc": "The policy used for the current update call.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "append",
-									"type": "Void",
-									"desc": "The content will be appended to the doc."
-								},
-								{
-									"name": "prepend",
-									"type": "Void",
-									"desc": "The content will be prepended to the doc. Note: the doc title will not be affected."
-								},
-								{
-									"name": "overwrite_all",
-									"type": "Void",
-									"desc": "The document will be overwitten at the head with the provided content."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "append",
-					"type": "Void",
-					"desc": "The content will be appended to the doc."
-				},
-				{
-					"name": "prepend",
-					"type": "Void",
-					"desc": "The content will be prepended to the doc. Note: the doc title will not be affected."
-				},
-				{
-					"name": "overwrite_all",
-					"type": "Void",
-					"desc": "The document will be overwitten at the head with the provided content."
-				},
-				{
-					"name": "revision",
-					"type": "Int64",
-					"desc": "The latest doc revision. This value must match the head revision or an error code will be returned. This is to prevent colliding writes."
-				},
-				{
-					"name": "import_format",
-					"type": "ImportFormat",
-					"desc": "The format of provided data.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "html",
-									"type": "Void",
-									"desc": "The provided data is interpreted as standard HTML."
-								},
-								{
-									"name": "markdown",
-									"type": "Void",
-									"desc": "The provided data is interpreted as markdown. Note: The first line of the provided document will be used as the doc title."
-								},
-								{
-									"name": "plain_text",
-									"type": "Void",
-									"desc": "The provided data is interpreted as plain text. Note: The first line of the provided document will be used as the doc title."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "html",
-					"type": "Void",
-					"desc": "The provided data is interpreted as standard HTML."
-				},
-				{
-					"name": "markdown",
-					"type": "Void",
-					"desc": "The provided data is interpreted as markdown. Note: The first line of the provided document will be used as the doc title."
-				},
-				{
-					"name": "plain_text",
-					"type": "Void",
-					"desc": "The provided data is interpreted as plain text. Note: The first line of the provided document will be used as the doc title."
-				}
-			],
-			"example": {
-				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
-				"doc_update_policy": "overwrite_all",
-				"revision": 12345,
-				"import_format": "html"
-			}
-		},
-		"returnParameters": {
-			"doc_id": "uaSvRuxvnkFa12PTkBv5q",
-			"revision": 456736745,
-			"title": "Week one retention"
-		}
-	},
-	"paper/docs/users/add": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/users/add",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Allows an owner or editor to add users to a Paper doc or change their permissions using their email address or Dropbox account ID.  Note: The Doc owner's permissions cannot be changed.",
-		"parameters": {
-			"list": [
-				{
-					"name": "doc_id",
-					"type": "String",
-					"desc": "The Paper doc ID."
-				},
-				{
-					"name": "members",
-					"type": "List of (AddMember, max_items=20)",
-					"desc": "User which should be added to the Paper doc. Specify only email address or Dropbox account ID.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "member",
-									"type": "MemberSelector",
-									"desc": "User which should be added to the Paper doc. Specify only email address or Dropbox account ID.",
-									"parameters": [
-										{
-											"list": [
-												{
-													"name": "dropbox_id",
-													"type": "String(min_length=1)",
-													"desc": "Dropbox account, team member, or group ID of member."
-												},
-												{
-													"name": "email",
-													"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
-													"desc": "E-mail address of member."
-												}
-											],
-											"example": null
-										}
-									]
-								},
-								{
-									"name": "dropbox_id",
-									"type": "String(min_length=1)",
-									"desc": "Dropbox account, team member, or group ID of member."
-								},
-								{
-									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
-									"desc": "E-mail address of member."
-								},
-								{
-									"name": "permission_level",
-									"type": "PaperDocPermissionLevel",
-									"desc": "Permission for the user. The default for this union is edit.",
-									"parameters": [
-										{
-											"list": [
-												{
-													"name": "edit",
-													"type": "Void",
-													"desc": "User will be granted edit permissions."
-												},
-												{
-													"name": "view_and_comment",
-													"type": "Void",
-													"desc": "User will be granted view and comment permissions."
-												}
-											],
-											"example": null
-										}
-									]
-								},
-								{
-									"name": "edit",
-									"type": "Void",
-									"desc": "User will be granted edit permissions."
-								},
-								{
-									"name": "view_and_comment",
-									"type": "Void",
-									"desc": "User will be granted view and comment permissions."
-								}
-							],
-							"example": null
-						},
-						{
-							"list": [
-								{
-									"name": "dropbox_id",
-									"type": "String(min_length=1)",
-									"desc": "Dropbox account, team member, or group ID of member."
-								},
-								{
-									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
-									"desc": "E-mail address of member."
-								}
-							],
-							"example": null
-						},
-						{
-							"list": [
-								{
-									"name": "edit",
-									"type": "Void",
-									"desc": "User will be granted edit permissions."
-								},
-								{
-									"name": "view_and_comment",
-									"type": "Void",
-									"desc": "User will be granted view and comment permissions."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "member",
-					"type": "MemberSelector",
-					"desc": "User which should be added to the Paper doc. Specify only email address or Dropbox account ID.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "dropbox_id",
-									"type": "String(min_length=1)",
-									"desc": "Dropbox account, team member, or group ID of member."
-								},
-								{
-									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
-									"desc": "E-mail address of member."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "dropbox_id",
-					"type": "String(min_length=1)",
-					"desc": "Dropbox account, team member, or group ID of member."
-				},
-				{
-					"name": "email",
-					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
-					"desc": "E-mail address of member."
-				},
-				{
-					"name": "permission_level",
-					"type": "PaperDocPermissionLevel",
-					"desc": "Permission for the user. The default for this union is edit.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "edit",
-									"type": "Void",
-									"desc": "User will be granted edit permissions."
-								},
-								{
-									"name": "view_and_comment",
-									"type": "Void",
-									"desc": "User will be granted view and comment permissions."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "edit",
-					"type": "Void",
-					"desc": "User will be granted edit permissions."
-				},
-				{
-					"name": "view_and_comment",
-					"type": "Void",
-					"desc": "User will be granted view and comment permissions."
-				},
-				{
-					"name": "custom_message",
-					"type": "String?",
-					"desc": "A personal message that will be emailed to each successfully added member. This field is optional."
-				},
-				{
-					"name": "quiet",
-					"type": "Boolean",
-					"desc": "Clients should set this to true if no email message shall be sent to added users. The default for this field is False."
-				}
-			],
-			"example": {
-				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
-				"members": [
-					{
-						"member": {
-							".tag": "email",
-							"email": "justin@example.com"
-						},
-						"permission_level": "view_and_comment"
-					}
-				],
-				"custom_message": "Welcome to Paper.",
-				"quiet": false
-			}
-		},
-		"returnParameters": null
-	},
-	"paper/docs/users/list": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/users/list",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Lists all users who visited the Paper doc or users with explicit access. This call excludes users who have been removed. The list is sorted by the date of the visit or the share date. The list will include both users, the explicitly shared ones as well as those who came in using the Paper url link.",
-		"parameters": {
-			"list": [
-				{
-					"name": "doc_id",
-					"type": "String",
-					"desc": "The Paper doc ID."
-				},
-				{
-					"name": "limit",
-					"type": "Int32(min=1, max=1000)",
-					"desc": "Size limit per batch. The maximum number of users that can be retrieved per batch is 1000. Higher value results in invalid arguments error. The default for this field is 1000."
-				},
-				{
-					"name": "filter_by",
-					"type": "UserOnPaperDocFilter",
-					"desc": "Specify this attribute if you want to obtain users that have already accessed the Paper doc. The default for this union is shared.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "visited",
-									"type": "Void",
-									"desc": "all users who have visited the Paper doc."
-								},
-								{
-									"name": "shared",
-									"type": "Void",
-									"desc": "All uses who are shared on the Paper doc. This includes all users who have visited the Paper doc as well as those who have not."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "visited",
-					"type": "Void",
-					"desc": "all users who have visited the Paper doc."
-				},
-				{
-					"name": "shared",
-					"type": "Void",
-					"desc": "All uses who are shared on the Paper doc. This includes all users who have visited the Paper doc as well as those who have not."
-				}
-			],
-			"example": {
-				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
-				"limit": 100,
-				"filter_by": "shared"
-			}
-		},
-		"returnParameters": {
-			"invitees": [
-				{
-					"invitee": {
-						".tag": "email",
-						"email": "jessica@example.com"
-					},
-					"permission_level": {
-						".tag": "edit"
-					}
-				}
-			],
-			"users": [
-				{
-					"user": {
-						"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
-						"email": "bob@example.com",
-						"display_name": "Robert Smith",
-						"same_team": true,
-						"team_member_id": "dbmid:abcd1234"
-					},
-					"permission_level": {
-						".tag": "view_and_comment"
-					}
-				}
-			],
-			"doc_owner": {
-				"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
-				"email": "bob@example.com",
-				"display_name": "Robert Smith",
-				"same_team": true,
-				"team_member_id": "dbmid:abcd1234"
-			},
-			"cursor": {
-				"value": "zHZvTPBnXilGgm1AmDgVyZ10zf7qb0qznd5sAVQbbIvoteSnWLjUdLU7aR25hb",
-				"expiration": "2016-08-07T14:56:15Z"
-			},
-			"has_more": false
-		}
-	},
-	"paper/docs/users/list/continue": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/users/list/continue",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Once a cursor has been retrieved from [docs/users/list](#paperdocsuserslist-see-docs), use this to paginate through all users on the Paper doc.",
-		"parameters": {
-			"list": [
-				{
-					"name": "doc_id",
-					"type": "String",
-					"desc": "The Paper doc ID."
-				},
-				{
-					"name": "cursor",
-					"type": "String",
-					"desc": "The cursor obtained from   or  . Allows for pagination."
-				}
-			],
-			"example": {
-				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
-				"cursor": "U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd"
-			}
-		},
-		"returnParameters": {
-			"invitees": [
-				{
-					"invitee": {
-						".tag": "email",
-						"email": "jessica@example.com"
-					},
-					"permission_level": {
-						".tag": "edit"
-					}
-				}
-			],
-			"users": [
-				{
-					"user": {
-						"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
-						"email": "bob@example.com",
-						"display_name": "Robert Smith",
-						"same_team": true,
-						"team_member_id": "dbmid:abcd1234"
-					},
-					"permission_level": {
-						".tag": "view_and_comment"
-					}
-				}
-			],
-			"doc_owner": {
-				"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
-				"email": "bob@example.com",
-				"display_name": "Robert Smith",
-				"same_team": true,
-				"team_member_id": "dbmid:abcd1234"
-			},
-			"cursor": {
-				"value": "zHZvTPBnXilGgm1AmDgVyZ10zf7qb0qznd5sAVQbbIvoteSnWLjUdLU7aR25hb",
-				"expiration": "2016-08-07T14:56:15Z"
-			},
-			"has_more": false
-		}
-	},
-	"paper/docs/users/remove": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/users/remove",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Allows an owner or editor to remove users from a Paper doc using their email address or Dropbox account ID.  Note: Doc owner cannot be removed.",
-		"parameters": {
-			"list": [
-				{
-					"name": "doc_id",
-					"type": "String",
-					"desc": "The Paper doc ID."
-				},
-				{
-					"name": "member",
-					"type": "MemberSelector",
-					"desc": "User which should be removed from the Paper doc. Specify only email address or Dropbox account ID.",
-					"parameters": [
-						{
-							"list": [
-								{
-									"name": "dropbox_id",
-									"type": "String(min_length=1)",
-									"desc": "Dropbox account, team member, or group ID of member."
-								},
-								{
-									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
-									"desc": "E-mail address of member."
-								}
-							],
-							"example": null
-						}
-					]
-				},
-				{
-					"name": "dropbox_id",
-					"type": "String(min_length=1)",
-					"desc": "Dropbox account, team member, or group ID of member."
-				},
-				{
-					"name": "email",
-					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
-					"desc": "E-mail address of member."
-				}
-			],
-			"example": {
-				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
-				"member": {
-					".tag": "email",
-					"email": "justin@example.com"
-				}
-			}
-		},
-		"returnParameters": null
-	},
-	"paper/folders/create": {
-		"uri": "https://api.dropboxapi.com/2/paper/folders/create",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"description": "Create a new Paper folder with the provided info.",
-		"parameters": {
-			"list": [
-				{
-					"name": "name",
-					"type": "String",
-					"desc": "The name of the new Paper folder."
-				},
-				{
-					"name": "parent_folder_id",
-					"type": "String?",
-					"desc": "The encrypted Paper folder Id where the new Paper folder should be created. The API user has to have write access to this folder or error is thrown. If not supplied, the new folder will be created at top level. This field is optional."
-				},
-				{
-					"name": "is_team_folder",
-					"type": "Boolean?",
-					"desc": "Whether the folder to be created should be a team folder. This value will be ignored if parent_folder_id is supplied, as the new folder will inherit the type (private or team folder) from its parent. We will by default create a top-level private folder if both parent_folder_id and is_team_folder are not supplied. This field is optional."
-				}
-			],
-			"example": {
-				"name": "my new folder"
-			}
-		},
-		"returnParameters": {
-			"folder_id": "abcd"
 		}
 	},
 	"sharing/add_file_member": {
@@ -9952,7 +9068,7 @@
 								{
 									"name": "access",
 									"type": "RequestedLinkAccessLevel?",
-									"desc": "Requested access level you want the audience to gain from this link. This field is optional.",
+									"desc": "Requested access level you want the audience to gain from this link. Note, modifying access level for an existing link is not supported. This field is optional.",
 									"parameters": [
 										{
 											"list": [
@@ -9964,7 +9080,7 @@
 												{
 													"name": "editor",
 													"type": "Void",
-													"desc": "Users who use the link can edit, view and comment on the content."
+													"desc": "Users who use the link can edit, view and comment on the content. Note not all file types support edit links yet."
 												},
 												{
 													"name": "max",
@@ -9984,7 +9100,7 @@
 								{
 									"name": "editor",
 									"type": "Void",
-									"desc": "Users who use the link can edit, view and comment on the content."
+									"desc": "Users who use the link can edit, view and comment on the content. Note not all file types support edit links yet."
 								},
 								{
 									"name": "max",
@@ -10054,7 +9170,7 @@
 								{
 									"name": "editor",
 									"type": "Void",
-									"desc": "Users who use the link can edit, view and comment on the content."
+									"desc": "Users who use the link can edit, view and comment on the content. Note not all file types support edit links yet."
 								},
 								{
 									"name": "max",
@@ -10183,7 +9299,7 @@
 				{
 					"name": "access",
 					"type": "RequestedLinkAccessLevel?",
-					"desc": "Requested access level you want the audience to gain from this link. This field is optional.",
+					"desc": "Requested access level you want the audience to gain from this link. Note, modifying access level for an existing link is not supported. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -10195,7 +9311,7 @@
 								{
 									"name": "editor",
 									"type": "Void",
-									"desc": "Users who use the link can edit, view and comment on the content."
+									"desc": "Users who use the link can edit, view and comment on the content. Note not all file types support edit links yet."
 								},
 								{
 									"name": "max",
@@ -10215,7 +9331,7 @@
 				{
 					"name": "editor",
 					"type": "Void",
-					"desc": "Users who use the link can edit, view and comment on the content."
+					"desc": "Users who use the link can edit, view and comment on the content. Note not all file types support edit links yet."
 				},
 				{
 					"name": "max",
@@ -12513,7 +11629,7 @@
 								{
 									"name": "access",
 									"type": "RequestedLinkAccessLevel?",
-									"desc": "Requested access level you want the audience to gain from this link. This field is optional.",
+									"desc": "Requested access level you want the audience to gain from this link. Note, modifying access level for an existing link is not supported. This field is optional.",
 									"parameters": [
 										{
 											"list": [
@@ -12525,7 +11641,7 @@
 												{
 													"name": "editor",
 													"type": "Void",
-													"desc": "Users who use the link can edit, view and comment on the content."
+													"desc": "Users who use the link can edit, view and comment on the content. Note not all file types support edit links yet."
 												},
 												{
 													"name": "max",
@@ -12545,7 +11661,7 @@
 								{
 									"name": "editor",
 									"type": "Void",
-									"desc": "Users who use the link can edit, view and comment on the content."
+									"desc": "Users who use the link can edit, view and comment on the content. Note not all file types support edit links yet."
 								},
 								{
 									"name": "max",
@@ -12615,7 +11731,7 @@
 								{
 									"name": "editor",
 									"type": "Void",
-									"desc": "Users who use the link can edit, view and comment on the content."
+									"desc": "Users who use the link can edit, view and comment on the content. Note not all file types support edit links yet."
 								},
 								{
 									"name": "max",
@@ -12744,7 +11860,7 @@
 				{
 					"name": "access",
 					"type": "RequestedLinkAccessLevel?",
-					"desc": "Requested access level you want the audience to gain from this link. This field is optional.",
+					"desc": "Requested access level you want the audience to gain from this link. Note, modifying access level for an existing link is not supported. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -12756,7 +11872,7 @@
 								{
 									"name": "editor",
 									"type": "Void",
-									"desc": "Users who use the link can edit, view and comment on the content."
+									"desc": "Users who use the link can edit, view and comment on the content. Note not all file types support edit links yet."
 								},
 								{
 									"name": "max",
@@ -12776,7 +11892,7 @@
 				{
 					"name": "editor",
 					"type": "Void",
-					"desc": "Users who use the link can edit, view and comment on the content."
+					"desc": "Users who use the link can edit, view and comment on the content. Note not all file types support edit links yet."
 				},
 				{
 					"name": "max",
@@ -15467,7 +14583,13 @@
 				}
 			],
 			"has_explicit_shared_members": false,
-			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+			"file_lock_info": {
+				"is_locked": true,
+				"is_lockholder": true,
+				"lockholder_name": "Imaginary User",
+				"created": "2015-05-12T15:50:38Z"
+			}
 		}
 	},
 	"deprecated/alpha/upload": {
@@ -15682,7 +14804,13 @@
 				}
 			],
 			"has_explicit_shared_members": false,
-			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+			"file_lock_info": {
+				"is_locked": true,
+				"is_lockholder": true,
+				"lockholder_name": "Imaginary User",
+				"created": "2015-05-12T15:50:38Z"
+			}
 		}
 	},
 	"deprecated/properties/add": {
@@ -16167,6 +15295,1337 @@
 			}
 		},
 		"returnParameters": null
+	},
+	"deprecated/docs/archive": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/archive",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Marks the given Paper doc as archived. This action can be performed or undone by anyone with edit permissions to the doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. This endpoint will be retired in September 2020. Refer to the Paper Migration Guide for more information.",
+		"parameters": {
+			"list": [
+				{
+					"name": "doc_id",
+					"type": "String",
+					"desc": "The Paper doc ID."
+				}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q"
+			}
+		},
+		"returnParameters": null
+	},
+	"deprecated/docs/create": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/create",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": true,
+		"category": "UPLOAD",
+		"description": "Creates a new Paper doc with the provided content. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. This endpoint will be retired in September 2020. Refer to the Paper Migration Guide for more information.",
+		"parameters": {
+			"list": [
+				{
+					"name": "import_format",
+					"type": "ImportFormat",
+					"desc": "The format of provided data.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "html",
+									"type": "Void",
+									"desc": "The provided data is interpreted as standard HTML."
+								},
+								{
+									"name": "markdown",
+									"type": "Void",
+									"desc": "The provided data is interpreted as markdown. The first line of the provided document will be used as the doc title."
+								},
+								{
+									"name": "plain_text",
+									"type": "Void",
+									"desc": "The provided data is interpreted as plain text. The first line of the provided document will be used as the doc title."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "html",
+					"type": "Void",
+					"desc": "The provided data is interpreted as standard HTML."
+				},
+				{
+					"name": "markdown",
+					"type": "Void",
+					"desc": "The provided data is interpreted as markdown. The first line of the provided document will be used as the doc title."
+				},
+				{
+					"name": "plain_text",
+					"type": "Void",
+					"desc": "The provided data is interpreted as plain text. The first line of the provided document will be used as the doc title."
+				},
+				{
+					"name": "parent_folder_id",
+					"type": "String?",
+					"desc": "The Paper folder ID where the Paper document should be created. The API user has to have write access to this folder or error is thrown. This field is optional."
+				}
+			],
+			"example": {
+				"import_format": "markdown"
+			}
+		},
+		"returnParameters": {
+			"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+			"revision": 456736745,
+			"title": "Week one retention"
+		}
+	},
+	"deprecated/docs/download": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/download",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "DOWNLOAD",
+		"description": "Exports and downloads Paper doc either as HTML or markdown. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
+		"parameters": {
+			"list": [
+				{
+					"name": "doc_id",
+					"type": "String",
+					"desc": "The Paper doc ID."
+				},
+				{
+					"name": "export_format",
+					"type": "ExportFormat",
+					"desc": "",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "html",
+									"type": "Void",
+									"desc": "The HTML export format."
+								},
+								{
+									"name": "markdown",
+									"type": "Void",
+									"desc": "The markdown export format."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "html",
+					"type": "Void",
+					"desc": "The HTML export format."
+				},
+				{
+					"name": "markdown",
+					"type": "Void",
+					"desc": "The markdown export format."
+				}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+				"export_format": "markdown"
+			}
+		},
+		"returnParameters": {
+			"owner": "james@example.com",
+			"title": "Week one retention",
+			"revision": 456736745,
+			"mime_type": "text/x-markdown"
+		}
+	},
+	"deprecated/docs/folder_users/list": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/folder_users/list",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Lists the users who are explicitly invited to the Paper folder in which the Paper doc is contained. For private folders all users (including owner) shared on the folder are listed and for team folders all non-team users shared on the folder are returned. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
+		"parameters": {
+			"list": [
+				{
+					"name": "doc_id",
+					"type": "String",
+					"desc": "The Paper doc ID."
+				},
+				{
+					"name": "limit",
+					"type": "Int32(min=1, max=1000)",
+					"desc": "Size limit per batch. The maximum number of users that can be retrieved per batch is 1000. Higher value results in invalid arguments error. The default for this field is 1000."
+				}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+				"limit": 100
+			}
+		},
+		"returnParameters": {
+			"invitees": [
+				{
+					".tag": "email",
+					"email": "jessica@example.com"
+				}
+			],
+			"users": [
+				{
+					"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+					"email": "bob@example.com",
+					"display_name": "Robert Smith",
+					"same_team": true,
+					"team_member_id": "dbmid:abcd1234"
+				}
+			],
+			"cursor": {
+				"value": "zHZvTPBnXilGgm1AmDgVyZ10zf7qb0qznd5sAVQbbIvoteSnWLjUdLU7aR25hb",
+				"expiration": "2016-08-07T14:56:15Z"
+			},
+			"has_more": false
+		}
+	},
+	"deprecated/docs/folder_users/list/continue": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/folder_users/list/continue",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Once a cursor has been retrieved from [docs/folder_users/list](#paperdocsfolder_userslist-see-docs), use this to paginate through all users on the Paper folder. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
+		"parameters": {
+			"list": [
+				{
+					"name": "doc_id",
+					"type": "String",
+					"desc": "The Paper doc ID."
+				},
+				{
+					"name": "cursor",
+					"type": "String",
+					"desc": "The cursor obtained from   or  . Allows for pagination."
+				}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+				"cursor": "U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd"
+			}
+		},
+		"returnParameters": {
+			"invitees": [
+				{
+					".tag": "email",
+					"email": "jessica@example.com"
+				}
+			],
+			"users": [
+				{
+					"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+					"email": "bob@example.com",
+					"display_name": "Robert Smith",
+					"same_team": true,
+					"team_member_id": "dbmid:abcd1234"
+				}
+			],
+			"cursor": {
+				"value": "zHZvTPBnXilGgm1AmDgVyZ10zf7qb0qznd5sAVQbbIvoteSnWLjUdLU7aR25hb",
+				"expiration": "2016-08-07T14:56:15Z"
+			},
+			"has_more": false
+		}
+	},
+	"deprecated/docs/get_folder_info": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/get_folder_info",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Retrieves folder information for the given Paper doc. This includes:   - folder sharing policy; permissions for subfolders are set by the top-level folder.   - full 'filepath', i.e. the list of folders (both folderId and folderName) from     the root folder to the folder directly containing the Paper doc.  If the Paper doc is not in any folder (aka unfiled) the response will be empty. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
+		"parameters": {
+			"list": [
+				{
+					"name": "doc_id",
+					"type": "String",
+					"desc": "The Paper doc ID."
+				}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q"
+			}
+		},
+		"returnParameters": {
+			"folder_sharing_policy_type": {
+				".tag": "team"
+			},
+			"folders": [
+				{
+					"id": "e.gGYT6HSafpMej9bUv306oGm60vrHiCHgEFnzziioPGCvHf",
+					"name": "Design docs"
+				}
+			]
+		}
+	},
+	"deprecated/docs/list": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/list",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Return the list of all Paper docs according to the argument specifications. To iterate over through the full pagination, pass the cursor to [docs/list/continue](#paperdocslistcontinue-see-docs). Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
+		"parameters": {
+			"list": [
+				{
+					"name": "filter_by",
+					"type": "ListPaperDocsFilterBy",
+					"desc": "Allows user to specify how the Paper docs should be filtered. The default for this union is docs_accessed.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "docs_accessed",
+									"type": "Void",
+									"desc": "Fetches all Paper doc IDs that the user has ever accessed."
+								},
+								{
+									"name": "docs_created",
+									"type": "Void",
+									"desc": "Fetches only the Paper doc IDs that the user has created."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "docs_accessed",
+					"type": "Void",
+					"desc": "Fetches all Paper doc IDs that the user has ever accessed."
+				},
+				{
+					"name": "docs_created",
+					"type": "Void",
+					"desc": "Fetches only the Paper doc IDs that the user has created."
+				},
+				{
+					"name": "sort_by",
+					"type": "ListPaperDocsSortBy",
+					"desc": "Allows user to specify how the Paper docs should be sorted. The default for this union is accessed.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "accessed",
+									"type": "Void",
+									"desc": "Sorts the Paper docs by the time they were last accessed."
+								},
+								{
+									"name": "modified",
+									"type": "Void",
+									"desc": "Sorts the Paper docs by the time they were last modified."
+								},
+								{
+									"name": "created",
+									"type": "Void",
+									"desc": "Sorts the Paper docs by the creation time."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "accessed",
+					"type": "Void",
+					"desc": "Sorts the Paper docs by the time they were last accessed."
+				},
+				{
+					"name": "modified",
+					"type": "Void",
+					"desc": "Sorts the Paper docs by the time they were last modified."
+				},
+				{
+					"name": "created",
+					"type": "Void",
+					"desc": "Sorts the Paper docs by the creation time."
+				},
+				{
+					"name": "sort_order",
+					"type": "ListPaperDocsSortOrder",
+					"desc": "Allows user to specify the sort order of the result. The default for this union is ascending.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "ascending",
+									"type": "Void",
+									"desc": "Sorts the search result in ascending order."
+								},
+								{
+									"name": "descending",
+									"type": "Void",
+									"desc": "Sorts the search result in descending order."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "ascending",
+					"type": "Void",
+					"desc": "Sorts the search result in ascending order."
+				},
+				{
+					"name": "descending",
+					"type": "Void",
+					"desc": "Sorts the search result in descending order."
+				},
+				{
+					"name": "limit",
+					"type": "Int32(min=1, max=1000)",
+					"desc": "Size limit per batch. The maximum number of docs that can be retrieved per batch is 1000. Higher value results in invalid arguments error. The default for this field is 1000."
+				}
+			],
+			"example": {
+				"filter_by": "docs_created",
+				"sort_by": "modified",
+				"sort_order": "descending",
+				"limit": 100
+			}
+		},
+		"returnParameters": {
+			"doc_ids": [
+				"zO1E7coc54sE8IuMdUoxz",
+				"mm1AmDgVyZ10zf7qb0qzn",
+				"dByYHZvTPBnXilGgyc5mm"
+			],
+			"cursor": {
+				"value": "zHZvTPBnXilGgm1AmDgVyZ10zf7qb0qznd5sAVQbbIvoteSnWLjUdLU7aR25hb",
+				"expiration": "2016-08-07T14:56:15Z"
+			},
+			"has_more": true
+		}
+	},
+	"deprecated/docs/list/continue": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/list/continue",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Once a cursor has been retrieved from [docs/list](#paperdocslist-see-docs), use this to paginate through all Paper doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
+		"parameters": {
+			"list": [
+				{
+					"name": "cursor",
+					"type": "String",
+					"desc": "The cursor obtained from   or  . Allows for pagination."
+				}
+			],
+			"example": {
+				"cursor": "U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd"
+			}
+		},
+		"returnParameters": {
+			"doc_ids": [
+				"zO1E7coc54sE8IuMdUoxz",
+				"mm1AmDgVyZ10zf7qb0qzn",
+				"dByYHZvTPBnXilGgyc5mm"
+			],
+			"cursor": {
+				"value": "zHZvTPBnXilGgm1AmDgVyZ10zf7qb0qznd5sAVQbbIvoteSnWLjUdLU7aR25hb",
+				"expiration": "2016-08-07T14:56:15Z"
+			},
+			"has_more": true
+		}
+	},
+	"deprecated/docs/permanently_delete": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/permanently_delete",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Permanently deletes the given Paper doc. This operation is final as the doc cannot be recovered. This action can be performed only by the doc owner. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
+		"parameters": {
+			"list": [
+				{
+					"name": "doc_id",
+					"type": "String",
+					"desc": "The Paper doc ID."
+				}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q"
+			}
+		},
+		"returnParameters": null
+	},
+	"deprecated/docs/sharing_policy/get": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/sharing_policy/get",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Gets the default sharing policy for the given Paper doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
+		"parameters": {
+			"list": [
+				{
+					"name": "doc_id",
+					"type": "String",
+					"desc": "The Paper doc ID."
+				}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q"
+			}
+		},
+		"returnParameters": {
+			"public_sharing_policy": {
+				".tag": "people_with_link_can_edit"
+			},
+			"team_sharing_policy": {
+				".tag": "people_with_link_can_edit"
+			}
+		}
+	},
+	"deprecated/docs/sharing_policy/set": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/sharing_policy/set",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Sets the default sharing policy for the given Paper doc. The default 'team_sharing_policy' can be changed only by teams, omit this field for personal accounts. The 'public_sharing_policy' policy can't be set to the value 'disabled' because this setting can be changed only via the team admin console. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
+		"parameters": {
+			"list": [
+				{
+					"name": "doc_id",
+					"type": "String",
+					"desc": "The Paper doc ID."
+				},
+				{
+					"name": "sharing_policy",
+					"type": "SharingPolicy",
+					"desc": "The default sharing policy to be set for the Paper doc.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "public_sharing_policy",
+									"type": "SharingPublicPolicyType?",
+									"desc": "This value applies to the non-team members. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "people_with_link_can_edit",
+													"type": "Void",
+													"desc": "Users who have a link to this doc can edit it."
+												},
+												{
+													"name": "people_with_link_can_view_and_comment",
+													"type": "Void",
+													"desc": "Users who have a link to this doc can view and comment on it."
+												},
+												{
+													"name": "invite_only",
+													"type": "Void",
+													"desc": "Users must be explicitly invited to this doc."
+												},
+												{
+													"name": "disabled",
+													"type": "Void",
+													"desc": "Value used to indicate that doc sharing is enabled only within team."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "people_with_link_can_edit",
+									"type": "Void",
+									"desc": "Users who have a link to this doc can edit it."
+								},
+								{
+									"name": "people_with_link_can_view_and_comment",
+									"type": "Void",
+									"desc": "Users who have a link to this doc can view and comment on it."
+								},
+								{
+									"name": "invite_only",
+									"type": "Void",
+									"desc": "Users must be explicitly invited to this doc."
+								},
+								{
+									"name": "disabled",
+									"type": "Void",
+									"desc": "Value used to indicate that doc sharing is enabled only within team."
+								},
+								{
+									"name": "team_sharing_policy",
+									"type": "SharingTeamPolicyType?",
+									"desc": "This value applies to the team members only. The value is null for all personal accounts. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "people_with_link_can_edit",
+													"type": "Void",
+													"desc": "Users who have a link to this doc can edit it."
+												},
+												{
+													"name": "people_with_link_can_view_and_comment",
+													"type": "Void",
+													"desc": "Users who have a link to this doc can view and comment on it."
+												},
+												{
+													"name": "invite_only",
+													"type": "Void",
+													"desc": "Users must be explicitly invited to this doc."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "people_with_link_can_edit",
+									"type": "Void",
+									"desc": "Users who have a link to this doc can edit it."
+								},
+								{
+									"name": "people_with_link_can_view_and_comment",
+									"type": "Void",
+									"desc": "Users who have a link to this doc can view and comment on it."
+								},
+								{
+									"name": "invite_only",
+									"type": "Void",
+									"desc": "Users must be explicitly invited to this doc."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "people_with_link_can_edit",
+									"type": "Void",
+									"desc": "Users who have a link to this doc can edit it."
+								},
+								{
+									"name": "people_with_link_can_view_and_comment",
+									"type": "Void",
+									"desc": "Users who have a link to this doc can view and comment on it."
+								},
+								{
+									"name": "invite_only",
+									"type": "Void",
+									"desc": "Users must be explicitly invited to this doc."
+								},
+								{
+									"name": "disabled",
+									"type": "Void",
+									"desc": "Value used to indicate that doc sharing is enabled only within team."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "people_with_link_can_edit",
+									"type": "Void",
+									"desc": "Users who have a link to this doc can edit it."
+								},
+								{
+									"name": "people_with_link_can_view_and_comment",
+									"type": "Void",
+									"desc": "Users who have a link to this doc can view and comment on it."
+								},
+								{
+									"name": "invite_only",
+									"type": "Void",
+									"desc": "Users must be explicitly invited to this doc."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "public_sharing_policy",
+					"type": "SharingPublicPolicyType?",
+					"desc": "This value applies to the non-team members. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "people_with_link_can_edit",
+									"type": "Void",
+									"desc": "Users who have a link to this doc can edit it."
+								},
+								{
+									"name": "people_with_link_can_view_and_comment",
+									"type": "Void",
+									"desc": "Users who have a link to this doc can view and comment on it."
+								},
+								{
+									"name": "invite_only",
+									"type": "Void",
+									"desc": "Users must be explicitly invited to this doc."
+								},
+								{
+									"name": "disabled",
+									"type": "Void",
+									"desc": "Value used to indicate that doc sharing is enabled only within team."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "people_with_link_can_edit",
+					"type": "Void",
+					"desc": "Users who have a link to this doc can edit it."
+				},
+				{
+					"name": "people_with_link_can_view_and_comment",
+					"type": "Void",
+					"desc": "Users who have a link to this doc can view and comment on it."
+				},
+				{
+					"name": "invite_only",
+					"type": "Void",
+					"desc": "Users must be explicitly invited to this doc."
+				},
+				{
+					"name": "disabled",
+					"type": "Void",
+					"desc": "Value used to indicate that doc sharing is enabled only within team."
+				},
+				{
+					"name": "team_sharing_policy",
+					"type": "SharingTeamPolicyType?",
+					"desc": "This value applies to the team members only. The value is null for all personal accounts. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "people_with_link_can_edit",
+									"type": "Void",
+									"desc": "Users who have a link to this doc can edit it."
+								},
+								{
+									"name": "people_with_link_can_view_and_comment",
+									"type": "Void",
+									"desc": "Users who have a link to this doc can view and comment on it."
+								},
+								{
+									"name": "invite_only",
+									"type": "Void",
+									"desc": "Users must be explicitly invited to this doc."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "people_with_link_can_edit",
+					"type": "Void",
+					"desc": "Users who have a link to this doc can edit it."
+				},
+				{
+					"name": "people_with_link_can_view_and_comment",
+					"type": "Void",
+					"desc": "Users who have a link to this doc can view and comment on it."
+				},
+				{
+					"name": "invite_only",
+					"type": "Void",
+					"desc": "Users must be explicitly invited to this doc."
+				}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+				"sharing_policy": {
+					"public_sharing_policy": "people_with_link_can_edit",
+					"team_sharing_policy": "people_with_link_can_edit"
+				}
+			}
+		},
+		"returnParameters": null
+	},
+	"deprecated/docs/update": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/update",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": true,
+		"category": "UPLOAD",
+		"description": "Updates an existing Paper doc with the provided content. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. This endpoint will be retired in September 2020. Refer to the Paper Migration Guide for more information.",
+		"parameters": {
+			"list": [
+				{
+					"name": "doc_id",
+					"type": "String",
+					"desc": "The Paper doc ID."
+				},
+				{
+					"name": "doc_update_policy",
+					"type": "PaperDocUpdatePolicy",
+					"desc": "The policy used for the current update call.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "append",
+									"type": "Void",
+									"desc": "The content will be appended to the doc."
+								},
+								{
+									"name": "prepend",
+									"type": "Void",
+									"desc": "The content will be prepended to the doc. The doc title will not be affected."
+								},
+								{
+									"name": "overwrite_all",
+									"type": "Void",
+									"desc": "The document will be overwitten at the head with the provided content."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "append",
+					"type": "Void",
+					"desc": "The content will be appended to the doc."
+				},
+				{
+					"name": "prepend",
+					"type": "Void",
+					"desc": "The content will be prepended to the doc. The doc title will not be affected."
+				},
+				{
+					"name": "overwrite_all",
+					"type": "Void",
+					"desc": "The document will be overwitten at the head with the provided content."
+				},
+				{
+					"name": "revision",
+					"type": "Int64",
+					"desc": "The latest doc revision. This value must match the head revision or an error code will be returned. This is to prevent colliding writes."
+				},
+				{
+					"name": "import_format",
+					"type": "ImportFormat",
+					"desc": "The format of provided data.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "html",
+									"type": "Void",
+									"desc": "The provided data is interpreted as standard HTML."
+								},
+								{
+									"name": "markdown",
+									"type": "Void",
+									"desc": "The provided data is interpreted as markdown. The first line of the provided document will be used as the doc title."
+								},
+								{
+									"name": "plain_text",
+									"type": "Void",
+									"desc": "The provided data is interpreted as plain text. The first line of the provided document will be used as the doc title."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "html",
+					"type": "Void",
+					"desc": "The provided data is interpreted as standard HTML."
+				},
+				{
+					"name": "markdown",
+					"type": "Void",
+					"desc": "The provided data is interpreted as markdown. The first line of the provided document will be used as the doc title."
+				},
+				{
+					"name": "plain_text",
+					"type": "Void",
+					"desc": "The provided data is interpreted as plain text. The first line of the provided document will be used as the doc title."
+				}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+				"doc_update_policy": "overwrite_all",
+				"revision": 12345,
+				"import_format": "html"
+			}
+		},
+		"returnParameters": {
+			"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+			"revision": 456736745,
+			"title": "Week one retention"
+		}
+	},
+	"deprecated/docs/users/add": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/users/add",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Allows an owner or editor to add users to a Paper doc or change their permissions using their email address or Dropbox account ID. The doc owner's permissions cannot be changed. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
+		"parameters": {
+			"list": [
+				{
+					"name": "doc_id",
+					"type": "String",
+					"desc": "The Paper doc ID."
+				},
+				{
+					"name": "members",
+					"type": "List of (AddMember, max_items=20)",
+					"desc": "User which should be added to the Paper doc. Specify only email address or Dropbox account ID.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "member",
+									"type": "MemberSelector",
+									"desc": "User which should be added to the Paper doc. Specify only email address or Dropbox account ID.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "dropbox_id",
+													"type": "String(min_length=1)",
+													"desc": "Dropbox account, team member, or group ID of member."
+												},
+												{
+													"name": "email",
+													"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+													"desc": "E-mail address of member."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "dropbox_id",
+									"type": "String(min_length=1)",
+									"desc": "Dropbox account, team member, or group ID of member."
+								},
+								{
+									"name": "email",
+									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+									"desc": "E-mail address of member."
+								},
+								{
+									"name": "permission_level",
+									"type": "PaperDocPermissionLevel",
+									"desc": "Permission for the user. The default for this union is edit.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "edit",
+													"type": "Void",
+													"desc": "User will be granted edit permissions."
+												},
+												{
+													"name": "view_and_comment",
+													"type": "Void",
+													"desc": "User will be granted view and comment permissions."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "edit",
+									"type": "Void",
+									"desc": "User will be granted edit permissions."
+								},
+								{
+									"name": "view_and_comment",
+									"type": "Void",
+									"desc": "User will be granted view and comment permissions."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "dropbox_id",
+									"type": "String(min_length=1)",
+									"desc": "Dropbox account, team member, or group ID of member."
+								},
+								{
+									"name": "email",
+									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+									"desc": "E-mail address of member."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "edit",
+									"type": "Void",
+									"desc": "User will be granted edit permissions."
+								},
+								{
+									"name": "view_and_comment",
+									"type": "Void",
+									"desc": "User will be granted view and comment permissions."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "member",
+					"type": "MemberSelector",
+					"desc": "User which should be added to the Paper doc. Specify only email address or Dropbox account ID.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "dropbox_id",
+									"type": "String(min_length=1)",
+									"desc": "Dropbox account, team member, or group ID of member."
+								},
+								{
+									"name": "email",
+									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+									"desc": "E-mail address of member."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "dropbox_id",
+					"type": "String(min_length=1)",
+					"desc": "Dropbox account, team member, or group ID of member."
+				},
+				{
+					"name": "email",
+					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+					"desc": "E-mail address of member."
+				},
+				{
+					"name": "permission_level",
+					"type": "PaperDocPermissionLevel",
+					"desc": "Permission for the user. The default for this union is edit.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "edit",
+									"type": "Void",
+									"desc": "User will be granted edit permissions."
+								},
+								{
+									"name": "view_and_comment",
+									"type": "Void",
+									"desc": "User will be granted view and comment permissions."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "edit",
+					"type": "Void",
+					"desc": "User will be granted edit permissions."
+				},
+				{
+					"name": "view_and_comment",
+					"type": "Void",
+					"desc": "User will be granted view and comment permissions."
+				},
+				{
+					"name": "custom_message",
+					"type": "String?",
+					"desc": "A personal message that will be emailed to each successfully added member. This field is optional."
+				},
+				{
+					"name": "quiet",
+					"type": "Boolean",
+					"desc": "Clients should set this to true if no email message shall be sent to added users. The default for this field is False."
+				}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+				"members": [
+					{
+						"member": {
+							".tag": "email",
+							"email": "justin@example.com"
+						},
+						"permission_level": "view_and_comment"
+					}
+				],
+				"custom_message": "Welcome to Paper.",
+				"quiet": false
+			}
+		},
+		"returnParameters": null
+	},
+	"deprecated/docs/users/list": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/users/list",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Lists all users who visited the Paper doc or users with explicit access. This call excludes users who have been removed. The list is sorted by the date of the visit or the share date. The list will include both users, the explicitly shared ones as well as those who came in using the Paper url link. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
+		"parameters": {
+			"list": [
+				{
+					"name": "doc_id",
+					"type": "String",
+					"desc": "The Paper doc ID."
+				},
+				{
+					"name": "limit",
+					"type": "Int32(min=1, max=1000)",
+					"desc": "Size limit per batch. The maximum number of users that can be retrieved per batch is 1000. Higher value results in invalid arguments error. The default for this field is 1000."
+				},
+				{
+					"name": "filter_by",
+					"type": "UserOnPaperDocFilter",
+					"desc": "Specify this attribute if you want to obtain users that have already accessed the Paper doc. The default for this union is shared.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "visited",
+									"type": "Void",
+									"desc": "all users who have visited the Paper doc."
+								},
+								{
+									"name": "shared",
+									"type": "Void",
+									"desc": "All uses who are shared on the Paper doc. This includes all users who have visited the Paper doc as well as those who have not."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "visited",
+					"type": "Void",
+					"desc": "all users who have visited the Paper doc."
+				},
+				{
+					"name": "shared",
+					"type": "Void",
+					"desc": "All uses who are shared on the Paper doc. This includes all users who have visited the Paper doc as well as those who have not."
+				}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+				"limit": 100,
+				"filter_by": "shared"
+			}
+		},
+		"returnParameters": {
+			"invitees": [
+				{
+					"invitee": {
+						".tag": "email",
+						"email": "jessica@example.com"
+					},
+					"permission_level": {
+						".tag": "edit"
+					}
+				}
+			],
+			"users": [
+				{
+					"user": {
+						"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+						"email": "bob@example.com",
+						"display_name": "Robert Smith",
+						"same_team": true,
+						"team_member_id": "dbmid:abcd1234"
+					},
+					"permission_level": {
+						".tag": "view_and_comment"
+					}
+				}
+			],
+			"doc_owner": {
+				"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+				"email": "bob@example.com",
+				"display_name": "Robert Smith",
+				"same_team": true,
+				"team_member_id": "dbmid:abcd1234"
+			},
+			"cursor": {
+				"value": "zHZvTPBnXilGgm1AmDgVyZ10zf7qb0qznd5sAVQbbIvoteSnWLjUdLU7aR25hb",
+				"expiration": "2016-08-07T14:56:15Z"
+			},
+			"has_more": false
+		}
+	},
+	"deprecated/docs/users/list/continue": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/users/list/continue",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Once a cursor has been retrieved from [docs/users/list](#paperdocsuserslist-see-docs), use this to paginate through all users on the Paper doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
+		"parameters": {
+			"list": [
+				{
+					"name": "doc_id",
+					"type": "String",
+					"desc": "The Paper doc ID."
+				},
+				{
+					"name": "cursor",
+					"type": "String",
+					"desc": "The cursor obtained from   or  . Allows for pagination."
+				}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+				"cursor": "U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd"
+			}
+		},
+		"returnParameters": {
+			"invitees": [
+				{
+					"invitee": {
+						".tag": "email",
+						"email": "jessica@example.com"
+					},
+					"permission_level": {
+						".tag": "edit"
+					}
+				}
+			],
+			"users": [
+				{
+					"user": {
+						"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+						"email": "bob@example.com",
+						"display_name": "Robert Smith",
+						"same_team": true,
+						"team_member_id": "dbmid:abcd1234"
+					},
+					"permission_level": {
+						".tag": "view_and_comment"
+					}
+				}
+			],
+			"doc_owner": {
+				"account_id": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc",
+				"email": "bob@example.com",
+				"display_name": "Robert Smith",
+				"same_team": true,
+				"team_member_id": "dbmid:abcd1234"
+			},
+			"cursor": {
+				"value": "zHZvTPBnXilGgm1AmDgVyZ10zf7qb0qznd5sAVQbbIvoteSnWLjUdLU7aR25hb",
+				"expiration": "2016-08-07T14:56:15Z"
+			},
+			"has_more": false
+		}
+	},
+	"deprecated/docs/users/remove": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/users/remove",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Allows an owner or editor to remove users from a Paper doc using their email address or Dropbox account ID. The doc owner cannot be removed. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
+		"parameters": {
+			"list": [
+				{
+					"name": "doc_id",
+					"type": "String",
+					"desc": "The Paper doc ID."
+				},
+				{
+					"name": "member",
+					"type": "MemberSelector",
+					"desc": "User which should be removed from the Paper doc. Specify only email address or Dropbox account ID.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "dropbox_id",
+									"type": "String(min_length=1)",
+									"desc": "Dropbox account, team member, or group ID of member."
+								},
+								{
+									"name": "email",
+									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+									"desc": "E-mail address of member."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "dropbox_id",
+					"type": "String(min_length=1)",
+					"desc": "Dropbox account, team member, or group ID of member."
+				},
+				{
+					"name": "email",
+					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+					"desc": "E-mail address of member."
+				}
+			],
+			"example": {
+				"doc_id": "uaSvRuxvnkFa12PTkBv5q",
+				"member": {
+					".tag": "email",
+					"email": "justin@example.com"
+				}
+			}
+		},
+		"returnParameters": null
+	},
+	"deprecated/folders/create": {
+		"uri": "https://api.dropboxapi.com/2/paper/folders/create",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Create a new Paper folder with the provided info. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
+		"parameters": {
+			"list": [
+				{
+					"name": "name",
+					"type": "String",
+					"desc": "The name of the new Paper folder."
+				},
+				{
+					"name": "parent_folder_id",
+					"type": "String?",
+					"desc": "The encrypted Paper folder Id where the new Paper folder should be created. The API user has to have write access to this folder or error is thrown. If not supplied, the new folder will be created at top level. This field is optional."
+				},
+				{
+					"name": "is_team_folder",
+					"type": "Boolean?",
+					"desc": "Whether the folder to be created should be a team folder. This value will be ignored if parent_folder_id is supplied, as the new folder will inherit the type (private or team folder) from its parent. We will by default create a top-level private folder if both parent_folder_id and is_team_folder are not supplied. This field is optional."
+				}
+			],
+			"example": {
+				"name": "my new folder"
+			}
+		},
+		"returnParameters": {
+			"folder_id": "abcd"
+		}
 	},
 	"deprecated/change_file_member_access": {
 		"uri": "https://api.dropboxapi.com/2/sharing/change_file_member_access",
