@@ -359,6 +359,15 @@
 			"available": true
 		}
 	},
+	"files/get_file_lock_batch": {
+		"uri": "https://api.dropboxapi.com/2/files/get_file_lock_batch",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
 	"files/get_metadata": {
 		"uri": "https://api.dropboxapi.com/2/files/get_metadata",
 		"requiresAuthHeader": true,
@@ -458,6 +467,15 @@
 			"available": true
 		}
 	},
+	"files/lock_file_batch": {
+		"uri": "https://api.dropboxapi.com/2/files/lock_file_batch",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
 	"files/move": {
 		"uri": "https://api.dropboxapi.com/2/files/move_v2",
 		"requiresAuthHeader": true,
@@ -539,6 +557,15 @@
 			"available": true
 		}
 	},
+	"files/unlock_file_batch": {
+		"uri": "https://api.dropboxapi.com/2/files/unlock_file_batch",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
 	"files/upload": {
 		"uri": "https://content.dropboxapi.com/2/files/upload",
 		"requiresAuthHeader": true,
@@ -589,159 +616,6 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
-		"parameters": {
-			"available": true
-		}
-	},
-	"paper/docs/archive": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/archive",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"paper/docs/create": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/create",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": true,
-		"category": "UPLOAD",
-		"parameters": {
-			"available": true
-		}
-	},
-	"paper/docs/download": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/download",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "DOWNLOAD",
-		"parameters": {
-			"available": true
-		}
-	},
-	"paper/docs/folder_users/list": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/folder_users/list",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"paper/docs/folder_users/list/continue": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/folder_users/list/continue",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"paper/docs/get_folder_info": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/get_folder_info",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"paper/docs/list": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/list",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"paper/docs/list/continue": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/list/continue",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"paper/docs/permanently_delete": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/permanently_delete",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"paper/docs/sharing_policy/get": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/sharing_policy/get",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"paper/docs/sharing_policy/set": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/sharing_policy/set",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"paper/docs/update": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/update",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": true,
-		"category": "UPLOAD",
-		"parameters": {
-			"available": true
-		}
-	},
-	"paper/docs/users/add": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/users/add",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"paper/docs/users/list": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/users/list",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"paper/docs/users/list/continue": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/users/list/continue",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"paper/docs/users/remove": {
-		"uri": "https://api.dropboxapi.com/2/paper/docs/users/remove",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"paper/folders/create": {
-		"uri": "https://api.dropboxapi.com/2/paper/folders/create",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
 		"parameters": {
 			"available": true
 		}
@@ -1207,6 +1081,159 @@
 	},
 	"deprecated/properties/update": {
 		"uri": "https://api.dropboxapi.com/2/files/properties/update",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/docs/archive": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/archive",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/docs/create": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/create",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": true,
+		"category": "UPLOAD",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/docs/download": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/download",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "DOWNLOAD",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/docs/folder_users/list": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/folder_users/list",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/docs/folder_users/list/continue": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/folder_users/list/continue",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/docs/get_folder_info": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/get_folder_info",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/docs/list": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/list",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/docs/list/continue": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/list/continue",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/docs/permanently_delete": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/permanently_delete",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/docs/sharing_policy/get": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/sharing_policy/get",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/docs/sharing_policy/set": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/sharing_policy/set",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/docs/update": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/update",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": true,
+		"category": "UPLOAD",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/docs/users/add": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/users/add",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/docs/users/list": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/users/list",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/docs/users/list/continue": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/users/list/continue",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/docs/users/remove": {
+		"uri": "https://api.dropboxapi.com/2/paper/docs/users/remove",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"deprecated/folders/create": {
+		"uri": "https://api.dropboxapi.com/2/paper/folders/create",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
