@@ -2271,7 +2271,6 @@
 				"has_explicit_shared_members": false,
 				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 				"file_lock_info": {
-					"is_locked": true,
 					"is_lockholder": true,
 					"lockholder_name": "Imaginary User",
 					"created": "2015-05-12T15:50:38Z"
@@ -2370,7 +2369,6 @@
 						"has_explicit_shared_members": false,
 						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 						"file_lock_info": {
-							"is_locked": true,
 							"is_lockholder": true,
 							"lockholder_name": "Imaginary User",
 							"created": "2015-05-12T15:50:38Z"
@@ -2433,7 +2431,6 @@
 						"has_explicit_shared_members": false,
 						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 						"file_lock_info": {
-							"is_locked": true,
 							"is_lockholder": true,
 							"lockholder_name": "Imaginary User",
 							"created": "2015-05-12T15:50:38Z"
@@ -2492,7 +2489,6 @@
 				"has_explicit_shared_members": false,
 				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 				"file_lock_info": {
-					"is_locked": true,
 					"is_lockholder": true,
 					"lockholder_name": "Imaginary User",
 					"created": "2015-05-12T15:50:38Z"
@@ -2557,7 +2553,6 @@
 				"has_explicit_shared_members": false,
 				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 				"file_lock_info": {
-					"is_locked": true,
 					"is_lockholder": true,
 					"lockholder_name": "Imaginary User",
 					"created": "2015-05-12T15:50:38Z"
@@ -2783,7 +2778,6 @@
 				"has_explicit_shared_members": false,
 				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 				"file_lock_info": {
-					"is_locked": true,
 					"is_lockholder": true,
 					"lockholder_name": "Imaginary User",
 					"created": "2015-05-12T15:50:38Z"
@@ -2875,7 +2869,6 @@
 						"has_explicit_shared_members": false,
 						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 						"file_lock_info": {
-							"is_locked": true,
 							"is_lockholder": true,
 							"lockholder_name": "Imaginary User",
 							"created": "2015-05-12T15:50:38Z"
@@ -2938,7 +2931,6 @@
 						"has_explicit_shared_members": false,
 						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 						"file_lock_info": {
-							"is_locked": true,
 							"is_lockholder": true,
 							"lockholder_name": "Imaginary User",
 							"created": "2015-05-12T15:50:38Z"
@@ -3000,7 +2992,6 @@
 			"has_explicit_shared_members": false,
 			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 			"file_lock_info": {
-				"is_locked": true,
 				"is_lockholder": true,
 				"lockholder_name": "Imaginary User",
 				"created": "2015-05-12T15:50:38Z"
@@ -3104,7 +3095,6 @@
 				"has_explicit_shared_members": false,
 				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 				"file_lock_info": {
-					"is_locked": true,
 					"is_lockholder": true,
 					"lockholder_name": "Imaginary User",
 					"created": "2015-05-12T15:50:38Z"
@@ -3185,7 +3175,6 @@
 						"has_explicit_shared_members": false,
 						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 						"file_lock_info": {
-							"is_locked": true,
 							"is_lockholder": true,
 							"lockholder_name": "Imaginary User",
 							"created": "2015-05-12T15:50:38Z"
@@ -3291,7 +3280,6 @@
 			"has_explicit_shared_members": false,
 			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 			"file_lock_info": {
-				"is_locked": true,
 				"is_lockholder": true,
 				"lockholder_name": "Imaginary User",
 				"created": "2015-05-12T15:50:38Z"
@@ -3350,7 +3338,6 @@
 			"has_explicit_shared_members": false,
 			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 			"file_lock_info": {
-				"is_locked": true,
 				"is_lockholder": true,
 				"lockholder_name": "Imaginary User",
 				"created": "2015-05-12T15:50:38Z"
@@ -3405,7 +3392,6 @@
 				"has_explicit_shared_members": false,
 				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 				"file_lock_info": {
-					"is_locked": true,
 					"is_lockholder": true,
 					"lockholder_name": "Imaginary User",
 					"created": "2015-05-12T15:50:38Z"
@@ -4094,7 +4080,6 @@
 			"has_explicit_shared_members": false,
 			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 			"file_lock_info": {
-				"is_locked": true,
 				"is_lockholder": true,
 				"lockholder_name": "Imaginary User",
 				"created": "2015-05-12T15:50:38Z"
@@ -4613,7 +4598,6 @@
 						"has_explicit_shared_members": false,
 						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 						"file_lock_info": {
-							"is_locked": true,
 							"is_lockholder": true,
 							"lockholder_name": "Imaginary User",
 							"created": "2015-05-12T15:50:38Z"
@@ -4769,7 +4753,6 @@
 					"has_explicit_shared_members": false,
 					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 					"file_lock_info": {
-						"is_locked": true,
 						"is_lockholder": true,
 						"lockholder_name": "Imaginary User",
 						"created": "2015-05-12T15:50:38Z"
@@ -4854,7 +4837,6 @@
 					"has_explicit_shared_members": false,
 					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 					"file_lock_info": {
-						"is_locked": true,
 						"is_lockholder": true,
 						"lockholder_name": "Imaginary User",
 						"created": "2015-05-12T15:50:38Z"
@@ -5123,7 +5105,6 @@
 					"has_explicit_shared_members": false,
 					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 					"file_lock_info": {
-						"is_locked": true,
 						"is_lockholder": true,
 						"lockholder_name": "Imaginary User",
 						"created": "2015-05-12T15:50:38Z"
@@ -5205,7 +5186,6 @@
 						"has_explicit_shared_members": false,
 						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 						"file_lock_info": {
-							"is_locked": true,
 							"is_lockholder": true,
 							"lockholder_name": "Imaginary User",
 							"created": "2015-05-12T15:50:38Z"
@@ -5296,7 +5276,6 @@
 				"has_explicit_shared_members": false,
 				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 				"file_lock_info": {
-					"is_locked": true,
 					"is_lockholder": true,
 					"lockholder_name": "Imaginary User",
 					"created": "2015-05-12T15:50:38Z"
@@ -5401,7 +5380,6 @@
 						"has_explicit_shared_members": false,
 						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 						"file_lock_info": {
-							"is_locked": true,
 							"is_lockholder": true,
 							"lockholder_name": "Imaginary User",
 							"created": "2015-05-12T15:50:38Z"
@@ -5464,7 +5442,6 @@
 						"has_explicit_shared_members": false,
 						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 						"file_lock_info": {
-							"is_locked": true,
 							"is_lockholder": true,
 							"lockholder_name": "Imaginary User",
 							"created": "2015-05-12T15:50:38Z"
@@ -5552,7 +5529,6 @@
 			"has_explicit_shared_members": false,
 			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 			"file_lock_info": {
-				"is_locked": true,
 				"is_lockholder": true,
 				"lockholder_name": "Imaginary User",
 				"created": "2015-05-12T15:50:38Z"
@@ -5613,7 +5589,6 @@
 			"has_explicit_shared_members": false,
 			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 			"file_lock_info": {
-				"is_locked": true,
 				"is_lockholder": true,
 				"lockholder_name": "Imaginary User",
 				"created": "2015-05-12T15:50:38Z"
@@ -6111,7 +6086,6 @@
 							"has_explicit_shared_members": false,
 							"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 							"file_lock_info": {
-								"is_locked": true,
 								"is_lockholder": true,
 								"lockholder_name": "Imaginary User",
 								"created": "2015-05-12T15:50:38Z"
@@ -6176,7 +6150,6 @@
 							"has_explicit_shared_members": false,
 							"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 							"file_lock_info": {
-								"is_locked": true,
 								"is_lockholder": true,
 								"lockholder_name": "Imaginary User",
 								"created": "2015-05-12T15:50:38Z"
@@ -6261,7 +6234,6 @@
 						"has_explicit_shared_members": false,
 						"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 						"file_lock_info": {
-							"is_locked": true,
 							"is_lockholder": true,
 							"lockholder_name": "Imaginary User",
 							"created": "2015-05-12T15:50:38Z"
@@ -6493,7 +6465,6 @@
 			"has_explicit_shared_members": false,
 			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 			"file_lock_info": {
-				"is_locked": true,
 				"is_lockholder": true,
 				"lockholder_name": "Imaginary User",
 				"created": "2015-05-12T15:50:38Z"
@@ -7065,7 +7036,6 @@
 			"has_explicit_shared_members": false,
 			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 			"file_lock_info": {
-				"is_locked": true,
 				"is_lockholder": true,
 				"lockholder_name": "Imaginary User",
 				"created": "2015-05-12T15:50:38Z"
@@ -8323,7 +8293,6 @@
 					"has_explicit_shared_members": false,
 					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 					"file_lock_info": {
-						"is_locked": true,
 						"is_lockholder": true,
 						"lockholder_name": "Imaginary User",
 						"created": "2015-05-12T15:50:38Z"
@@ -8383,7 +8352,6 @@
 					"has_explicit_shared_members": false,
 					"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 					"file_lock_info": {
-						"is_locked": true,
 						"is_lockholder": true,
 						"lockholder_name": "Imaginary User",
 						"created": "2015-05-12T15:50:38Z"
@@ -14585,7 +14553,6 @@
 			"has_explicit_shared_members": false,
 			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 			"file_lock_info": {
-				"is_locked": true,
 				"is_lockholder": true,
 				"lockholder_name": "Imaginary User",
 				"created": "2015-05-12T15:50:38Z"
@@ -14806,7 +14773,6 @@
 			"has_explicit_shared_members": false,
 			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 			"file_lock_info": {
-				"is_locked": true,
 				"is_lockholder": true,
 				"lockholder_name": "Imaginary User",
 				"created": "2015-05-12T15:50:38Z"
