@@ -45,6 +45,36 @@ dropbox({
 ```
 
 
+### check/app ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#check-app))
+This endpoint performs App Authentication, validating the supplied app key and secret, and returns the supplied string, to allow you to test your code and connection to the Dropbox API. It has no other effect. If you receive an HTTP 200 response with the supplied query, it indicates at least part of the Dropbox API infrastructure is working and that the app key and secret valid.
+
+```js
+dropbox({
+    resource: 'check/app',
+    parameters: {
+        'query': 'foo'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### check/user ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#check-user))
+This endpoint performs User Authentication, validating the supplied access token, and returns the supplied string, to allow you to test your code and connection to the Dropbox API. It has no other effect. If you receive an HTTP 200 response with the supplied query, it indicates at least part of the Dropbox API infrastructure is working and that the access token is valid.
+
+```js
+dropbox({
+    resource: 'check/user',
+    parameters: {
+        'query': 'foo'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### contacts/delete_manual_contacts ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#contacts-delete_manual_contacts))
 Removes all manually added contacts. You'll still keep contacts who are on your team or who you imported. New contacts will be added when you share.
 
@@ -639,6 +669,23 @@ stream
 ```
 
 
+### files/get_file_lock_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-get_file_lock_batch))
+Return the lock metadata for the given list of paths.
+
+```js
+dropbox({
+    resource: 'files/get_file_lock_batch',
+    parameters: {
+        'entries': [{
+            'path': '/John Doe/sample/test.pdf'
+        }]
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### files/get_metadata ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-get_metadata))
 Returns the metadata for a file or folder. Note: Metadata for the root folder is unsupported.
 
@@ -843,6 +890,23 @@ dropbox({
 ```
 
 
+### files/lock_file_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-lock_file_batch))
+Lock the files at the given paths. A locked file will be writable only by the lock holder. A successful response indicates that the file has been locked. Returns a list of the locked file paths and their metadata after this operation.
+
+```js
+dropbox({
+    resource: 'files/lock_file_batch',
+    parameters: {
+        'entries': [{
+            'path': '/John Doe/sample/test.pdf'
+        }]
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### files/move ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-move))
 Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be moved.
 
@@ -960,17 +1024,46 @@ dropbox({
 
 
 ### files/search ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-search))
-Searches for files and folders. Note: Recent changes may not immediately be reflected in search results due to a short delay in indexing.
+Searches for files and folders. Note: [search:2](#filessearch:2-see-docs) along with [search/continue:2](#filessearchcontinue:2-see-docs) can only be used to retrieve a maximum of 10,000 matches. Recent changes may not immediately be reflected in search results due to a short delay in indexing. Duplicate results may be returned across pages. Some results may not be returned.
 
 ```js
 dropbox({
     resource: 'files/search',
     parameters: {
-        'path': '',
-        'query': 'prime numbers',
-        'start': 0,
-        'max_results': 100,
-        'mode': 'filename'
+        'query': 'cat',
+        'include_highlights': false
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/search/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-search-continue))
+Fetches the next page of search results returned from [search:2](#filessearch:2-see-docs). Note: [search:2](#filessearch:2-see-docs) along with [search/continue:2](#filessearchcontinue:2-see-docs) can only be used to retrieve a maximum of 10,000 matches. Recent changes may not immediately be reflected in search results due to a short delay in indexing. Duplicate results may be returned across pages. Some results may not be returned.
+
+```js
+dropbox({
+    resource: 'files/search/continue',
+    parameters: {
+        'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/unlock_file_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-unlock_file_batch))
+Unlock the files at the given paths. A locked file can only be unlocked by the lock holder or, if a business account, a team admin. A successful response indicates that the file has been unlocked. Returns a list of the unlocked file paths and their metadata after this operation.
+
+```js
+dropbox({
+    resource: 'files/unlock_file_batch',
+    parameters: {
+        'entries': [{
+            'path': '/John Doe/sample/test.pdf'
+        }]
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1103,297 +1196,6 @@ const stream = dropbox({
 });
 
 fs.createReadStream().pipe(stream);
-```
-
-
-### paper/docs/archive ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-archive))
-Marks the given Paper doc as archived. Note: This action can be performed or undone by anyone with edit permissions to the doc.
-
-```js
-dropbox({
-    resource: 'paper/docs/archive',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### paper/docs/create ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-create))
-Creates a new Paper doc with the provided content.
-
-```js
-const stream = dropbox({
-    resource: 'paper/docs/create',
-    parameters: {
-        'import_format': 'markdown'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-
-fs.createReadStream().pipe(stream);
-```
-
-
-### paper/docs/download ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-download))
-Exports and downloads Paper doc either as HTML or markdown.
-
-```js
-const stream = dropbox({
-    resource: 'paper/docs/download',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
-        'export_format': 'markdown'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-
-stream
-    .pipe(fs.createWriteStream()); //pipe the stream
-```
-
-
-### paper/docs/folder_users/list ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-folder_users-list))
-Lists the users who are explicitly invited to the Paper folder in which the Paper doc is contained. For private folders all users (including owner) shared on the folder are listed and for team folders all non-team users shared on the folder are returned.
-
-```js
-dropbox({
-    resource: 'paper/docs/folder_users/list',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
-        'limit': 100
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### paper/docs/folder_users/list/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-folder_users-list-continue))
-Once a cursor has been retrieved from [docs/folder_users/list](#paperdocsfolder_userslist-see-docs), use this to paginate through all users on the Paper folder.
-
-```js
-dropbox({
-    resource: 'paper/docs/folder_users/list/continue',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
-        'cursor': 'U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### paper/docs/get_folder_info ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-get_folder_info))
-Retrieves folder information for the given Paper doc. This includes:   - folder sharing policy; permissions for subfolders are set by the top-level folder.   - full 'filepath', i.e. the list of folders (both folderId and folderName) from     the root folder to the folder directly containing the Paper doc.  Note: If the Paper doc is not in any folder (aka unfiled) the response will be empty.
-
-```js
-dropbox({
-    resource: 'paper/docs/get_folder_info',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### paper/docs/list ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-list))
-Return the list of all Paper docs according to the argument specifications. To iterate over through the full pagination, pass the cursor to [docs/list/continue](#paperdocslistcontinue-see-docs).
-
-```js
-dropbox({
-    resource: 'paper/docs/list',
-    parameters: {
-        'filter_by': 'docs_created',
-        'sort_by': 'modified',
-        'sort_order': 'descending',
-        'limit': 100
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### paper/docs/list/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-list-continue))
-Once a cursor has been retrieved from [docs/list](#paperdocslist-see-docs), use this to paginate through all Paper doc.
-
-```js
-dropbox({
-    resource: 'paper/docs/list/continue',
-    parameters: {
-        'cursor': 'U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### paper/docs/permanently_delete ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-permanently_delete))
-Permanently deletes the given Paper doc. This operation is final as the doc cannot be recovered.  Note: This action can be performed only by the doc owner.
-
-```js
-dropbox({
-    resource: 'paper/docs/permanently_delete',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### paper/docs/sharing_policy/get ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-sharing_policy-get))
-Gets the default sharing policy for the given Paper doc.
-
-```js
-dropbox({
-    resource: 'paper/docs/sharing_policy/get',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### paper/docs/sharing_policy/set ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-sharing_policy-set))
-Sets the default sharing policy for the given Paper doc. The default 'team_sharing_policy' can be changed only by teams, omit this field for personal accounts.  Note: 'public_sharing_policy' cannot be set to the value 'disabled' because this setting can be changed only via the team admin console.
-
-```js
-dropbox({
-    resource: 'paper/docs/sharing_policy/set',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
-        'sharing_policy': {
-            'public_sharing_policy': 'people_with_link_can_edit',
-            'team_sharing_policy': 'people_with_link_can_edit'
-        }
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### paper/docs/update ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-update))
-Updates an existing Paper doc with the provided content.
-
-```js
-const stream = dropbox({
-    resource: 'paper/docs/update',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
-        'doc_update_policy': 'overwrite_all',
-        'revision': 12345,
-        'import_format': 'html'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-
-fs.createReadStream().pipe(stream);
-```
-
-
-### paper/docs/users/add ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-users-add))
-Allows an owner or editor to add users to a Paper doc or change their permissions using their email address or Dropbox account ID.  Note: The Doc owner's permissions cannot be changed.
-
-```js
-dropbox({
-    resource: 'paper/docs/users/add',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
-        'members': [{
-            'member': {
-                '.tag': 'email',
-                'email': 'justin@example.com'
-            },
-            'permission_level': 'view_and_comment'
-        }],
-        'custom_message': 'Welcome to Paper.',
-        'quiet': false
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### paper/docs/users/list ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-users-list))
-Lists all users who visited the Paper doc or users with explicit access. This call excludes users who have been removed. The list is sorted by the date of the visit or the share date. The list will include both users, the explicitly shared ones as well as those who came in using the Paper url link.
-
-```js
-dropbox({
-    resource: 'paper/docs/users/list',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
-        'limit': 100,
-        'filter_by': 'shared'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### paper/docs/users/list/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-users-list-continue))
-Once a cursor has been retrieved from [docs/users/list](#paperdocsuserslist-see-docs), use this to paginate through all users on the Paper doc.
-
-```js
-dropbox({
-    resource: 'paper/docs/users/list/continue',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
-        'cursor': 'U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### paper/docs/users/remove ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-docs-users-remove))
-Allows an owner or editor to remove users from a Paper doc using their email address or Dropbox account ID.  Note: Doc owner cannot be removed.
-
-```js
-dropbox({
-    resource: 'paper/docs/users/remove',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
-        'member': {
-            '.tag': 'email',
-            'email': 'justin@example.com'
-        }
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### paper/folders/create ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#paper-folders-create))
-Create a new Paper folder with the provided info.
-
-```js
-dropbox({
-    resource: 'paper/folders/create',
-    parameters: {
-        'name': 'my new folder'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
 ```
 
 
@@ -2063,6 +1865,23 @@ dropbox({
 ```
 
 
+### users/features/get_values ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#users-features-get_values))
+Get a list of feature values that may be configured for the current account.
+
+```js
+dropbox({
+    resource: 'users/features/get_values',
+    parameters: {
+        'features': [{
+            '.tag': 'paper_as_files'
+        }]
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### users/get_account ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#users-get_account))
 Get information about a user's account.
 
@@ -2259,6 +2078,297 @@ dropbox({
             }],
             'remove_fields': []
         }]
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/docs/archive ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-archive))
+Marks the given Paper doc as archived. This action can be performed or undone by anyone with edit permissions to the doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. This endpoint will be retired in September 2020. Refer to the Paper Migration Guide for more information.
+
+```js
+dropbox({
+    resource: 'deprecated/docs/archive',
+    parameters: {
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/docs/create ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-create))
+Creates a new Paper doc with the provided content. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. This endpoint will be retired in September 2020. Refer to the Paper Migration Guide for more information.
+
+```js
+const stream = dropbox({
+    resource: 'deprecated/docs/create',
+    parameters: {
+        'import_format': 'markdown'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+
+fs.createReadStream().pipe(stream);
+```
+
+
+### deprecated/docs/download ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-download))
+Exports and downloads Paper doc either as HTML or markdown. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
+
+```js
+const stream = dropbox({
+    resource: 'deprecated/docs/download',
+    parameters: {
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'export_format': 'markdown'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+
+stream
+    .pipe(fs.createWriteStream()); //pipe the stream
+```
+
+
+### deprecated/docs/folder_users/list ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-folder_users-list))
+Lists the users who are explicitly invited to the Paper folder in which the Paper doc is contained. For private folders all users (including owner) shared on the folder are listed and for team folders all non-team users shared on the folder are returned. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
+
+```js
+dropbox({
+    resource: 'deprecated/docs/folder_users/list',
+    parameters: {
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'limit': 100
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/docs/folder_users/list/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-folder_users-list-continue))
+Once a cursor has been retrieved from [docs/folder_users/list](#paperdocsfolder_userslist-see-docs), use this to paginate through all users on the Paper folder. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
+
+```js
+dropbox({
+    resource: 'deprecated/docs/folder_users/list/continue',
+    parameters: {
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'cursor': 'U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/docs/get_folder_info ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-get_folder_info))
+Retrieves folder information for the given Paper doc. This includes:   - folder sharing policy; permissions for subfolders are set by the top-level folder.   - full 'filepath', i.e. the list of folders (both folderId and folderName) from     the root folder to the folder directly containing the Paper doc.  If the Paper doc is not in any folder (aka unfiled) the response will be empty. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
+
+```js
+dropbox({
+    resource: 'deprecated/docs/get_folder_info',
+    parameters: {
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/docs/list ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-list))
+Return the list of all Paper docs according to the argument specifications. To iterate over through the full pagination, pass the cursor to [docs/list/continue](#paperdocslistcontinue-see-docs). Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
+
+```js
+dropbox({
+    resource: 'deprecated/docs/list',
+    parameters: {
+        'filter_by': 'docs_created',
+        'sort_by': 'modified',
+        'sort_order': 'descending',
+        'limit': 100
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/docs/list/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-list-continue))
+Once a cursor has been retrieved from [docs/list](#paperdocslist-see-docs), use this to paginate through all Paper doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
+
+```js
+dropbox({
+    resource: 'deprecated/docs/list/continue',
+    parameters: {
+        'cursor': 'U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/docs/permanently_delete ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-permanently_delete))
+Permanently deletes the given Paper doc. This operation is final as the doc cannot be recovered. This action can be performed only by the doc owner. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
+
+```js
+dropbox({
+    resource: 'deprecated/docs/permanently_delete',
+    parameters: {
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/docs/sharing_policy/get ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-sharing_policy-get))
+Gets the default sharing policy for the given Paper doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
+
+```js
+dropbox({
+    resource: 'deprecated/docs/sharing_policy/get',
+    parameters: {
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/docs/sharing_policy/set ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-sharing_policy-set))
+Sets the default sharing policy for the given Paper doc. The default 'team_sharing_policy' can be changed only by teams, omit this field for personal accounts. The 'public_sharing_policy' policy can't be set to the value 'disabled' because this setting can be changed only via the team admin console. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
+
+```js
+dropbox({
+    resource: 'deprecated/docs/sharing_policy/set',
+    parameters: {
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'sharing_policy': {
+            'public_sharing_policy': 'people_with_link_can_edit',
+            'team_sharing_policy': 'people_with_link_can_edit'
+        }
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/docs/update ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-update))
+Updates an existing Paper doc with the provided content. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. This endpoint will be retired in September 2020. Refer to the Paper Migration Guide for more information.
+
+```js
+const stream = dropbox({
+    resource: 'deprecated/docs/update',
+    parameters: {
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'doc_update_policy': 'overwrite_all',
+        'revision': 12345,
+        'import_format': 'html'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+
+fs.createReadStream().pipe(stream);
+```
+
+
+### deprecated/docs/users/add ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-users-add))
+Allows an owner or editor to add users to a Paper doc or change their permissions using their email address or Dropbox account ID. The doc owner's permissions cannot be changed. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
+
+```js
+dropbox({
+    resource: 'deprecated/docs/users/add',
+    parameters: {
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'members': [{
+            'member': {
+                '.tag': 'email',
+                'email': 'justin@example.com'
+            },
+            'permission_level': 'view_and_comment'
+        }],
+        'custom_message': 'Welcome to Paper.',
+        'quiet': false
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/docs/users/list ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-users-list))
+Lists all users who visited the Paper doc or users with explicit access. This call excludes users who have been removed. The list is sorted by the date of the visit or the share date. The list will include both users, the explicitly shared ones as well as those who came in using the Paper url link. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
+
+```js
+dropbox({
+    resource: 'deprecated/docs/users/list',
+    parameters: {
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'limit': 100,
+        'filter_by': 'shared'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/docs/users/list/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-users-list-continue))
+Once a cursor has been retrieved from [docs/users/list](#paperdocsuserslist-see-docs), use this to paginate through all users on the Paper doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
+
+```js
+dropbox({
+    resource: 'deprecated/docs/users/list/continue',
+    parameters: {
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'cursor': 'U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/docs/users/remove ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-users-remove))
+Allows an owner or editor to remove users from a Paper doc using their email address or Dropbox account ID. The doc owner cannot be removed. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
+
+```js
+dropbox({
+    resource: 'deprecated/docs/users/remove',
+    parameters: {
+        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
+        'member': {
+            '.tag': 'email',
+            'email': 'justin@example.com'
+        }
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### deprecated/folders/create ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-folders-create))
+Create a new Paper folder with the provided info. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
+
+```js
+dropbox({
+    resource: 'deprecated/folders/create',
+    parameters: {
+        'name': 'my new folder'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
