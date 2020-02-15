@@ -14298,6 +14298,11 @@
 									"name": "paper_as_files",
 									"type": "Void",
 									"desc": "This feature contains information about how the user's Paper files are stored."
+								},
+								{
+									"name": "file_locking",
+									"type": "Void",
+									"desc": "This feature allows users to lock files in order to restrict other users from editing them."
 								}
 							],
 							"example": null
@@ -14308,12 +14313,20 @@
 					"name": "paper_as_files",
 					"type": "Void",
 					"desc": "This feature contains information about how the user's Paper files are stored."
+				},
+				{
+					"name": "file_locking",
+					"type": "Void",
+					"desc": "This feature allows users to lock files in order to restrict other users from editing them."
 				}
 			],
 			"example": {
 				"features": [
 					{
 						".tag": "paper_as_files"
+					},
+					{
+						".tag": "file_locking"
 					}
 				]
 			}
