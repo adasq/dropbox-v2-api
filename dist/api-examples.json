@@ -3855,17 +3855,138 @@
 		}
 	},
 	"files/get_thumbnail": {
-		"uri": "https://content.dropboxapi.com/2/files/get_thumbnail",
+		"uri": "https://content.dropboxapi.com/2/files/get_thumbnail_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "DOWNLOAD",
-		"description": "Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg, png, tiff, tif, gif and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.",
+		"description": "Get a thumbnail for a file.",
 		"parameters": {
 			"list": [
 				{
+					"name": "resource",
+					"type": "PathOrLink",
+					"desc": "Information specifying which file to preview. This could be a path to a file, a shared link pointing to a file, or a shared link pointing to a folder, with a relative path.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "path",
+									"type": "String(pattern=\"(/(.|[\\r\\n])*|id:.*)|(rev:[0-9a-f]{9,})|(ns:[0-9]+(/.*)?)\")",
+									"desc": ""
+								},
+								{
+									"name": "link",
+									"type": "SharedLinkFileInfo",
+									"desc": "",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "url",
+													"type": "String",
+													"desc": "The shared link corresponding to either a file or shared link to a folder. If it is for a folder shared link, we use the path param to determine for which file in the folder the view is for."
+												},
+												{
+													"name": "path",
+													"type": "String?",
+													"desc": "The path corresponding to a file in a shared link to a folder. Required for shared links to folders. This field is optional."
+												},
+												{
+													"name": "password",
+													"type": "String?",
+													"desc": "Password for the shared link. Required for password-protected shared links to files  unless it can be read from a cookie. This field is optional."
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "url",
+									"type": "String",
+									"desc": "The shared link corresponding to either a file or shared link to a folder. If it is for a folder shared link, we use the path param to determine for which file in the folder the view is for."
+								},
+								{
+									"name": "path",
+									"type": "String?",
+									"desc": "The path corresponding to a file in a shared link to a folder. Required for shared links to folders. This field is optional."
+								},
+								{
+									"name": "password",
+									"type": "String?",
+									"desc": "Password for the shared link. Required for password-protected shared links to files  unless it can be read from a cookie. This field is optional."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "url",
+									"type": "String",
+									"desc": "The shared link corresponding to either a file or shared link to a folder. If it is for a folder shared link, we use the path param to determine for which file in the folder the view is for."
+								},
+								{
+									"name": "path",
+									"type": "String?",
+									"desc": "The path corresponding to a file in a shared link to a folder. Required for shared links to folders. This field is optional."
+								},
+								{
+									"name": "password",
+									"type": "String?",
+									"desc": "Password for the shared link. Required for password-protected shared links to files  unless it can be read from a cookie. This field is optional."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
 					"name": "path",
 					"type": "String(pattern=\"(/(.|[\\r\\n])*|id:.*)|(rev:[0-9a-f]{9,})|(ns:[0-9]+(/.*)?)\")",
-					"desc": "The path to the image file you want to thumbnail."
+					"desc": ""
+				},
+				{
+					"name": "link",
+					"type": "SharedLinkFileInfo",
+					"desc": "",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "url",
+									"type": "String",
+									"desc": "The shared link corresponding to either a file or shared link to a folder. If it is for a folder shared link, we use the path param to determine for which file in the folder the view is for."
+								},
+								{
+									"name": "path",
+									"type": "String?",
+									"desc": "The path corresponding to a file in a shared link to a folder. Required for shared links to folders. This field is optional."
+								},
+								{
+									"name": "password",
+									"type": "String?",
+									"desc": "Password for the shared link. Required for password-protected shared links to files  unless it can be read from a cookie. This field is optional."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "url",
+					"type": "String",
+					"desc": "The shared link corresponding to either a file or shared link to a folder. If it is for a folder shared link, we use the path param to determine for which file in the folder the view is for."
+				},
+				{
+					"name": "path",
+					"type": "String?",
+					"desc": "The path corresponding to a file in a shared link to a folder. Required for shared links to folders. This field is optional."
+				},
+				{
+					"name": "password",
+					"type": "String?",
+					"desc": "Password for the shared link. Required for password-protected shared links to files  unless it can be read from a cookie. This field is optional."
 				},
 				{
 					"name": "format",
@@ -4045,44 +4166,49 @@
 				}
 			],
 			"example": {
-				"path": "/image.jpg",
+				"resource": {
+					".tag": "path",
+					"path": "/a.docx"
+				},
 				"format": "jpeg",
 				"size": "w64h64",
 				"mode": "strict"
 			}
 		},
 		"returnParameters": {
-			"name": "Prime_Numbers.txt",
-			"id": "id:a4ayc_80_OEAAAAAAAAAXw",
-			"client_modified": "2015-05-12T15:50:38Z",
-			"server_modified": "2015-05-12T15:50:38Z",
-			"rev": "a1c10ce0dd78",
-			"size": 7212,
-			"path_lower": "/homework/math/prime_numbers.txt",
-			"path_display": "/Homework/math/Prime_Numbers.txt",
-			"sharing_info": {
-				"read_only": true,
-				"parent_shared_folder_id": "84528192421",
-				"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
-			},
-			"is_downloadable": true,
-			"property_groups": [
-				{
-					"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
-					"fields": [
-						{
-							"name": "Security Policy",
-							"value": "Confidential"
-						}
-					]
+			"file_metadata": {
+				"name": "Prime_Numbers.txt",
+				"id": "id:a4ayc_80_OEAAAAAAAAAXw",
+				"client_modified": "2015-05-12T15:50:38Z",
+				"server_modified": "2015-05-12T15:50:38Z",
+				"rev": "a1c10ce0dd78",
+				"size": 7212,
+				"path_lower": "/homework/math/prime_numbers.txt",
+				"path_display": "/Homework/math/Prime_Numbers.txt",
+				"sharing_info": {
+					"read_only": true,
+					"parent_shared_folder_id": "84528192421",
+					"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+				},
+				"is_downloadable": true,
+				"property_groups": [
+					{
+						"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
+						"fields": [
+							{
+								"name": "Security Policy",
+								"value": "Confidential"
+							}
+						]
+					}
+				],
+				"has_explicit_shared_members": false,
+				"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+				"file_lock_info": {
+					"is_lockholder": true,
+					"lockholder_name": "Imaginary User",
+					"created": "2015-05-12T15:50:38Z"
 				}
-			],
-			"has_explicit_shared_members": false,
-			"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-			"file_lock_info": {
-				"is_lockholder": true,
-				"lockholder_name": "Imaginary User",
-				"created": "2015-05-12T15:50:38Z"
 			}
 		}
 	},
