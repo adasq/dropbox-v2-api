@@ -405,7 +405,7 @@
 		}
 	},
 	"files/get_thumbnail": {
-		"uri": "https://content.dropboxapi.com/2/files/get_thumbnail",
+		"uri": "https://content.dropboxapi.com/2/files/get_thumbnail_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "DOWNLOAD",
