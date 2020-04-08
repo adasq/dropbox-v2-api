@@ -125,6 +125,235 @@
 			"result": "foo"
 		}
 	},
+	"cloud_docs/get_content": {
+		"uri": "https://content.dropboxapi.com/2/cloud_docs/get_content",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "DOWNLOAD",
+		"description": "Fetch the binary content of the requested document. This route requires Cloud Docs auth. Please make a request to cloud_docs/authorize and supply that token in the Authorization header.",
+		"parameters": {
+			"list": [
+				{
+					"name": "file_id",
+					"type": "String(min_length=4, pattern=\"id:.+\")",
+					"desc": ""
+				}
+			],
+			"example": {
+				"file_id": "id:pXGlEfaZvvAAAAAAAAAAGw"
+			}
+		},
+		"returnParameters": null
+	},
+	"cloud_docs/get_metadata": {
+		"uri": "https://api.dropboxapi.com/2/cloud_docs/get_metadata",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Fetches metadata associated with a Cloud Doc and user. This route requires Cloud Docs auth. Please make a request to cloud_docs/authorize and supply that token in the Authorization header.",
+		"parameters": {
+			"list": [
+				{
+					"name": "file_id",
+					"type": "String",
+					"desc": "API ID (\"id:...\") associated with the Cloud Doc. The default for this field is \"\"."
+				}
+			],
+			"example": null
+		},
+		"returnParameters": null
+	},
+	"cloud_docs/lock": {
+		"uri": "https://api.dropboxapi.com/2/cloud_docs/lock",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Lock a Cloud Doc. This route requires Cloud Docs auth. Please make a request to cloud_docs/authorize and supply that token in the Authorization header.",
+		"parameters": {
+			"list": [
+				{
+					"name": "file_id",
+					"type": "String",
+					"desc": "The API ID (\"id:...\") associated with the Cloud Doc The default for this field is \"\"."
+				}
+			],
+			"example": null
+		},
+		"returnParameters": null
+	},
+	"cloud_docs/rename": {
+		"uri": "https://api.dropboxapi.com/2/cloud_docs/rename",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Update the title of a Cloud Doc. This route requires Cloud Docs auth. Please make a request to cloud_docs/authorize and supply that token in the Authorization header.",
+		"parameters": {
+			"list": [
+				{
+					"name": "file_id",
+					"type": "String",
+					"desc": "The API ID (\"id:...\") associated with the Cloud Doc The default for this field is \"\"."
+				},
+				{
+					"name": "title",
+					"type": "String",
+					"desc": "The new title of the doc, excluding extension The default for this field is \"\"."
+				}
+			],
+			"example": null
+		},
+		"returnParameters": null
+	},
+	"cloud_docs/unlock": {
+		"uri": "https://api.dropboxapi.com/2/cloud_docs/unlock",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Unlock a Cloud Doc. This route requires Cloud Docs auth. Please make a request to cloud_docs/authorize and supply that token in the Authorization header.",
+		"parameters": {
+			"list": [
+				{
+					"name": "file_id",
+					"type": "String",
+					"desc": "The API ID (\"id:...\") associated with the Cloud Doc The default for this field is \"\"."
+				}
+			],
+			"example": null
+		},
+		"returnParameters": null
+	},
+	"cloud_docs/update_content": {
+		"uri": "https://content.dropboxapi.com/2/cloud_docs/update_content",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": true,
+		"category": "UPLOAD",
+		"description": "Update the contents of a Cloud Doc. This should be called for files with a max size of 150MB. This route requires Cloud Docs auth. Please make a request to cloud_docs/authorize and supply that token in the Authorization header.",
+		"parameters": {
+			"list": [
+				{
+					"name": "file_id",
+					"type": "String(min_length=4, pattern=\"id:.+\")",
+					"desc": ""
+				},
+				{
+					"name": "actor_tokens",
+					"type": "List of (String)",
+					"desc": "A list of auth_tokens, one for each editor who made changes to the document since the last call to update_content."
+				},
+				{
+					"name": "additional_contents",
+					"type": "List of (Content)?",
+					"desc": "Currently, this will always be empty until we implement upload_additional_content. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "purpose",
+									"type": "ContentPurpose",
+									"desc": "",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "search",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "preview",
+													"type": "Void",
+													"desc": ""
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "search",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "preview",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "content_key",
+									"type": "String",
+									"desc": "The key returned from an upload_additional_content response."
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
+									"name": "search",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "preview",
+									"type": "Void",
+									"desc": ""
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "purpose",
+					"type": "ContentPurpose",
+					"desc": "",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "search",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "preview",
+									"type": "Void",
+									"desc": ""
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "search",
+					"type": "Void",
+					"desc": ""
+				},
+				{
+					"name": "preview",
+					"type": "Void",
+					"desc": ""
+				},
+				{
+					"name": "content_key",
+					"type": "String",
+					"desc": "The key returned from an upload_additional_content response."
+				}
+			],
+			"example": {
+				"file_id": "id:pXGlEfaZvvAAAAAAAAAAGw",
+				"actor_tokens": [
+					"AAAJagNapzVCQzKrX-LTY7DjVc1itPHiCI6COvcE3BpyN7-sTY1gxcjXY2nST3dONovrmYDdKxVe_TSMA0p8DTYbk2kfkA_1hHIplGxc4glyJwh2nK5NcxxScT8AYLx2cgepxAX2PALm2hwDdcE9P060_iedPWIqqseyFjxo9bMmDWQZFSGAyTlBlvPudGprVhQ="
+				],
+				"additional_contents": []
+			}
+		},
+		"returnParameters": {
+			"version": "1mPVXsONgX_d6QlFqs6gGz3MzGU="
+		}
+	},
 	"contacts/delete_manual_contacts": {
 		"uri": "https://api.dropboxapi.com/2/contacts/delete_manual_contacts",
 		"requiresAuthHeader": true,
@@ -176,7 +405,7 @@
 				{
 					"name": "property_groups",
 					"type": "List of (PropertyGroup)",
-					"desc": "The property groups which are to be added to a Dropbox file.",
+					"desc": "The property groups which are to be added to a Dropbox file. No two groups in the input should  refer to the same template.",
 					"parameters": [
 						{
 							"list": [
@@ -308,7 +537,7 @@
 				{
 					"name": "property_groups",
 					"type": "List of (PropertyGroup, min_items=1)",
-					"desc": "The property groups \"snapshot\" updates to force apply.",
+					"desc": "The property groups \"snapshot\" updates to force apply. No two groups in the input should  refer to the same template.",
 					"parameters": [
 						{
 							"list": [
@@ -14934,7 +15163,7 @@
 				{
 					"name": "property_groups",
 					"type": "List of (PropertyGroup)",
-					"desc": "The property groups which are to be added to a Dropbox file.",
+					"desc": "The property groups which are to be added to a Dropbox file. No two groups in the input should  refer to the same template.",
 					"parameters": [
 						{
 							"list": [
@@ -15066,7 +15295,7 @@
 				{
 					"name": "property_groups",
 					"type": "List of (PropertyGroup, min_items=1)",
-					"desc": "The property groups \"snapshot\" updates to force apply.",
+					"desc": "The property groups \"snapshot\" updates to force apply. No two groups in the input should  refer to the same template.",
 					"parameters": [
 						{
 							"list": [
