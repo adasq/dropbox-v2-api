@@ -5983,7 +5983,7 @@
 				{
 					"name": "query",
 					"type": "String",
-					"desc": "The string to search for. May match across multiple fields based on the request arguments."
+					"desc": "The string to search for. May match across multiple fields based on the request arguments. Query string may be rewritten to improve relevance of results."
 				},
 				{
 					"name": "options",
