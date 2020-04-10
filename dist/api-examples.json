@@ -9667,7 +9667,7 @@
 				"settings": {
 					"requested_visibility": "public",
 					"audience": "public",
-					"access": "editor"
+					"access": "viewer"
 				}
 			}
 		},
@@ -12233,7 +12233,7 @@
 				"settings": {
 					"requested_visibility": "public",
 					"audience": "public",
-					"access": "editor"
+					"access": "viewer"
 				},
 				"remove_expiration": false
 			}
