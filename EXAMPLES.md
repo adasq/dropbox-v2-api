@@ -75,6 +75,91 @@ dropbox({
 ```
 
 
+### cloud_docs/get_content ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#cloud_docs-get_content))
+Fetch the binary content of the requested document. This route requires Cloud Docs auth. Please make a request to cloud_docs/authorize and supply that token in the Authorization header.
+
+```js
+const stream = dropbox({
+    resource: 'cloud_docs/get_content',
+    parameters: {
+        'file_id': 'id:pXGlEfaZvvAAAAAAAAAAGw'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+
+stream
+    .pipe(fs.createWriteStream()); //pipe the stream
+```
+
+
+### cloud_docs/get_metadata ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#cloud_docs-get_metadata))
+Fetches metadata associated with a Cloud Doc and user. This route requires Cloud Docs auth. Please make a request to cloud_docs/authorize and supply that token in the Authorization header.
+
+```js
+dropbox({
+    resource: 'cloud_docs/get_metadata'
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### cloud_docs/lock ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#cloud_docs-lock))
+Lock a Cloud Doc. This route requires Cloud Docs auth. Please make a request to cloud_docs/authorize and supply that token in the Authorization header.
+
+```js
+dropbox({
+    resource: 'cloud_docs/lock'
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### cloud_docs/rename ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#cloud_docs-rename))
+Update the title of a Cloud Doc. This route requires Cloud Docs auth. Please make a request to cloud_docs/authorize and supply that token in the Authorization header.
+
+```js
+dropbox({
+    resource: 'cloud_docs/rename'
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### cloud_docs/unlock ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#cloud_docs-unlock))
+Unlock a Cloud Doc. This route requires Cloud Docs auth. Please make a request to cloud_docs/authorize and supply that token in the Authorization header.
+
+```js
+dropbox({
+    resource: 'cloud_docs/unlock'
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### cloud_docs/update_content ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#cloud_docs-update_content))
+Update the contents of a Cloud Doc. This should be called for files with a max size of 150MB. This route requires Cloud Docs auth. Please make a request to cloud_docs/authorize and supply that token in the Authorization header.
+
+```js
+const stream = dropbox({
+    resource: 'cloud_docs/update_content',
+    parameters: {
+        'file_id': 'id:pXGlEfaZvvAAAAAAAAAAGw',
+        'actor_tokens': ['AAAJagNapzVCQzKrX-LTY7DjVc1itPHiCI6COvcE3BpyN7-sTY1gxcjXY2nST3dONovrmYDdKxVe_TSMA0p8DTYbk2kfkA_1hHIplGxc4glyJwh2nK5NcxxScT8AYLx2cgepxAX2PALm2hwDdcE9P060_iedPWIqqseyFjxo9bMmDWQZFSGAyTlBlvPudGprVhQ='],
+        'additional_contents': []
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+
+fs.createReadStream().pipe(stream);
+```
+
+
 ### contacts/delete_manual_contacts ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#contacts-delete_manual_contacts))
 Removes all manually added contacts. You'll still keep contacts who are on your team or who you imported. New contacts will be added when you share.
 
@@ -760,13 +845,16 @@ dropbox({
 
 
 ### files/get_thumbnail ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-get_thumbnail))
-Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg, png, tiff, tif, gif and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
+Get a thumbnail for a file.
 
 ```js
 const stream = dropbox({
     resource: 'files/get_thumbnail',
     parameters: {
-        'path': '/image.jpg',
+        'resource': {
+            '.tag': 'path',
+            'path': '/a.docx'
+        },
         'format': 'jpeg',
         'size': 'w64h64',
         'mode': 'strict'
@@ -776,7 +864,7 @@ const stream = dropbox({
 });
 
 stream
-    .pipe(fs.createWriteStream('/image.jpg')); //pipe the stream
+    .pipe(fs.createWriteStream()); //pipe the stream
 ```
 
 
@@ -908,7 +996,7 @@ dropbox({
 
 
 ### files/move ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-move))
-Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be moved.
+Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be moved. Note that we do not currently support case-only renaming.
 
 ```js
 dropbox({
@@ -927,7 +1015,7 @@ dropbox({
 
 
 ### files/move_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-move_batch))
-Move multiple files or folders to different locations at once in the user's Dropbox. This route will replace [move_batch:1](#filesmove_batch:1-see-docs). The main difference is this route will return status for each entry, while [move_batch:1](#filesmove_batch:1-see-docs) raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async move job in background. Please use [move_batch/check:2](#filesmove_batchcheck:2-see-docs) to check the job status.
+Move multiple files or folders to different locations at once in the user's Dropbox. Note that we do not currently support case-only renaming. This route will replace [move_batch:1](#filesmove_batch:1-see-docs). The main difference is this route will return status for each entry, while [move_batch:1](#filesmove_batch:1-see-docs) raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async move job in background. Please use [move_batch/check:2](#filesmove_batchcheck:2-see-docs) to check the job status.
 
 ```js
 dropbox({
@@ -1308,7 +1396,7 @@ dropbox({
         'settings': {
             'requested_visibility': 'public',
             'audience': 'public',
-            'access': 'editor'
+            'access': 'viewer'
         }
     }
 }, (err, result, response) => {
@@ -1599,7 +1687,7 @@ dropbox({
         'settings': {
             'requested_visibility': 'public',
             'audience': 'public',
-            'access': 'editor'
+            'access': 'viewer'
         },
         'remove_expiration': false
     }
@@ -1874,6 +1962,8 @@ dropbox({
     parameters: {
         'features': [{
             '.tag': 'paper_as_files'
+        }, {
+            '.tag': 'file_locking'
         }]
     }
 }, (err, result, response) => {
