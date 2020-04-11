@@ -5563,7 +5563,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be moved.",
+		"description": "Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be moved. Note that we do not currently support case-only renaming.",
 		"parameters": {
 			"list": [
 				{
@@ -5643,7 +5643,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Move multiple files or folders to different locations at once in the user's Dropbox. This route will replace [move_batch:1](#filesmove_batch:1-see-docs). The main difference is this route will return status for each entry, while [move_batch:1](#filesmove_batch:1-see-docs) raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async move job in background. Please use [move_batch/check:2](#filesmove_batchcheck:2-see-docs) to check the job status.",
+		"description": "Move multiple files or folders to different locations at once in the user's Dropbox. Note that we do not currently support case-only renaming. This route will replace [move_batch:1](#filesmove_batch:1-see-docs). The main difference is this route will return status for each entry, while [move_batch:1](#filesmove_batch:1-see-docs) raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async move job in background. Please use [move_batch/check:2](#filesmove_batchcheck:2-see-docs) to check the job status.",
 		"parameters": {
 			"list": [
 				{
