@@ -15,13 +15,13 @@ const credentials = JSON.parse(fs.readFileSync(path.join(__dirname, 'credentials
 
 //set token authentication:
 const dropbox = dropboxV2Api.authenticate({
-	token: credentials.TOKEN
+    token: credentials.TOKEN
 });
 
-function createReadStream(sign, length){
-	return tester.createRandomStream(function () {
-		return sign;
-	}, length);
+function createReadStream(sign, length) {
+    return tester.createRandomStream(function () {
+        return sign;
+    }, length);
 }
 
 const CHUNK_LENGTH = 100;
@@ -29,9 +29,9 @@ const firstUploadChunkStream = () => utils.createMockedReadStream('1', CHUNK_LEN
 const secondUploadChunkStream = () => utils.createMockedReadStream('2', CHUNK_LENGTH);
 
 sessionStart((sessionId) => {
-	sessionAppend(sessionId, () => {
-		sessionFinish(sessionId);
-	});
+    sessionAppend(sessionId, () => {
+        sessionFinish(sessionId);
+    });
 });
 
 function sessionStart(cb) {
@@ -42,16 +42,16 @@ function sessionStart(cb) {
         },
         readStream: firstUploadChunkStream()
     }, (err, response) => {
-		if(err){ return console.log('sessionStart error: ', err) }
-		console.log('sessionStart response:', response);
-		cb(response.session_id);
-	});
+        if (err) { return console.log('sessionStart error: ', err) }
+        console.log('sessionStart response:', response);
+        cb(response.session_id);
+    });
 }
 
 
 function sessionAppend(sessionId, cb) {
     dropbox({
-        resource: 'files/upload_session/append_v2',
+        resource: 'files/upload_session/append',
         parameters: {
             cursor: {
                 session_id: sessionId,
@@ -61,10 +61,10 @@ function sessionAppend(sessionId, cb) {
         },
         readStream: secondUploadChunkStream()
     }, (err, response) => {
-		if(err){ return console.log('sessionAppend error: ', err) }
-		console.log('sessionAppend response:', response);
-		cb();
-	});
+        if (err) { return console.log('sessionAppend error: ', err) }
+        console.log('sessionAppend response:', response);
+        cb();
+    });
 }
 
 function sessionFinish(sessionId) {
@@ -83,7 +83,7 @@ function sessionFinish(sessionId) {
             }
         }
     }, (err, response) => {
-		if(err){ return console.log('sessionFinish error: ', err) }
-		console.log('sessionFinish response:', response);
-	});
+        if (err) { return console.log('sessionFinish error: ', err) }
+        console.log('sessionFinish response:', response);
+    });
 }

@@ -9,7 +9,7 @@
  */
 
 const dropboxV2Api = require('../src/dropbox-api.js');
-const Hapi = require('hapi');
+const Hapi = require('@hapi/hapi');
 const fs = require('fs');
 const path = require('path');
 const Opn = require('opn');
@@ -24,26 +24,34 @@ const dropbox = dropboxV2Api.authenticate({
 });
 
 //prepare server & oauth2 response callback
-const server = new Hapi.Server();
-server.connection({ port: 5000 });
-server.route({
-        method: 'GET',
-        path: '/oauth',
-        handler: function (request, reply) {
-        	var params = request.query;
-        	dropbox.getToken(params.code, function(err, response){
-        		console.log('user\'s access_token: ',response.access_token);
-        		//call api
-        		dropbox({
-					resource: 'users/get_current_account'
-				}, function(err, response){
-					reply({response: response});
+(async () => {
+	const server = Hapi.server({
+		port: 5000,
+		host: 'localhost'
+	});
+
+	server.route({
+		method: 'GET',
+		path: '/oauth',
+		handler: function (request, h) {
+			var params = request.query;
+
+			return new Promise((resolve) => {
+				dropbox.getToken(params.code, function (err, response) {
+					console.log('user\'s access_token: ', response.access_token);
+					//call api
+					dropbox({
+						resource: 'users/get_current_account'
+					}, function (err, response) {
+						console.log(err);
+						resolve(response);
+					});
 				});
-        		
-        	});                    
-        }
-});
-server.start(function(){
-	//open authorization url
+			})
+		}
+	});
+
+	await server.start();
 	Opn(dropbox.generateAuthUrl());
-});
+	console.log('Server running on %s', server.info.uri);
+})()
