@@ -17,17 +17,33 @@ const dropbox = dropboxV2Api.authenticate({
     token: credentials.TOKEN
 });
 
-const CHUNK_LENGTH = 100;
+const CHUNK_LENGTH = 41;
 
 const FILE_PATH = path.join(__dirname, 'test-file');
+const FILE_SIZE = fs.statSync(FILE_PATH).size;
 
-const firstUploadChunkStream = () => fs.createReadStream(FILE_PATH, { start: 0, end: CHUNK_LENGTH - 1  }); // first 100 bytes (0 - 99)
-const secondUploadChunkStream = () => fs.createReadStream(FILE_PATH, { start: CHUNK_LENGTH, end: 2 * CHUNK_LENGTH - 1 }); //second 100 bytes (100 - 200)
+const getNextChunkStream = (start, end) => fs.createReadStream(FILE_PATH, { start, end });
+
+const append = (sessionId, start, end) => {
+    if (start === FILE_SIZE) { // this means we have entire file uploaded, so commit
+        return sessionFinish(sessionId);
+    }
+
+    if (end > FILE_SIZE) { // this last chunk might be smaller
+        end = FILE_SIZE - 1;
+        console.log(`uploading ${end - start + 1} bytes (from ${start} to ${end}) (last smaller chunk)`);
+        return sessionAppend(sessionId, start, FILE_SIZE - 1, () => {
+            return sessionFinish(sessionId, FILE_SIZE);
+        })
+    }
+    console.log(`uploading ${end - start + 1} bytes (from ${start} to ${end})`);
+    sessionAppend(sessionId, start, end, () => {
+        append(sessionId, end + 1, end + CHUNK_LENGTH)
+    });
+}
 
 sessionStart((sessionId) => {
-    sessionAppend(sessionId, () => {
-        sessionFinish(sessionId);
-    });
+    append(sessionId, 0, CHUNK_LENGTH - 1) // first chunk
 });
 
 function sessionStart(cb) {
@@ -36,7 +52,6 @@ function sessionStart(cb) {
         parameters: {
             close: false
         },
-        readStream: firstUploadChunkStream()
     }, (err, result, response) => {
         if (err) { return console.log('sessionStart error: ', err) }
         console.log('sessionStart result:', result);
@@ -44,21 +59,19 @@ function sessionStart(cb) {
     });
 }
 
-
-function sessionAppend(sessionId, cb) {
+function sessionAppend(sessionId, start, end, cb) {
     dropbox({
         resource: 'files/upload_session/append',
         parameters: {
             cursor: {
                 session_id: sessionId,
-                offset: CHUNK_LENGTH
+                offset: start
             },
             close: false,
         },
-        readStream: secondUploadChunkStream()
+        readStream: getNextChunkStream(start, end)
     }, (err, result, response) => {
-        if(err){ return console.log('sessionAppend error: ', err) }
-        console.log('sessionAppend result:', result);
+        if (err) { return console.log('sessionAppend error: ', err) }
         cb();
     });
 }
@@ -69,7 +82,7 @@ function sessionFinish(sessionId) {
         parameters: {
             cursor: {
                 session_id: sessionId,
-                offset: CHUNK_LENGTH * 2
+                offset: FILE_SIZE
             },
             commit: {
                 path: "/result.txt",
