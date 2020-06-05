@@ -6396,9 +6396,31 @@
 					"desc": "any file not in one of the categories above."
 				},
 				{
+					"name": "match_field_options",
+					"type": "SearchMatchFieldOptions?",
+					"desc": "Options for search results match fields. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "include_highlights",
+									"type": "Boolean",
+									"desc": "Whether to include highlight span from file title. The default for this field is False."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
 					"name": "include_highlights",
 					"type": "Boolean",
-					"desc": "The default for this field is False."
+					"desc": "Whether to include highlight span from file title. The default for this field is False."
+				},
+				{
+					"name": "include_highlights",
+					"type": "Boolean",
+					"desc": "Field is deprecated. Deprecated and moved this option to SearchMatchFieldOptions. The default for this field is False."
 				}
 			],
 			"example": {
