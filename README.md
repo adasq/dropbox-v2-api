@@ -5,12 +5,12 @@
 [![NPM Downloads](https://img.shields.io/npm/dt/dropbox-v2-api.svg?style=flat)](https://www.npmjs.org/package/dropbox-v2-api)
 [![npm version](https://badge.fury.io/js/dropbox-v2-api.svg)](https://badge.fury.io/js/dropbox-v2-api)
 
-The package interface is generated programmatically, based on [endpoints description JSON][api.json] which is fetched from [official docs][docs].
+The API is generated programmatically, based on [endpoints description JSON][api.json] fetched from [official docs][docs].
 
 [api.json]: <https://github.com/adasq/dropbox-v2-api/blob/master/dist/api.json>
 ## Why this package?
 
-- Always **up-to-date API** (PR with latest changes is generated automatically, [see recent][change-detection-pr])
+- Always **up-to-date API** (PRs with changes are generated automatically, [see most recent][change-detection-pr])
 - Simple API (**no custom function names**, see [full API showcase](#full-api-showcase))
 - Full support for **streams** (see [upload/download](#upload-and-download-examples) examples)
 - Supports Dropbox **Paper API** 
