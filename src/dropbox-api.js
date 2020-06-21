@@ -166,7 +166,7 @@ module.exports = {
 		};
 		Object.assign(clientSession, {
 				generateAuthUrl: (input) => {
-					return `${OAUTH2_AUTHORIZE}?client_id=${config.client_id}&response_type=code&redirect_uri=${config.redirect_uri}`;
+					return `${OAUTH2_AUTHORIZE}?client_id=${config.client_id}&response_type=code&redirect_uri=${config.redirect_uri}&state=${config.state}`;
 				},
 				getToken: (code, userCb) => {
 					request({
