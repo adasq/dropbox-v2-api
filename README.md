@@ -13,7 +13,7 @@ The API is generated programmatically, based on [endpoints description JSON][api
 - Always **up-to-date API** (PRs with changes are generated automatically, [see most recent][change-detection-pr])
 - Simple API (**no custom function names**, see [full API showcase](#full-api-showcase))
 - Full support for **streams** (see [upload/download](#upload-and-download-examples) examples)
-- Supports Dropbox **Paper API** 
+- Supports Dropbox **Paper API**
 - **Examples** for all endpoints ([see more][examples])
 
 
@@ -54,13 +54,15 @@ dropbox({
 const dropbox = dropboxV2Api.authenticate({
     client_id: 'APP_KEY',
     client_secret: 'APP_SECRET',
-    redirect_uri: 'REDIRECT_URI'
+    redirect_uri: 'REDIRECT_URI',
+    state: 'OPTIONAL_STATE_VALUE'
 });
-//generate and visit authorization sevice 
+//generate and visit authorization sevice
 const authUrl = dropbox.generateAuthUrl();
 //after redirection, you should receive code
 dropbox.getToken(code, (err, result, response) => {
     //you are authorized now!
+    //your optional state, given in authenticate: response.query.state
 });
 ```
 
@@ -134,16 +136,16 @@ Problems with downloading? More [here](#downloading-issues)
 
 #### download & upload
 
-You can easely use streams: 
+You can easely use streams:
 ```js
 const downloadStream = dropbox({
     resource: 'files/download',
-    parameters: { path: '/source/file/path' }				
+    parameters: { path: '/source/file/path' }
 });
 
 const uploadStream = dropbox({
     resource: 'files/upload',
-    parameters: { path: '/target/file/path' }				
+    parameters: { path: '/target/file/path' }
 }, (err, result, response) => {
     //upload finished
 });
@@ -184,7 +186,7 @@ dropbox({
 ```js
 const CHUNK_LENGTH = 100;
 //create read streams, which generates set of 100 (CHUNK_LENGTH) characters of values: 1 and 2
-const firstUploadChunkStream = () => utils.createMockedReadStream('1', CHUNK_LENGTH); 
+const firstUploadChunkStream = () => utils.createMockedReadStream('1', CHUNK_LENGTH);
 const secondUploadChunkStream = () => utils.createMockedReadStream('2', CHUNK_LENGTH);
 
 sessionStart((sessionId) => {
@@ -261,11 +263,11 @@ where `4096` stands for 4GB.
 [change-detection-pr]: <https://github.com/adasq/dropbox-v2-api/issues?utf8=%E2%9C%93&q=Dropbox+API+changes+detected+is%3Amerged+>
 [examples]: <https://github.com/adasq/dropbox-v2-api/blob/master/EXAMPLES.md>
 [tests]: <https://github.com/adasq/dropbox-v2-api/blob/master/test>
-[session-upload]: 
+[session-upload]:
 <https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-start>
-[files-upload]: 
+[files-upload]:
 <https://www.dropbox.com/developers/documentation/http/documentation#files-upload>
-[files-download]: 
+[files-download]:
 <https://www.dropbox.com/developers/documentation/http/documentation#files-download>
 [get_current_account]: <https://www.dropbox.com/developers/documentation/http/documentation#users-get_current_account>
 [get_metadata]:
