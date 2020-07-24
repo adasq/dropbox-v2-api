@@ -3810,7 +3810,7 @@
 								{
 									"name": "strict_conflict",
 									"type": "Boolean",
-									"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. The default for this field is False."
+									"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 								}
 							],
 							"example": null
@@ -4060,7 +4060,7 @@
 				{
 					"name": "strict_conflict",
 					"type": "Boolean",
-					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. The default for this field is False."
+					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 				},
 				{
 					"name": "duration",
@@ -6802,7 +6802,7 @@
 				{
 					"name": "strict_conflict",
 					"type": "Boolean",
-					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. The default for this field is False."
+					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 				}
 			],
 			"example": {
@@ -7117,7 +7117,7 @@
 								{
 									"name": "strict_conflict",
 									"type": "Boolean",
-									"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. The default for this field is False."
+									"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 								}
 							],
 							"example": null
@@ -7367,7 +7367,7 @@
 				{
 					"name": "strict_conflict",
 					"type": "Boolean",
-					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. The default for this field is False."
+					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 				}
 			],
 			"example": {
@@ -7639,7 +7639,7 @@
 												{
 													"name": "strict_conflict",
 													"type": "Boolean",
-													"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. The default for this field is False."
+													"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 												}
 											],
 											"example": null
@@ -7889,7 +7889,7 @@
 								{
 									"name": "strict_conflict",
 									"type": "Boolean",
-									"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. The default for this field is False."
+									"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 								}
 							],
 							"example": null
@@ -8077,7 +8077,7 @@
 								{
 									"name": "strict_conflict",
 									"type": "Boolean",
-									"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. The default for this field is False."
+									"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 								}
 							],
 							"example": null
@@ -8366,7 +8366,7 @@
 								{
 									"name": "strict_conflict",
 									"type": "Boolean",
-									"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. The default for this field is False."
+									"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 								}
 							],
 							"example": null
@@ -8616,7 +8616,7 @@
 				{
 					"name": "strict_conflict",
 					"type": "Boolean",
-					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. The default for this field is False."
+					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 				}
 			],
 			"example": {
@@ -15123,7 +15123,7 @@
 				{
 					"name": "strict_conflict",
 					"type": "Boolean",
-					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. The default for this field is False."
+					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 				}
 			],
 			"example": {
