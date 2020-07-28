@@ -1597,6 +1597,11 @@
 					"name": "open",
 					"type": "Boolean",
 					"desc": "Whether or not the file request should be open. If the file request is closed, it will not accept any file submissions, but it can be opened later. The default for this field is True."
+				},
+				{
+					"name": "description",
+					"type": "String?",
+					"desc": "A description of the file request. This field is optional."
 				}
 			],
 			"example": {
@@ -1622,7 +1627,8 @@
 				"allow_late_uploads": {
 					".tag": "seven_days"
 				}
-			}
+			},
+			"description": "Please submit your homework here."
 		}
 	},
 	"file_requests/delete": {
@@ -1661,7 +1667,8 @@
 						"allow_late_uploads": {
 							".tag": "seven_days"
 						}
-					}
+					},
+					"description": "Please submit your homework here."
 				},
 				{
 					"id": "BAJ7IrRGicQKGToykQdB",
@@ -1712,7 +1719,8 @@
 						"allow_late_uploads": {
 							".tag": "seven_days"
 						}
-					}
+					},
+					"description": "Please submit your homework here."
 				},
 				{
 					"id": "BAJ7IrRGicQKGToykQdB",
@@ -1769,7 +1777,8 @@
 				"allow_late_uploads": {
 					".tag": "seven_days"
 				}
-			}
+			},
+			"description": "Please submit your homework here."
 		}
 	},
 	"file_requests/list": {
@@ -1805,7 +1814,8 @@
 						"allow_late_uploads": {
 							".tag": "seven_days"
 						}
-					}
+					},
+					"description": "Please submit your homework here."
 				},
 				{
 					"id": "BAJ7IrRGicQKGToykQdB",
@@ -1866,7 +1876,8 @@
 						"allow_late_uploads": {
 							".tag": "seven_days"
 						}
-					}
+					},
+					"description": "Please submit your homework here."
 				},
 				{
 					"id": "BAJ7IrRGicQKGToykQdB",
@@ -2397,6 +2408,11 @@
 					"name": "open",
 					"type": "Boolean?",
 					"desc": "Whether to set this file request as open or closed. This field is optional."
+				},
+				{
+					"name": "description",
+					"type": "String?",
+					"desc": "The description of the file request. This field is optional."
 				}
 			],
 			"example": {
@@ -2424,7 +2440,8 @@
 				"allow_late_uploads": {
 					".tag": "seven_days"
 				}
-			}
+			},
+			"description": "Please submit your homework here."
 		}
 	},
 	"files/copy": {
