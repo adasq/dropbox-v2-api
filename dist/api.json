@@ -44,60 +44,6 @@
 			"available": true
 		}
 	},
-	"cloud_docs/get_content": {
-		"uri": "https://content.dropboxapi.com/2/cloud_docs/get_content",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "DOWNLOAD",
-		"parameters": {
-			"available": true
-		}
-	},
-	"cloud_docs/get_metadata": {
-		"uri": "https://api.dropboxapi.com/2/cloud_docs/get_metadata",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"cloud_docs/lock": {
-		"uri": "https://api.dropboxapi.com/2/cloud_docs/lock",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"cloud_docs/rename": {
-		"uri": "https://api.dropboxapi.com/2/cloud_docs/rename",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"cloud_docs/unlock": {
-		"uri": "https://api.dropboxapi.com/2/cloud_docs/unlock",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
-	"cloud_docs/update_content": {
-		"uri": "https://content.dropboxapi.com/2/cloud_docs/update_content",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": true,
-		"category": "UPLOAD",
-		"parameters": {
-			"available": true
-		}
-	},
 	"contacts/delete_manual_contacts": {
 		"uri": "https://api.dropboxapi.com/2/contacts/delete_manual_contacts",
 		"requiresAuthHeader": true,
