@@ -75,91 +75,6 @@ dropbox({
 ```
 
 
-### cloud_docs/get_content ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#cloud_docs-get_content))
-Fetch the binary content of the requested document. This route requires Cloud Docs auth. Please make a request to cloud_docs/authorize and supply that token in the Authorization header.
-
-```js
-const stream = dropbox({
-    resource: 'cloud_docs/get_content',
-    parameters: {
-        'file_id': 'id:pXGlEfaZvvAAAAAAAAAAGw'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-
-stream
-    .pipe(fs.createWriteStream()); //pipe the stream
-```
-
-
-### cloud_docs/get_metadata ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#cloud_docs-get_metadata))
-Fetches metadata associated with a Cloud Doc and user. This route requires Cloud Docs auth. Please make a request to cloud_docs/authorize and supply that token in the Authorization header.
-
-```js
-dropbox({
-    resource: 'cloud_docs/get_metadata'
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### cloud_docs/lock ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#cloud_docs-lock))
-Lock a Cloud Doc. This route requires Cloud Docs auth. Please make a request to cloud_docs/authorize and supply that token in the Authorization header.
-
-```js
-dropbox({
-    resource: 'cloud_docs/lock'
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### cloud_docs/rename ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#cloud_docs-rename))
-Update the title of a Cloud Doc. This route requires Cloud Docs auth. Please make a request to cloud_docs/authorize and supply that token in the Authorization header.
-
-```js
-dropbox({
-    resource: 'cloud_docs/rename'
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### cloud_docs/unlock ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#cloud_docs-unlock))
-Unlock a Cloud Doc. This route requires Cloud Docs auth. Please make a request to cloud_docs/authorize and supply that token in the Authorization header.
-
-```js
-dropbox({
-    resource: 'cloud_docs/unlock'
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### cloud_docs/update_content ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#cloud_docs-update_content))
-Update the contents of a Cloud Doc. This should be called for files with a max size of 150MB. This route requires Cloud Docs auth. Please make a request to cloud_docs/authorize and supply that token in the Authorization header.
-
-```js
-const stream = dropbox({
-    resource: 'cloud_docs/update_content',
-    parameters: {
-        'file_id': 'id:pXGlEfaZvvAAAAAAAAAAGw',
-        'actor_tokens': ['AAAJagNapzVCQzKrX-LTY7DjVc1itPHiCI6COvcE3BpyN7-sTY1gxcjXY2nST3dONovrmYDdKxVe_TSMA0p8DTYbk2kfkA_1hHIplGxc4glyJwh2nK5NcxxScT8AYLx2cgepxAX2PALm2hwDdcE9P060_iedPWIqqseyFjxo9bMmDWQZFSGAyTlBlvPudGprVhQ='],
-        'additional_contents': []
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-
-fs.createReadStream().pipe(stream);
-```
-
-
 ### contacts/delete_manual_contacts ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#contacts-delete_manual_contacts))
 Removes all manually added contacts. You'll still keep contacts who are on your team or who you imported. New contacts will be added when you share.
 
@@ -823,7 +738,7 @@ dropbox({
 
 
 ### files/get_temporary_upload_link ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-get_temporary_upload_link))
-Get a one-time use temporary upload link to upload a file to a Dropbox location.  This endpoint acts as a delayed [upload](#filesupload-see-docs). The returned temporary upload link may be used to make a POST request with the data to be uploaded. The upload will then be perfomed with the CommitInfo previously provided to [get_temporary_upload_link](#filesget_temporary_upload_link-see-docs) but evaluated only upon consumption. Hence, errors stemming from invalid CommitInfo with respect to the state of the user's Dropbox will only be communicated at consumption time. Additionally, these errors are surfaced as generic HTTP 409 Conflict responses, potentially hiding issue details. The maximum temporary upload link duration is 4 hours. Upon consumption or expiration, a new link will have to be generated. Multiple links may exist for a specific upload path at any given time.  The POST request on the temporary upload link must have its Content-Type set to "application/octet-stream".  Example temporary upload link consumption request:  curl -X POST https://dl.dropboxusercontent.com/apitul/1/bNi2uIYF51cVBND --header "Content-Type: application/octet-stream" --data-binary @local_file.txt  A successful temporary upload link consumption request returns the content hash of the uploaded data in JSON format.  Example succesful temporary upload link consumption response: {"content-hash": "599d71033d700ac892a0e48fa61b125d2f5994"}  An unsuccessful temporary upload link consumption request returns any of the following status codes:  HTTP 400 Bad Request: Content-Type is not one of application/octet-stream and text/plain or request is invalid. HTTP 409 Conflict: The temporary upload link does not exist or is currently unavailable, the upload failed, or another error happened. HTTP 410 Gone: The temporary upload link is expired or consumed.  Example unsuccessful temporary upload link consumption response: Temporary upload link has been recently consumed.
+Get a one-time use temporary upload link to upload a file to a Dropbox location.  This endpoint acts as a delayed [upload](#filesupload-see-docs). The returned temporary upload link may be used to make a POST request with the data to be uploaded. The upload will then be perfomed with the CommitInfo previously provided to [get_temporary_upload_link](#filesget_temporary_upload_link-see-docs) but evaluated only upon consumption. Hence, errors stemming from invalid CommitInfo with respect to the state of the user's Dropbox will only be communicated at consumption time. Additionally, these errors are surfaced as generic HTTP 409 Conflict responses, potentially hiding issue details. The maximum temporary upload link duration is 4 hours. Upon consumption or expiration, a new link will have to be generated. Multiple links may exist for a specific upload path at any given time.  The POST request on the temporary upload link must have its Content-Type set to "application/octet-stream".  Example temporary upload link consumption request:  curl -X POST https://content.dropboxapi.com/apitul/1/bNi2uIYF51cVBND --header "Content-Type: application/octet-stream" --data-binary @local_file.txt  A successful temporary upload link consumption request returns the content hash of the uploaded data in JSON format.  Example succesful temporary upload link consumption response: {"content-hash": "599d71033d700ac892a0e48fa61b125d2f5994"}  An unsuccessful temporary upload link consumption request returns any of the following status codes:  HTTP 400 Bad Request: Content-Type is not one of application/octet-stream and text/plain or request is invalid. HTTP 409 Conflict: The temporary upload link does not exist or is currently unavailable, the upload failed, or another error happened. HTTP 410 Gone: The temporary upload link is expired or consumed.  Example unsuccessful temporary upload link consumption response: Temporary upload link has been recently consumed.
 
 ```js
 dropbox({
@@ -1662,7 +1577,7 @@ dropbox({
 
 
 ### sharing/list_shared_links ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_shared_links))
-List shared links of this user. If no path is given, returns a list of all shared links for the current user. If a non-empty path is given, returns a list of all shared links that allow access to the given path - direct links to the given path and links to parent folders of the given path. Links to parent folders can be suppressed by setting direct_only to true.
+List shared links of this user. If no path is given, returns a list of all shared links for the current user. For members of business teams using team space and member folders, returns all shared links in the team member's home folder unless the team space ID is specified in the request header. For more information, refer to the Namespace Guide. If a non-empty path is given, returns a list of all shared links that allow access to the given path - direct links to the given path and links to parent folders of the given path. Links to parent folders can be suppressed by setting direct_only to true.
 
 ```js
 dropbox({
