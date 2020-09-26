@@ -2236,7 +2236,7 @@
 				{
 					"name": "allow_shared_folder",
 					"type": "Boolean",
-					"desc": "If true,   will copy contents in shared folder, otherwise RelocationError.cant_copy_shared_folder will be returned if from_path contains shared folder. This field is always true for  . The default for this field is False."
+					"desc": "Field is deprecated. This flag has no effect. The default for this field is False."
 				},
 				{
 					"name": "autorename",
@@ -2637,7 +2637,7 @@
 			"list": [
 				{
 					"name": "paths",
-					"type": "List of (String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\"))",
+					"type": "List of (String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)\"), max_items=10000)",
 					"desc": "List of paths to be created in the user's Dropbox. Duplicate path arguments in the batch are considered only once."
 				},
 				{
@@ -5367,7 +5367,7 @@
 				{
 					"name": "allow_shared_folder",
 					"type": "Boolean",
-					"desc": "If true,   will copy contents in shared folder, otherwise RelocationError.cant_copy_shared_folder will be returned if from_path contains shared folder. This field is always true for  . The default for this field is False."
+					"desc": "Field is deprecated. This flag has no effect. The default for this field is False."
 				},
 				{
 					"name": "autorename",
@@ -5599,7 +5599,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Permanently delete the file or folder at a given path (see https://www.dropbox.com/en/help/40). Note: This endpoint is only available for Dropbox Business apps.",
+		"description": "Permanently delete the file or folder at a given path (see https://www.dropbox.com/en/help/40). If the given file or folder is not yet deleted, this route will first delete it. It is possible for this route to successfully delete, then fail to permanently delete. Note: This endpoint is only available for Dropbox Business apps.",
 		"parameters": {
 			"list": [
 				{
@@ -5770,7 +5770,7 @@
 			"list": [
 				{
 					"name": "query",
-					"type": "String",
+					"type": "String(max_length=1000)",
 					"desc": "The string to search for. May match across multiple fields based on the request arguments. Query string may be rewritten to improve relevance of results."
 				},
 				{
