@@ -5791,6 +5791,38 @@
 									"desc": "The maximum number of search results to return. The default for this field is 100."
 								},
 								{
+									"name": "order_by",
+									"type": "SearchOrderBy?",
+									"desc": "Specified property of the order of search results. By default, results are sorted by relevance. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "relevance",
+													"type": "Void",
+													"desc": ""
+												},
+												{
+													"name": "last_modified_time",
+													"type": "Void",
+													"desc": ""
+												}
+											],
+											"example": null
+										}
+									]
+								},
+								{
+									"name": "relevance",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "last_modified_time",
+									"type": "Void",
+									"desc": ""
+								},
+								{
 									"name": "file_status",
 									"type": "FileStatus",
 									"desc": "Restricts search to the given file status. The default for this union is active.",
@@ -5950,6 +5982,21 @@
 						{
 							"list": [
 								{
+									"name": "relevance",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "last_modified_time",
+									"type": "Void",
+									"desc": ""
+								}
+							],
+							"example": null
+						},
+						{
+							"list": [
+								{
 									"name": "active",
 									"type": "Void",
 									"desc": ""
@@ -6028,6 +6075,38 @@
 					"name": "max_results",
 					"type": "UInt64(min=1, max=1000)",
 					"desc": "The maximum number of search results to return. The default for this field is 100."
+				},
+				{
+					"name": "order_by",
+					"type": "SearchOrderBy?",
+					"desc": "Specified property of the order of search results. By default, results are sorted by relevance. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "relevance",
+									"type": "Void",
+									"desc": ""
+								},
+								{
+									"name": "last_modified_time",
+									"type": "Void",
+									"desc": ""
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "relevance",
+					"type": "Void",
+					"desc": ""
+				},
+				{
+					"name": "last_modified_time",
+					"type": "Void",
+					"desc": ""
 				},
 				{
 					"name": "file_status",
@@ -6207,13 +6286,21 @@
 				},
 				{
 					"name": "include_highlights",
-					"type": "Boolean",
-					"desc": "Field is deprecated. Deprecated and moved this option to SearchMatchFieldOptions. The default for this field is False."
+					"type": "Boolean?",
+					"desc": "Field is deprecated. Deprecated and moved this option to SearchMatchFieldOptions. This field is optional."
 				}
 			],
 			"example": {
 				"query": "cat",
-				"include_highlights": false
+				"options": {
+					"path": "/Folder",
+					"max_results": 20,
+					"file_status": "active",
+					"filename_only": false
+				},
+				"match_field_options": {
+					"include_highlights": false
+				}
 			}
 		},
 		"returnParameters": {
