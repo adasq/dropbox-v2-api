@@ -8617,13 +8617,45 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
-		"description": "Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use [upload_session/append:2](#filesupload_sessionappend:2-see-docs) to add more data and [upload_session/finish](#filesupload_sessionfinish-see-docs) to save all the data to a file in Dropbox. A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB. An upload session can be used for a maximum of 48 hours. Attempting to use an UploadSessionStartResult.session_id with [upload_session/append:2](#filesupload_sessionappend:2-see-docs) or [upload_session/finish](#filesupload_sessionfinish-see-docs) more than 48 hours after its creation will return a UploadSessionLookupError.not_found. Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the Data transport limit page.",
+		"description": "Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use [upload_session/append:2](#filesupload_sessionappend:2-see-docs) to add more data and [upload_session/finish](#filesupload_sessionfinish-see-docs) to save all the data to a file in Dropbox. A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB. An upload session can be used for a maximum of 48 hours. Attempting to use an UploadSessionStartResult.session_id with [upload_session/append:2](#filesupload_sessionappend:2-see-docs) or [upload_session/finish](#filesupload_sessionfinish-see-docs) more than 48 hours after its creation will return a UploadSessionLookupError.not_found. Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the Data transport limit page. By default, upload sessions require you to send content of the file in sequential order via consecutive [upload_session/start](#filesupload_sessionstart-see-docs), [upload_session/append:2](#filesupload_sessionappend:2-see-docs), [upload_session/finish](#filesupload_sessionfinish-see-docs) calls. For better performance, you can instead optionally use a UploadSessionType.concurrent upload session. To start a new concurrent session, set UploadSessionStartArg.session_type to UploadSessionType.concurrent. After that, you can send file data in concurrent [upload_session/append:2](#filesupload_sessionappend:2-see-docs) requests. Finally finish the session with [upload_session/finish](#filesupload_sessionfinish-see-docs). There are couple of constraints with concurrent sessions to make them work. You can not send data with [upload_session/start](#filesupload_sessionstart-see-docs) or [upload_session/finish](#filesupload_sessionfinish-see-docs) call, only with [upload_session/append:2](#filesupload_sessionappend:2-see-docs) call. Also data uploaded in [upload_session/append:2](#filesupload_sessionappend:2-see-docs) call must be multiple of 4194304 bytes (except for last [upload_session/append:2](#filesupload_sessionappend:2-see-docs) with UploadSessionStartArg.close to true, that may contain any remaining data).",
 		"parameters": {
 			"list": [
 				{
 					"name": "close",
 					"type": "Boolean",
 					"desc": "If true, the current session will be closed, at which point you won't be able to call   anymore with the current session. The default for this field is False."
+				},
+				{
+					"name": "session_type",
+					"type": "UploadSessionType?",
+					"desc": "Type of upload session you want to start. If not specified, default is UploadSessionType.sequential. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "sequential",
+									"type": "Void",
+									"desc": "Pieces of content are uploaded sequentially one after another. This is the default behavior."
+								},
+								{
+									"name": "concurrent",
+									"type": "Void",
+									"desc": "Pieces of data can be uploaded in concurrent RPCs in any order."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "sequential",
+					"type": "Void",
+					"desc": "Pieces of content are uploaded sequentially one after another. This is the default behavior."
+				},
+				{
+					"name": "concurrent",
+					"type": "Void",
+					"desc": "Pieces of data can be uploaded in concurrent RPCs in any order."
 				}
 			],
 			"example": {
