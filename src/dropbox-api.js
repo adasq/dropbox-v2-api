@@ -77,7 +77,7 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList, config){
 					(updateRequestOptsFn) => updateRequestOptsFn(requestOpts, resourceDescription, userOpts, config)
 				);
 
-				const callback = prepareCallback(userCb);
+				const callback = userCb && prepareCallback(userCb);
 
 				//send request
 				if (resourceCategory === UPLOAD_RESOURCE_CATEGORY) {
@@ -151,7 +151,7 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList, config){
 module.exports = {
 	authenticate: function (config) {
 		const resourceHandlingFunctions = generateResourcesHandlingFunctions(resourcesDescriptionList, config);
-		const clientSession = function(userOpt, cb = noop) {
+		const clientSession = function(userOpt, cb) {
 			const opt = {
 				parameters: userOpt.parameters || {},
 				resource: userOpt.resource || '',
@@ -206,8 +206,6 @@ function createTransformStream() {
 	};
 	return streamInstance;
 }
-
-function noop() {}
 
 function loadResourcesDescriptionList() {
 	return JSON.parse(fs.readFileSync(RESOURCES_DESCRIPTION_PATH));
