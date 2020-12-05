@@ -6324,24 +6324,8 @@
 								"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
 							},
 							"is_downloadable": true,
-							"property_groups": [
-								{
-									"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
-									"fields": [
-										{
-											"name": "Security Policy",
-											"value": "Confidential"
-										}
-									]
-								}
-							],
 							"has_explicit_shared_members": false,
-							"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-							"file_lock_info": {
-								"is_lockholder": true,
-								"lockholder_name": "Imaginary User",
-								"created": "2015-05-12T15:50:38Z"
-							}
+							"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 						}
 					}
 				}
@@ -6388,24 +6372,8 @@
 								"modified_by": "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
 							},
 							"is_downloadable": true,
-							"property_groups": [
-								{
-									"template_id": "ptid:1a5n2i6d3OYEAAAAAAAAAYa",
-									"fields": [
-										{
-											"name": "Security Policy",
-											"value": "Confidential"
-										}
-									]
-								}
-							],
 							"has_explicit_shared_members": false,
-							"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-							"file_lock_info": {
-								"is_lockholder": true,
-								"lockholder_name": "Imaginary User",
-								"created": "2015-05-12T15:50:38Z"
-							}
+							"content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 						}
 					}
 				}
