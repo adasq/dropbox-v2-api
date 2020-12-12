@@ -5771,7 +5771,7 @@
 				{
 					"name": "query",
 					"type": "String(max_length=1000)",
-					"desc": "The string to search for. May match across multiple fields based on the request arguments. Query string may be rewritten to improve relevance of results."
+					"desc": "The string to search for. May match across multiple fields based on the request arguments."
 				},
 				{
 					"name": "options",
