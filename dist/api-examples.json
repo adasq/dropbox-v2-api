@@ -3881,7 +3881,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "DOWNLOAD",
-		"description": "Get a thumbnail for a file.",
+		"description": "Get a thumbnail for an image. This method currently supports files with the following file extensions: jpg, jpeg, png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.",
 		"parameters": {
 			"list": [
 				{
@@ -4239,7 +4239,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Get thumbnails for a list of images. We allow up to 25 thumbnails in a single batch. This method currently supports files with the following file extensions: jpg, jpeg, png, tiff, tif, gif and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.",
+		"description": "Get thumbnails for a list of images. We allow up to 25 thumbnails in a single batch. This method currently supports files with the following file extensions: jpg, jpeg, png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.",
 		"parameters": {
 			"list": [
 				{
