@@ -6719,7 +6719,7 @@
 								{
 									"name": "offset",
 									"type": "UInt64",
-									"desc": "The amount of data that has been uploaded so far. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
+									"desc": "Offset in bytes at which data should be appended. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
 								}
 							],
 							"example": null
@@ -6734,7 +6734,7 @@
 				{
 					"name": "offset",
 					"type": "UInt64",
-					"desc": "The amount of data that has been uploaded so far. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
+					"desc": "Offset in bytes at which data should be appended. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
 				},
 				{
 					"name": "close",
@@ -6775,7 +6775,7 @@
 								{
 									"name": "offset",
 									"type": "UInt64",
-									"desc": "The amount of data that has been uploaded so far. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
+									"desc": "Offset in bytes at which data should be appended. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
 								}
 							],
 							"example": null
@@ -6790,7 +6790,7 @@
 				{
 					"name": "offset",
 					"type": "UInt64",
-					"desc": "The amount of data that has been uploaded so far. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
+					"desc": "Offset in bytes at which data should be appended. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
 				},
 				{
 					"name": "commit",
@@ -7297,7 +7297,7 @@
 												{
 													"name": "offset",
 													"type": "UInt64",
-													"desc": "The amount of data that has been uploaded so far. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
+													"desc": "Offset in bytes at which data should be appended. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
 												}
 											],
 											"example": null
@@ -7312,7 +7312,7 @@
 								{
 									"name": "offset",
 									"type": "UInt64",
-									"desc": "The amount of data that has been uploaded so far. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
+									"desc": "Offset in bytes at which data should be appended. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
 								},
 								{
 									"name": "commit",
@@ -7752,7 +7752,7 @@
 								{
 									"name": "offset",
 									"type": "UInt64",
-									"desc": "The amount of data that has been uploaded so far. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
+									"desc": "Offset in bytes at which data should be appended. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
 								}
 							],
 							"example": null
@@ -8024,7 +8024,7 @@
 								{
 									"name": "offset",
 									"type": "UInt64",
-									"desc": "The amount of data that has been uploaded so far. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
+									"desc": "Offset in bytes at which data should be appended. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
 								}
 							],
 							"example": null
@@ -8039,7 +8039,7 @@
 				{
 					"name": "offset",
 					"type": "UInt64",
-					"desc": "The amount of data that has been uploaded so far. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
+					"desc": "Offset in bytes at which data should be appended. We use this to make sure upload data isn't lost or duplicated in the event of a network error."
 				},
 				{
 					"name": "commit",
