@@ -503,6 +503,24 @@
 			"available": true
 		}
 	},
+	"files/paper/create": {
+		"uri": "https://api.dropboxapi.com/2/files/paper/create",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": true,
+		"category": "UPLOAD",
+		"parameters": {
+			"available": true
+		}
+	},
+	"files/paper/update": {
+		"uri": "https://api.dropboxapi.com/2/files/paper/update",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": true,
+		"category": "UPLOAD",
+		"parameters": {
+			"available": true
+		}
+	},
 	"files/permanently_delete": {
 		"uri": "https://api.dropboxapi.com/2/files/permanently_delete",
 		"requiresAuthHeader": true,
