@@ -5599,6 +5599,198 @@
 			]
 		}
 	},
+	"files/paper/create": {
+		"uri": "https://api.dropboxapi.com/2/files/paper/create",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": true,
+		"category": "UPLOAD",
+		"description": "Creates a new Paper doc with the provided content.",
+		"parameters": {
+			"list": [
+				{
+					"name": "path",
+					"type": "String(pattern=\"/(.|[\\r\\n])*\")",
+					"desc": "The fully qualified path to the location in the user's Dropbox where the Paper Doc should be created. This should include the document's title and end with .paper."
+				},
+				{
+					"name": "import_format",
+					"type": "ImportFormat",
+					"desc": "The format of the provided data.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "html",
+									"type": "Void",
+									"desc": "The provided data is interpreted as standard HTML."
+								},
+								{
+									"name": "markdown",
+									"type": "Void",
+									"desc": "The provided data is interpreted as markdown."
+								},
+								{
+									"name": "plain_text",
+									"type": "Void",
+									"desc": "The provided data is interpreted as plain text."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "html",
+					"type": "Void",
+					"desc": "The provided data is interpreted as standard HTML."
+				},
+				{
+					"name": "markdown",
+					"type": "Void",
+					"desc": "The provided data is interpreted as markdown."
+				},
+				{
+					"name": "plain_text",
+					"type": "Void",
+					"desc": "The provided data is interpreted as plain text."
+				}
+			],
+			"example": {
+				"path": "/Paper Docs/New Doc.paper",
+				"import_format": "html"
+			}
+		},
+		"returnParameters": {
+			"url": "https://www.dropbox.com/scl/xxx.paper?dl=0",
+			"result_path": "/Paper Docs/New Doc.paper",
+			"file_id": "id:a4ayc_80_OEAAAAAAAAAXw",
+			"paper_revision": 1
+		}
+	},
+	"files/paper/update": {
+		"uri": "https://api.dropboxapi.com/2/files/paper/update",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": true,
+		"category": "UPLOAD",
+		"description": "Updates an existing Paper doc with the provided content.",
+		"parameters": {
+			"list": [
+				{
+					"name": "path",
+					"type": "String(pattern=\"(/(.|[\\r\\n])*)|(ns:[0-9]+(/.*)?)|(id:.*)\")",
+					"desc": "Path in the user's Dropbox to update. The path must correspond to a Paper doc or an error will be returned."
+				},
+				{
+					"name": "import_format",
+					"type": "ImportFormat",
+					"desc": "The format of the provided data.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "html",
+									"type": "Void",
+									"desc": "The provided data is interpreted as standard HTML."
+								},
+								{
+									"name": "markdown",
+									"type": "Void",
+									"desc": "The provided data is interpreted as markdown."
+								},
+								{
+									"name": "plain_text",
+									"type": "Void",
+									"desc": "The provided data is interpreted as plain text."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "html",
+					"type": "Void",
+					"desc": "The provided data is interpreted as standard HTML."
+				},
+				{
+					"name": "markdown",
+					"type": "Void",
+					"desc": "The provided data is interpreted as markdown."
+				},
+				{
+					"name": "plain_text",
+					"type": "Void",
+					"desc": "The provided data is interpreted as plain text."
+				},
+				{
+					"name": "doc_update_policy",
+					"type": "PaperDocUpdatePolicy",
+					"desc": "How the provided content should be applied to the doc.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "update",
+									"type": "Void",
+									"desc": "Sets the doc content to the provided content if the provided paper_revision matches the latest doc revision. Otherwise, returns an error."
+								},
+								{
+									"name": "overwrite",
+									"type": "Void",
+									"desc": "Sets the doc content to the provided content without checking paper_revision."
+								},
+								{
+									"name": "prepend",
+									"type": "Void",
+									"desc": "Adds the provided content to the beginning of the doc without checking paper_revision."
+								},
+								{
+									"name": "append",
+									"type": "Void",
+									"desc": "Adds the provided content to the end of the doc without checking paper_revision."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "update",
+					"type": "Void",
+					"desc": "Sets the doc content to the provided content if the provided paper_revision matches the latest doc revision. Otherwise, returns an error."
+				},
+				{
+					"name": "overwrite",
+					"type": "Void",
+					"desc": "Sets the doc content to the provided content without checking paper_revision."
+				},
+				{
+					"name": "prepend",
+					"type": "Void",
+					"desc": "Adds the provided content to the beginning of the doc without checking paper_revision."
+				},
+				{
+					"name": "append",
+					"type": "Void",
+					"desc": "Adds the provided content to the end of the doc without checking paper_revision."
+				},
+				{
+					"name": "paper_revision",
+					"type": "Int64?",
+					"desc": "The latest doc revision. Required when doc_update_policy is update. This value must match the current revision of the doc or error revision_mismatch will be returned. This field is optional."
+				}
+			],
+			"example": {
+				"path": "/Paper Docs/My Doc.paper",
+				"import_format": "html",
+				"doc_update_policy": "update",
+				"paper_revision": 123
+			}
+		},
+		"returnParameters": {
+			"paper_revision": 124
+		}
+	},
 	"files/permanently_delete": {
 		"uri": "https://api.dropboxapi.com/2/files/permanently_delete",
 		"requiresAuthHeader": true,
