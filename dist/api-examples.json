@@ -12831,7 +12831,7 @@
 								{
 									"name": "team",
 									"type": "Void",
-									"desc": "Links can be shared with anyone on the same team as the owner."
+									"desc": "Field is deprecated. Links can be shared with anyone on the same team as the owner."
 								},
 								{
 									"name": "members",
@@ -12851,7 +12851,7 @@
 				{
 					"name": "team",
 					"type": "Void",
-					"desc": "Links can be shared with anyone on the same team as the owner."
+					"desc": "Field is deprecated. Links can be shared with anyone on the same team as the owner."
 				},
 				{
 					"name": "members",
@@ -14031,7 +14031,7 @@
 								{
 									"name": "team",
 									"type": "Void",
-									"desc": "Links can be shared with anyone on the same team as the owner."
+									"desc": "Field is deprecated. Links can be shared with anyone on the same team as the owner."
 								},
 								{
 									"name": "members",
@@ -14051,7 +14051,7 @@
 				{
 					"name": "team",
 					"type": "Void",
-					"desc": "Links can be shared with anyone on the same team as the owner."
+					"desc": "Field is deprecated. Links can be shared with anyone on the same team as the owner."
 				},
 				{
 					"name": "members",
