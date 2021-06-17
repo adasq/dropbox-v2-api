@@ -9369,51 +9369,14 @@
 						{
 							"list": [
 								{
-									"name": "requested_visibility",
-									"type": "RequestedVisibility?",
-									"desc": "The requested access for this shared link. This field is optional.",
-									"parameters": [
-										{
-											"list": [
-												{
-													"name": "public",
-													"type": "Void",
-													"desc": "Anyone who has received the link can access it. No login required."
-												},
-												{
-													"name": "team_only",
-													"type": "Void",
-													"desc": "Only members of the same team can access the link. Login is required."
-												},
-												{
-													"name": "password",
-													"type": "Void",
-													"desc": "A link-specific password is required to access the link. Login is not required."
-												}
-											],
-											"example": null
-										}
-									]
-								},
-								{
-									"name": "public",
-									"type": "Void",
-									"desc": "Anyone who has received the link can access it. No login required."
-								},
-								{
-									"name": "team_only",
-									"type": "Void",
-									"desc": "Only members of the same team can access the link. Login is required."
-								},
-								{
-									"name": "password",
-									"type": "Void",
-									"desc": "A link-specific password is required to access the link. Login is not required."
+									"name": "require_password",
+									"type": "Boolean?",
+									"desc": "Boolean flag to enable or disable password protection. This field is optional."
 								},
 								{
 									"name": "link_password",
 									"type": "String?",
-									"desc": "If requested_visibility is RequestedVisibility.password this is needed to specify the password to access the link. This field is optional."
+									"desc": "If require_password is true, this is needed to specify the password to access the link. This field is optional."
 								},
 								{
 									"name": "expires",
@@ -9445,7 +9408,7 @@
 												{
 													"name": "password",
 													"type": "Void",
-													"desc": "A link-specific password is required to access the link. Login is not required."
+													"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 												},
 												{
 													"name": "members",
@@ -9475,7 +9438,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -9523,12 +9486,34 @@
 									"name": "max",
 									"type": "Void",
 									"desc": "Request for the maximum access level you can set the link to."
-								}
-							],
-							"example": null
-						},
-						{
-							"list": [
+								},
+								{
+									"name": "requested_visibility",
+									"type": "RequestedVisibility?",
+									"desc": "Field is deprecated. Use audience instead.  The requested access for this shared link. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "public",
+													"type": "Void",
+													"desc": "Anyone who has received the link can access it. No login required."
+												},
+												{
+													"name": "team_only",
+													"type": "Void",
+													"desc": "Only members of the same team can access the link. Login is required."
+												},
+												{
+													"name": "password",
+													"type": "Void",
+													"desc": "A link-specific password is required to access the link. Login is not required."
+												}
+											],
+											"example": null
+										}
+									]
+								},
 								{
 									"name": "public",
 									"type": "Void",
@@ -9567,7 +9552,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -9596,14 +9581,7 @@
 								}
 							],
 							"example": null
-						}
-					]
-				},
-				{
-					"name": "requested_visibility",
-					"type": "RequestedVisibility?",
-					"desc": "The requested access for this shared link. This field is optional.",
-					"parameters": [
+						},
 						{
 							"list": [
 								{
@@ -9627,24 +9605,14 @@
 					]
 				},
 				{
-					"name": "public",
-					"type": "Void",
-					"desc": "Anyone who has received the link can access it. No login required."
-				},
-				{
-					"name": "team_only",
-					"type": "Void",
-					"desc": "Only members of the same team can access the link. Login is required."
-				},
-				{
-					"name": "password",
-					"type": "Void",
-					"desc": "A link-specific password is required to access the link. Login is not required."
+					"name": "require_password",
+					"type": "Boolean?",
+					"desc": "Boolean flag to enable or disable password protection. This field is optional."
 				},
 				{
 					"name": "link_password",
 					"type": "String?",
-					"desc": "If requested_visibility is RequestedVisibility.password this is needed to specify the password to access the link. This field is optional."
+					"desc": "If require_password is true, this is needed to specify the password to access the link. This field is optional."
 				},
 				{
 					"name": "expires",
@@ -9676,7 +9644,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -9706,7 +9674,7 @@
 				{
 					"name": "password",
 					"type": "Void",
-					"desc": "A link-specific password is required to access the link. Login is not required."
+					"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 				},
 				{
 					"name": "members",
@@ -9754,14 +9722,56 @@
 					"name": "max",
 					"type": "Void",
 					"desc": "Request for the maximum access level you can set the link to."
+				},
+				{
+					"name": "requested_visibility",
+					"type": "RequestedVisibility?",
+					"desc": "Field is deprecated. Use audience instead.  The requested access for this shared link. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "public",
+									"type": "Void",
+									"desc": "Anyone who has received the link can access it. No login required."
+								},
+								{
+									"name": "team_only",
+									"type": "Void",
+									"desc": "Only members of the same team can access the link. Login is required."
+								},
+								{
+									"name": "password",
+									"type": "Void",
+									"desc": "A link-specific password is required to access the link. Login is not required."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "public",
+					"type": "Void",
+					"desc": "Anyone who has received the link can access it. No login required."
+				},
+				{
+					"name": "team_only",
+					"type": "Void",
+					"desc": "Only members of the same team can access the link. Login is required."
+				},
+				{
+					"name": "password",
+					"type": "Void",
+					"desc": "A link-specific password is required to access the link. Login is not required."
 				}
 			],
 			"example": {
 				"path": "/Prime_Numbers.txt",
 				"settings": {
-					"requested_visibility": "public",
 					"audience": "public",
-					"access": "viewer"
+					"access": "viewer",
+					"requested_visibility": "public"
 				}
 			}
 		},
@@ -11930,51 +11940,14 @@
 						{
 							"list": [
 								{
-									"name": "requested_visibility",
-									"type": "RequestedVisibility?",
-									"desc": "The requested access for this shared link. This field is optional.",
-									"parameters": [
-										{
-											"list": [
-												{
-													"name": "public",
-													"type": "Void",
-													"desc": "Anyone who has received the link can access it. No login required."
-												},
-												{
-													"name": "team_only",
-													"type": "Void",
-													"desc": "Only members of the same team can access the link. Login is required."
-												},
-												{
-													"name": "password",
-													"type": "Void",
-													"desc": "A link-specific password is required to access the link. Login is not required."
-												}
-											],
-											"example": null
-										}
-									]
-								},
-								{
-									"name": "public",
-									"type": "Void",
-									"desc": "Anyone who has received the link can access it. No login required."
-								},
-								{
-									"name": "team_only",
-									"type": "Void",
-									"desc": "Only members of the same team can access the link. Login is required."
-								},
-								{
-									"name": "password",
-									"type": "Void",
-									"desc": "A link-specific password is required to access the link. Login is not required."
+									"name": "require_password",
+									"type": "Boolean?",
+									"desc": "Boolean flag to enable or disable password protection. This field is optional."
 								},
 								{
 									"name": "link_password",
 									"type": "String?",
-									"desc": "If requested_visibility is RequestedVisibility.password this is needed to specify the password to access the link. This field is optional."
+									"desc": "If require_password is true, this is needed to specify the password to access the link. This field is optional."
 								},
 								{
 									"name": "expires",
@@ -12006,7 +11979,7 @@
 												{
 													"name": "password",
 													"type": "Void",
-													"desc": "A link-specific password is required to access the link. Login is not required."
+													"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 												},
 												{
 													"name": "members",
@@ -12036,7 +12009,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -12084,12 +12057,34 @@
 									"name": "max",
 									"type": "Void",
 									"desc": "Request for the maximum access level you can set the link to."
-								}
-							],
-							"example": null
-						},
-						{
-							"list": [
+								},
+								{
+									"name": "requested_visibility",
+									"type": "RequestedVisibility?",
+									"desc": "Field is deprecated. Use audience instead.  The requested access for this shared link. This field is optional.",
+									"parameters": [
+										{
+											"list": [
+												{
+													"name": "public",
+													"type": "Void",
+													"desc": "Anyone who has received the link can access it. No login required."
+												},
+												{
+													"name": "team_only",
+													"type": "Void",
+													"desc": "Only members of the same team can access the link. Login is required."
+												},
+												{
+													"name": "password",
+													"type": "Void",
+													"desc": "A link-specific password is required to access the link. Login is not required."
+												}
+											],
+											"example": null
+										}
+									]
+								},
 								{
 									"name": "public",
 									"type": "Void",
@@ -12128,7 +12123,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -12157,14 +12152,7 @@
 								}
 							],
 							"example": null
-						}
-					]
-				},
-				{
-					"name": "requested_visibility",
-					"type": "RequestedVisibility?",
-					"desc": "The requested access for this shared link. This field is optional.",
-					"parameters": [
+						},
 						{
 							"list": [
 								{
@@ -12188,24 +12176,14 @@
 					]
 				},
 				{
-					"name": "public",
-					"type": "Void",
-					"desc": "Anyone who has received the link can access it. No login required."
-				},
-				{
-					"name": "team_only",
-					"type": "Void",
-					"desc": "Only members of the same team can access the link. Login is required."
-				},
-				{
-					"name": "password",
-					"type": "Void",
-					"desc": "A link-specific password is required to access the link. Login is not required."
+					"name": "require_password",
+					"type": "Boolean?",
+					"desc": "Boolean flag to enable or disable password protection. This field is optional."
 				},
 				{
 					"name": "link_password",
 					"type": "String?",
-					"desc": "If requested_visibility is RequestedVisibility.password this is needed to specify the password to access the link. This field is optional."
+					"desc": "If require_password is true, this is needed to specify the password to access the link. This field is optional."
 				},
 				{
 					"name": "expires",
@@ -12237,7 +12215,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -12267,7 +12245,7 @@
 				{
 					"name": "password",
 					"type": "Void",
-					"desc": "A link-specific password is required to access the link. Login is not required."
+					"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 				},
 				{
 					"name": "members",
@@ -12317,6 +12295,48 @@
 					"desc": "Request for the maximum access level you can set the link to."
 				},
 				{
+					"name": "requested_visibility",
+					"type": "RequestedVisibility?",
+					"desc": "Field is deprecated. Use audience instead.  The requested access for this shared link. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "public",
+									"type": "Void",
+									"desc": "Anyone who has received the link can access it. No login required."
+								},
+								{
+									"name": "team_only",
+									"type": "Void",
+									"desc": "Only members of the same team can access the link. Login is required."
+								},
+								{
+									"name": "password",
+									"type": "Void",
+									"desc": "A link-specific password is required to access the link. Login is not required."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "public",
+					"type": "Void",
+					"desc": "Anyone who has received the link can access it. No login required."
+				},
+				{
+					"name": "team_only",
+					"type": "Void",
+					"desc": "Only members of the same team can access the link. Login is required."
+				},
+				{
+					"name": "password",
+					"type": "Void",
+					"desc": "A link-specific password is required to access the link. Login is not required."
+				},
+				{
 					"name": "remove_expiration",
 					"type": "Boolean",
 					"desc": "If set to true, removes the expiration of the shared link. The default for this field is False."
@@ -12325,9 +12345,9 @@
 			"example": {
 				"url": "https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0",
 				"settings": {
-					"requested_visibility": "public",
 					"audience": "public",
-					"access": "viewer"
+					"access": "viewer",
+					"requested_visibility": "public"
 				},
 				"remove_expiration": false
 			}
@@ -13158,7 +13178,7 @@
 												{
 													"name": "password",
 													"type": "Void",
-													"desc": "A link-specific password is required to access the link. Login is not required."
+													"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 												},
 												{
 													"name": "members",
@@ -13188,7 +13208,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -13307,7 +13327,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -13426,7 +13446,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -13456,7 +13476,7 @@
 				{
 					"name": "password",
 					"type": "Void",
-					"desc": "A link-specific password is required to access the link. Login is not required."
+					"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 				},
 				{
 					"name": "members",
@@ -14142,7 +14162,7 @@
 												{
 													"name": "password",
 													"type": "Void",
-													"desc": "A link-specific password is required to access the link. Login is not required."
+													"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 												},
 												{
 													"name": "members",
@@ -14172,7 +14192,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -14291,7 +14311,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -14410,7 +14430,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -14440,7 +14460,7 @@
 				{
 					"name": "password",
 					"type": "Void",
-					"desc": "A link-specific password is required to access the link. Login is not required."
+					"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 				},
 				{
 					"name": "members",
