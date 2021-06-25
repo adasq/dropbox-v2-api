@@ -1259,15 +1259,6 @@
 			"available": true
 		}
 	},
-	"deprecated/change_file_member_access": {
-		"uri": "https://api.dropboxapi.com/2/sharing/change_file_member_access",
-		"requiresAuthHeader": true,
-		"requiresReadableStream": false,
-		"category": "RPC",
-		"parameters": {
-			"available": true
-		}
-	},
 	"deprecated/create_shared_link": {
 		"uri": "https://api.dropboxapi.com/2/sharing/create_shared_link",
 		"requiresAuthHeader": true,
