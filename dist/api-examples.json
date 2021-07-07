@@ -9528,6 +9528,11 @@
 									"name": "password",
 									"type": "Void",
 									"desc": "A link-specific password is required to access the link. Login is not required."
+								},
+								{
+									"name": "allow_download",
+									"type": "Boolean?",
+									"desc": "Boolean flag to allow or not download capabilities for shared links. This field is optional."
 								}
 							],
 							"example": null
@@ -9764,6 +9769,11 @@
 					"name": "password",
 					"type": "Void",
 					"desc": "A link-specific password is required to access the link. Login is not required."
+				},
+				{
+					"name": "allow_download",
+					"type": "Boolean?",
+					"desc": "Boolean flag to allow or not download capabilities for shared links. This field is optional."
 				}
 			],
 			"example": {
@@ -9771,7 +9781,8 @@
 				"settings": {
 					"audience": "public",
 					"access": "viewer",
-					"requested_visibility": "public"
+					"requested_visibility": "public",
+					"allow_download": true
 				}
 			}
 		},
@@ -9781,12 +9792,63 @@
 			"name": "Prime_Numbers.txt",
 			"link_permissions": {
 				"can_revoke": false,
+				"visibility_policies": [
+					{
+						"policy": {
+							".tag": "public"
+						},
+						"resolved_policy": {
+							".tag": "public"
+						},
+						"allowed": true
+					},
+					{
+						"policy": {
+							".tag": "password"
+						},
+						"resolved_policy": {
+							".tag": "password"
+						},
+						"allowed": true
+					}
+				],
+				"can_set_expiry": false,
+				"can_remove_expiry": false,
+				"allow_download": true,
+				"can_allow_download": true,
+				"can_disallow_download": false,
+				"allow_comments": true,
+				"team_restricts_comments": true,
 				"resolved_visibility": {
 					".tag": "public"
 				},
 				"revoke_failure_reason": {
 					".tag": "owner_only"
-				}
+				},
+				"audience_options": [
+					{
+						"audience": {
+							".tag": "public"
+						},
+						"allowed": true
+					},
+					{
+						"audience": {
+							".tag": "team"
+						},
+						"allowed": false
+					},
+					{
+						"audience": {
+							".tag": "no_one"
+						},
+						"allowed": true
+					}
+				],
+				"can_set_password": true,
+				"can_remove_password": true,
+				"require_password": false,
+				"can_use_extended_sharing_controls": false
 			},
 			"client_modified": "2015-05-12T15:50:38Z",
 			"server_modified": "2015-05-12T15:50:38Z",
@@ -10408,12 +10470,63 @@
 			"name": "Prime_Numbers.txt",
 			"link_permissions": {
 				"can_revoke": false,
+				"visibility_policies": [
+					{
+						"policy": {
+							".tag": "public"
+						},
+						"resolved_policy": {
+							".tag": "public"
+						},
+						"allowed": true
+					},
+					{
+						"policy": {
+							".tag": "password"
+						},
+						"resolved_policy": {
+							".tag": "password"
+						},
+						"allowed": true
+					}
+				],
+				"can_set_expiry": false,
+				"can_remove_expiry": false,
+				"allow_download": true,
+				"can_allow_download": true,
+				"can_disallow_download": false,
+				"allow_comments": true,
+				"team_restricts_comments": true,
 				"resolved_visibility": {
 					".tag": "public"
 				},
 				"revoke_failure_reason": {
 					".tag": "owner_only"
-				}
+				},
+				"audience_options": [
+					{
+						"audience": {
+							".tag": "public"
+						},
+						"allowed": true
+					},
+					{
+						"audience": {
+							".tag": "team"
+						},
+						"allowed": false
+					},
+					{
+						"audience": {
+							".tag": "no_one"
+						},
+						"allowed": true
+					}
+				],
+				"can_set_password": true,
+				"can_remove_password": true,
+				"require_password": false,
+				"can_use_extended_sharing_controls": false
 			},
 			"client_modified": "2015-05-12T15:50:38Z",
 			"server_modified": "2015-05-12T15:50:38Z",
@@ -10466,12 +10579,63 @@
 			"name": "Prime_Numbers.txt",
 			"link_permissions": {
 				"can_revoke": false,
+				"visibility_policies": [
+					{
+						"policy": {
+							".tag": "public"
+						},
+						"resolved_policy": {
+							".tag": "public"
+						},
+						"allowed": true
+					},
+					{
+						"policy": {
+							".tag": "password"
+						},
+						"resolved_policy": {
+							".tag": "password"
+						},
+						"allowed": true
+					}
+				],
+				"can_set_expiry": false,
+				"can_remove_expiry": false,
+				"allow_download": true,
+				"can_allow_download": true,
+				"can_disallow_download": false,
+				"allow_comments": true,
+				"team_restricts_comments": true,
 				"resolved_visibility": {
 					".tag": "public"
 				},
 				"revoke_failure_reason": {
 					".tag": "owner_only"
-				}
+				},
+				"audience_options": [
+					{
+						"audience": {
+							".tag": "public"
+						},
+						"allowed": true
+					},
+					{
+						"audience": {
+							".tag": "team"
+						},
+						"allowed": false
+					},
+					{
+						"audience": {
+							".tag": "no_one"
+						},
+						"allowed": true
+					}
+				],
+				"can_set_password": true,
+				"can_remove_password": true,
+				"require_password": false,
+				"can_use_extended_sharing_controls": false
 			},
 			"client_modified": "2015-05-12T15:50:38Z",
 			"server_modified": "2015-05-12T15:50:38Z",
@@ -11892,12 +12056,63 @@
 					"name": "Prime_Numbers.txt",
 					"link_permissions": {
 						"can_revoke": false,
+						"visibility_policies": [
+							{
+								"policy": {
+									".tag": "public"
+								},
+								"resolved_policy": {
+									".tag": "public"
+								},
+								"allowed": true
+							},
+							{
+								"policy": {
+									".tag": "password"
+								},
+								"resolved_policy": {
+									".tag": "password"
+								},
+								"allowed": true
+							}
+						],
+						"can_set_expiry": false,
+						"can_remove_expiry": false,
+						"allow_download": true,
+						"can_allow_download": true,
+						"can_disallow_download": false,
+						"allow_comments": true,
+						"team_restricts_comments": true,
 						"resolved_visibility": {
 							".tag": "public"
 						},
 						"revoke_failure_reason": {
 							".tag": "owner_only"
-						}
+						},
+						"audience_options": [
+							{
+								"audience": {
+									".tag": "public"
+								},
+								"allowed": true
+							},
+							{
+								"audience": {
+									".tag": "team"
+								},
+								"allowed": false
+							},
+							{
+								"audience": {
+									".tag": "no_one"
+								},
+								"allowed": true
+							}
+						],
+						"can_set_password": true,
+						"can_remove_password": true,
+						"require_password": false,
+						"can_use_extended_sharing_controls": false
 					},
 					"client_modified": "2015-05-12T15:50:38Z",
 					"server_modified": "2015-05-12T15:50:38Z",
@@ -12099,6 +12314,11 @@
 									"name": "password",
 									"type": "Void",
 									"desc": "A link-specific password is required to access the link. Login is not required."
+								},
+								{
+									"name": "allow_download",
+									"type": "Boolean?",
+									"desc": "Boolean flag to allow or not download capabilities for shared links. This field is optional."
 								}
 							],
 							"example": null
@@ -12337,6 +12557,11 @@
 					"desc": "A link-specific password is required to access the link. Login is not required."
 				},
 				{
+					"name": "allow_download",
+					"type": "Boolean?",
+					"desc": "Boolean flag to allow or not download capabilities for shared links. This field is optional."
+				},
+				{
 					"name": "remove_expiration",
 					"type": "Boolean",
 					"desc": "If set to true, removes the expiration of the shared link. The default for this field is False."
@@ -12347,7 +12572,8 @@
 				"settings": {
 					"audience": "public",
 					"access": "viewer",
-					"requested_visibility": "public"
+					"requested_visibility": "public",
+					"allow_download": true
 				},
 				"remove_expiration": false
 			}
@@ -12358,12 +12584,63 @@
 			"name": "Prime_Numbers.txt",
 			"link_permissions": {
 				"can_revoke": false,
+				"visibility_policies": [
+					{
+						"policy": {
+							".tag": "public"
+						},
+						"resolved_policy": {
+							".tag": "public"
+						},
+						"allowed": true
+					},
+					{
+						"policy": {
+							".tag": "password"
+						},
+						"resolved_policy": {
+							".tag": "password"
+						},
+						"allowed": true
+					}
+				],
+				"can_set_expiry": false,
+				"can_remove_expiry": false,
+				"allow_download": true,
+				"can_allow_download": true,
+				"can_disallow_download": false,
+				"allow_comments": true,
+				"team_restricts_comments": true,
 				"resolved_visibility": {
 					".tag": "public"
 				},
 				"revoke_failure_reason": {
 					".tag": "owner_only"
-				}
+				},
+				"audience_options": [
+					{
+						"audience": {
+							".tag": "public"
+						},
+						"allowed": true
+					},
+					{
+						"audience": {
+							".tag": "team"
+						},
+						"allowed": false
+					},
+					{
+						"audience": {
+							".tag": "no_one"
+						},
+						"allowed": true
+					}
+				],
+				"can_set_password": true,
+				"can_remove_password": true,
+				"require_password": false,
+				"can_use_extended_sharing_controls": false
 			},
 			"client_modified": "2015-05-12T15:50:38Z",
 			"server_modified": "2015-05-12T15:50:38Z",
