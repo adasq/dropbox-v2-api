@@ -37,6 +37,6 @@
     "should": "8.0.2",
     "stream-spec": "0.3.6",
     "stream-tester": "0.0.5",
-    "underscore": "1.8.3"
+    "underscore": "^1.13.1"
   }
 }
