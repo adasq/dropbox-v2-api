@@ -12769,7 +12769,7 @@
 				{
 					"name": "leave_a_copy",
 					"type": "Boolean",
-					"desc": "Keep a copy of the folder's contents upon relinquishing membership. The default for this field is False."
+					"desc": "Keep a copy of the folder's contents upon relinquishing membership. This must be set to false when the folder is within a team folder or another shared folder. The default for this field is False."
 				}
 			],
 			"example": {
@@ -12885,7 +12885,7 @@
 				{
 					"name": "leave_a_copy",
 					"type": "Boolean",
-					"desc": "If true, the removed user will keep their copy of the folder after it's unshared, assuming it was mounted. Otherwise, it will be removed from their Dropbox. Also, this must be set to false when kicking a group."
+					"desc": "If true, the removed user will keep their copy of the folder after it's unshared, assuming it was mounted. Otherwise, it will be removed from their Dropbox. This must be set to false when removing a group, or when the folder is within a team folder or another shared folder."
 				}
 			],
 			"example": {
