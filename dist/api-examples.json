@@ -165,7 +165,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Add property groups to a Dropbox file. See :route:\\`templates/add_for_user\\` or :route:\\`templates/add_for_team\\` to create new templates.",
+		"description": "Add property groups to a Dropbox file. See [templates/add_for_user](#file_propertiestemplatesadd_for_user-see-docs) or [templates/add_for_team](#file_propertiestemplatesadd_for_team-see-docs) to create new templates.",
 		"parameters": {
 			"list": [
 				{
@@ -297,7 +297,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Overwrite property groups associated with a file. This endpoint should be used instead of :route:\\`properties/update\\` when property groups are being updated via a \"snapshot\" instead of via a \"delta\". In other words, this endpoint will delete all omitted fields from a property group, whereas :route:\\`properties/update\\` will only delete fields that are explicitly marked for deletion.",
+		"description": "Overwrite property groups associated with a file. This endpoint should be used instead of [properties/update](#file_propertiespropertiesupdate-see-docs) when property groups are being updated via a \"snapshot\" instead of via a \"delta\". In other words, this endpoint will delete all omitted fields from a property group, whereas [properties/update](#file_propertiespropertiesupdate-see-docs) will only delete fields that are explicitly marked for deletion.",
 		"parameters": {
 			"list": [
 				{
@@ -429,7 +429,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Permanently removes the specified property group from the file. To remove specific property field key value pairs, see :route:\\`properties/update\\`. To update a template, see :route:\\`templates/update_for_user\\` or :route:\\`templates/update_for_team\\`. To remove a template, see :route:\\`templates/remove_for_user\\` or :route:\\`templates/remove_for_team\\`.",
+		"description": "Permanently removes the specified property group from the file. To remove specific property field key value pairs, see [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see [templates/update_for_user](#file_propertiestemplatesupdate_for_user-see-docs) or [templates/update_for_team](#file_propertiestemplatesupdate_for_team-see-docs). To remove a template, see [templates/remove_for_user](#file_propertiestemplatesremove_for_user-see-docs) or [templates/remove_for_team](#file_propertiestemplatesremove_for_team-see-docs).",
 		"parameters": {
 			"list": [
 				{
@@ -440,7 +440,7 @@
 				{
 					"name": "property_template_ids",
 					"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"))",
-					"desc": "A list of identifiers for a template created by :route:\\`templates/add_for_user\\` or :route:\\`templates/add_for_team\\`."
+					"desc": "A list of identifiers for a template created by   or  ."
 				}
 			],
 			"example": {
@@ -663,13 +663,13 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Once a cursor has been retrieved from :route:\\`properties/search\\`, use this to paginate through all search results.",
+		"description": "Once a cursor has been retrieved from [properties/search](#file_propertiespropertiessearch-see-docs), use this to paginate through all search results.",
 		"parameters": {
 			"list": [
 				{
 					"name": "cursor",
 					"type": "String(min_length=1)",
-					"desc": "The cursor returned by your last call to :route:\\`properties/search\\` or :route:\\`properties/search/continue\\`."
+					"desc": "The cursor returned by your last call to   or  ."
 				}
 			],
 			"example": {
@@ -702,7 +702,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Add, update or remove properties associated with the supplied file and templates. This endpoint should be used instead of :route:\\`properties/overwrite\\` when property groups are being updated via a \"delta\" instead of via a \"snapshot\" . In other words, this endpoint will not delete any omitted fields from a property group, whereas :route:\\`properties/overwrite\\` will delete any fields that are omitted from a property group.",
+		"description": "Add, update or remove properties associated with the supplied file and templates. This endpoint should be used instead of [properties/overwrite](#file_propertiespropertiesoverwrite-see-docs) when property groups are being updated via a \"delta\" instead of via a \"snapshot\" . In other words, this endpoint will not delete any omitted fields from a property group, whereas [properties/overwrite](#file_propertiespropertiesoverwrite-see-docs) will delete any fields that are omitted from a property group.",
 		"parameters": {
 			"list": [
 				{
@@ -845,7 +845,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Add a template associated with a user. See :route:\\`properties/add\\` to add properties to a file. This endpoint can't be called on a team member or admin's behalf.",
+		"description": "Add a template associated with a user. See [properties/add](#file_propertiespropertiesadd-see-docs) to add properties to a file. This endpoint can't be called on a team member or admin's behalf.",
 		"parameters": {
 			"list": [
 				{
@@ -972,7 +972,7 @@
 				{
 					"name": "template_id",
 					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
-					"desc": "An identifier for template added by route  See :route:\\`templates/add_for_user\\` or :route:\\`templates/add_for_team\\`."
+					"desc": "An identifier for template added by route  See   or  ."
 				}
 			],
 			"example": {
@@ -998,7 +998,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Get the template identifiers for a team. To get the schema of each template use :route:\\`templates/get_for_user\\`. This endpoint can't be called on a team member or admin's behalf.",
+		"description": "Get the template identifiers for a team. To get the schema of each template use [templates/get_for_user](#file_propertiestemplatesget_for_user-see-docs). This endpoint can't be called on a team member or admin's behalf.",
 		"parameters": {
 			"list": [],
 			"example": null
@@ -1014,13 +1014,13 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Permanently removes the specified template created from :route:\\`templates/add_for_user\\`. All properties associated with the template will also be removed. This action cannot be undone.",
+		"description": "Permanently removes the specified template created from [templates/add_for_user](#file_propertiestemplatesadd_for_user-see-docs). All properties associated with the template will also be removed. This action cannot be undone.",
 		"parameters": {
 			"list": [
 				{
 					"name": "template_id",
 					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
-					"desc": "An identifier for a template created by :route:\\`templates/add_for_user\\` or :route:\\`templates/add_for_team\\`."
+					"desc": "An identifier for a template created by   or  ."
 				}
 			],
 			"example": {
@@ -1040,7 +1040,7 @@
 				{
 					"name": "template_id",
 					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
-					"desc": "An identifier for template added by  See :route:\\`templates/add_for_user\\` or :route:\\`templates/add_for_team\\`."
+					"desc": "An identifier for template added by  See   or  ."
 				},
 				{
 					"name": "name",
@@ -1619,7 +1619,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Once a cursor has been retrieved from :route:\\`list:2\\`, use this to paginate through all file requests. The cursor must come from a previous call to :route:\\`list:2\\` or :route:\\`list/continue\\`.",
+		"description": "Once a cursor has been retrieved from [list:2](#file_requestslist:2-see-docs), use this to paginate through all file requests. The cursor must come from a previous call to [list:2](#file_requestslist:2-see-docs) or [list/continue](#file_requestslistcontinue-see-docs).",
 		"parameters": {
 			"list": [
 				{
@@ -1714,7 +1714,7 @@
 								{
 									"name": "update",
 									"type": "FileRequestDeadline?",
-									"desc": "If :val:\\`null\\`, the file request's deadline is cleared. This field is optional.",
+									"desc": "If None, the file request's deadline is cleared. This field is optional.",
 									"parameters": [
 										{
 											"list": [
@@ -2002,7 +2002,7 @@
 				{
 					"name": "update",
 					"type": "FileRequestDeadline?",
-					"desc": "If :val:\\`null\\`, the file request's deadline is cleared. This field is optional.",
+					"desc": "If None, the file request's deadline is cleared. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -2300,13 +2300,13 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Copy multiple files or folders to different locations at once in the user's Dropbox. This route will replace :route:\\`copy_batch:1\\`. The main difference is this route will return status for each entry, while :route:\\`copy_batch:1\\` raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async copy job in background. Please use :route:\\`copy_batch/check:2\\` to check the job status.",
+		"description": "Copy multiple files or folders to different locations at once in the user's Dropbox. This route will replace [copy_batch:1](#filescopy_batch:1-see-docs). The main difference is this route will return status for each entry, while [copy_batch:1](#filescopy_batch:1-see-docs) raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async copy job in background. Please use [copy_batch/check:2](#filescopy_batchcheck:2-see-docs) to check the job status.",
 		"parameters": {
 			"list": [
 				{
 					"name": "entries",
 					"type": "List of (RelocationPath, min_items=1)",
-					"desc": "List of entries to be moved or copied. Each entry is :type:\\`RelocationPath\\`.",
+					"desc": "List of entries to be moved or copied. Each entry is RelocationPath.",
 					"parameters": [
 						{
 							"list": [
@@ -2400,7 +2400,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Returns the status of an asynchronous job for :route:\\`copy_batch:2\\`. It returns list of results for each entry.",
+		"description": "Returns the status of an asynchronous job for [copy_batch:2](#filescopy_batch:2-see-docs). It returns list of results for each entry.",
 		"parameters": {
 			"list": [
 				{
@@ -2462,7 +2462,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Get a copy reference to a file or folder. This reference string can be used to save that file or folder to another user's Dropbox by passing it to :route:\\`copy_reference/save\\`.",
+		"description": "Get a copy reference to a file or folder. This reference string can be used to save that file or folder to another user's Dropbox by passing it to [copy_reference/save](#filescopy_referencesave-see-docs).",
 		"parameters": {
 			"list": [
 				{
@@ -2520,13 +2520,13 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Save a copy reference returned by :route:\\`copy_reference/get\\` to the user's Dropbox.",
+		"description": "Save a copy reference returned by [copy_reference/get](#filescopy_referenceget-see-docs) to the user's Dropbox.",
 		"parameters": {
 			"list": [
 				{
 					"name": "copy_reference",
 					"type": "String",
-					"desc": "A copy reference returned by :route:\\`copy_reference/get\\`."
+					"desc": "A copy reference returned by  ."
 				},
 				{
 					"name": "path",
@@ -2632,7 +2632,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Create multiple folders at once. This route is asynchronous for large batches, which returns a job ID immediately and runs the create folder batch asynchronously. Otherwise, creates the folders and returns the result synchronously for smaller inputs. You can force asynchronous behaviour by using the :field:\\`CreateFolderBatchArg.force_async\\` flag.  Use :route:\\`create_folder_batch/check\\` to check the job status.",
+		"description": "Create multiple folders at once. This route is asynchronous for large batches, which returns a job ID immediately and runs the create folder batch asynchronously. Otherwise, creates the folders and returns the result synchronously for smaller inputs. You can force asynchronous behaviour by using the CreateFolderBatchArg.force_async flag.  Use [create_folder_batch/check](#filescreate_folder_batchcheck-see-docs) to check the job status.",
 		"parameters": {
 			"list": [
 				{
@@ -2696,7 +2696,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Returns the status of an asynchronous job for :route:\\`create_folder_batch\\`. If success, it returns list of result for each entry.",
+		"description": "Returns the status of an asynchronous job for [create_folder_batch](#filescreate_folder_batch-see-docs). If success, it returns list of result for each entry.",
 		"parameters": {
 			"list": [
 				{
@@ -2746,7 +2746,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding :type:\\`FileMetadata\\` or :type:\\`FolderMetadata\\` for the item at time of deletion, and not a :type:\\`DeletedMetadata\\` object.",
+		"description": "Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.",
 		"parameters": {
 			"list": [
 				{
@@ -2807,7 +2807,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Delete multiple files/folders at once. This route is asynchronous, which returns a job ID immediately and runs the delete batch asynchronously. Use :route:\\`delete_batch/check\\` to check the job status.",
+		"description": "Delete multiple files/folders at once. This route is asynchronous, which returns a job ID immediately and runs the delete batch asynchronously. Use [delete_batch/check](#filesdelete_batchcheck-see-docs) to check the job status.",
 		"parameters": {
 			"list": [
 				{
@@ -2900,7 +2900,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Returns the status of an asynchronous job for :route:\\`delete_batch\\`. If success, it returns list of result for each entry.",
+		"description": "Returns the status of an asynchronous job for [delete_batch](#filesdelete_batch-see-docs). If success, it returns list of result for each entry.",
 		"parameters": {
 			"list": [
 				{
@@ -2973,7 +2973,7 @@
 				{
 					"name": "rev",
 					"type": "String(min_length=9, pattern=\"[0-9a-f]+\")?",
-					"desc": "Field is deprecated. Please specify revision in :field:\\`path\\` instead. This field is optional."
+					"desc": "Field is deprecated. Please specify revision in path instead. This field is optional."
 				}
 			],
 			"example": {
@@ -3064,7 +3064,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "DOWNLOAD",
-		"description": "Export a file from a user's Dropbox. This route only supports exporting files that cannot be downloaded directly  and whose :field:\\`ExportResult.file_metadata\\` has :field:\\`ExportInfo.export_as\\` populated.",
+		"description": "Export a file from a user's Dropbox. This route only supports exporting files that cannot be downloaded directly  and whose ExportResult.file_metadata has ExportInfo.export_as populated.",
 		"parameters": {
 			"list": [
 				{
@@ -3075,7 +3075,7 @@
 				{
 					"name": "export_format",
 					"type": "String?",
-					"desc": "The file format to which the file should be exported. This must be one of the formats listed in the file's export_options returned by :route:\\`get_metadata\\`. If none is specified, the default format (specified in export_as in file metadata) will be used. This field is optional."
+					"desc": "The file format to which the file should be exported. This must be one of the formats listed in the file's export_options returned by  . If none is specified, the default format (specified in export_as in file metadata) will be used. This field is optional."
 				}
 			],
 			"example": {
@@ -3230,12 +3230,12 @@
 				{
 					"name": "include_media_info",
 					"type": "Boolean",
-					"desc": "If true, :field:\\`FileMetadata.media_info\\` is set for photo and video. The default for this field is False."
+					"desc": "If true, FileMetadata.media_info is set for photo and video. The default for this field is False."
 				},
 				{
 					"name": "include_deleted",
 					"type": "Boolean",
-					"desc": "If true, :type:\\`DeletedMetadata\\` will be returned for deleted file or folder, otherwise :field:\\`LookupError.not_found\\` will be returned. The default for this field is False."
+					"desc": "If true, DeletedMetadata will be returned for deleted file or folder, otherwise LookupError.not_found will be returned. The default for this field is False."
 				},
 				{
 					"name": "include_has_explicit_shared_members",
@@ -3245,7 +3245,7 @@
 				{
 					"name": "include_property_groups",
 					"type": "TemplateFilterBase?",
-					"desc": "If set to a valid list of template IDs, :field:\\`FileMetadata.property_groups\\` is set if there exists property data associated with the file and each of the listed templates. This field is optional.",
+					"desc": "If set to a valid list of template IDs, FileMetadata.property_groups is set if there exists property data associated with the file and each of the listed templates. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -3324,7 +3324,7 @@
 				{
 					"name": "rev",
 					"type": "String(min_length=9, pattern=\"[0-9a-f]+\")?",
-					"desc": "Field is deprecated. Please specify revision in :field:\\`path\\` instead. This field is optional."
+					"desc": "Field is deprecated. Please specify revision in path instead. This field is optional."
 				}
 			],
 			"example": {
@@ -3427,13 +3427,13 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Get a one-time use temporary upload link to upload a file to a Dropbox location.  This endpoint acts as a delayed :route:\\`upload\\`. The returned temporary upload link may be used to make a POST request with the data to be uploaded. The upload will then be perfomed with the :type:\\`CommitInfo\\` previously provided to :route:\\`get_temporary_upload_link\\` but evaluated only upon consumption. Hence, errors stemming from invalid :type:\\`CommitInfo\\` with respect to the state of the user's Dropbox will only be communicated at consumption time. Additionally, these errors are surfaced as generic HTTP 409 Conflict responses, potentially hiding issue details. The maximum temporary upload link duration is 4 hours. Upon consumption or expiration, a new link will have to be generated. Multiple links may exist for a specific upload path at any given time.  The POST request on the temporary upload link must have its Content-Type set to \"application/octet-stream\".  Example temporary upload link consumption request:  curl -X POST https://content.dropboxapi.com/apitul/1/bNi2uIYF51cVBND --header \"Content-Type: application/octet-stream\" --data-binary @local_file.txt  A successful temporary upload link consumption request returns the content hash of the uploaded data in JSON format.  Example successful temporary upload link consumption response: {\"content-hash\": \"599d71033d700ac892a0e48fa61b125d2f5994\"}  An unsuccessful temporary upload link consumption request returns any of the following status codes:  HTTP 400 Bad Request: Content-Type is not one of application/octet-stream and text/plain or request is invalid. HTTP 409 Conflict: The temporary upload link does not exist or is currently unavailable, the upload failed, or another error happened. HTTP 410 Gone: The temporary upload link is expired or consumed.  Example unsuccessful temporary upload link consumption response: Temporary upload link has been recently consumed.",
+		"description": "Get a one-time use temporary upload link to upload a file to a Dropbox location.  This endpoint acts as a delayed [upload](#filesupload-see-docs). The returned temporary upload link may be used to make a POST request with the data to be uploaded. The upload will then be perfomed with the CommitInfo previously provided to [get_temporary_upload_link](#filesget_temporary_upload_link-see-docs) but evaluated only upon consumption. Hence, errors stemming from invalid CommitInfo with respect to the state of the user's Dropbox will only be communicated at consumption time. Additionally, these errors are surfaced as generic HTTP 409 Conflict responses, potentially hiding issue details. The maximum temporary upload link duration is 4 hours. Upon consumption or expiration, a new link will have to be generated. Multiple links may exist for a specific upload path at any given time.  The POST request on the temporary upload link must have its Content-Type set to \"application/octet-stream\".  Example temporary upload link consumption request:  curl -X POST https://content.dropboxapi.com/apitul/1/bNi2uIYF51cVBND --header \"Content-Type: application/octet-stream\" --data-binary @local_file.txt  A successful temporary upload link consumption request returns the content hash of the uploaded data in JSON format.  Example successful temporary upload link consumption response: {\"content-hash\": \"599d71033d700ac892a0e48fa61b125d2f5994\"}  An unsuccessful temporary upload link consumption request returns any of the following status codes:  HTTP 400 Bad Request: Content-Type is not one of application/octet-stream and text/plain or request is invalid. HTTP 409 Conflict: The temporary upload link does not exist or is currently unavailable, the upload failed, or another error happened. HTTP 410 Gone: The temporary upload link is expired or consumed.  Example unsuccessful temporary upload link consumption response: Temporary upload link has been recently consumed.",
 		"parameters": {
 			"list": [
 				{
 					"name": "commit_info",
 					"type": "CommitInfo",
-					"desc": "Contains the path and other optional modifiers for the future upload commit. Equivalent to the parameters provided to :route:\\`upload\\`.",
+					"desc": "Contains the path and other optional modifiers for the future upload commit. Equivalent to the parameters provided to  .",
 					"parameters": [
 						{
 							"list": [
@@ -3457,7 +3457,7 @@
 												{
 													"name": "overwrite",
 													"type": "Void",
-													"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+													"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 												},
 												{
 													"name": "update",
@@ -3477,7 +3477,7 @@
 								{
 									"name": "overwrite",
 									"type": "Void",
-									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 								},
 								{
 									"name": "update",
@@ -3487,17 +3487,17 @@
 								{
 									"name": "autorename",
 									"type": "Boolean",
-									"desc": "If there's a conflict, as determined by :field:\\`mode\\`, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
+									"desc": "If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
 								},
 								{
 									"name": "client_modified",
 									"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")?",
-									"desc": "The value to store as the :field:\\`client_modified\\` timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
+									"desc": "The value to store as the client_modified timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
 								},
 								{
 									"name": "mute",
 									"type": "Boolean",
-									"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If :val:\\`true\\`, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
+									"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If true, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
 								},
 								{
 									"name": "property_groups",
@@ -3603,7 +3603,7 @@
 								{
 									"name": "strict_conflict",
 									"type": "Boolean",
-									"desc": "Be more strict about how each :type:\\`WriteMode\\` detects conflict. For example, always return a conflict error when :field:\\`mode\\` = :field:\\`WriteMode.update\\` and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
+									"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 								}
 							],
 							"example": null
@@ -3618,7 +3618,7 @@
 								{
 									"name": "overwrite",
 									"type": "Void",
-									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 								},
 								{
 									"name": "update",
@@ -3707,7 +3707,7 @@
 								{
 									"name": "overwrite",
 									"type": "Void",
-									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 								},
 								{
 									"name": "update",
@@ -3727,7 +3727,7 @@
 				{
 					"name": "overwrite",
 					"type": "Void",
-					"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+					"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 				},
 				{
 					"name": "update",
@@ -3737,17 +3737,17 @@
 				{
 					"name": "autorename",
 					"type": "Boolean",
-					"desc": "If there's a conflict, as determined by :field:\\`mode\\`, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
+					"desc": "If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
 				},
 				{
 					"name": "client_modified",
 					"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")?",
-					"desc": "The value to store as the :field:\\`client_modified\\` timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
+					"desc": "The value to store as the client_modified timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
 				},
 				{
 					"name": "mute",
 					"type": "Boolean",
-					"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If :val:\\`true\\`, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
+					"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If true, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
 				},
 				{
 					"name": "property_groups",
@@ -3853,7 +3853,7 @@
 				{
 					"name": "strict_conflict",
 					"type": "Boolean",
-					"desc": "Be more strict about how each :type:\\`WriteMode\\` detects conflict. For example, always return a conflict error when :field:\\`mode\\` = :field:\\`WriteMode.update\\` and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
+					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 				},
 				{
 					"name": "duration",
@@ -4761,7 +4761,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Starts returning the contents of a folder. If the result's :field:\\`ListFolderResult.has_more\\` field is :val:\\`true\\`, call :route:\\`list_folder/continue\\` with the returned :field:\\`ListFolderResult.cursor\\` to retrieve more entries. If you're using :field:\\`ListFolderArg.recursive\\` set to :val:\\`true\\` to keep a local cache of the contents of a Dropbox account, iterate through each entry in order and process them as follows to keep your local state in sync: For each :type:\\`FileMetadata\\`, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it and remove all its children. For each :type:\\`FolderMetadata\\`, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it but leave the children as they are. Check the new entry's :field:\\`FolderSharingInfo.read_only\\` and set all its children's read-only statuses to match. For each :type:\\`DeletedMetadata\\`, if your local state has something at the given path, remove it and all its children. If there's nothing at the given path, ignore this entry. Note: :type:\\`auth.RateLimitError\\` may be returned if multiple :route:\\`list_folder\\` or :route:\\`list_folder/continue\\` calls with same parameters are made simultaneously by same API app for same user. If your app implements retry logic, please hold off the retry until the previous request finishes.",
+		"description": "Starts returning the contents of a folder. If the result's ListFolderResult.has_more field is true, call [list_folder/continue](#fileslist_foldercontinue-see-docs) with the returned ListFolderResult.cursor to retrieve more entries. If you're using ListFolderArg.recursive set to true to keep a local cache of the contents of a Dropbox account, iterate through each entry in order and process them as follows to keep your local state in sync: For each FileMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it and remove all its children. For each FolderMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it but leave the children as they are. Check the new entry's FolderSharingInfo.read_only and set all its children's read-only statuses to match. For each DeletedMetadata, if your local state has something at the given path, remove it and all its children. If there's nothing at the given path, ignore this entry. Note: auth.RateLimitError may be returned if multiple [list_folder](#fileslist_folder-see-docs) or [list_folder/continue](#fileslist_foldercontinue-see-docs) calls with same parameters are made simultaneously by same API app for same user. If your app implements retry logic, please hold off the retry until the previous request finishes.",
 		"parameters": {
 			"list": [
 				{
@@ -4777,7 +4777,7 @@
 				{
 					"name": "include_media_info",
 					"type": "Boolean",
-					"desc": "Field is deprecated. If true, :field:\\`FileMetadata.media_info\\` is set for photo and video. This parameter will no longer have an effect starting December 2, 2019. The default for this field is False."
+					"desc": "Field is deprecated. If true, FileMetadata.media_info is set for photo and video. This parameter will no longer have an effect starting December 2, 2019. The default for this field is False."
 				},
 				{
 					"name": "include_deleted",
@@ -4802,7 +4802,7 @@
 				{
 					"name": "shared_link",
 					"type": "SharedLink?",
-					"desc": "A shared link to list the contents of. If the link is password-protected, the password must be provided. If this field is present, :field:\\`ListFolderArg.path\\` will be relative to root of the shared link. Only non-recursive mode is supported for shared link. This field is optional.",
+					"desc": "A shared link to list the contents of. If the link is password-protected, the password must be provided. If this field is present, ListFolderArg.path will be relative to root of the shared link. Only non-recursive mode is supported for shared link. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -4834,7 +4834,7 @@
 				{
 					"name": "include_property_groups",
 					"type": "TemplateFilterBase?",
-					"desc": "If set to a valid list of template IDs, :field:\\`FileMetadata.property_groups\\` is set if there exists property data associated with the file and each of the listed templates. This field is optional.",
+					"desc": "If set to a valid list of template IDs, FileMetadata.property_groups is set if there exists property data associated with the file and each of the listed templates. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -4940,13 +4940,13 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Once a cursor has been retrieved from :route:\\`list_folder\\`, use this to paginate through all files and retrieve updates to the folder, following the same rules as documented for :route:\\`list_folder\\`.",
+		"description": "Once a cursor has been retrieved from [list_folder](#fileslist_folder-see-docs), use this to paginate through all files and retrieve updates to the folder, following the same rules as documented for [list_folder](#fileslist_folder-see-docs).",
 		"parameters": {
 			"list": [
 				{
 					"name": "cursor",
 					"type": "String(min_length=1)",
-					"desc": "The cursor returned by your last call to :route:\\`list_folder\\` or :route:\\`list_folder/continue\\`."
+					"desc": "The cursor returned by your last call to   or  ."
 				}
 			],
 			"example": {
@@ -5024,7 +5024,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "A way to quickly get a cursor for the folder's state. Unlike :route:\\`list_folder\\`, :route:\\`list_folder/get_latest_cursor\\` doesn't return any entries. This endpoint is for app which only needs to know about new files and modifications and doesn't need to know about files that already exist in Dropbox.",
+		"description": "A way to quickly get a cursor for the folder's state. Unlike [list_folder](#fileslist_folder-see-docs), [list_folder/get_latest_cursor](#fileslist_folderget_latest_cursor-see-docs) doesn't return any entries. This endpoint is for app which only needs to know about new files and modifications and doesn't need to know about files that already exist in Dropbox.",
 		"parameters": {
 			"list": [
 				{
@@ -5040,7 +5040,7 @@
 				{
 					"name": "include_media_info",
 					"type": "Boolean",
-					"desc": "Field is deprecated. If true, :field:\\`FileMetadata.media_info\\` is set for photo and video. This parameter will no longer have an effect starting December 2, 2019. The default for this field is False."
+					"desc": "Field is deprecated. If true, FileMetadata.media_info is set for photo and video. This parameter will no longer have an effect starting December 2, 2019. The default for this field is False."
 				},
 				{
 					"name": "include_deleted",
@@ -5065,7 +5065,7 @@
 				{
 					"name": "shared_link",
 					"type": "SharedLink?",
-					"desc": "A shared link to list the contents of. If the link is password-protected, the password must be provided. If this field is present, :field:\\`ListFolderArg.path\\` will be relative to root of the shared link. Only non-recursive mode is supported for shared link. This field is optional.",
+					"desc": "A shared link to list the contents of. If the link is password-protected, the password must be provided. If this field is present, ListFolderArg.path will be relative to root of the shared link. Only non-recursive mode is supported for shared link. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -5097,7 +5097,7 @@
 				{
 					"name": "include_property_groups",
 					"type": "TemplateFilterBase?",
-					"desc": "If set to a valid list of template IDs, :field:\\`FileMetadata.property_groups\\` is set if there exists property data associated with the file and each of the listed templates. This field is optional.",
+					"desc": "If set to a valid list of template IDs, FileMetadata.property_groups is set if there exists property data associated with the file and each of the listed templates. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -5141,13 +5141,13 @@
 		"requiresAuthHeader": false,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "A longpoll endpoint to wait for changes on an account. In conjunction with :route:\\`list_folder/continue\\`, this call gives you a low-latency way to monitor an account for file changes. The connection will block until there are changes available or a timeout occurs. This endpoint is useful mostly for client-side apps. If you're looking for server-side notifications, check out our :link:\\`webhooks documentation https://www.dropbox.com/developers/reference/webhooks\\`.",
+		"description": "A longpoll endpoint to wait for changes on an account. In conjunction with [list_folder/continue](#fileslist_foldercontinue-see-docs), this call gives you a low-latency way to monitor an account for file changes. The connection will block until there are changes available or a timeout occurs. This endpoint is useful mostly for client-side apps. If you're looking for server-side notifications, check out our webhooks documentation.",
 		"parameters": {
 			"list": [
 				{
 					"name": "cursor",
 					"type": "String(min_length=1)",
-					"desc": "A cursor as returned by :route:\\`list_folder\\` or :route:\\`list_folder/continue\\`. Cursors retrieved by setting :field:\\`ListFolderArg.include_media_info\\` to :val:\\`true\\` are not supported."
+					"desc": "A cursor as returned by   or  . Cursors retrieved by setting ListFolderArg.include_media_info to true are not supported."
 				},
 				{
 					"name": "timeout",
@@ -5169,7 +5169,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Returns revisions for files based on a file path or a file id. The file path or file id is identified from the latest file entry at the given file path or id. This end point allows your app to query either by file path or file id by setting the mode parameter appropriately. In the :field:\\`ListRevisionsMode.path\\` (default) mode, all revisions at the same file path as the latest file entry are returned. If revisions with the same file id are desired, then mode must be set to :field:\\`ListRevisionsMode.id\\`. The :field:\\`ListRevisionsMode.id\\` mode is useful to retrieve revisions for a given file across moves or renames.",
+		"description": "Returns revisions for files based on a file path or a file id. The file path or file id is identified from the latest file entry at the given file path or id. This end point allows your app to query either by file path or file id by setting the mode parameter appropriately. In the ListRevisionsMode.path (default) mode, all revisions at the same file path as the latest file entry are returned. If revisions with the same file id are desired, then mode must be set to ListRevisionsMode.id. The ListRevisionsMode.id mode is useful to retrieve revisions for a given file across moves or renames.",
 		"parameters": {
 			"list": [
 				{
@@ -5436,13 +5436,13 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Move multiple files or folders to different locations at once in the user's Dropbox. Note that we do not currently support case-only renaming. This route will replace :route:\\`move_batch:1\\`. The main difference is this route will return status for each entry, while :route:\\`move_batch:1\\` raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async move job in background. Please use :route:\\`move_batch/check:2\\` to check the job status.",
+		"description": "Move multiple files or folders to different locations at once in the user's Dropbox. Note that we do not currently support case-only renaming. This route will replace [move_batch:1](#filesmove_batch:1-see-docs). The main difference is this route will return status for each entry, while [move_batch:1](#filesmove_batch:1-see-docs) raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async move job in background. Please use [move_batch/check:2](#filesmove_batchcheck:2-see-docs) to check the job status.",
 		"parameters": {
 			"list": [
 				{
 					"name": "entries",
 					"type": "List of (RelocationPath, min_items=1)",
-					"desc": "List of entries to be moved or copied. Each entry is :type:\\`RelocationPath\\`.",
+					"desc": "List of entries to be moved or copied. Each entry is RelocationPath.",
 					"parameters": [
 						{
 							"list": [
@@ -5542,7 +5542,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Returns the status of an asynchronous job for :route:\\`move_batch:2\\`. It returns list of results for each entry.",
+		"description": "Returns the status of an asynchronous job for [move_batch:2](#filesmove_batch:2-see-docs). It returns list of results for each entry.",
 		"parameters": {
 			"list": [
 				{
@@ -5940,7 +5940,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Check the status of a :route:\\`save_url\\` job.",
+		"description": "Check the status of a [save_url](#filessave_url-see-docs) job.",
 		"parameters": {
 			"list": [
 				{
@@ -5962,7 +5962,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Searches for files and folders. Note: :route:\\`search:2\\` along with :route:\\`search/continue:2\\` can only be used to retrieve a maximum of 10,000 matches. Recent changes may not immediately be reflected in search results due to a short delay in indexing. Duplicate results may be returned across pages. Some results may not be returned.",
+		"description": "Searches for files and folders. Note: [search:2](#filessearch:2-see-docs) along with [search/continue:2](#filessearchcontinue:2-see-docs) can only be used to retrieve a maximum of 10,000 matches. Recent changes may not immediately be reflected in search results due to a short delay in indexing. Duplicate results may be returned across pages. Some results may not be returned.",
 		"parameters": {
 			"list": [
 				{
@@ -6535,13 +6535,13 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Fetches the next page of search results returned from :route:\\`search:2\\`. Note: :route:\\`search:2\\` along with :route:\\`search/continue:2\\` can only be used to retrieve a maximum of 10,000 matches. Recent changes may not immediately be reflected in search results due to a short delay in indexing. Duplicate results may be returned across pages. Some results may not be returned.",
+		"description": "Fetches the next page of search results returned from [search:2](#filessearch:2-see-docs). Note: [search:2](#filessearch:2-see-docs) along with [search/continue:2](#filessearchcontinue:2-see-docs) can only be used to retrieve a maximum of 10,000 matches. Recent changes may not immediately be reflected in search results due to a short delay in indexing. Duplicate results may be returned across pages. Some results may not be returned.",
 		"parameters": {
 			"list": [
 				{
 					"name": "cursor",
 					"type": "String(min_length=1)",
-					"desc": "The cursor returned by your last call to :route:\\`search:2\\`. Used to fetch the next page of results."
+					"desc": "The cursor returned by your last call to  . Used to fetch the next page of results."
 				}
 			],
 			"example": {
@@ -6673,7 +6673,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
-		"description": "Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB. Instead, create an upload session with :route:\\`upload_session/start\\`. Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the :link:\\`Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit\\`.",
+		"description": "Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB. Instead, create an upload session with [upload_session/start](#filesupload_sessionstart-see-docs). Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the Data transport limit page.",
 		"parameters": {
 			"list": [
 				{
@@ -6696,7 +6696,7 @@
 								{
 									"name": "overwrite",
 									"type": "Void",
-									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 								},
 								{
 									"name": "update",
@@ -6716,7 +6716,7 @@
 				{
 					"name": "overwrite",
 					"type": "Void",
-					"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+					"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 				},
 				{
 					"name": "update",
@@ -6726,17 +6726,17 @@
 				{
 					"name": "autorename",
 					"type": "Boolean",
-					"desc": "If there's a conflict, as determined by :field:\\`mode\\`, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
+					"desc": "If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
 				},
 				{
 					"name": "client_modified",
 					"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")?",
-					"desc": "The value to store as the :field:\\`client_modified\\` timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
+					"desc": "The value to store as the client_modified timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
 				},
 				{
 					"name": "mute",
 					"type": "Boolean",
-					"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If :val:\\`true\\`, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
+					"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If true, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
 				},
 				{
 					"name": "property_groups",
@@ -6842,7 +6842,7 @@
 				{
 					"name": "strict_conflict",
 					"type": "Boolean",
-					"desc": "Be more strict about how each :type:\\`WriteMode\\` detects conflict. For example, always return a conflict error when :field:\\`mode\\` = :field:\\`WriteMode.update\\` and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
+					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 				}
 			],
 			"example": {
@@ -6893,7 +6893,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
-		"description": "Append more data to an upload session. When the parameter close is set, this call will close the session. A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB. Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the :link:\\`Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit\\`.",
+		"description": "Append more data to an upload session. When the parameter close is set, this call will close the session. A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB. Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the Data transport limit page.",
 		"parameters": {
 			"list": [
 				{
@@ -6906,7 +6906,7 @@
 								{
 									"name": "session_id",
 									"type": "String",
-									"desc": "The upload session ID (returned by :route:\\`upload_session/start\\`)."
+									"desc": "The upload session ID (returned by  )."
 								},
 								{
 									"name": "offset",
@@ -6921,7 +6921,7 @@
 				{
 					"name": "session_id",
 					"type": "String",
-					"desc": "The upload session ID (returned by :route:\\`upload_session/start\\`)."
+					"desc": "The upload session ID (returned by  )."
 				},
 				{
 					"name": "offset",
@@ -6931,7 +6931,7 @@
 				{
 					"name": "close",
 					"type": "Boolean",
-					"desc": "If true, the current session will be closed, at which point you won't be able to call :route:\\`upload_session/append:2\\` anymore with the current session. The default for this field is False."
+					"desc": "If true, the current session will be closed, at which point you won't be able to call   anymore with the current session. The default for this field is False."
 				}
 			],
 			"example": {
@@ -6949,7 +6949,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
-		"description": "Finish an upload session and save the uploaded data to the given file path. A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB. Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the :link:\\`Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit\\`.",
+		"description": "Finish an upload session and save the uploaded data to the given file path. A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB. Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the Data transport limit page.",
 		"parameters": {
 			"list": [
 				{
@@ -6962,7 +6962,7 @@
 								{
 									"name": "session_id",
 									"type": "String",
-									"desc": "The upload session ID (returned by :route:\\`upload_session/start\\`)."
+									"desc": "The upload session ID (returned by  )."
 								},
 								{
 									"name": "offset",
@@ -6977,7 +6977,7 @@
 				{
 					"name": "session_id",
 					"type": "String",
-					"desc": "The upload session ID (returned by :route:\\`upload_session/start\\`)."
+					"desc": "The upload session ID (returned by  )."
 				},
 				{
 					"name": "offset",
@@ -7011,7 +7011,7 @@
 												{
 													"name": "overwrite",
 													"type": "Void",
-													"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+													"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 												},
 												{
 													"name": "update",
@@ -7031,7 +7031,7 @@
 								{
 									"name": "overwrite",
 									"type": "Void",
-									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 								},
 								{
 									"name": "update",
@@ -7041,17 +7041,17 @@
 								{
 									"name": "autorename",
 									"type": "Boolean",
-									"desc": "If there's a conflict, as determined by :field:\\`mode\\`, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
+									"desc": "If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
 								},
 								{
 									"name": "client_modified",
 									"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")?",
-									"desc": "The value to store as the :field:\\`client_modified\\` timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
+									"desc": "The value to store as the client_modified timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
 								},
 								{
 									"name": "mute",
 									"type": "Boolean",
-									"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If :val:\\`true\\`, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
+									"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If true, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
 								},
 								{
 									"name": "property_groups",
@@ -7157,7 +7157,7 @@
 								{
 									"name": "strict_conflict",
 									"type": "Boolean",
-									"desc": "Be more strict about how each :type:\\`WriteMode\\` detects conflict. For example, always return a conflict error when :field:\\`mode\\` = :field:\\`WriteMode.update\\` and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
+									"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 								}
 							],
 							"example": null
@@ -7172,7 +7172,7 @@
 								{
 									"name": "overwrite",
 									"type": "Void",
-									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 								},
 								{
 									"name": "update",
@@ -7261,7 +7261,7 @@
 								{
 									"name": "overwrite",
 									"type": "Void",
-									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 								},
 								{
 									"name": "update",
@@ -7281,7 +7281,7 @@
 				{
 					"name": "overwrite",
 					"type": "Void",
-					"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+					"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 				},
 				{
 					"name": "update",
@@ -7291,17 +7291,17 @@
 				{
 					"name": "autorename",
 					"type": "Boolean",
-					"desc": "If there's a conflict, as determined by :field:\\`mode\\`, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
+					"desc": "If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
 				},
 				{
 					"name": "client_modified",
 					"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")?",
-					"desc": "The value to store as the :field:\\`client_modified\\` timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
+					"desc": "The value to store as the client_modified timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
 				},
 				{
 					"name": "mute",
 					"type": "Boolean",
-					"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If :val:\\`true\\`, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
+					"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If true, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
 				},
 				{
 					"name": "property_groups",
@@ -7407,7 +7407,7 @@
 				{
 					"name": "strict_conflict",
 					"type": "Boolean",
-					"desc": "Be more strict about how each :type:\\`WriteMode\\` detects conflict. For example, always return a conflict error when :field:\\`mode\\` = :field:\\`WriteMode.update\\` and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
+					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 				}
 			],
 			"example": {
@@ -7464,7 +7464,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "This route helps you commit many files at once into a user's Dropbox. Use :route:\\`upload_session/start\\` and :route:\\`upload_session/append:2\\` to upload file contents. We recommend uploading many files in parallel to increase throughput. Once the file contents have been uploaded, rather than calling :route:\\`upload_session/finish\\`, use this route to finish all your upload sessions in a single request. :field:\\`UploadSessionStartArg.close\\` or :field:\\`UploadSessionAppendArg.close\\` needs to be true for the last :route:\\`upload_session/start\\` or :route:\\`upload_session/append:2\\` call. The maximum size of a file one can upload to an upload session is 350 GB. This route will return a job_id immediately and do the async commit job in background. Use :route:\\`upload_session/finish_batch/check\\` to check the job status. For the same account, this route should be executed serially. That means you should not start the next job before current job finishes. We allow up to 1000 entries in a single request. Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the :link:\\`Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit\\`.",
+		"description": "This route helps you commit many files at once into a user's Dropbox. Use [upload_session/start](#filesupload_sessionstart-see-docs) and [upload_session/append:2](#filesupload_sessionappend:2-see-docs) to upload file contents. We recommend uploading many files in parallel to increase throughput. Once the file contents have been uploaded, rather than calling [upload_session/finish](#filesupload_sessionfinish-see-docs), use this route to finish all your upload sessions in a single request. UploadSessionStartArg.close or UploadSessionAppendArg.close needs to be true for the last [upload_session/start](#filesupload_sessionstart-see-docs) or [upload_session/append:2](#filesupload_sessionappend:2-see-docs) call. The maximum size of a file one can upload to an upload session is 350 GB. This route will return a job_id immediately and do the async commit job in background. Use [upload_session/finish_batch/check](#filesupload_sessionfinish_batchcheck-see-docs) to check the job status. For the same account, this route should be executed serially. That means you should not start the next job before current job finishes. We allow up to 1000 entries in a single request. Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the Data transport limit page.",
 		"parameters": {
 			"list": [
 				{
@@ -7484,7 +7484,7 @@
 												{
 													"name": "session_id",
 													"type": "String",
-													"desc": "The upload session ID (returned by :route:\\`upload_session/start\\`)."
+													"desc": "The upload session ID (returned by  )."
 												},
 												{
 													"name": "offset",
@@ -7499,7 +7499,7 @@
 								{
 									"name": "session_id",
 									"type": "String",
-									"desc": "The upload session ID (returned by :route:\\`upload_session/start\\`)."
+									"desc": "The upload session ID (returned by  )."
 								},
 								{
 									"name": "offset",
@@ -7533,7 +7533,7 @@
 																{
 																	"name": "overwrite",
 																	"type": "Void",
-																	"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+																	"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 																},
 																{
 																	"name": "update",
@@ -7553,7 +7553,7 @@
 												{
 													"name": "overwrite",
 													"type": "Void",
-													"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+													"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 												},
 												{
 													"name": "update",
@@ -7563,17 +7563,17 @@
 												{
 													"name": "autorename",
 													"type": "Boolean",
-													"desc": "If there's a conflict, as determined by :field:\\`mode\\`, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
+													"desc": "If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
 												},
 												{
 													"name": "client_modified",
 													"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")?",
-													"desc": "The value to store as the :field:\\`client_modified\\` timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
+													"desc": "The value to store as the client_modified timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
 												},
 												{
 													"name": "mute",
 													"type": "Boolean",
-													"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If :val:\\`true\\`, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
+													"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If true, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
 												},
 												{
 													"name": "property_groups",
@@ -7679,7 +7679,7 @@
 												{
 													"name": "strict_conflict",
 													"type": "Boolean",
-													"desc": "Be more strict about how each :type:\\`WriteMode\\` detects conflict. For example, always return a conflict error when :field:\\`mode\\` = :field:\\`WriteMode.update\\` and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
+													"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 												}
 											],
 											"example": null
@@ -7694,7 +7694,7 @@
 												{
 													"name": "overwrite",
 													"type": "Void",
-													"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+													"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 												},
 												{
 													"name": "update",
@@ -7783,7 +7783,7 @@
 												{
 													"name": "overwrite",
 													"type": "Void",
-													"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+													"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 												},
 												{
 													"name": "update",
@@ -7803,7 +7803,7 @@
 								{
 									"name": "overwrite",
 									"type": "Void",
-									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 								},
 								{
 									"name": "update",
@@ -7813,17 +7813,17 @@
 								{
 									"name": "autorename",
 									"type": "Boolean",
-									"desc": "If there's a conflict, as determined by :field:\\`mode\\`, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
+									"desc": "If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
 								},
 								{
 									"name": "client_modified",
 									"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")?",
-									"desc": "The value to store as the :field:\\`client_modified\\` timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
+									"desc": "The value to store as the client_modified timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
 								},
 								{
 									"name": "mute",
 									"type": "Boolean",
-									"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If :val:\\`true\\`, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
+									"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If true, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
 								},
 								{
 									"name": "property_groups",
@@ -7929,7 +7929,7 @@
 								{
 									"name": "strict_conflict",
 									"type": "Boolean",
-									"desc": "Be more strict about how each :type:\\`WriteMode\\` detects conflict. For example, always return a conflict error when :field:\\`mode\\` = :field:\\`WriteMode.update\\` and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
+									"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 								}
 							],
 							"example": null
@@ -7939,7 +7939,7 @@
 								{
 									"name": "session_id",
 									"type": "String",
-									"desc": "The upload session ID (returned by :route:\\`upload_session/start\\`)."
+									"desc": "The upload session ID (returned by  )."
 								},
 								{
 									"name": "offset",
@@ -7971,7 +7971,7 @@
 												{
 													"name": "overwrite",
 													"type": "Void",
-													"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+													"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 												},
 												{
 													"name": "update",
@@ -7991,7 +7991,7 @@
 								{
 									"name": "overwrite",
 									"type": "Void",
-									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 								},
 								{
 									"name": "update",
@@ -8001,17 +8001,17 @@
 								{
 									"name": "autorename",
 									"type": "Boolean",
-									"desc": "If there's a conflict, as determined by :field:\\`mode\\`, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
+									"desc": "If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
 								},
 								{
 									"name": "client_modified",
 									"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")?",
-									"desc": "The value to store as the :field:\\`client_modified\\` timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
+									"desc": "The value to store as the client_modified timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
 								},
 								{
 									"name": "mute",
 									"type": "Boolean",
-									"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If :val:\\`true\\`, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
+									"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If true, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
 								},
 								{
 									"name": "property_groups",
@@ -8117,7 +8117,7 @@
 								{
 									"name": "strict_conflict",
 									"type": "Boolean",
-									"desc": "Be more strict about how each :type:\\`WriteMode\\` detects conflict. For example, always return a conflict error when :field:\\`mode\\` = :field:\\`WriteMode.update\\` and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
+									"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 								}
 							],
 							"example": null
@@ -8132,7 +8132,7 @@
 								{
 									"name": "overwrite",
 									"type": "Void",
-									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 								},
 								{
 									"name": "update",
@@ -8211,7 +8211,7 @@
 								{
 									"name": "session_id",
 									"type": "String",
-									"desc": "The upload session ID (returned by :route:\\`upload_session/start\\`)."
+									"desc": "The upload session ID (returned by  )."
 								},
 								{
 									"name": "offset",
@@ -8226,7 +8226,7 @@
 				{
 					"name": "session_id",
 					"type": "String",
-					"desc": "The upload session ID (returned by :route:\\`upload_session/start\\`)."
+					"desc": "The upload session ID (returned by  )."
 				},
 				{
 					"name": "offset",
@@ -8260,7 +8260,7 @@
 												{
 													"name": "overwrite",
 													"type": "Void",
-													"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+													"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 												},
 												{
 													"name": "update",
@@ -8280,7 +8280,7 @@
 								{
 									"name": "overwrite",
 									"type": "Void",
-									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 								},
 								{
 									"name": "update",
@@ -8290,17 +8290,17 @@
 								{
 									"name": "autorename",
 									"type": "Boolean",
-									"desc": "If there's a conflict, as determined by :field:\\`mode\\`, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
+									"desc": "If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
 								},
 								{
 									"name": "client_modified",
 									"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")?",
-									"desc": "The value to store as the :field:\\`client_modified\\` timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
+									"desc": "The value to store as the client_modified timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
 								},
 								{
 									"name": "mute",
 									"type": "Boolean",
-									"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If :val:\\`true\\`, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
+									"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If true, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
 								},
 								{
 									"name": "property_groups",
@@ -8406,7 +8406,7 @@
 								{
 									"name": "strict_conflict",
 									"type": "Boolean",
-									"desc": "Be more strict about how each :type:\\`WriteMode\\` detects conflict. For example, always return a conflict error when :field:\\`mode\\` = :field:\\`WriteMode.update\\` and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
+									"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 								}
 							],
 							"example": null
@@ -8421,7 +8421,7 @@
 								{
 									"name": "overwrite",
 									"type": "Void",
-									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 								},
 								{
 									"name": "update",
@@ -8510,7 +8510,7 @@
 								{
 									"name": "overwrite",
 									"type": "Void",
-									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 								},
 								{
 									"name": "update",
@@ -8530,7 +8530,7 @@
 				{
 					"name": "overwrite",
 					"type": "Void",
-					"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+					"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 				},
 				{
 					"name": "update",
@@ -8540,17 +8540,17 @@
 				{
 					"name": "autorename",
 					"type": "Boolean",
-					"desc": "If there's a conflict, as determined by :field:\\`mode\\`, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
+					"desc": "If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
 				},
 				{
 					"name": "client_modified",
 					"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")?",
-					"desc": "The value to store as the :field:\\`client_modified\\` timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
+					"desc": "The value to store as the client_modified timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
 				},
 				{
 					"name": "mute",
 					"type": "Boolean",
-					"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If :val:\\`true\\`, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
+					"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If true, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
 				},
 				{
 					"name": "property_groups",
@@ -8656,7 +8656,7 @@
 				{
 					"name": "strict_conflict",
 					"type": "Boolean",
-					"desc": "Be more strict about how each :type:\\`WriteMode\\` detects conflict. For example, always return a conflict error when :field:\\`mode\\` = :field:\\`WriteMode.update\\` and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
+					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 				}
 			],
 			"example": {
@@ -8723,7 +8723,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Returns the status of an asynchronous job for :route:\\`upload_session/finish_batch\\`. If success, it returns list of result for each entry.",
+		"description": "Returns the status of an asynchronous job for [upload_session/finish_batch](#filesupload_sessionfinish_batch-see-docs). If success, it returns list of result for each entry.",
 		"parameters": {
 			"list": [
 				{
@@ -8782,18 +8782,18 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
-		"description": "Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use :route:\\`upload_session/append:2\\` to add more data and :route:\\`upload_session/finish\\` to save all the data to a file in Dropbox. A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB. An upload session can be used for a maximum of 7 days. Attempting to use an :field:\\`UploadSessionStartResult.session_id\\` with :route:\\`upload_session/append:2\\` or :route:\\`upload_session/finish\\` more than 7 days after its creation will return a :field:\\`UploadSessionLookupError.not_found\\`. Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the :link:\\`Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit\\`. By default, upload sessions require you to send content of the file in sequential order via consecutive :route:\\`upload_session/start\\`, :route:\\`upload_session/append:2\\`, :route:\\`upload_session/finish\\` calls. For better performance, you can instead optionally use a :field:\\`UploadSessionType.concurrent\\` upload session. To start a new concurrent session, set :field:\\`UploadSessionStartArg.session_type\\` to :field:\\`UploadSessionType.concurrent\\`. After that, you can send file data in concurrent :route:\\`upload_session/append:2\\` requests. Finally finish the session with :route:\\`upload_session/finish\\`. There are couple of constraints with concurrent sessions to make them work. You can not send data with :route:\\`upload_session/start\\` or :route:\\`upload_session/finish\\` call, only with :route:\\`upload_session/append:2\\` call. Also data uploaded in :route:\\`upload_session/append:2\\` call must be multiple of 4194304 bytes (except for last :route:\\`upload_session/append:2\\` with :field:\\`UploadSessionStartArg.close\\` to :val:\\`true\\`, that may contain any remaining data).",
+		"description": "Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use [upload_session/append:2](#filesupload_sessionappend:2-see-docs) to add more data and [upload_session/finish](#filesupload_sessionfinish-see-docs) to save all the data to a file in Dropbox. A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB. An upload session can be used for a maximum of 7 days. Attempting to use an UploadSessionStartResult.session_id with [upload_session/append:2](#filesupload_sessionappend:2-see-docs) or [upload_session/finish](#filesupload_sessionfinish-see-docs) more than 7 days after its creation will return a UploadSessionLookupError.not_found. Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the Data transport limit page. By default, upload sessions require you to send content of the file in sequential order via consecutive [upload_session/start](#filesupload_sessionstart-see-docs), [upload_session/append:2](#filesupload_sessionappend:2-see-docs), [upload_session/finish](#filesupload_sessionfinish-see-docs) calls. For better performance, you can instead optionally use a UploadSessionType.concurrent upload session. To start a new concurrent session, set UploadSessionStartArg.session_type to UploadSessionType.concurrent. After that, you can send file data in concurrent [upload_session/append:2](#filesupload_sessionappend:2-see-docs) requests. Finally finish the session with [upload_session/finish](#filesupload_sessionfinish-see-docs). There are couple of constraints with concurrent sessions to make them work. You can not send data with [upload_session/start](#filesupload_sessionstart-see-docs) or [upload_session/finish](#filesupload_sessionfinish-see-docs) call, only with [upload_session/append:2](#filesupload_sessionappend:2-see-docs) call. Also data uploaded in [upload_session/append:2](#filesupload_sessionappend:2-see-docs) call must be multiple of 4194304 bytes (except for last [upload_session/append:2](#filesupload_sessionappend:2-see-docs) with UploadSessionStartArg.close to true, that may contain any remaining data).",
 		"parameters": {
 			"list": [
 				{
 					"name": "close",
 					"type": "Boolean",
-					"desc": "If true, the current session will be closed, at which point you won't be able to call :route:\\`upload_session/append:2\\` anymore with the current session. The default for this field is False."
+					"desc": "If true, the current session will be closed, at which point you won't be able to call   anymore with the current session. The default for this field is False."
 				},
 				{
 					"name": "session_type",
 					"type": "UploadSessionType?",
-					"desc": "Type of upload session you want to start. If not specified, default is :field:\\`UploadSessionType.sequential\\`. This field is optional.",
+					"desc": "Type of upload session you want to start. If not specified, default is UploadSessionType.sequential. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -8896,7 +8896,7 @@
 								{
 									"name": "owner",
 									"type": "Void",
-									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 								},
 								{
 									"name": "editor",
@@ -8921,7 +8921,7 @@
 				{
 					"name": "owner",
 					"type": "Void",
-					"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+					"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 				},
 				{
 					"name": "editor",
@@ -8965,7 +8965,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Allows an owner or editor (if the ACL update policy allows) of a shared folder to add another member. For the new member to get access to all the functionality for this folder, you will need to call :route:\\`mount_folder\\` on their behalf.",
+		"description": "Allows an owner or editor (if the ACL update policy allows) of a shared folder to add another member. For the new member to get access to all the functionality for this folder, you will need to call [mount_folder](#sharingmount_folder-see-docs) on their behalf.",
 		"parameters": {
 			"list": [
 				{
@@ -9015,14 +9015,14 @@
 								{
 									"name": "access_level",
 									"type": "AccessLevel",
-									"desc": "The access level to grant :field:\\`member\\` to the shared folder.  :field:\\`AccessLevel.owner\\` is disallowed. The default for this union is viewer.",
+									"desc": "The access level to grant member to the shared folder.  AccessLevel.owner is disallowed. The default for this union is viewer.",
 									"parameters": [
 										{
 											"list": [
 												{
 													"name": "owner",
 													"type": "Void",
-													"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+													"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 												},
 												{
 													"name": "editor",
@@ -9047,7 +9047,7 @@
 								{
 									"name": "owner",
 									"type": "Void",
-									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 								},
 								{
 									"name": "editor",
@@ -9087,7 +9087,7 @@
 								{
 									"name": "owner",
 									"type": "Void",
-									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 								},
 								{
 									"name": "editor",
@@ -9144,14 +9144,14 @@
 				{
 					"name": "access_level",
 					"type": "AccessLevel",
-					"desc": "The access level to grant :field:\\`member\\` to the shared folder.  :field:\\`AccessLevel.owner\\` is disallowed. The default for this union is viewer.",
+					"desc": "The access level to grant member to the shared folder.  AccessLevel.owner is disallowed. The default for this union is viewer.",
 					"parameters": [
 						{
 							"list": [
 								{
 									"name": "owner",
 									"type": "Void",
-									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 								},
 								{
 									"name": "editor",
@@ -9176,7 +9176,7 @@
 				{
 					"name": "owner",
 					"type": "Void",
-					"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+					"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 				},
 				{
 					"name": "editor",
@@ -9353,7 +9353,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Create a shared link with custom settings. If no settings are given then the default visibility is :field:\\`RequestedVisibility.public\\` (The resolved visibility, though, may depend on other aspects such as team and shared folder settings).",
+		"description": "Create a shared link with custom settings. If no settings are given then the default visibility is RequestedVisibility.public (The resolved visibility, though, may depend on other aspects such as team and shared folder settings).",
 		"parameters": {
 			"list": [
 				{
@@ -9376,7 +9376,7 @@
 								{
 									"name": "link_password",
 									"type": "String?",
-									"desc": "If :field:\\`require_password\\` is true, this is needed to specify the password to access the link. This field is optional."
+									"desc": "If require_password is true, this is needed to specify the password to access the link. This field is optional."
 								},
 								{
 									"name": "expires",
@@ -9386,7 +9386,7 @@
 								{
 									"name": "audience",
 									"type": "LinkAudience?",
-									"desc": "The new audience who can benefit from the access level specified by the link's access level specified in the \\`link_access_level\\` field of \\`LinkPermissions\\`. This is used in conjunction with team policies and shared folder policies to determine the final effective audience type in the \\`effective_audience\\` field of \\`LinkPermissions. This field is optional.",
+									"desc": "The new audience who can benefit from the access level specified by the link's access level specified in the `link_access_level` field of `LinkPermissions`. This is used in conjunction with team policies and shared folder policies to determine the final effective audience type in the `effective_audience` field of `LinkPermissions. This field is optional.",
 									"parameters": [
 										{
 											"list": [
@@ -9408,7 +9408,7 @@
 												{
 													"name": "password",
 													"type": "Void",
-													"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+													"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 												},
 												{
 													"name": "members",
@@ -9438,7 +9438,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -9490,7 +9490,7 @@
 								{
 									"name": "requested_visibility",
 									"type": "RequestedVisibility?",
-									"desc": "Field is deprecated. Use :field:\\`audience\\` instead.  The requested access for this shared link. This field is optional.",
+									"desc": "Field is deprecated. Use audience instead.  The requested access for this shared link. This field is optional.",
 									"parameters": [
 										{
 											"list": [
@@ -9557,7 +9557,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -9617,7 +9617,7 @@
 				{
 					"name": "link_password",
 					"type": "String?",
-					"desc": "If :field:\\`require_password\\` is true, this is needed to specify the password to access the link. This field is optional."
+					"desc": "If require_password is true, this is needed to specify the password to access the link. This field is optional."
 				},
 				{
 					"name": "expires",
@@ -9627,7 +9627,7 @@
 				{
 					"name": "audience",
 					"type": "LinkAudience?",
-					"desc": "The new audience who can benefit from the access level specified by the link's access level specified in the \\`link_access_level\\` field of \\`LinkPermissions\\`. This is used in conjunction with team policies and shared folder policies to determine the final effective audience type in the \\`effective_audience\\` field of \\`LinkPermissions. This field is optional.",
+					"desc": "The new audience who can benefit from the access level specified by the link's access level specified in the `link_access_level` field of `LinkPermissions`. This is used in conjunction with team policies and shared folder policies to determine the final effective audience type in the `effective_audience` field of `LinkPermissions. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -9649,7 +9649,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -9679,7 +9679,7 @@
 				{
 					"name": "password",
 					"type": "Void",
-					"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+					"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 				},
 				{
 					"name": "members",
@@ -9731,7 +9731,7 @@
 				{
 					"name": "requested_visibility",
 					"type": "RequestedVisibility?",
-					"desc": "Field is deprecated. Use :field:\\`audience\\` instead.  The requested access for this shared link. This field is optional.",
+					"desc": "Field is deprecated. Use audience instead.  The requested access for this shared link. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -9882,7 +9882,7 @@
 				{
 					"name": "actions",
 					"type": "List of (FileAction)?",
-					"desc": "A list of \\`FileAction\\`s corresponding to \\`FilePermission\\`s that should appear in the  response's :field:\\`SharedFileMetadata.permissions\\` field describing the actions the  authenticated user can perform on the file. This field is optional.",
+					"desc": "A list of `FileAction`s corresponding to `FilePermission`s that should appear in the  response's SharedFileMetadata.permissions field describing the actions the  authenticated user can perform on the file. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -10067,7 +10067,7 @@
 				{
 					"name": "actions",
 					"type": "List of (FileAction)?",
-					"desc": "A list of \\`FileAction\\`s corresponding to \\`FilePermission\\`s that should appear in the  response's :field:\\`SharedFileMetadata.permissions\\` field describing the actions the  authenticated user can perform on the file. This field is optional.",
+					"desc": "A list of `FileAction`s corresponding to `FilePermission`s that should appear in the  response's SharedFileMetadata.permissions field describing the actions the  authenticated user can perform on the file. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -10223,7 +10223,7 @@
 				{
 					"name": "actions",
 					"type": "List of (FolderAction)?",
-					"desc": "A list of \\`FolderAction\\`s corresponding to \\`FolderPermission\\`s that should appear in the  response's :field:\\`SharedFolderMetadata.permissions\\` field describing the actions the  authenticated user can perform on the folder. This field is optional.",
+					"desc": "A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's SharedFolderMetadata.permissions field describing the actions the  authenticated user can perform on the folder. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -10848,13 +10848,13 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Once a cursor has been retrieved from :route:\\`list_file_members\\` or :route:\\`list_file_members/batch\\`, use this to paginate through all shared file members.",
+		"description": "Once a cursor has been retrieved from [list_file_members](#sharinglist_file_members-see-docs) or [list_file_members/batch](#sharinglist_file_membersbatch-see-docs), use this to paginate through all shared file members.",
 		"parameters": {
 			"list": [
 				{
 					"name": "cursor",
 					"type": "String",
-					"desc": "The cursor returned by your last call to :route:\\`list_file_members\\`, :route:\\`list_file_members/continue\\`, or :route:\\`list_file_members/batch\\`."
+					"desc": "The cursor returned by your last call to  ,  , or  ."
 				}
 			],
 			"example": {
@@ -10936,7 +10936,7 @@
 				{
 					"name": "actions",
 					"type": "List of (MemberAction)?",
-					"desc": "This is a list indicating whether each returned member will include a boolean value :field:\\`MemberPermission.allow\\` that describes whether the current user can perform the MemberAction on the member. This field is optional.",
+					"desc": "This is a list indicating whether each returned member will include a boolean value MemberPermission.allow that describes whether the current user can perform the MemberAction on the member. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -11078,13 +11078,13 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Once a cursor has been retrieved from :route:\\`list_folder_members\\`, use this to paginate through all shared folder members.",
+		"description": "Once a cursor has been retrieved from [list_folder_members](#sharinglist_folder_members-see-docs), use this to paginate through all shared folder members.",
 		"parameters": {
 			"list": [
 				{
 					"name": "cursor",
 					"type": "String",
-					"desc": "The cursor returned by your last call to :route:\\`list_folder_members\\` or :route:\\`list_folder_members/continue\\`."
+					"desc": "The cursor returned by your last call to   or  ."
 				}
 			],
 			"example": {
@@ -11163,7 +11163,7 @@
 				{
 					"name": "actions",
 					"type": "List of (FolderAction)?",
-					"desc": "A list of \\`FolderAction\\`s corresponding to \\`FolderPermission\\`s that should appear in the  response's :field:\\`SharedFolderMetadata.permissions\\` field describing the actions the  authenticated user can perform on the folder. This field is optional.",
+					"desc": "A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's SharedFolderMetadata.permissions field describing the actions the  authenticated user can perform on the folder. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -11385,7 +11385,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Once a cursor has been retrieved from :route:\\`list_folders\\`, use this to paginate through all shared folders. The cursor must come from a previous call to :route:\\`list_folders\\` or :route:\\`list_folders/continue\\`.",
+		"description": "Once a cursor has been retrieved from [list_folders](#sharinglist_folders-see-docs), use this to paginate through all shared folders. The cursor must come from a previous call to [list_folders](#sharinglist_folders-see-docs) or [list_folders/continue](#sharinglist_folderscontinue-see-docs).",
 		"parameters": {
 			"list": [
 				{
@@ -11476,7 +11476,7 @@
 				{
 					"name": "actions",
 					"type": "List of (FolderAction)?",
-					"desc": "A list of \\`FolderAction\\`s corresponding to \\`FolderPermission\\`s that should appear in the  response's :field:\\`SharedFolderMetadata.permissions\\` field describing the actions the  authenticated user can perform on the folder. This field is optional.",
+					"desc": "A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's SharedFolderMetadata.permissions field describing the actions the  authenticated user can perform on the folder. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -11698,7 +11698,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Once a cursor has been retrieved from :route:\\`list_mountable_folders\\`, use this to paginate through all mountable shared folders. The cursor must come from a previous call to :route:\\`list_mountable_folders\\` or :route:\\`list_mountable_folders/continue\\`.",
+		"description": "Once a cursor has been retrieved from [list_mountable_folders](#sharinglist_mountable_folders-see-docs), use this to paginate through all mountable shared folders. The cursor must come from a previous call to [list_mountable_folders](#sharinglist_mountable_folders-see-docs) or [list_mountable_folders/continue](#sharinglist_mountable_folderscontinue-see-docs).",
 		"parameters": {
 			"list": [
 				{
@@ -11789,7 +11789,7 @@
 				{
 					"name": "actions",
 					"type": "List of (FileAction)?",
-					"desc": "A list of \\`FileAction\\`s corresponding to \\`FilePermission\\`s that should appear in the  response's :field:\\`SharedFileMetadata.permissions\\` field describing the actions the  authenticated user can perform on the file. This field is optional.",
+					"desc": "A list of `FileAction`s corresponding to `FilePermission`s that should appear in the  response's SharedFileMetadata.permissions field describing the actions the  authenticated user can perform on the file. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -11968,13 +11968,13 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Get more results with a cursor from :route:\\`list_received_files\\`.",
+		"description": "Get more results with a cursor from [list_received_files](#sharinglist_received_files-see-docs).",
 		"parameters": {
 			"list": [
 				{
 					"name": "cursor",
 					"type": "String",
-					"desc": "Cursor in :field:\\`ListFilesResult.cursor\\`."
+					"desc": "Cursor in ListFilesResult.cursor."
 				}
 			],
 			"example": {
@@ -12025,23 +12025,23 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "List shared links of this user. If no path is given, returns a list of all shared links for the current user. For members of business teams using team space and member folders, returns all shared links in the team member's home folder unless the team space ID is specified in the request header. For more information, refer to the :link:\\`Namespace Guide https://www.dropbox.com/developers/reference/namespace-guide\\`. If a non-empty path is given, returns a list of all shared links that allow access to the given path - direct links to the given path and links to parent folders of the given path. Links to parent folders can be suppressed by setting direct_only to true.",
+		"description": "List shared links of this user. If no path is given, returns a list of all shared links for the current user. For members of business teams using team space and member folders, returns all shared links in the team member's home folder unless the team space ID is specified in the request header. For more information, refer to the Namespace Guide. If a non-empty path is given, returns a list of all shared links that allow access to the given path - direct links to the given path and links to parent folders of the given path. Links to parent folders can be suppressed by setting direct_only to true.",
 		"parameters": {
 			"list": [
 				{
 					"name": "path",
 					"type": "String(pattern=\"(/(.|[\\r\\n])*|id:.*)|(rev:[0-9a-f]{9,})|(ns:[0-9]+(/.*)?)\")?",
-					"desc": "See :route:\\`list_shared_links\\` description. This field is optional."
+					"desc": "See   description. This field is optional."
 				},
 				{
 					"name": "cursor",
 					"type": "String?",
-					"desc": "The cursor returned by your last call to :route:\\`list_shared_links\\`. This field is optional."
+					"desc": "The cursor returned by your last call to  . This field is optional."
 				},
 				{
 					"name": "direct_only",
 					"type": "Boolean?",
-					"desc": "See :route:\\`list_shared_links\\` description. This field is optional."
+					"desc": "See   description. This field is optional."
 				}
 			],
 			"example": {
@@ -12139,7 +12139,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Modify the shared link's settings. If the requested visibility conflict with the shared links policy of the team or the shared folder (in case the linked file is part of a shared folder) then the :field:\\`LinkPermissions.resolved_visibility\\` of the returned :type:\\`SharedLinkMetadata\\` will reflect the actual visibility of the shared link and the :field:\\`LinkPermissions.requested_visibility\\` will reflect the requested visibility.",
+		"description": "Modify the shared link's settings. If the requested visibility conflict with the shared links policy of the team or the shared folder (in case the linked file is part of a shared folder) then the LinkPermissions.resolved_visibility of the returned SharedLinkMetadata will reflect the actual visibility of the shared link and the LinkPermissions.requested_visibility will reflect the requested visibility.",
 		"parameters": {
 			"list": [
 				{
@@ -12162,7 +12162,7 @@
 								{
 									"name": "link_password",
 									"type": "String?",
-									"desc": "If :field:\\`require_password\\` is true, this is needed to specify the password to access the link. This field is optional."
+									"desc": "If require_password is true, this is needed to specify the password to access the link. This field is optional."
 								},
 								{
 									"name": "expires",
@@ -12172,7 +12172,7 @@
 								{
 									"name": "audience",
 									"type": "LinkAudience?",
-									"desc": "The new audience who can benefit from the access level specified by the link's access level specified in the \\`link_access_level\\` field of \\`LinkPermissions\\`. This is used in conjunction with team policies and shared folder policies to determine the final effective audience type in the \\`effective_audience\\` field of \\`LinkPermissions. This field is optional.",
+									"desc": "The new audience who can benefit from the access level specified by the link's access level specified in the `link_access_level` field of `LinkPermissions`. This is used in conjunction with team policies and shared folder policies to determine the final effective audience type in the `effective_audience` field of `LinkPermissions. This field is optional.",
 									"parameters": [
 										{
 											"list": [
@@ -12194,7 +12194,7 @@
 												{
 													"name": "password",
 													"type": "Void",
-													"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+													"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 												},
 												{
 													"name": "members",
@@ -12224,7 +12224,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -12276,7 +12276,7 @@
 								{
 									"name": "requested_visibility",
 									"type": "RequestedVisibility?",
-									"desc": "Field is deprecated. Use :field:\\`audience\\` instead.  The requested access for this shared link. This field is optional.",
+									"desc": "Field is deprecated. Use audience instead.  The requested access for this shared link. This field is optional.",
 									"parameters": [
 										{
 											"list": [
@@ -12343,7 +12343,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -12403,7 +12403,7 @@
 				{
 					"name": "link_password",
 					"type": "String?",
-					"desc": "If :field:\\`require_password\\` is true, this is needed to specify the password to access the link. This field is optional."
+					"desc": "If require_password is true, this is needed to specify the password to access the link. This field is optional."
 				},
 				{
 					"name": "expires",
@@ -12413,7 +12413,7 @@
 				{
 					"name": "audience",
 					"type": "LinkAudience?",
-					"desc": "The new audience who can benefit from the access level specified by the link's access level specified in the \\`link_access_level\\` field of \\`LinkPermissions\\`. This is used in conjunction with team policies and shared folder policies to determine the final effective audience type in the \\`effective_audience\\` field of \\`LinkPermissions. This field is optional.",
+					"desc": "The new audience who can benefit from the access level specified by the link's access level specified in the `link_access_level` field of `LinkPermissions`. This is used in conjunction with team policies and shared folder policies to determine the final effective audience type in the `effective_audience` field of `LinkPermissions. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -12435,7 +12435,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -12465,7 +12465,7 @@
 				{
 					"name": "password",
 					"type": "Void",
-					"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+					"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 				},
 				{
 					"name": "members",
@@ -12517,7 +12517,7 @@
 				{
 					"name": "requested_visibility",
 					"type": "RequestedVisibility?",
-					"desc": "Field is deprecated. Use :field:\\`audience\\` instead.  The requested access for this shared link. This field is optional.",
+					"desc": "Field is deprecated. Use audience instead.  The requested access for this shared link. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -12907,7 +12907,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Revoke a shared link. Note that even after revoking a shared link to a file, the file may be accessible if there are shared links leading to any of the file parent folders. To list all shared links that enable access to a specific file, you can use the :route:\\`list_shared_links\\` with the file as the :field:\\`ListSharedLinksArg.path\\` argument.",
+		"description": "Revoke a shared link. Note that even after revoking a shared link to a file, the file may be accessible if there are shared links leading to any of the file parent folders. To list all shared links that enable access to a specific file, you can use the [list_shared_links](#sharinglist_shared_links-see-docs) with the file as the ListSharedLinksArg.path argument.",
 		"parameters": {
 			"list": [
 				{
@@ -12927,7 +12927,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Change the inheritance policy of an existing Shared Folder. Only permitted for shared folders in a shared team root. If a :field:\\`ShareFolderLaunch.async_job_id\\` is returned, you'll need to call :route:\\`check_share_job_status\\` until the action completes to get the metadata for the folder.",
+		"description": "Change the inheritance policy of an existing Shared Folder. Only permitted for shared folders in a shared team root. If a ShareFolderLaunch.async_job_id is returned, you'll need to call [check_share_job_status](#sharingcheck_share_job_status-see-docs) until the action completes to get the metadata for the folder.",
 		"parameters": {
 			"list": [
 				{
@@ -13036,7 +13036,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Share a folder with collaborators. Most sharing will be completed synchronously. Large folders will be completed asynchronously. To make testing the async case repeatable, set \\`ShareFolderArg.force_async\\`. If a :field:\\`ShareFolderLaunch.async_job_id\\` is returned, you'll need to call :route:\\`check_share_job_status\\` until the action completes to get the metadata for the folder.",
+		"description": "Share a folder with collaborators. Most sharing will be completed synchronously. Large folders will be completed asynchronously. To make testing the async case repeatable, set `ShareFolderArg.force_async`. If a ShareFolderLaunch.async_job_id is returned, you'll need to call [check_share_job_status](#sharingcheck_share_job_status-see-docs) until the action completes to get the metadata for the folder.",
 		"parameters": {
 			"list": [
 				{
@@ -13116,7 +13116,7 @@
 				{
 					"name": "shared_link_policy",
 					"type": "SharedLinkPolicy?",
-					"desc": "The policy to apply to shared links created for content inside this shared folder.  The current user must be on a team to set this policy to :field:\\`SharedLinkPolicy.members\\`. This field is optional.",
+					"desc": "The policy to apply to shared links created for content inside this shared folder.  The current user must be on a team to set this policy to SharedLinkPolicy.members. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -13222,7 +13222,7 @@
 				{
 					"name": "actions",
 					"type": "List of (FolderAction)?",
-					"desc": "A list of \\`FolderAction\\`s corresponding to \\`FolderPermission\\`s that should appear in the  response's :field:\\`SharedFolderMetadata.permissions\\` field describing the actions the  authenticated user can perform on the folder. This field is optional.",
+					"desc": "A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's SharedFolderMetadata.permissions field describing the actions the  authenticated user can perform on the folder. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -13388,7 +13388,7 @@
 												{
 													"name": "owner",
 													"type": "Void",
-													"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+													"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 												},
 												{
 													"name": "editor",
@@ -13413,7 +13413,7 @@
 								{
 									"name": "owner",
 									"type": "Void",
-									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 								},
 								{
 									"name": "editor",
@@ -13455,7 +13455,7 @@
 												{
 													"name": "password",
 													"type": "Void",
-													"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+													"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 												},
 												{
 													"name": "members",
@@ -13485,7 +13485,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -13564,7 +13564,7 @@
 								{
 									"name": "owner",
 									"type": "Void",
-									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 								},
 								{
 									"name": "editor",
@@ -13604,7 +13604,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -13656,7 +13656,7 @@
 								{
 									"name": "owner",
 									"type": "Void",
-									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 								},
 								{
 									"name": "editor",
@@ -13681,7 +13681,7 @@
 				{
 					"name": "owner",
 					"type": "Void",
-					"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+					"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 				},
 				{
 					"name": "editor",
@@ -13723,7 +13723,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -13753,7 +13753,7 @@
 				{
 					"name": "password",
 					"type": "Void",
-					"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+					"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 				},
 				{
 					"name": "members",
@@ -13897,7 +13897,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Transfer ownership of a shared folder to a member of the shared folder. User must have :field:\\`AccessLevel.owner\\` access to the shared folder to perform a transfer.",
+		"description": "Transfer ownership of a shared folder to a member of the shared folder. User must have AccessLevel.owner access to the shared folder to perform a transfer.",
 		"parameters": {
 			"list": [
 				{
@@ -13923,7 +13923,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "The current user unmounts the designated folder. They can re-mount the folder at a later time using :route:\\`mount_folder\\`.",
+		"description": "The current user unmounts the designated folder. They can re-mount the folder at a later time using [mount_folder](#sharingmount_folder-see-docs).",
 		"parameters": {
 			"list": [
 				{
@@ -13963,7 +13963,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Allows a shared folder owner to unshare the folder. You'll need to call :route:\\`check_job_status\\` to determine if the action has completed successfully.",
+		"description": "Allows a shared folder owner to unshare the folder. You'll need to call [check_job_status](#sharingcheck_job_status-see-docs) to determine if the action has completed successfully.",
 		"parameters": {
 			"list": [
 				{
@@ -14041,7 +14041,7 @@
 								{
 									"name": "owner",
 									"type": "Void",
-									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 								},
 								{
 									"name": "editor",
@@ -14066,7 +14066,7 @@
 				{
 					"name": "owner",
 					"type": "Void",
-					"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+					"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 				},
 				{
 					"name": "editor",
@@ -14111,7 +14111,7 @@
 				{
 					"name": "member",
 					"type": "MemberSelector",
-					"desc": "The member of the shared folder to update.  Only the :field:\\`MemberSelector.dropbox_id\\` may be set at this time.",
+					"desc": "The member of the shared folder to update.  Only the MemberSelector.dropbox_id may be set at this time.",
 					"parameters": [
 						{
 							"list": [
@@ -14143,14 +14143,14 @@
 				{
 					"name": "access_level",
 					"type": "AccessLevel",
-					"desc": "The new access level for :field:\\`member\\`. :field:\\`AccessLevel.owner\\` is disallowed.",
+					"desc": "The new access level for member. AccessLevel.owner is disallowed.",
 					"parameters": [
 						{
 							"list": [
 								{
 									"name": "owner",
 									"type": "Void",
-									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 								},
 								{
 									"name": "editor",
@@ -14175,7 +14175,7 @@
 				{
 					"name": "owner",
 					"type": "Void",
-					"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+					"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 				},
 				{
 					"name": "editor",
@@ -14209,7 +14209,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Update the sharing policies for a shared folder. User must have :field:\\`AccessLevel.owner\\` access to the shared folder to update its policies.",
+		"description": "Update the sharing policies for a shared folder. User must have AccessLevel.owner access to the shared folder to update its policies.",
 		"parameters": {
 			"list": [
 				{
@@ -14316,7 +14316,7 @@
 				{
 					"name": "shared_link_policy",
 					"type": "SharedLinkPolicy?",
-					"desc": "The policy to apply to shared links created for content inside this shared folder. The current user must be on a team to set this policy to :field:\\`SharedLinkPolicy.members\\`. This field is optional.",
+					"desc": "The policy to apply to shared links created for content inside this shared folder. The current user must be on a team to set this policy to SharedLinkPolicy.members. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -14372,7 +14372,7 @@
 												{
 													"name": "owner",
 													"type": "Void",
-													"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+													"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 												},
 												{
 													"name": "editor",
@@ -14397,7 +14397,7 @@
 								{
 									"name": "owner",
 									"type": "Void",
-									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 								},
 								{
 									"name": "editor",
@@ -14439,7 +14439,7 @@
 												{
 													"name": "password",
 													"type": "Void",
-													"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+													"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 												},
 												{
 													"name": "members",
@@ -14469,7 +14469,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -14548,7 +14548,7 @@
 								{
 									"name": "owner",
 									"type": "Void",
-									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 								},
 								{
 									"name": "editor",
@@ -14588,7 +14588,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -14640,7 +14640,7 @@
 								{
 									"name": "owner",
 									"type": "Void",
-									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+									"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 								},
 								{
 									"name": "editor",
@@ -14665,7 +14665,7 @@
 				{
 					"name": "owner",
 					"type": "Void",
-					"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using :route:\\`update_folder_policy\\`."
+					"desc": "The collaborator is the owner of the shared folder. Owners can view and edit the shared folder as well as set the folder's policies using  ."
 				},
 				{
 					"name": "editor",
@@ -14707,7 +14707,7 @@
 								{
 									"name": "password",
 									"type": "Void",
-									"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+									"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 								},
 								{
 									"name": "members",
@@ -14737,7 +14737,7 @@
 				{
 					"name": "password",
 					"type": "Void",
-					"desc": "Field is deprecated. Use \\`require_password\\` instead. A link-specific password is required to access the link. Login is not required."
+					"desc": "Field is deprecated. Use `require_password` instead. A link-specific password is required to access the link. Login is not required."
 				},
 				{
 					"name": "members",
@@ -14811,7 +14811,7 @@
 				{
 					"name": "actions",
 					"type": "List of (FolderAction)?",
-					"desc": "A list of \\`FolderAction\\`s corresponding to \\`FolderPermission\\`s that should appear in the  response's :field:\\`SharedFolderMetadata.permissions\\` field describing the actions the  authenticated user can perform on the folder. This field is optional.",
+					"desc": "A list of `FolderAction`s corresponding to `FolderPermission`s that should appear in the  response's SharedFolderMetadata.permissions field describing the actions the  authenticated user can perform on the folder. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -15036,7 +15036,7 @@
 				{
 					"name": "features",
 					"type": "List of (UserFeature)",
-					"desc": "A list of features in :type:\\`UserFeature\\`. If the list is empty, this route will return :type:\\`UserFeaturesGetValuesBatchError\\`.",
+					"desc": "A list of features in UserFeature. If the list is empty, this route will return UserFeaturesGetValuesBatchError.",
 					"parameters": [
 						{
 							"list": [
@@ -15235,12 +15235,12 @@
 				{
 					"name": "include_media_info",
 					"type": "Boolean",
-					"desc": "If true, :field:\\`FileMetadata.media_info\\` is set for photo and video. The default for this field is False."
+					"desc": "If true, FileMetadata.media_info is set for photo and video. The default for this field is False."
 				},
 				{
 					"name": "include_deleted",
 					"type": "Boolean",
-					"desc": "If true, :type:\\`DeletedMetadata\\` will be returned for deleted file or folder, otherwise :field:\\`LookupError.not_found\\` will be returned. The default for this field is False."
+					"desc": "If true, DeletedMetadata will be returned for deleted file or folder, otherwise LookupError.not_found will be returned. The default for this field is False."
 				},
 				{
 					"name": "include_has_explicit_shared_members",
@@ -15250,7 +15250,7 @@
 				{
 					"name": "include_property_groups",
 					"type": "TemplateFilterBase?",
-					"desc": "If set to a valid list of template IDs, :field:\\`FileMetadata.property_groups\\` is set if there exists property data associated with the file and each of the listed templates. This field is optional.",
+					"desc": "If set to a valid list of template IDs, FileMetadata.property_groups is set if there exists property data associated with the file and each of the listed templates. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -15272,7 +15272,7 @@
 				{
 					"name": "include_property_templates",
 					"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"))?",
-					"desc": "Field is deprecated. If set to a valid list of template IDs, :field:\\`FileMetadata.property_groups\\` is set for files with custom properties. This field is optional."
+					"desc": "Field is deprecated. If set to a valid list of template IDs, FileMetadata.property_groups is set for files with custom properties. This field is optional."
 				}
 			],
 			"example": {
@@ -15323,7 +15323,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
-		"description": "Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API alpha and is slightly different from :route:\\`upload\\`. Do not use this to upload a file larger than 150 MB. Instead, create an upload session with :route:\\`upload_session/start\\`.",
+		"description": "Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API alpha and is slightly different from [upload](#filesupload-see-docs). Do not use this to upload a file larger than 150 MB. Instead, create an upload session with [upload_session/start](#filesupload_sessionstart-see-docs).",
 		"parameters": {
 			"list": [
 				{
@@ -15346,7 +15346,7 @@
 								{
 									"name": "overwrite",
 									"type": "Void",
-									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+									"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 								},
 								{
 									"name": "update",
@@ -15366,7 +15366,7 @@
 				{
 					"name": "overwrite",
 					"type": "Void",
-					"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for :field:\\`add\\`."
+					"desc": "Always overwrite the existing file. The autorename strategy is the same as it is for add."
 				},
 				{
 					"name": "update",
@@ -15376,17 +15376,17 @@
 				{
 					"name": "autorename",
 					"type": "Boolean",
-					"desc": "If there's a conflict, as determined by :field:\\`mode\\`, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
+					"desc": "If there's a conflict, as determined by mode, have the Dropbox server try to autorename the file to avoid conflict. The default for this field is False."
 				},
 				{
 					"name": "client_modified",
 					"type": "Timestamp(format=\"%Y-%m-%dT%H:%M:%SZ\")?",
-					"desc": "The value to store as the :field:\\`client_modified\\` timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
+					"desc": "The value to store as the client_modified timestamp. Dropbox automatically records the time at which the file was written to the Dropbox servers. It can also record an additional timestamp, provided by Dropbox desktop clients, mobile clients, and API apps of when the file was actually created or modified. This field is optional."
 				},
 				{
 					"name": "mute",
 					"type": "Boolean",
-					"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If :val:\\`true\\`, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
+					"desc": "Normally, users are made aware of any file modifications in their Dropbox account via notifications in the client software. If true, this tells the clients that this modification shouldn't result in a user notification. The default for this field is False."
 				},
 				{
 					"name": "property_groups",
@@ -15492,7 +15492,7 @@
 				{
 					"name": "strict_conflict",
 					"type": "Boolean",
-					"desc": "Be more strict about how each :type:\\`WriteMode\\` detects conflict. For example, always return a conflict error when :field:\\`mode\\` = :field:\\`WriteMode.update\\` and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
+					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
 				}
 			],
 			"example": {
@@ -15818,7 +15818,7 @@
 				{
 					"name": "property_template_ids",
 					"type": "List of (String(min_length=1, pattern=\"(/|ptid:).*\"))",
-					"desc": "A list of identifiers for a template created by :route:\\`templates/add_for_user\\` or :route:\\`templates/add_for_team\\`."
+					"desc": "A list of identifiers for a template created by   or  ."
 				}
 			],
 			"example": {
@@ -15841,7 +15841,7 @@
 				{
 					"name": "template_id",
 					"type": "String(min_length=1, pattern=\"(/|ptid:).*\")",
-					"desc": "An identifier for template added by route  See :route:\\`templates/add_for_user\\` or :route:\\`templates/add_for_team\\`."
+					"desc": "An identifier for template added by route  See   or  ."
 				}
 			],
 			"example": {
@@ -16026,7 +16026,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Marks the given Paper doc as archived. This action can be performed or undone by anyone with edit permissions to the doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. This endpoint will be retired in September 2020. Refer to the :link:\\`Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide\\` for more information.",
+		"description": "Marks the given Paper doc as archived. This action can be performed or undone by anyone with edit permissions to the doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. This endpoint will be retired in September 2020. Refer to the Paper Migration Guide for more information.",
 		"parameters": {
 			"list": [
 				{
@@ -16046,7 +16046,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
-		"description": "Creates a new Paper doc with the provided content. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. This endpoint will be retired in September 2020. Refer to the :link:\\`Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide\\` for more information.",
+		"description": "Creates a new Paper doc with the provided content. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. This endpoint will be retired in September 2020. Refer to the Paper Migration Guide for more information.",
 		"parameters": {
 			"list": [
 				{
@@ -16112,7 +16112,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "DOWNLOAD",
-		"description": "Exports and downloads Paper doc either as HTML or markdown. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the :link:\\`Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide\\` for migration information.",
+		"description": "Exports and downloads Paper doc either as HTML or markdown. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
 		"parameters": {
 			"list": [
 				{
@@ -16170,7 +16170,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Lists the users who are explicitly invited to the Paper folder in which the Paper doc is contained. For private folders all users (including owner) shared on the folder are listed and for team folders all non-team users shared on the folder are returned. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the :link:\\`Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide\\` for migration information.",
+		"description": "Lists the users who are explicitly invited to the Paper folder in which the Paper doc is contained. For private folders all users (including owner) shared on the folder are listed and for team folders all non-team users shared on the folder are returned. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
 		"parameters": {
 			"list": [
 				{
@@ -16217,7 +16217,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Once a cursor has been retrieved from :route:\\`docs/folder_users/list\\`, use this to paginate through all users on the Paper folder. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the :link:\\`Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide\\` for migration information.",
+		"description": "Once a cursor has been retrieved from [docs/folder_users/list](#paperdocsfolder_userslist-see-docs), use this to paginate through all users on the Paper folder. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
 		"parameters": {
 			"list": [
 				{
@@ -16228,7 +16228,7 @@
 				{
 					"name": "cursor",
 					"type": "String",
-					"desc": "The cursor obtained from :route:\\`docs/folder_users/list\\` or :route:\\`docs/folder_users/list/continue\\`. Allows for pagination."
+					"desc": "The cursor obtained from   or  . Allows for pagination."
 				}
 			],
 			"example": {
@@ -16264,7 +16264,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Retrieves folder information for the given Paper doc. This includes:   - folder sharing policy; permissions for subfolders are set by the top-level folder.   - full 'filepath', i.e. the list of folders (both folderId and folderName) from     the root folder to the folder directly containing the Paper doc.  If the Paper doc is not in any folder (aka unfiled) the response will be empty. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the :link:\\`Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide\\` for migration information.",
+		"description": "Retrieves folder information for the given Paper doc. This includes:   - folder sharing policy; permissions for subfolders are set by the top-level folder.   - full 'filepath', i.e. the list of folders (both folderId and folderName) from     the root folder to the folder directly containing the Paper doc.  If the Paper doc is not in any folder (aka unfiled) the response will be empty. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
 		"parameters": {
 			"list": [
 				{
@@ -16294,7 +16294,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Return the list of all Paper docs according to the argument specifications. To iterate over through the full pagination, pass the cursor to :route:\\`docs/list/continue\\`. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the :link:\\`Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide\\` for migration information.",
+		"description": "Return the list of all Paper docs according to the argument specifications. To iterate over through the full pagination, pass the cursor to [docs/list/continue](#paperdocslistcontinue-see-docs). Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
 		"parameters": {
 			"list": [
 				{
@@ -16434,13 +16434,13 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Once a cursor has been retrieved from :route:\\`docs/list\\`, use this to paginate through all Paper doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the :link:\\`Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide\\` for migration information.",
+		"description": "Once a cursor has been retrieved from [docs/list](#paperdocslist-see-docs), use this to paginate through all Paper doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
 		"parameters": {
 			"list": [
 				{
 					"name": "cursor",
 					"type": "String",
-					"desc": "The cursor obtained from :route:\\`docs/list\\` or :route:\\`docs/list/continue\\`. Allows for pagination."
+					"desc": "The cursor obtained from   or  . Allows for pagination."
 				}
 			],
 			"example": {
@@ -16465,7 +16465,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Permanently deletes the given Paper doc. This operation is final as the doc cannot be recovered. This action can be performed only by the doc owner. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the :link:\\`Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide\\` for migration information.",
+		"description": "Permanently deletes the given Paper doc. This operation is final as the doc cannot be recovered. This action can be performed only by the doc owner. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
 		"parameters": {
 			"list": [
 				{
@@ -16485,7 +16485,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Gets the default sharing policy for the given Paper doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the :link:\\`Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide\\` for migration information.",
+		"description": "Gets the default sharing policy for the given Paper doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
 		"parameters": {
 			"list": [
 				{
@@ -16512,7 +16512,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Sets the default sharing policy for the given Paper doc. The default 'team_sharing_policy' can be changed only by teams, omit this field for personal accounts. The 'public_sharing_policy' policy can't be set to the value 'disabled' because this setting can be changed only via the team admin console. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the :link:\\`Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide\\` for migration information.",
+		"description": "Sets the default sharing policy for the given Paper doc. The default 'team_sharing_policy' can be changed only by teams, omit this field for personal accounts. The 'public_sharing_policy' policy can't be set to the value 'disabled' because this setting can be changed only via the team admin console. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
 		"parameters": {
 			"list": [
 				{
@@ -16781,7 +16781,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": true,
 		"category": "UPLOAD",
-		"description": "Updates an existing Paper doc with the provided content. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. This endpoint will be retired in September 2020. Refer to the :link:\\`Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide\\` for more information.",
+		"description": "Updates an existing Paper doc with the provided content. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. This endpoint will be retired in September 2020. Refer to the Paper Migration Guide for more information.",
 		"parameters": {
 			"list": [
 				{
@@ -16897,7 +16897,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Allows an owner or editor to add users to a Paper doc or change their permissions using their email address or Dropbox account ID. The doc owner's permissions cannot be changed. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the :link:\\`Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide\\` for migration information.",
+		"description": "Allows an owner or editor to add users to a Paper doc or change their permissions using their email address or Dropbox account ID. The doc owner's permissions cannot be changed. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
 		"parameters": {
 			"list": [
 				{
@@ -17108,7 +17108,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Lists all users who visited the Paper doc or users with explicit access. This call excludes users who have been removed. The list is sorted by the date of the visit or the share date. The list will include both users, the explicitly shared ones as well as those who came in using the Paper url link. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the :link:\\`Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide\\` for migration information.",
+		"description": "Lists all users who visited the Paper doc or users with explicit access. This call excludes users who have been removed. The list is sorted by the date of the visit or the share date. The list will include both users, the explicitly shared ones as well as those who came in using the Paper url link. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
 		"parameters": {
 			"list": [
 				{
@@ -17205,7 +17205,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Once a cursor has been retrieved from :route:\\`docs/users/list\\`, use this to paginate through all users on the Paper doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the :link:\\`Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide\\` for migration information.",
+		"description": "Once a cursor has been retrieved from [docs/users/list](#paperdocsuserslist-see-docs), use this to paginate through all users on the Paper doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
 		"parameters": {
 			"list": [
 				{
@@ -17216,7 +17216,7 @@
 				{
 					"name": "cursor",
 					"type": "String",
-					"desc": "The cursor obtained from :route:\\`docs/users/list\\` or :route:\\`docs/users/list/continue\\`. Allows for pagination."
+					"desc": "The cursor obtained from   or  . Allows for pagination."
 				}
 			],
 			"example": {
@@ -17269,7 +17269,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Allows an owner or editor to remove users from a Paper doc using their email address or Dropbox account ID. The doc owner cannot be removed. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the :link:\\`Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide\\` for migration information.",
+		"description": "Allows an owner or editor to remove users from a Paper doc using their email address or Dropbox account ID. The doc owner cannot be removed. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
 		"parameters": {
 			"list": [
 				{
@@ -17325,7 +17325,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Create a new Paper folder with the provided info. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the :link:\\`Paper Migration Guide https://www.dropbox.com/lp/developers/reference/paper-migration-guide\\` for migration information.",
+		"description": "Create a new Paper folder with the provided info. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.",
 		"parameters": {
 			"list": [
 				{
@@ -17357,7 +17357,7 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Create a shared link. If a shared link already exists for the given path, that link is returned. Previously, it was technically possible to break a shared link by moving or renaming the corresponding file or folder. In the future, this will no longer be the case, so your app shouldn't rely on this behavior. Instead, if your app needs to revoke a shared link, use :route:\\`revoke_shared_link\\`.",
+		"description": "Create a shared link. If a shared link already exists for the given path, that link is returned. Previously, it was technically possible to break a shared link by moving or renaming the corresponding file or folder. In the future, this will no longer be the case, so your app shouldn't rely on this behavior. Instead, if your app needs to revoke a shared link, use [revoke_shared_link](#sharingrevoke_shared_link-see-docs).",
 		"parameters": {
 			"list": [
 				{
@@ -17373,7 +17373,7 @@
 				{
 					"name": "pending_upload",
 					"type": "PendingUploadMode?",
-					"desc": "If it's okay to share a path that does not yet exist, set this to either :field:\\`PendingUploadMode.file\\` or :field:\\`PendingUploadMode.folder\\` to indicate whether to assume it's a file or folder. This field is optional.",
+					"desc": "If it's okay to share a path that does not yet exist, set this to either PendingUploadMode.file or PendingUploadMode.folder to indicate whether to assume it's a file or folder. This field is optional.",
 					"parameters": [
 						{
 							"list": [
@@ -17421,13 +17421,13 @@
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
-		"description": "Returns a list of :type:\\`LinkMetadata\\` objects for this user, including collection links. If no path is given, returns a list of all shared links for the current user, including collection links, up to a maximum of 1000 links. If a non-empty path is given, returns a list of all shared links that allow access to the given path.  Collection links are never returned in this case.",
+		"description": "Returns a list of LinkMetadata objects for this user, including collection links. If no path is given, returns a list of all shared links for the current user, including collection links, up to a maximum of 1000 links. If a non-empty path is given, returns a list of all shared links that allow access to the given path.  Collection links are never returned in this case.",
 		"parameters": {
 			"list": [
 				{
 					"name": "path",
 					"type": "String?",
-					"desc": "See :route:\\`get_shared_links\\` description. This field is optional."
+					"desc": "See   description. This field is optional."
 				}
 			],
 			"example": {
