@@ -147,7 +147,7 @@
 			"list": [
 				{
 					"name": "email_addresses",
-					"type": "List of (String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\"))",
+					"type": "List of (String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\"))",
 					"desc": "List of manually added contacts to be deleted."
 				}
 			],
@@ -8858,7 +8858,7 @@
 								},
 								{
 									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+									"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 									"desc": "Email address of member."
 								}
 							],
@@ -8873,7 +8873,7 @@
 				},
 				{
 					"name": "email",
-					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+					"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 					"desc": "Email address of member."
 				},
 				{
@@ -8994,7 +8994,7 @@
 												},
 												{
 													"name": "email",
-													"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+													"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 													"desc": "Email address of member."
 												}
 											],
@@ -9009,7 +9009,7 @@
 								},
 								{
 									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+									"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 									"desc": "Email address of member."
 								},
 								{
@@ -9076,7 +9076,7 @@
 								},
 								{
 									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+									"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 									"desc": "Email address of member."
 								}
 							],
@@ -9123,7 +9123,7 @@
 								},
 								{
 									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+									"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 									"desc": "Email address of member."
 								}
 							],
@@ -9138,7 +9138,7 @@
 				},
 				{
 					"name": "email",
-					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+					"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 					"desc": "Email address of member."
 				},
 				{
@@ -12808,7 +12808,7 @@
 								},
 								{
 									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+									"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 									"desc": "Email address of member."
 								}
 							],
@@ -12823,7 +12823,7 @@
 				},
 				{
 					"name": "email",
-					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+					"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 					"desc": "Email address of member."
 				}
 			],
@@ -12864,7 +12864,7 @@
 								},
 								{
 									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+									"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 									"desc": "Email address of member."
 								}
 							],
@@ -12879,7 +12879,7 @@
 				},
 				{
 					"name": "email",
-					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+					"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 					"desc": "Email address of member."
 				},
 				{
@@ -14013,7 +14013,7 @@
 								},
 								{
 									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+									"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 									"desc": "Email address of member."
 								}
 							],
@@ -14028,7 +14028,7 @@
 				},
 				{
 					"name": "email",
-					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+					"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 					"desc": "Email address of member."
 				},
 				{
@@ -14122,7 +14122,7 @@
 								},
 								{
 									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+									"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 									"desc": "Email address of member."
 								}
 							],
@@ -14137,7 +14137,7 @@
 				},
 				{
 					"name": "email",
-					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+					"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 					"desc": "Email address of member."
 				},
 				{
@@ -16926,7 +16926,7 @@
 												},
 												{
 													"name": "email",
-													"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+													"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 													"desc": "Email address of member."
 												}
 											],
@@ -16941,7 +16941,7 @@
 								},
 								{
 									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+									"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 									"desc": "Email address of member."
 								},
 								{
@@ -16988,7 +16988,7 @@
 								},
 								{
 									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+									"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 									"desc": "Email address of member."
 								}
 							],
@@ -17025,7 +17025,7 @@
 								},
 								{
 									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+									"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 									"desc": "Email address of member."
 								}
 							],
@@ -17040,7 +17040,7 @@
 				},
 				{
 					"name": "email",
-					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+					"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 					"desc": "Email address of member."
 				},
 				{
@@ -17291,7 +17291,7 @@
 								},
 								{
 									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+									"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 									"desc": "Email address of member."
 								}
 							],
@@ -17306,7 +17306,7 @@
 				},
 				{
 					"name": "email",
-					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+					"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 					"desc": "Email address of member."
 				}
 			],
@@ -17474,7 +17474,7 @@
 								},
 								{
 									"name": "email",
-									"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+									"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 									"desc": "Email address of member."
 								}
 							],
@@ -17489,7 +17489,7 @@
 				},
 				{
 					"name": "email",
-					"type": "String(max_length=255, pattern=\"^['&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
+					"type": "String(max_length=255, pattern=\"^['#&A-Za-z0-9._%+-]+@[A-Za-z0-9-][A-Za-z0-9.-]*\\.[A-Za-z]{2,15}$\")",
 					"desc": "Email address of member."
 				}
 			],
