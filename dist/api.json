@@ -612,7 +612,7 @@
 		}
 	},
 	"files/upload_session/finish_batch": {
-		"uri": "https://api.dropboxapi.com/2/files/upload_session/finish_batch",
+		"uri": "https://api.dropboxapi.com/2/files/upload_session/finish_batch_v2",
 		"requiresAuthHeader": true,
 		"requiresReadableStream": false,
 		"category": "RPC",
