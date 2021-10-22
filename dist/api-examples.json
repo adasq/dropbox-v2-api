@@ -6578,6 +6578,92 @@
 			"has_more": false
 		}
 	},
+	"files/tags/add": {
+		"uri": "https://api.dropboxapi.com/2/files/tags/add",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Add a tag to an item. A tag is a string. No more than 10 tags can be added to a given item.",
+		"parameters": {
+			"list": [
+				{
+					"name": "path",
+					"type": "String(pattern=\"/(.|[\\r\\n])*\")",
+					"desc": "Path to the item to be tagged."
+				},
+				{
+					"name": "tag_text",
+					"type": "String(min_length=1, max_length=32, pattern=\"[A-Za-z0-9_]+\")",
+					"desc": "The value of the tag to add."
+				}
+			],
+			"example": {
+				"path": "/Prime_Numbers.txt",
+				"tag_text": "MyTag"
+			}
+		},
+		"returnParameters": null
+	},
+	"files/tags/get": {
+		"uri": "https://api.dropboxapi.com/2/files/tags/get",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Get list of tags assigned to items.",
+		"parameters": {
+			"list": [
+				{
+					"name": "paths",
+					"type": "List of (String(pattern=\"/(.|[\\r\\n])*\"))",
+					"desc": "Path to the items."
+				}
+			],
+			"example": {
+				"paths": [
+					"/Prime_Numbers.txt"
+				]
+			}
+		},
+		"returnParameters": {
+			"paths_to_tags": [
+				{
+					"path": "/Prime_Numbers.txt",
+					"tags": [
+						{
+							".tag": "user_generated_tag",
+							"tag_text": "my_tag"
+						}
+					]
+				}
+			]
+		}
+	},
+	"files/tags/remove": {
+		"uri": "https://api.dropboxapi.com/2/files/tags/remove",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "Remove a tag from an item.",
+		"parameters": {
+			"list": [
+				{
+					"name": "path",
+					"type": "String(pattern=\"/(.|[\\r\\n])*\")",
+					"desc": "Path to the item to tag."
+				},
+				{
+					"name": "tag_text",
+					"type": "String(min_length=1, max_length=32, pattern=\"[A-Za-z0-9_]+\")",
+					"desc": "The tag to remove."
+				}
+			],
+			"example": {
+				"path": "/Prime_Numbers.txt",
+				"tag_text": "MyTag"
+			}
+		},
+		"returnParameters": null
+	},
 	"files/unlock_file_batch": {
 		"uri": "https://api.dropboxapi.com/2/files/unlock_file_batch",
 		"requiresAuthHeader": true,
