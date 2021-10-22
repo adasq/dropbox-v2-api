@@ -575,6 +575,33 @@
 			"available": true
 		}
 	},
+	"files/tags/add": {
+		"uri": "https://api.dropboxapi.com/2/files/tags/add",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"files/tags/get": {
+		"uri": "https://api.dropboxapi.com/2/files/tags/get",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
+	"files/tags/remove": {
+		"uri": "https://api.dropboxapi.com/2/files/tags/remove",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
 	"files/unlock_file_batch": {
 		"uri": "https://api.dropboxapi.com/2/files/unlock_file_batch",
 		"requiresAuthHeader": true,
