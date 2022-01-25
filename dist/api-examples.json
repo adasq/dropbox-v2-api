@@ -8969,7 +8969,7 @@
 				{
 					"name": "quiet",
 					"type": "Boolean",
-					"desc": "Whether added members should be notified via device notifications of their invitation. The default for this field is False."
+					"desc": "Whether added members should be notified via email and device notifications of their invitation. The default for this field is False."
 				},
 				{
 					"name": "access_level",
