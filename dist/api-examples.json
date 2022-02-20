@@ -6757,7 +6757,7 @@
 	"files/upload": {
 		"uri": "https://content.dropboxapi.com/2/files/upload",
 		"requiresAuthHeader": true,
-		"requiresReadableStream": true,
+		"requiresReadableStream": false,
 		"category": "UPLOAD",
 		"description": "Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB. Instead, create an upload session with [upload_session/start](#filesupload_sessionstart-see-docs). Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the Data transport limit page.",
 		"parameters": {
@@ -6929,15 +6929,14 @@
 					"name": "strict_conflict",
 					"type": "Boolean",
 					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
+				},
+				{
+					"name": "content_hash",
+					"type": "String(min_length=64, max_length=64)?",
+					"desc": "NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded content does not match this hash, an error will be returned. For more information see our   page. This field is optional."
 				}
 			],
-			"example": {
-				"path": "/Homework/math/Matrices.txt",
-				"mode": "add",
-				"autorename": true,
-				"mute": false,
-				"strict_conflict": false
-			}
+			"example": null
 		},
 		"returnParameters": {
 			"name": "Prime_Numbers.txt",
@@ -7018,6 +7017,11 @@
 					"name": "close",
 					"type": "Boolean",
 					"desc": "If true, the current session will be closed, at which point you won't be able to call   anymore with the current session. The default for this field is False."
+				},
+				{
+					"name": "content_hash",
+					"type": "String(min_length=64, max_length=64)?",
+					"desc": "NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded content does not match this hash, an error will be returned. For more information see our   page. This field is optional."
 				}
 			],
 			"example": {
@@ -7494,6 +7498,11 @@
 					"name": "strict_conflict",
 					"type": "Boolean",
 					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
+				},
+				{
+					"name": "content_hash",
+					"type": "String(min_length=64, max_length=64)?",
+					"desc": "NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded content does not match this hash, an error will be returned. For more information see our   page. This field is optional."
 				}
 			],
 			"example": {
@@ -8016,6 +8025,11 @@
 									"name": "strict_conflict",
 									"type": "Boolean",
 									"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
+								},
+								{
+									"name": "content_hash",
+									"type": "String(min_length=64, max_length=64)?",
+									"desc": "NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded content does not match this hash, an error will be returned. For more information see our   page. This field is optional."
 								}
 							],
 							"example": null
@@ -8743,6 +8757,11 @@
 					"name": "strict_conflict",
 					"type": "Boolean",
 					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
+				},
+				{
+					"name": "content_hash",
+					"type": "String(min_length=64, max_length=64)?",
+					"desc": "NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded content does not match this hash, an error will be returned. For more information see our   page. This field is optional."
 				}
 			],
 			"example": {
@@ -8906,6 +8925,11 @@
 					"name": "concurrent",
 					"type": "Void",
 					"desc": "Pieces of data can be uploaded in concurrent RPCs in any order."
+				},
+				{
+					"name": "content_hash",
+					"type": "String(min_length=64, max_length=64)?",
+					"desc": "NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded content does not match this hash, an error will be returned. For more information see our   page. This field is optional."
 				}
 			],
 			"example": {
@@ -15406,9 +15430,9 @@
 	"deprecated/alpha/upload": {
 		"uri": "https://content.dropboxapi.com/2/files/alpha/upload",
 		"requiresAuthHeader": true,
-		"requiresReadableStream": true,
+		"requiresReadableStream": false,
 		"category": "UPLOAD",
-		"description": "Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API alpha and is slightly different from [upload](#filesupload-see-docs). Do not use this to upload a file larger than 150 MB. Instead, create an upload session with [upload_session/start](#filesupload_sessionstart-see-docs).",
+		"description": "Create a new file with the contents provided in the request. Note that the behavior of this alpha endpoint is unstable and subject to change. Do not use this to upload a file larger than 150 MB. Instead, create an upload session with [upload_session/start](#filesupload_sessionstart-see-docs).",
 		"parameters": {
 			"list": [
 				{
@@ -15578,15 +15602,14 @@
 					"name": "strict_conflict",
 					"type": "Boolean",
 					"desc": "Be more strict about how each WriteMode detects conflict. For example, always return a conflict error when mode = WriteMode.update and the given \"rev\" doesn't match the existing file's \"rev\", even if the existing file has been deleted. This also forces a conflict even when the target path refers to a file with identical contents. The default for this field is False."
+				},
+				{
+					"name": "content_hash",
+					"type": "String(min_length=64, max_length=64)?",
+					"desc": "NOT YET SUPPORTED. A hash of the file content uploaded in this call. If provided and the uploaded content does not match this hash, an error will be returned. For more information see our   page. This field is optional."
 				}
 			],
-			"example": {
-				"path": "/Homework/math/Matrices.txt",
-				"mode": "add",
-				"autorename": true,
-				"mute": false,
-				"strict_conflict": false
-			}
+			"example": null
 		},
 		"returnParameters": {
 			"name": "Prime_Numbers.txt",
