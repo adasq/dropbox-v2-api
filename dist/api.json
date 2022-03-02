@@ -614,7 +614,7 @@
 	"files/upload": {
 		"uri": "https://content.dropboxapi.com/2/files/upload",
 		"requiresAuthHeader": true,
-		"requiresReadableStream": true,
+		"requiresReadableStream": false,
 		"category": "UPLOAD",
 		"parameters": {
 			"available": true
@@ -1073,7 +1073,7 @@
 	"deprecated/alpha/upload": {
 		"uri": "https://content.dropboxapi.com/2/files/alpha/upload",
 		"requiresAuthHeader": true,
-		"requiresReadableStream": true,
+		"requiresReadableStream": false,
 		"category": "UPLOAD",
 		"parameters": {
 			"available": true
