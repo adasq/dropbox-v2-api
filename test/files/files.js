@@ -79,16 +79,18 @@ describe('Namespace', function() {
             });
         });
         it('list_folder', (done) => {
-            var filePath = `${dirPath}/alpha-upload.txt`;
             dropbox({
                 resource: 'files/list_folder',
                 parameters: {
-                    path: dirPath
+                    path: dirPath,
+                        "include_media_info": true,
+                        "include_has_explicit_shared_members": true,
+                        "include_non_downloadable_files": true
                 }
             }, (err, result) => {
                 if(err){ throw err; }
                 result.entries[0].should.have.property('size', 50);
-                result.entries[1].should.have.property('size', 30);            
+                result.entries[1].should.have.property('size', 30);
                 done();
             });
         });

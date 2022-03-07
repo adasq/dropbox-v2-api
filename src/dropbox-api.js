@@ -52,7 +52,7 @@ const updateRequestOptsFnList = [
 			//RPC, put it as body
 			requestOpts.body = resourceDescription.parameters.available ? userParameters : null;
 		}else {
-			//if not RPC, then we have 2 options: download or uplad type request
+			//if not RPC, then we have 2 options: download or upload type request
 			requestOpts.headers[DB_HEADER_API_ARGS] = isObject(userParameters) ? http_header_safe_json(userParameters): '';
 		}
 	}
@@ -82,6 +82,7 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList, config){
 				//send request
 				if (resourceCategory === UPLOAD_RESOURCE_CATEGORY) {
 					//it's upload type request, so pipe
+					requestOpts.headers['Content-Type'] = 'application/octet-stream'
 					if(userOpts.readStream){
 						// read stream specified, so pipe it
 						return userOpts.readStream.pipe(request(requestOpts, callback));
