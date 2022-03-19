@@ -55,7 +55,7 @@ const dropbox = dropboxV2Api.authenticate({
     client_id: 'APP_KEY',
     client_secret: 'APP_SECRET',
     redirect_uri: 'REDIRECT_URI',
-    token_access_type: 'offline', // if you need an offline ling-living refresh token
+    token_access_type: 'offline', // if you need an offline long-living refresh token
     state: 'OPTIONAL_STATE_VALUE'
 });
 //generate and visit authorization sevice
