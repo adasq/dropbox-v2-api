@@ -167,7 +167,7 @@ module.exports = {
 		};
 		Object.assign(clientSession, {
 				generateAuthUrl: (input) => {
-					return `${OAUTH2_AUTHORIZE}?client_id=${config.client_id}&response_type=code&redirect_uri=${config.redirect_uri}${config.state?`&state=${config.state}`:''}`;
+					return `${OAUTH2_AUTHORIZE}?client_id=${config.client_id}&response_type=code${config.token_access_type?`&token_access_type=${config.token_access_type}`:''}&redirect_uri=${config.redirect_uri}${config.state?`&state=${config.state}`:''}`;
 				},
 				getToken: (code, userCb) => {
 					request({
@@ -186,10 +186,31 @@ module.exports = {
 						if(err || body.error) {
 							userCb(body.error || {});
 						}
+						console.log(body)
 						config.token = body.access_token;
 						userCb(false, body);
 					});
-				}
+				},
+				refreshToken: (refreshToken, userCb) => {
+					request({
+						method: 'POST',
+						uri: OAUTH2_TOKEN,
+						followRedirect: true,
+						json: true,
+						form: {
+							refresh_token: refreshToken,
+							client_id: config.client_id,
+							client_secret: config.client_secret,
+							grant_type: 'refresh_token'
+						}
+					}, (err, resp, body) => {
+						if(err || body.error) {
+							userCb(body.error || {});
+						}
+						config.token = body.access_token;
+						userCb(false, body);
+					});
+				}				
 		});
 		return clientSession;
 	}

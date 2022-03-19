@@ -4,7 +4,7 @@
  * 
  * File should contain JSON object, with 'APP_KEY' and 'APP_SECRET' properties.
  * 
- * Do not forget to specify 'http://localhost:5000/oauth' in 'Redirect URIs'
+ * Do not forget to specify 'http://localhost:4000/oauth' in 'Redirect URIs'
  * section of your dropbox app settings.
  */
 
@@ -20,13 +20,14 @@ const credentials = JSON.parse(fs.readFileSync(path.join(__dirname, 'credentials
 const dropbox = dropboxV2Api.authenticate({
 	client_id: credentials.APP_KEY,
 	client_secret: credentials.APP_SECRET,
-	redirect_uri: 'http://localhost:5000/oauth'
+	token_access_type: 'offline',
+	redirect_uri: 'http://localhost:4000/oauth'
 });
 
 //prepare server & oauth2 response callback
 (async () => {
 	const server = Hapi.server({
-		port: 5000,
+		port: 4000,
 		host: 'localhost'
 	});
 
@@ -38,7 +39,9 @@ const dropbox = dropboxV2Api.authenticate({
 
 			return new Promise((resolve) => {
 				dropbox.getToken(params.code, function (err, response) {
+					console.log(err);
 					console.log('user\'s access_token: ', response.access_token);
+					console.log('user\'s refresh_token: ', response.refresh_token);
 					//call api
 					dropbox({
 						resource: 'users/get_current_account'
@@ -46,6 +49,11 @@ const dropbox = dropboxV2Api.authenticate({
 						console.log(err);
 						resolve(response);
 					});
+					//or refresh token!
+					dropbox.refreshToken(response.refresh_token, (err, result) => {
+						console.log(err);
+						console.log(result);
+					})
 				});
 			})
 		}

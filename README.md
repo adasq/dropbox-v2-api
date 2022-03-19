@@ -55,15 +55,22 @@ const dropbox = dropboxV2Api.authenticate({
     client_id: 'APP_KEY',
     client_secret: 'APP_SECRET',
     redirect_uri: 'REDIRECT_URI',
+    token_access_type: 'offline', // if you need an offline ling-living refresh token
     state: 'OPTIONAL_STATE_VALUE'
 });
 //generate and visit authorization sevice
 const authUrl = dropbox.generateAuthUrl();
 //after redirection, you should receive code
 dropbox.getToken(code, (err, result, response) => {
-    //you are authorized now!
-    //your optional state, given in authenticate: response.query.state
+    // you are authorized now!
+    //
+    // ...then you can refresh your token! (flow for token_access_type='offline')
+    dropbox.refreshToken(response.refresh_token, (err, result, response) => {
+        //token is refreshed!
+    });
 });
+//
+
 ```
 
 ## Full API showcase
