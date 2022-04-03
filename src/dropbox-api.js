@@ -186,7 +186,6 @@ module.exports = {
 						if(err || body.error) {
 							userCb(body.error || {});
 						}
-						console.log(body)
 						config.token = body.access_token;
 						userCb(false, body);
 					});
