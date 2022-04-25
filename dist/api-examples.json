@@ -8940,6 +8940,62 @@
 			"session_id": "1234faaf0678bcde"
 		}
 	},
+	"files/upload_session/start_batch": {
+		"uri": "https://api.dropboxapi.com/2/files/upload_session/start_batch",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"description": "This route starts batch of upload_sessions. Please refer to `upload_session/start` usage.",
+		"parameters": {
+			"list": [
+				{
+					"name": "num_sessions",
+					"type": "UInt64(min=1, max=1000)",
+					"desc": "The number of upload sessions to start."
+				},
+				{
+					"name": "session_type",
+					"type": "UploadSessionType?",
+					"desc": "Type of upload session you want to start. If not specified, default is UploadSessionType.sequential. This field is optional.",
+					"parameters": [
+						{
+							"list": [
+								{
+									"name": "sequential",
+									"type": "Void",
+									"desc": "Pieces of data are uploaded sequentially one after another. This is the default behavior."
+								},
+								{
+									"name": "concurrent",
+									"type": "Void",
+									"desc": "Pieces of data can be uploaded in concurrent RPCs in any order."
+								}
+							],
+							"example": null
+						}
+					]
+				},
+				{
+					"name": "sequential",
+					"type": "Void",
+					"desc": "Pieces of data are uploaded sequentially one after another. This is the default behavior."
+				},
+				{
+					"name": "concurrent",
+					"type": "Void",
+					"desc": "Pieces of data can be uploaded in concurrent RPCs in any order."
+				}
+			],
+			"example": {
+				"num_sessions": 1
+			}
+		},
+		"returnParameters": {
+			"session_ids": [
+				"1234faaf0678bcde"
+			]
+		}
+	},
 	"sharing/add_file_member": {
 		"uri": "https://api.dropboxapi.com/2/sharing/add_file_member",
 		"requiresAuthHeader": true,
