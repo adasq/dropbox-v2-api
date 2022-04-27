@@ -665,6 +665,15 @@
 			"available": true
 		}
 	},
+	"files/upload_session/start_batch": {
+		"uri": "https://api.dropboxapi.com/2/files/upload_session/start_batch",
+		"requiresAuthHeader": true,
+		"requiresReadableStream": false,
+		"category": "RPC",
+		"parameters": {
+			"available": true
+		}
+	},
 	"sharing/add_file_member": {
 		"uri": "https://api.dropboxapi.com/2/sharing/add_file_member",
 		"requiresAuthHeader": true,
