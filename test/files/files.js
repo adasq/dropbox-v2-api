@@ -6,6 +6,13 @@ const utils = require('../../src/utils.js');
 const config = require('./../config.js');
 
 let dropbox;
+
+const sleep = async ms => {
+  return new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
+};
+
 describe('Namespace', function() {
     this.timeout(6000);
     before(function() {
@@ -13,7 +20,7 @@ describe('Namespace', function() {
             token: config.get('DROPBOX_TOKEN')
         });
     });
-    beforeEach(function(){
+    beforeEach(async function(){
         console.log('-------------------------');
     });
     describe('files', () => {

@@ -8,7 +8,7 @@ const generate = require('../../src/generate-api-description.js');
 
 const API_DESC_FILE_PATH = path.join(__dirname, '../../dist/api-examples.json');
 
-describe('Docs change detection', function() {
+xdescribe('Docs change detection', function() {
     this.timeout(16000);
     describe('', () => {
         afterEach(function(done) {
