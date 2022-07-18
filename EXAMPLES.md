@@ -34,7 +34,7 @@ dropbox({
 
 
 ### auth/token/revoke ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#auth-token-revoke))
-Disables the access token used to authenticate the call.
+Disables the access token used to authenticate the call. If there is a corresponding refresh token for the access token, this disables that refresh token, as well as any other access tokens for that refresh token.
 
 ```js
 dropbox({
@@ -103,7 +103,7 @@ dropbox({
 
 
 ### file_properties/properties/add ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-add))
-Add property groups to a Dropbox file. See [templates/add_for_user](#file_propertiestemplatesadd_for_user-see-docs) or [templates/add_for_team](#file_propertiestemplatesadd_for_team-see-docs) to create new templates.
+Add property groups to a Dropbox file. See :route:`templates/add_for_user` or :route:`templates/add_for_team` to create new templates.
 
 ```js
 dropbox({
@@ -125,7 +125,7 @@ dropbox({
 
 
 ### file_properties/properties/overwrite ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-overwrite))
-Overwrite property groups associated with a file. This endpoint should be used instead of [properties/update](#file_propertiespropertiesupdate-see-docs) when property groups are being updated via a "snapshot" instead of via a "delta". In other words, this endpoint will delete all omitted fields from a property group, whereas [properties/update](#file_propertiespropertiesupdate-see-docs) will only delete fields that are explicitly marked for deletion.
+Overwrite property groups associated with a file. This endpoint should be used instead of :route:`properties/update` when property groups are being updated via a "snapshot" instead of via a "delta". In other words, this endpoint will delete all omitted fields from a property group, whereas :route:`properties/update` will only delete fields that are explicitly marked for deletion.
 
 ```js
 dropbox({
@@ -147,7 +147,7 @@ dropbox({
 
 
 ### file_properties/properties/remove ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-remove))
-Permanently removes the specified property group from the file. To remove specific property field key value pairs, see [properties/update](#file_propertiespropertiesupdate-see-docs). To update a template, see [templates/update_for_user](#file_propertiestemplatesupdate_for_user-see-docs) or [templates/update_for_team](#file_propertiestemplatesupdate_for_team-see-docs). To remove a template, see [templates/remove_for_user](#file_propertiestemplatesremove_for_user-see-docs) or [templates/remove_for_team](#file_propertiestemplatesremove_for_team-see-docs).
+Permanently removes the specified property group from the file. To remove specific property field key value pairs, see :route:`properties/update`. To update a template, see :route:`templates/update_for_user` or :route:`templates/update_for_team`. To remove a template, see :route:`templates/remove_for_user` or :route:`templates/remove_for_team`.
 
 ```js
 dropbox({
@@ -186,7 +186,7 @@ dropbox({
 
 
 ### file_properties/properties/search/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-search-continue))
-Once a cursor has been retrieved from [properties/search](#file_propertiespropertiessearch-see-docs), use this to paginate through all search results.
+Once a cursor has been retrieved from :route:`properties/search`, use this to paginate through all search results.
 
 ```js
 dropbox({
@@ -201,7 +201,7 @@ dropbox({
 
 
 ### file_properties/properties/update ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-properties-update))
-Add, update or remove properties associated with the supplied file and templates. This endpoint should be used instead of [properties/overwrite](#file_propertiespropertiesoverwrite-see-docs) when property groups are being updated via a "delta" instead of via a "snapshot" . In other words, this endpoint will not delete any omitted fields from a property group, whereas [properties/overwrite](#file_propertiespropertiesoverwrite-see-docs) will delete any fields that are omitted from a property group.
+Add, update or remove properties associated with the supplied file and templates. This endpoint should be used instead of :route:`properties/overwrite` when property groups are being updated via a "delta" instead of via a "snapshot" . In other words, this endpoint will not delete any omitted fields from a property group, whereas :route:`properties/overwrite` will delete any fields that are omitted from a property group.
 
 ```js
 dropbox({
@@ -224,7 +224,7 @@ dropbox({
 
 
 ### file_properties/templates/add_for_user ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-templates-add_for_user))
-Add a template associated with a user. See [properties/add](#file_propertiespropertiesadd-see-docs) to add properties to a file. This endpoint can't be called on a team member or admin's behalf.
+Add a template associated with a user. See :route:`properties/add` to add properties to a file. This endpoint can't be called on a team member or admin's behalf.
 
 ```js
 dropbox({
@@ -260,7 +260,7 @@ dropbox({
 
 
 ### file_properties/templates/list_for_user ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-templates-list_for_user))
-Get the template identifiers for a team. To get the schema of each template use [templates/get_for_user](#file_propertiestemplatesget_for_user-see-docs). This endpoint can't be called on a team member or admin's behalf.
+Get the template identifiers for a team. To get the schema of each template use :route:`templates/get_for_user`. This endpoint can't be called on a team member or admin's behalf.
 
 ```js
 dropbox({
@@ -272,7 +272,7 @@ dropbox({
 
 
 ### file_properties/templates/remove_for_user ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_properties-templates-remove_for_user))
-Permanently removes the specified template created from [templates/add_for_user](#file_propertiestemplatesadd_for_user-see-docs). All properties associated with the template will also be removed. This action cannot be undone.
+Permanently removes the specified template created from :route:`templates/add_for_user`. All properties associated with the template will also be removed. This action cannot be undone.
 
 ```js
 dropbox({
@@ -388,7 +388,19 @@ Returns a list of file requests owned by this user. For apps with the app folder
 
 ```js
 dropbox({
-    resource: 'file_requests/list',
+    resource: 'file_requests/list'
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### file_requests/list_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_requests-list_v2))
+Returns a list of file requests owned by this user. For apps with the app folder permission, this will only return file requests with destinations in the app folder.
+
+```js
+dropbox({
+    resource: 'file_requests/list_v2',
     parameters: {
         'limit': 1000
     }
@@ -399,7 +411,7 @@ dropbox({
 
 
 ### file_requests/list/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#file_requests-list-continue))
-Once a cursor has been retrieved from [list:2](#file_requestslist:2-see-docs), use this to paginate through all file requests. The cursor must come from a previous call to [list:2](#file_requestslist:2-see-docs) or [list/continue](#file_requestslistcontinue-see-docs).
+Once a cursor has been retrieved from :route:`list:2`, use this to paginate through all file requests. The cursor must come from a previous call to :route:`list:2` or :route:`list/continue`.
 
 ```js
 dropbox({
@@ -437,7 +449,8 @@ dropbox({
 
 
 ### files/copy ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-copy))
-Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be copied.
+Copy a file or folder to a different location in the user's Dropbox.
+If the source path is a folder all its contents will be copied.
 
 ```js
 dropbox({
@@ -455,12 +468,56 @@ dropbox({
 ```
 
 
+### files/copy_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-copy_v2))
+Copy a file or folder to a different location in the user's Dropbox.
+If the source path is a folder all its contents will be copied.
+
+```js
+dropbox({
+    resource: 'files/copy_v2',
+    parameters: {
+        'from_path': '/Homework/math',
+        'to_path': '/Homework/algebra',
+        'allow_shared_folder': false,
+        'autorename': false,
+        'allow_ownership_transfer': false
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### files/copy_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-copy_batch))
-Copy multiple files or folders to different locations at once in the user's Dropbox. This route will replace [copy_batch:1](#filescopy_batch:1-see-docs). The main difference is this route will return status for each entry, while [copy_batch:1](#filescopy_batch:1-see-docs) raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async copy job in background. Please use [copy_batch/check:2](#filescopy_batchcheck:2-see-docs) to check the job status.
+Copy multiple files or folders to different locations at once in the user's Dropbox.
+This route will return job ID immediately and do the async copy job in background. Please use :route:`copy_batch/check:1` to check the job status.
 
 ```js
 dropbox({
     resource: 'files/copy_batch',
+    parameters: {
+        'entries': [{
+            'from_path': '/Homework/math',
+            'to_path': '/Homework/algebra'
+        }],
+        'autorename': false,
+        'allow_shared_folder': false,
+        'allow_ownership_transfer': false
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/copy_batch_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-copy_batch_v2))
+Copy multiple files or folders to different locations at once in the user's Dropbox.
+This route will replace :route:`copy_batch:1`. The main difference is this route will return status for each entry, while :route:`copy_batch:1` raises failure if any entry fails.
+This route will either finish synchronously, or return a job ID and do the async copy job in background. Please use :route:`copy_batch/check:2` to check the job status.
+
+```js
+dropbox({
+    resource: 'files/copy_batch_v2',
     parameters: {
         'entries': [{
             'from_path': '/Homework/math',
@@ -475,7 +532,7 @@ dropbox({
 
 
 ### files/copy_batch/check ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-copy_batch-check))
-Returns the status of an asynchronous job for [copy_batch:2](#filescopy_batch:2-see-docs). It returns list of results for each entry.
+Returns the status of an asynchronous job for :route:`copy_batch:1`. If success, it returns list of results for each entry.
 
 ```js
 dropbox({
@@ -489,8 +546,23 @@ dropbox({
 ```
 
 
+### files/copy_batch/check_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-copy_batch-check_v2))
+Returns the status of an asynchronous job for :route:`copy_batch:2`. It returns list of results for each entry.
+
+```js
+dropbox({
+    resource: 'files/copy_batch/check_v2',
+    parameters: {
+        'async_job_id': '34g93hh34h04y384084'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### files/copy_reference/get ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-copy_reference-get))
-Get a copy reference to a file or folder. This reference string can be used to save that file or folder to another user's Dropbox by passing it to [copy_reference/save](#filescopy_referencesave-see-docs).
+Get a copy reference to a file or folder. This reference string can be used to save that file or folder to another user's Dropbox by passing it to :route:`copy_reference/save`.
 
 ```js
 dropbox({
@@ -505,7 +577,7 @@ dropbox({
 
 
 ### files/copy_reference/save ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-copy_reference-save))
-Save a copy reference returned by [copy_reference/get](#filescopy_referenceget-see-docs) to the user's Dropbox.
+Save a copy reference returned by :route:`copy_reference/get` to the user's Dropbox.
 
 ```js
 dropbox({
@@ -536,8 +608,25 @@ dropbox({
 ```
 
 
+### files/create_folder_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-create_folder_v2))
+Create a folder at a given path.
+
+```js
+dropbox({
+    resource: 'files/create_folder_v2',
+    parameters: {
+        'path': '/Homework/math',
+        'autorename': false
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### files/create_folder_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-create_folder_batch))
-Create multiple folders at once. This route is asynchronous for large batches, which returns a job ID immediately and runs the create folder batch asynchronously. Otherwise, creates the folders and returns the result synchronously for smaller inputs. You can force asynchronous behaviour by using the CreateFolderBatchArg.force_async flag.  Use [create_folder_batch/check](#filescreate_folder_batchcheck-see-docs) to check the job status.
+Create multiple folders at once.
+This route is asynchronous for large batches, which returns a job ID immediately and runs the create folder batch asynchronously. Otherwise, creates the folders and returns the result synchronously for smaller inputs. You can force asynchronous behaviour by using the :field:`CreateFolderBatchArg.force_async` flag.  Use :route:`create_folder_batch/check` to check the job status.
 
 ```js
 dropbox({
@@ -554,7 +643,7 @@ dropbox({
 
 
 ### files/create_folder_batch/check ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-create_folder_batch-check))
-Returns the status of an asynchronous job for [create_folder_batch](#filescreate_folder_batch-see-docs). If success, it returns list of result for each entry.
+Returns the status of an asynchronous job for :route:`create_folder_batch`. If success, it returns list of result for each entry.
 
 ```js
 dropbox({
@@ -569,7 +658,9 @@ dropbox({
 
 
 ### files/delete ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-delete))
-Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.
+Delete the file or folder at a given path.
+If the path is a folder, all its contents will be deleted too.
+A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding :type:`FileMetadata` or :type:`FolderMetadata` for the item at time of deletion, and not a :type:`DeletedMetadata` object.
 
 ```js
 dropbox({
@@ -583,8 +674,26 @@ dropbox({
 ```
 
 
+### files/delete_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-delete_v2))
+Delete the file or folder at a given path.
+If the path is a folder, all its contents will be deleted too.
+A successful response indicates that the file or folder was deleted. The returned metadata will be the corresponding :type:`FileMetadata` or :type:`FolderMetadata` for the item at time of deletion, and not a :type:`DeletedMetadata` object.
+
+```js
+dropbox({
+    resource: 'files/delete_v2',
+    parameters: {
+        'path': '/Homework/math/Prime_Numbers.txt'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### files/delete_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-delete_batch))
-Delete multiple files/folders at once. This route is asynchronous, which returns a job ID immediately and runs the delete batch asynchronously. Use [delete_batch/check](#filesdelete_batchcheck-see-docs) to check the job status.
+Delete multiple files/folders at once.
+This route is asynchronous, which returns a job ID immediately and runs the delete batch asynchronously. Use :route:`delete_batch/check` to check the job status.
 
 ```js
 dropbox({
@@ -601,7 +710,7 @@ dropbox({
 
 
 ### files/delete_batch/check ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-delete_batch-check))
-Returns the status of an asynchronous job for [delete_batch](#filesdelete_batch-see-docs). If success, it returns list of result for each entry.
+Returns the status of an asynchronous job for :route:`delete_batch`. If success, it returns list of result for each entry.
 
 ```js
 dropbox({
@@ -634,7 +743,8 @@ stream
 
 
 ### files/download_zip ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-download_zip))
-Download a folder from the user's Dropbox, as a zip file. The folder must be less than 20 GB in size and have fewer than 10,000 total files. The input cannot be a single file. Any single file must be less than 4GB in size.
+Download a folder from the user's Dropbox, as a zip file. The folder must be less than 20 GB in size and any single file within must be less than 4 GB in size. The resulting zip must have fewer than 10,000 total file and folder entries, including the top level folder. The input cannot be a single file.
+Note: this endpoint does not support HTTP range requests.
 
 ```js
 const stream = dropbox({
@@ -652,7 +762,7 @@ stream
 
 
 ### files/export ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-export))
-Export a file from a user's Dropbox. This route only supports exporting files that cannot be downloaded directly  and whose ExportResult.file_metadata has ExportInfo.export_as populated.
+Export a file from a user's Dropbox. This route only supports exporting files that cannot be downloaded directly  and whose :field:`ExportResult.file_metadata` has :field:`ExportInfo.export_as` populated.
 
 ```js
 const stream = dropbox({
@@ -687,7 +797,8 @@ dropbox({
 
 
 ### files/get_metadata ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-get_metadata))
-Returns the metadata for a file or folder. Note: Metadata for the root folder is unsupported.
+Returns the metadata for a file or folder.
+Note: Metadata for the root folder is unsupported.
 
 ```js
 dropbox({
@@ -705,7 +816,10 @@ dropbox({
 
 
 ### files/get_preview ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-get_preview))
-Get a preview for a file. Currently, PDF previews are generated for files with the following extensions: .ai, .doc, .docm, .docx, .eps, .gdoc, .gslides, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are generated for files with the following extensions: .csv, .ods, .xls, .xlsm, .gsheet, .xlsx. Other formats will return an unsupported extension error.
+Get a preview for a file.
+Currently, PDF previews are generated for files with the following extensions: .ai, .doc, .docm, .docx, .eps, .gdoc, .gslides, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf.
+HTML previews are generated for files with the following extensions: .csv, .ods, .xls, .xlsm, .gsheet, .xlsx.
+Other formats will return an unsupported extension error.
 
 ```js
 const stream = dropbox({
@@ -738,7 +852,31 @@ dropbox({
 
 
 ### files/get_temporary_upload_link ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-get_temporary_upload_link))
-Get a one-time use temporary upload link to upload a file to a Dropbox location.  This endpoint acts as a delayed [upload](#filesupload-see-docs). The returned temporary upload link may be used to make a POST request with the data to be uploaded. The upload will then be perfomed with the CommitInfo previously provided to [get_temporary_upload_link](#filesget_temporary_upload_link-see-docs) but evaluated only upon consumption. Hence, errors stemming from invalid CommitInfo with respect to the state of the user's Dropbox will only be communicated at consumption time. Additionally, these errors are surfaced as generic HTTP 409 Conflict responses, potentially hiding issue details. The maximum temporary upload link duration is 4 hours. Upon consumption or expiration, a new link will have to be generated. Multiple links may exist for a specific upload path at any given time.  The POST request on the temporary upload link must have its Content-Type set to "application/octet-stream".  Example temporary upload link consumption request:  curl -X POST https://content.dropboxapi.com/apitul/1/bNi2uIYF51cVBND --header "Content-Type: application/octet-stream" --data-binary @local_file.txt  A successful temporary upload link consumption request returns the content hash of the uploaded data in JSON format.  Example succesful temporary upload link consumption response: {"content-hash": "599d71033d700ac892a0e48fa61b125d2f5994"}  An unsuccessful temporary upload link consumption request returns any of the following status codes:  HTTP 400 Bad Request: Content-Type is not one of application/octet-stream and text/plain or request is invalid. HTTP 409 Conflict: The temporary upload link does not exist or is currently unavailable, the upload failed, or another error happened. HTTP 410 Gone: The temporary upload link is expired or consumed.  Example unsuccessful temporary upload link consumption response: Temporary upload link has been recently consumed.
+Get a one-time use temporary upload link to upload a file to a Dropbox location.
+
+This endpoint acts as a delayed :route:`upload`. The returned temporary upload link may be used to make a POST request with the data to be uploaded. The upload will then be perfomed with the :type:`CommitInfo` previously provided to :route:`get_temporary_upload_link` but evaluated only upon consumption. Hence, errors stemming from invalid :type:`CommitInfo` with respect to the state of the user's Dropbox will only be communicated at consumption time. Additionally, these errors are surfaced as generic HTTP 409 Conflict responses, potentially hiding issue details. The maximum temporary upload link duration is 4 hours. Upon consumption or expiration, a new link will have to be generated. Multiple links may exist for a specific upload path at any given time.
+
+The POST request on the temporary upload link must have its Content-Type set to "application/octet-stream".
+
+Example temporary upload link consumption request:
+
+curl -X POST https://content.dropboxapi.com/apitul/1/bNi2uIYF51cVBND
+--header "Content-Type: application/octet-stream"
+--data-binary @local_file.txt
+
+A successful temporary upload link consumption request returns the content hash of the uploaded data in JSON format.
+
+Example successful temporary upload link consumption response:
+{"content-hash": "599d71033d700ac892a0e48fa61b125d2f5994"}
+
+An unsuccessful temporary upload link consumption request returns any of the following status codes:
+
+HTTP 400 Bad Request: Content-Type is not one of application/octet-stream and text/plain or request is invalid.
+HTTP 409 Conflict: The temporary upload link does not exist or is currently unavailable, the upload failed, or another error happened.
+HTTP 410 Gone: The temporary upload link is expired or consumed.
+
+Example unsuccessful temporary upload link consumption response:
+Temporary upload link has been recently consumed.
 
 ```js
 dropbox({
@@ -760,11 +898,34 @@ dropbox({
 
 
 ### files/get_thumbnail ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-get_thumbnail))
-Get a thumbnail for a file.
+Get a thumbnail for an image.
+This method currently supports files with the following file extensions: jpg, jpeg, png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
 
 ```js
 const stream = dropbox({
     resource: 'files/get_thumbnail',
+    parameters: {
+        'path': '/image.jpg',
+        'format': 'jpeg',
+        'size': 'w64h64',
+        'mode': 'strict'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+
+stream
+    .pipe(fs.createWriteStream('/image.jpg')); //pipe the stream
+```
+
+
+### files/get_thumbnail_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-get_thumbnail_v2))
+Get a thumbnail for an image.
+This method currently supports files with the following file extensions: jpg, jpeg, png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
+
+```js
+const stream = dropbox({
+    resource: 'files/get_thumbnail_v2',
     parameters: {
         'resource': {
             '.tag': 'path',
@@ -784,7 +945,8 @@ stream
 
 
 ### files/get_thumbnail_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-get_thumbnail_batch))
-Get thumbnails for a list of images. We allow up to 25 thumbnails in a single batch. This method currently supports files with the following file extensions: jpg, jpeg, png, tiff, tif, gif and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
+Get thumbnails for a list of images. We allow up to 25 thumbnails in a single batch.
+This method currently supports files with the following file extensions: jpg, jpeg, png, tiff, tif, gif, webp, ppm and bmp. Photos that are larger than 20MB in size won't be converted to a thumbnail.
 
 ```js
 dropbox({
@@ -804,7 +966,12 @@ dropbox({
 
 
 ### files/list_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-list_folder))
-Starts returning the contents of a folder. If the result's ListFolderResult.has_more field is true, call [list_folder/continue](#fileslist_foldercontinue-see-docs) with the returned ListFolderResult.cursor to retrieve more entries. If you're using ListFolderArg.recursive set to true to keep a local cache of the contents of a Dropbox account, iterate through each entry in order and process them as follows to keep your local state in sync: For each FileMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it and remove all its children. For each FolderMetadata, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it but leave the children as they are. Check the new entry's FolderSharingInfo.read_only and set all its children's read-only statuses to match. For each DeletedMetadata, if your local state has something at the given path, remove it and all its children. If there's nothing at the given path, ignore this entry. Note: auth.RateLimitError may be returned if multiple [list_folder](#fileslist_folder-see-docs) or [list_folder/continue](#fileslist_foldercontinue-see-docs) calls with same parameters are made simultaneously by same API app for same user. If your app implements retry logic, please hold off the retry until the previous request finishes.
+Starts returning the contents of a folder. If the result's :field:`ListFolderResult.has_more` field is :val:`true`, call :route:`list_folder/continue` with the returned :field:`ListFolderResult.cursor` to retrieve more entries.
+If you're using :field:`ListFolderArg.recursive` set to :val:`true` to keep a local cache of the contents of a Dropbox account, iterate through each entry in order and process them as follows to keep your local state in sync:
+For each :type:`FileMetadata`, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it and remove all its children.
+For each :type:`FolderMetadata`, store the new entry at the given path in your local state. If the required parent folders don't exist yet, create them. If there's already something else at the given path, replace it but leave the children as they are. Check the new entry's :field:`FolderSharingInfo.read_only` and set all its children's read-only statuses to match.
+For each :type:`DeletedMetadata`, if your local state has something at the given path, remove it and all its children. If there's nothing at the given path, ignore this entry.
+Note: :type:`auth.RateLimitError` may be returned if multiple :route:`list_folder` or :route:`list_folder/continue` calls with same parameters are made simultaneously by same API app for same user. If your app implements retry logic, please hold off the retry until the previous request finishes.
 
 ```js
 dropbox({
@@ -825,7 +992,7 @@ dropbox({
 
 
 ### files/list_folder/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-list_folder-continue))
-Once a cursor has been retrieved from [list_folder](#fileslist_folder-see-docs), use this to paginate through all files and retrieve updates to the folder, following the same rules as documented for [list_folder](#fileslist_folder-see-docs).
+Once a cursor has been retrieved from :route:`list_folder`, use this to paginate through all files and retrieve updates to the folder, following the same rules as documented for :route:`list_folder`.
 
 ```js
 dropbox({
@@ -840,7 +1007,7 @@ dropbox({
 
 
 ### files/list_folder/get_latest_cursor ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-list_folder-get_latest_cursor))
-A way to quickly get a cursor for the folder's state. Unlike [list_folder](#fileslist_folder-see-docs), [list_folder/get_latest_cursor](#fileslist_folderget_latest_cursor-see-docs) doesn't return any entries. This endpoint is for app which only needs to know about new files and modifications and doesn't need to know about files that already exist in Dropbox.
+A way to quickly get a cursor for the folder's state. Unlike :route:`list_folder`, :route:`list_folder/get_latest_cursor` doesn't return any entries. This endpoint is for app which only needs to know about new files and modifications and doesn't need to know about files that already exist in Dropbox.
 
 ```js
 dropbox({
@@ -861,7 +1028,7 @@ dropbox({
 
 
 ### files/list_folder/longpoll ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-list_folder-longpoll))
-A longpoll endpoint to wait for changes on an account. In conjunction with [list_folder/continue](#fileslist_foldercontinue-see-docs), this call gives you a low-latency way to monitor an account for file changes. The connection will block until there are changes available or a timeout occurs. This endpoint is useful mostly for client-side apps. If you're looking for server-side notifications, check out our webhooks documentation.
+A longpoll endpoint to wait for changes on an account. In conjunction with :route:`list_folder/continue`, this call gives you a low-latency way to monitor an account for file changes. The connection will block until there are changes available or a timeout occurs. This endpoint is useful mostly for client-side apps. If you're looking for server-side notifications, check out our :link:`webhooks documentation https://www.dropbox.com/developers/reference/webhooks`.
 
 ```js
 dropbox({
@@ -877,7 +1044,8 @@ dropbox({
 
 
 ### files/list_revisions ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-list_revisions))
-Returns revisions for files based on a file path or a file id. The file path or file id is identified from the latest file entry at the given file path or id. This end point allows your app to query either by file path or file id by setting the mode parameter appropriately. In the ListRevisionsMode.path (default) mode, all revisions at the same file path as the latest file entry are returned. If revisions with the same file id are desired, then mode must be set to ListRevisionsMode.id. The ListRevisionsMode.id mode is useful to retrieve revisions for a given file across moves or renames.
+Returns revisions for files based on a file path or a file id. The file path or file id is identified from the latest file entry at the given file path or id. This end point allows your app to query either by file path or file id by setting the mode parameter appropriately.
+In the :field:`ListRevisionsMode.path` (default) mode, all revisions at the same file path as the latest file entry are returned. If revisions with the same file id are desired, then mode must be set to :field:`ListRevisionsMode.id`. The :field:`ListRevisionsMode.id` mode is useful to retrieve revisions for a given file across moves or renames.
 
 ```js
 dropbox({
@@ -911,7 +1079,8 @@ dropbox({
 
 
 ### files/move ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-move))
-Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its contents will be moved. Note that we do not currently support case-only renaming.
+Move a file or folder to a different location in the user's Dropbox.
+If the source path is a folder all its contents will be moved.
 
 ```js
 dropbox({
@@ -929,12 +1098,57 @@ dropbox({
 ```
 
 
+### files/move_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-move_v2))
+Move a file or folder to a different location in the user's Dropbox.
+If the source path is a folder all its contents will be moved.
+Note that we do not currently support case-only renaming.
+
+```js
+dropbox({
+    resource: 'files/move_v2',
+    parameters: {
+        'from_path': '/Homework/math',
+        'to_path': '/Homework/algebra',
+        'allow_shared_folder': false,
+        'autorename': false,
+        'allow_ownership_transfer': false
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### files/move_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-move_batch))
-Move multiple files or folders to different locations at once in the user's Dropbox. Note that we do not currently support case-only renaming. This route will replace [move_batch:1](#filesmove_batch:1-see-docs). The main difference is this route will return status for each entry, while [move_batch:1](#filesmove_batch:1-see-docs) raises failure if any entry fails. This route will either finish synchronously, or return a job ID and do the async move job in background. Please use [move_batch/check:2](#filesmove_batchcheck:2-see-docs) to check the job status.
+Move multiple files or folders to different locations at once in the user's Dropbox.
+This route will return job ID immediately and do the async moving job in background. Please use :route:`move_batch/check:1` to check the job status.
 
 ```js
 dropbox({
     resource: 'files/move_batch',
+    parameters: {
+        'entries': [{
+            'from_path': '/Homework/math',
+            'to_path': '/Homework/algebra'
+        }],
+        'autorename': false,
+        'allow_shared_folder': false,
+        'allow_ownership_transfer': false
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/move_batch_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-move_batch_v2))
+Move multiple files or folders to different locations at once in the user's Dropbox. Note that we do not currently support case-only renaming.
+This route will replace :route:`move_batch:1`. The main difference is this route will return status for each entry, while :route:`move_batch:1` raises failure if any entry fails.
+This route will either finish synchronously, or return a job ID and do the async move job in background. Please use :route:`move_batch/check:2` to check the job status.
+
+```js
+dropbox({
+    resource: 'files/move_batch_v2',
     parameters: {
         'entries': [{
             'from_path': '/Homework/math',
@@ -950,7 +1164,7 @@ dropbox({
 
 
 ### files/move_batch/check ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-move_batch-check))
-Returns the status of an asynchronous job for [move_batch:2](#filesmove_batch:2-see-docs). It returns list of results for each entry.
+Returns the status of an asynchronous job for :route:`move_batch:1`. If success, it returns list of results for each entry.
 
 ```js
 dropbox({
@@ -964,8 +1178,63 @@ dropbox({
 ```
 
 
+### files/move_batch/check_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-move_batch-check_v2))
+Returns the status of an asynchronous job for :route:`move_batch:2`. It returns list of results for each entry.
+
+```js
+dropbox({
+    resource: 'files/move_batch/check_v2',
+    parameters: {
+        'async_job_id': '34g93hh34h04y384084'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/paper/create ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-paper-create))
+Creates a new Paper doc with the provided content.
+
+```js
+const stream = dropbox({
+    resource: 'files/paper/create',
+    parameters: {
+        'path': '/Paper Docs/New Doc.paper',
+        'import_format': 'html'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+
+fs.createReadStream('/Paper Docs/New Doc.paper').pipe(stream);
+```
+
+
+### files/paper/update ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-paper-update))
+Updates an existing Paper doc with the provided content.
+
+```js
+const stream = dropbox({
+    resource: 'files/paper/update',
+    parameters: {
+        'path': '/Paper Docs/My Doc.paper',
+        'import_format': 'html',
+        'doc_update_policy': 'update',
+        'paper_revision': 123
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+
+fs.createReadStream('/Paper Docs/My Doc.paper').pipe(stream);
+```
+
+
 ### files/permanently_delete ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-permanently_delete))
-Permanently delete the file or folder at a given path (see https://www.dropbox.com/en/help/40). Note: This endpoint is only available for Dropbox Business apps.
+Permanently delete the file or folder at a given path (see https://www.dropbox.com/en/help/40).
+If the given file or folder is not yet deleted, this route will first delete it. It is possible for this route to successfully delete, then fail to permanently delete.
+Note: This endpoint is only available for Dropbox Business apps.
 
 ```js
 dropbox({
@@ -996,7 +1265,9 @@ dropbox({
 
 
 ### files/save_url ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-save_url))
-Save the data from a specified URL into a file in user's Dropbox. Note that the transfer from the URL must complete within 5 minutes, or the operation will time out and the job will fail. If the given path already exists, the file will be renamed to avoid the conflict (e.g. myfile (1).txt).
+Save the data from a specified URL into a file in user's Dropbox.
+Note that the transfer from the URL must complete within 5 minutes, or the operation will time out and the job will fail.
+If the given path already exists, the file will be renamed to avoid the conflict (e.g. myfile (1).txt).
 
 ```js
 dropbox({
@@ -1012,7 +1283,7 @@ dropbox({
 
 
 ### files/save_url/check_job_status ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-save_url-check_job_status))
-Check the status of a [save_url](#filessave_url-see-docs) job.
+Check the status of a :route:`save_url` job.
 
 ```js
 dropbox({
@@ -1027,14 +1298,18 @@ dropbox({
 
 
 ### files/search ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-search))
-Searches for files and folders. Note: [search:2](#filessearch:2-see-docs) along with [search/continue:2](#filessearchcontinue:2-see-docs) can only be used to retrieve a maximum of 10,000 matches. Recent changes may not immediately be reflected in search results due to a short delay in indexing. Duplicate results may be returned across pages. Some results may not be returned.
+Searches for files and folders.
+Note: Recent changes will be reflected in search results within a few seconds and older revisions of existing files may still match your query for up to a few days.
 
 ```js
 dropbox({
     resource: 'files/search',
     parameters: {
-        'query': 'cat',
-        'include_highlights': false
+        'path': '',
+        'query': 'prime numbers',
+        'start': 0,
+        'max_results': 100,
+        'mode': 'filename'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1042,14 +1317,89 @@ dropbox({
 ```
 
 
-### files/search/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-search-continue))
-Fetches the next page of search results returned from [search:2](#filessearch:2-see-docs). Note: [search:2](#filessearch:2-see-docs) along with [search/continue:2](#filessearchcontinue:2-see-docs) can only be used to retrieve a maximum of 10,000 matches. Recent changes may not immediately be reflected in search results due to a short delay in indexing. Duplicate results may be returned across pages. Some results may not be returned.
+### files/search_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-search_v2))
+Searches for files and folders.
+Note: :route:`search:2` along with :route:`search/continue:2` can only be used to retrieve a maximum of 10,000 matches.
+Recent changes may not immediately be reflected in search results due to a short delay in indexing. Duplicate results may be returned across pages. Some results may not be returned.
 
 ```js
 dropbox({
-    resource: 'files/search/continue',
+    resource: 'files/search_v2',
+    parameters: {
+        'query': 'cat',
+        'options': {
+            'path': '/Folder',
+            'max_results': 20,
+            'file_status': 'active',
+            'filename_only': false
+        },
+        'match_field_options': {
+            'include_highlights': false
+        }
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/search/continue_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-search-continue_v2))
+Fetches the next page of search results returned from :route:`search:2`.
+Note: :route:`search:2` along with :route:`search/continue:2` can only be used to retrieve a maximum of 10,000 matches.
+Recent changes may not immediately be reflected in search results due to a short delay in indexing. Duplicate results may be returned across pages. Some results may not be returned.
+
+```js
+dropbox({
+    resource: 'files/search/continue_v2',
     parameters: {
         'cursor': 'ZtkX9_EHj3x7PMkVuFIhwKYXEpwpLwyxp9vMKomUhllil9q7eWiAu'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/tags/add ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-tags-add))
+Add a tag to an item. A tag is a string. The strings are automatically converted to lowercase letters. No more than 20 tags can be added to a given item.
+
+```js
+dropbox({
+    resource: 'files/tags/add',
+    parameters: {
+        'path': '/Prime_Numbers.txt',
+        'tag_text': 'my_tag'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/tags/get ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-tags-get))
+Get list of tags assigned to items.
+
+```js
+dropbox({
+    resource: 'files/tags/get',
+    parameters: {
+        'paths': ['/Prime_Numbers.txt']
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/tags/remove ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-tags-remove))
+Remove a tag from an item.
+
+```js
+dropbox({
+    resource: 'files/tags/remove',
+    parameters: {
+        'path': '/Prime_Numbers.txt',
+        'tag_text': 'my_tag'
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1075,7 +1425,9 @@ dropbox({
 
 
 ### files/upload ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload))
-Create a new file with the contents provided in the request. Do not use this to upload a file larger than 150 MB. Instead, create an upload session with [upload_session/start](#filesupload_sessionstart-see-docs). Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the Data transport limit page.
+Create a new file with the contents provided in the request.
+Do not use this to upload a file larger than 150 MB. Instead, create an upload session with :route:`upload_session/start`.
+Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the :link:`Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit`.
 
 ```js
 const stream = dropbox({
@@ -1083,7 +1435,7 @@ const stream = dropbox({
     parameters: {
         'path': '/Homework/math/Matrices.txt',
         'mode': 'add',
-        'autorename': true,
+        'autorename': false,
         'mute': false,
         'strict_conflict': false
     }
@@ -1096,11 +1448,34 @@ fs.createReadStream('/Homework/math/Matrices.txt').pipe(stream);
 
 
 ### files/upload_session/append ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-append))
-Append more data to an upload session. When the parameter close is set, this call will close the session. A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB. Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the Data transport limit page.
+Append more data to an upload session.
+A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB.
+Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the :link:`Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit`.
 
 ```js
 const stream = dropbox({
     resource: 'files/upload_session/append',
+    parameters: {
+        'session_id': '1234faaf0678bcde',
+        'offset': 0
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+
+fs.createReadStream().pipe(stream);
+```
+
+
+### files/upload_session/append_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-append_v2))
+Append more data to an upload session.
+When the parameter close is set, this call will close the session.
+A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB.
+Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the :link:`Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit`.
+
+```js
+const stream = dropbox({
+    resource: 'files/upload_session/append_v2',
     parameters: {
         'cursor': {
             'session_id': '1234faaf0678bcde',
@@ -1117,7 +1492,9 @@ fs.createReadStream().pipe(stream);
 
 
 ### files/upload_session/finish ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-finish))
-Finish an upload session and save the uploaded data to the given file path. A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB. Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the Data transport limit page.
+Finish an upload session and save the uploaded data to the given file path.
+A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB.
+Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the :link:`Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit`.
 
 ```js
 const stream = dropbox({
@@ -1144,7 +1521,11 @@ fs.createReadStream().pipe(stream);
 
 
 ### files/upload_session/finish_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-finish_batch))
-This route helps you commit many files at once into a user's Dropbox. Use [upload_session/start](#filesupload_sessionstart-see-docs) and [upload_session/append:2](#filesupload_sessionappend:2-see-docs) to upload file contents. We recommend uploading many files in parallel to increase throughput. Once the file contents have been uploaded, rather than calling [upload_session/finish](#filesupload_sessionfinish-see-docs), use this route to finish all your upload sessions in a single request. UploadSessionStartArg.close or UploadSessionAppendArg.close needs to be true for the last [upload_session/start](#filesupload_sessionstart-see-docs) or [upload_session/append:2](#filesupload_sessionappend:2-see-docs) call. The maximum size of a file one can upload to an upload session is 350 GB. This route will return a job_id immediately and do the async commit job in background. Use [upload_session/finish_batch/check](#filesupload_sessionfinish_batchcheck-see-docs) to check the job status. For the same account, this route should be executed serially. That means you should not start the next job before current job finishes. We allow up to 1000 entries in a single request. Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the Data transport limit page.
+This route helps you commit many files at once into a user's Dropbox. Use :route:`upload_session/start` and :route:`upload_session/append:2` to upload file contents. We recommend uploading many files in parallel to increase throughput. Once the file contents have been uploaded, rather than calling :route:`upload_session/finish`, use this route to finish all your upload sessions in a single request.
+:field:`UploadSessionStartArg.close` or :field:`UploadSessionAppendArg.close` needs to be true for the last :route:`upload_session/start` or :route:`upload_session/append:2` call. The maximum size of a file one can upload to an upload session is 350 GB.
+This route will return a job_id immediately and do the async commit job in background. Use :route:`upload_session/finish_batch/check` to check the job status.
+For the same account, this route should be executed serially. That means you should not start the next job before current job finishes. We allow up to 1000 entries in a single request.
+Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the :link:`Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit`.
 
 ```js
 dropbox({
@@ -1170,8 +1551,38 @@ dropbox({
 ```
 
 
+### files/upload_session/finish_batch_v2 ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-finish_batch_v2))
+This route helps you commit many files at once into a user's Dropbox. Use :route:`upload_session/start` and :route:`upload_session/append:2` to upload file contents. We recommend uploading many files in parallel to increase throughput. Once the file contents have been uploaded, rather than calling :route:`upload_session/finish`, use this route to finish all your upload sessions in a single request.
+:field:`UploadSessionStartArg.close` or :field:`UploadSessionAppendArg.close` needs to be true for the last :route:`upload_session/start` or :route:`upload_session/append:2` call of each upload session. The maximum size of a file one can upload to an upload session is 350 GB.
+We allow up to 1000 entries in a single request.
+Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the :link:`Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit`.
+
+```js
+dropbox({
+    resource: 'files/upload_session/finish_batch_v2',
+    parameters: {
+        'entries': [{
+            'cursor': {
+                'session_id': '1234faaf0678bcde',
+                'offset': 0
+            },
+            'commit': {
+                'path': '/Homework/math/Matrices.txt',
+                'mode': 'add',
+                'autorename': true,
+                'mute': false,
+                'strict_conflict': false
+            }
+        }]
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
 ### files/upload_session/finish_batch/check ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-finish_batch-check))
-Returns the status of an asynchronous job for [upload_session/finish_batch](#filesupload_sessionfinish_batch-see-docs). If success, it returns list of result for each entry.
+Returns the status of an asynchronous job for :route:`upload_session/finish_batch`. If success, it returns list of result for each entry.
 
 ```js
 dropbox({
@@ -1186,7 +1597,12 @@ dropbox({
 
 
 ### files/upload_session/start ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-start))
-Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use [upload_session/append:2](#filesupload_sessionappend:2-see-docs) to add more data and [upload_session/finish](#filesupload_sessionfinish-see-docs) to save all the data to a file in Dropbox. A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB. An upload session can be used for a maximum of 48 hours. Attempting to use an UploadSessionStartResult.session_id with [upload_session/append:2](#filesupload_sessionappend:2-see-docs) or [upload_session/finish](#filesupload_sessionfinish-see-docs) more than 48 hours after its creation will return a UploadSessionLookupError.not_found. Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the Data transport limit page.
+Upload sessions allow you to upload a single file in one or more requests, for example where the size of the file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use :route:`upload_session/append:2` to add more data and :route:`upload_session/finish` to save all the data to a file in Dropbox.
+A single request should not upload more than 150 MB. The maximum size of a file one can upload to an upload session is 350 GB.
+An upload session can be used for a maximum of 7 days. Attempting to use an :field:`UploadSessionStartResult.session_id` with :route:`upload_session/append:2` or :route:`upload_session/finish` more than 7 days after its creation will return a :field:`UploadSessionLookupError.not_found`.
+Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the :link:`Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit`.
+By default, upload sessions require you to send content of the file in sequential order via consecutive :route:`upload_session/start`, :route:`upload_session/append:2`, :route:`upload_session/finish` calls. For better performance, you can instead optionally use a :field:`UploadSessionType.concurrent` upload session. To start a new concurrent session, set :field:`UploadSessionStartArg.session_type` to :field:`UploadSessionType.concurrent`. After that, you can send file data in concurrent :route:`upload_session/append:2` requests. Finally finish the session with :route:`upload_session/finish`.
+There are couple of constraints with concurrent sessions to make them work. You can not send data with :route:`upload_session/start` or :route:`upload_session/finish` call, only with :route:`upload_session/append:2` call. Also data uploaded in :route:`upload_session/append:2` call must be multiple of 4194304 bytes (except for last :route:`upload_session/append:2` with :field:`UploadSessionStartArg.close` to :val:`true`, that may contain any remaining data).
 
 ```js
 const stream = dropbox({
@@ -1199,6 +1615,173 @@ const stream = dropbox({
 });
 
 fs.createReadStream().pipe(stream);
+```
+
+
+### files/upload_session/start_batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-upload_session-start_batch))
+This route starts batch of upload_sessions. Please refer to `upload_session/start` usage.
+Calls to this endpoint will count as data transport calls for any Dropbox Business teams with a limit on the number of data transport calls allowed per month. For more information, see the :link:`Data transport limit page https://www.dropbox.com/developers/reference/data-transport-limit`.
+
+```js
+dropbox({
+    resource: 'files/upload_session/start_batch',
+    parameters: {
+        'num_sessions': 1
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/alpha/get_metadata ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-alpha-get_metadata))
+Returns the metadata for a file or folder. This is an alpha endpoint compatible with the properties API.
+Note: Metadata for the root folder is unsupported.
+
+```js
+dropbox({
+    resource: 'files/alpha/get_metadata',
+    parameters: {
+        'path': '/Homework/math',
+        'include_media_info': false,
+        'include_deleted': false,
+        'include_has_explicit_shared_members': false
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/alpha/upload ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-alpha-upload))
+Create a new file with the contents provided in the request. Note that the behavior of this alpha endpoint is unstable and subject to change.
+Do not use this to upload a file larger than 150 MB. Instead, create an upload session with :route:`upload_session/start`.
+
+```js
+const stream = dropbox({
+    resource: 'files/alpha/upload',
+    parameters: {
+        'path': '/Homework/math/Matrices.txt',
+        'mode': 'add',
+        'autorename': false,
+        'mute': false,
+        'strict_conflict': false
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+
+fs.createReadStream('/Homework/math/Matrices.txt').pipe(stream);
+```
+
+
+### files/properties/add ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-properties-add))
+undefined
+
+```js
+dropbox({
+    resource: 'files/properties/add',
+    parameters: {
+        'path': '/my_awesome/word.docx',
+        'property_groups': [{
+            'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
+            'fields': [{
+                'name': 'Security Policy',
+                'value': 'Confidential'
+            }]
+        }]
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/properties/overwrite ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-properties-overwrite))
+undefined
+
+```js
+dropbox({
+    resource: 'files/properties/overwrite',
+    parameters: {
+        'path': '/my_awesome/word.docx',
+        'property_groups': [{
+            'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
+            'fields': [{
+                'name': 'Security Policy',
+                'value': 'Confidential'
+            }]
+        }]
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/properties/remove ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-properties-remove))
+undefined
+
+```js
+dropbox({
+    resource: 'files/properties/remove',
+    parameters: {
+        'path': '/my_awesome/word.docx',
+        'property_template_ids': ['ptid:1a5n2i6d3OYEAAAAAAAAAYa']
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/properties/template/get ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-properties-template-get))
+undefined
+
+```js
+dropbox({
+    resource: 'files/properties/template/get',
+    parameters: {
+        'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/properties/template/list ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-properties-template-list))
+undefined
+
+```js
+dropbox({
+    resource: 'files/properties/template/list'
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### files/properties/update ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#files-properties-update))
+undefined
+
+```js
+dropbox({
+    resource: 'files/properties/update',
+    parameters: {
+        'path': '/my_awesome/word.docx',
+        'update_property_groups': [{
+            'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
+            'add_or_update_fields': [{
+                'name': 'Security Policy',
+                'value': 'Confidential'
+            }],
+            'remove_fields': []
+        }]
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
 ```
 
 
@@ -1226,7 +1809,8 @@ dropbox({
 
 
 ### sharing/add_folder_member ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-add_folder_member))
-Allows an owner or editor (if the ACL update policy allows) of a shared folder to add another member. For the new member to get access to all the functionality for this folder, you will need to call [mount_folder](#sharingmount_folder-see-docs) on their behalf.
+Allows an owner or editor (if the ACL update policy allows) of a shared folder to add another member.
+For the new member to get access to all the functionality for this folder, you will need to call :route:`mount_folder` on their behalf.
 
 ```js
 dropbox({
@@ -1301,7 +1885,7 @@ dropbox({
 
 
 ### sharing/create_shared_link_with_settings ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-create_shared_link_with_settings))
-Create a shared link with custom settings. If no settings are given then the default visibility is RequestedVisibility.public (The resolved visibility, though, may depend on other aspects such as team and shared folder settings).
+Create a shared link with custom settings. If no settings are given then the default visibility is :field:`RequestedVisibility.public` (The resolved visibility, though, may depend on other aspects such as team and shared folder settings).
 
 ```js
 dropbox({
@@ -1309,9 +1893,10 @@ dropbox({
     parameters: {
         'path': '/Prime_Numbers.txt',
         'settings': {
-            'requested_visibility': 'public',
             'audience': 'public',
-            'access': 'viewer'
+            'access': 'viewer',
+            'requested_visibility': 'public',
+            'allow_download': true
         }
     }
 }, (err, result, response) => {
@@ -1421,7 +2006,8 @@ dropbox({
 
 
 ### sharing/list_file_members/batch ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_file_members-batch))
-Get members of multiple files at once. The arguments to this route are more limited, and the limit on query result size per file is more strict. To customize the results more, use the individual file endpoint. Inherited users and groups are not included in the result, and permissions are not returned for this endpoint.
+Get members of multiple files at once. The arguments to this route are more limited, and the limit on query result size per file is more strict. To customize the results more, use the individual file endpoint.
+Inherited users and groups are not included in the result, and permissions are not returned for this endpoint.
 
 ```js
 dropbox({
@@ -1437,7 +2023,7 @@ dropbox({
 
 
 ### sharing/list_file_members/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_file_members-continue))
-Once a cursor has been retrieved from [list_file_members](#sharinglist_file_members-see-docs) or [list_file_members/batch](#sharinglist_file_membersbatch-see-docs), use this to paginate through all shared file members.
+Once a cursor has been retrieved from :route:`list_file_members` or :route:`list_file_members/batch`, use this to paginate through all shared file members.
 
 ```js
 dropbox({
@@ -1469,7 +2055,7 @@ dropbox({
 
 
 ### sharing/list_folder_members/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_folder_members-continue))
-Once a cursor has been retrieved from [list_folder_members](#sharinglist_folder_members-see-docs), use this to paginate through all shared folder members.
+Once a cursor has been retrieved from :route:`list_folder_members`, use this to paginate through all shared folder members.
 
 ```js
 dropbox({
@@ -1500,7 +2086,7 @@ dropbox({
 
 
 ### sharing/list_folders/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_folders-continue))
-Once a cursor has been retrieved from [list_folders](#sharinglist_folders-see-docs), use this to paginate through all shared folders. The cursor must come from a previous call to [list_folders](#sharinglist_folders-see-docs) or [list_folders/continue](#sharinglist_folderscontinue-see-docs).
+Once a cursor has been retrieved from :route:`list_folders`, use this to paginate through all shared folders. The cursor must come from a previous call to :route:`list_folders` or :route:`list_folders/continue`.
 
 ```js
 dropbox({
@@ -1531,7 +2117,7 @@ dropbox({
 
 
 ### sharing/list_mountable_folders/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_mountable_folders-continue))
-Once a cursor has been retrieved from [list_mountable_folders](#sharinglist_mountable_folders-see-docs), use this to paginate through all mountable shared folders. The cursor must come from a previous call to [list_mountable_folders](#sharinglist_mountable_folders-see-docs) or [list_mountable_folders/continue](#sharinglist_mountable_folderscontinue-see-docs).
+Once a cursor has been retrieved from :route:`list_mountable_folders`, use this to paginate through all mountable shared folders. The cursor must come from a previous call to :route:`list_mountable_folders` or :route:`list_mountable_folders/continue`.
 
 ```js
 dropbox({
@@ -1546,7 +2132,8 @@ dropbox({
 
 
 ### sharing/list_received_files ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_received_files))
-Returns a list of all files shared with current user.  Does not include files the user has received via shared folders, and does  not include unclaimed invitations.
+Returns a list of all files shared with current user.
+ Does not include files the user has received via shared folders, and does  not include unclaimed invitations.
 
 ```js
 dropbox({
@@ -1562,7 +2149,7 @@ dropbox({
 
 
 ### sharing/list_received_files/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_received_files-continue))
-Get more results with a cursor from [list_received_files](#sharinglist_received_files-see-docs).
+Get more results with a cursor from :route:`list_received_files`.
 
 ```js
 dropbox({
@@ -1577,7 +2164,9 @@ dropbox({
 
 
 ### sharing/list_shared_links ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-list_shared_links))
-List shared links of this user. If no path is given, returns a list of all shared links for the current user. For members of business teams using team space and member folders, returns all shared links in the team member's home folder unless the team space ID is specified in the request header. For more information, refer to the Namespace Guide. If a non-empty path is given, returns a list of all shared links that allow access to the given path - direct links to the given path and links to parent folders of the given path. Links to parent folders can be suppressed by setting direct_only to true.
+List shared links of this user.
+If no path is given, returns a list of all shared links for the current user. For members of business teams using team space and member folders, returns all shared links in the team member's home folder unless the team space ID is specified in the request header. For more information, refer to the :link:`Namespace Guide https://www.dropbox.com/developers/reference/namespace-guide`.
+If a non-empty path is given, returns a list of all shared links that allow access to the given path - direct links to the given path and links to parent folders of the given path. Links to parent folders can be suppressed by setting direct_only to true.
 
 ```js
 dropbox({
@@ -1592,7 +2181,8 @@ dropbox({
 
 
 ### sharing/modify_shared_link_settings ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-modify_shared_link_settings))
-Modify the shared link's settings. If the requested visibility conflict with the shared links policy of the team or the shared folder (in case the linked file is part of a shared folder) then the LinkPermissions.resolved_visibility of the returned SharedLinkMetadata will reflect the actual visibility of the shared link and the LinkPermissions.requested_visibility will reflect the requested visibility.
+Modify the shared link's settings.
+If the requested visibility conflict with the shared links policy of the team or the shared folder (in case the linked file is part of a shared folder) then the :field:`LinkPermissions.resolved_visibility` of the returned :type:`SharedLinkMetadata` will reflect the actual visibility of the shared link and the :field:`LinkPermissions.requested_visibility` will reflect the requested visibility.
 
 ```js
 dropbox({
@@ -1600,9 +2190,10 @@ dropbox({
     parameters: {
         'url': 'https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0',
         'settings': {
-            'requested_visibility': 'public',
             'audience': 'public',
-            'access': 'viewer'
+            'access': 'viewer',
+            'requested_visibility': 'public',
+            'allow_download': true
         },
         'remove_expiration': false
     }
@@ -1613,7 +2204,8 @@ dropbox({
 
 
 ### sharing/mount_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-mount_folder))
-The current user mounts the designated folder. Mount a shared folder for a user after they have been added as a member. Once mounted, the shared folder will appear in their Dropbox.
+The current user mounts the designated folder.
+Mount a shared folder for a user after they have been added as a member. Once mounted, the shared folder will appear in their Dropbox.
 
 ```js
 dropbox({
@@ -1643,7 +2235,8 @@ dropbox({
 
 
 ### sharing/relinquish_folder_membership ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-relinquish_folder_membership))
-The current user relinquishes their membership in the designated shared folder and will no longer have access to the folder.  A folder owner cannot relinquish membership in their own folder. This will run synchronously if leave_a_copy is false, and asynchronously if leave_a_copy is true.
+The current user relinquishes their membership in the designated shared folder and will no longer have access to the folder.  A folder owner cannot relinquish membership in their own folder.
+This will run synchronously if leave_a_copy is false, and asynchronously if leave_a_copy is true.
 
 ```js
 dropbox({
@@ -1698,7 +2291,8 @@ dropbox({
 
 
 ### sharing/revoke_shared_link ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-revoke_shared_link))
-Revoke a shared link. Note that even after revoking a shared link to a file, the file may be accessible if there are shared links leading to any of the file parent folders. To list all shared links that enable access to a specific file, you can use the [list_shared_links](#sharinglist_shared_links-see-docs) with the file as the ListSharedLinksArg.path argument.
+Revoke a shared link.
+Note that even after revoking a shared link to a file, the file may be accessible if there are shared links leading to any of the file parent folders. To list all shared links that enable access to a specific file, you can use the :route:`list_shared_links` with the file as the :field:`ListSharedLinksArg.path` argument.
 
 ```js
 dropbox({
@@ -1713,7 +2307,8 @@ dropbox({
 
 
 ### sharing/set_access_inheritance ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-set_access_inheritance))
-Change the inheritance policy of an existing Shared Folder. Only permitted for shared folders in a shared team root. If a ShareFolderLaunch.async_job_id is returned, you'll need to call [check_share_job_status](#sharingcheck_share_job_status-see-docs) until the action completes to get the metadata for the folder.
+Change the inheritance policy of an existing Shared Folder. Only permitted for shared folders in a shared team root.
+If a :field:`ShareFolderLaunch.async_job_id` is returned, you'll need to call :route:`check_share_job_status` until the action completes to get the metadata for the folder.
 
 ```js
 dropbox({
@@ -1729,7 +2324,9 @@ dropbox({
 
 
 ### sharing/share_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-share_folder))
-Share a folder with collaborators. Most sharing will be completed synchronously. Large folders will be completed asynchronously. To make testing the async case repeatable, set `ShareFolderArg.force_async`. If a ShareFolderLaunch.async_job_id is returned, you'll need to call [check_share_job_status](#sharingcheck_share_job_status-see-docs) until the action completes to get the metadata for the folder.
+Share a folder with collaborators.
+Most sharing will be completed synchronously. Large folders will be completed asynchronously. To make testing the async case repeatable, set `ShareFolderArg.force_async`.
+If a :field:`ShareFolderLaunch.async_job_id` is returned, you'll need to call :route:`check_share_job_status` until the action completes to get the metadata for the folder.
 
 ```js
 dropbox({
@@ -1749,7 +2346,8 @@ dropbox({
 
 
 ### sharing/transfer_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-transfer_folder))
-Transfer ownership of a shared folder to a member of the shared folder. User must have AccessLevel.owner access to the shared folder to perform a transfer.
+Transfer ownership of a shared folder to a member of the shared folder.
+User must have :field:`AccessLevel.owner` access to the shared folder to perform a transfer.
 
 ```js
 dropbox({
@@ -1765,7 +2363,7 @@ dropbox({
 
 
 ### sharing/unmount_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-unmount_folder))
-The current user unmounts the designated folder. They can re-mount the folder at a later time using [mount_folder](#sharingmount_folder-see-docs).
+The current user unmounts the designated folder. They can re-mount the folder at a later time using :route:`mount_folder`.
 
 ```js
 dropbox({
@@ -1795,7 +2393,8 @@ dropbox({
 
 
 ### sharing/unshare_folder ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-unshare_folder))
-Allows a shared folder owner to unshare the folder. You'll need to call [check_job_status](#sharingcheck_job_status-see-docs) to determine if the action has completed successfully.
+Allows a shared folder owner to unshare the folder.
+You'll need to call :route:`check_job_status` to determine if the action has completed successfully.
 
 ```js
 dropbox({
@@ -1851,7 +2450,8 @@ dropbox({
 
 
 ### sharing/update_folder_policy ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-update_folder_policy))
-Update the sharing policies for a shared folder. User must have AccessLevel.owner access to the shared folder to update its policies.
+Update the sharing policies for a shared folder.
+User must have :field:`AccessLevel.owner` access to the shared folder to update its policies.
 
 ```js
 dropbox({
@@ -1861,6 +2461,60 @@ dropbox({
         'member_policy': 'team',
         'acl_update_policy': 'owner',
         'shared_link_policy': 'members'
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### sharing/create_shared_link ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-create_shared_link))
+Create a shared link.
+If a shared link already exists for the given path, that link is returned.
+Previously, it was technically possible to break a shared link by moving or renaming the corresponding file or folder. In the future, this will no longer be the case, so your app shouldn't rely on this behavior. Instead, if your app needs to revoke a shared link, use :route:`revoke_shared_link`.
+
+```js
+dropbox({
+    resource: 'sharing/create_shared_link',
+    parameters: {
+        'path': '/Homework/Math/Prime_Numbers.txt',
+        'short_url': false
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### sharing/get_shared_links ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-get_shared_links))
+Returns a list of :type:`LinkMetadata` objects for this user, including collection links.
+If no path is given, returns a list of all shared links for the current user, including collection links, up to a maximum of 1000 links.
+If a non-empty path is given, returns a list of all shared links that allow access to the given path.  Collection links are never returned in this case.
+
+```js
+dropbox({
+    resource: 'sharing/get_shared_links',
+    parameters: {
+        'path': ''
+    }
+}, (err, result, response) => {
+    //see docs for `result` parameters
+});
+```
+
+
+### sharing/remove_file_member ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#sharing-remove_file_member))
+Identical to remove_file_member_2 but with less information returned.
+
+```js
+dropbox({
+    resource: 'sharing/remove_file_member',
+    parameters: {
+        'file': 'id:3kmLmQFnf1AAAAAAAAAAAw',
+        'member': {
+            '.tag': 'email',
+            'email': 'justin@example.com'
+        }
     }
 }, (err, result, response) => {
     //see docs for `result` parameters
@@ -1935,516 +2589,6 @@ Get the space usage information for the current user's account.
 ```js
 dropbox({
     resource: 'users/get_space_usage'
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/alpha/get_metadata ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-alpha-get_metadata))
-Returns the metadata for a file or folder. This is an alpha endpoint compatible with the properties API. Note: Metadata for the root folder is unsupported.
-
-```js
-dropbox({
-    resource: 'deprecated/alpha/get_metadata',
-    parameters: {
-        'path': '/Homework/math',
-        'include_media_info': false,
-        'include_deleted': false,
-        'include_has_explicit_shared_members': false
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/alpha/upload ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-alpha-upload))
-Create a new file with the contents provided in the request. Note that this endpoint is part of the properties API alpha and is slightly different from [upload](#filesupload-see-docs). Do not use this to upload a file larger than 150 MB. Instead, create an upload session with [upload_session/start](#filesupload_sessionstart-see-docs).
-
-```js
-const stream = dropbox({
-    resource: 'deprecated/alpha/upload',
-    parameters: {
-        'path': '/Homework/math/Matrices.txt',
-        'mode': 'add',
-        'autorename': true,
-        'mute': false,
-        'strict_conflict': false
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-
-fs.createReadStream('/Homework/math/Matrices.txt').pipe(stream);
-```
-
-
-### deprecated/properties/add ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-properties-add))
-No description
-
-```js
-dropbox({
-    resource: 'deprecated/properties/add',
-    parameters: {
-        'path': '/my_awesome/word.docx',
-        'property_groups': [{
-            'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
-            'fields': [{
-                'name': 'Security Policy',
-                'value': 'Confidential'
-            }]
-        }]
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/properties/overwrite ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-properties-overwrite))
-No description
-
-```js
-dropbox({
-    resource: 'deprecated/properties/overwrite',
-    parameters: {
-        'path': '/my_awesome/word.docx',
-        'property_groups': [{
-            'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
-            'fields': [{
-                'name': 'Security Policy',
-                'value': 'Confidential'
-            }]
-        }]
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/properties/remove ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-properties-remove))
-No description
-
-```js
-dropbox({
-    resource: 'deprecated/properties/remove',
-    parameters: {
-        'path': '/my_awesome/word.docx',
-        'property_template_ids': ['ptid:1a5n2i6d3OYEAAAAAAAAAYa']
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/properties/template/get ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-properties-template-get))
-No description
-
-```js
-dropbox({
-    resource: 'deprecated/properties/template/get',
-    parameters: {
-        'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/properties/template/list ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-properties-template-list))
-No description
-
-```js
-dropbox({
-    resource: 'deprecated/properties/template/list'
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/properties/update ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-properties-update))
-No description
-
-```js
-dropbox({
-    resource: 'deprecated/properties/update',
-    parameters: {
-        'path': '/my_awesome/word.docx',
-        'update_property_groups': [{
-            'template_id': 'ptid:1a5n2i6d3OYEAAAAAAAAAYa',
-            'add_or_update_fields': [{
-                'name': 'Security Policy',
-                'value': 'Confidential'
-            }],
-            'remove_fields': []
-        }]
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/docs/archive ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-archive))
-Marks the given Paper doc as archived. This action can be performed or undone by anyone with edit permissions to the doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. This endpoint will be retired in September 2020. Refer to the Paper Migration Guide for more information.
-
-```js
-dropbox({
-    resource: 'deprecated/docs/archive',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/docs/create ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-create))
-Creates a new Paper doc with the provided content. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. This endpoint will be retired in September 2020. Refer to the Paper Migration Guide for more information.
-
-```js
-const stream = dropbox({
-    resource: 'deprecated/docs/create',
-    parameters: {
-        'import_format': 'markdown'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-
-fs.createReadStream().pipe(stream);
-```
-
-
-### deprecated/docs/download ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-download))
-Exports and downloads Paper doc either as HTML or markdown. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
-
-```js
-const stream = dropbox({
-    resource: 'deprecated/docs/download',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
-        'export_format': 'markdown'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-
-stream
-    .pipe(fs.createWriteStream()); //pipe the stream
-```
-
-
-### deprecated/docs/folder_users/list ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-folder_users-list))
-Lists the users who are explicitly invited to the Paper folder in which the Paper doc is contained. For private folders all users (including owner) shared on the folder are listed and for team folders all non-team users shared on the folder are returned. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
-
-```js
-dropbox({
-    resource: 'deprecated/docs/folder_users/list',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
-        'limit': 100
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/docs/folder_users/list/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-folder_users-list-continue))
-Once a cursor has been retrieved from [docs/folder_users/list](#paperdocsfolder_userslist-see-docs), use this to paginate through all users on the Paper folder. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
-
-```js
-dropbox({
-    resource: 'deprecated/docs/folder_users/list/continue',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
-        'cursor': 'U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/docs/get_folder_info ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-get_folder_info))
-Retrieves folder information for the given Paper doc. This includes:   - folder sharing policy; permissions for subfolders are set by the top-level folder.   - full 'filepath', i.e. the list of folders (both folderId and folderName) from     the root folder to the folder directly containing the Paper doc.  If the Paper doc is not in any folder (aka unfiled) the response will be empty. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
-
-```js
-dropbox({
-    resource: 'deprecated/docs/get_folder_info',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/docs/list ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-list))
-Return the list of all Paper docs according to the argument specifications. To iterate over through the full pagination, pass the cursor to [docs/list/continue](#paperdocslistcontinue-see-docs). Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
-
-```js
-dropbox({
-    resource: 'deprecated/docs/list',
-    parameters: {
-        'filter_by': 'docs_created',
-        'sort_by': 'modified',
-        'sort_order': 'descending',
-        'limit': 100
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/docs/list/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-list-continue))
-Once a cursor has been retrieved from [docs/list](#paperdocslist-see-docs), use this to paginate through all Paper doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
-
-```js
-dropbox({
-    resource: 'deprecated/docs/list/continue',
-    parameters: {
-        'cursor': 'U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/docs/permanently_delete ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-permanently_delete))
-Permanently deletes the given Paper doc. This operation is final as the doc cannot be recovered. This action can be performed only by the doc owner. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
-
-```js
-dropbox({
-    resource: 'deprecated/docs/permanently_delete',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/docs/sharing_policy/get ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-sharing_policy-get))
-Gets the default sharing policy for the given Paper doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
-
-```js
-dropbox({
-    resource: 'deprecated/docs/sharing_policy/get',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/docs/sharing_policy/set ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-sharing_policy-set))
-Sets the default sharing policy for the given Paper doc. The default 'team_sharing_policy' can be changed only by teams, omit this field for personal accounts. The 'public_sharing_policy' policy can't be set to the value 'disabled' because this setting can be changed only via the team admin console. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
-
-```js
-dropbox({
-    resource: 'deprecated/docs/sharing_policy/set',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
-        'sharing_policy': {
-            'public_sharing_policy': 'people_with_link_can_edit',
-            'team_sharing_policy': 'people_with_link_can_edit'
-        }
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/docs/update ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-update))
-Updates an existing Paper doc with the provided content. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. This endpoint will be retired in September 2020. Refer to the Paper Migration Guide for more information.
-
-```js
-const stream = dropbox({
-    resource: 'deprecated/docs/update',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
-        'doc_update_policy': 'overwrite_all',
-        'revision': 12345,
-        'import_format': 'html'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-
-fs.createReadStream().pipe(stream);
-```
-
-
-### deprecated/docs/users/add ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-users-add))
-Allows an owner or editor to add users to a Paper doc or change their permissions using their email address or Dropbox account ID. The doc owner's permissions cannot be changed. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
-
-```js
-dropbox({
-    resource: 'deprecated/docs/users/add',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
-        'members': [{
-            'member': {
-                '.tag': 'email',
-                'email': 'justin@example.com'
-            },
-            'permission_level': 'view_and_comment'
-        }],
-        'custom_message': 'Welcome to Paper.',
-        'quiet': false
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/docs/users/list ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-users-list))
-Lists all users who visited the Paper doc or users with explicit access. This call excludes users who have been removed. The list is sorted by the date of the visit or the share date. The list will include both users, the explicitly shared ones as well as those who came in using the Paper url link. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
-
-```js
-dropbox({
-    resource: 'deprecated/docs/users/list',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
-        'limit': 100,
-        'filter_by': 'shared'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/docs/users/list/continue ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-users-list-continue))
-Once a cursor has been retrieved from [docs/users/list](#paperdocsuserslist-see-docs), use this to paginate through all users on the Paper doc. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
-
-```js
-dropbox({
-    resource: 'deprecated/docs/users/list/continue',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
-        'cursor': 'U60b6BxT43ySd5sAVQbbIvoteSnWLjUdLU7aR25hbt3ySd5sAVQbbIvoteSnWLjUd'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/docs/users/remove ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-docs-users-remove))
-Allows an owner or editor to remove users from a Paper doc using their email address or Dropbox account ID. The doc owner cannot be removed. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
-
-```js
-dropbox({
-    resource: 'deprecated/docs/users/remove',
-    parameters: {
-        'doc_id': 'uaSvRuxvnkFa12PTkBv5q',
-        'member': {
-            '.tag': 'email',
-            'email': 'justin@example.com'
-        }
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/folders/create ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-folders-create))
-Create a new Paper folder with the provided info. Note that this endpoint will continue to work for content created by users on the older version of Paper. To check which version of Paper a user is on, use /users/features/get_values. If the paper_as_files feature is enabled, then the user is running the new version of Paper. Refer to the Paper Migration Guide for migration information.
-
-```js
-dropbox({
-    resource: 'deprecated/folders/create',
-    parameters: {
-        'name': 'my new folder'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/change_file_member_access ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-change_file_member_access))
-Identical to update_file_member but with less information returned.
-
-```js
-dropbox({
-    resource: 'deprecated/change_file_member_access',
-    parameters: {
-        'file': 'id:3kmLmQFnf1AAAAAAAAAAAw',
-        'member': {
-            '.tag': 'email',
-            'email': 'justin@example.com'
-        },
-        'access_level': 'viewer'
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/create_shared_link ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-create_shared_link))
-Create a shared link. If a shared link already exists for the given path, that link is returned. Note that in the returned PathLinkMetadata, the PathLinkMetadata.url field is the shortened URL if CreateSharedLinkArg.short_url argument is set to true. Previously, it was technically possible to break a shared link by moving or renaming the corresponding file or folder. In the future, this will no longer be the case, so your app shouldn't rely on this behavior. Instead, if your app needs to revoke a shared link, use [revoke_shared_link](#sharingrevoke_shared_link-see-docs).
-
-```js
-dropbox({
-    resource: 'deprecated/create_shared_link',
-    parameters: {
-        'path': '/Homework/Math/Prime_Numbers.txt',
-        'short_url': false
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/get_shared_links ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-get_shared_links))
-Returns a list of LinkMetadata objects for this user, including collection links. If no path is given, returns a list of all shared links for the current user, including collection links, up to a maximum of 1000 links. If a non-empty path is given, returns a list of all shared links that allow access to the given path.  Collection links are never returned in this case. Note that the url field in the response is never the shortened URL.
-
-```js
-dropbox({
-    resource: 'deprecated/get_shared_links',
-    parameters: {
-        'path': ''
-    }
-}, (err, result, response) => {
-    //see docs for `result` parameters
-});
-```
-
-
-### deprecated/remove_file_member ([see docs](https://www.dropbox.com/developers/documentation/http/documentation#deprecated-remove_file_member))
-Identical to remove_file_member_2 but with less information returned.
-
-```js
-dropbox({
-    resource: 'deprecated/remove_file_member',
-    parameters: {
-        'file': 'id:3kmLmQFnf1AAAAAAAAAAAw',
-        'member': {
-            '.tag': 'email',
-            'email': 'justin@example.com'
-        }
-    }
 }, (err, result, response) => {
     //see docs for `result` parameters
 });

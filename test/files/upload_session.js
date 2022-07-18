@@ -44,7 +44,7 @@ describe('Namespace ', function() {
 
         function sessionAppend(sessionId, cb) {
             dropbox({
-                resource: 'files/upload_session/append',
+                resource: 'files/upload_session/append_v2',
                 parameters: {
                     cursor: {
                         session_id: sessionId,

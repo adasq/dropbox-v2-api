@@ -36,7 +36,7 @@ describe('Namespace', function() {
                 }
             }, (err, result) => {
                 if(err){ throw err; }
-                result.metadata.should.have.property('name', dirName);
+                result.should.have.property('name', dirName);
                 done();
             });
         });
@@ -148,7 +148,7 @@ describe('Namespace', function() {
                 }
             }, (err, result) => {
                 if(err){ throw err; }
-                result.metadata.should.have.property('path_lower', targetFileName);
+                result.should.have.property('path_lower', targetFileName);
                 done();
             });
         });
@@ -161,7 +161,7 @@ describe('Namespace', function() {
                 }
             }, (err, result) => {
                 if(err){ throw err; }
-                result.metadata.should.have.property('path_lower', fileToDeleteName);
+                result.should.have.property('path_lower', fileToDeleteName);
                 done();
             });
         });
@@ -175,7 +175,7 @@ describe('Namespace', function() {
                 }
             }, (err, result) => {
                 if(err){ throw err; }
-                result.metadata.should.have.property('path_lower', targetFileName);
+                result.should.have.property('path_lower', targetFileName);
                 done();
             });
         });

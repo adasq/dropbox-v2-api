@@ -22,4 +22,4 @@ jobs:
       env:
         TOKEN: ${{ secrets.TOKEN }}
       with:
-        myInput: 'teeeeeeeeeeeeeeeest'
+        myInput: 'test'

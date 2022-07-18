@@ -3,9 +3,9 @@ const fs = require('fs');
 const path = require('path');
 const stream = require('stream');
 
-const RPC_RESOURCE_CATEGORY = 'RPC';
-const UPLOAD_RESOURCE_CATEGORY = 'UPLOAD';
-const DOWNLOAD_RESOURCE_CATEGORY = 'DOWNLOAD';
+const RPC_RESOURCE_CATEGORY = 'rpc';
+const UPLOAD_RESOURCE_CATEGORY = 'upload';
+const DOWNLOAD_RESOURCE_CATEGORY = 'download';
 
 const DB_HEADER_API_ARGS = 'Dropbox-API-Arg';
 const DB_API_RESULT_HEADER_NAME = 'dropbox-api-result';
@@ -29,8 +29,8 @@ function http_header_safe_json(v) {
 
 const updateRequestOptsFnList = [
 	/* For requests, which requires auth header, set valid header */
-	(requestOpts, {requiresAuthHeader}, userOpts, config) => {
-				if(requiresAuthHeader){
+	(requestOpts, { auth }, userOpts, config) => {
+				if(auth !== 'noauth'){
 					if(!config.token){
 						throwError('No "token" specified!');
 					}
@@ -38,19 +38,19 @@ const updateRequestOptsFnList = [
 				}
 	},
 	/* If resource requires upload stream, provide valid header */
-	(requestOpts, {requiresReadableStream}, userOpts) => {
-				if(requiresReadableStream) {
+	(requestOpts, { format }, userOpts) => {
+				if(format === 'upload') {
 					requestOpts.headers['Content-Type']= 'application/octet-stream';
 				}
 	},
 	/* Sets request parameter as request body (for RPC requests) or as header (for DOWNLOAD / UPLOAD requests) */
 	(requestOpts, resourceDescription, userOpts, config) => {
-		const resourceCategory = resourceDescription.category;
+		const resourceCategory = resourceDescription.format;
 		const userParameters = userOpts.parameters;
 
 		if (resourceCategory === RPC_RESOURCE_CATEGORY) {
 			//RPC, put it as body
-			requestOpts.body = resourceDescription.parameters.available ? userParameters : null;
+			requestOpts.body = resourceDescription.request ? userParameters : null;
 		}else {
 			//if not RPC, then we have 2 options: download or upload type request
 			requestOpts.headers[DB_HEADER_API_ARGS] = isObject(userParameters) ? http_header_safe_json(userParameters): '';
@@ -66,7 +66,7 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList, config){
 	const resourcesHandlingFunctions = {};
 	Object.keys(resourcesDescriptionList).forEach((resourceName) => {
 			const resourceDescription = resourcesDescriptionList[resourceName];
-			const resourceCategory = resourceDescription.category;
+			const resourceCategory = resourceDescription.format;
 
 			resourcesHandlingFunctions[resourceName] = function(userOpts, userCb) {
 				//create default request object
@@ -235,7 +235,7 @@ function loadResourcesDescriptionList() {
 function createDefaultRequestOptObject(resourceDescription){
 	return {
 		method: 'POST',
-		uri: resourceDescription.uri,
+		uri: `https://${resourceDescription.subdomain}.dropboxapi.com/2/${resourceDescription.key}`,
 		json: true,
 		followRedirect: false,
 		headers: {}

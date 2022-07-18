@@ -6,9 +6,9 @@ const request = require('request');
 const expect = require('expect.js');
 const generate = require('../../src/generate-api-description.js');
 
-const API_DESC_FILE_PATH = path.join(__dirname, '../../dist/api-examples.json');
+const API_DESC_FILE_PATH = path.join(__dirname, '../../dist/api.json');
 
-xdescribe('Docs change detection', function() {
+describe('Docs change detection', function() {
     this.timeout(16000);
     describe('', () => {
         afterEach(function(done) {
@@ -22,7 +22,8 @@ xdescribe('Docs change detection', function() {
             const currentDocsDescription = normalizeString(fs.readFileSync(API_DESC_FILE_PATH).toString());
             generate((err, retrievedDocsDescription) => {
                 expect(err).to.be(null);
-                retrievedDocsDescription = normalizeString(retrievedDocsDescription);
+
+                retrievedDocsDescription = normalizeString(JSON.stringify(retrievedDocsDescription, null, '\t'));
                 expect(md5(retrievedDocsDescription)).to.be(md5(currentDocsDescription));
                 done();
             });

@@ -3,3 +3,4 @@ example/credentials.json
 .DS_Store
 examples.out
 config.json
+.idea/
