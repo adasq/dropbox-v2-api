@@ -18,7 +18,7 @@ jobs:
         npm run generate
         ls
         cat dist/api.json
-    - uses: adasq/dropbox-v2-api-watcher@890ee615b3803cc976456625173a861d78edd6e7
+    - uses: adasq/dropbox-v2-api-watcher@v0.2
       env:
         TOKEN: ${{ secrets.TOKEN }}
       with:
