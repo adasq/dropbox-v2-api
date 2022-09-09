@@ -92475,6 +92475,30 @@
 														}
 													],
 													"description": "Who can view shared links owned by team members."
+												},
+												{
+													"name": "group_creation_policy",
+													"type": [
+														{
+															"name": "GroupCreation",
+															"type": [
+																{
+																	"name": "admins_and_members",
+																	"type": "Void",
+																	"description": "Team admins and members can create groups."
+																},
+																{
+																	"name": "admins_only",
+																	"type": "Void",
+																	"description": "Only team admins can create groups."
+																}
+															],
+															"description": null,
+															"importedNamespace": "team_policies",
+															"typeWrap": "{} (union)"
+														}
+													],
+													"description": "Who can create groups."
 												}
 											],
 											"description": "Policies governing sharing within and outside of the team.",
@@ -92561,6 +92585,9 @@
 								},
 								"shared_link_create_policy": {
 									".tag": "team_only"
+								},
+								"group_creation_policy": {
+									".tag": "admins_only"
 								}
 							},
 							"office_addin_policy": {
