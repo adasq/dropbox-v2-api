@@ -54355,6 +54355,11 @@
 													"name": "max",
 													"type": "Void",
 													"description": "Request for the maximum access level you can set the link to."
+												},
+												{
+													"name": "default",
+													"type": "Void",
+													"description": "Request for the default access level the user has set."
 												}
 											],
 											"description": null,
@@ -78833,6 +78838,11 @@
 													"name": "max",
 													"type": "Void",
 													"description": "Request for the maximum access level you can set the link to."
+												},
+												{
+													"name": "default",
+													"type": "Void",
+													"description": "Request for the default access level the user has set."
 												}
 											],
 											"description": null,
