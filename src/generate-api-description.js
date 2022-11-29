@@ -3,6 +3,7 @@ var request = require('request');
 var fs = require('fs');
 var async = require('async');
 var _ = require('underscore');
+const compressor = require('compress-json');
 //-------------------------------------------
 
 var $,
@@ -53,7 +54,8 @@ async function generateApiDescription2(cb) {
     if (cb) {
         cb(error, apiExamples);
     } else {
-        fs.writeFileSync('./dist/api.json', JSON.stringify(apiExamples, null, '\t'));
+        // fs.writeFileSync('./dist/api.json', JSON.stringify(apiExamples, null, '\t'));
+        fs.writeFileSync('./src/api.json', JSON.stringify(compressor.compress(apiExamples)));
     }
 
 }
