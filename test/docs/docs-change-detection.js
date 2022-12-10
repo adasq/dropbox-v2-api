@@ -1,12 +1,17 @@
-const should = require('should');
-const fs = require('fs');
-const md5 = require('md5');
-const path = require('path');
-const request = require('request');
-const expect = require('expect.js');
-const generate = require('../../src/generate-api-description.js');
+import should from 'should';
+import fs from 'fs';
+import md5 from 'md5';
+import path from 'path';
+import request from 'request';
+import expect from 'expect.js';
+import generate from '../../src/generate-api-description.js';
+import { fileURLToPath } from 'url';
+import {decompress} from "compress-json";
 
-const API_DESC_FILE_PATH = path.join(__dirname, '../../dist/api.json');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const API_DESC_FILE_PATH = path.join(__dirname, '../../src/api.json');
 
 describe('Docs change detection', function() {
     this.timeout(16000);
@@ -19,14 +24,20 @@ describe('Docs change detection', function() {
             }
         })
         it('contains equal content', function (done) {
-            const currentDocsDescription = normalizeString(fs.readFileSync(API_DESC_FILE_PATH).toString());
-            generate((err, retrievedDocsDescription) => {
-                expect(err).to.be(null);
+            try {
+                const currentDocsDescription = normalizeString(JSON.stringify(decompress(JSON.parse(fs.readFileSync(API_DESC_FILE_PATH).toString())), null, '\t'))
+                generate((err, retrievedDocsDescription) => {
+                    expect(err).to.be(null);
 
-                retrievedDocsDescription = normalizeString(JSON.stringify(retrievedDocsDescription, null, '\t'));
-                expect(md5(retrievedDocsDescription)).to.be(md5(currentDocsDescription));
-                done();
-            });
+                    retrievedDocsDescription = normalizeString(JSON.stringify(retrievedDocsDescription, null, '\t'));
+                    expect(md5(retrievedDocsDescription)).to.be(md5(currentDocsDescription));
+                    done();
+                });
+            } catch(err) {
+                console.log(err);
+                throw err;
+            }
+
         });
         function normalizeString(str) {
             return str.replace(/\s+/g, '');

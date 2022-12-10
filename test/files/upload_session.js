@@ -1,9 +1,8 @@
-const should = require('should');
-const expect = require('expect.js');
-
-const dropboxV2Api = require('../../src/dropbox-api-test.js');
-const utils = require('../../src/utils.js');
-const config = require('./../config.js');
+import should from 'should';
+import expect from 'expect.js';
+import dropboxV2Api from '../../src/dropbox-api-test.js';
+import utils from '../../src/utils.js';
+import config from '../config.js';
 
 const CHUNK_LENGTH = 100;
 const firstUploadChunkStream = () => utils.createMockedReadStream('1', CHUNK_LENGTH);
@@ -12,7 +11,7 @@ const secondUploadChunkStream = () => utils.createMockedReadStream('2', CHUNK_LE
 let dropbox;
 
 describe('Namespace ', function() {
-    this.timeout(10 * 000);
+    this.timeout(10 * 1000);
     before(function() {
         dropbox = dropboxV2Api.authenticate({
             token: config.get('DROPBOX_TOKEN')

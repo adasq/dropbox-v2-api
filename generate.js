@@ -1,4 +1,5 @@
-// require('./src/generate-api-description.js')();
-const {decompress} = require("compress-json");
-const apiJSON = require('./src/api.json');
-console.log(decompress(apiJSON));
+import generate from './src/generate-api-description.js'
+
+(async () => {
+  await generate();
+})()

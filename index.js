@@ -1,1 +1,3 @@
-module.exports = require('./src/dropbox-api.js');
+import api from './src/dropbox-api';
+
+export default api;

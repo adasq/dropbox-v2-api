@@ -1,4 +1,4 @@
-const tester = require('stream-tester');
+import tester from 'stream-tester';
 
 /**
 * Creates read stream, which generates length-sized stream of characters (sign)
@@ -10,6 +10,6 @@ function createMockedReadStream(sign, length){
     }, length);
 }
 
-module.exports = {
+export default {
     createMockedReadStream
-};
+}

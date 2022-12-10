@@ -18,10 +18,12 @@
     "type": "git",
     "url": "https://github.com/adasq/dropbox-v2-api.git"
   },
+  "type": "module",
   "author": "adasq",
   "license": "ISC",
   "dependencies": {
     "compress-json": "2.1.2",
+    "node-fetch": "3.3.0",
     "request": "2.88.2"
   },
   "devDependencies": {
