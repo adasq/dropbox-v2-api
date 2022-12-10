@@ -1,13 +1,13 @@
 {
   "name": "dropbox-v2-api",
-  "version": "2.5.10-next.1",
+  "version": "2.5.10-next.2",
   "description": "NodeJS Dropbox v2 API wrapper",
-  "main": "dist/cjs/dropbox-api.js",
-  "module": "dist/mjs/dropbox-api.js",
+  "main": "dist/cjs/index-cjs.js",
+  "module": "dist/mjs/index-mjs.js",
   "exports": {
     ".": {
-      "import": "./dist/mjs/dropbox-api.js",
-      "require": "./dist/cjs/dropbox-api.js"
+      "import": "./dist/mjs/index-mjs.js",
+      "require": "./dist/cjs/index-cjs.js"
     }
   },
   "type": "module",

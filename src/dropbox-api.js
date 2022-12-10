@@ -2,11 +2,9 @@ import request from 'request';
 import stream from 'stream';
 import {decompress} from "compress-json";
 import { readFile } from 'fs/promises';
-const apiJSON = JSON.parse(
-  await readFile(
-    new URL('./api.json', import.meta.url)
-  )
-);
+
+import { dirname, join } from 'path'
+import { fileURLToPath } from 'url'
 
 const RPC_RESOURCE_CATEGORY = 'rpc';
 const UPLOAD_RESOURCE_CATEGORY = 'upload';
@@ -61,7 +59,7 @@ const updateRequestOptsFnList = [
     }
 ];
 
-const resourcesDescriptionList = loadResourcesDescriptionList();
+
 
 //------------------------------------------------------------------------------------
 
@@ -152,7 +150,10 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList, config) {
     return resourcesHandlingFunctions;
 }
 
-export default {
+export default function init(apiDesc) {
+    let resourcesDescriptionList = loadResourcesDescriptionList(apiDesc);
+
+    return {
     authenticate: function (config) {
         const resourceHandlingFunctions = generateResourcesHandlingFunctions(resourcesDescriptionList, config);
         const clientSession = function (userOpt, cb) {
@@ -217,6 +218,7 @@ export default {
         return clientSession;
     }
 }
+}
 
 function throwError(content) {
     throw content;
@@ -231,7 +233,7 @@ function createTransformStream() {
     return streamInstance;
 }
 
-function loadResourcesDescriptionList() {
+function loadResourcesDescriptionList(apiJSON) {
     return decompress(apiJSON);
 }
 
