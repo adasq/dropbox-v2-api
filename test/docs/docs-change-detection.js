@@ -4,10 +4,10 @@ const md5 = require('md5');
 const path = require('path');
 const request = require('request');
 const expect = require('expect.js');
+const {decompress} = require("compress-json");
 const generate = require('../../src/generate-api-description.js');
 
-const API_DESC_FILE_PATH = path.join(__dirname, '../../dist/api.json');
-
+const API_DESC_FILE_PATH = path.join(__dirname, '../../src/api.json');
 describe('Docs change detection', function() {
     this.timeout(16000);
     describe('', () => {
@@ -19,14 +19,20 @@ describe('Docs change detection', function() {
             }
         })
         it('contains equal content', function (done) {
-            const currentDocsDescription = normalizeString(fs.readFileSync(API_DESC_FILE_PATH).toString());
-            generate((err, retrievedDocsDescription) => {
-                expect(err).to.be(null);
+    try {
+                const currentDocsDescription = normalizeString(JSON.stringify(decompress(JSON.parse(fs.readFileSync(API_DESC_FILE_PATH).toString())), null, '\t'))
+                generate((err, retrievedDocsDescription) => {
+                    console.log(err)
+                    expect(err).to.be(null);
 
-                retrievedDocsDescription = normalizeString(JSON.stringify(retrievedDocsDescription, null, '\t'));
-                expect(md5(retrievedDocsDescription)).to.be(md5(currentDocsDescription));
-                done();
-            });
+                    retrievedDocsDescription = normalizeString(JSON.stringify(retrievedDocsDescription, null, '\t'));
+                    expect(md5(retrievedDocsDescription)).to.be(md5(currentDocsDescription));
+                    done();
+                });
+            } catch(err) {
+                console.log(err);
+                throw err;
+            }
         });
         function normalizeString(str) {
             return str.replace(/\s+/g, '');

@@ -7,7 +7,7 @@
 
 The API is generated programmatically, based on [endpoints description JSON][api.json] fetched from [official docs][docs].
 
-[api.json]: <https://github.com/adasq/dropbox-v2-api/blob/master/dist/api.json>
+[api.json]: <https://github.com/adasq/dropbox-v2-api/blob/master/src/api.json>
 ## Why this package?
 
 - Always **up-to-date API** (PRs with changes are generated automatically, [see most recent][change-detection-pr])
