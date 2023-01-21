@@ -1,17 +1,10 @@
-const should = require('should');
-const spec = require('stream-spec');
-
-const dropboxV2Api = require('../../src/dropbox-api-test.js');
-const utils = require('../../src/utils.js');
-const config = require('./../config.js');
+import should from 'should';
+import spec from 'stream-spec';
+import dropboxV2Api from '../../src/dropbox-api-test.js';
+import utils from '../../src/utils.js';
+import config from '../config.js';
 
 let dropbox;
-
-const sleep = async ms => {
-  return new Promise(resolve => {
-    setTimeout(resolve, ms);
-  });
-};
 
 describe('Namespace', function() {
     this.timeout(6000);

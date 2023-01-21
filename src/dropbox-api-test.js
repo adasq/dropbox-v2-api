@@ -1,6 +1,5 @@
-let TEST_LIB_NAME;
+import dropboxV2Api from './dropbox-api.js';
 
-TEST_LIB_NAME = './dropbox-api.js';
-// TEST_LIB_NAME = 'dropbox-v2-api';
+export default dropboxV2Api;
 
-module.exports = require(TEST_LIB_NAME);
+

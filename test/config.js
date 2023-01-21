@@ -1,5 +1,6 @@
-const config = require('nconf');
+import config from 'nconf';
+
 config.env().file({ file: './config.json' });
 config.required(['DROPBOX_TOKEN']);
 
-module.exports = config;
+export default config;

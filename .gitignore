@@ -4,3 +4,4 @@ example/credentials.json
 examples.out
 config.json
 .idea/
+dist/

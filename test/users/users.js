@@ -1,6 +1,7 @@
-const should = require('should');
-const dropboxV2Api = require('../../src/dropbox-api-test.js');
-const config = require('./../config.js');
+import should from 'should';
+import spec from 'stream-spec';
+import dropboxV2Api from '../../src/dropbox-api-test.js';
+import config from '../config.js';
 
 let dropbox, dropboxMalformed;
 

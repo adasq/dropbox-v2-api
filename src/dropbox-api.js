@@ -1,7 +1,10 @@
-const request = require('request');
-const stream = require('stream');
-const {decompress} = require("compress-json");
-const apiJSON = require('./api.json');
+import request from 'request';
+import stream from 'stream';
+import {decompress} from "compress-json";
+import { readFile } from 'fs/promises';
+
+import { dirname, join } from 'path'
+import { fileURLToPath } from 'url'
 
 const RPC_RESOURCE_CATEGORY = 'rpc';
 const UPLOAD_RESOURCE_CATEGORY = 'upload';
@@ -56,7 +59,7 @@ const updateRequestOptsFnList = [
     }
 ];
 
-const resourcesDescriptionList = loadResourcesDescriptionList();
+
 
 //------------------------------------------------------------------------------------
 
@@ -147,7 +150,10 @@ function generateResourcesHandlingFunctions(resourcesDescriptionList, config) {
     return resourcesHandlingFunctions;
 }
 
-module.exports = {
+export default function init(apiDesc) {
+    let resourcesDescriptionList = loadResourcesDescriptionList(apiDesc);
+
+    return {
     authenticate: function (config) {
         const resourceHandlingFunctions = generateResourcesHandlingFunctions(resourcesDescriptionList, config);
         const clientSession = function (userOpt, cb) {
@@ -212,6 +218,7 @@ module.exports = {
         return clientSession;
     }
 }
+}
 
 function throwError(content) {
     throw content;
@@ -226,7 +233,7 @@ function createTransformStream() {
     return streamInstance;
 }
 
-function loadResourcesDescriptionList() {
+function loadResourcesDescriptionList(apiJSON) {
     return decompress(apiJSON);
 }
 

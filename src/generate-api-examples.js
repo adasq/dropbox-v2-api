@@ -1,9 +1,15 @@
-const fs = require('fs');
-const path = require('path');
-const ejs = require('ejs');
-const beautify = require('js-beautify').js_beautify;
+import fs from 'fs';
+import path from 'path';
+import ejs from 'ejs';
+import beautify from 'js-beautify';
 
-var parsedApiDescription = JSON.parse(fs.readFileSync(path.join(__dirname, '../dist/api.json')));
+import { fileURLToPath } from 'url';
+import {decompress} from "compress-json";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+var parsedApiDescription = decompress(JSON.parse(fs.readFileSync(path.join(__dirname, './api.json'))));
 const options = {};
 
 const apiNameList = Object.keys(parsedApiDescription);
@@ -27,7 +33,6 @@ ${example.code}
 
 
 fs.writeFileSync('EXAMPLES.md', mdContent.join('\n'));
-
 
 function prepareExampleByApiDescription(apiDescription, apiName){
 
@@ -66,7 +71,7 @@ parameters: <%- JSON.stringify(request.example[0].value, null, '') %> <% } %>}, 
     }
 
     const template = ejs.compile(templates[apiDescription.format], options);
-    const code = beautify(template(apiDescription), { indent_size: 4 }).replace(/\"/g, '\'');
+    const code = beautify.js_beautify(template(apiDescription), { indent_size: 4 }).replace(/\"/g, '\'');
 
     return {
         docs: prepareUrl(),
