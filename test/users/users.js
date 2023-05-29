@@ -26,7 +26,7 @@ describe('Namespace', function() {
                     account_id: 'dbid:AAA-vESAc6wjBUxydOH4U-J9hM5SNoQVMNk'
                 }
             }, (err) => {
-                err.text.should.match(/The given OAuth 2 access token is malformed/);
+                err.error['.tag'].should.match(/invalid_access_token/);
                 done();
             });
         });
